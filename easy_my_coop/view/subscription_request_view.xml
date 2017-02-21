@@ -1,0 +1,154 @@
+<openerp>
+	<data>
+		<menuitem name="Easy-My Coop" id="menu_main_easy_my_coop" sequence="40" groups="easy_my_coop.group_energiris_user"/>
+		<menuitem name="Subscription" id="menu_easy_my_coop_main_subscription" parent="menu_main_easy_my_coop" sequence="10" groups="easy_my_coop.group_energiris_manager"/>
+		
+		<record id="subscription_request_tree" model="ir.ui.view">
+            <field name="name">subscription.request.tree</field>
+            <field name="model">subscription.request</field>
+            <field name="arch" type="xml">
+                <tree string="Cooperator Subscriptions Request" colors="red:validated == False; blue:state in ('draft');grey: state in ('done')">
+	                <field name="name"/>
+	                <field name="date" string="Request Date"/>
+          			<field name="type"/>
+          			<field name="share_short_name" string="Share Type"/>
+          			<field name="ordered_parts" string="Quantity" sum="Total ordered parts"/>
+          			<field name="subscription_amount" sum="Total amount"/>
+          			<field name="email"/>
+          			<field name="iban"/>
+          			<field name="partner_id"/>
+          			<field name="state"/>
+          			<field name="validated" invisible="True"/>
+                    <button type="object" name="validate_subscription_request" attrs="{'invisible':['|',('state','!=','draft'),('validated','=',False)]}" icon="STOCK_MEDIA_PLAY" />
+                    <button type="object" name="block_subscription_request" states="draft" groups="easy_my_coop.group_energiris_user" icon="gtk-cancel"/>
+                    <button type="object" name="unblock_subscription_request" states="block" groups="easy_my_coop.group_energiris_manager" icon="gtk-jump-to"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="subscription_request_form" model="ir.ui.view">
+            <field name="name">subscription.request.form</field>
+            <field name="model">subscription.request</field>
+            <field name="arch" type="xml">
+        		<form string="Subscription Requests">
+       				<header>
+       					<button string="Validate" type="object" name="validate_subscription_request" attrs="{'invisible':['|',('state','!=','draft'),('validated','=',False)]}"/>
+       					<button string="Cancel" type="object" name="cancel_subscription_request" states="draft,done,block" groups="easy_my_coop.group_energiris_manager"/>
+       					<field name="state" widget="statusbar" statusbar_visible="draft,cancelled,done,failed"/>
+       				</header>
+       				<sheet>
+	       				<group>
+		       				<group>
+		       					<field name="already_cooperator"/>
+		       					<field name="is_company" invisible="True"/>
+		       					<field name="is_operation" invisible="True"/>
+		       					<field name="company_name" attrs="{'invisible':[('is_company','=',False)]}"/>
+		       					<field name="company_email" attrs="{'invisible':[('is_company','=',False)]}"/>
+		       					<field name="company_type" attrs="{'invisible':[('is_company','=',False)]}"/>
+		       					<field name="company_register_number" attrs="{'invisible':[('is_company','=',False)]}"/>
+		       					<field name="name"/>
+		       					<field name="firstname"/>
+		       					<field name="lastname"/>
+		       					<field name="birthdate"/>
+		       					<field name="gender"/>
+		       					<field name="email"/>
+		       					<field name="phone"/>
+		       					<field name="contact_person_function" attrs="{'invisible':[('is_company','=',False)]}"/>
+		       					<field name="no_registre"/>
+		       					<field name="iban"/>
+		       					<field name="address"/>
+		       					<field name="zip_code"/>
+		       					<field name="city"/>
+		       					<field name="country_id"/>
+		       				</group>
+		       				<group>
+		       					<field name="date"/>
+		       					<field name="activities_address" attrs="{'invisible':[('is_company','=',False)]}"/>
+		       					<field name="activities_zip_code" attrs="{'invisible':[('is_company','=',False)]}"/>
+		       					<field name="activities_city" attrs="{'invisible':[('is_company','=',False)]}"/>
+		       					<field name="activities_country_id" attrs="{'invisible':[('is_company','=',False)]}"/>
+		       					<field name="ordered_parts"/>
+		       					<field name="share_product_id"/>
+		       					<field name="share_short_name"/>
+		       					<field name="share_unit_price"/>
+		       					<field name="subscription_amount"/>
+		       					<field name="partner_id"/>
+		       					<field name="type"/>
+		       					<field name="lang"/>
+		       					<field name="validated"/>
+		       					<field name="skip_control_ng"/>
+		       				</group>
+		       			</group>
+       				</sheet>
+       			</form>
+            </field>
+        </record>    
+        
+        <record id="view_subscription_request_filter" model="ir.ui.view">
+            <field name="name">Cooperator Subscription Search</field>
+            <field name="model">subscription.request</field>
+            <field name="arch" type="xml">
+                <search string="Search Subscription Request">
+                   <field name="name"
+                       filter_domain="['|',('name','ilike',self),('email','ilike',self)]"/>
+                   <separator/>
+                   <filter string="draft" name="state_draft" domain="[('state','=','draft')]"/>
+                   <filter string="done" name="state_done" domain="[('state','=','done')]"/>
+                   <separator/>
+                   <filter string="Unvalid" name="Unvalid" domain="[('validated', '=', False)]"/>
+                   <group expand="0" name="group_by" string="Group By">
+                       <filter string="Request type" context="{'group_by' : 'type'}" />
+                       <!-- <filter string="Part type" context="{'group_by': 'share_short_name'}"/> -->
+                       <filter string="Date Month" context="{'group_by': 'date'}"/>
+                   </group>
+               </search>
+            </field>
+        </record>
+        
+        <record id="subscription_request_action" model="ir.actions.act_window">
+            <field name="name">Cooperator Subscription</field>
+            <field name="res_model">subscription.request</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('is_company','=',False),('is_operation','=',False)]</field>
+            <field name="view_id" ref="subscription_request_tree"/>
+            <field name="search_view_id" ref="view_subscription_request_filter"/>
+        </record>
+	
+		<menuitem action="subscription_request_action" name="Cooperator Subscription" id="menu_easy_my_coop_subscription_request"  parent="menu_easy_my_coop_main_subscription" sequence="10"/>
+		
+		<record id="company_subscription_request_tree" model="ir.ui.view">
+            <field name="name">subscription.request.tree</field>
+            <field name="model">subscription.request</field>
+            <field name="arch" type="xml">
+                <tree string="Company Cooperator Subscriptions Request" colors="red:validated == False; blue:state in ('draft');grey: state in ('done')">
+	                <field name="company_name"/>
+	                <field name="name"/>
+	                <field name="date" string="Request Date"/>
+          			<field name="type"/>
+          			<field name="share_short_name" string="Share Type"/>
+          			<field name="ordered_parts" string="Quantity" sum="Total ordered parts"/>
+          			<field name="subscription_amount" sum="Total amount"/>
+          			<field name="email"/>
+          			<field name="iban"/>
+          			<field name="partner_id"/>
+          			<field name="state"/>
+          			<field name="validated" invisible="True"/>
+                    <button type="object" name="validate_subscription_request" attrs="{'invisible':['|',('state','!=','draft'),('validated','=',False)]}" icon="STOCK_MEDIA_PLAY"/>
+                    <button type="object" name="block_subscription_request" states="draft" groups="easy_my_coop.group_energiris_user" icon="gtk-cancel"/>
+                    <button type="object" name="unblock_subscription_request" states="block" groups="easy_my_coop.group_energiris_manager" icon="gtk-jump-to"/>
+                </tree>
+            </field>
+        </record>
+		
+		<record id="company_subscription_request_action" model="ir.actions.act_window">
+            <field name="name">Company Subscription</field>
+            <field name="res_model">subscription.request</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('is_company','=',True),('is_operation','=',False)]</field>
+            <field name="view_id" ref="company_subscription_request_tree"/>
+            <field name="search_view_id" ref="view_subscription_request_filter"/>
+        </record>
+	
+		<menuitem action="company_subscription_request_action" name="Company Subscription" id="menu_easy_my_coop_company_subscription_request"  parent="menu_easy_my_coop_main_subscription" sequence="12"/>
+	</data>
+</openerp>

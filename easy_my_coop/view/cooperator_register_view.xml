@@ -1,0 +1,54 @@
+<openerp>
+	<data>
+		<record id="subscription_register_tree" model="ir.ui.view">
+            <field name="name">subscription.register.tree</field>
+            <field name="model">subscription.register</field>
+            <field name="arch" type="xml">
+                <tree string="Subscription Register">
+	                <field name="register_number_operation"/>
+          			<field name="date"/>
+          			<field name="partner_id"/>
+          			<field name="share_short_name"/>
+          			<field name="quantity" sum="Total quantity"/>
+          			<field name="share_unit_price"/>
+		          	<field name="total_amount_line" sum="Total amount"/>
+          			<field name="type"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="subscription_register_form" model="ir.ui.view">
+            <field name="name">subscription.register.form</field>
+            <field name="model">subscription.register</field>
+            <field name="arch" type="xml">
+                <form string="Subscription Register">
+	                <group>
+		                <group>
+			                <field name="register_number_operation"/>
+		          			<field name="date"/>
+							<field name="share_short_name"/>
+		          			<field name="partner_id"/>
+		          			<field name="partner_id_to" attrs="{'invisible':[('type','!=','transfer')]}"/>
+		          			<field name="user_id" invisible="True"/>
+	          			</group>
+	          			<group>
+		          			<field name="type"/>
+		          			<field name="quantity"/>
+		          			<field name="share_unit_price"/>
+		          			<field name="total_amount_line"/>
+	          			</group>
+	          		</group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="subscription_register_action" model="ir.actions.act_window">
+            <field name="name">Subscription Register</field>
+            <field name="res_model">subscription.register</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="subscription_register_tree"/>
+        </record>
+	
+		<menuitem action="subscription_register_action" name="Subscription Register" id="menu_easy_my_coop_subscription_register"  parent="menu_easy_my_coop_main_subscription" sequence="20"/>
+	</data>
+</openerp>

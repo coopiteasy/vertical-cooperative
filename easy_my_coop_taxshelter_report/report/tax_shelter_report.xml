@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+<data noupdate="0">
+	<report
+		id="action_tax_shelter_report" 
+		model="res.partner" 
+		string="Tax shelter report"
+		report_type="qweb-pdf"
+		name="easy_my_coop_taxshelter_report.tax_shelter_report" 
+		file="easy_my_coop_taxshelter_report.tax_shelter_report.xml" 
+		multi="True"
+		menu="True"/>
+</data>
+
+<data>
+<template id="tax_shelter_report_document">
+    <t t-call="theme_light.invoice_layout">
+        <div class="page">
+        	<head>
+				<link href="/easy_my_coop_taxshelter_report/static/src/css/coop_report.css" rel="stylesheet"/>
+				
+				<style type="text/css">
+				/* Montserrat */
+				  @font-face {
+				  font-family: 'Montserrat-Regular';
+				  font-style: normal;
+				  src: local('Montserrat Regular'), url('/theme_light/static/font/Montserrat-Regular.ttf') format('truetype');
+				}
+				/* Roboto Regular */
+				  @font-face {
+				  font-family: 'Roboto-Regular';
+				  font-style: normal;
+				  src: local('Roboto Regular'), url('/theme_light/static/font/Roboto-Regular.ttf') format('truetype');
+				}
+				/* Roboto Bold */
+				  @font-face {
+				  font-family: 'Roboto-Bold';
+				  font-style: normal;
+				  src: local('Roboto Bold'), url('/theme_light/static/font/Roboto-Bold.ttf') format('truetype');
+				}
+				/* BEBASNEUE Bold */
+				  @font-face {
+				  font-family: 'Bebasneue-Bold';
+				  font-style: normal;
+				  src: local('Bebasneue-Bold'), url('/theme_light/static/font/BEBASNEUE_BOLD.ttf') format('truetype');
+				}
+				</style>
+			</head>
+        	<t t-call="theme_light.invoice_header"/>
+        	
+            <div class="row">
+                <div class="col-xs-5 col-xs-offset-7 easymy-coop-address" style="top:40px;">
+                    <strong><span t-field="o.name" /><br/></strong>
+                    <span> numéro de coopérateur </span>
+					<span t-field="o.cooperator_register_number"></span><br/><br/>
+	            	<span t-field="o.street" /><br/>
+	            	<span>  
+	            		<span t-field="o.zip"/>  
+	            		<span t-field="o.city"/>
+	            	</span><br/>
+	            	<span t-field="o.country_id.name" /><br/>
+                </div>
+            </div>
+
+			<div style="position:absolute; top:300px">
+	            <h2 style="font-family:Bebasneue-Bold;font-size:20pt;line-height:14pt;">
+	            	<div>
+		            	<span>Déclaration Tax Shelter</span>		          					          			
+					</div>
+	                <div style="width:125px;position:relative;top:10px;border-bottom: 4pt solid #fcc300;"/>
+	            </h2>
+				
+				<div class="row">
+	                <div class="col-xs-12 pull-left" style="position:relative;top:35px;font-size:16;color:black;font-family:Roboto-Regular;">
+		                <div>
+		                	Cher membre fondateur,
+						</div>
+						<div style="position:relative;top:30px;">	
+							Durant l'année 2015 vous êtes devenu coopérateur de la BEES Coop SCRLfs.<br/>
+							<t t-foreach="o.share_ids" t-as="line">
+							Vous avez souscrits en date <span t-field="line.effective_date" ></span>, <span t-field="line.share_number" ></span> parts  pour un montant total de <span t-field="line.total_amount_line"
+											  t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/> euros.<br/>
+							</t>
+						</div>
+<div style="position:relative;top:45px;">	
+L' Article 145/26, CIR 92 sur les revenus 2015, connu aussi comme normative Tax Shelter, donnent droit à une réduction d’impôt à hauteur de 45% du montant de la valeur des parts souscrites depuis juillet 2015 (et avant décembre 2015 pour la déclaration des revenus 2015).<br/>
+<br/>
+Cette lettre vaut donc comme certificat que BEES coop scrl fs remplit en effet tous les critères permettant un tel avantage fiscal. Dans les grandes lignes : <br/>
+<br/>
+    être une micro-entreprise qui répond à au moins deux des trois critères suivants : <br/><br/>
+    - le total du bilan est inférieur ou égal à 350.000 euros ; <br/>
+    - le chiffre d’affaires, hors taxe sur la valeur ajoutée, est inférieur ou égal à 700.000 euros ; <br/>
+    - la moyenne des travailleurs occupés pendant l’année est inférieure ou égale à 10. <br/>
+    <br/>
+    être une entreprise n’ayant encore jamais distribué de dividende et qui n'est pas issue d’une fusion ou scission de sociétés.<br/><br/>
+    Le maintien de la réduction d’impôt n’est possible que si l'investisseur conserve les parts de la coopérative pendant 4 ans au minimum, sauf si la sortie est imposée par des conditions extérieures (telles que la faillite, par exemple). En cas de sortie volontaire avant la période de 4 ans, l’avantage fiscal devra être remboursé au prorata du nombre de mois entre la sortie et les 4 ans. La coopérative s’engage à fournir pour chacune des quatre années suivant l’année d’acquisition une attestation certifiant que ces parts sont toujours en possession du souscripteur.<br/><br/>
+    L’apport de capitaux par le chef d’entreprise lui-même ou par des administrateurs existants de la société ne permet pas de bénéficier du tax shelter.<br/>
+<br/>
+Pour bénéficier de la réduction d’impôts, vous pouvez joindre cette lettre à votre déclaration fiscale pour les revenus 2015.<br/>
+<br/>
+ <![CDATA[
+Pour toute information complémentaire, consultez le texte de <a href="http://ccff02.minfin.fgov.be/KMWeb/document.do?method=view&id=e5996d67-4f3e-4465-b21e-7e59d968a55d">l’Arrêté Royale en ligne</a>.<br/>
+ ]]>
+<br/>
+Cordialement,
+		                </div>
+	                </div>
+	            </div>
+	
+	            <div class="row">
+	                <div class="col-xs-6 pull-left" style="position:relative;top:100px;font-size:16;color:black;font-family:Roboto-Regular;">
+		                <div style="position:relative;top:10px;">
+		                	Pour le Conseil d'administration de BEES coop SCRLFs.
+		                </div>
+		                <div style="position:relative;top:20px;">
+		                	<strong>Carine Sottiaux</strong>
+		                </div>
+		                <div style="position:relative;top:30px;">
+		                	<img src="/theme_light/static/img/gallery/signature_certificat.png" style="width:240px;height:200px;padding-bottom:5px;"/>
+		                </div>
+	                </div>
+	            </div>
+	        </div>
+        </div>
+    </t>
+    </template>
+
+	<template id="tax_shelter_report">
+	    <t t-call="theme_light.html_container">
+	        <t t-set="data_report_margin_top" t-value="10"/>
+	        <t t-set="data_report_header_spacing" t-value="5"/>
+	        <t t-set="data_report_dpi" t-value="110"/>
+	        
+	        <t t-foreach="docs" t-as="o">
+	            <t t-call="easy_my_coop_taxshelter_report.tax_shelter_report_document" t-lang="o.lang"/>
+	        </t>    	    	
+	    </t>
+	</template>
+</data>
+</openerp>

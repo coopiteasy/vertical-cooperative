@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<template id="theme_invoice_G002_document">
+    <t t-call="theme_light.invoice_layout">
+        <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})" />
+        <div class="page">
+        	<head>
+				<link href="/easy_my_coop/static/src/css/coop_report.css" rel="stylesheet"/>
+				
+				<style type="text/css">
+				/* Montserrat */
+				  @font-face {
+				  font-family: 'Montserrat-Regular';
+				  font-style: normal;
+				  src: local('Montserrat Regular'), url('/theme_light/static/font/Montserrat-Regular.ttf') format('truetype');
+				}
+				/* Roboto Regular */
+				  @font-face {
+				  font-family: 'Roboto-Regular';
+				  font-style: normal;
+				  src: local('Roboto Regular'), url('/theme_light/static/font/Roboto-Regular.ttf') format('truetype');
+				}
+				/* Roboto Bold */
+				  @font-face {
+				  font-family: 'Roboto-Bold';
+				  font-style: normal;
+				  src: local('Roboto Bold'), url('/theme_light/static/font/Roboto-Bold.ttf') format('truetype');
+				}
+				/* BEBASNEUE Bold */
+				  @font-face {
+				  font-family: 'Bebasneue-Bold';
+				  font-style: normal;
+				  src: local('Bebasneue-Bold'), url('/theme_light/static/font/BEBASNEUE_BOLD.ttf') format('truetype');
+				}
+				</style>
+			</head>
+        	<t t-call="theme_light.invoice_header"/>
+        	
+            <div class="row">
+                <div class="col-xs-5 col-xs-offset-7 easymy-coop-address" style="top:90px;">
+                    <address t-field="o.partner_id"
+                        t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
+                    <span t-if="o.partner_id.vat">TIN: <span t-field="o.partner_id.vat"/></span>
+                </div>
+            </div>
+
+			<div style="position:absolute; top:364px">
+	            <h2 style="font-family:Bebasneue-Bold;font-size:20pt;line-height:14pt;">
+	            	<span t-if="o.release_capital_request == True">REQUEST TO RELEASE CAPITAL</span>		          					          			
+	            	<span t-if="o.release_capital_request == False">
+		                <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">Invoice</span>
+		                <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA</span>
+		                <span t-if="o.type == 'out_invoice' and o.state == 'draft'">Draft Invoice</span>
+		                <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice</span>
+		                <span t-if="o.type == 'out_refund'">Refund</span>
+		                <span t-if="o.type == 'in_refund'">Vendor Refund</span>
+		                <span t-if="o.type == 'in_invoice'">Vendor Bill</span>
+		            </span>
+	                <span t-field="o.number"/>
+	                <div style="width:220px;position:relative;top:10px;border-bottom: 4pt solid #e7511e;"/>
+	            </h2>
+	
+	            <div class="row mt32 mb32 easymy-coop-info-title" style="top:102px;">
+	                <div class="col-xs-2" t-if="o.name">
+	                    <strong>Description:</strong>
+	                    <p t-field="o.name"/>
+	                </div>
+	                <div class="col-xs-2" t-if="o.release_capital_request == True and o.date_invoice">
+	                    <strong>Request Date:</strong>
+	                    <p t-field="o.date_invoice"/>
+	                </div>
+	                <div class="col-xs-2" t-if="o.release_capital_request == False and o.date_invoice">
+	                    <strong>Invoice Date:</strong>
+	                    <p t-field="o.date_invoice"/>
+	                </div>
+	                <div class="col-xs-2" t-if="o.release_capital_request == False and (o.date_due and o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid'))">
+	                    <strong>Due Date:</strong>
+	                    <p t-field="o.date_due"/>
+	                </div>
+	                <div class="col-xs-2" t-if="o.release_capital_request == False and o.origin">
+	                    <strong>Source:</strong>
+	                    <p t-field="o.origin"/>
+	                </div>
+	                <div class="col-xs-2" t-if="o.release_capital_request == False and o.partner_id.ref">
+	                    <strong>Customer Code:</strong>
+	                    <p t-field="o.partner_id.ref"/>
+	                </div>
+	                <div name="reference" class="col-xs-3" t-if="o.reference">
+	                    <strong>Structured Communication:</strong>
+	                    <p t-field="o.reference"/>
+	                </div>
+	                <div name="account_number" class="col-xs-3">
+	                    <strong>Account Number:</strong>
+	                    <t t-foreach="o.company_id.bank_journal_ids" t-as="journal">
+	            		<t t-set="b" t-value="journal.bank_account_id"/>
+	    					<t t-if="o.release_capital_request == True and journal.get_cooperator_payment">				 
+			            		<span t-field="b.acc_number"/>
+							</t>
+							<t t-if="o.release_capital_request == False and journal.get_general_payment">				 
+			            		<span t-field="b.acc_number"/>
+							</t>	  		            		
+						</t>
+	                </div>
+	                <br/>
+	                <div name="contact" class="col-xs-3" t-if="o.user_id" style="position:relative;top:15px;">
+	                    <strong>Your contact:</strong>
+	                    <p t-field="o.user_id"/>
+	                </div>
+	            </div>
+	
+	            <!-- Is there a discount on at least one line? -->
+	            <t t-set="display_discount" t-value="any([l.discount for l in o.invoice_line_ids])"/>
+	
+	            <table class="table border-easymy-coop" style="position:relative;top:85px;width:90%;align:center;">
+	                <thead class="easymy-coop-info-title">
+	                    <tr>
+	                        <th>Description</th>
+	                        <th t-if="o.release_capital_request == True">Part Type</th>
+	                        <th class="text-right">Quantity</th>
+	                        <th class="text-right">Unit Price</th>
+	                        <th t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">Disc.(%)</th>
+	                        <th t-if="o.release_capital_request == False" class="text-right">Taxes</th>
+	                        <th class="text-right">Price</th>
+	                    </tr>
+	                </thead>
+	                <tbody class="invoice_tbody easymy-coop-normal">
+	                    <tr t-foreach="o.invoice_line_ids" t-as="l">
+	                        <td><span t-field="l.name"/></td>
+	                        <td t-if="o.release_capital_request == True">
+	                        	<span t-field="l.product_id.short_name"/>
+	                        </td>
+	                        <td class="text-right">
+	                        	<span t-if="l.quantity%1>0"><span  t-esc='"%0.2f" % l.quantity'/></span>        
+        						<span t-if="l.quantity%1==0"><span  t-esc='"%0.0f" % l.quantity'/></span>
+	                            <!-- <span t-field="l.quantity"/> -->
+	                            <span t-if="o.release_capital_request == False" t-field="l.uom_id"  groups="product.group_uom"/>
+	                        </td>
+	                        <td class="text-right">
+	                            <span t-field="l.price_unit"/>
+	                        </td>
+	                        <td t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
+	                            <span t-field="l.discount"/>
+	                        </td>
+	                        <td t-if="o.release_capital_request == False" class="text-right">
+	                            <span t-esc="', '.join(map(lambda x: (x.description or x.name), l.invoice_line_tax_ids))"/>
+	                        </td>
+	                        <td class="text-right">
+	                            <span t-field="l.price_subtotal" 
+	                                t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+	                        </td>
+	                    </tr>
+	                </tbody>
+	            </table>
+	
+	            <div class="row">
+	                <div class="col-xs-4 pull-right">
+	                    <table class="table table-condensed easymy-coop-info-title" style="position:relative;top:130px;width:68%">
+	                        <tr t-if="o.release_capital_request == False">
+	                            <td><strong>Subtotal</strong></td>
+	                            <td class="text-right">
+	                                <span t-field="o.amount_untaxed" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+	                            </td>
+	                        </tr>
+	                        <t t-if="o.release_capital_request == False">
+	                        	<t t-foreach="o._get_tax_amount_by_group()" t-as="amount_by_group">
+		                            <tr>
+		                                <td><span t-esc="amount_by_group[0]"/></td>
+		                                <td class="text-right">
+		                                    <span t-esc="amount_by_group[1]"/>
+		                                </td>
+		                            </tr>
+	                            </t>
+	                        </t>
+	                        <tr class="border-top-easymy-coop">
+	                            <td><strong>Total</strong></td>
+	                            <td class="text-right">
+	                                 <span t-field="o.amount_total" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+	                            </td>
+	                        </tr>
+	                    </table>
+	                </div>
+	            </div>
+	            
+	            <div class="row" t-if="o.tax_line_ids">
+	                <div class="col-xs-6">
+	                    <table class="table border-easymy-coop">
+	                        <thead>
+	                            <tr>
+	                                <th>Tax</th>
+	                                <th class="text-right">Base</th>
+	                                <th class="text-right">Amount</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                            <tr t-foreach="o.tax_line_ids" t-as="t">
+	                                <td>
+	                                	<span t-field="t.name"/>
+	                                </td>
+	                                <td class="text-right">
+	                                    <span t-field="t.base"
+	                                        t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                              		</td>
+	                                <td class="text-right">
+	                                    <span t-field="t.amount"
+	                                        t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+	                                </td>
+	                            </tr>
+	                        </tbody>
+	                    </table>
+	                </div>
+	            </div>
+
+	            <p t-if="o.comment">
+	                <strong>Comment:</strong>
+	                <span t-field="o.comment"/>
+	            </p>
+	            <p t-if="o.release_capital_request == False and o.payment_term_id">
+	                <span t-field="o.payment_term_id.note"/>
+	            </p>
+	            <p t-if="o.release_capital_request == False and o.fiscal_position_id.note">
+	                <strong>Fiscal Position Remark:</strong>
+	                <span t-field="o.fiscal_position_id.note"/>
+	            </p>
+	        </div>
+        </div>
+    </t>
+    </template>
+
+	<template id="theme_invoice_G002">
+	    <t t-call="theme_light.html_container">
+	        <t t-set="data_report_margin_top" t-value="10"/>
+	        <t t-set="data_report_header_spacing" t-value="5"/>
+	        <t t-set="data_report_dpi" t-value="110"/>
+	        
+	        <t t-foreach="docs" t-as="o">
+	            <t t-call="easy_my_coop.theme_invoice_G002_document" t-lang="o.partner_id.lang"/>
+	        </t>    	    	
+	    </t>
+	</template>
+	
+	<template id="report_sexy_invoice">
+	    <t t-call="theme_light.html_container">
+	        <t t-set="data_report_margin_top" t-value="10"/>
+	        <t t-set="data_report_header_spacing" t-value="5"/>
+	        <t t-set="data_report_dpi" t-value="110"/>
+	        
+	        <t t-foreach="docs" t-as="o">
+	            <t t-call="easy_my_coop.theme_invoice_G002_document" t-lang="o.partner_id.lang"/>
+	        </t>    	    	
+	    </t>
+	</template>
+</data>
+</openerp>

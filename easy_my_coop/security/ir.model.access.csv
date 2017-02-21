@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_subscription_request,subscription.request,model_subscription_request,group_energiris_manager,1,1,1,0
+access_res_partner,res.partner,model_res_partner,group_energiris_manager,1,1,1,0
+access_share_line_employee,share.line,model_share_line,base.group_user,1,0,0,0
+access_share_line_manager,share.line,model_share_line,group_energiris_manager,1,1,1,0
+access_account_invoice,account.invoice,model_account_invoice,group_energiris_manager,1,1,1,0
+access_subscription_register,subscription_register,model_subscription_register,group_energiris_manager,1,1,1,0
+access_account_invoice_super_manager,account.invoice,model_account_invoice,group_energiris_super_manager,1,1,1,1
+access_share_line_super_manager,share.line,model_share_line,group_energiris_super_manager,1,1,1,1
+access_subscription_register_super_manager,subscription_register,model_subscription_register,group_energiris_super_manager,1,1,1,1
+access_subscription_request_super_manager,subscription.request,model_subscription_request,group_energiris_super_manager,1,1,1,1
+access_operation_request,operation.request,model_operation_request,group_energiris_manager,1,1,1,0
+access_operation_request_super_manager,operation.request,model_operation_request,group_energiris_super_manager,1,1,1,1

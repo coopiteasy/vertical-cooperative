@@ -1,0 +1,27 @@
+.border-top-easymy-coop td {
+    border-top: 1pt solid #e7511e !important;
+}
+
+.border-easymy-coop th {
+    border-bottom: 1pt solid #e7511e !important;
+}
+
+.border-top-easymy-coop-cert td {
+    border-top: 1pt solid #fcc300 !important;
+}
+
+.border-easymy-coop-cert th {
+    border-bottom: 1pt solid #fcc300 !important;
+}
+
+.easymy-coop-normal {
+	font-family:Roboto-Regular;
+	font-size:12pt;
+	line-height:16pt;
+}
+
+.easymy-coop-info-title {
+	font-family:Roboto-Bold;
+	font-size:12pt;
+	line-height:16pt;
+}

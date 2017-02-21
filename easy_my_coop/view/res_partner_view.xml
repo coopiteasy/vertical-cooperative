@@ -1,0 +1,115 @@
+<openerp>
+	<data>
+		<record id="view_partner_form_easy_my_coop" model="ir.ui.view">
+            <field name="name">res.partner.form.easy_my_coop</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="/form/sheet/group" position='before'>
+					<group>
+						<field name="cooperator_register_number" readonly="True" attrs="{'invisible':[('member','=',False)]}"/>
+						<field name="cooperator" groups="easy_my_coop.group_energiris_super_manager"/>
+						<field name="member" groups="easy_my_coop.group_energiris_super_manager"/>
+						<field name="cooperator_type"/>
+						<field name="effective_date"/>
+					</group>
+					<group>
+						<field name="birthdate" attrs="{'invisible':[('is_company','=',True)]}"/>
+						<field name="gender"/>
+					</group>
+	         	</xpath>
+                
+	         	<xpath expr="//page[@name='sales_purchases']" position='after'>
+            		<page string="Shares" name="share" attrs="{'invisible':[('member','=',False)]}" groups="easy_my_coop.group_energiris_user">
+            			<group>
+			         		<field name="number_of_share"/>
+			         		<field name="total_value"/>
+		         		</group>
+		         		<field name="share_ids">
+		         			<tree>
+		         				<field name="effective_date"/>
+		         				<field name="share_short_name"/>
+		         				<field name="share_number" sum="Total of shares"/>
+		         				<field name="share_unit_price"/>
+		         				<field name="total_amount_line" sum="Total subscribed amount"/>
+		         			</tree>
+		         		</field>
+		         	</page>
+            	</xpath>
+            </field>
+        </record>
+        
+        <record id="view_partner_tree_easy_my_coop" model="ir.ui.view">
+            <field name="name">res.partner.tree.easy_my_coop</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="/tree/field[@name='display_name']" position='after'>
+                	<field name="cooperator_register_number" />
+                	<field name="cooperator_type"/>
+                	<field name="effective_date"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="view_res_partner_filter_coop" model="ir.ui.view">
+            <field name="name">res.partner.select</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//filter[@name='supplier']" position='after'>
+                   <filter string="Cooperators" name="cooperator" domain="[('cooperator','=',1)]" help="Cooperator Partners"/>
+                </xpath>
+                <filter name="salesperson" position="before">
+                	<filter name="Cooperator Type" context="{'group_by': 'cooperator_type'}"/>
+                </filter>
+            </field>
+        </record>
+        
+        <menuitem name="Cooperators" id="menu_easy_my_coop_main_coop" parent="menu_main_easy_my_coop" sequence="5" />
+        
+        <record id="action_partner_cooperator_form" model="ir.actions.act_window">
+            <field name="name">Cooperator</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('cooperator','=',True),('member','=',True)]</field>
+            <field name="context">{'default_cooperator':1, 'search_default_cooperator':1}</field>
+            <field name="filter" eval="True"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a contact in your address book.
+              </p><p>
+                OpenERP helps you easily track all activities related to
+                a cooperator: discussions, history of business opportunities,
+                documents, etc.
+              </p>
+            </field>
+        </record>
+        
+        <menuitem id="menu_easy_my_coop_cooperator" name="Cooperators" parent="menu_easy_my_coop_main_coop" action="action_partner_cooperator_form" sequence="100"/>
+        
+        <record id="action_partner_cooperator_candidate_form" model="ir.actions.act_window">
+            <field name="name">Cooperator</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('cooperator','=',True),('member','=',False)]</field>
+            <field name="context">{'default_cooperator':1, 'search_default_cooperator':1}</field>
+            <field name="filter" eval="True"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a contact in your address book.
+              </p><p>
+                OpenERP helps you easily track all activities related to
+                a cooperator: discussions, history of business opportunities,
+                documents, etc.
+              </p>
+            </field>
+        </record>
+        
+        <menuitem id="menu_easy_my_coop_cooperator_candidate" name="Cooperator Candidates" parent="menu_easy_my_coop_main_coop" action="action_partner_cooperator_candidate_form" sequence="150"/>
+	</data>
+</openerp>

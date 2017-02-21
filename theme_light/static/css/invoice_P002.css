@@ -1,0 +1,204 @@
+/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+
+
+html {
+  font-family: alef;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font-family:Montserrat-Regular;	
+  margin: 0;
+  color: #000
+ }
+
+address {
+
+		}
+
+address::first-line { 	
+						font-weight:bold;
+					  	color: #000;
+					 }
+
+.title_table {
+	width: 100%;
+	border-bottom: #c655b0 1px solid;
+	vertical-align:middle;	
+	color:#c655b0;	
+}
+
+.title_doc {
+	font-family:Montserrat-Regular;
+  	font-size: 36px;
+	padding-bottom: 10px;
+	text-align : right;
+	
+		}
+
+.color_text {
+	color:#c655b0;
+		}
+		
+.color_background {
+	background-color:#c655b0;
+		}
+		
+
+.white_line_border {
+	background-color:#ffffff;
+	border-bottom: #c655b0 1px solid;
+	height:15px;
+}
+
+.total_table {
+    text-align: right;
+    vertical-align:middle;	
+    font-weight:bold;
+   	border-bottom : 1px solid #c655b0;    
+   	border-top : 1px solid #c655b0;   	
+}
+
+.info_table {
+    	margin-top:20px;
+    	border: 2px solid #c655b0;
+    	border-collapse: separate;
+    	border-spacing: 3px;
+				}
+
+	
+.info_table th {
+    color: white;
+    text-align: center;
+    background-color :#c655b0;
+    margin-top : 5px;
+	height: 40px;
+	vertical-align:middle;
+	font-size: 12px;
+    }
+    
+.info_table td {
+    text-align: center;
+	height: 25px;
+	vertical-align:middle;
+	border-right: #c655b0 1px solid;
+    }
+
+div h4 {
+  	font-size: 14px;
+	clear: both;
+	width: 150px;
+	text-align: center
+	}
+
+.list_line_table_head {
+	text-align: center ;
+    }
+
+.list_line_table_head th {
+    text-align: center ;
+    font-weight:bold;
+    padding-bottom: 10px;
+    border-bottom: #c655b0 3px ridge;
+}
+
+.list_line_table_head td {
+	vertical-align : middle;
+   	border-bottom: 2px solid #ffffff;
+    border-collapse: separate;
+    border-spacing: 2px;
+    background-color : #eddeea;
+    padding-right:5px;	
+    }
+
+.total_table {
+	text-align: center ;
+    }
+
+.total_table th {
+  	vertical-align : middle;
+   	border-bottom: 2px solid #ffffff;
+    border-collapse: separate;
+    border-spacing: 2px;
+    background-color : #eddeea;
+    padding-right:5px;	
+}
+
+.total_table td {
+	vertical-align : middle;
+   	border-bottom: 2px solid #ffffff;
+    border-collapse: separate;
+    border-spacing: 2px;
+    background-color : #c655b0;
+    padding-right:5px;	
+    }
+    
+.tva_table {
+    	margin-top:20px;
+    	border: 2px ridge #c655b0;
+    	border-collapse: separate;
+    	border-spacing: 3px;
+				}
+
+.tva_table th {
+		color : #c655b0;
+		text-align: center ;
+   		border-bottom: #c655b0 1px solid;	
+    }		
+
+
+.orange_line {
+	border-top : 1px solid #c655b0;
+}
+
+.comment_table {
+ 	vertical-align:middle;
+ 	margin-left:10px;
+ 	margin-right:10px;
+ 	margin-top:30px;
+}
+
+.comment_table td {
+ 	color :#c655b0;
+ 	text-align:left;
+			}
+
+
+.lgn_impair{
+    background-color:#ffffff;
+}
+
+.lgn_pair{
+ 
+    background-color:#eddeea;
+		
+}
+
+
+
+
+
+
+/* Alef */
+@font-face {
+  font-family: 'Alef-regular';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Alef Regular'), url('/theme_light/static/font/Alef-Regular.ttf') format('truetype');
+}
+
+/* Montserrat */
+@font-face {
+  font-family: 'Montserrat-Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat Regular'), url('/theme_light/static/font/Montserrat-Regular.ttf') format('truetype');
+}
+
+/* Lato */
+@font-face {
+  font-family: 'Lato-Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), url('/theme_light/static/font/Lato-Regular.ttf') format('truetype');
+}
