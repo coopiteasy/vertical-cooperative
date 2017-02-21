@@ -1,0 +1,161 @@
+/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+
+
+html {
+  font-family: alef;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font-family:Montserrat-Regular;	
+  margin: 0;
+  color: #000
+ }
+
+address {
+	font-family:Lato-Regular;	
+	font-size: 18px;
+		}
+
+address::first-line { 	
+						font-weight:bold;
+					  	color: #000;
+					 }
+
+.doc_title {
+	font-family:Montserrat-Regular;
+  	font-size: 18px;
+	border-bottom: #009ceb 1px solid;
+	padding-bottom: 10px;
+	width: 150px;
+		}
+
+.doc_num {
+	font-family:Montserrat-Regular;
+  	font-size: 18px;
+	padding-top: 15px;
+	width: 150px;
+		}
+		
+.info_table {
+    	margin-top:20px;
+    	border: 2px ridge #009ceb;
+    	border-collapse: separate;
+    	border-spacing: 3px;
+				}
+
+	
+.info_table th {
+    color: white;
+    text-align: center;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #009ceb), color-stop(1, #0c1cea) );
+    margin-top : 5px;
+	height: 25px;
+	vertical-align:middle;
+	font-size: 12px;
+    }
+    
+.info_table td {
+	font-family:Lato-Regular;
+    text-align: center;
+	height: 25px;
+	vertical-align:middle;
+	border-right: #009ceb 1px solid;
+    }
+
+div h4 {
+  	font-size: 14px;
+	clear: both;
+	width: 150px;
+	text-align: center
+	}
+
+.list_line_table_head {
+	text-align: center ;
+    }
+
+.list_line_table_head th {
+    text-align: center ;
+    font-weight:bold;
+    color : #009ceb;
+    padding-bottom: 10px;
+    border-bottom: #009ceb 3px ridge;
+
+}
+
+.list_line_table_head td {
+	font-family:Lato-Regular;
+	vertical-align : middle;
+
+    
+    }
+    
+.tva_table {
+    	margin-top:20px;
+    	border: 2px ridge #009ceb;
+    	border-collapse: separate;
+    	border-spacing: 3px;
+				}
+
+.tva_table th {
+		color : #009ceb;
+		text-align: center ;
+   		border-bottom: #009ceb 1px solid;	
+    }		
+
+
+.standard_line {
+	border-top : 1px solid #009ceb;
+}
+
+.comment_table {
+ 	vertical-align:middle;
+ 	margin-left:10px;
+ 	margin-right:10px;
+ 	margin-top:30px;
+}
+
+.comment_table td {
+ 	color :#009ceb;
+ 	text-align:left;
+			}
+
+
+.lgn_impair{
+    background-color:#ffffff;
+}
+
+.lgn_pair{
+ 
+    background-color:#e2f4fd;
+		
+}
+
+
+
+
+
+
+/* Alef */
+@font-face {
+  font-family: 'Alef-regular';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Alef Regular'), url('/theme_light/static/font/Alef-Regular.ttf') format('truetype');
+}
+
+/* Montserrat */
+@font-face {
+  font-family: 'Montserrat-Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat Regular'), url('/theme_light/static/font/Montserrat-Regular.ttf') format('truetype');
+}
+
+/* Lato */
+@font-face {
+  font-family: 'Lato-Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), url('/theme_light/static/font/Lato-Regular.ttf') format('truetype');
+}

@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*-
+from datetime import datetime
+from openerp.tools import DEFAULT_SERVER_DATE_FORMAT as OE_DFORMAT
+
+from openerp import models, fields, api, _
+
+class ResPartner(models.Model):    
+    _inherit = 'res.partner'
+    
+    def _search_age(self, operator, value):
+        if operator not in ('=', '!=', '<', '<=', '>', '>=', 'in', 'not in'):
+            return []
+        # retrieve all the messages that match with a specific SQL query
+        query = """SELECT id FROM "%s" WHERE extract(year from age(CURRENT_DATE, birthdate)) %s %%s""" % \
+                (self._table, operator)
+        self.env.cr.execute(query, (value,))
+        ids = [t[0] for t in self.env.cr.fetchall()]
+        return [('id', 'in', ids)]
+
+    @api.one
+    @api.depends('birthdate')
+    def _compute_age(self):
+        if self.birthdate:
+            dBday = datetime.strptime(self.birthdate, OE_DFORMAT).date()
+            dToday = datetime.now().date()
+            self.age = dToday.year - dBday.year - ((
+                dToday.month, dToday.day) < (dBday.month, dBday.day))
+            
+    age = fields.Integer(string='Age',compute='_compute_age',search='_search_age')
+    

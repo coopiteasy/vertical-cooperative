@@ -1,0 +1,19 @@
+.particle_banner {
+  position: relative;
+  overflow: hidden;
+}
+.particle_banner .container {
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+.particle_banner .container h1 {
+  color: white;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  font-size: 5em;
+}
+.particle_banner .container h2 {
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  font-size: 3em;
+}
