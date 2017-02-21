@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<template id="cooperator_certificat_G001_document">
+    <t t-call="theme_light.invoice_layout">
+        <div class="page">
+        	<head>
+				<link href="/easy_my_coop/static/src/css/coop_report.css" rel="stylesheet"/>
+				
+				<style type="text/css">
+				/* Montserrat */
+				  @font-face {
+				  font-family: 'Montserrat-Regular';
+				  font-style: normal;
+				  src: local('Montserrat Regular'), url('/theme_light/static/font/Montserrat-Regular.ttf') format('truetype');
+				}
+				/* Roboto Regular */
+				  @font-face {
+				  font-family: 'Roboto-Regular';
+				  font-style: normal;
+				  src: local('Roboto Regular'), url('/theme_light/static/font/Roboto-Regular.ttf') format('truetype');
+				}
+				/* Roboto Bold */
+				  @font-face {
+				  font-family: 'Roboto-Bold';
+				  font-style: normal;
+				  src: local('Roboto Bold'), url('/theme_light/static/font/Roboto-Bold.ttf') format('truetype');
+				}
+				/* BEBASNEUE Bold */
+				  @font-face {
+				  font-family: 'Bebasneue-Bold';
+				  font-style: normal;
+				  src: local('Bebasneue-Bold'), url('/theme_light/static/font/BEBASNEUE_BOLD.ttf') format('truetype');
+				}
+				</style>
+			</head>
+        	<t t-call="theme_light.invoice_header"/>
+        	
+            <div class="row">
+                <div class="col-xs-5 col-xs-offset-7 easymy-coop-address" style="top:90px;">
+                    <strong><span t-field="o.name" /><br/><br/></strong>
+	            	<span t-field="o.street" /><br/>
+	            	<span>  
+	            		<span t-field="o.zip"/>  
+	            		<span t-field="o.city"/>
+	            	</span><br/>
+	            	<span t-field="o.country_id.name" /><br/>
+                </div>
+            </div>
+
+			<div style="position:absolute; top:364px">
+	            <h2 style="font-family:Bebasneue-Bold;font-size:20pt;line-height:14pt;">
+	            	<div>
+		            	<span>COOPERATOR CERTIFICAT</span>		          					          			
+					</div>
+	                <div style="width:125px;position:relative;top:10px;border-bottom: 4pt solid #fcc300;"/>
+	            </h2>
+				
+				<div style="position:relative;top:55px;">
+					<span t-field="o.name"></span>
+					<span> is recorded in the register of cooperators under number </span>
+					<span t-field="o.cooperator_register_number"></span>	
+				</div>	
+			
+	            <table class="table border-easymy-coop-cert" style="position:relative;top:85px;width:90%;align:center;">
+	                <thead class="easymy-coop-info-title">
+	                    <tr>
+	                        <th width="15%">Effective date</th>
+					        <th width="10%">Share type</th>
+					        <th width="10%">Quantity</th>
+					        <th width="15%">Unit Price</th>			        
+					        <th width="15%">Total</th>
+	                    </tr>
+	                </thead>
+	                <tbody class="easymy-coop-normal">
+		                <t t-set="nb_ligne" t-value="0"/>  
+						<t t-foreach="o.share_ids" t-as="line">
+							<t t-set="nb_ligne" t-value="nb_ligne+1"/>
+							<tr height="40px">								
+								<div t-if="(nb_ligne%2)==1" >						
+									<td class="lgn_impair">							
+										<span t-field="line.effective_date" ></span>  							
+									</td>
+									<td>							
+										<span t-field="line.share_short_name" ></span>
+									</td>
+									<td>							
+										<span t-field="line.share_number" ></span>
+									</td>
+									<td>
+										<span t-field="line.share_unit_price"
+											  t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/>
+									</td>
+									<td>							
+										<span t-field="line.total_amount_line"
+											  t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/>										
+									</td>
+								</div>
+								<div t-if="(nb_ligne%2)==0" >	
+									<td class="lgn_pair" style="background-color:#ffffff"> 							
+										<span t-field="line.effective_date"> </span>  							
+									</td>
+									<td>							
+										<span t-field="line.share_short_name" ></span>
+									</td>
+									<td class="lgn_pair" style="background-color:#ffffff">							
+										<span t-field="line.share_number" ></span> 
+									</td>
+									<td class="lgn_pair" style="background-color:#ffffff">
+										<span t-field="line.share_unit_price"
+											  t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/>
+									</td>
+									<td class="lgn_pair" style="background-color:#ffffff">							
+										<span t-field="line.total_amount_line"
+											  t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/>										
+									</td>
+								</div>
+							</tr>
+						</t>
+	                </tbody>
+	            </table>
+	
+	            <div class="row">
+	                <div class="col-xs-6 pull-right">
+	                    <table class="table table-condensed easymy-coop-info-title" style="position:relative;top:145px;width:85%">
+	                        <tr class="border-top-easymy-coop-cert">
+	                            <td width="20%"/>
+						        <td class="total_table color_text" style="text-align:center" width="20%">TOTAL : </td>
+						        <td class="total_table" style="text-align:center" width="25%">
+						        	<span t-field="o.number_of_share"/>
+									<span> share(s) </span>
+						        </td>
+						        <td class="total_table" width="25%">
+						        	<span t-field="o.total_value"
+										  t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/>
+						        </td>
+	                        </tr>
+	                    </table>
+	                </div>
+	            </div>
+	            
+	            <div class="row">
+	                <div class="col-xs-6 pull-left" style="position:relative;top:205px;font-size:20;color:black;font-family:Roboto-Regular;">
+		                <div style="position:relative;top:205px;">
+		                	Pour le Conseil d'administration de <span t-field="o.company_id.name"/>.
+		                </div>
+		                <div style="position:relative;top:215px;">
+		                	<strong><span t-field="o.company_id.board_representative"/></strong>
+		                </div>
+		                <div style="position:relative;top:225px;">
+		                	<img t-if="o.company_id.signature_scan" t-att-src="'data:image/png;base64,%s' % o.company_id.signature_scan" style="width:240px;height:200px;padding-bottom:5px;"/>
+		                </div>
+	                </div>
+	            </div>
+	        </div>
+        </div>
+    </t>
+    </template>
+
+	<template id="cooperator_certificat_G001">
+	    <t t-call="theme_light.html_container">
+	        <t t-set="data_report_margin_top" t-value="10"/>
+	        <t t-set="data_report_header_spacing" t-value="5"/>
+	        <t t-set="data_report_dpi" t-value="110"/>
+	        
+	        <t t-foreach="docs" t-as="o">
+	            <t t-call="easy_my_coop.cooperator_certificat_G001_document" t-lang="o.lang"/>
+	        </t>    	    	
+	    </t>
+	</template>
+</data>
+</openerp>

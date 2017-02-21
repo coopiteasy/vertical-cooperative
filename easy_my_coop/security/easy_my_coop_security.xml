@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.module.category" id="module_category_cooperator_management">
+            <field name="name">EasyMy Coop</field>
+            <field name="description">Helps you manage your cooperator.</field>
+            <field name="sequence">3</field>
+        </record>
+
+        <record id="group_energiris_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="module_category_cooperator_management"/>
+        </record>
+
+        <record id="group_energiris_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="module_category_cooperator_management"/>
+            <field name="implied_ids" eval="[(4, ref('group_energiris_user'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+        
+        <record id="group_energiris_super_manager" model="res.groups">
+            <field name="name">Super Manager</field>
+            <field name="category_id" ref="module_category_cooperator_management"/>
+            <field name="implied_ids" eval="[(4, ref('group_energiris_manager'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
+    </data>
+</openerp>
