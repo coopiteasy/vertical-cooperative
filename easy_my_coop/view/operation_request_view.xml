@@ -1,0 +1,102 @@
+<openerp>
+	<data>
+		<record id="operation_request_tree" model="ir.ui.view">
+            <field name="name">operation.request.tree</field>
+            <field name="model">operation.request</field>
+            <field name="arch" type="xml">
+                <tree string="Operation requests" colors="green:state in ('approved'); blue:state in ('draft');grey: state in ('done')">
+	                <field name="request_date"/>
+          			<field name="partner_id"/>
+          			<field name="operation_type"/>
+          			<field name="quantity"/>
+          			<field name="user_id"/>
+          			<field name="state"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="operation_request_form" model="ir.ui.view">
+            <field name="name">operation.request.form</field>
+            <field name="model">operation.request</field>
+            <field name="arch" type="xml">
+        		<form string="Operation request">
+       				<header>
+       					<button string="Submit" type="object" name="submit_operation" states="draft"/>
+       					<button string="Approve" type="object" name="approve_operation" states="waiting"/>
+       					<button string="Refuse" type="object" name="refuse_operation" states="waiting"/>
+       					<button string="Cancel" type="object" name="cancel_operation" states="draft,waiting"/>
+       					<button string="Draft" type="object" name="reset_to_draft" states="waiting,cancelled"/>
+       					<button string="Execute" type="object" name="execute_operation" states="approved"/>
+	                    <field name="state" widget="statusbar" statusbar_visible="draft,done,cancelled,refused" statusbar_colors='{"draft":"grey","done":"green","cancelled":"orange","refused":"red"}'/>
+	                </header>
+       				<sheet>
+	       				<group>
+		       				<group>
+		       					<field name="request_date" attrs="{'readonly':[('state','!=','draft')]}"/>
+			          			<field name="operation_type" attrs="{'readonly':[('state','!=','draft')]}"/>
+			          			<field name="receiver_not_member" attrs="{'invisible':[('operation_type','!=','transfer')]}"/>
+			          			<field name="partner_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+			          			<field name="partner_id_to" attrs="{'invisible':['|',('operation_type','!=','transfer'), ('receiver_not_member','=',True)]}"/>
+		       				</group>
+		       				<group>
+			          			<field name="user_id"/>
+			          			<field name="share_product_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+			          			<field name="share_short_name" readonly="True"/>
+			          			<field name="quantity" attrs="{'readonly':[('state','!=','draft')]}"/>
+			          			<field name="share_unit_price" readonly="True"/>
+			          			<field name="subscription_amount" attrs="{'readonly':[('state','!=','draft')]}"/>
+		       				</group>
+		       			</group>
+		       			<group>
+		       				<field name="subscription_request" attrs="{'invisible':['|',('operation_type','!=','transfer'),('receiver_not_member','=',False)]}" context="{'default_is_operation': True, 'default_share_product_id': share_product_id}">
+		       					<tree>
+		       						<field name="name"/>
+					                <field name="no_registre"/>
+					                <field name="birthdate"/>
+					                <field name="phone"/>
+				          			<field name="email"/>
+				          			<field name="iban"/>
+		       					</tree>
+			       				<form string="Subscription Requests">
+			       					<sheet>
+				       				<group>
+					       				<group>
+					       					<field name="name"/>
+					       					<field name="firstname"/>
+					       					<field name="lastname"/>
+					       					<field name="birthdate"/>
+					       					<field name="gender"/>
+					       					<field name="email"/>
+					       					<field name="phone"/>
+					       					<field name="no_registre"/>
+					       					<field name="iban"/>
+					       				</group>
+					       				<group>
+					       					<field name="address"/>
+					       					<field name="zip_code"/>
+					       					<field name="city"/>
+					       					<field name="country_id"/>
+					       					<field name="lang"/>
+					       					<field name="validated"/>
+					       					<field name="skip_control_ng"/>
+					       				</group>
+					       			</group>
+				       				</sheet>
+				       			</form>
+		       				</field>
+		       			</group>
+       				</sheet>
+       			</form>
+            </field>
+        </record>    
+        
+        <record id="operation_request_action" model="ir.actions.act_window">
+            <field name="name">Operation request</field>
+            <field name="res_model">operation.request</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="operation_request_tree"/>
+        </record>
+	
+		<menuitem action="operation_request_action" name="Operation request" id="menu_easy_my_coop_operation_request" parent="menu_easy_my_coop_main_subscription" sequence="20" groups="easy_my_coop.group_energiris_manager"/>
+	</data>
+</openerp>

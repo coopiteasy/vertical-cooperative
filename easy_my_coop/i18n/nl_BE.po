@@ -1,0 +1,1414 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* easy_my_coop
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-08 20:16+0000\n"
+"PO-Revision-Date: 2016-05-09 16:45+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: nl_BE\n"
+"X-Generator: Poedit 1.6.5\n"
+
+#. module: easy_my_coop
+#: model:mail.template,body_html:easy_my_coop.email_template_certificat_increase
+msgid ""
+"\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-"
+"serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"    <p>Hello ${object.name},</p>\n"
+"\n"
+"\t<p>We confirm the reception of you payment for the new share(s) you have "
+"taken.</p>\n"
+"\n"
+"    <br/>\n"
+"    <p>Find in attachment the your ${object.company_id} certificate.</p>\n"
+"    <p>Thank you for trusting ${object.company_id.name or 'us'}!</p>\n"
+"    <br/>\n"
+"\t<p>Sustainably your,</p>\n"
+"\t<p>${object.company_id.name}.</p>\n"
+"\n"
+"\t\t% if object.company_id.street:\n"
+"            ${object.company_id.street}\n"
+"        % endif\n"
+"        % if object.company_id.street2:\n"
+"            ${object.company_id.street2}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.city or object.company_id.zip:\n"
+"            ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.country_id:\n"
+"            ${object.company_id.state_id and ('%s, ' % object.company_id."
+"state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.phone:\n"
+"                Phone:&nbsp; ${object.company_id.phone}\n"
+"        % endif\n"
+"\n"
+"       % if object.company_id.website:\n"
+"            <div>\n"
+"                Web :&nbsp;<a href=\"${object.company_id.website}\">${object."
+"company_id.website}</a>\n"
+"            </div>\n"
+"       %endif\n"
+"\n"
+"       <div>\n"
+"          <img src=${object.company_id.logo_web}>\n"
+"       </div>\n"
+"</div>\n"
+"            "
+msgstr ""
+"\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-"
+"serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"    <p>Hallo ${object.name},</p>\n"
+"\n"
+"<p>We bevestigen hierbij de goede ontvangst van uw betaling.</p>\n"
+"\n"
+"    <br/>\n"
+"    <p>Gelieve in bijlage uw BEES coop certificaat te vinden.</p>\n"
+"    <p>Dankuwel om voor ${object.company_id.name} te kiezen !</p>\n"
+"    <br/>\n"
+"<p>Met vriendelijke groet</p>\n"
+"<p>${object.company_id.name}.</p>\n"
+"\n"
+"% if object.company_id.street:\n"
+"            ${object.company_id.street}\n"
+"        % endif\n"
+"        % if object.company_id.street2:\n"
+"            ${object.company_id.street2}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.city or object.company_id.zip:\n"
+"            ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.country_id:\n"
+"            ${object.company_id.state_id and ('%s, ' % object.company_id."
+"state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.phone:\n"
+"                Phone:&nbsp; ${object.company_id.phone}\n"
+"        % endif\n"
+"\n"
+"       % if object.company_id.website:\n"
+"            <div>\n"
+"                Web :&nbsp;<a href=\"${object.company_id.website}\">${object."
+"company_id.website}</a>\n"
+"            </div>\n"
+"       %endif\n"
+"\n"
+"       <div>\n"
+"          <img src=${object.company_id.logo_web}>\n"
+"       </div>\n"
+"</div>\n"
+"            "
+
+#. module: easy_my_coop
+#: model:mail.template,body_html:easy_my_coop.email_template_certificat
+msgid ""
+"\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-"
+"serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"    <p>Hello ${object.name},</p>\n"
+"\n"
+"\t<p>We confirm the reception of you payment. You are now shareholder of our "
+"cooperative</p>\n"
+"\n"
+"    <br/>\n"
+"    <p>Find in attachment the your ${object.company_id.name} certificate.</"
+"p>\n"
+"    <p>Thank you for choosing ${object.company_id.name or 'us'}!</p>\n"
+"    <br/>\n"
+"\t<p>Sustainably your,</p>\n"
+"\t<p>${object.company_id.name}.</p>\n"
+"\n"
+"\t\t% if object.company_id.street:\n"
+"            ${object.company_id.street}\n"
+"        % endif\n"
+"        % if object.company_id.street2:\n"
+"            ${object.company_id.street2}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.city or object.company_id.zip:\n"
+"            ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.country_id:\n"
+"            ${object.company_id.state_id and ('%s, ' % object.company_id."
+"state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.phone:\n"
+"                Phone:&nbsp; ${object.company_id.phone}\n"
+"        % endif\n"
+"\n"
+"      % if object.company_id.website:\n"
+"            <div>\n"
+"                Web :&nbsp;<a href=\"${object.company_id.website}\">${object."
+"company_id.website}</a>\n"
+"            </div>\n"
+"       %endif\n"
+"\n"
+"       <div>\n"
+"          <img src=${object.company_id.logo_web}>\n"
+"       </div>\n"
+"</div>\n"
+"            "
+msgstr ""
+"\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-"
+"serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"    <p>Hallo ${object.name},</p>\n"
+"\n"
+"\t<p>We bevestigen hierbij de goede ontvangst van uw betaling. U bent nu "
+"aandeelhouder van onze coöperatieve.</p>\n"
+"\n"
+"    <br/>\n"
+"    <p>Gelieve in bijlage uw BEES coop certificaat te vinden</p>\n"
+"    <p>Dankuwel om voor ${object.company_id.name} te kiezen !</p>\n"
+"    <br/>\n"
+"<p>Met vriendelijke groet</p>\n"
+"<p>${object.company_id.name}.</p>\n"
+"\n"
+"% if object.company_id.street:\n"
+"            ${object.company_id.street}\n"
+"        % endif\n"
+"        % if object.company_id.street2:\n"
+"            ${object.company_id.street2}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.city or object.company_id.zip:\n"
+"            ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.country_id:\n"
+"            ${object.company_id.state_id and ('%s, ' % object.company_id."
+"state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.phone:\n"
+"                Phone:&nbsp; ${object.company_id.phone}\n"
+"        % endif\n"
+"\n"
+"      % if object.company_id.website:\n"
+"            <div>\n"
+"                Web :&nbsp;<a href=\"${object.company_id.website}\">${object."
+"company_id.website}</a>\n"
+"            </div>\n"
+"       %endif\n"
+"\n"
+"       <div>\n"
+"          <img src=${object.company_id.logo_web}>\n"
+"       </div>\n"
+"</div>\n"
+"            "
+
+#. module: easy_my_coop
+#: model:mail.template,body_html:easy_my_coop.email_template_confirmation
+msgid ""
+"\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-"
+"serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"    <p>Hello ${object.name},</p>\n"
+"\n"
+"\t<p>Your request will be soon processed by our team. If all the provided "
+"info are correct you will soon receive the payment information in another "
+"email</p>\n"
+"\n"
+"    <br/>\n"
+"    <p>If you have any question, do not hesitate to contact us.</p>\n"
+"    <br/>\n"
+"    \n"
+"\t<p>Sustainably your,</p>\n"
+"\t<p>${object.company_id.name}.</p>\n"
+"\n"
+"% if object.company_id.street:\n"
+"            ${object.company_id.street}\n"
+"        % endif\n"
+"        % if object.company_id.street2:\n"
+"            ${object.company_id.street2}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.city or object.company_id.zip:\n"
+"            ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.country_id:\n"
+"            ${object.company_id.state_id and ('%s, ' % object.company_id."
+"state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.phone:\n"
+"                Phone:&nbsp; ${object.company_id.phone}\n"
+"        % endif\n"
+"\n"
+"      % if object.company_id.website:\n"
+"            <div>\n"
+"                Web :&nbsp;<a href=\"${object.company_id.website}\">${object."
+"company_id.website}</a>\n"
+"            </div>\n"
+"       %endif\n"
+"\n"
+"       <div>\n"
+"          <img src=${object.company_id.logo_web}>\n"
+"       </div>\n"
+"</div>\n"
+"            "
+msgstr ""
+"\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-"
+"serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"    <p>Hallo ${object.name},</p>\n"
+"\n"
+"<p>Uw aanvraag zal spoedig worden behandeld door ons team. Als alle "
+"gevraagde informatie correct is, zal u binnenkort de betalingsinformatie "
+"ontvangen in een volgende e-mail.</p>\n"
+"\n"
+"    <br/>\n"
+"    <p>Aarzel niet om ons te contacteren bij vragen of opmerkingen.</p>\n"
+"    <br/>\n"
+"    \n"
+"<p>Met vriendelijke groet,</p>\n"
+"<p>${object.company_id.name}.</p>\n"
+"\n"
+"% if object.company_id.street:\n"
+"            ${object.company_id.street}\n"
+"        % endif\n"
+"        % if object.company_id.street2:\n"
+"            ${object.company_id.street2}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.city or object.company_id.zip:\n"
+"            ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.country_id:\n"
+"            ${object.company_id.state_id and ('%s, ' % object.company_id."
+"state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.phone:\n"
+"                Phone:&nbsp; ${object.company_id.phone}\n"
+"        % endif\n"
+"\n"
+"      % if object.company_id.website:\n"
+"            <div>\n"
+"                Web :&nbsp;<a href=\"${object.company_id.website}\">${object."
+"company_id.website}</a>\n"
+"            </div>\n"
+"       %endif\n"
+"\n"
+"       <div>\n"
+"          <img src=${object.company_id.logo_web}>\n"
+"       </div>\n"
+"</div>\n"
+"            "
+
+#. module: easy_my_coop
+#: model:mail.template,body_html:easy_my_coop.email_template_release_capital
+msgid ""
+"\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-"
+"serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"<p>Hello ${object.partner_id.name},</p>\n"
+"\n"
+"<p>You will find in attachment all the necessary information for the "
+"payment. We kindly remind you that your subscription will be effective only "
+"once we received the payment.</p>\n"
+"\n"
+"<p>Do not forget to add the structured communication to the payment.</p>\n"
+"\n"
+"<p>Sustainably your,</p>\n"
+"<p>${object.company_id.name}.</p>\n"
+"\n"
+"% if object.company_id.street:\n"
+"            ${object.company_id.street}\n"
+"        % endif\n"
+"        % if object.company_id.street2:\n"
+"            ${object.company_id.street2}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.city or object.company_id.zip:\n"
+"            ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.country_id:\n"
+"            ${object.company_id.state_id and ('%s, ' % object.company_id."
+"state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.phone:\n"
+"                Phone:&nbsp; ${object.company_id.phone}\n"
+"        % endif\n"
+"\n"
+"      % if object.company_id.website:\n"
+"            <div>\n"
+"                Web :&nbsp;<a href=\"${object.company_id.website}\">${object."
+"company_id.website}</a>\n"
+"            </div>\n"
+"       %endif\n"
+"\n"
+"       <div>\n"
+"          <img src=${object.company_id.logo_web}>\n"
+"       </div>\n"
+"</div>\n"
+"            "
+msgstr ""
+"\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-"
+"serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"<p>Hello ${object.partner_id.name},</p>\n"
+"\n"
+"<p>In bijlage vindt u alle nodige informatie voor de betaling. We herinneren "
+"u er vriendelijk aan dat uw inschrijving pas geldig is nadat we uw betaling "
+"ontvangen hebben. </p>\n"
+"\n"
+"<p>Vergeet niet om de gestructureerde mededeling bij de betaling te "
+"vermelden.</p>\n"
+"\n"
+"<p>Met vriendelijke groet,</p>\n"
+"<p>${object.company_id.name}.</p>\n"
+"\n"
+"% if object.company_id.street:\n"
+"            ${object.company_id.street}\n"
+"        % endif\n"
+"        % if object.company_id.street2:\n"
+"            ${object.company_id.street2}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.city or object.company_id.zip:\n"
+"            ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.country_id:\n"
+"            ${object.company_id.state_id and ('%s, ' % object.company_id."
+"state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"        % endif\n"
+"        % if object.company_id.phone:\n"
+"                Phone:&nbsp; ${object.company_id.phone}\n"
+"        % endif\n"
+"\n"
+"      % if object.company_id.website:\n"
+"            <div>\n"
+"                Web :&nbsp;<a href=\"${object.company_id.website}\">${object."
+"company_id.website}</a>\n"
+"            </div>\n"
+"       %endif\n"
+"\n"
+"       <div>\n"
+"          <img src=${object.company_id.logo_web}>\n"
+"       </div>\n"
+"</div>\n"
+"            "
+
+#. module: easy_my_coop
+#: model:mail.template,report_name:easy_my_coop.email_template_release_capital
+msgid ""
+"${(object.number or '').replace('/','_')}_${object.state == 'draft' and "
+"'draft' or ''}"
+msgstr ""
+"${(object.number or '').replace('/','_')}_${object.state == 'draft' and "
+"'draft' or ''}"
+
+#. module: easy_my_coop
+#: model:mail.template,subject:easy_my_coop.email_template_release_capital
+msgid ""
+"${object.company_id.name} Request to Release Capital (Ref ${object.number or "
+"'n/a'})"
+msgstr ""
+"${object.company_id.name} Request to Release Capital (Ref ${object.number or "
+"'n/a'})"
+
+#. module: easy_my_coop
+#: model:mail.template,report_name:easy_my_coop.email_template_certificat_increase
+msgid ""
+"${object.company_id} Certificat ${(object.cooperator_register_number or '')}"
+msgstr ""
+"${object.company_id} Certificat ${(object.cooperator_register_number or '')}"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_thanks
+msgid "&amp;times;"
+msgstr "&amp;times;"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
+msgid "25"
+msgstr "25"
+
+#. module: easy_my_coop
+#: code:addons/easy_my_coop/models/mail_mail.py:48
+#, python-format
+msgid "<p>Access this document <a href=\"%s\">directly in OpenERP</a></p>"
+msgstr "<p>Access this document <a href=\"%s\">directly in OpenERP</a></p>"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
+msgid "<span> is recorded in the register of cooperators under number </span>"
+msgstr "<span> is recorded in the register of cooperators under number </span>"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
+msgid "<span> share(s) </span>"
+msgstr "<span> share(s) </span>"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
+msgid "<span>COOPERATOR CERTIFICAT</span>"
+msgstr "<span>COOPERATOR CERTIFICAT</span>"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_register_G001
+msgid "<span>COOPERATOR REGISTER</span>"
+msgstr "<span>COOPERATOR REGISTER</span>"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_subscription_G001
+msgid "<span>SUBSCRIPTION REGISTER</span>"
+msgstr "<span>SUBSCRIPTION REGISTER</span>"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "<strong>Comment:</strong>"
+msgstr "<strong>Opmerking:</strong>"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "<strong>Customer Code:</strong>"
+msgstr "<strong>Klantcode:</strong>"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "<strong>Description:</strong>"
+msgstr "<strong>Omschrijving:</strong>"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "<strong>Due Date:</strong>"
+msgstr "<strong>Vervaldatum:</strong>"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "<strong>Fiscal Position Remark:</strong>"
+msgstr "<strong>Opmerking voor fiscale positie:</strong>"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "<strong>Invoice Date:</strong>"
+msgstr "<strong>Factuurdatum:</strong>"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "<strong>Request Date:</strong>"
+msgstr "<strong>Request Date:</strong>"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "<strong>Source:</strong>"
+msgstr "<strong>Bron</strong>"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "<strong>Structured Communication:</strong>"
+msgstr "<strong>Structured Communication:</strong>"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "<strong>Subtotal</strong>"
+msgstr "<strong>Subtotaal</strong>"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "<strong>Total</strong>"
+msgstr "<strong>Totaal</strong>"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_iban
+msgid "Account Number"
+msgstr "Rekeningnummer"
+
+#. module: easy_my_coop
+#: model:product.product,name:easy_my_coop.product_product_consultant
+#: model:product.template,name:easy_my_coop.product_product_consultant_product_template
+msgid "Acquisition de parts à 25 € de la coopérative Beescoop scrl"
+msgstr "Acquisition de parts à 25 € de la coopérative Beescoop scrl"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_address
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
+msgid "Address"
+msgstr "Adres"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "Amount"
+msgstr "Bedrag"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
+msgid "Bank Account Number"
+msgstr "Bank Account Number"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,help:easy_my_coop.field_subscription_request_share_unit_price
+msgid ""
+"Base price to compute the customer price. Sometimes called the catalog price."
+msgstr ""
+"Basisprijs voor het berekenen van de klantprijs. Ook wel catalogusprijs "
+"genoemd."
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
+msgid "Become Cooperator"
+msgstr "Become Cooperator"
+
+#. module: easy_my_coop
+#: model:website.menu,name:easy_my_coop.menu_becomecooperator
+msgid "Become cooperator"
+msgstr "Become cooperator"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_birthdate
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
+msgid "Birthdate"
+msgstr "Geboortedatum"
+
+#. module: easy_my_coop
+#: selection:subscription.request,state:0
+msgid "Cancelled"
+msgstr "Cancelled"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "Cancelled Invoice"
+msgstr "Geannuleerde factuur"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,help:easy_my_coop.field_res_partner_cooperator
+msgid "Check this box if this contact is a cooperator."
+msgstr "Check this box if this contact is a cooperator."
+
+#. module: easy_my_coop
+#: model:ir.model.fields,help:easy_my_coop.field_res_partner_member
+msgid "Check this box if this cooperator is a effective member."
+msgstr "Check this box if this cooperator is a effective member."
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_city
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
+msgid "City"
+msgstr "Plaats"
+
+#. module: easy_my_coop
+#: model:ir.actions.act_window,help:easy_my_coop.action_partner_cooperator_candidate_form
+#: model:ir.actions.act_window,help:easy_my_coop.action_partner_cooperator_form
+msgid "Click to add a contact in your address book."
+msgstr "Klik om een contact toe te voegen in uw adresboek."
+
+#. module: easy_my_coop
+#: model:ir.actions.act_window,help:easy_my_coop.action_invoice_tree_coop
+msgid "Click to create a cooperator invoice."
+msgstr "Click to create a cooperator invoice."
+
+#. module: easy_my_coop
+#: model:ir.actions.act_window,help:easy_my_coop.share_product_action
+msgid "Click to define a new share product."
+msgstr "Click to define a new share product."
+
+#. module: easy_my_coop
+#: model:ir.model,name:easy_my_coop.model_res_company
+msgid "Companies"
+msgstr "Bedrijven"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register_company_id
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_company_id
+msgid "Company"
+msgstr "Bedrijf"
+
+#. module: easy_my_coop
+#: model:product.category,name:easy_my_coop.product_category_company_share
+msgid "Company Share"
+msgstr "Company Share"
+
+#. module: easy_my_coop
+#: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_config
+msgid "Configuration"
+msgstr "Instellingen"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_res_company_coop_email_contact
+msgid "Contact email address for the cooperator"
+msgstr "Contact email address for the cooperator"
+
+#. module: easy_my_coop
+#: model:ir.actions.act_window,name:easy_my_coop.action_partner_cooperator_candidate_form
+#: model:ir.actions.act_window,name:easy_my_coop.action_partner_cooperator_form
+#: model:ir.model.fields,field_description:easy_my_coop.field_res_partner_cooperator
+#: model:ir.model.fields,field_description:easy_my_coop.field_share_line_partner_id
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register_partner_id
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_partner_id
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_subscription_G001
+msgid "Cooperator"
+msgstr "Cooperator"
+
+#. module: easy_my_coop
+#: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_cooperator_candidate
+msgid "Cooperator Candidates"
+msgstr "Cooperator Candidates"
+
+#. module: easy_my_coop
+#: model:ir.actions.act_window,name:easy_my_coop.action_invoice_tree_coop
+#: model:ir.actions.report.xml,name:easy_my_coop.action_cooperator_invoices
+#: model:ir.ui.menu,name:easy_my_coop.menu_action_invoice_tree_coop
+msgid "Cooperator Invoices"
+msgstr "Cooperator Invoices"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.view_res_partner_filter_coop
+msgid "Cooperator Partners"
+msgstr "Cooperator Partners"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_res_partner_cooperator_register_number
+msgid "Cooperator Register Number"
+msgstr "Cooperator Register Number"
+
+#. module: easy_my_coop
+#: model:ir.actions.act_window,name:easy_my_coop.subscription_request_action
+#: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_subscription_request
+msgid "Cooperator Subscription"
+msgstr "Cooperator Subscription"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.subscription_request_tree
+msgid "Cooperator Subscriptions Request"
+msgstr "Cooperator Subscriptions Request"
+
+#. module: easy_my_coop
+#: model:ir.actions.report.xml,name:easy_my_coop.action_cooperator_report_certificat
+msgid "Cooperator certificat"
+msgstr "Cooperator certificat"
+
+#. module: easy_my_coop
+#: model:ir.actions.report.xml,name:easy_my_coop.action_report_cooperator_register
+msgid "Cooperator register"
+msgstr "Cooperator register"
+
+#. module: easy_my_coop
+#: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_cooperator
+#: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_main_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.view_res_partner_filter_coop
+msgid "Cooperators"
+msgstr "Cooperators"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_country_id
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
+msgid "Country"
+msgstr "Land"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
+msgid "Country..."
+msgstr "Country..."
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_share_line_create_uid
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register_create_uid
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_create_uid
+msgid "Created by"
+msgstr "Gemaakt door"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_share_line_create_date
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register_create_date
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_create_date
+msgid "Created on"
+msgstr "Gemaakt op"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_res_company_default_country_id
+msgid "Default country"
+msgstr "Default country"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_res_company_default_lang_id
+msgid "Default lang"
+msgstr "Default lang"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_product_template_default_share_product
+msgid "Default share product"
+msgstr "Default share product"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "Description"
+msgstr "Omschrijving"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "Disc.(%)"
+msgstr "Korting(%)"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_share_line_display_name
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register_display_name
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_display_name
+msgid "Display Name"
+msgstr "Schermnaam"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_product_product_display_on_website
+#: model:ir.model.fields,field_description:easy_my_coop.field_product_template_display_on_website
+msgid "Display on website"
+msgstr "Display on website"
+
+#. module: easy_my_coop
+#: selection:subscription.request,state:0
+msgid "Done"
+msgstr "Done"
+
+#. module: easy_my_coop
+#: selection:subscription.request,state:0
+msgid "Draft"
+msgstr "Draft"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "Draft Invoice"
+msgstr "Voorlopige factuur"
+
+#. module: easy_my_coop
+#: model:ir.ui.menu,name:easy_my_coop.menu_main_easy_my_coop
+msgid "Easy-My Coop"
+msgstr "Easy-My Coop"
+
+#. module: easy_my_coop
+#: model:ir.module.category,name:easy_my_coop.module_category_cooperator_management
+#: model:ir.ui.view,arch_db:easy_my_coop.view_company_inherit_form2
+msgid "EasyMy Coop"
+msgstr "EasyMy Coop"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_share_line_effective_date
+msgid "Effective Date"
+msgstr "Effective Date"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_register_G001
+msgid "Effective date"
+msgstr "Effective date"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_email
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_register_G001
+msgid "Email"
+msgstr "E-mail"
+
+#. module: easy_my_coop
+#: model:mail.template,report_name:easy_my_coop.email_template_certificat
+msgid "Energiris Certificat ${(object.cooperator_register_number or '')}"
+msgstr "Energiris Certificat ${(object.cooperator_register_number or '')}"
+
+#. module: easy_my_coop
+#: code:addons/easy_my_coop/wizard/cooperative_history_wizard.py:53
+#, python-format
+msgid "Error!"
+msgstr "Error!"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
+msgid "First Name"
+msgstr "First Name"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_res_partner_firstname
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_firstname
+msgid "Firstname"
+msgstr "Firstname"
+
+#. module: easy_my_coop
+#: model:ir.module.category,description:easy_my_coop.module_category_cooperator_management
+msgid "Helps you manage your cooperator."
+msgstr "Helps you manage your cooperator."
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_share_line_id
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register_id
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_id
+msgid "ID"
+msgstr "ID"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,help:easy_my_coop.field_subscription_request_lang
+msgid ""
+"If the selected language is loaded in the system, all documents related to "
+"this contact will be printed in this language. If not, it will be English."
+msgstr ""
+"Als de geselecteerde taal is geladen in het systeem, worden alle documenten "
+"gerelateerd aan deze relatie, afgedrukt in deze taal. Indien niets "
+"geselecteerd, worden deze afgedrukt in het Engels."
+
+#. module: easy_my_coop
+#: selection:subscription.request,type:0
+msgid "Increase number of share"
+msgstr "Increase number of share"
+
+#. module: easy_my_coop
+#: model:ir.model,name:easy_my_coop.model_account_invoice
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "Invoice"
+msgstr "Factuur"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_res_partner_member
+msgid "Is member"
+msgstr "Is member"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_product_product_is_share
+#: model:ir.model.fields,field_description:easy_my_coop.field_product_template_is_share
+msgid "Is share?"
+msgstr "Is share?"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_lang
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
+msgid "Language"
+msgstr "Taal"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
+msgid "Language..."
+msgstr "Language..."
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_share_line___last_update
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register___last_update
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request___last_update
+msgid "Last Modified on"
+msgstr "Laatst Aangepast op"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
+msgid "Last Name"
+msgstr "Last Name"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_share_line_write_uid
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register_write_uid
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_write_uid
+msgid "Last Updated by"
+msgstr "Laatst bijgewerkt door"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_share_line_write_date
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register_write_date
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_write_date
+msgid "Last Updated on"
+msgstr "Laatst bijgewerkt op"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_res_partner_lastname
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_lastname
+msgid "Lastname"
+msgstr "Lastname"
+
+#. module: easy_my_coop
+#: model:ir.actions.act_window,name:easy_my_coop.action_easy_my_coop_email_templates
+#: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_templates
+msgid "Mail Templates"
+msgstr "Mail Templates"
+
+#. module: easy_my_coop
+#: model:res.groups,name:easy_my_coop.group_energiris_manager
+msgid "Manager"
+msgstr "Manager"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_res_company_subscription_maximum_amount
+msgid "Maximum authorized subscription amount"
+msgstr "Maximum authorized subscription amount"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_product_template_minimum_quantity
+msgid "Minimum quantity"
+msgstr "Minimum quantity"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_name
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_register_G001
+msgid "Name"
+msgstr "Naam:"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_res_partner_national_register_number
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_no_registre
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
+msgid "National Register Number"
+msgstr "National Register Number"
+
+#. module: easy_my_coop
+#: selection:subscription.request,type:0
+msgid "New Cooperator"
+msgstr "New Cooperator"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_register_G001
+msgid "Number"
+msgstr "Number"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_share_line_share_number
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_ordered_parts
+msgid "Number of Share"
+msgstr "Number of Share"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_res_partner_number_of_share
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register_quantity
+msgid "Number of share"
+msgstr "Number of share"
+
+#. module: easy_my_coop
+#: model:ir.actions.act_window,help:easy_my_coop.action_partner_cooperator_candidate_form
+#: model:ir.actions.act_window,help:easy_my_coop.action_partner_cooperator_form
+msgid ""
+"OpenERP helps you easily track all activities related to\n"
+"                a cooperator: discussions, history of business "
+"opportunities,\n"
+"                documents, etc."
+msgstr ""
+"OpenERP helps you easily track all activities related to\n"
+"                a cooperator: discussions, history of business "
+"opportunities,\n"
+"                documents, etc."
+
+#. module: easy_my_coop
+#: model:ir.actions.act_window,help:easy_my_coop.action_invoice_tree_coop
+msgid ""
+"OpenERP's electronic invoicing allows to ease and fasten the\n"
+"                collection of cooperator payments. The cooperator customer "
+"receives the\n"
+"                invoice by email and he can pay online and/or import it\n"
+"                in his own system."
+msgstr ""
+"OpenERP's electronic invoicing allows to ease and fasten the\n"
+"                collection of cooperator payments. The cooperator customer "
+"receives the\n"
+"                invoice by email and he can pay online and/or import it\n"
+"                in his own system."
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register_type
+msgid "Operation Type"
+msgstr "Operation Type"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_subscription_G001
+msgid "Operation number"
+msgstr "Operation number"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_subscription_G001
+msgid "Operation type"
+msgstr "Operation type"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "PRO-FORMA"
+msgstr "PRO-FORMA"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "Part Type"
+msgstr "Part Type"
+
+#. module: easy_my_coop
+#: model:ir.model,name:easy_my_coop.model_res_partner
+msgid "Partner"
+msgstr "Relatie"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
+msgid "Parts"
+msgstr "Parts"
+
+#. module: easy_my_coop
+#: model:mail.template,subject:easy_my_coop.email_template_certificat
+#: model:mail.template,subject:easy_my_coop.email_template_certificat_increase
+msgid "Payment Received Confirmation"
+msgstr "Payment Received Confirmation"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_phone
+msgid "Phone"
+msgstr "Tel."
+
+#. module: easy_my_coop
+#: code:addons/easy_my_coop/models/coop.py:114
+#, python-format
+msgid ""
+"Please define income account for this product: \"%s\" (id:%d) - or for its "
+"category: \"%s\"."
+msgstr ""
+"Please define income account for this product: \"%s\" (id:%d) - or for its "
+"category: \"%s\"."
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "Price"
+msgstr "Bedrag"
+
+#. module: easy_my_coop
+#: model:ir.model,name:easy_my_coop.model_product_product
+msgid "Product"
+msgstr "Product"
+
+#. module: easy_my_coop
+#: model:ir.model,name:easy_my_coop.model_product_template
+msgid "Product Template"
+msgstr "Productsjabloon"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_register_G001
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "REQUEST TO RELEASE CAPITAL"
+msgstr "REQUEST TO RELEASE CAPITAL"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "Refund"
+msgstr "Creditering"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register_name
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register_register_number_operation
+msgid "Register Number Operation"
+msgstr "Register Number Operation"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_account_invoice_release_capital_request
+msgid "Release of capital request"
+msgstr "Release of capital request"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register_user_id
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_user_id
+msgid "Responsible"
+msgstr "Verantwoordelijke"
+
+#. module: easy_my_coop
+#: selection:subscription.register,type:0
+msgid "Sell Back"
+msgstr "Sell Back"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
+msgid "Send"
+msgstr "Verzenden"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_res_partner_share_ids
+msgid "Share Lines"
+msgstr "Share Lines"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_subscription_G001
+msgid "Share number"
+msgstr "Share number"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_share_line_share_unit_price
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register_share_unit_price
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_share_unit_price
+msgid "Share price"
+msgstr "Share price"
+
+#. module: easy_my_coop
+#: model:ir.actions.act_window,name:easy_my_coop.share_product_action
+#: model:ir.model.fields,field_description:easy_my_coop.field_share_line_share_product_id
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register_share_product_id
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_share_product_id
+#: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_share_product
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
+msgid "Share type"
+msgstr "Share type"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_share_line_share_short_name
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register_share_short_name
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_share_short_name
+msgid "Share type name"
+msgstr "Share type name"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.view_partner_form_easy_my_coop
+msgid "Shares"
+msgstr "Shares"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_product_template_short_name
+msgid "Short name"
+msgstr "Short name"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_skip_control_ng
+msgid "Skip control"
+msgstr "Skip control"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_state
+msgid "State"
+msgstr "Staat/Provincie"
+
+#. module: easy_my_coop
+#: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_main_subscription
+#: selection:subscription.register,type:0
+msgid "Subscription"
+msgstr "Subscription"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register_date
+msgid "Subscription Date"
+msgstr "Subscription Date"
+
+#. module: easy_my_coop
+#: model:account.journal,name:easy_my_coop.subscription_journal
+msgid "Subscription Journal"
+msgstr "Subscription Journal"
+
+#. module: easy_my_coop
+#: model:ir.actions.act_window,name:easy_my_coop.subscription_register_action
+#: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_subscription_register
+#: model:ir.ui.view,arch_db:easy_my_coop.subscription_register_form
+#: model:ir.ui.view,arch_db:easy_my_coop.subscription_register_tree
+msgid "Subscription Register"
+msgstr "Subscription Register"
+
+#. module: easy_my_coop
+#: model:ir.actions.report.xml,name:easy_my_coop.action_cooperator_subscription_report
+msgid "Subscription Register Report"
+msgstr "Subscription Register Report"
+
+#. module: easy_my_coop
+#: model:ir.model,name:easy_my_coop.model_subscription_request
+msgid "Subscription Request"
+msgstr "Subscription Request"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.subscription_request_form
+msgid "Subscription Requests"
+msgstr "Subscription Requests"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_subscription_amount
+msgid "Subscription amount"
+msgstr "Subscription amount"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_subscription_G001
+msgid "Subscription date"
+msgstr "Subscription date"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_date
+msgid "Subscription date request"
+msgstr "Subscription date request"
+
+#. module: easy_my_coop
+#: model:mail.template,subject:easy_my_coop.email_template_confirmation
+msgid "Subscription request confirmation"
+msgstr "Subscription request confirmation"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "TIN:"
+msgstr "BTW:"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_subscription_G001
+msgid "TOTAL :"
+msgstr "TOTAL :"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "Tax"
+msgstr "BTW"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "Taxes"
+msgstr "Belastingen"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_thanks
+msgid "Thanks!"
+msgstr "Thanks!"
+
+#. module: easy_my_coop
+#: model:ir.actions.act_window,help:easy_my_coop.action_invoice_tree_coop
+msgid ""
+"The discussions with the cooperator are automatically displayed at\n"
+"                the bottom of each invoice."
+msgstr ""
+"The discussions with the cooperator are automatically displayed at\n"
+"                the bottom of each invoice."
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_register_G001
+msgid "Total"
+msgstr "Totaal"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.subscription_register_tree
+msgid "Total amount"
+msgstr "Totaalbedrag"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_share_line_total_amount_line
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register_total_amount_line
+msgid "Total amount line"
+msgstr "Total amount line"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.view_partner_form_easy_my_coop
+msgid "Total of shares"
+msgstr "Total of shares"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.subscription_request_tree
+msgid "Total ordered parts"
+msgstr "Total ordered parts"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.subscription_register_tree
+msgid "Total quantity"
+msgstr "Total quantity"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.view_partner_form_easy_my_coop
+msgid "Total subscribed amount"
+msgstr "Total subscribed amount"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_res_partner_total_value
+msgid "Total value of shares"
+msgstr "Total value of shares"
+
+#. module: easy_my_coop
+#: selection:subscription.register,type:0
+msgid "Transfer"
+msgstr "Transfer"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_type
+msgid "Type"
+msgstr "Type"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "Unit Price"
+msgstr "Eenheidsprijs"
+
+#. module: easy_my_coop
+#: model:res.groups,name:easy_my_coop.group_energiris_user
+msgid "User"
+msgstr "Gebruiker"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_validated
+msgid "Valid Line?"
+msgstr "Valid Line?"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "Vendor Bill"
+msgstr "Leveranciersfactuur"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
+msgid "Vendor Refund"
+msgstr "Creditfactuur leverancier"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_thanks
+msgid "We will get back to you shortly."
+msgstr "We will get back to you shortly."
+
+#. module: easy_my_coop
+#: model:ir.model,name:easy_my_coop.model_website
+msgid "Website"
+msgstr "Website"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_account_invoice_website_message_ids
+msgid "Website Messages"
+msgstr "Websiteberichten"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,help:easy_my_coop.field_account_invoice_website_message_ids
+msgid "Website communication history"
+msgstr "Websitecommunicatiehistoriek"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_thanks
+msgid "Your message has been sent successfully."
+msgstr "Your message has been sent successfully."
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request_zip_code
+msgid "Zip Code"
+msgstr "Zip Code"
+
+#. module: easy_my_coop
+#: model:ir.model,name:easy_my_coop.model_cooperative_history_report
+msgid "cooperative.history.report"
+msgstr "cooperative.history.report"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
+msgid "e.g. (+32).81.81.37.00"
+msgstr "e.g. (+32).81.81.37.00"
+
+#. module: easy_my_coop
+#: model:ir.model.fields,help:easy_my_coop.field_subscription_request_skip_control_ng
+msgid ""
+"if this field is checked then no control will be done on the national "
+"register number and on the iban bank account. To be done in case of the id "
+"card is from abroad or in case of a passport"
+msgstr ""
+"if this field is checked then no control will be done on the national "
+"register number and on the iban bank account. To be done in case of the id "
+"card is from abroad or in case of a passport"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
+msgid "phone"
+msgstr "phone"
+
+#. module: easy_my_coop
+#: model:ir.model,name:easy_my_coop.model_share_line
+msgid "share.line"
+msgstr "share.line"
+
+#. module: easy_my_coop
+#: model:ir.model,name:easy_my_coop.model_subscription_register
+msgid "subscription.register"
+msgstr "subscription.register"
+
+#. module: easy_my_coop
+#: code:addons/easy_my_coop/wizard/cooperative_history_wizard.py:53
+#, python-format
+msgid "the report you've specified doesn't exist !"
+msgstr "the report you've specified doesn't exist !"
