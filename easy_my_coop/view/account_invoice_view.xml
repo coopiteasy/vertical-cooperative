@@ -1,5 +1,16 @@
 <openerp>
 	<data>
+		<record id="invoice_form" model="ir.ui.view">
+            <field name="name">account.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+            	<field name="move_id" position="after">
+            		<field name="subscription_request"/>
+            	</field>
+            </field>
+        </record>
+		
 		<record id="action_invoice_tree_coop" model="ir.actions.act_window">
             <field name="name">Cooperator Invoices</field>
             <field name="res_model">account.invoice</field>
@@ -62,5 +73,6 @@
               </p>
             </field>
         </record>
+        
 	</data>
 </openerp>
