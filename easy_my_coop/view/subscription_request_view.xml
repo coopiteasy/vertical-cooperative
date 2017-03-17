@@ -145,6 +145,7 @@
             <field name="res_model">subscription.request</field>
             <field name="view_type">form</field>
             <field name="domain">[('is_company','=',True),('is_operation','=',False)]</field>
+            <field name="context">{'default_is_company': True}</field>
             <field name="view_id" ref="company_subscription_request_tree"/>
             <field name="search_view_id" ref="view_subscription_request_filter"/>
         </record>
