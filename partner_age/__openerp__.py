@@ -21,7 +21,7 @@
 {
     "name": "Partner Age",
     "version": "1.0",
-    "depends": ["easy_my_coop","beesdoo_base"],
+    "depends": ["easy_my_coop"],
     "author": "Houssine BAKKALI <houssine.bakkali@gmail.com>",
     "category": "Cooperative management",
     "description": """
