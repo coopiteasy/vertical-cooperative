@@ -21,7 +21,7 @@
 {
     "name": "Easy My Coop Eater/worker",
     "version": "1.0",
-    "depends": ["easy_my_coop"],
+    "depends": ["easy_my_coop","partner_age"],
     "author": "Houssine BAKKALI <houssine.bakkali@gmail.com>",
     "category": "Cooperative management",
     "description": """
