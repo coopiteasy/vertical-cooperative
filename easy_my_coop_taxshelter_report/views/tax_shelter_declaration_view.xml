@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<menuitem name="Declaration" id="menu_easy_my_coop_main_declaration" parent="easy_my_coop.menu_main_easy_my_coop" sequence="10"/>
+		
+		<record id="tax_shelter_declaration_form" model="ir.ui.view">
+            <field name="name">tax.shelter.declaration.form</field>
+            <field name="model">tax.shelter.declaration</field>
+            <field name="arch" type="xml">
+                <form string="Tax shelter declaration">
+                    <header>
+	                   	<button name="compute_declaration" string="Process Declaration" type="object" class="oe_highlight" groups="easy_my_coop.group_energiris_manager"/>
+                    </header>
+                    <sheet>
+                    	<group>
+	                    	<group>
+		                    	<field name="declaration_year"/>
+	                   			<field name="tax_shelter_percentage"/>
+	                    	</group>
+		                	<group>
+	                    		<field name="date_from"/>
+	                    		<field name="date_to"/>
+	        				</group>
+	        			</group>
+                   		<notebook>
+                   			<page string="Tax shelter certificates">
+		                   		<field name="tax_shelter_certificates">
+		                   			<tree>
+		                    			<field name="partner_id"/>
+		                    			<field name="total"/>
+		                   			</tree>
+		                   		</field>
+	                   		</page>
+                   		</notebook>
+                   	</sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="tax_shelter_declaration_tree" model="ir.ui.view">
+            <field name="name">tax.shelter.declaration.tree</field>
+            <field name="model">tax.shelter.declaration</field>
+            <field name="arch" type="xml">
+                <tree string="Tax shelter declaration">
+	                <field name="declaration_year"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="tax_shelter_percentage"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="tax_shelter_declaration_action" model="ir.actions.act_window">
+            <field name="name">Tax Shelter Declaration</field>
+            <field name="res_model">tax.shelter.declaration</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="tax_shelter_declaration_tree"/>
+        </record>
+	
+		<menuitem action="tax_shelter_declaration_action" name="Tax Shelter Declaration" id="menu_tax_shelter_declaration"  parent="menu_easy_my_coop_main_declaration" sequence="10" groups="easy_my_coop.group_energiris_manager"/>
+		
+		<record id="tax_shelter_certificate_form" model="ir.ui.view">
+            <field name="name">tax.shelter.certificate.form</field>
+            <field name="model">tax.shelter.certificate</field>
+            <field name="arch" type="xml">
+                <form string="Tax shelter certificate">
+                    <sheet>
+                    	<group>
+	                    	<group>
+		                    	<field name="partner_id"/>
+	                   			<field name="declaration_id"/>
+	                    	</group>
+		                	<group>
+	                    		<field name="total"/>
+	        				</group>
+	        			</group>
+                   		<notebook>
+                   			<page string="Subscription">
+		                   		<field name="subscribed_lines">
+		                   			<tree>
+		                    			
+		                    			<field name="transaction_date"/>
+		                    			<field name="share_type"/>
+		                    			<field name="quantity"/>
+		                    			<field name="share_price"/>
+		                    			<field name="certificat_type"/>
+		                    			<field name="total"/>
+		                   			</tree>
+		                   		</field>
+	                   		</page>
+	                   		<page string="Sell back">
+		                   		<field name="sell_back_lines">
+		                   			<tree>
+		                    			<field name="transaction_date"/>
+		                    			<field name="share_type"/>
+		                    			<field name="quantity"/>
+		                    			<field name="share_price"/>
+		                    			<field name="certificat_type"/>
+		                    			<field name="total"/>
+		                   			</tree>
+		                   		</field>
+	                   		</page>
+                   		</notebook>
+                   	</sheet>
+                </form>
+            </field>
+        </record>
+	</data>
+</odoo>

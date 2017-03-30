@@ -57,7 +57,7 @@
 	                <div style="width:125px;position:relative;top:10px;border-bottom: 4pt solid #fcc300;"/>
 	            </h2>
 				
-				<div style="position:relative;top:55px;">
+				<div name="label_coop_number" style="position:relative;top:55px;">
 					<span t-field="o.name"></span>
 					<span> is recorded in the register of cooperators under number </span>
 					<span t-field="o.cooperator_register_number"></span>	
@@ -121,7 +121,7 @@
 	                </tbody>
 	            </table>
 	
-	            <div class="row">
+	            <div name="total_table" class="row">
 	                <div class="col-xs-6 pull-right">
 	                    <table class="table table-condensed easymy-coop-info-title" style="position:relative;top:145px;width:85%">
 	                        <tr class="border-top-easymy-coop-cert">
@@ -141,7 +141,7 @@
 	            </div>
 	            
 	            <div class="row">
-	                <div class="col-xs-6 pull-left" style="position:relative;top:205px;font-size:20;color:black;font-family:Roboto-Regular;">
+	                <div name="board_commitee" class="col-xs-6 pull-left" style="position:relative;top:205px;font-size:20;color:black;font-family:Roboto-Regular;">
 		                <div style="position:relative;top:205px;">
 		                	Pour le Conseil d'administration de <span t-field="o.company_id.name"/>.
 		                </div>
