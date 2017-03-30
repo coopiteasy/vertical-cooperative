@@ -200,12 +200,12 @@ class subscription_request(models.Model):
         vals['invoice_id'] = invoice.id
         line = self.env['account.invoice.line'].create(vals)
 
-        # run the validation on the invoice
+        # validate the capital release request
         invoice.signal_workflow('invoice_open')
 
         invoice_email_template = self.env['mail.template'].search([('name', '=', 'Request to Release Capital - Send by Email')])[0]
         
-        # we send the email with the invoice in attachment 
+        # we send the email with the capital release request in attachment 
         invoice_email_template.send_mail(invoice.id, True)
         invoice.sent = True
         
@@ -337,7 +337,7 @@ class subscription_register(models.Model):
                             string='Operation Type', readonly=True)
     company_id = fields.Many2one('res.company', string='Company', required=True, 
                                  change_default=True, readonly=True,
-                                 default=lambda self: self.env['res.company']._company_default_get(),)
+                                 default=lambda self: self.env['res.company']._company_default_get())
     user_id = fields.Many2one('res.users', string='Responsible', readonly=True, default=lambda self: self.env.user)
     
     _order = "register_number_operation asc"
