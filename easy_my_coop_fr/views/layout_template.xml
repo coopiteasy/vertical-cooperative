@@ -5,7 +5,7 @@
 			<xpath expr="//t[@t-if='company.company_registry']" position="before">
 				<t t-if="company.siret">
             		<span>Siret</span> : 
-            		<span t-field="company.siret"/> -
+            		<span t-field="company.siret"/>
            		</t>  
 			</xpath>
 		</template>
