@@ -1,1 +1,1 @@
-from . import tax_shelter_report_wizard
+from . import tax_shelter_certificate_wizard

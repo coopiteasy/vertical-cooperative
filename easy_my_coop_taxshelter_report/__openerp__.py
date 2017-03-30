@@ -29,7 +29,7 @@
     """,
     'data': [
         'report/tax_shelter_report.xml',
-        #'wizard/tax_shelter_report_wizard.xml'
+        'views/tax_shelter_declaration_view.xml'
     ],
     'installable': True,
 }

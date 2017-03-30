@@ -21,29 +21,8 @@
 
 from openerp import api, fields, models, _
 
-class TaxShelterReport(models.TransientModel):
-    _name = 'tax.shelter.report'
+class TaxShelterCertificateWizard(models.TransientModel):
+    _name = 'tax.shelter.certificate.wizard'
     
-    name = fields.Char(string='Name')
-    year = fields.Integer(string='Year', help='Introduce the year for which you want to get the report')
-       
-    def _print_report(self, data):
-        return {'type': 'ir.actions.report.xml',
-                'report_name': data['report'],
-                'datas': data}
-    
-    @api.one
-    def print_report(self):
-        data = {}
-
-        domain = [('cooperator','=','True'),('member','=','True')]
-        coop = self.env['res.partner'].search(domain, order='cooperator_register_number')    
-            
-        data['model'] = 'res.partner'
-        data['report'] = 'easy_my_coop_taxshelter_report.taxshelter_report' 
-        data['ids'] = coop.ids 
-        
-        #return self._print_report(data)
-        return self.env['report'].get_action(coop, 'easy_my_coop_taxshelter_report.tax_shelter_report')
-
-        
+    def process_certificates(self):
+        True
