@@ -10,11 +10,14 @@
                 <form string="Tax shelter declaration">
                     <header>
 	                   	<button name="compute_declaration" string="Process Declaration" type="object" class="oe_highlight" groups="easy_my_coop.group_energiris_manager"/>
+	                   	<button name="validate_declaration" string="Validate Declaration" type="object" states="computed" class="oe_highlight" groups="easy_my_coop.group_energiris_manager"/>
+	                   	<button name="reset_declaration" string="Reset Declaration" type="object" groups="easy_my_coop.group_energiris_manager"/>
+	                   	<field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
                     	<group>
 	                    	<group>
-		                    	<field name="declaration_year"/>
+		                    	<field name="name"/>
 	                   			<field name="tax_shelter_percentage"/>
 	                    	</group>
 		                	<group>
@@ -27,7 +30,9 @@
 		                   		<field name="tax_shelter_certificates">
 		                   			<tree>
 		                    			<field name="partner_id"/>
-		                    			<field name="total"/>
+		                    			<field name="cooperator_number"/>
+		                    			<field name="total_amount"/>
+		                    			<field name="state"/>
 		                   			</tree>
 		                   		</field>
 	                   		</page>
@@ -42,7 +47,7 @@
             <field name="model">tax.shelter.declaration</field>
             <field name="arch" type="xml">
                 <tree string="Tax shelter declaration">
-	                <field name="declaration_year"/>
+	                <field name="name"/>
                     <field name="date_from"/>
                     <field name="date_to"/>
                     <field name="tax_shelter_percentage"/>
@@ -65,39 +70,60 @@
             <field name="model">tax.shelter.certificate</field>
             <field name="arch" type="xml">
                 <form string="Tax shelter certificate">
+                    <header>
+                    	<field name="state" widget="statusbar"/>
+                    </header>
                     <sheet>
                     	<group>
 	                    	<group>
+	                    		<field name="cooperator_number"/>
 		                    	<field name="partner_id"/>
 	                   			<field name="declaration_id"/>
 	                    	</group>
 		                	<group>
-	                    		<field name="total"/>
+	                    		<field name="total_amount_subscribed"/>
+	                    		<field name="total_amount_resold"/>
+	                    		<field name="total_amount_transfered"/>
+	                    		<field name="total_amount"/>
 	        				</group>
 	        			</group>
                    		<notebook>
                    			<page string="Subscription">
 		                   		<field name="subscribed_lines">
 		                   			<tree>
-		                    			
 		                    			<field name="transaction_date"/>
 		                    			<field name="share_type"/>
+		                    			<field name="share_short_name"/>
 		                    			<field name="quantity"/>
-		                    			<field name="share_price"/>
-		                    			<field name="certificat_type"/>
-		                    			<field name="total"/>
+		                    			<field name="share_unit_price"/>
+		                    			<field name="type"/>
+		                    			<field name="amount_subscribed"/>
 		                   			</tree>
 		                   		</field>
 	                   		</page>
 	                   		<page string="Sell back">
-		                   		<field name="sell_back_lines">
+		                   		<field name="resold_lines">
 		                   			<tree>
 		                    			<field name="transaction_date"/>
 		                    			<field name="share_type"/>
+		                    			<field name="share_short_name"/>
 		                    			<field name="quantity"/>
-		                    			<field name="share_price"/>
-		                    			<field name="certificat_type"/>
-		                    			<field name="total"/>
+		                    			<field name="share_unit_price"/>
+		                    			<field name="type"/>
+		                    			<field name="amount_resold"/>
+		                   			</tree>
+		                   		</field>
+	                   		</page>
+	                   		<page string="Transfered">
+		                   		<field name="transfered_lines">
+		                   			<tree>
+		                    			<field name="transaction_date"/>
+		                    			<field name="share_type"/>
+		                    			<field name="share_short_name"/>
+		                    			<field name="quantity"/>
+		                    			<field name="share_unit_price"/>
+		                    			<field name="type"/>
+		                    			<field name="amount_transfered"/>
 		                   			</tree>
 		                   		</field>
 	                   		</page>
