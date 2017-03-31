@@ -28,6 +28,7 @@
     This module allows to print a tax shelter report for the selected cooperators    
     """,
     'data': [
+        'security/ir.model.access.csv',
         'report/tax_shelter_report.xml',
         'views/tax_shelter_declaration_view.xml'
     ],
