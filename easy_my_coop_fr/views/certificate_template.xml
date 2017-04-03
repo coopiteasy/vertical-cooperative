@@ -45,5 +45,19 @@ e) La société doit être une petite et moyenne entreprise qui satisfait à la 
                 </div>
 			</xpath>
 		</template>
+		
+		<template id="capital_release_request_i18n_fr" inherit_id="easy_my_coop.theme_invoice_G002_document" name="French Layout Certificate">
+			<xpath expr="//p[@t-if='o.comment']" position="before">
+				<div class="row">
+					<div style="position:relative;top:225px;font-size:16;">
+					Votre demande de souscription de parts sociales, détaillé dans le tableau ci-dessus, a bien été prise en compte.<br/>
+					<br/>
+Afin de valider votre enregistrement en tant que coopérateur, vous devez tout d’abord procéder au paiement de celles-ci.<br/>
+<br/>
+Un email contenant les instructions de paiement vous a également été envoyé.<br/>
+					</div>
+				</div>
+			</xpath>
+		</template>
 	</data>
 </odoo>
