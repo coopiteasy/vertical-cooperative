@@ -21,7 +21,7 @@
 {
     "name": "Easy My Coop tax shelter report",
     "version": "1.0",
-    "depends": ["easy_my_coop","theme_light"],
+    "depends": ["easy_my_coop"],
     "author": "Houssine BAKKALI <houssine.bakkali@gmail.com>",
     "category": "Cooperative management",
     "description": """
@@ -34,6 +34,7 @@
         'reports/tax_shelter_shares_report.xml',
         'views/tax_shelter_declaration_view.xml',
         'data/mail_template_data.xml',
+        'data/scheduler_data.xml',
     ],
     'installable': True,
 }
