@@ -182,7 +182,7 @@ class TaxShelterCertificate(models.Model):
     
     @api.model
     def batch_send_tax_shelter_certificate(self):
-        certificates = self.search([('state','=','validated')],limit=40)
+        certificates = self.search([('state','=','validated')],limit=80)
         for certificate in certificates:
             certificate.send_certificates()
             certificate.state = 'sent' 
