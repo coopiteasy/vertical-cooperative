@@ -1,8 +1,9 @@
-
+# -*- coding: utf-8 -*-
+from openerp import api, fields, models, _
 
 class MailTemplate(models.Model):
     "Templates for sending email"
-    _name = "mail.template"
+    _inherit = "mail.template"
     
     @api.multi
     def send_mail_with_multiple_attachments(self, res_id, additional_attachments, force_send=False, raise_exception=False):
