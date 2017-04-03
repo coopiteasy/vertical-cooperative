@@ -90,6 +90,7 @@
 	                   			<field name="declaration_id"/>
 	                    	</group>
 		                	<group>
+	                    		<field name="total_amount_previously_subscribed"/>
 	                    		<field name="total_amount_subscribed"/>
 	                    		<field name="total_amount_resold"/>
 	                    		<field name="total_amount_transfered"/>

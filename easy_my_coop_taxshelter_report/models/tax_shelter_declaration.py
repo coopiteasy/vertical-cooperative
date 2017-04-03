@@ -104,7 +104,7 @@ class TaxShelterCertificate(models.Model):
     subscribed_lines = fields.One2many(compute='_compute_certificate_lines', comodel_name='certificate.line', string='Shares subscribed', readonly=True)
     resold_lines = fields.One2many(compute='_compute_certificate_lines', comodel_name='certificate.line', string='Shares resold', readonly=True)
     transfered_lines = fields.One2many(compute='_compute_certificate_lines', comodel_name='certificate.line', string='Shares transfered', readonly=True)
-    total_amount_previously_subscribed = fields.Float(compute='_compute_amounts', string='Total subscribed')
+    total_amount_previously_subscribed = fields.Float(compute='_compute_amounts', string='Total previously subscribed')
     total_amount_subscribed = fields.Float(compute='_compute_amounts', string='Total subscribed')
     total_amount_resold = fields.Float(compute='_compute_amounts', string='Total resold')
     total_amount_transfered = fields.Float(compute='_compute_amounts', string='Total transfered')
