@@ -9,10 +9,9 @@
             <field name="arch" type="xml">
                 <form string="Tax shelter declaration">
                     <header>
-	                   	<button name="compute_declaration" string="Process Declaration" type="object" class="oe_highlight" groups="easy_my_coop.group_energiris_manager"/>
+	                   	<button name="compute_declaration" string="Process Declaration" type="object" states="draft" class="oe_highlight" groups="easy_my_coop.group_energiris_manager"/>
 	                   	<button name="validate_declaration" string="Validate Declaration" type="object" states="computed" groups="easy_my_coop.group_energiris_manager"/>
-	                   	<button name="generate_attachments" string="Generate Attachments" type="object" states="computed" groups="easy_my_coop.group_energiris_manager"/>
-	                   	<button name="reset_declaration" string="Reset Declaration" type="object" groups="easy_my_coop.group_energiris_manager"/>
+	                   	<button name="reset_declaration" string="Reset Declaration" type="object" states="computed" groups="easy_my_coop.group_energiris_manager"/>
 	                   	<field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
@@ -38,9 +37,7 @@
 		                    			<field name="cooperator_number"/>
 		                    			<field name="total_amount"/>
 		                    			<field name="state"/>
-		                    			<button type="object" name="print_subscription_certificate" icon="STOCK_MEDIA_PLAY" />
-		                    			<button type="object" name="print_shares_certificate" icon="STOCK_MEDIA_PLAY" />
-		                    			<button type="object" name="generate_certificates_report" icon="STOCK_MEDIA_PLAY" />
+		                    			<button type="object" name="send_certificates" icon="STOCK_MEDIA_PLAY" string="Send Certificates"/>
 		                   			</tree>
 		                   		</field>
 	                   		</page>
@@ -80,6 +77,9 @@
             <field name="arch" type="xml">
                 <form string="Tax shelter certificate">
                     <header>
+                    	<button type="object" name="print_subscription_certificate" string="Print Subscription Certificate" />
+		                <button type="object" name="print_shares_certificate" string="Print Shares Certificate" />
+                    	<button type="object" name="send_certificates" string="Send Certificates"/>
                     	<field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
@@ -136,6 +136,19 @@
 		                   			</tree>
 		                   		</field>
 	                   		</page>
+	                   		<page string="Previously subscribed">
+		                   		<field name="previously_subscribed_lines">
+		                   			<tree>
+		                    			<field name="transaction_date"/>
+		                    			<field name="share_type"/>
+		                    			<field name="share_short_name"/>
+		                    			<field name="quantity"/>
+		                    			<field name="share_unit_price"/>
+		                    			<field name="type"/>
+		                    			<field name="amount_subscribed"/>
+		                   			</tree>
+		                   		</field>
+	                   		</page>
                    		</notebook>
                    	</sheet>
                 </form>
@@ -147,6 +160,7 @@
             <field name="model">tax.shelter.certificate</field>
             <field name="arch" type="xml">
                 <tree string="Tax shelter certificates">
+                   	<field name="declaration_id"/>
                    	<field name="partner_id"/>
 	                <field name="cooperator_number"/>
                    	<field name="total_amount_subscribed"/>
