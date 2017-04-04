@@ -1,7 +1,7 @@
 <openerp>
     <!-- Mail template are declared in a NOUPDATE block
          so users can freely customize/delete them -->
-    <data noupdate="0">
+    <data noupdate="1">
         <record id="email_template_tax_shelter_certificate" model="mail.template">
             <field name="name">Tax Shelter Certificate - Send By Email</field>
             <field name="email_from">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
