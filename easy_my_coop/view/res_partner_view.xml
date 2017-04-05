@@ -10,12 +10,12 @@
 						<field name="cooperator_register_number" readonly="True" attrs="{'invisible':[('member','=',False)]}"/>
 						<field name="cooperator" groups="easy_my_coop.group_energiris_super_manager"/>
 						<field name="member" groups="easy_my_coop.group_energiris_super_manager"/>
-						<field name="cooperator_type"/>
-						<field name="effective_date"/>
+						<field name="cooperator_type" attrs="{'invisible':[('member','=',False)]}"/>
+						<field name="effective_date" attrs="{'invisible':[('member','=',False)]}"/>
 					</group>
 					<group>
 						<field name="birthdate" attrs="{'invisible':[('is_company','=',True)]}"/>
-						<field name="gender"/>
+						<field name="gender" attrs="{'invisible':[('is_company','=',True)]}"/>
 					</group>
 	         	</xpath>
                 
