@@ -181,6 +181,13 @@ class subscription_request(models.Model):
         }
         return res
     
+    def send_capital_release_request(self, invoice):
+        invoice_email_template = self.env['mail.template'].search([('name', '=', 'Request to Release Capital - Send by Email')])[0]
+        
+        # we send the email with the capital release request in attachment 
+        invoice_email_template.send_mail(invoice.id, True)
+        invoice.sent = True
+        
     def create_invoice(self, partner):
         # get subscription journal
         journal = self.env['account.journal'].search([('code','=','SUBJ')])[0]
@@ -203,11 +210,7 @@ class subscription_request(models.Model):
         # validate the capital release request
         invoice.signal_workflow('invoice_open')
 
-        invoice_email_template = self.env['mail.template'].search([('name', '=', 'Request to Release Capital - Send by Email')])[0]
-        
-        # we send the email with the capital release request in attachment 
-        invoice_email_template.send_mail(invoice.id, True)
-        invoice.sent = True
+        self.send_capital_release_request(invoice)
         
         return invoice 
     
