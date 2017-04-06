@@ -62,8 +62,8 @@ class account_invoice(models.Model):
     
     @api.multi                
     def confirm_paid(self):
-        super(account_invoice, self).confirm_paid()
         for invoice in self:
+            super(account_invoice, invoice).confirm_paid()
             if invoice.partner_id.cooperator and invoice.release_capital_request and invoice.type == 'out_invoice':
                 effective_date = datetime.now().strftime("%d/%m/%Y")
                 #take the effective date from the payment. by default the confirmation date is the payment date
@@ -72,7 +72,8 @@ class account_invoice(models.Model):
                     effective_date = move_line.date
                 
                 invoice.subscription_request.state = 'paid'
-            
+#                 payment_transaction = self.env['payment.transaction'].search([('release_capital_request','=',invoice.id)])
+#                 if len(payment_transaction) == 0:
                 invoice.post_process_confirm_paid(effective_date)        
         return True
     
