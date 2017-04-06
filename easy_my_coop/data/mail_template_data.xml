@@ -235,7 +235,7 @@
 	<p>We confirm the reception of you payment for the new share(s) you have taken.</p>
 
     <br/>
-    <p>Find in attachment your ${object.company_id} certificate.</p>
+    <p>Find in attachment your ${object.company_id.name} certificate.</p>
     <p>Thank you for trusting ${object.company_id.name or 'us'}!</p>
     <br/>
 	<p>Sustainably your,</p>
