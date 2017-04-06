@@ -14,6 +14,9 @@ $(document).ready(function () {
 	  		.then(function (data) {
 				$('#share_price').text(data[share_product_id].list_price);
 				$('input.js_quantity').val(data[share_product_id].min_qty);
+				if(data[share_product_id].force_min_qty == true){
+					$('input.js_quantity').data("min",data[share_product_id].min_qty);
+				}
 				$('input.js_quantity').change();
 				var $share_price = $('#share_price').text()
 				$('input[name="total_parts"]').val($('input.js_quantity').val()*$share_price);
