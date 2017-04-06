@@ -9,6 +9,7 @@ class ProductTemplate(models.Model):
     display_on_website = fields.Boolean(string='Display on website')
     default_share_product = fields.Boolean(string='Default share product')
     minimum_quantity = fields.Integer(string='Minimum quantity', default=1)
+    force_min_qty = fields.Boolean(String="Force minimum quantity?")
     by_company = fields.Boolean(string="Can be subscribed by companies?")
     by_individual = fields.Boolean(string="Can be subscribed by individuals?")
     
