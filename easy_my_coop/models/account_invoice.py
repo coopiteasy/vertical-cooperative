@@ -72,8 +72,6 @@ class account_invoice(models.Model):
                     effective_date = move_line.date
                 
                 invoice.subscription_request.state = 'paid'
-#                 payment_transaction = self.env['payment.transaction'].search([('release_capital_request','=',invoice.id)])
-#                 if len(payment_transaction) == 0:
                 invoice.post_process_confirm_paid(effective_date)        
         return True
     
