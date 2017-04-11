@@ -16,7 +16,7 @@ class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
         
     def post_process_confirm_paid(self, effective_date):
-        if self.payment_type == 'deferred':
+        if self.subscription_request.payment_type == 'deferred':
             self.set_cooperator_effective(effective_date) 
                
         return True
