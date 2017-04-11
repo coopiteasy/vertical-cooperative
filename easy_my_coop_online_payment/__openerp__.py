@@ -31,6 +31,7 @@
     """,
     'data': [
         "views/online_payment_template.xml",
+        "views/subscription_request_view.xml",
     ],
     'installable': True,
     'application': False,
