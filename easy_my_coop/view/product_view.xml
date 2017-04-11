@@ -26,6 +26,7 @@
             	<xpath expr="//field[@name='type']" position="after">
             		<field name="short_name" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_energiris_user"/>
             		<field name="default_share_product" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_energiris_user"/>
+            		<field name="force_min_qty" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_energiris_user"/>
             		<field name="minimum_quantity" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_energiris_user"/>
             		<field name="by_company" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_energiris_user"/>
             		<field name="by_individual" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_energiris_user"/>
