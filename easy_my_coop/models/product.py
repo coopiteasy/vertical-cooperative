@@ -16,7 +16,7 @@ class ProductTemplate(models.Model):
     @api.multi
     def get_web_share_products(self, is_company):
         if is_company == True:
-            ids = self.env['product.template'].search([('is_share','=',True), ('display_on_website','=',True),('by_company','=',True)])
+            product_templates = self.env['product.template'].search([('is_share','=',True), ('display_on_website','=',True),('by_company','=',True)])
         else:
-            ids = self.env['product.template'].search([('is_share','=',True), ('display_on_website','=',True),('by_individual','=',True)])
-        return ids
+            product_templates = self.env['product.template'].search([('is_share','=',True), ('display_on_website','=',True),('by_individual','=',True)])
+        return product_templates
