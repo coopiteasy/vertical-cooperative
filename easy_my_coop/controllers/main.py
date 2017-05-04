@@ -151,6 +151,10 @@ class WebsiteSubscription(http.Controller):
         values["firstname"] = firstname
         values["birthdate"] = datetime.datetime.strptime(kwargs.get("birthdate"), "%d/%m/%Y").date()
         
+        if kwargs.get("share_product_id"):
+            product_id = kwargs.get("share_product_id")
+            product = request.env['product.template'].sudo().browse(int(product_id)).product_variant_ids[0]
+            values["share_product_id"] = product.id
         #check the subscription's amount  
         company = request.website.company_id
         max_amount = company.subscription_maximum_amount
