@@ -48,7 +48,7 @@ class ResPartner(models.Model):
     @api.multi
     def _get_share_type(self):
         share_type_list = [('','')]
-        for share_type in self.env['product.template'].search([('is_share','=',True)]):
+        for share_type in self.env['product.product'].search([('is_share','=',True)]):
             share_type_list.append((str(share_type.id),share_type.short_name))
         return share_type_list
 
