@@ -23,7 +23,7 @@ class ResPartner(models.Model):
         # (generates queries "id in []" forcing to build the full table).
         # In simple cases where all invoices are in the same currency than the user's company
         # access directly these elements
- 
+
         # generate where clause to include multicompany rules
         where_query = account_invoice_report._where_calc([
             ('partner_id', 'in', all_partner_ids), ('state', 'not in', ['draft', 'cancel']), ('company_id', '=', self.env.user.company_id.id),
@@ -32,7 +32,7 @@ class ResPartner(models.Model):
         ])
         account_invoice_report._apply_ir_rules(where_query, 'read')
         from_clause, where_clause, where_clause_params = where_query.get_sql()
- 
+
         # price_total is in the company currency
         query = """
                   SELECT SUM(price_total) as total, partner_id
@@ -44,14 +44,14 @@ class ResPartner(models.Model):
         price_totals = self.env.cr.dictfetchall()
         for partner, child_ids in all_partners_and_children.items():
             partner.total_invoiced = sum(price['total'] for price in price_totals if price['partner_id'] in child_ids)
-            
+
     @api.multi
     def _get_share_type(self):
         share_type_list = [('','')]
         for share_type in self.env['product.template'].search([('is_share','=',True)]):
             share_type_list.append((str(share_type.id),share_type.short_name))
         return share_type_list
-    
+
     @api.multi
     @api.depends('share_ids')
     def _compute_effective_date(self):
@@ -66,8 +66,8 @@ class ResPartner(models.Model):
             share_type = ''
             for line in partner.share_ids:
                 share_type = str(line.share_product_id.id)
-            if share_type != '': 
-                partner.cooperator_type = share_type               
+            if share_type != '':
+                partner.cooperator_type = share_type
 
     @api.multi
     @api.depends('share_ids')
