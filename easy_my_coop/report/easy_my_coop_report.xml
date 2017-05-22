@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 
-	<data noupdate="0">
+	<data noupdate="1">
         
         <report 
             id="action_cooperator_invoices"
@@ -23,10 +23,7 @@
             attachment_use="False"
             attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
         />
-	</data>
-	<data noupdate="1">
-		
-        
+
         <report
             id="action_cooperator_subscription_report" 
             model="subscription.register" 
