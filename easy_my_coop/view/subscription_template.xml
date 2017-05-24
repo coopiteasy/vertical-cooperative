@@ -4,7 +4,7 @@
 <template id="assets_frontend" inherit_id="website.assets_frontend" name="Coop">
  	<xpath expr="." position="inside">
 		<script type="text/javascript" src="/easy_my_coop/static/src/js/easy_my_coop.js"></script>
-		<script type="text/javascript" src="/easy_my_coop/static/src/lib/jquery.inputmask.bundle.js"></script>
+		<script type="text/javascript" src="/easy_my_coop/static/src/js/jquery.inputmask.bundle.js"></script>
 	</xpath>
 </template>
 
