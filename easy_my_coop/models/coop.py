@@ -100,13 +100,13 @@ class subscription_request(models.Model):
     firstname = fields.Char(string='Firstname')
     lastname = fields.Char(string='Lastname')
     birthdate = fields.Date(string="Birthdate")
-    gender = fields.Selection([('male', 'Male'),
-                               ('female', 'Female'),
-                               ('other', 'Other')], string='Gender')
+    gender = fields.Selection([('male', _('Male')),
+                               ('female', _('Female')),
+                               ('other', _('Other'))], string='Gender')
     type = fields.Selection([('new','New Cooperator'),
                              ('subscription','Subscription'),
-                            ('increase','Increase number of share')]
-                            ,string='Type', default="new")
+                             ('increase','Increase number of share')],
+                             string='Type', default="new")
     state = fields.Selection([('draft','Draft'),
                               ('block','Blocked'),
                               ('done','Done'),
