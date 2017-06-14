@@ -1,20 +1,17 @@
 <openerp>
 	<data>
 	
-		<record id="view_cooperator_number_wizard" model="ir.ui.view">
-            <field name="name">Cooperator number wizard</field>
-            <field name="model">cooperator.number.wizard</field>
+		<record id="view_register_number_wizard" model="ir.ui.view">
+            <field name="name">Register number wizard</field>
+            <field name="model">register.number.wizard</field>
             <field name="arch" type="xml">
 	            <form>
 					<group>
-						<field name="reference" default_focus="1" />
-					</group>
-					<group>
-						<field name="on_reference"/>
-						<field name="on_email"/>
+						<field name="from_number" default_focus="1" />
+						<field name="to_number"/>
 					</group>
 		            <footer>
-	                    <button name="compute_cooperator_number" string="Compute" type="object" class="oe_highlight"/>
+	                    <button name="compute_register_number" string="Compute" type="object" class="oe_highlight"/>
 	                   or
 	                    <button string="Cancel" class="oe_link" special="cancel" />
 	                </footer>
@@ -22,18 +19,18 @@
             </field>
         </record>
         
-     	<record id="action_cooperator_number_wizard" model="ir.actions.act_window">
-            <field name="name">Cooperator number</field>
+     	<record id="action_register_number_wizard" model="ir.actions.act_window">
+            <field name="name">Recompute register number</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">cooperator.number.wizard</field>
+            <field name="res_model">register.number.wizard</field>
             <field name="view_type">form</field>
             <field name="view_mode">form</field>
-            <field name="view_id" ref="view_cooperator_number_wizard"/>
+            <field name="view_id" ref="view_register_number_wizard"/>
             <field name="target">new</field>
             <field name="multi">True</field>
         </record>
         
-        <menuitem id="menu_cooperator_number_wizard" parent="menu_easy_my_coop_config" action="action_cooperator_number_wizard" sequence="30" groups="easy_my_coop.group_energiris_super_manager"/>
+        <menuitem id="menu_register_number_wizard" parent="easy_my_coop.menu_easy_my_coop_config" action="action_register_number_wizard" sequence="30" groups="easy_my_coop.group_energiris_super_manager"/>
             
 	</data>
 </openerp>
