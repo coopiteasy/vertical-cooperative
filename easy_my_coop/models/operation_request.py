@@ -25,6 +25,7 @@ class operation_request(models.Model):
                                        ('sell_back','Sell Back'),
                                        ('convert','Conversion')],string='Operation Type', required=True)
     share_product_id = fields.Many2one('product.product', string='Share type', domain=[('is_share','=',True)], required=True)
+    share_product_id_to = fields.Many2one('product.product', string='Concert to this share type', domain=[('is_share','=',True)])
     share_short_name = fields.Char(related='share_product_id.short_name', string='Share type name')
     share_unit_price = fields.Float(related='share_product_id.list_price', string='Share price')
     subscription_amount = fields.Float(compute='_compute_subscription_amount', string='Subscription amount')
@@ -45,38 +46,9 @@ class operation_request(models.Model):
     company_id = fields.Many2one('res.company', string='Company', required=True, 
                                  change_default=True, readonly=True,
                                  default=lambda self: self.env['res.company']._company_default_get())
-     
-#     def create_credit_note(self):
-#         # getting info in order to fill in the invoice
-#         product_obj = self.env['product.product']
-#         product = product_obj.search([('default_code','=','share_250')])[0]
-#         #product = product_obj.browse(cr, uid, product_id, context)
-#         journal = self.env['account.journal'].search([('code','=','SUBJ')])[0]
-#         # TODO check that this account in the right one and do the same on the product 
-#         account = self.env['account.account'].search([('code','=','416000')])[0]
-#         capital_account_id = self.pool.get('account.account').search(cr, uid, [('code','=','416000')])[0]
-#         # creating invoice and invoice lines
-#         account_obj = self.env['account.invoice']
-#         account_invoice_id = account_obj.create({'partner_id':vals['partner_id'], 
-#                                                 'journal_id':journal.id,'account_id':account.id,
-#                                                 'type': 'out_refund', 'release_capital_request':True})
-#         result = self.pool.get('account.invoice.line').product_id_change(cr, uid, False, product.id, False, vals['quantity'], '', 'out_invoice', vals['partner_id'])
-#         self.pool.get('account.invoice.line').create({'invoice_id':account_invoice_id,
-#                                             'product_id':product.id,'quantity':vals['quantity'],
-#                                             'price_unit':result['value']['price_unit'],
-#                                             'uos_id':result['value']['uos_id'],'account_id':result['value']['account_id'],
-#                                             'name':product.name})
-#         # run the validation on the invoice
-#         wf_service = netsvc.LocalService("workflow")
-#         wf_service.trg_validate(uid, 'account.invoice', account_invoice_id, 'invoice_open', cr)
-#         #we get the print service for the invoice and send directly the invoice by mail
-#         email_template_obj = self.pool.get('email.template')
-#         invoice_email_template_id = email_template_obj.search(cr, uid, [('name', '=', 'Request to Release Capital - Send by Email')])[0]
-#         # we send the email with the invoice in attachment 
-#         email_template_obj.send_mail(cr, uid, invoice_email_template_id, account_invoice_id, True, context)
-#         account_obj.write(cr, uid, account_invoice_id,{'sent':True},context) 
-#         return True
     
+    invoice = fields.Many2one('account.invoice', string="Invoice")
+     
     @api.one
     def approve_operation(self):
         self.write({'state':'approved'})
@@ -115,11 +87,6 @@ class operation_request(models.Model):
         if not partner.member:
             raise ValidationError(_("This operation can't be executed if the cooperator is not an effective member"))
         
-        total_share_dic = self.get_total_share_dic(partner)
-        
-        if quantity > total_share_dic[share_product_id.id]:
-            raise ValidationError(_("The cooperator can't hand over more shares that he/she owns."))
-        
         share_ind = len(partner.share_ids)
         i = 1
         while quantity > 0:
@@ -133,7 +100,7 @@ class operation_request(models.Model):
                     quantity = 0
                     line.write({'share_number': share_left})
             i += 1
-        # if the cooperator sold all his shares he's no more a effective member
+        # if the cooperator sold all his shares he's no more an effective member
         remaning_share_dict = 0
         for share_quant in self.get_total_share_dic(partner).values():
             remaning_share_dict += share_quant
@@ -146,17 +113,33 @@ class operation_request(models.Model):
                 return True
         return False
     
-    
     @api.one     
     def execute_operation(self):
         effective_date = self.get_date_now()
+        
         if not self.has_share_type():
             raise ValidationError(_("The cooperator doesn't own this share type. Please choose the appropriate share type."))
         if self.state != 'approved':
             raise ValidationError(_("This operation must be approved before to be executed"))
         
+        if self.operation_type in ['sell_back','convert','transfer']:
+            total_share_dic = self.get_total_share_dic(self.partner_id)
+        
+            if self.quantity > total_share_dic[self.share_product_id.id]:
+                raise ValidationError(_("The cooperator can't hand over more shares that he/she owns."))
+        
         if self.operation_type == 'sell_back': 
             self.hand_share_over(self.partner_id, self.share_product_id, self.quantity)
+        elif self.operation_type == 'convert':
+            print "convert"
+            amount_to_convert = self.share_unit_price * self.quantity
+            share_to_quant = int(amount_to_convert / self.share_product_id_to.list_price)
+            remainder = amount_to_convert % self.share_product_id_to.list_price 
+            print self.share_product_id_to.list_price
+            print amount_to_convert
+            print share_to_quant
+            print remainder
+            #self.hand_share_over(self.partner_id, self.share_product_id, self.quantity)
         elif self.operation_type == 'transfer':
             if self.receiver_not_member:
                 partner = self.subscription_request.create_coop_partner()
