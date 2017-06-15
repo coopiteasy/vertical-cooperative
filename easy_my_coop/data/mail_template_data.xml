@@ -225,7 +225,7 @@
             <field name="model_id" ref="model_res_partner"/>
             <field name="auto_delete" eval="True"/>
             <field name="report_template" ref="action_cooperator_report_certificat"/> 
-            <field name="report_name">${object.company_id} Certificat ${(object.cooperator_register_number or '')}</field>
+            <field name="report_name">Certificat ${(object.cooperator_register_number or '')}</field>
             <field name="lang">${object.lang}</field>
             <field name="body_html"><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
