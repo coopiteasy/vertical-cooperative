@@ -5,8 +5,7 @@
     'category': 'Website',
     'version': '1.0',
     'author': 'Open Architect Consulting sprl',
-    'depends': ['base', 
-    ],
+    'depends': ['base', 'web'],
     'data': [
         'views/layout_template.xml',
         'report/header_report_G002.xml',
