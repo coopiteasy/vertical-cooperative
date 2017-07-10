@@ -19,12 +19,17 @@ class account_invoice(models.Model):
     def set_cooperator_effective(self, effective_date):
         # flag the partner as a effective member
         obj_sequence = self.env['ir.sequence']
+        
+        mail_template_name = 'Payment Received Confirmation - Send By Email'
+        
         # if not yet cooperator we generate a cooperator number
         if self.partner_id.member == False :
             sequence_id = obj_sequence.search([('name','=','Subscription Register')])[0]
             sub_reg_num = sequence_id.next_by_id()
             self.partner_id.write({'member':True,
                                    'cooperator_register_number':int(sub_reg_num)})
+        else:
+            mail_template_name = 'Share Increase - Payment Received Confirmation - Send By Email'
         sequence_operation = obj_sequence.search([('name','=','Register Operation')])[0]
         sub_reg_operation = sequence_operation.next_by_id()
         
@@ -44,10 +49,6 @@ class account_invoice(models.Model):
                                            'share_unit_price':line.price_unit,
                                            'effective_date':effective_date})
         
-        mail_template_name = 'Payment Received Confirmation - Send By Email'
-        if self.partner_id.member :
-            mail_template_name = 'Share Increase - Payment Received Confirmation - Send By Email'
-
         email_template_obj = self.env['mail.template']
         certificat_email_template = email_template_obj.search([('name', '=', mail_template_name)])[0]
         # we send the email with the certificat in attachment 
