@@ -91,7 +91,7 @@ class ResPartner(models.Model):
     birthdate = fields.Date(string="Birthdate")
     number_of_share = fields.Integer(compute="_compute_share_info", multi='share', string='Number of share', readonly=True)
     total_value = fields.Float(compute="_compute_share_info", multi='share', string='Total value of shares', readonly=True)
-    company_register_number = fields.Char(string='National Register Number')
+    company_register_number = fields.Char(string='Company Register Number')
     cooperator_type = fields.Selection(selection='_get_share_type', compute='_compute_cooperator_type', string='Cooperator Type', store=True)
     effective_date = fields.Date(sting="Effective Date", compute='_compute_effective_date', store=True)
     
