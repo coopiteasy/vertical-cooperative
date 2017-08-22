@@ -67,12 +67,14 @@
                 <td/>
                 <t t-if="company.display_logo1">
                 	<td rowspan="5" style="padding-left:15px;text-align:center;width:135px;border-left:1px solid #adadad" >
-	                	<img src="/theme_light/static/img/gallery/label_fin.jpg" style="width:98px;height:auto;padding-bottom:5px;"/>
+	                	<img t-if="company.bottom_logo1" t-att-src="'data:image/png;base64,%s' % company.bottom_logo1" style="width:98px;height:auto;padding-bottom:5px;"/>
+	                	<img t-if="not company.bottom_logo1" src="/theme_light/static/img/gallery/label_fin.jpg" style="width:98px;height:auto;padding-bottom:5px;"/>
 	            	</td>	
                 </t>
                 <t t-if="company.display_logo2">
                 	<td rowspan="5" style="padding-left:15px;text-align:center;width:135px;border-left:1px solid #adadad" >
-	                	<img src="/theme_light/static/img/gallery/cnc_agree.jpg" style="width:162px;height:auto;padding-bottom:5px;"/>
+	                	<img t-if="company.bottom_logo2" t-att-src="'data:image/png;base64,%s' % company.bottom_logo2" style="width:162px;height:auto;padding-bottom:5px;"/>
+	                	<img t-if="not company.bottom_logo2" src="/theme_light/static/img/gallery/cnc_agree.jpg" style="width:162px;height:auto;padding-bottom:5px;"/>
 	            	</td>
                 </t>
             </tr>
