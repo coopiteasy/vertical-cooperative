@@ -18,5 +18,7 @@ class ResCompany(models.Model):
     unmix_share_type = fields.Boolean(string="Unmix share type", 
                                       help="If checked, A cooperator will be authorized "
                                       "to have only one type of share")
-    display_logo1 = fields.Boolean(string="Display logo1")
-    display_logo2 = fields.Boolean(string="Display logo2")
+    display_logo1 = fields.Boolean(string="Display logo 1")
+    display_logo2 = fields.Boolean(string="Display logo 2")
+    bottom_logo1 = fields.Binary(string="Bottom logo 1")
+    bottom_logo2 = fields.Binary(string="Bottom logo 2")
