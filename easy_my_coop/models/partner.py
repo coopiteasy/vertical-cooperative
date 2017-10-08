@@ -1,8 +1,20 @@
 # -*- coding: utf-8 -*-
 from openerp import api, fields, models, _
+from datetime import date
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
+
+    def _auto_init(self, cr, context=None):
+        """
+            Convert the column birthdate into date if it's not the case to avoid warning and data loss with orm conversion
+        """
+        cr.execute("select data_type from information_schema.columns where table_name = 'res_partner' and column_name= 'birthdate';")
+        res = cr.fetchone()
+        if not 'date' in res:
+            cr.execute("ALTER TABLE res_partner ALTER COLUMN birthdate TYPE date USING birthdate::date;")
+        
+        super(ResPartner, self)._auto_init(cr, context=context)
 
     @api.multi
     def _invoice_total(self):
