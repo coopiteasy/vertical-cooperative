@@ -14,7 +14,7 @@ class ResPartner(models.Model):
         if not 'date' in res:
             cr.execute("ALTER TABLE res_partner ALTER COLUMN birthdate TYPE date USING birthdate::date;")
         
-        super(ResPartner, self)._auto_init(cr, context=context)
+        return super(ResPartner, self)._auto_init(cr, context=context)
 
     @api.multi
     def _invoice_total(self):
