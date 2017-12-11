@@ -1,2 +1,2 @@
 # -*- coding: utf-8 -*-
-import cooperative_history_wizard
+import create_subscription_from_partner
