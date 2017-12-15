@@ -26,7 +26,7 @@ class PartnerCreateSubscription(models.TransientModel):
             else:
                 domain.append(('by_individual','=',True))
         
-        return self.env['product.product'].search(domain)
+        return self.env['product.product'].search(domain)[0]
     
     @api.model
     def _get_partner(self):
