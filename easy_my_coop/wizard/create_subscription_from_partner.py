@@ -82,6 +82,7 @@ class PartnerCreateSubscription(models.TransientModel):
                 'user_id':self.env.uid}
         if self.is_company:
             vals['company_register_number'] = self.register_number
+            vals['is_company'] = True
         else:
             vals['no_registre'] = self.register_number
         
