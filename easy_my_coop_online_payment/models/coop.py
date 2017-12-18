@@ -5,7 +5,7 @@ class SubscriptionRequest(models.Model):
     _inherit = 'subscription.request'
 
     payment_type = fields.Selection([('online', 'Online'),
-                                     ('deferred', 'Deferred')], string='Payment Type')
+                                     ('deferred', 'Deferred')], string='Payment Type', default="deferred")
     
     def send_capital_release_request(self, invoice):
         if self.payment_type == 'deferred':
