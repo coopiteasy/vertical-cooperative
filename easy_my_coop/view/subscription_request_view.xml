@@ -63,6 +63,7 @@
 		       				</group>
 		       				<group>
 		       					<field name="date"/>
+		       					<field name="source"/>
 		       					<field name="activities_address" attrs="{'invisible':[('is_company','=',False)]}"/>
 		       					<field name="activities_zip_code" attrs="{'invisible':[('is_company','=',False)]}"/>
 		       					<field name="activities_city" attrs="{'invisible':[('is_company','=',False)]}"/>
@@ -110,6 +111,7 @@
             <field name="res_model">subscription.request</field>
             <field name="view_type">form</field>
             <field name="domain">[('is_company','=',False),('is_operation','=',False)]</field>
+            <field name="context">{'default_source':'manual'}</field>
             <field name="view_id" ref="subscription_request_tree"/>
             <field name="search_view_id" ref="view_subscription_request_filter"/>
         </record>
@@ -131,6 +133,7 @@
           			<field name="email"/>
           			<field name="iban"/>
           			<field name="partner_id"/>
+          			<field name="source"/>
           			<field name="state"/>
           			<field name="validated" invisible="True"/>
                     <button type="object" name="validate_subscription_request" attrs="{'invisible':['|',('state','!=','draft'),('validated','=',False)]}" icon="STOCK_MEDIA_PLAY"/>
@@ -145,7 +148,7 @@
             <field name="res_model">subscription.request</field>
             <field name="view_type">form</field>
             <field name="domain">[('is_company','=',True),('is_operation','=',False)]</field>
-            <field name="context">{'default_is_company': True}</field>
+            <field name="context">{'default_is_company': True,'default_source':'manual'}</field>
             <field name="view_id" ref="company_subscription_request_tree"/>
             <field name="search_view_id" ref="view_subscription_request_filter"/>
         </record>
