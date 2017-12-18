@@ -17,6 +17,7 @@
           			<field name="email"/>
           			<field name="iban"/>
           			<field name="partner_id"/>
+          			<field name="source"/>
           			<field name="state"/>
           			<field name="validated" invisible="True"/>
                     <button type="object" name="validate_subscription_request" attrs="{'invisible':['|',('state','!=','draft'),('validated','=',False)]}" icon="STOCK_MEDIA_PLAY" />
