@@ -79,7 +79,9 @@ class PartnerCreateSubscription(models.TransientModel):
                 'name': cooperator.name,
                 'share_product_id':self.share_product.id,
                 'ordered_parts':self.share_qty,
-                'user_id':self.env.uid}
+                'user_id':self.env.uid,
+                'source':'crm'}
+        
         if self.is_company:
             vals['company_register_number'] = self.register_number
             vals['is_company'] = True
@@ -95,6 +97,14 @@ class PartnerCreateSubscription(models.TransientModel):
                 else:
                     raise UserError(_("The national register number is not valid."))
                 
-        sub_req.create(vals)
-        return {'type': 'ir.actions.act_window_close'}
+        new_sub_req = sub_req.create(vals)
+        #return {'type': 'ir.actions.act_window_close'}
+        return {
+            'type': 'ir.actions.act_window',
+            'view_type': 'form, tree',
+            'view_mode': 'form',
+            'res_model': 'subscription.request',
+            'res_id': new_sub_req.id,
+            'target': 'current',
+        }
 

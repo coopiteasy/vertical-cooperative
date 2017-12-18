@@ -156,7 +156,9 @@ class subscription_request(models.Model):
     operation_request_id = fields.Many2one('operation.request', string="Operation Request")
     is_operation = fields.Boolean(string="Is Operation request")
     capital_release_request = fields.One2many('account.invoice','subscription_request', string='Subscription request')
-    
+    source = fields.Selection([('website','Website'),
+                               ('crm','CRM'),
+                               ('manual','Manual')], string="Source", default="website")
     _order = "id desc"
     
     def _prepare_invoice_line(self, product, partner, qty):
