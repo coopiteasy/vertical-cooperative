@@ -76,16 +76,17 @@ class PartnerCreateSubscription(models.TransientModel):
         sub_req = self.env['subscription.request']
         cooperator = self.cooperator
         vals = {'partner_id': cooperator.id,
-                'name': cooperator.name,
                 'share_product_id':self.share_product.id,
                 'ordered_parts':self.share_qty,
                 'user_id':self.env.uid,
                 'source':'crm'}
         
         if self.is_company:
+            vals['company_name'] = self.cooperator.name
             vals['company_register_number'] = self.register_number
             vals['is_company'] = True
         else:
+            vals['name'] = self.cooperator.name
             vals['no_registre'] = self.register_number
         
         if not self._get_register_number():
