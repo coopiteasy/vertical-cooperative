@@ -83,6 +83,7 @@ class PartnerCreateSubscription(models.TransientModel):
         
         if self.is_company:
             vals['company_name'] = self.cooperator.name
+            vals['name'] = '/'
             vals['company_register_number'] = self.register_number
             vals['is_company'] = True
         else:
