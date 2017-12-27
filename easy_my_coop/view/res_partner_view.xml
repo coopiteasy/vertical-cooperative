@@ -9,7 +9,7 @@
             	<sheet position="before">
             		<header>
             			<button string="Create Subscription" name="%(action_view_create_subscription)d"
-                                type="action" context="{'default_active_id': active_id}" class="oe_highlight" groups="easy_my_coop.group_energiris_user"/>
+                                type="action" context="{'default_active_id': active_id}" class="oe_highlight" groups="easy_my_coop.group_energiris_manager"/>
             		</header>
             	</sheet>
             	
