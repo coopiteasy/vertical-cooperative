@@ -12,7 +12,6 @@ from openerp.tools.translate import _
 
 _TECHNICAL = ['view_from', 'view_callback']  # Only use for behavior, don't stock it
 _BLACKLIST = ['id', 'create_uid', 'create_date', 'write_uid', 'write_date', 'user_id', 'active']  # Allow in description
-#_REQUIRED = ['email','firstname','lastname','birthdate','address','share_product_id','ordered_parts','zip_code','city','iban','no_registre','gender']  # Could be improved including required from model
         
 class WebsiteSubscription(http.Controller):
 
