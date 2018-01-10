@@ -12,6 +12,7 @@
                     <group>
                     	<field name="is_company" invisible="True"/>
                     	<field name="cooperator" invisible="True"/>
+                    	<field name="email"/>
                     	<field name="register_number"/>
                     	<field name="share_product" widget="selection"/>
                     	<field name="share_qty"/>
