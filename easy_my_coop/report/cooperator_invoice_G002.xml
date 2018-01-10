@@ -96,15 +96,14 @@
 	                    <t t-foreach="o.company_id.bank_journal_ids" t-as="journal">
 	            		<t t-set="b" t-value="journal.bank_account_id"/>
 	    					<t t-if="o.release_capital_request == True and journal.get_cooperator_payment">				 
-			            		<span t-field="b.acc_number"/>
+			            		<p t-field="b.acc_number"/>
 							</t>
 							<t t-if="o.release_capital_request == False and journal.get_general_payment">				 
-			            		<span t-field="b.acc_number"/>
+			            		<p t-field="b.acc_number"/>
 							</t>	  		            		
 						</t>
 	                </div>
-	                <br/>
-	                <div name="contact" class="col-xs-3" t-if="o.user_id" style="position:relative;top:15px;">
+	                <div name="contact" class="col-xs-3" t-if="o.user_id">
 	                    <strong>Your contact:</strong>
 	                    <p t-field="o.user_id"/>
 	                </div>
