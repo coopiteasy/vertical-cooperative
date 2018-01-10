@@ -278,7 +278,8 @@ class subscription_request(models.Model):
                                 'city': self.city, 'phone': self.phone, 'email':self.email,
                                 'national_register_number':self.no_registre, 'out_inv_comm_type':'bba',
                                 'out_inv_comm_algorithm':'random', 'country_id': self.country_id.id,
-                                'lang':self.lang, 'birthdate':self.birthdate, 'parent_id': partner.id,'function':self.contact_person_function}
+                                'lang':self.lang, 'birthdate':self.birthdate, 'parent_id': partner.id,
+                                'function':self.contact_person_function}
                     contact = partner_obj.create(contact_vals)
         else:
             partner = partner[0]
