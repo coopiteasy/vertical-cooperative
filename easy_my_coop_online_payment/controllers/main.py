@@ -23,8 +23,8 @@ class SubscriptionOnlinePayment(WebsiteSubscription):
     
     def get_subscription_response(self, values, kwargs):
         subscription = values.get('subscription_id', False)
-        invoice = subscription.validate_subscription_request()[0]
         if kwargs.get('payment_type') == 'online':
+           invoice = subscription.validate_subscription_request()[0]
            acquirer = request.env['payment.acquirer'].search([('website_published', '=', True)])[0]
            return website_payment().pay(reference=invoice.number, amount=invoice.residual, currency_id=invoice.currency_id.id, acquirer_id=acquirer.id)
         else:
