@@ -36,7 +36,12 @@ class PartnerCreateSubscription(models.TransientModel):
     @api.model
     def _get_is_company(self):
         return self._get_partner().is_company
-            
+    
+    @api.model
+    def _get_email(self):
+        partner = self._get_partner()
+        return partner.email
+
     @api.model
     def _get_register_number(self):
         partner = self._get_partner()
@@ -65,6 +70,7 @@ class PartnerCreateSubscription(models.TransientModel):
     is_company = fields.Boolean(String="Is company?", default=_get_is_company)
     cooperator = fields.Many2one('res.partner', string="Cooperator", default=_get_partner)
     register_number = fields.Char(string="Register Number", required=True, default=_get_register_number)
+    email = fields.Char(string="Email", required=True, default=_get_email)
     share_product = fields.Many2one('product.product', string='Share Type', domain=lambda self: self._get_possible_share(),\
         default=_default_product_id, required=True)
     share_qty = fields.Integer(string="Share Quantity", required=True)
@@ -90,17 +96,21 @@ class PartnerCreateSubscription(models.TransientModel):
             vals['name'] = self.cooperator.name
             vals['no_registre'] = self.register_number
         
+        coop_vals = {}
+        if not self._get_email():
+            coop_vals['email'] = self.email
+        
         if not self._get_register_number():
             if self.is_company:
-                cooperator.write({'company_register_number':self.register_number})
+                coop_vals['company_register_number'] = self.register_number
             else:
                 if sub_req.check_belgian_identification_id(self.register_number):
-                    cooperator.write({'national_register_number':self.register_number})
+                    coop_vals['national_register_number'] = self.register_number
                 else:
                     raise UserError(_("The national register number is not valid."))
-                
+        if coop_vals:
+            cooperator.write(coop_vals)
         new_sub_req = sub_req.create(vals)
-        #return {'type': 'ir.actions.act_window_close'}
         return {
             'type': 'ir.actions.act_window',
             'view_type': 'form, tree',
