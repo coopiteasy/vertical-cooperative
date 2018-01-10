@@ -80,7 +80,9 @@
             </tr>
             <tr style="height:20px;">
             	<td style="align: left;"> 
-            		<span t-field="company.rml_header1"/> - 
+            		<t t-if="company.rml_header1">
+            			<span t-field="company.rml_header1"/> -
+            		</t> 
             		<b><span t-field="company.name"/></b> 
             	</td>
             	<td/>
@@ -90,6 +92,9 @@
             <tr style="height:20px">
             	<td style="align: left;">
             		<span t-field="company.partner_id.street"/>  -
+            		<t t-if="company.partner_id.street2">
+            			<span t-field="company.partner_id.street2"/>  -
+            		</t>
             		<span t-field="company.partner_id.zip"/>     
             		<span t-field="company.partner_id.city"/>       			  				             				
             	</td>
