@@ -281,6 +281,11 @@ class subscription_request(models.Model):
                                 'lang':self.lang, 'birthdate':self.birthdate, 'parent_id': partner.id,
                                 'function':self.contact_person_function}
                     contact = partner_obj.create(contact_vals)
+                else:
+                    if contact.parent_id and contact.parent_id.id != partner.id:
+                        raise UserError(_('This contact person is already defined for another company. Please select another contact'))
+                    else:
+                        contact.parent_id = partner.id
         else:
             partner = partner[0]
         
