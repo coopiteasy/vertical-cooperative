@@ -269,25 +269,25 @@ class subscription_request(models.Model):
                 
         if not partner:
             partner = self.create_coop_partner()
-            
-            if self.is_company: 
-                contact = partner_obj.search([('national_register_number','=',self.no_registre)])
-                if not contact:
-                    contact_vals = {'name':self.name, 'first_name':self.firstname, 'last_name': self.lastname,
-                                'customer':False, 'street':self.address,'zip':self.zip_code,
-                                'city': self.city, 'phone': self.phone, 'email':self.email,
-                                'national_register_number':self.no_registre, 'out_inv_comm_type':'bba',
-                                'out_inv_comm_algorithm':'random', 'country_id': self.country_id.id,
-                                'lang':self.lang, 'birthdate':self.birthdate, 'parent_id': partner.id,
-                                'function':self.contact_person_function}
-                    contact = partner_obj.create(contact_vals)
-                else:
-                    if contact.parent_id and contact.parent_id.id != partner.id:
-                        raise UserError(_('This contact person is already defined for another company. Please select another contact'))
-                    else:
-                        contact.parent_id = partner.id
         else:
-            partner = partner[0]
+            partner = partner[0]    
+        
+        if self.is_company: 
+            contact = partner_obj.search([('national_register_number','=',self.no_registre)])
+            if not contact:
+                contact_vals = {'name':self.name, 'first_name':self.firstname, 'last_name': self.lastname,
+                            'customer':False, 'street':self.address,'zip':self.zip_code,
+                            'city': self.city, 'phone': self.phone, 'email':self.email,
+                            'national_register_number':self.no_registre, 'out_inv_comm_type':'bba',
+                            'out_inv_comm_algorithm':'random', 'country_id': self.country_id.id,
+                            'lang':self.lang, 'birthdate':self.birthdate, 'parent_id': partner.id,
+                            'function':self.contact_person_function}
+                contact = partner_obj.create(contact_vals)
+            else:
+                if contact.parent_id and contact.parent_id.id != partner.id:
+                    raise UserError(_('This contact person is already defined for another company. Please select another contact'))
+                else:
+                    contact.parent_id = partner.id
         
         invoice = self.create_invoice(partner)
         self.write({'partner_id':partner.id, 'state':'done'})
