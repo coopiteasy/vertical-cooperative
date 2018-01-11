@@ -351,7 +351,7 @@
 	                      </select>
 	                    </div>
 	                    <br/>
-	                    <div t-attf-class="form-group">
+	                    <!-- <div t-attf-class="form-group">
 							<label>
 								Operational Address
 							</label>
@@ -390,7 +390,7 @@
 	                              <option t-att-value="country.id" t-att-selected="country.id == int(activities_country_id)"><t t-esc="country.name"/></option>
 	                          </t>
 	                      </select>
-	                    </div>
+	                    </div> -->
 						
 			            <br/>
 			            <div t-attf-class="form-group">
