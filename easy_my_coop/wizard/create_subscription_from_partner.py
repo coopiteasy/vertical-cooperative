@@ -49,7 +49,13 @@ class PartnerCreateSubscription(models.TransientModel):
             return partner.company_register_number
         else:
             return partner.national_register_number
-                
+    
+    @api.model
+    def _get_bank_account(self):
+        if len(self.cooperator.bank_ids) > 0:
+            return self.cooperator.bank_ids[0]
+        return None
+        
     @api.model
     def _get_possible_share(self):
         domain = [('is_share','=',True)]
@@ -71,6 +77,7 @@ class PartnerCreateSubscription(models.TransientModel):
     cooperator = fields.Many2one('res.partner', string="Cooperator", default=_get_partner)
     register_number = fields.Char(string="Register Number", required=True, default=_get_register_number)
     email = fields.Char(string="Email", required=True, default=_get_email)
+    bank_account = fields.Char(string="Bank account", required=True, default=_get_bank_account)
     share_product = fields.Many2one('product.product', string='Share Type', domain=lambda self: self._get_possible_share(),\
         default=_default_product_id, required=True)
     share_qty = fields.Integer(string="Share Quantity", required=True)
@@ -82,10 +89,11 @@ class PartnerCreateSubscription(models.TransientModel):
         sub_req = self.env['subscription.request']
         cooperator = self.cooperator
         vals = {'partner_id': cooperator.id,
-                'share_product_id':self.share_product.id,
-                'ordered_parts':self.share_qty,
-                'user_id':self.env.uid,
-                'source':'crm'}
+                'share_product_id': self.share_product.id,
+                'ordered_parts': self.share_qty,
+                'user_id': self.env.uid,
+                'email': self.email,
+                'source': 'crm'}
         
         if self.is_company:
             vals['company_name'] = self.cooperator.name
@@ -108,9 +116,16 @@ class PartnerCreateSubscription(models.TransientModel):
                     coop_vals['national_register_number'] = self.register_number
                 else:
                     raise UserError(_("The national register number is not valid."))
+        
+        if not self._get_bank_account():
+            partner_bank = self.env['res.partner.bank']
+            partner_bank.create({'partner_id':cooperator.id,
+                                 'acc_number':self.bank_account})
+            vals['iban'] = self.bank_account
+            
         if coop_vals:
             cooperator.write(coop_vals)
-            self.env.cr.commit()
+            #self.env.cr.commit()
         new_sub_req = sub_req.create(vals)
         return {
             'type': 'ir.actions.act_window',
