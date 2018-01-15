@@ -35,8 +35,8 @@ class subscription_request(models.Model):
                     vals['type'] = 'subscription'
                 vals['partner_id'] = cooperator.id
 
-        if not cooperator.cooperator:
-            cooperator.cooperator = True
+            if not cooperator.cooperator:
+                cooperator.cooperator = True
 
         subscr_request = super(subscription_request, self).create(vals)
         mail_template_obj = self.env['mail.template']
