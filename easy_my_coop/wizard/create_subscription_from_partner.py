@@ -110,6 +110,7 @@ class PartnerCreateSubscription(models.TransientModel):
                     raise UserError(_("The national register number is not valid."))
         if coop_vals:
             cooperator.write(coop_vals)
+            self.env.cr.commit()
         new_sub_req = sub_req.create(vals)
         return {
             'type': 'ir.actions.act_window',
