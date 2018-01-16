@@ -15,6 +15,7 @@
             	
             	<xpath expr="/form/sheet/group" position='before'>
 					<group>
+						<field name="representative" readonly="True" attrs="{'invisible':['|',('parent_id','=',False),('is_company','=',True)]}"/>
 						<field name="cooperator_register_number" readonly="True" attrs="{'invisible':[('member','=',False)]}"/>
 						<field name="company_register_number" readonly="True" attrs="{'invisible':[('is_company','=',False)]}"/>
 						<field name="national_register_number" readonly="True" attrs="{'invisible':[('is_company','=',True)]}" groups="easy_my_coop.group_energiris_super_manager"/>
