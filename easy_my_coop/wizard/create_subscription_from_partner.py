@@ -122,7 +122,7 @@ class PartnerCreateSubscription(models.TransientModel):
             partner_bank = self.env['res.partner.bank']
             partner_bank.create({'partner_id':cooperator.id,
                                  'acc_number':self.bank_account})
-            vals['iban'] = self.bank_account
+        vals['iban'] = self.bank_account
             
         if coop_vals:
             cooperator.write(coop_vals)
