@@ -287,7 +287,8 @@ class subscription_request(models.Model):
             contact = partner_obj.search([('national_register_number','=',self.no_registre)])
             if not contact:
                 contact_vals = {'name':self.name, 'first_name':self.firstname, 'last_name': self.lastname,
-                            'customer':False, 'is_company':False, 'street':self.address,'zip':self.zip_code,
+                            'customer':False, 'is_company':False, 'cooperator':True, 
+                            'street':self.address,'zip':self.zip_code,'gender':self.gender,
                             'city': self.city, 'phone': self.phone, 'email':self.email,
                             'national_register_number':self.no_registre, 'out_inv_comm_type':'bba',
                             'out_inv_comm_algorithm':'random', 'country_id': self.country_id.id,
