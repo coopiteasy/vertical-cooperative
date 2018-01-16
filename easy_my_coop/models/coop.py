@@ -273,9 +273,9 @@ class subscription_request(models.Model):
         if not partner:
             partner = self.create_coop_partner()
         else:
-            partner = partner[0]    
+            partner = partner[0]
         
-        if self.is_company: 
+        if self.is_company and not partner.has_representative(): 
             contact = partner_obj.search([('national_register_number','=',self.no_registre)])
             if not contact:
                 contact_vals = {'name':self.name, 'first_name':self.firstname, 'last_name': self.lastname,
@@ -284,9 +284,11 @@ class subscription_request(models.Model):
                             'national_register_number':self.no_registre, 'out_inv_comm_type':'bba',
                             'out_inv_comm_algorithm':'random', 'country_id': self.country_id.id,
                             'lang':self.lang, 'birthdate':self.birthdate, 'parent_id': partner.id,
-                            'function':self.contact_person_function}
+                            'function':self.contact_person_function,'representative':True}
                 contact = partner_obj.create(contact_vals)
             else:
+                if len(contact) > 1:
+                    raise UserError(_('There is two different persons with the same national register number. Please proceed to a merge before to continue'))
                 if contact.parent_id and contact.parent_id.id != partner.id:
                     raise UserError(_('This contact person is already defined for another company. Please select another contact'))
                 else:
