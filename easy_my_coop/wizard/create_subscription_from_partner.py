@@ -28,6 +28,27 @@ class PartnerCreateSubscription(models.TransientModel):
         
         return self.env['product.product'].search(domain)[0]
     
+    def _get_representative(self):
+        partner = self._get_partner()
+        if partner.is_company:
+            return self.env['res.partner'].search([('parent_id','=',partner.id),
+                                                    ('representative','=',True)])
+        return False
+    
+    @api.model
+    def _get_representative_number(self):
+        representative = self._get_representative()
+        if representative:
+            return representative.national_register_number
+        return False
+    
+    @api.model
+    def _get_representative_name(self):
+        representative = self._get_representative()
+        if representative:
+            return representative.name
+        return False
+    
     @api.model
     def _get_partner(self):
         active_id = self.env.context.get('active_id')
@@ -84,10 +105,20 @@ class PartnerCreateSubscription(models.TransientModel):
     share_qty = fields.Integer(string="Share Quantity", required=True)
     share_unit_price = fields.Float(related='share_product.list_price', string='Share price', readonly=True)
     subscription_amount = fields.Float(compute='_compute_subscription_amount', string='Subscription amount', digits=dp.get_precision('Account'), readonly=True)
+    representative_name = fields.Char(string='Representative name', default=_get_representative_name)
+    representative_number = fields.Char(string='Representative national register number', default=_get_representative_number)
     
+    def check_belgian_ident_id(self, register_number):
+        if self.env['subscription.request'].check_belgian_identification_id(register_number):
+            return True
+        else:
+            raise UserError(_("The national register number is not valid."))
+
     @api.multi
     def create_subscription(self):
         sub_req = self.env['subscription.request']
+        partner_obj = self.env['res.partner']
+        
         cooperator = self.cooperator
         vals = {'partner_id': cooperator.id,
                 'share_product_id': self.share_product.id,
@@ -113,11 +144,25 @@ class PartnerCreateSubscription(models.TransientModel):
             if self.is_company:
                 coop_vals['company_register_number'] = self.register_number
             else:
-                if sub_req.check_belgian_identification_id(self.register_number):
+                if self.check_belgian_ident_id(self.register_number):
                     coop_vals['national_register_number'] = self.register_number
-                else:
-                    raise UserError(_("The national register number is not valid."))
         
+        if not self._get_representative():
+            representative_number = self.representative_number
+            representative = partner_obj.search([('national_register_number','=',representative_number)])
+            
+            if representative:
+                if len(representative) > 1:
+                    raise UserError(_('There is two different persons with the same national register number. Please proceed to a merge before to continue'))
+                if representative.parent_id:
+                    raise UserError(_("A person can't be representative of two differents companies."))
+                representative.parent_id = cooperator.id
+            else:
+                if self.check_belgian_ident_id(representative_number):
+                    represent_vals = {'name':self.representative_name,'national_register_number':representative_number,
+                                      'parent_id':cooperator.id,'representative':True}
+                    partner_obj.create(represent_vals)
+                
         if not self._get_bank_account():
             partner_bank = self.env['res.partner.bank']
             partner_bank.create({'partner_id':cooperator.id,
@@ -126,8 +171,9 @@ class PartnerCreateSubscription(models.TransientModel):
             
         if coop_vals:
             cooperator.write(coop_vals)
-            #self.env.cr.commit()
+
         new_sub_req = sub_req.create(vals)
+        
         return {
             'type': 'ir.actions.act_window',
             'view_type': 'form, tree',
