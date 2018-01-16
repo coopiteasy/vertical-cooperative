@@ -159,6 +159,8 @@ class subscription_request(models.Model):
     operation_request_id = fields.Many2one('operation.request', string="Operation Request")
     is_operation = fields.Boolean(string="Is Operation request")
     capital_release_request = fields.One2many('account.invoice','subscription_request', string='Subscription request')
+    capital_release_request_date = fields.Date(string="Force the capital release request date",
+                                               help="Keep empty to use the current date", copy=False) 
     source = fields.Selection([('website','Website'),
                                ('crm','CRM'),
                                ('manual','Manual')], string="Source", default="website")
@@ -204,10 +206,13 @@ class subscription_request(models.Model):
             account = self.env['account.account'].search([('code','=','416000')])[0]
         
         # creating invoice and invoice lines
-        invoice = self.env['account.invoice'].create({'partner_id':partner.id, 
-                                                      'journal_id':journal.id,'account_id':account.id,
-                                                      'type': 'out_invoice', 'release_capital_request':True,
-                                                      'subscription_request':self.id})
+        invoice_vals = {'partner_id':partner.id, 
+                      'journal_id':journal.id,'account_id':account.id,
+                      'type': 'out_invoice', 'release_capital_request':True,
+                      'subscription_request':self.id}
+        if self.capital_release_request_date:
+            invoice_vals['date_invoice'] = self.capital_release_request_date
+        invoice = self.env['account.invoice'].create(invoice_vals)
         vals = self._prepare_invoice_line(self.share_product_id, partner, self.ordered_parts)
         vals['invoice_id'] = invoice.id
         line = self.env['account.invoice.line'].create(vals)
