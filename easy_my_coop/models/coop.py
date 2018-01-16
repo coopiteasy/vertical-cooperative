@@ -28,6 +28,9 @@ class subscription_request(models.Model):
             if vals.get('no_registre'):
                 cooperator = self.env['res.partner'].get_cooperator_from_nin(vals.get('no_registre'))
             if cooperator:
+                # TODO remove the following line of code once it has 
+                # been founded a way to avoid dubble entry
+                cooperator = cooperator[0] 
                 if cooperator.member:
                     vals['type'] = 'increase'
                     vals['already_cooperator'] = True
@@ -35,8 +38,8 @@ class subscription_request(models.Model):
                     vals['type'] = 'subscription'
                 vals['partner_id'] = cooperator.id
 
-            if not cooperator.cooperator:
-                cooperator.cooperator = True
+                if not cooperator.cooperator:
+                    cooperator.write({'cooperator':True})
 
         subscr_request = super(subscription_request, self).create(vals)
         mail_template_obj = self.env['mail.template']
