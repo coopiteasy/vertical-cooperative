@@ -66,10 +66,6 @@
 		       					<field name="capital_release_request_date" groups="easy_my_coop.group_energiris_super_manager"/>
 		       					<field name="date"/>
 		       					<field name="source"/>
-		       					<!-- <field name="activities_address" attrs="{'invisible':[('is_company','=',False)]}"/>
-		       					<field name="activities_zip_code" attrs="{'invisible':[('is_company','=',False)]}"/>
-		       					<field name="activities_city" attrs="{'invisible':[('is_company','=',False)]}"/>
-		       					<field name="activities_country_id" attrs="{'invisible':[('is_company','=',False)]}"/> -->
 		       					<field name="ordered_parts"/>
 		       					<field name="share_product_id"/>
 		       					<field name="share_short_name"/>
