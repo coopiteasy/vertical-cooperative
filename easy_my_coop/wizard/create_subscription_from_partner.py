@@ -53,8 +53,8 @@ class PartnerCreateSubscription(models.TransientModel):
     @api.model
     def _get_bank_account(self):
         partner = self._get_partner()
-        if len(self.partner.bank_ids) > 0:
-            return self.partner.bank_ids[0]
+        if len(partner.bank_ids) > 0:
+            return partner.bank_ids[0]
         return None
         
     @api.model
