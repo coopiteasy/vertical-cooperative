@@ -12,6 +12,8 @@
                     <group>
                     	<field name="is_company" invisible="True"/>
                     	<field name="cooperator" invisible="True"/>
+                    	<field name="representative_name" attrs="{'invisible':[('is_company','=',False)],'required':[('is_company','=',True)]}"/>
+                    	<field name="representative_number" attrs="{'invisible':[('is_company','=',False)],'required':[('is_company','=',True)]}"/>
                     	<field name="email"/>
                     	<field name="register_number"/>
                     	<field name="bank_account"/>
