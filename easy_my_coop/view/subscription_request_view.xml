@@ -63,6 +63,7 @@
 		       					<field name="country_id"/>
 		       				</group>
 		       				<group>
+		       					<field name="capital_release_request_date" groups="easy_my_coop.group_energiris_super_manager"/>
 		       					<field name="date"/>
 		       					<field name="source"/>
 		       					<!-- <field name="activities_address" attrs="{'invisible':[('is_company','=',False)]}"/>
