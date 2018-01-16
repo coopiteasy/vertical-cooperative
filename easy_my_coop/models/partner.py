@@ -106,7 +106,13 @@ class ResPartner(models.Model):
     company_register_number = fields.Char(string='Company Register Number')
     cooperator_type = fields.Selection(selection='_get_share_type', compute='_compute_cooperator_type', string='Cooperator Type', store=True)
     effective_date = fields.Date(sting="Effective Date", compute='_compute_effective_date', store=True)
+    representative = fields.Boolean(string="Legal Representative")
     
+    def has_representative(self):
+        if self.child_ids.filtered('representative'):
+            return True
+        return False
+
     def get_cooperator_from_nin(self, national_id_number):
         return self.search([('cooperator','=',True),('national_register_number','=',national_id_number)])
     
