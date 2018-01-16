@@ -52,8 +52,9 @@ class PartnerCreateSubscription(models.TransientModel):
     
     @api.model
     def _get_bank_account(self):
-        if len(self.cooperator.bank_ids) > 0:
-            return self.cooperator.bank_ids[0]
+        partner = self._get_partner()
+        if len(self.partner.bank_ids) > 0:
+            return self.partner.bank_ids[0]
         return None
         
     @api.model
@@ -96,12 +97,12 @@ class PartnerCreateSubscription(models.TransientModel):
                 'source': 'crm'}
         
         if self.is_company:
-            vals['company_name'] = self.cooperator.name
+            vals['company_name'] = cooperator.name
             vals['name'] = '/'
             vals['company_register_number'] = self.register_number
             vals['is_company'] = True
         else:
-            vals['name'] = self.cooperator.name
+            vals['name'] = cooperator.name
             vals['no_registre'] = self.register_number
         
         coop_vals = {}
