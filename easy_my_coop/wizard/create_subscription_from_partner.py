@@ -159,7 +159,8 @@ class PartnerCreateSubscription(models.TransientModel):
                 representative.parent_id = cooperator.id
             else:
                 if self.check_belgian_ident_id(representative_number):
-                    represent_vals = {'name':self.representative_name,'national_register_number':representative_number,
+                    represent_vals = {'name':self.representative_name,'cooperator':True,
+                                      'national_register_number':representative_number,
                                       'parent_id':cooperator.id,'representative':True}
                     partner_obj.create(represent_vals)
                 
