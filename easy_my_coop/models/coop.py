@@ -44,7 +44,7 @@ class subscription_request(models.Model):
         subscr_request = super(subscription_request, self).create(vals)
         mail_template_obj = self.env['mail.template']
         confirmation_mail_template = mail_template_obj.search([('name', '=', 'Confirmation Email')])[0]
-        confirmation_mail_template.send_mail(subscr_request.id, True)
+        confirmation_mail_template.send_mail(subscr_request.id)
         return subscr_request
     
     @api.model
