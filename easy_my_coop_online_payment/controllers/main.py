@@ -14,8 +14,8 @@ from openerp.addons.website_payment.controllers.main import website_payment
 
 class SubscriptionOnlinePayment(WebsiteSubscription):
     
-    def fill_values(self, values, is_company):
-        values = super(SubscriptionOnlinePayment,self).fill_values(values, is_company)
+    def fill_values(self, values, is_company, load_from_user=False):
+        values = super(SubscriptionOnlinePayment,self).fill_values(values, is_company,load_from_user)
         fields_desc = request.env['subscription.request'].sudo().fields_get(['payment_type'])
         values['payment_types'] = fields_desc['payment_type']['selection']
         
