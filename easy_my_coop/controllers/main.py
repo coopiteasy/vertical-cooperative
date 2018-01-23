@@ -19,7 +19,7 @@ class WebsiteSubscription(http.Controller):
     def display_become_cooperator_page(self, **kwargs):
         values = {}
 
-        values = self.fill_values(values,is_company=False)
+        values = self.fill_values(values,False,True)
         
         for field in ['email','firstname','lastname','birthdate','iban','share_product_id','no_registre','address','city','zip_code','country_id','phone','lang','nb_parts','total_parts','error_msg']:
             if kwargs.get(field):
@@ -32,7 +32,7 @@ class WebsiteSubscription(http.Controller):
     def display_become_company_cooperator_page(self, **kwargs):
         values = {}
 
-        values = self.fill_values(values,is_company=True)
+        values = self.fill_values(values,True)
         
         for field in ['is_company','company_register_number','company_name','company_email','company_type','email','firstname','lastname','birthdate','iban','share_product_id','no_registre','address','city','zip_code','country_id','phone','lang','nb_parts','total_parts','error_msg']:
             if kwargs.get(field):
@@ -51,15 +51,41 @@ class WebsiteSubscription(http.Controller):
         values = self.preRenderThanks(values, kwargs)
         return request.website.render(kwargs.get("view_callback", "easy_my_coop.cooperator_thanks"), values)
     
-    def fill_values(self, values, is_company):
+    def get_values_from_user(self, values, is_company):
+        # the subscriber is connected
+        if request.env.user.login != 'public':
+            if is_company:
+                print ''
+            else:
+                values['logged'] = 'on'
+                partner = request.env.user.partner_id
+                values['firstname'] = partner.firstname
+                values['lastname'] = partner.lastname
+                values['email'] = partner.email
+                values['address'] = partner.street
+                values['zip_code'] = partner.zip
+                values['city'] = partner.city
+                values['country_id'] = partner.country_id.id
+                values['gender'] = partner.gender
+                values['no_registre'] = partner.national_register_number
+                values['birthdate'] = partner.birthdate
+                if partner.bank_ids:
+                    values['iban'] = partner.bank_ids[0].acc_number
+                values['lang'] = partner.lang
+                values['phone'] = partner.phone
+        return values
+    
+    def fill_values(self, values, is_company, load_from_user=False):
         company = request.website.company_id
-        
+        if load_from_user:
+            values = self.get_values_from_user(values,is_company)
         values['countries'] = self.get_countries()
         values['langs'] = self.get_langs()
         values['products'] = self.get_products_share(is_company)
         fields_desc = request.env['subscription.request'].sudo().fields_get(['company_type','gender'])
         values['company_types'] = fields_desc['company_type']['selection']
         values['genders'] = fields_desc['gender']['selection']
+        
         if not values.get('share_product_id'):
             products = request.env['product.template'].sudo().get_web_share_products(is_company)
             for product in products:
@@ -102,6 +128,7 @@ class WebsiteSubscription(http.Controller):
     
     @http.route(['/subscription/subscribe_share'], type='http', auth="public", website=True)
     def share_subscription(self, **kwargs):
+        user_obj = request.env['res.users']
         post_file = []  # List of file to add to ir_attachment once we have the ID
         post_description = []  # Info to add after the message
         values = {}
@@ -113,6 +140,8 @@ class WebsiteSubscription(http.Controller):
                 values[field_name] = field_value
             elif field_name not in _TECHNICAL:  # allow to add some free fields or blacklisted field like ID
                 post_description.append("%s: %s" % (field_name, field_value))
+        
+        logged = kwargs.get("logged")=='on'
         
         is_company = False
         if kwargs.get("is_company") == 'on':
@@ -128,7 +157,16 @@ class WebsiteSubscription(http.Controller):
            values["error_msg"] = "the captcha has not been validated, please fill in the captcha"
            
            return request.website.render(kwargs.get("view_from", redirect), values)
-
+        
+        if not logged and kwargs.has_key('email'):
+           user = user_obj.sudo().search([('login','=',kwargs.get("email"))])
+           if user:
+               values = self.fill_values(values,is_company)
+               values.update(kwargs)
+               values["error_msg"] = "There is an existing account for this mail address. Please login before fill in the form"
+               
+               return request.website.render(redirect, values)
+           
         # fields validation : Check that required field from model subscription_request exists
         required_fields = request.env['subscription.request'].sudo().get_required_field() 
         error = set(field for field in required_fields if not values.get(field))
@@ -162,19 +200,21 @@ class WebsiteSubscription(http.Controller):
         total_amount = float(kwargs.get('total_parts'))
         
         if max_amount > 0 and total_amount > max_amount:
-           values = self.fill_values(values)
+           values = self.fill_values(values,is_company)
            values["error_msg"] = "You can't suscribe for an amount that exceed " + str(max_amount) + company.currency_id.symbol
            return request.website.render("easy_my_coop.becomecooperator", values)
         
-        if values["is_company"] == True:
-            if kwargs.get("company_register_number"):
+        if is_company:
+            if kwargs.get("company_register_number", is_company):
                 values["company_register_number"] = re.sub('[^0-9a-zA-Z]+', '', kwargs.get("company_register_number"))
             subscription_id = request.env['subscription.request'].sudo().create_comp_sub_req(values)
         else:
             if kwargs.get("no_registre"):
                 values["no_registre"] = re.sub('[^0-9a-zA-Z]+', '', kwargs.get("no_registre"))
             subscription_id = request.env['subscription.request'].sudo().create(values)
+        
         values.update(subscription_id = subscription_id)
+        
         if subscription_id:
             for field_value in post_file:
                 attachment_value = {
@@ -186,6 +226,6 @@ class WebsiteSubscription(http.Controller):
                     'datas_fname': field_value.filename,
                 }
                 request.registry['ir.attachment'].create(request.cr, SUPERUSER_ID, attachment_value, context=request.context)
-
+        
         return self.get_subscription_response(values, kwargs)
 
