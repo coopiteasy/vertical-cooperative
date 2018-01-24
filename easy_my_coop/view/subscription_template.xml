@@ -58,6 +58,13 @@
 					   <p style="color:red;"><t t-esc="error_msg"/></p>
 			           <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 			           
+			           <div t-attf-class="form-group" style="display: none;">
+							<label>
+								<input type="checkbox" t-att-checked="logged" name="logged"/>
+								Logged
+							</label>
+						</div>
+						
 			           <div t-attf-class="form-group">
 							<label>
 								<input type="checkbox" t-att-value="already_cooperator" name="already_cooperator" />
@@ -116,8 +123,8 @@
 			                    <input type="text" class="form-control mandatory-field" name="iban" required="True" t-attf-value="#{iban or ''}" placeholder="BE48523080767127"/>
 			                </div>
 			            </div>
+	                    
 	                    <div t-attf-class="form-group #{error and 'lang' in error and 'has-error' or ''}" >
-	                    	
 	                      <label class="col-md-3 col-sm-4 control-label" style="width:25%" for="lang">Language</label>
 	                      <select name="lang" class="col-md-7 col-sm-8 form-control " style="width:30%;margin-left:15px">
 	                          <option value="2">Language...</option>
@@ -257,15 +264,19 @@
 					<form action="/subscription/subscribe_share" method="post" class="form-horizontal mt32" enctype="multipart/form-data">                    
 					   <p style="color:red;"><t t-esc="error_msg"/></p>
 			           <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-
-					   <div t-attf-class="form-group"  style="display: none;">
+					   
+					    <div t-attf-class="form-group"  style="display: none;">
+							<label>
+								<input type="checkbox" t-att-checked="logged" name="logged"/>
+								Logged
+							</label>
 							<label>
 								<input type="checkbox" t-att-value="company" checked="checked" name="is_company" />
 								Is a company?
 							</label>
 						</div>
 
-					   <div t-attf-class="form-group">
+					    <div t-attf-class="form-group">
 							<label>
 								Company Info
 							</label>
