@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import base64
-import datetime
+from datetime import datetime
 import re
 
 import werkzeug
@@ -68,7 +68,8 @@ class WebsiteSubscription(http.Controller):
                 values['country_id'] = partner.country_id.id
                 values['gender'] = partner.gender
                 values['no_registre'] = partner.national_register_number
-                values['birthdate'] = partner.birthdate
+                birthdate = datetime.strptime(partner.birthdate,"%Y-%m-%d") 
+                values['birthdate'] = datetime.strftime(birthdate,"%d/%m/%Y")
                 if partner.bank_ids:
                     values['iban'] = partner.bank_ids[0].acc_number
                 values['lang'] = partner.lang
@@ -186,7 +187,7 @@ class WebsiteSubscription(http.Controller):
         values["name"] = firstname + " " + lastname
         values["lastname"] = lastname
         values["firstname"] = firstname
-        values["birthdate"] = datetime.datetime.strptime(kwargs.get("birthdate"), "%d/%m/%Y").date()
+        values["birthdate"] = datetime.strptime(kwargs.get("birthdate"), "%d/%m/%Y").date()
         values["source"] = "website"
         
         if kwargs.get("share_product_id"):
