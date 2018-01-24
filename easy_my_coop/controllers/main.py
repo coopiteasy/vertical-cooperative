@@ -54,10 +54,10 @@ class WebsiteSubscription(http.Controller):
     def get_values_from_user(self, values, is_company):
         # the subscriber is connected
         if request.env.user.login != 'public':
+            values['logged'] = 'on'
             if is_company:
                 print ''
             else:
-                values['logged'] = 'on'
                 partner = request.env.user.partner_id
                 values['firstname'] = partner.firstname
                 values['lastname'] = partner.lastname
