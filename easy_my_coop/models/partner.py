@@ -112,6 +112,9 @@ class ResPartner(models.Model):
         if self.child_ids.filtered('representative'):
             return True
         return False
+    
+    def get_representative(self):
+        return self.child_ids.filtered('representative')
 
     def get_cooperator_from_nin(self, national_id_number):
         return self.search([('cooperator','=',True),('national_register_number','=',national_id_number)])
