@@ -25,6 +25,7 @@
                 "purchase",
                 "account_accountant",
                 "product",
+                "partner_firstname",
                 "website",
                 "website_recaptcha_reloaded",
                 "theme_light",
