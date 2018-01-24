@@ -32,7 +32,7 @@ class WebsiteSubscription(http.Controller):
     def display_become_company_cooperator_page(self, **kwargs):
         values = {}
 
-        values = self.fill_values(values,True)
+        values = self.fill_values(values,True,True)
         
         for field in ['is_company','company_register_number','company_name','company_email','company_type','email','firstname','lastname','birthdate','iban','share_product_id','no_registre','address','city','zip_code','country_id','phone','lang','nb_parts','total_parts','error_msg']:
             if kwargs.get(field):
@@ -51,14 +51,40 @@ class WebsiteSubscription(http.Controller):
         values = self.preRenderThanks(values, kwargs)
         return request.website.render(kwargs.get("view_callback", "easy_my_coop.cooperator_thanks"), values)
     
+    def get_date_string(self,birthdate):
+        if birthdate:
+            birthdate = datetime.strptime(birthdate,"%Y-%m-%d") 
+            return datetime.strftime(birthdate,"%d/%m/%Y")
+        return False
+
     def get_values_from_user(self, values, is_company):
         # the subscriber is connected
         if request.env.user.login != 'public':
             values['logged'] = 'on'
+            partner = request.env.user.partner_id
             if is_company:
-                print ''
+                #company values
+                values['company_register_number'] = partner.company_register_number
+                values['company_name'] = partner.name
+                #values['company_type'] = partner.
+                values['company_email'] = partner.email
+                values['iban'] = partner.bank_ids[0].acc_number
+                values['address'] = partner.street
+                values['zip_code'] = partner.zip
+                values['city'] = partner.city
+                values['country_id'] = partner.country_id.id
+                #contact person values
+                representative = partner.get_representative()
+                values['firstname'] = representative.firstname
+                values['lastname'] = representative.lastname
+                values['gender'] = representative.gender
+                values['email'] = representative.email
+                values['contact_person_function'] = representative.function
+                values['no_registre'] = representative.national_register_number
+                values['birthdate'] = self.get_date_string(representative.birthdate)
+                values['lang'] = representative.lang
+                values['phone'] = representative.phone
             else:
-                partner = request.env.user.partner_id
                 values['firstname'] = partner.firstname
                 values['lastname'] = partner.lastname
                 values['email'] = partner.email
@@ -68,8 +94,7 @@ class WebsiteSubscription(http.Controller):
                 values['country_id'] = partner.country_id.id
                 values['gender'] = partner.gender
                 values['no_registre'] = partner.national_register_number
-                birthdate = datetime.strptime(partner.birthdate,"%Y-%m-%d") 
-                values['birthdate'] = datetime.strftime(birthdate,"%d/%m/%Y")
+                values['birthdate'] = self.get_date_string(partner.birthdate)
                 if partner.bank_ids:
                     values['iban'] = partner.bank_ids[0].acc_number
                 values['lang'] = partner.lang
