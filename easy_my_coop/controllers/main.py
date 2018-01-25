@@ -18,7 +18,10 @@ class WebsiteSubscription(http.Controller):
     @http.route(['/page/become_cooperator','/become_cooperator'], type='http', auth="public", website=True)
     def display_become_cooperator_page(self, **kwargs):
         values = {}
-
+        if request.env.user.login != 'public':
+            partner = request.env.user.partner_id
+            if partner.is_company:
+                return request.website.render("easy_my_coop.becomecompanycooperator", values)
         values = self.fill_values(values,False,True)
         
         for field in ['email','firstname','lastname','birthdate','iban','share_product_id','no_registre','address','city','zip_code','country_id','phone','lang','nb_parts','total_parts','error_msg']:
