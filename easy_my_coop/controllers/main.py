@@ -65,17 +65,21 @@ class WebsiteSubscription(http.Controller):
         if request.env.user.login != 'public':
             values['logged'] = 'on'
             partner = request.env.user.partner_id
+            
+            if partner.member or partner.old_member:
+                values['already_cooperator'] = 'on'
+            if partner.bank_ids:
+                values['iban'] = partner.bank_ids[0].acc_number
+            values['address'] = partner.street
+            values['zip_code'] = partner.zip
+            values['city'] = partner.city
+            values['country_id'] = partner.country_id.id
+            
             if is_company:
                 #company values
                 values['company_register_number'] = partner.company_register_number
                 values['company_name'] = partner.name
-                #values['company_type'] = partner.
                 values['company_email'] = partner.email
-                values['iban'] = partner.bank_ids[0].acc_number
-                values['address'] = partner.street
-                values['zip_code'] = partner.zip
-                values['city'] = partner.city
-                values['country_id'] = partner.country_id.id
                 #contact person values
                 representative = partner.get_representative()
                 values['firstname'] = representative.firstname
@@ -91,15 +95,9 @@ class WebsiteSubscription(http.Controller):
                 values['firstname'] = partner.firstname
                 values['lastname'] = partner.lastname
                 values['email'] = partner.email
-                values['address'] = partner.street
-                values['zip_code'] = partner.zip
-                values['city'] = partner.city
-                values['country_id'] = partner.country_id.id
                 values['gender'] = partner.gender
                 values['no_registre'] = partner.national_register_number
                 values['birthdate'] = self.get_date_string(partner.birthdate)
-                if partner.bank_ids:
-                    values['iban'] = partner.bank_ids[0].acc_number
                 values['lang'] = partner.lang
                 values['phone'] = partner.phone
         return values
