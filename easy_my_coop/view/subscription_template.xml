@@ -362,48 +362,6 @@
 	                      </select>
 	                    </div>
 	                    <br/>
-	                    <!-- <div t-attf-class="form-group">
-							<label>
-								Operational Address
-							</label>
-						</div>
-						
-	                    <div t-attf-class="form-group #{error and 'activities_address' in error and 'has-error' or ''}">
-			                <label class="col-md-3 col-sm-4 control-label" for="activities_address">Address</label>
-			                <div class="col-md-7 col-sm-8">
-			                    <input type="text" class="form-control mandatory-field" name="activities_address" required="True" t-attf-value="#{activities_address or ''}" placeholder="rue du brochet, 48"/>
-			                </div>
-			            </div>							
-	                    	                    			            	
- 			            <div t-attf-class="form-group #{error and 'activities_zip_code' in error and 'has-error' or ''}">
-			                <label class="col-md-3 col-sm-4 control-label" for="activities_zip_code">City</label>
-			                <div class="col-md-7 col-sm-8">
-								<table>			
-									<tr>
-										<td width="20%">
-											<input type="text" class="form-control mandatory-field" name="activities_zip_code" required="True" t-attf-value="#{activities_zip_code or ''}" placeholder="1080"/>
-										</td>
-										<td width="3%"></td>
-										<td>
-											<input type="text" class="form-control mandatory-field" name="activities_city" required="True" t-attf-value="#{activities_city or ''}" placeholder="Bruxelles"/>
-										</td>										
-									</tr>   
-								</table>           	
-			                </div>
-			            </div>							
-
-	                    <div t-attf-class="form-group #{error and 'activities_country_id' in error and 'has-error' or ''}">
-	                    	
-	                      <label class="col-md-3 col-sm-4 control-label" style="width:25%" for="activities_country_id">Country</label>
-	                      <select name="activities_country_id" class="col-md-7 col-sm-8 form-control" style="width:54%;margin-left:15px">
-	                          <option value="">Country...</option>
-	                          <t t-foreach="countries or []" t-as="country">
-	                              <option t-att-value="country.id" t-att-selected="country.id == int(activities_country_id)"><t t-esc="country.name"/></option>
-	                          </t>
-	                      </select>
-	                    </div> -->
-						
-			            <br/>
 			            <div t-attf-class="form-group">
 							<label>
 								Contact Person
