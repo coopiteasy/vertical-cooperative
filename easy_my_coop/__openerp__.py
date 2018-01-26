@@ -26,6 +26,7 @@
                 "account_accountant",
                 "product",
                 "partner_firstname",
+                "partner_contact_birthdate",
                 "website",
                 "website_recaptcha_reloaded",
                 "theme_light",
