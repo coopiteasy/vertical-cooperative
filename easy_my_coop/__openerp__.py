@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2013-2016 Open Architects Consulting SPRL.
+#    Copyright (C) 2013-2017 Open Architects Consulting SPRL.
+#    Copyright (C) 2017-2018 Coop IT Easy SCRL.
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -30,8 +31,10 @@
                 "website",
                 "website_recaptcha_reloaded",
                 "theme_light",
-                "base_iban"],
-    "author": "Houssine BAKKALI <houssine.bakkali@gmail.com>",
+                "base_iban",
+                "email_template_config",
+                ],
+    "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
     "description": """
     This module allows to manage the cooperator subscription and all the cooperative business processes.    
