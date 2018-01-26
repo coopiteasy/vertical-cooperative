@@ -5,16 +5,16 @@ from datetime import date
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    def _auto_init(self, cr, context=None):
-        """
-            Convert the column birthdate into date if it's not the case to avoid warning and data loss with orm conversion
-        """
-        cr.execute("select data_type from information_schema.columns where table_name = 'res_partner' and column_name= 'birthdate';")
-        res = cr.fetchone()
-        if not 'date' in res:
-            cr.execute("ALTER TABLE res_partner ALTER COLUMN birthdate TYPE date USING birthdate::date;")
-        
-        return super(ResPartner, self)._auto_init(cr, context=context)
+#     def _auto_init(self, cr, context=None):
+#         """
+#             Convert the column birthdate into date if it's not the case to avoid warning and data loss with orm conversion
+#         """
+#         cr.execute("select data_type from information_schema.columns where table_name = 'res_partner' and column_name= 'birthdate';")
+#         res = cr.fetchone()
+#         if not 'date' in res:
+#             cr.execute("ALTER TABLE res_partner ALTER COLUMN birthdate TYPE date USING birthdate::date;")
+#         
+#         return super(ResPartner, self)._auto_init(cr, context=context)
 
     @api.multi
     def _invoice_total(self):
@@ -67,6 +67,7 @@ class ResPartner(models.Model):
     @api.multi
     @api.depends('share_ids')
     def _compute_effective_date(self):
+        #TODO change it to compute it from the share register
         for partner in self:
             if partner.share_ids:
                 partner.effective_date = partner.share_ids[0].effective_date  
@@ -100,7 +101,7 @@ class ResPartner(models.Model):
     national_register_number = fields.Char(string='National Register Number')
     share_ids = fields.One2many('share.line','partner_id',string='Share Lines')
     cooperator_register_number = fields.Integer(string='Cooperator Number')
-    birthdate = fields.Date(string="Birthdate")
+    #birthdate = fields.Date(string="Birthdate")
     number_of_share = fields.Integer(compute="_compute_share_info", multi='share', string='Number of share', readonly=True)
     total_value = fields.Float(compute="_compute_share_info", multi='share', string='Total value of shares', readonly=True)
     company_register_number = fields.Char(string='Company Register Number')
