@@ -23,7 +23,7 @@ class account_invoice(models.Model):
         mail_template_name = 'Payment Received Confirmation - Send By Email'
         
         # if not yet cooperator we generate a cooperator number
-        if self.partner_id.member == False and self.partner_id.old_number == False:
+        if self.partner_id.member == False and self.partner_id.old_member == False:
             sequence_id = obj_sequence.search([('name','=','Subscription Register')])[0]
             sub_reg_num = sequence_id.next_by_id()
             self.partner_id.write({'member':True,'old_member':False,
