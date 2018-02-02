@@ -43,6 +43,7 @@
         'security/easy_my_coop_security.xml',
         'security/ir.model.access.csv',
         'wizard/create_subscription_from_partner.xml',
+        'wizard/update_partner_info.xml',
         'view/subscription_request_view.xml',
         'view/email_template_view.xml',  
         'view/res_partner_view.xml',
