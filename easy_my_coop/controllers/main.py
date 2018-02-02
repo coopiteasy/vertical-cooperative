@@ -169,7 +169,11 @@ class WebsiteSubscription(http.Controller):
                 post_description.append("%s: %s" % (field_name, field_value))
         
         logged = kwargs.get("logged")=='on'
-        
+        if logged:
+            partner = request.env.user.partner_id
+            values['partner_id'] = partner.id
+            values['already_cooperator'] = partner.member
+ 
         is_company = False
         if kwargs.get("is_company") == 'on':
             is_company = True
