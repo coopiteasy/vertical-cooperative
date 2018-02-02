@@ -12,6 +12,7 @@ class ProductTemplate(models.Model):
     force_min_qty = fields.Boolean(String="Force minimum quantity?")
     by_company = fields.Boolean(string="Can be subscribed by companies?")
     by_individual = fields.Boolean(string="Can be subscribed by individuals?")
+    customer = fields.Boolean(string='Become customer')
     
     @api.multi
     def get_web_share_products(self, is_company):

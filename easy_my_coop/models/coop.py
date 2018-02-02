@@ -234,7 +234,7 @@ class subscription_request(models.Model):
         partner_vals = {'name':self.company_name, 'is_company': self.is_company, 
                         'company_register_number':self.company_register_number, 'customer':False,
                         'cooperator':True, 'street':self.address, 'zip':self.zip_code,
-                        'city': self.city,'email':self.email, 'out_inv_comm_type':'bba',
+                        'city': self.city,'email':self.email, 'out_inv_comm_type':'bba','customer': share_product_id.customer,
                         'out_inv_comm_algorithm':'random', 'country_id': self.country_id.id, 'lang':self.lang}
         return partner_vals
     
@@ -244,7 +244,7 @@ class subscription_request(models.Model):
                         'city': self.city, 'phone': self.phone, 'email':self.email,
                         'national_register_number':self.no_registre, 'out_inv_comm_type':'bba',
                         'out_inv_comm_algorithm':'random', 'country_id': self.country_id.id,
-                        'lang':self.lang, 'birthdate':self.birthdate}
+                        'lang':self.lang, 'birthdate':self.birthdate, 'customer': share_product_id.customer}
         return partner_vals
     
     def create_coop_partner(self):
@@ -275,7 +275,7 @@ class subscription_request(models.Model):
             user.sudo().with_context({'create_user': True}).action_reset_password()
         
         return True
-       
+
     @api.one
     def validate_subscription_request(self):
         partner_obj = self.env['res.partner']

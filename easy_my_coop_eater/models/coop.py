@@ -8,11 +8,10 @@ class subscription_request(models.Model):
         vals = {}
         eater = share_product_id.eater
         
-        if partner.is_company or partner.age < 18: 
+        if partner.is_company or partner.age < 18:
             eater = 'eater'
         
         vals['eater'] = eater
-        vals['customer'] = share_product_id.customer
         
         return vals
     
