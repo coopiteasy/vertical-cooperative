@@ -35,7 +35,7 @@ class PartnerUpdateInfo(models.TransientModel):
         cooperator = self.cooperator
         coop_vals = {}
         
-        if self.is_company:
+        if cooperator.is_company:
             coop_vals['company_register_number'] = self.register_number
         else:
             if self.check_belgian_ident_id(self.register_number):
