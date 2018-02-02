@@ -228,7 +228,7 @@ class WebsiteSubscription(http.Controller):
         
         if max_amount > 0 and total_amount > max_amount:
            values = self.fill_values(values,is_company)
-           values["error_msg"] = "You can't suscribe for an amount that exceed " + str(max_amount) + company.currency_id.symbol
+           values["error_msg"] = "You can't subscribe for an amount that exceed " + str(max_amount) + company.currency_id.symbol
            return request.website.render("easy_my_coop.becomecooperator", values)
         
         if is_company:
