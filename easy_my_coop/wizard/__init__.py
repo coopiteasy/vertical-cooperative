@@ -1,2 +1,3 @@
 # -*- coding: utf-8 -*-
-import create_subscription_from_partner
+from . import create_subscription_from_partner
+from . import update_partner_info

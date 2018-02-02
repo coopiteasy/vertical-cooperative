@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_update_partner_info" model="ir.ui.view">
+            <field name="name">Update Cooperator Info</field>
+            <field name="model">partner.update.info</field>
+            <field name="arch" type="xml">
+                <form string="Update Cooperator Info">
+                    <p class="oe_grey">
+                        Update Cooperator Info.
+                    </p>
+                    <group>
+                    	<field name="cooperator" readonly="True"/>
+                    	<field name="register_number"/>
+                    </group>
+                    <footer>
+                        <button name="update" string="Update Info" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_update_partner_info" model="ir.actions.act_window">
+            <field name="name">Update Cooperator Info</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">partner.update.info</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="groups_id" eval="[(4,ref('easy_my_coop.group_energiris_manager'))]"/>
+        </record>
+
+    </data>
+</openerp>
