@@ -6,7 +6,6 @@
         <field name="inherit_id" ref="easy_my_coop.product_template_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='minimum_quantity']" position="after">
-                <field name="customer" attrs="{'invisible':[('is_share','=',False)]}"/>
             	<field name="eater" attrs="{'invisible':[('is_share','=',False)]}"/>
             </xpath>
         </field>
