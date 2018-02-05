@@ -244,7 +244,7 @@ class subscription_request(models.Model):
                         'city': self.city, 'phone': self.phone, 'email':self.email,
                         'national_register_number':self.no_registre, 'out_inv_comm_type':'bba',
                         'out_inv_comm_algorithm':'random', 'country_id': self.country_id.id,
-                        'lang':self.lang, 'birthdate':self.birthdate, 'customer': share_product_id.customer}
+                        'lang':self.lang, 'birthdate':self.birthdate, 'customer': self.customer}
         return partner_vals
     
     def create_coop_partner(self):
