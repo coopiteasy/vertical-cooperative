@@ -57,7 +57,12 @@
 					<form action="/subscription/subscribe_share" method="post" class="form-horizontal mt32" enctype="multipart/form-data">                    
 					   <p style="color:red;"><t t-esc="error_msg"/></p>
 			           <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-			           
+			           					           
+			           <div t-attf-class="form-group">
+			              <a class='btn btn-primary' t-if="not logged" t-attf-href="/web/login?redirect=#{ request.httprequest.url }">You have already an account?</a>
+			              <br/>
+			           </div>
+					           
 			           <div t-attf-class="form-group" style="display: none;">
 							<label>
 								<input type="checkbox" t-att-checked="logged" name="logged"/>
