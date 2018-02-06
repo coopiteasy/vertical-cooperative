@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    OAC, Business Open Source Solution
-#    Copyright (C) 2013-2016 Open Architects Consulting SPRL.
+#    Copyright (C) 2013-2017 Open Architects Consulting SPRL.
+#    Copyright (C) 2018- Coop IT Easy SCRLfs.
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -24,6 +24,7 @@
     "depends": ["easy_my_coop"],
     "author": "Houssine BAKKALI <houssine.bakkali@gmail.com>",
     "category": "Cooperative management",
+    'website': "www.coopiteasy.be",
     "description": """
     This module allows to recompute the cooperator number subscription it has to be used carefully.    
     """,
