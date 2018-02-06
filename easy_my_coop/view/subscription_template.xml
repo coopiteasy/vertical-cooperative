@@ -11,7 +11,7 @@
 <template id="company_operational_offices" inherit_id="website.company_description" name="Company Description">
     <address itemscope="itemscope" position="inside">
 	    <div class="fa fa-building-o" t-field="res_company.company_registry"/><br/>
-	    <div class="fa fa-bank" t-field="res_company.partner_id.bank_ids.sanitized_acc_number"/>
+	    <div class="fa fa-bank" t-field="res_company.partner_id.bank_ids[0].sanitized_acc_number"/>
     </address>
 </template>
 
