@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2013-2016 Open Architects Consulting SPRL.
+#    Copyright (C) 2013-2017 Open Architects Consulting SPRL.
+#    Copyright (C) 2018- Coop IT Easy SCRLfs.
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -23,8 +24,9 @@
     "depends": ["easy_my_coop",
                 "l10n_fr",
                 "theme_light",],
-    "author": "Houssine BAKKALI <houssine.bakkali@gmail.com>",
+    "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
+    'webstite': "www.coopiteasy.be",
     "description": """
     This is the french localization for the easy my coop module    
     """,
