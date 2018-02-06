@@ -36,6 +36,7 @@
                 ],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
+    "website": "www.coopiteasy.be",
     "description": """
     This module allows to manage the cooperator subscription and all the cooperative business processes.    
     """,
