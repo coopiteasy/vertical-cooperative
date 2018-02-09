@@ -238,17 +238,5 @@
 	        </t>    	    	
 	    </t>
 	</template>
-	
-	<template id="report_sexy_invoice">
-	    <t t-call="theme_light.html_container">
-	        <t t-set="data_report_margin_top" t-value="10"/>
-	        <t t-set="data_report_header_spacing" t-value="5"/>
-	        <t t-set="data_report_dpi" t-value="110"/>
-	        
-	        <t t-foreach="docs" t-as="o">
-	            <t t-call="easy_my_coop.theme_invoice_G002_document" t-lang="o.partner_id.lang"/>
-	        </t>    	    	
-	    </t>
-	</template>
 </data>
 </openerp>
