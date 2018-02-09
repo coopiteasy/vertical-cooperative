@@ -12,17 +12,6 @@
             file="easy_my_coop.cooperator_invoice_G002.xml"
             attachment="(object.state in ('open','paid')) and ('SUBJ'+(object.number or '').replace('/','')+'.pdf')"
         />
-        
-        <report 
-            id="action_account_invoices"
-            model="account.invoice"
-            string="Invoices"
-            report_type="qweb-pdf"
-            name="easy_my_coop.report_sexy_invoice"
-            file="easy_my_coop.cooperator_invoice_G002.xml"
-            attachment_use="False"
-            attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
-        />
 
         <report
             id="action_cooperator_subscription_report" 

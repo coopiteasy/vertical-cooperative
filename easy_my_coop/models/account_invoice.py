@@ -75,12 +75,3 @@ class account_invoice(models.Model):
                 invoice.subscription_request.state = 'paid'
                 invoice.post_process_confirm_paid(effective_date)        
         return True
-    
-    @api.multi
-    def invoice_print(self):
-        """ Print the invoice and mark it as sent, so that we can see more
-            easily the next step of the workflow
-        """
-        self.ensure_one()
-        self.sent = True
-        return self.env['report'].get_action(self, 'easy_my_coop.report_sexy_invoice')
