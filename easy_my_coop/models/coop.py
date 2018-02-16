@@ -86,22 +86,25 @@ class subscription_request(models.Model):
     @api.depends('iban', 'no_registre','skip_control_ng')
     def _validated_lines(self):
         for sub_request in self:
+            validated = False
             try:
                 base_iban.validate_iban(sub_request.iban)
-                sub_request.validated = True
+                validated = True
             except ValidationError:
-                sub_request.validated = False
+                validated = False
             
             if not sub_request.is_company and (sub_request.skip_control_ng or self.check_belgian_identification_id(sub_request.no_registre)):
-                sub_request.validated = True
-    
+                validated = True
+            else:
+                validated = False
+            sub_request.validated = validated
     @api.multi
     @api.depends('share_product_id', 'share_product_id.list_price','ordered_parts')
     def _compute_subscription_amount(self):
         for sub_request in self:
             sub_request.subscription_amount = sub_request.share_product_id.list_price * sub_request.ordered_parts
     
-    already_cooperator = fields.Boolean(string="I'm already cooperator")    
+    already_cooperator = fields.Boolean(string="I'm already cooperator")  
     name = fields.Char(string='Name', required=True)
     firstname = fields.Char(string='Firstname')
     lastname = fields.Char(string='Lastname')
