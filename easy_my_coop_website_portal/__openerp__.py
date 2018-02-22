@@ -22,6 +22,7 @@
     'depends': [
         'website',
         'website_portal_v10',
+        'easy_my_coop',
     ],
 
     'data': [
