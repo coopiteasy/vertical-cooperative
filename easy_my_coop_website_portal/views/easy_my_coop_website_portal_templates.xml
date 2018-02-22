@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
+     Copyright 2015-2016 Odoo S.A.
+     Copyright 2016 Jairo Llopis <jairo.llopis@tecnativa.com>
      Copyright 2018 Rémy Taymans <remytaymans@gmail.com>
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
@@ -85,6 +87,112 @@
         </p>
       </div>
     </xpath>
+  </template>
+
+  <!-- Release Capital Requests in the menu -->
+  <template
+      id="portal_my_home_menu_capital_release"
+      name="Portal Menu: Easy My Coop Capital Release"
+      inherit_id="website_portal_v10.portal_layout"
+      priority="20">
+    <xpath expr="//ul[contains(@class,'o_portal_submenu')]"
+        position="inside">
+      <li>
+        <a href="/my/release_capital_request">Capital Releases</a>
+      </li>
+    </xpath>
+  </template>
+
+  <!-- Release Capital Requests on the main page -->
+  <template
+      id="portal_my_home_capital_release"
+      name="Portal My Home : Easy My Coop Capital Release Requests"
+      inherit_id="website_portal_v10.portal_my_home"
+      priority="20">
+    <xpath expr="//div[contains(@class,'o_my_home_content')]"
+        position="inside">
+      <h3 class="page-header">
+        <a href="/my/release_capital_request">
+          Your Release Capital Requests
+          <small class="ml8">
+            <t t-if="capital_request_count">
+              <span class='badge'>
+                <t t-esc="capital_request_count"/>
+              </span>
+            </t>
+            <t t-if="not capital_request_count">
+              There are currently no release capital request for your
+              account.
+            </t>
+          </small>
+        </a>
+      </h3>
+    </xpath>
+  </template>
+
+  <!-- Release Capital Request page -->
+  <template id="portal_my_capital_releases" name="My Capital Releases">
+    <t t-call="website_portal_v10.portal_layout">
+      <h3 class="page-header">Your Capital Release Requests</h3>
+      <t t-if="not capital_requests">
+        <p>
+          There are currently no capital release request for your
+          account.
+        </p>
+      </t>
+      <t t-if="capital_requests">
+        <table class="table table-hover o_my_status_table">
+          <thead>
+            <tr class="active">
+              <th>Request #</th>
+              <th>Request Date</th>
+              <th>Due Date</th>
+              <th></th>
+              <th>Amount Due</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr t-foreach="capital_requests" t-as="capital_request">
+              <td>
+                <a t-att-href="'/report/pdf/easy_my_coop.theme_invoice_G002/%s' %
+                  capital_request.id">
+                  <t t-esc="capital_request.number"/>
+                </a>
+              </td>
+              <td><span t-field="capital_request.date_invoice"/></td>
+              <td><span t-field="capital_request.date_due"/></td>
+              <td>
+                <t t-if="capital_request.state == 'open'">
+                  <span class="label label-info">
+                    <i class="fa fa-fw fa-clock-o"/> Waiting for Payment
+                  </span>
+                </t>
+                <t t-if="capital_request.state == 'paid'">
+                  <span class="label label-default">
+                    <i class="fa fa-fw fa-check"/> Paid
+                  </span>
+                </t>
+                <t t-if="capital_request.state == 'cancel'">
+                  <span class="label label-default">
+                    <i class="fa fa-fw fa-remove"/> Cancelled
+                  </span>
+                </t>
+              </td>
+              <td>
+                <span t-field="capital_request.residual"
+                    t-field-options='{
+                      "widget": "monetary",
+                      "display_currency": "capital_request.currency_id"
+                      }'/>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div t-if="pager" class="o_portal_pager text-center">
+          <t t-call="website.pager"/>
+        </div>
+      </t>
+    </t>
   </template>
 
 </openerp>
