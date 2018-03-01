@@ -121,7 +121,7 @@ class subscription_request(models.Model):
                               ('block','Blocked'),
                               ('done','Done'),
                               ('cancelled','Cancelled'),
-                              ('paid','paid')], 
+                              ('paid','paid')],
                              string='State',required=True, default="draft")
     email = fields.Char(string='Email')
     iban = fields.Char(string='Account Number')
@@ -238,7 +238,7 @@ class subscription_request(models.Model):
         partner_vals = {'name':self.company_name, 'is_company': self.is_company, 
                         'company_register_number':self.company_register_number, 'customer':False,
                         'cooperator':True, 'street':self.address, 'zip':self.zip_code,
-                        'city': self.city,'email':self.email, 'out_inv_comm_type':'bba','customer': share_product_id.customer,
+                        'city': self.city,'email':self.email, 'out_inv_comm_type':'bba','customer': self.share_product_id.customer,
                         'out_inv_comm_algorithm':'random', 'country_id': self.country_id.id, 'lang':self.lang}
         return partner_vals
     
