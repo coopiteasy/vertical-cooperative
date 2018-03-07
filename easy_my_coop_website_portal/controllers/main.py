@@ -104,3 +104,16 @@ class CooperatorWebsiteAccount(WebsiteAccount):
             "easy_my_coop_website_portal.portal_my_capital_releases",
             values
         )
+
+    @http.route(['/my/cooperator_certificat/send'],
+                type='http', auth="user", website=True)
+    def send_cooperator_certificat(self, **kw):
+        partner = request.env.user.partner_id
+        certificat_email_template = request.env.ref(
+            'easy_my_coop.email_template_certificat_increase', False
+        ).sudo()
+        if certificat_email_template:
+            certificat_email_template.send_mail(
+                partner.commercial_partner_id.id
+            )
+        return request.redirect(kw['nexturl'])

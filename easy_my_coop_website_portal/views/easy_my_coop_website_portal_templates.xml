@@ -85,6 +85,12 @@
           <label>Legal Representative: </label>
           <t t-esc="coop.representative"/>
         </p>
+        <p class="text-center">
+          <a t-att-href="'/report/pdf/easy_my_coop.cooperator_certificat_G001/%s' % coop.id"
+              class="btn btn-default">
+            Cooperator Certificate
+          </a>
+        </p>
       </div>
     </xpath>
   </template>
