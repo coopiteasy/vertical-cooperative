@@ -40,7 +40,12 @@ class subscription_request(models.Model):
 
                 if not cooperator.cooperator:
                     cooperator.write({'cooperator':True})
-
+        else:
+            cooperator_id = vals.get('partner_id')
+            cooperator = self.env['res.partner'].browse(cooperator_id)
+            if cooperator.member:
+                    vals['type'] = 'increase'
+                    vals['already_cooperator'] = True
         subscr_request = super(subscription_request, self).create(vals)
         mail_template_obj = self.env['mail.template']
         confirmation_mail_template = mail_template_obj.search([('name', '=', 'Confirmation Email')])[0]
