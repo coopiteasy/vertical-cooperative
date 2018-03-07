@@ -147,9 +147,11 @@ class PartnerCreateSubscription(models.TransientModel):
                 if self.check_belgian_ident_id(self.register_number):
                     coop_vals['national_register_number'] = self.register_number
         
-        if not self._get_representative():
-            representative_number = self.representative_number
-            representative = partner_obj.search([('national_register_number','=',representative_number)])
+        if self.is_company and not self._get_representative():
+            representative = False
+            if self.representative_number:
+                representative_number = self.representative_number
+                representative = partner_obj.search([('national_register_number','=',representative_number)])
             
             if representative:
                 if len(representative) > 1:
