@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2015-2016 Odoo S.A.
+     Copyright 2016 Jairo Llopis <jairo.llopis@tecnativa.com>
+     Copyright 2018 Rémy Taymans <remytaymans@gmail.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<openerp>
+
+  <!-- Tax Shelter Certificate in the menu -->
+  <template
+      id="portal_my_home_menu_tax_shelter"
+      name="Portal Menu: Easy My Coop Tax Shelter Certificate"
+      inherit_id="website_portal_v10.portal_layout"
+      priority="25">
+    <xpath expr="//ul[contains(@class,'o_portal_submenu')]"
+        position="inside">
+      <li>
+        <a href="/my/tax_shelter_certificate">
+          Tax Shelter Certificate
+        </a>
+      </li>
+    </xpath>
+  </template>
+
+  <!-- Tax Shelter Certificate on the main page -->
+  <template
+      id="portal_my_home_tax_shelter"
+      name="Portal My Home : Easy My Coop Tax Shelter Certificate"
+      inherit_id="website_portal_v10.portal_my_home"
+      priority="25">
+    <xpath expr="//div[contains(@class,'o_my_home_content')]"
+        position="inside">
+      <h3 class="page-header">
+        <a href="/my/tax_shelter_certificate">
+          Your Tax Shelter Certificate
+          <small class="ml8">
+            <t t-if="tax_shelter_count">
+              <span class='badge'>
+                <t t-esc="tax_shelter_count"/>
+              </span>
+            </t>
+            <t t-if="not tax_shelter_count">
+              There are currently no tax shelter certificate for your
+              account.
+            </t>
+          </small>
+        </a>
+      </h3>
+    </xpath>
+  </template>
+
+  <!-- Tax Shelter Certificate page -->
+  <template id="portal_my_tax_shelter" name="My Tax Shelter">
+    <t t-call="website_portal_v10.portal_layout">
+      <h3 class="page-header">Your Tax Shelter Certificate</h3>
+      <t t-if="not tax_shelters">
+        <p>
+          There are currently no tax shelter certificate for your
+          account.
+        </p>
+      </t>
+      <t t-if="tax_shelters">
+        <table class="table table-hover o_my_status_table">
+          <thead>
+            <tr class="active">
+              <th>Declaration Year</th>
+              <th>Total Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr t-foreach="tax_shelters" t-as="tax_shelter">
+              <td>
+                <a t-att-href="'/report/pdf/easy_my_coop_taxshelter_report.tax_shelter_subscription_report/%s' %
+                  tax_shelter.id">
+                  <t t-esc="tax_shelter.declaration_id.name"/>
+                </a>
+              </td>
+              <td><span t-field="tax_shelter.total_amount"/></td>
+            </tr>
+          </tbody>
+        </table>
+        <div t-if="pager" class="o_portal_pager text-center">
+          <t t-call="website.pager"/>
+        </div>
+      </t>
+    </t>
+  </template>
+
+</openerp>
