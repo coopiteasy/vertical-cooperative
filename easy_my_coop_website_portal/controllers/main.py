@@ -6,10 +6,11 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 
-from openerp import fields, models, http
+from werkzeug.exceptions import Forbidden, NotFound
+
+from openerp import http
+from openerp.exceptions import AccessError, MissingError
 from openerp.http import request
-from openerp import tools
-from openerp.tools.translate import _
 
 from openerp.addons.website_portal_v10.controllers.main import WebsiteAccount
 
@@ -105,15 +106,53 @@ class CooperatorWebsiteAccount(WebsiteAccount):
             values
         )
 
-    @http.route(['/my/cooperator_certificat/send'],
+    @http.route(['/my/release_capital_request/pdf/<int:oid>'],
                 type='http', auth="user", website=True)
-    def send_cooperator_certificat(self, **kw):
+    def get_release_capital_request(self, oid=-1, **kw):
+        """Render the pdf of the given release capital request"""
+        # Get the release capital request and raise an error if the user
+        # is not allowed to access to it or if the object is not found.
         partner = request.env.user.partner_id
-        certificat_email_template = request.env.ref(
-            'easy_my_coop.email_template_certificat_increase', False
-        ).sudo()
-        if certificat_email_template:
-            certificat_email_template.send_mail(
-                partner.commercial_partner_id.id
-            )
-        return request.redirect(kw['nexturl'])
+        invoice_mgr = request.env['account.invoice']
+        capital_request = invoice_mgr.sudo().browse(oid)
+        try:
+            if capital_request.partner_id != partner:
+                raise Forbidden()
+        except AccessError:
+            raise Forbidden()
+        except MissingError:
+            raise NotFound()
+        # Get the pdf
+        report_mgr = request.env['report'].sudo()
+        pdf = report_mgr.get_pdf(
+            capital_request.ids,
+            'easy_my_coop.theme_invoice_G002'
+        )
+        filename = "Release Capital Request - {oid}".format(
+            oid=capital_request.id
+        )
+        return self._render_pdf(pdf, filename)
+
+    @http.route(['/my/cooperator_certificate/pdf'],
+                type='http', auth="user", website=True)
+    def get_cooperator_certificat(self, **kw):
+        """Render the cooperator certificate pdf of the current user"""
+        partner = request.env.user.partner_id
+        report_mgr = request.env['report'].sudo()
+        pdf = report_mgr.get_pdf(
+            partner.ids,
+            'easy_my_coop.cooperator_certificat_G001'
+        )
+        filename = "Cooperator Certificate - {name}".format(
+            name=partner.name
+        )
+        return self._render_pdf(pdf, filename)
+
+    def _render_pdf(self, pdf, filename):
+        """Render a http response for a pdf"""
+        pdfhttpheaders = [
+            ('Content-Disposition', 'inline; filename="%s.pdf"' % filename),
+            ('Content-Type', 'application/pdf'),
+            ('Content-Length', len(pdf))
+        ]
+        return request.make_response(pdf, headers=pdfhttpheaders)
