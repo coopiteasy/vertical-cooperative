@@ -86,8 +86,7 @@
           <t t-esc="coop.representative"/>
         </p>
         <p class="text-center">
-          <a t-att-href="'/report/pdf/easy_my_coop.cooperator_certificat_G001/%s' % coop.id"
-              class="btn btn-default">
+          <a href="/my/cooperator_certificate/pdf" class="btn btn-default">
             Cooperator Certificate
           </a>
         </p>
@@ -160,7 +159,7 @@
           <tbody>
             <tr t-foreach="capital_requests" t-as="capital_request">
               <td>
-                <a t-att-href="'/report/pdf/easy_my_coop.theme_invoice_G002/%s' %
+                <a t-att-href="'/my/release_capital_request/pdf/%s' %
                   capital_request.id">
                   <t t-esc="capital_request.number"/>
                 </a>
