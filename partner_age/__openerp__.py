@@ -21,7 +21,9 @@
 {
     "name": "Partner Age",
     "version": "1.0",
-    "depends": ["easy_my_coop"],
+    "depends": [
+        "easy_my_coop",
+        "partner_contact_birthdate"],
     "author": "Houssine BAKKALI <houssine.bakkali@gmail.com>",
     "category": "Cooperative management",
     'website': "www.coopiteasy.be",
