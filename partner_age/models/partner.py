@@ -11,17 +11,17 @@ class ResPartner(models.Model):
         if operator not in ('=', '!=', '<', '<=', '>', '>=', 'in', 'not in'):
             return []
         # retrieve all the messages that match with a specific SQL query
-        query = """SELECT id FROM "%s" WHERE extract(year from age(CURRENT_DATE, birthdate)) %s %%s""" % \
+        query = """SELECT id FROM "%s" WHERE extract(year from age(CURRENT_DATE, birthdate_date)) %s %%s""" % \
                 (self._table, operator)
         self.env.cr.execute(query, (value,))
         ids = [t[0] for t in self.env.cr.fetchall()]
         return [('id', 'in', ids)]
 
     @api.one
-    @api.depends('birthdate')
+    @api.depends('birthdate_date')
     def _compute_age(self):
-        if self.birthdate:
-            dBday = datetime.strptime(self.birthdate, OE_DFORMAT).date()
+        if self.birthdate_date:
+            dBday = datetime.strptime(self.birthdate_date, OE_DFORMAT).date()
             dToday = datetime.now().date()
             self.age = dToday.year - dBday.year - ((
                 dToday.month, dToday.day) < (dBday.month, dBday.day))
