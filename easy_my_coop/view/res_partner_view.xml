@@ -27,7 +27,6 @@
 						<field name="effective_date" attrs="{'invisible':[('member','=',False)]}"/>
 					</group>
 					<group>
-						<field name="birthdate" attrs="{'invisible':[('is_company','=',True)]}"/>
 						<field name="gender" attrs="{'invisible':[('is_company','=',True)]}"/>
 					</group>
 	         	</xpath>
