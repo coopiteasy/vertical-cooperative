@@ -125,10 +125,16 @@ class PartnerCreateSubscription(models.TransientModel):
                 'ordered_parts': self.share_qty,
                 'user_id': self.env.uid,
                 'email': self.email,
-                'source': 'crm'}
+                'source': 'crm',
+                'address': self.cooperator.street,
+                'zip_code': self.cooperator.zip,
+                'city': self.cooperator.city,
+                'country_id': self.cooperator.country_id.id
+            }
         
         if self.is_company:
             vals['company_name'] = cooperator.name
+            vals['company_email'] = cooperator.email
             vals['name'] = '/'
             vals['company_register_number'] = self.register_number
             vals['is_company'] = True
