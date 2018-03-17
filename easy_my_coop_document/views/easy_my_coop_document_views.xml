@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2018 Rémy Taymans <remytaymans@gmail.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<openerp>
+  <data>
+
+    <!-- Document form view -->
+    <record id="view_form_document" model="ir.ui.view">
+      <field name="name">Document Form</field>
+      <field name="model">easy_my_coop.document</field>
+      <field name="arch" type="xml">
+        <form string="Documents">
+          <group>
+            <field name="name"/>
+            <field name="filename" invisible="1"/>
+            <field name="document" filename="filename"/>
+            <field name="document_date"/>
+            <field name="description"/>
+            <field name="public"/>
+            <field name="category"/>
+            <field name="published"/>
+            <field name="publication_date" readonly="True"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- Document tree view -->
+    <record id="view_tree_document" model="ir.ui.view">
+      <field name="name">Document Tree</field>
+      <field name="model">easy_my_coop.document</field>
+      <field name="arch" type="xml">
+        <tree decoration-muted="not published">
+          <field name="name"/>
+          <field name="document" filename="filename"/>
+          <field name="document_date"/>
+          <field name="description"/>
+          <field name="public"/>
+          <field name="category"/>
+          <field name="published"/>
+          <field name="publication_date"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Document search view -->
+    <record id="view_search_document" model="ir.ui.view">
+      <field name="name">Document Search</field>
+      <field name="model">easy_my_coop.document</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="category"/>
+          <filter string="Public" domain="[('public', '=', True)]"/>
+          <filter string="Published" domain="[('published', '=', True)]"/>
+          <filter string="Category" context="{'group_by': 'category'}"/>
+        </search>
+      </field>
+    </record>
+
+    <!-- Category form view -->
+    <record id="view_form_category" model="ir.ui.view">
+      <field name="name">Category Form</field>
+      <field name="model">easy_my_coop.document.category</field>
+      <field name="arch" type="xml">
+        <form string="Categories">
+          <group>
+            <field name="name"/>
+            <field name="description"/>
+            <field name="parent_id"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- Category tree view -->
+    <record id="view_tree_category" model="ir.ui.view">
+      <field name="name">Category Tree</field>
+      <field name="model">easy_my_coop.document.category</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="description"/>
+          <field name="parent_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Category search view -->
+    <record id="view_search_category" model="ir.ui.view">
+      <field name="name">Category Search</field>
+      <field name="model">easy_my_coop.document.category</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <filter string="Parent Category"
+            context="{'group_by': 'parent_id'}"/>
+        </search>
+      </field>
+    </record>
+
+  </data>
+</openerp>
