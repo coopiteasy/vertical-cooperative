@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2018 Rémy Taymans <remytaymans@gmail.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<openerp>
+  <data>
+
+    <!-- Action to open document list -->
+    <act_window id="action_easy_my_coop_document"
+      name="Document"
+      res_model="easy_my_coop.document"
+      view_mode="tree,form" />
+
+    <!-- Action to open category list -->
+    <act_window id="action_easy_my_coop_document_category"
+      name="Categories"
+      res_model="easy_my_coop.document.category"
+      view_mode="tree,form" />
+
+    <!-- Root menu for document -->
+    <menuitem id="menu_main_easy_my_coop_document"
+      name="Documents"
+      sequence="45" />
+
+    <!-- Menu item to open Document list -->
+    <menuitem id="menu_document"
+      name="Documents"
+      parent="menu_main_easy_my_coop_document"
+      action="action_easy_my_coop_document" />
+
+    <!-- Menu item to open Category list -->
+    <menuitem id="menu_category"
+      name="Categories"
+      parent="menu_main_easy_my_coop_document"
+      action="action_easy_my_coop_document_category" />
+
+  </data>
+</openerp>
