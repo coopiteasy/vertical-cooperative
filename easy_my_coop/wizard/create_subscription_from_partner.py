@@ -177,7 +177,10 @@ class PartnerCreateSubscription(models.TransientModel):
             partner_bank.create({'partner_id':cooperator.id,
                                  'acc_number':self.bank_account})
         vals['iban'] = self.bank_account
-            
+        if self.is_company:
+            representative = self._get_representative()
+            vals['name'] = representative.name
+    
         if coop_vals:
             cooperator.write(coop_vals)
 
