@@ -243,7 +243,7 @@ class subscription_request(models.Model):
         partner_vals = {'name':self.company_name, 'is_company': self.is_company, 
                         'company_register_number':self.company_register_number, 'customer':False,
                         'cooperator':True, 'street':self.address, 'zip':self.zip_code,
-                        'city': self.city,'email':self.email, 'out_inv_comm_type':'bba','customer': self.share_product_id.customer,
+                        'city': self.city,'email':self.company_email, 'out_inv_comm_type':'bba','customer': self.share_product_id.customer,
                         'out_inv_comm_algorithm':'random', 'country_id': self.country_id.id, 'lang':self.lang}
         return partner_vals
     
