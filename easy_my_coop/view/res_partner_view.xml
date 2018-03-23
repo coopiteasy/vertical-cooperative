@@ -22,6 +22,7 @@
 						<field name="company_register_number" readonly="True" attrs="{'invisible':[('is_company','=',False)]}"/>
 						<field name="national_register_number" readonly="True" attrs="{'invisible':[('is_company','=',True)]}" groups="easy_my_coop.group_energiris_super_manager"/>
 						<field name="cooperator" groups="easy_my_coop.group_energiris_super_manager"/>
+						<field name="coop_candidate" groups="easy_my_coop.group_energiris_user"/>
 						<field name="member" groups="easy_my_coop.group_energiris_super_manager"/>
 						<field name="cooperator_type" attrs="{'invisible':[('member','=',False)]}"/>
 						<field name="effective_date" attrs="{'invisible':[('member','=',False)]}"/>
@@ -44,6 +45,18 @@
 		         				<field name="share_number" sum="Total of shares"/>
 		         				<field name="share_unit_price"/>
 		         				<field name="total_amount_line" sum="Total subscribed amount"/>
+		         			</tree>
+		         		</field>
+		         	</page>
+		         	<page string="Share subscriptions" name="share_subscription" attrs="{'invisible':[('cooperator','=',False)]}" groups="easy_my_coop.group_energiris_user">
+		         		<field name="subscription_request_ids">
+		         			<tree create="false" delete="false" edit="false">
+		         				<field name="share_short_name"/>
+		         				<field name="ordered_parts" sum="Total of shares"/>
+		         				<field name="share_unit_price"/>
+		         				<field name="subscription_amount" sum="Total subscribed amount"/>
+		         				<field name="type"/>
+		         				<field name="state"/>
 		         			</tree>
 		         		</field>
 		         	</page>
@@ -108,7 +121,7 @@
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
-            <field name="domain">[('cooperator','=',True),('member','=',False),('old_member','=',False)]</field>
+            <field name="domain">[('cooperator','=',True),('coop_candidate','=',True)]</field>
             <field name="context">{'default_cooperator':1, 'search_default_cooperator':1}</field>
             <field name="filter" eval="True"/>
             <field name="help" type="html">
@@ -123,5 +136,26 @@
         </record>
         
         <menuitem id="menu_easy_my_coop_cooperator_candidate" name="Cooperator Candidates" parent="menu_easy_my_coop_main_coop" action="action_partner_cooperator_candidate_form" sequence="150"/>
+        
+        <record id="action_company_representative_form" model="ir.actions.act_window">
+            <field name="name">Company representative</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('cooperator','=',True),('representative','=',True)]</field>
+            <field name="filter" eval="True"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a contact in your address book.
+              </p><p>
+                OpenERP helps you easily track all activities related to
+                a cooperator: discussions, history of business opportunities,
+                documents, etc.
+              </p>
+            </field>
+        </record>
+        
+        <menuitem id="menu_easy_my_coop_company_representative" name="Company representative" parent="menu_easy_my_coop_main_coop" action="action_company_representative_form" sequence="160"/>
 	</data>
 </openerp>

@@ -96,6 +96,7 @@ class ResPartner(models.Model):
      
     cooperator = fields.Boolean(string='Cooperator', help="Check this box if this contact is a cooperator(effective or not).")
     member = fields.Boolean(string='Effective cooperator', help="Check this box if this cooperator is an effective member.")
+    coop_candidate = fields.Boolean(string="Cooperator Candidate", compute="_compute_coop_candidate", store=True, readonly=True)
     old_member = fields.Boolean(string='Old cooperator', help="Check this box if this cooperator is no more an effective member.")
     gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('other', 'Other')], string='Gender')
     national_register_number = fields.Char(string='National Register Number')
@@ -108,7 +109,23 @@ class ResPartner(models.Model):
     cooperator_type = fields.Selection(selection='_get_share_type', compute='_compute_cooperator_type', string='Cooperator Type', store=True)
     effective_date = fields.Date(sting="Effective Date", compute='_compute_effective_date', store=True)
     representative = fields.Boolean(string="Legal Representative")
+    subscription_request_ids = fields.One2many('subscription.request', 'partner_id', string="Subscription request")
     
+    @api.multi
+    @api.depends('subscription_request_ids.state')
+    def _compute_coop_candidate(self):
+        for partner in self:
+            paid_sub_req = partner.subscription_request_ids.filtered(lambda record: record.state == 'paid')
+            if paid_sub_req:
+                is_candidate = False
+            else:
+                if len(partner.subscription_request_ids.filtered(lambda record: record.state != 'cancelled')) > 0:
+                    is_candidate = True
+                else :
+                    is_candidate = False
+             
+            partner.coop_candidate = is_candidate
+            
     def has_representative(self):
         if self.child_ids.filtered('representative'):
             return True
