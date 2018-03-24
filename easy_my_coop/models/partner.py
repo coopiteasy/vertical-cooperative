@@ -96,7 +96,7 @@ class ResPartner(models.Model):
      
     cooperator = fields.Boolean(string='Cooperator', help="Check this box if this contact is a cooperator(effective or not).")
     member = fields.Boolean(string='Effective cooperator', help="Check this box if this cooperator is an effective member.")
-    coop_candidate = fields.Boolean(string="Cooperator Candidate", compute="_compute_coop_candidate", store=True, readonly=True)
+    coop_candidate = fields.Boolean(string="Cooperator candidate", compute="_compute_coop_candidate", store=True, readonly=True)
     old_member = fields.Boolean(string='Old cooperator', help="Check this box if this cooperator is no more an effective member.")
     gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('other', 'Other')], string='Gender')
     national_register_number = fields.Char(string='National Register Number')
