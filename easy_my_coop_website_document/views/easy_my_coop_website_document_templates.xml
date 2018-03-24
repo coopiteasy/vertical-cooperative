@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2018 Rémy Taymans <remytaymans@gmail.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<openerp>
+
+  <!-- Add menu entries -->
+  <data noupdate="0">
+    <record id="menu_website_document" model="website.menu">
+      <field name="name">Documents</field>
+      <field name="url">/documents</field>
+      <field name="parent_id" ref="website.main_menu"/>
+      <field name="sequence" type="int">40</field>
+    </record>
+  </data>
+
+
+  <!-- Reusable template -->
+  <!-- Side bar -->
+  <template
+    id="website_document_side_bar"
+    name="Easy My Coop Website Document: Side bar">
+
+    <div class="oe_structure"/>
+
+    <h3 class="page-header">Archives</h3>
+    <ul class="nav nav-pills nav-stacked">
+      <t t-foreach="archive_groups" t-as="group">
+        <t t-if="group['date_begin'] == date">
+          <li class="active">
+            <a t-att-href="default_url" t-ignore="True">
+              <t t-esc="group['name']"/>
+              <span class="pull-right badge" t-esc="group['item_count']"/>
+            </a>
+          </li>
+        </t>
+        <t t-if="group['date_begin'] != date">
+          <li>
+            <a t-ignore="True"
+              t-attf-href="#{default_url}?date_begin=#{group['date_begin']}&amp;date_end=#{group['date_end']}">
+              <t t-esc="group['name']"/>
+              <span class="pull-right badge" t-esc="group['item_count']"/>
+            </a>
+          </li>
+        </t>
+      </t>
+    </ul>
+
+    <div class="oe_structure"/>
+
+  </template>
+
+  <!-- Display document list -->
+  <template
+    id="website_document_display_document_list"
+    name="Easy My Coop Website Document: Display document list">
+
+    <div class="list-group" t-foreach="documents" t-as="doc">
+      <a t-attf-href="/documents/{{doc.id}}"
+        class="list-group-item clearfix">
+        <span class="fa fa-file"></span>
+        <t t-esc="doc.name"/> - <small t-field="doc.document_date"/>
+        <span class="pull-right">
+          <span class="fa fa-download"></span>
+          <t t-esc="size_to_str(doc.file_size)"/>
+        </span>
+        <t t-if="doc.description">
+          <p t-field="doc.description" class="mb0 small"/>
+        </t>
+      </a>
+    </div>
+
+  </template>
+
+  <!-- Display of a category and its documents -->
+  <template
+    id="display_categories_and_documents"
+    name="Easy My Coop Website Document: Display Category and documents">
+
+    <t t-set="cat" t-value="category_tree[0]"/>
+    <t t-set="child_category_tree" t-value="category_tree[1]"/>
+    <t t-set="documents" t-value="category_tree[2]"/>
+
+    <div class="panel panel-default" t-if="cat">
+      <div class="panel-heading" role="tab" t-attf-id="heading-{{ cat.id }}">
+        <a role="button"
+           class="h4"
+           t-attf-href="#collapse-{{ cat.id }}"
+           data-toggle="collapse"
+           aria-expanded="false"
+           t-attf-aria-controls="collapse-{{ cat.id }}">
+          <h4 class="panel-title">
+            <t t-esc="cat.name"/>
+            <t t-if="cat.description">
+              <small>
+                - <t t-esc="cat.description"/>
+              </small>
+            </t>
+          </h4>
+        </a>
+      </div>
+
+      <div t-attf-id="collapse-{{ cat.id }}"
+        class="panel-collapse collapse"
+        role="tabpanel" t-attf-aria-labelledby="heading-{{ cat.id }}">
+        <div class="panel-body">
+
+          <t t-foreach="child_category_tree" t-as="child_cat_tree">
+            <t t-call="easy_my_coop_website_document.display_categories_and_documents">
+              <t t-set="category_tree" t-value="child_cat_tree"/>
+            </t>
+          </t>
+
+          <t t-call="easy_my_coop_website_document.website_document_display_document_list"/>
+
+        </div>
+      </div>
+    </div>
+
+    <t t-if="not cat">
+      <t t-foreach="child_category_tree" t-as="child_cat_tree">
+        <t t-call="easy_my_coop_website_document.display_categories_and_documents">
+          <t t-set="category_tree" t-value="child_cat_tree"/>
+        </t>
+      </t>
+      <t t-call="easy_my_coop_website_document.website_document_display_document_list"/>
+    </t>
+
+  </template>
+
+
+  <!-- Document main page -->
+  <template
+    id="template_website_document"
+    name="Easy My Coop Website Document: Main page"
+    page="True">
+    <t t-call="website.layout">
+
+      <div class="oe_structure"/>
+
+      <section class="wrap">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h1 class="text-center">
+                Documents
+              </h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="oe_structure"/>
+
+      <section class="wrap">
+        <div class="container">
+          <div class="row">
+            <!-- Main panel -->
+            <div class="col-xs-12 col-md-8">
+
+              <t t-call="easy_my_coop_website_document.display_categories_and_documents"/>
+
+            </div> <!-- col-md-8 -->
+
+            <!-- Side panel -->
+            <div class="col-xs-12 col-md-4">
+              <t t-call="easy_my_coop_website_document.website_document_side_bar"/>
+            </div> <!-- col-md-4 -->
+
+          </div> <!-- row -->
+        </div> <!-- container -->
+      </section>
+
+    </t>
+  </template>
+
+</openerp>
