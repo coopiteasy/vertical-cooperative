@@ -88,7 +88,7 @@ class subscription_request(models.Model):
         return True
     
     @api.multi
-    @api.depends('iban', 'no_registre','skip_control_ng')
+    @api.depends('iban', 'no_registre','skip_control_ng','is_company',)
     def _validated_lines(self):
         for sub_request in self:
             validated = False
@@ -98,11 +98,11 @@ class subscription_request(models.Model):
             except ValidationError:
                 validated = False
             
-            if not sub_request.is_company:
-                if sub_request.skip_control_ng or self.check_belgian_identification_id(sub_request.no_registre):
-                    validated = True
-                else:
-                    validated = False
+            #if not sub_request.is_company:
+            if sub_request.skip_control_ng or self.check_belgian_identification_id(sub_request.no_registre):
+                validated = True
+            else:
+                validated = False
             sub_request.validated = validated
     @api.multi
     @api.depends('share_product_id', 'share_product_id.list_price','ordered_parts')
@@ -302,12 +302,12 @@ class subscription_request(models.Model):
                 partner = partner_obj.search([('national_register_number','=',self.no_registre)])
             else:
                 partner = None
-                
+
         if not partner:
             partner = self.create_coop_partner()
         else:
             partner = partner[0]
-        
+
         if self.is_company and not partner.has_representative(): 
             contact = partner_obj.search([('national_register_number','=',self.no_registre)])
             if not contact:
@@ -327,14 +327,14 @@ class subscription_request(models.Model):
                     raise UserError(_('This contact person is already defined for another company. Please select another contact'))
                 else:
                     contact.parent_id = partner.id
-        
+
         invoice = self.create_invoice(partner)
         self.write({'partner_id':partner.id, 'state':'done'})
-        
+
         self.create_user(partner)
-        
+
         return invoice
-                    
+
     @api.one
     def block_subscription_request(self):
         self.write({'state':'block'})
