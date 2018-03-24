@@ -180,7 +180,7 @@ class PartnerCreateSubscription(models.TransientModel):
         if self.is_company:
             representative = self._get_representative()
             vals['name'] = representative.name
-            vals['no_registre'] = representative.register_number
+            vals['no_registre'] = representative.national_register_number
     
         if coop_vals:
             cooperator.write(coop_vals)
