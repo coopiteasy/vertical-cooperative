@@ -83,7 +83,7 @@
             <field name="inherit_id" ref="base.view_res_partner_filter"/>
             <field name="arch" type="xml">
             	<xpath expr="//filter[@name='supplier']" position='after'>
-                   <filter string="Cooperators" name="cooperator" domain="[('cooperator','=',1)]" help="Cooperator Partners"/>
+                   <filter string="Cooperators" name="cooperator" domain="[('member','=',1)]" help="Cooperator Partners"/>
                 </xpath>
                 <filter name="salesperson" position="before">
                 	<filter name="Cooperator Type" context="{'group_by': 'cooperator_type'}"/>
