@@ -31,9 +31,11 @@ class TaxShelterDeclaration(models.Model):
     company_id = fields.Many2one('res.company', string='Company', required=True, 
                                  change_default=True, readonly=True,
                                  default=lambda self: self.env['res.company']._company_default_get())
-    tax_shelter_capital_limit = fields.Float(string="Tax shelter capital limite", required=True) 
-    
-    def _prepare_line(self, certificate, entry):
+    tax_shelter_capital_limit = fields.Float(string="Tax shelter capital limit", required=True) 
+    previously_subscribed_capital = fields.Float(String="Capital previously subscribed", readonly=True)
+
+
+    def _prepare_line(self, certificate, entry, ongoing_capital_sub):
         line_vals = {}
         line_vals['tax_shelter_certificate'] = certificate.id
         line_vals['share_type'] = entry.share_product_id.id
@@ -42,11 +44,19 @@ class TaxShelterDeclaration(models.Model):
         line_vals['quantity'] = entry.quantity
         line_vals['transaction_date'] = entry.date
         line_vals['type'] = TYPE_MAP[entry.type]
+        if entry.type == 'subscription':
+            capital_after_sub = ongoing_capital_sub + entry.total_amount_line
+            line_vals['capital_before_sub'] = ongoing_capital_sub
+            line_vals['capital_after_sub'] = capital_after_sub
+            if capital_after_sub <= self.tax_shelter_capital_limit:
+                line_vals['tax_shelter'] = True
         return line_vals
     
     def _compute_certificates(self,entries,partner_certificate):
+        ongoing_capital_sub = 0.0
         for entry in entries:
             certificate = partner_certificate.get(entry.partner_id.id, False)
+            
             if not certificate:
                 #create a certificate for this cooperator
                 cert_vals={}
@@ -55,22 +65,36 @@ class TaxShelterDeclaration(models.Model):
                 cert_vals['cooperator_number'] = entry.partner_id.cooperator_register_number
                 certificate = self.env['tax.shelter.certificate'].create(cert_vals)
                 partner_certificate[entry.partner_id.id] = certificate
-            line_vals = self._prepare_line(certificate, entry)
+            line_vals = self._prepare_line(certificate, entry, ongoing_capital_sub)
             certificate.write({'lines': [(0, 0, line_vals)]})
-            #self.env['certificate.line'].create(line_vals)
+
+            if entry.type == 'subscription' and entry.date >= self.date_from:
+                ongoing_capital_sub += entry.total_amount_line
+
         return partner_certificate
     
     @api.one
     def compute_declaration(self):
-        partner_certificate = {}
+
+#         entries = self.env['subscription.register'].search([('partner_id.is_company','=',False),
+#                                                             ('date','<',self.date_from),
+#                                                             ('type','=','subscription')])
         entries = self.env['subscription.register'].search([('partner_id.is_company','=',False),
-                                                            ('date','<=',self.date_to),
-                                                            ('type','=','subscription')])
-        partner_certificate = self._compute_certificates(entries, partner_certificate)
+                                                    ('date','<=',self.date_to),
+                                                    ('type','in',['subscription','sell_back','transfer'])])
         
-        entries = self.env['subscription.register'].search([('partner_id.is_company','=',False),
-                                                            ('date','<=',self.date_to),
-                                                            ('type','in',['sell_back','transfer'])])
+        subscriptions = entries.filtered((lambda r: r.type == 'subscription' and r.date < self.date_from))
+        cap_prev_sub = 0.0
+        for subscription in subscriptions:
+            cap_prev_sub += subscription.total_amount_line
+        
+        self.previously_subscribed_capital = cap_prev_sub
+        
+        partner_certificate = {}
+        
+#         entries = self.env['subscription.register'].search([('partner_id.is_company','=',False),
+#                                                             ('date','<=',self.date_to),
+#                                                             ('type','in',['subscription','sell_back','transfer'])])
         partner_certificate = self._compute_certificates(entries, partner_certificate)
         
         self.state = 'computed'
@@ -98,7 +122,7 @@ class TaxShelterCertificate(models.Model):
                               ('validated','Validated'),
                               ('sent','Sent')], 
                               string='State',required=True, default="draft")
-    declaration_id = fields.Many2one('tax.shelter.declaration', string='Declaration', required=True, readonly=True) 
+    declaration_id = fields.Many2one('tax.shelter.declaration', string='Declaration', required=True, readonly=True)
     lines = fields.One2many('certificate.line','tax_shelter_certificate', string='Certificate lines', readonly=True)
     previously_subscribed_lines = fields.One2many(compute='_compute_certificate_lines', comodel_name='certificate.line', string='Previously Subscribed lines', readonly=True)
     subscribed_lines = fields.One2many(compute='_compute_certificate_lines', comodel_name='certificate.line', string='Shares subscribed', readonly=True)
@@ -118,7 +142,7 @@ class TaxShelterCertificate(models.Model):
         report_name = self.partner_id.name + ' ' + name + ' ' + self.declaration_id.name + '.pdf'
         
         return (report_name, report)
-    
+
     def generate_certificates_report(self):
         attachments = []
         if self.total_amount_subscribed > 0:
@@ -196,6 +220,7 @@ class TaxShelterCertificateLine(models.Model):
     share_unit_price = fields.Float(string='Share price', required=True, readonly=True)
     quantity = fields.Integer(string='Number of shares', required=True, readonly=True)
     transaction_date = fields.Date(string="Transaction date")
+    tax_shelter = fields.Boolean(string="Tax shelter", readonly=True)
     type = fields.Selection([('subscribed','Subscribed'),
                              ('resold','Resold'),
                              ('transfered','Transfered'),
@@ -204,7 +229,9 @@ class TaxShelterCertificateLine(models.Model):
     amount_resold = fields.Float(compute='_compute_totals', string='Amount resold',store=True)
     amount_transfered = fields.Float(compute='_compute_totals', string='Amount transfered',store=True)
     share_short_name = fields.Char(string='Share type name', readonly=True)
-    
+    capital_before_sub = fields.Float(string="Capital before subscription", readonly=True)
+    capital_after_sub = fields.Float(string="Capital after subscription", readonly=True)
+
     @api.multi
     @api.depends('quantity','share_unit_price')
     def _compute_totals(self):
