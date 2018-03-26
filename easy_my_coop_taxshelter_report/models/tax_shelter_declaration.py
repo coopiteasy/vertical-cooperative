@@ -75,10 +75,6 @@ class TaxShelterDeclaration(models.Model):
     
     @api.one
     def compute_declaration(self):
-
-#         entries = self.env['subscription.register'].search([('partner_id.is_company','=',False),
-#                                                             ('date','<',self.date_from),
-#                                                             ('type','=','subscription')])
         entries = self.env['subscription.register'].search([('partner_id.is_company','=',False),
                                                     ('date','<=',self.date_to),
                                                     ('type','in',['subscription','sell_back','transfer'])])
@@ -92,9 +88,6 @@ class TaxShelterDeclaration(models.Model):
         
         partner_certificate = {}
         
-#         entries = self.env['subscription.register'].search([('partner_id.is_company','=',False),
-#                                                             ('date','<=',self.date_to),
-#                                                             ('type','in',['subscription','sell_back','transfer'])])
         partner_certificate = self._compute_certificates(entries, partner_certificate)
         
         self.state = 'computed'
