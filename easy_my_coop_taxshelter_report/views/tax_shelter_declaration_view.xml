@@ -21,6 +21,7 @@
 		                    	<field name="fiscal_year"/>
 	                   			<field name="tax_shelter_percentage"/>
 	                   			<field name="tax_shelter_capital_limit"/>
+	                   			<field name="previously_subscribed_capital"/>
 	                    	</group>
 		                	<group>
 	                    		<field name="date_from"/>
@@ -35,7 +36,7 @@
 		                   			<tree>
 		                    			<field name="partner_id"/>
 		                    			<field name="cooperator_number"/>
-		                    			<field name="total_amount"/>
+		                    			<field name="total_amount" sum="Total amount"/>
 		                    			<field name="state"/>
 		                    			<button type="object" name="send_certificates" icon="STOCK_MEDIA_PLAY" string="Send Certificates"/>
 		                   			</tree>
@@ -101,6 +102,9 @@
                    			<page string="Subscription">
 		                   		<field name="subscribed_lines">
 		                   			<tree>
+		                    			<field name="capital_before_sub"/>
+		                    			<field name="capital_after_sub"/>
+		                    			<field name="tax_shelter"/>
 		                    			<field name="transaction_date"/>
 		                    			<field name="share_type"/>
 		                    			<field name="share_short_name"/>
@@ -140,6 +144,9 @@
 	                   		<page string="Previously subscribed">
 		                   		<field name="previously_subscribed_lines">
 		                   			<tree>
+		                    			<field name="capital_before_sub"/>
+		                    			<field name="capital_after_sub"/>
+		                    			<field name="tax_shelter"/>
 		                    			<field name="transaction_date"/>
 		                    			<field name="share_type"/>
 		                    			<field name="share_short_name"/>
