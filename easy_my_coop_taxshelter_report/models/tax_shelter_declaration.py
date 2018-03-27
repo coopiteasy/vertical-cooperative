@@ -143,7 +143,7 @@ class TaxShelterCertificate(models.Model):
         if self.total_amount_eligible > 0:
             #if self.total_amount_resold == 0 and self.total_amount_transfered == 0: 
             attachments.append(self.generate_pdf_report('subscription'))
-        if self.total_amount_previously_subscribed > 0:
+        if self.partner_id.total_value > 0:
             attachments.append(self.generate_pdf_report('shares'))
         #if self.total_amount_resold > 0 or self.total_amount_transfered > 0:
             # TODO 
