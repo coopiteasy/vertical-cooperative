@@ -25,6 +25,7 @@
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
     'website': "www.coopiteasy.be",
+    "license": "AGPL-3",
     "description": """
     This module allows to create a fiscal declaration year and to print tax shelter declaration each cooperator    
     """,
