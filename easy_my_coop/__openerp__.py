@@ -37,6 +37,7 @@
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
     "website": "www.coopiteasy.be",
+    "license": "AGPL-3",
     "description": """
     This module allows to manage the cooperator subscription and all the cooperative business processes.    
     """,
