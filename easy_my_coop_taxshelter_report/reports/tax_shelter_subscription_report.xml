@@ -66,7 +66,42 @@
 								<div style="position:relative;top:30px;">	
 									Durant l'année <span t-field="o.declaration_id.fiscal_year"/> vous avez souscrit des parts de la <span t-field="o.company_id.name"/>. pour un montant total de 
 									<span t-field="o.total_amount_subscribed" t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/> euros.<br/>
+									Le montant éligible pour le Tax shelter est de <span t-field="o.total_amount_eligible" t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/> euros.<br/>
 								</div>
+								<div style="position:relative;top:65px;">
+									<table class="table border-easymy-coop" style="width:90%;align:center;">
+						            	<thead class="invoice_tbody easymy-coop-normal">
+						                    <tr>
+						                        <th>Type</th>
+						                        <th>Capital before</th>
+						                        <th>Capital after</th>
+						                        <th>Tax shelter eligible</th>
+						                        <th>Date</th>
+						                        <th>Amount</th>
+						                        <th>Amount ligible</th>
+						                    </tr>
+						                </thead>
+						                <tbody class="invoice_tbody easymy-coop-normal">
+						                    <tr t-foreach="o.previously_subscribed_lines" t-as="l">
+						                        <td><span t-field="l.type"/></td>
+						                        <td><span t-field="l.capital_before_sub"/></td>
+						                        <td><span t-field="l.capital_after_sub"/></td>
+						                        <td><span t-field="l.tax_shelter"/></td>
+						                        <td><span t-field="l.transaction_date"/></td>
+						                        <td><span t-field="l.amount_subscribed"/></td>
+						                        <td><span t-field="l.amount_subscribed_eligible"/></td>
+						                    </tr>
+						                    <tr t-foreach="o.subscribed_lines" t-as="l">
+						                        <td><span t-field="l.type"/></td>
+						                        <td><span t-field="l.capital_before_sub"/></td>
+						                        <td><span t-field="l.capital_after_sub"/></td>
+						                        <td><span t-field="l.tax_shelter"/></td>
+						                        <td><span t-field="l.transaction_date"/></td>
+						                        <td><span t-field="l.amount_subscribed"/></td>
+						                        <td><span t-field="l.amount_subscribed_eligible"/></td>
+						                    </tr>
+						                </tbody>
+						            </table>
 		<div style="position:relative;top:45px;">	
 		L' Article 145/26, CIR 92 sur les revenus <span t-field="o.declaration_id.fiscal_year"/>, connu aussi comme normative Tax Shelter, donnent droit à une réduction d’impôt à hauteur de 45% du montant de la valeur des parts souscrites depuis <span t-field="o.declaration_id.month_from"/> (et avant <span t-field="o.declaration_id.month_to"/> pour la déclaration des revenus <span t-field="o.declaration_id.name"/>).<br/>
 		<br/>
@@ -106,6 +141,7 @@
 			                </div>
 			            </div>
 			        </div>
+		        </div>
 		        </div>
 		    </t>
 		    </template>

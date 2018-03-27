@@ -74,11 +74,12 @@
 						            	<thead class="invoice_tbody easymy-coop-normal">
 						                    <tr>
 						                        <th>Type</th>
-						                        <th>Capital before subscription</th>
-						                        <th>Capital after subscription</th>
+						                        <th>Capital before</th>
+						                        <th>Capital after</th>
 						                        <th>Tax shelter eligible</th>
 						                        <th>Date</th>
 						                        <th>Amount</th>
+						                        <th>Amount ligible</th>
 						                    </tr>
 						                </thead>
 						                <tbody class="invoice_tbody easymy-coop-normal">
@@ -89,6 +90,7 @@
 						                        <td><span t-field="l.tax_shelter"/></td>
 						                        <td><span t-field="l.transaction_date"/></td>
 						                        <td><span t-field="l.amount_subscribed"/></td>
+						                        <td><span t-field="l.amount_subscribed_eligible"/></td>
 						                    </tr>
 						                    <tr t-foreach="o.subscribed_lines" t-as="l">
 						                        <td><span t-field="l.type"/></td>
@@ -97,6 +99,7 @@
 						                        <td><span t-field="l.tax_shelter"/></td>
 						                        <td><span t-field="l.transaction_date"/></td>
 						                        <td><span t-field="l.amount_subscribed"/></td>
+						                        <td><span t-field="l.amount_subscribed_eligible"/></td>
 						                    </tr>
 						                    <tr t-foreach="o.resold_lines" t-as="l">
 						                        <td><span t-field="l.type"/></td>
@@ -105,6 +108,7 @@
 						                        <td></td>
 						                        <td><span t-field="l.transaction_date"/></td>
 						                        <td><span t-field="l.amount_resold"/></td>
+						                        <td></td>
 						                    </tr>
 						                    <tr t-foreach="o.transfered_lines" t-as="l">
 						                        <td><span t-field="l.type"/></td>
@@ -113,6 +117,7 @@
 						                        <td></td>
 						                        <td><span t-field="l.transaction_date"/></td>
 						                        <td><span t-field="l.amount_transfered"/></td>
+						                        <td></td>
 						                    </tr>
 						                </tbody>
 						            </table>
