@@ -93,6 +93,7 @@
 		                	<group>
 	                    		<field name="total_amount_previously_subscribed"/>
 	                    		<field name="total_amount_subscribed"/>
+	                    		<field name="total_amount_eligible"/>
 	                    		<field name="total_amount_resold"/>
 	                    		<field name="total_amount_transfered"/>
 	                    		<field name="total_amount"/>
@@ -112,6 +113,7 @@
 		                    			<field name="share_unit_price"/>
 		                    			<field name="type"/>
 		                    			<field name="amount_subscribed"/>
+		                    			<field name="amount_subscribed_eligible"/>
 		                   			</tree>
 		                   		</field>
 	                   		</page>
@@ -172,6 +174,7 @@
                    	<field name="partner_id"/>
 	                <field name="cooperator_number"/>
                    	<field name="total_amount_subscribed"/>
+                   	<field name="total_amount_eligible"/>
                   	<field name="total_amount_resold"/>
                   	<field name="total_amount_transfered"/>
                 	<field name="total_amount"/>
