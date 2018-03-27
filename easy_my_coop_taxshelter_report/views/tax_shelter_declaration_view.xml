@@ -156,6 +156,7 @@
 		                    			<field name="share_unit_price"/>
 		                    			<field name="type"/>
 		                    			<field name="amount_subscribed"/>
+		                    			<field name="amount_subscribed_eligible"/>
 		                   			</tree>
 		                   		</field>
 	                   		</page>
