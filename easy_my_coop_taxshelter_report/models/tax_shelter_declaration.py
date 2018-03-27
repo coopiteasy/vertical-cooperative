@@ -48,7 +48,8 @@ class TaxShelterDeclaration(models.Model):
             capital_after_sub = ongoing_capital_sub + entry.total_amount_line
             line_vals['capital_before_sub'] = ongoing_capital_sub
             line_vals['capital_after_sub'] = capital_after_sub
-            if capital_after_sub <= self.tax_shelter_capital_limit:
+            line_vals['capital_limit'] = self.tax_shelter_capital_limit
+            if ongoing_capital_sub <= self.tax_shelter_capital_limit:
                 line_vals['tax_shelter'] = True
         return line_vals
     
@@ -68,8 +69,8 @@ class TaxShelterDeclaration(models.Model):
             line_vals = self._prepare_line(certificate, entry, ongoing_capital_sub)
             certificate.write({'lines': [(0, 0, line_vals)]})
 
-            if entry.type == 'subscription' and entry.date >= self.date_from:
-                ongoing_capital_sub += entry.total_amount_line
+            #if entry.type == 'subscription' and entry.date >= self.date_from:
+            ongoing_capital_sub += entry.total_amount_line
 
         return partner_certificate
     
@@ -123,6 +124,7 @@ class TaxShelterCertificate(models.Model):
     transfered_lines = fields.One2many(compute='_compute_certificate_lines', comodel_name='certificate.line', string='Shares transfered', readonly=True)
     total_amount_previously_subscribed = fields.Float(compute='_compute_amounts', string='Total previously subscribed')
     total_amount_subscribed = fields.Float(compute='_compute_amounts', string='Total subscribed')
+    total_amount_eligible = fields.Float(compute='_compute_amounts', string='Total amount eligible To Tax shelter')
     total_amount_resold = fields.Float(compute='_compute_amounts', string='Total resold')
     total_amount_transfered = fields.Float(compute='_compute_amounts', string='Total transfered')
     total_amount = fields.Float(compute='_compute_amounts', string='Total', readonly=True)
@@ -142,7 +144,7 @@ class TaxShelterCertificate(models.Model):
             if self.total_amount_resold == 0 and self.total_amount_transfered == 0: 
                 attachments.append(self.generate_pdf_report('subscription'))
         if self.total_amount_previously_subscribed > 0:
-            attachments.append(self.generate_pdf_report('shares'))  
+            attachments.append(self.generate_pdf_report('shares'))
         #if self.total_amount_resold > 0 or self.total_amount_transfered > 0:
             # TODO 
         return attachments
@@ -166,9 +168,11 @@ class TaxShelterCertificate(models.Model):
         
     @api.multi
     def _compute_amounts(self):
+        
         for certificate in self:
             total_amount_previously_subscribed = 0
             total_amount_subscribed = 0
+            total_amount_elligible = 0
             total_amount_transfered = 0
             total_amount_resold = 0
             
@@ -176,6 +180,10 @@ class TaxShelterCertificate(models.Model):
                 total_amount_subscribed += line.amount_subscribed
             certificate.total_amount_subscribed = total_amount_subscribed
             
+            for line in certificate.subscribed_lines:
+                    total_amount_elligible += line.amount_subscribed_eligible
+            certificate.total_amount_eligible = total_amount_elligible
+
             for line in certificate.previously_subscribed_lines:
                 total_amount_previously_subscribed += line.amount_subscribed
             certificate.total_amount_previously_subscribed = total_amount_previously_subscribed
@@ -208,29 +216,40 @@ class TaxShelterCertificate(models.Model):
 class TaxShelterCertificateLine(models.Model):
     _name= "certificate.line"
     
+    declaration_id = fields.Many2one(related='tax_shelter_certificate.declaration_id', string="Declaration")
     tax_shelter_certificate = fields.Many2one('tax.shelter.certificate', string="Tax shelter certificate", ondelete='cascade', required=True)
     share_type = fields.Many2one('product.product', string='Share type', required=True, readonly=True)
     share_unit_price = fields.Float(string='Share price', required=True, readonly=True)
     quantity = fields.Integer(string='Number of shares', required=True, readonly=True)
     transaction_date = fields.Date(string="Transaction date")
-    tax_shelter = fields.Boolean(string="Tax shelter", readonly=True)
+    tax_shelter = fields.Boolean(string="Tax shelter eligible", readonly=True)
     type = fields.Selection([('subscribed','Subscribed'),
                              ('resold','Resold'),
                              ('transfered','Transfered'),
                              ('kept','Kept')], required=True, readonly=True) 
     amount_subscribed = fields.Float(compute='_compute_totals', string='Amount subscribed',store=True)
+    amount_subscribed_eligible = fields.Float(compute='_compute_totals', string='Amount subscribed eligible',store=True)
     amount_resold = fields.Float(compute='_compute_totals', string='Amount resold',store=True)
     amount_transfered = fields.Float(compute='_compute_totals', string='Amount transfered',store=True)
     share_short_name = fields.Char(string='Share type name', readonly=True)
     capital_before_sub = fields.Float(string="Capital before subscription", readonly=True)
     capital_after_sub = fields.Float(string="Capital after subscription", readonly=True)
+    capital_limit = fields.Float(string="Capital limit", readonly=True)
 
     @api.multi
     @api.depends('quantity','share_unit_price')
-    def _compute_totals(self):
+    def _compute_totals(self):       
         for line in self:
+            #limit = line.declaration_id.tax_shelter_capital_limit
             if line.type == 'subscribed':
                 line.amount_subscribed = line.share_unit_price * line.quantity
+            if line.type == 'subscribed' and line.tax_shelter:
+                if line.capital_before_sub < line.capital_limit and line.capital_after_sub >= line.capital_limit:
+                    line.amount_subscribed_eligible = line.capital_limit - line.capital_before_sub
+                elif line.capital_before_sub < line.capital_limit and line.capital_after_sub <= line.capital_limit:
+                    line.amount_subscribed_eligible = line.share_unit_price * line.quantity
+                elif line.capital_before_sub >= line.capital_limit:
+                    line.amount_subscribed_eligible = 0
             if line.type == 'resold':
                 line.amount_resold = line.share_unit_price * -(line.quantity)
             if line.type == 'transfered':
