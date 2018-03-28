@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_tax_shelter_declaration,tax.shelter.declaration.portal,easy_my_coop_taxshelter_report.model_tax_shelter_declaration,base.group_portal,1,0,0,0
-access_tax_shelter_certificate,tax.shelter.certificate.portal,easy_my_coop_taxshelter_report.model_tax_shelter_certificate,base.group_portal,1,0,0,0
-access_tax_shelter_certificate_lines,certificate.line.portal,easy_my_coop_taxshelter_report.model_certificate_line,base.group_portal,1,0,0,0
