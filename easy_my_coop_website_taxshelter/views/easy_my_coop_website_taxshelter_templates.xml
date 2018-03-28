@@ -65,6 +65,8 @@
           <thead>
             <tr class="active">
               <th>Declaration Year</th>
+              <th>Subscription Certificate</th>
+              <th>Share Certificate</th>
               <th>Total Amount</th>
             </tr>
           </thead>
@@ -76,7 +78,25 @@
                   <t t-esc="tax_shelter.declaration_id.name"/>
                 </a>
               </td>
-              <td><span t-field="tax_shelter.total_amount"/></td>
+              <td>
+                <a t-att-href="'/my/subscription_certificate/pdf/%s'
+                  % tax_shelter.id">
+                  Subscription Certificate
+                </a>
+              </td>
+              <td>
+                <a t-att-href="'/my/share_certificate/pdf/%s'
+                  % tax_shelter.id">
+                  Share Certificate
+                </a>
+              </td>
+              <td>
+                <span t-field="tax_shelter.total_amount"
+                  t-field-options='{
+                    "widget": "monetary",
+                    "display_currency": "tax_shelter.partner_id.company_id.currency_id"
+                  }'/>
+              </td>
             </tr>
           </tbody>
         </table>

@@ -6,10 +6,11 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 
-from openerp import fields, models, http
+from werkzeug.exceptions import Forbidden, NotFound
+
+from openerp import http
+from openerp.exceptions import AccessError, MissingError
 from openerp.http import request
-from openerp import tools
-from openerp.tools.translate import _
 
 from openerp.addons.website_portal_v10.controllers.main import WebsiteAccount
 
@@ -78,3 +79,72 @@ class CooperatorWebsiteAccount(WebsiteAccount):
             "easy_my_coop_website_taxshelter.portal_my_tax_shelter",
             values
         )
+
+    @http.route(['/my/subscription_certificate/pdf/<int:oid>'],
+                type='http', auth="user", website=True)
+    def get_subscription_certificate_pdf(self, oid=-1):
+        """Render the Subscription Certificate pdf of the given
+        Tax Shelter Report
+        """
+        # Get the subscription certificate and raise an error if the user
+        # is not allowed to access to it or if the object is not found.
+        partner = request.env.user.partner_id
+        tax_shelter_mgr = request.env['tax.shelter.certificate'].sudo()
+        tax_shelter = tax_shelter_mgr.browse(oid)
+        try:
+            if tax_shelter.partner_id != partner:
+                raise Forbidden()
+        except AccessError:
+            raise Forbidden()
+        except MissingError:
+            raise NotFound()
+        # Get the pdf
+        report_mgr = request.env['report'].sudo()
+        pdf = report_mgr.get_pdf(
+            tax_shelter.ids,
+            'easy_my_coop_taxshelter_report.tax_shelter_subscription_report'
+        )
+        filename = "Subscription Certificate - {name} - {year}".format(
+            name=partner.name,
+            year=tax_shelter.declaration_id.fiscal_year
+        )
+        return self._render_pdf(pdf, filename)
+
+    @http.route(['/my/share_certificate/pdf/<int:oid>'],
+                type='http', auth="user", website=True)
+    def get_share_certificate_pdf(self, oid=-1):
+        """Render the Share Certificate pdf of the given Tax Shelter
+        Report
+        """
+        # Get the share certificate and raise an error if the user
+        # is not allowed to access to it or if the object is not found.
+        partner = request.env.user.partner_id
+        tax_shelter_mgr = request.env['tax.shelter.certificate'].sudo()
+        tax_shelter = tax_shelter_mgr.browse(oid)
+        try:
+            if tax_shelter.partner_id != partner:
+                raise Forbidden()
+        except AccessError:
+            raise Forbidden()
+        except MissingError:
+            raise NotFound()
+        # Get the pdf
+        report_mgr = request.env['report'].sudo()
+        pdf = report_mgr.get_pdf(
+            tax_shelter.ids,
+            'easy_my_coop_taxshelter_report.tax_shelter_shares_report'
+        )
+        filename = "Share Certificate - {name} - {year}".format(
+            name=partner.name,
+            year=tax_shelter.declaration_id.fiscal_year
+        )
+        return self._render_pdf(pdf, filename)
+
+    def _render_pdf(self, pdf, filename):
+        """Render a http response for a pdf"""
+        pdfhttpheaders = [
+            ('Content-Disposition', 'inline; filename="%s.pdf"' % filename),
+            ('Content-Type', 'application/pdf'),
+            ('Content-Length', len(pdf))
+        ]
+        return request.make_response(pdf, headers=pdfhttpheaders)
