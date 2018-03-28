@@ -123,21 +123,18 @@
 		 ]]>
 		<br/>
 		Cordialement,
-				                </div>
-			                </div>
-			            </div>
-			
-			            <div class="row">
-			                <div class="col-xs-6 pull-left" style="position:relative;top:100px;font-size:16;color:black;font-family:Roboto-Regular;">
-				                <div style="position:relative;top:10px;">
-				                	Pour le Conseil d'administration de <span t-field="o.company_id.name"/>.
-				                </div>
-				                <div style="position:relative;top:20px;">
-				                	<strong><span t-field="o.company_id.board_representative"/></strong>
-				                </div>
-				                <div style="position:relative;top:25px;">
-				                	<img t-if="o.company_id.signature_scan" t-att-src="'data:image/png;base64,%s' % o.company_id.signature_scan" style="width:240px;height:200px;padding-bottom:5px;"/>
-				                </div>
+						</div>
+								</div>
+			         			<div class="col-xs-6 pull-left" style="position:relative;top:100px;font-size:16;color:black;font-family:Roboto-Regular;">
+         						<div style="position:relative;top:10px;">
+         							Pour le Conseil d'administration de <span t-field="o.company_id.name"/>.
+         						</div>
+								<div style="position:relative;top:20px;">
+         							<strong><span t-field="o.company_id.board_representative"/></strong>
+         						</div>
+         						<div style="position:relative;top:25px;">
+         							<img t-if="o.company_id.signature_scan" t-att-src="'data:image/png;base64,%s' % o.company_id.signature_scan" style="width:140px;height:100px;padding-bottom:5px;"/>
+         						</div>
 			                </div>
 			            </div>
 			        </div>
