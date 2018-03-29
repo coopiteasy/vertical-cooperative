@@ -149,26 +149,28 @@ class TaxShelterCertificate(models.Model):
             # TODO 
         return attachments
     
-    @api.one
+    @api.multi
     def send_certificates(self):
-        attachments = self.generate_certificates_report()
-        if len(attachments) > 0:
-            confirmation_mail_template = self.env['mail.template'].search([('name', '=', 'Tax Shelter Certificate - Send By Email')])[0]
-            confirmation_mail_template.send_mail_with_multiple_attachments(self.id, attachments,True)
-        
+        tax_shelter_mail_template = self.env.ref('easy_my_coop_taxshelter_report.email_template_tax_shelter_certificate', False)
+        for certificate in self:
+            attachments = certificate.generate_certificates_report()
+            if len(attachments) > 0:
+                tax_shelter_mail_template.send_mail_with_multiple_attachments(certificate.id, attachments,True)
+            certificate.state = 'sent' 
+            self.env.cr.commit()
+
     @api.multi
     def print_subscription_certificate(self):
         self.ensure_one()
         return self.env['report'].get_action(self, 'easy_my_coop_taxshelter_report.tax_shelter_subscription_report')
-    
+
     @api.multi
     def print_shares_certificate(self):
         self.ensure_one()
         return self.env['report'].get_action(self, 'easy_my_coop_taxshelter_report.tax_shelter_shares_report')    
-        
+
     @api.multi
     def _compute_amounts(self):
-        
         for certificate in self:
             total_amount_previously_subscribed = 0
             total_amount_subscribed = 0
@@ -196,7 +198,7 @@ class TaxShelterCertificate(models.Model):
                 total_amount_resold += line.amount_resold
             certificate.total_amount_resold = total_amount_resold
             certificate.total_amount = certificate.total_amount_previously_subscribed + certificate.total_amount_subscribed + certificate.total_amount_resold + certificate.total_amount_transfered
-    
+
     @api.multi
     def _compute_certificate_lines(self):
         for certificate in self:
@@ -204,14 +206,11 @@ class TaxShelterCertificate(models.Model):
             certificate.subscribed_lines = certificate.lines.filtered(lambda r: r.type == 'subscribed' and r.transaction_date >= certificate.declaration_id.date_from and r.transaction_date <= certificate.declaration_id.date_to)
             certificate.resold_lines = certificate.lines.filtered(lambda r: r.type == 'resold' and r.transaction_date >= certificate.declaration_id.date_from and r.transaction_date <= certificate.declaration_id.date_to)
             certificate.transfered_lines = certificate.lines.filtered(lambda r: r.type == 'transfered' and r.transaction_date >= certificate.declaration_id.date_from and r.transaction_date <= certificate.declaration_id.date_to)
-    
+
     @api.model
     def batch_send_tax_shelter_certificate(self):
         certificates = self.search([('state','=','validated')],limit=80)
-        for certificate in certificates:
-            certificate.send_certificates()
-            certificate.state = 'sent' 
-            self.env.cr.commit()
+        certificates.send_certificates()
             
 class TaxShelterCertificateLine(models.Model):
     _name= "certificate.line"
