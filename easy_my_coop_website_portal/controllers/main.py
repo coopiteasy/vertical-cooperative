@@ -125,12 +125,10 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         # Get the pdf
         report_mgr = request.env['report'].sudo()
         pdf = report_mgr.get_pdf(
-            capital_request.ids,
+            capital_request,
             'easy_my_coop.theme_invoice_G002'
         )
-        filename = "Release Capital Request - {oid}".format(
-            oid=capital_request.id
-        )
+        filename = "Release Capital Request - %d" % capital_request.id
         return self._render_pdf(pdf, filename)
 
     @http.route(['/my/cooperator_certificate/pdf'],
@@ -140,12 +138,10 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         partner = request.env.user.partner_id
         report_mgr = request.env['report'].sudo()
         pdf = report_mgr.get_pdf(
-            partner.ids,
+            partner,
             'easy_my_coop.cooperator_certificat_G001'
         )
-        filename = "Cooperator Certificate - {name}".format(
-            name=partner.name
-        )
+        filename = "Cooperator Certificate - %s" % partner.name
         return self._render_pdf(pdf, filename)
 
     def _render_pdf(self, pdf, filename):
