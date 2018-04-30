@@ -22,6 +22,7 @@
     'depends': [
         'base',
         'web',
+        'mail',
     ],
 
     'data': [
