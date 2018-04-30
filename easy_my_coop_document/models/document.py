@@ -11,6 +11,7 @@ class Document(models.Model):
     _name = 'easy_my_coop.document'
     _description = "Document"
     _order = 'document_date desc, name'
+    _inherit = 'mail.thread'
 
     name = fields.Char("Name", required=True)
     description = fields.Text("Description")
