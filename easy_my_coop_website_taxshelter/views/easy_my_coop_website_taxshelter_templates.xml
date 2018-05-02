@@ -73,10 +73,7 @@
           <tbody>
             <tr t-foreach="tax_shelters" t-as="tax_shelter">
               <td>
-                <a t-att-href="'/report/pdf/easy_my_coop_taxshelter_report.tax_shelter_subscription_report/%s' %
-                  tax_shelter.id">
-                  <t t-esc="tax_shelter.declaration_id.name"/>
-                </a>
+                <t t-esc="tax_shelter.declaration_id.name"/>
               </td>
               <td>
                 <a t-att-href="'/my/subscription_certificate/pdf/%s'
