@@ -68,6 +68,10 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         # content according to pager and archive selected
         tax_shelters = tax_shelter_mgr.search(
             domain, limit=self._items_per_page, offset=pager['offset'])
+        tax_shelters = tax_shelters.sorted(
+            key=lambda r: r.declaration_id.fiscal_year,
+            reverse=True
+        )
         values.update({
             'date': date_begin,
             'tax_shelters': tax_shelters,
