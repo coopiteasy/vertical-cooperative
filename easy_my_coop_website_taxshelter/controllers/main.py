@@ -101,12 +101,12 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         # Get the pdf
         report_mgr = request.env['report'].sudo()
         pdf = report_mgr.get_pdf(
-            tax_shelter.ids,
+            tax_shelter,
             'easy_my_coop_taxshelter_report.tax_shelter_subscription_report'
         )
-        filename = "Subscription Certificate - {name} - {year}".format(
-            name=partner.name,
-            year=tax_shelter.declaration_id.fiscal_year
+        filename = "Subscription Certificate - %s - %s" % (
+            partner.name,
+            tax_shelter.declaration_id.fiscal_year
         )
         return self._render_pdf(pdf, filename)
 
@@ -131,12 +131,12 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         # Get the pdf
         report_mgr = request.env['report'].sudo()
         pdf = report_mgr.get_pdf(
-            tax_shelter.ids,
+            tax_shelter,
             'easy_my_coop_taxshelter_report.tax_shelter_shares_report'
         )
-        filename = "Share Certificate - {name} - {year}".format(
-            name=partner.name,
-            year=tax_shelter.declaration_id.fiscal_year
+        filename = "Share Certificate - %s - %s" % (
+            partner.name,
+            tax_shelter.declaration_id.fiscal_year
         )
         return self._render_pdf(pdf, filename)
 
