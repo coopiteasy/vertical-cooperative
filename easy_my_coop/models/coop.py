@@ -249,7 +249,7 @@ class subscription_request(models.Model):
     
     def get_partner_vals(self):
         partner_vals = {'name':self.name, 'first_name':self.firstname, 'last_name': self.lastname,
-                        'customer':False, 'gender':self.gender,'cooperator':True, 'street':self.address,'zip':self.zip_code,
+                        'gender':self.gender,'cooperator':True, 'street':self.address,'zip':self.zip_code,
                         'city': self.city, 'phone': self.phone, 'email':self.email,
                         'national_register_number':self.no_registre, 'out_inv_comm_type':'bba',
                         'out_inv_comm_algorithm':'random', 'country_id': self.country_id.id,
