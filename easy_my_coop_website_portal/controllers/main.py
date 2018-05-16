@@ -42,7 +42,7 @@ class CooperatorWebsiteAccount(WebsiteAccount):
 
         invoice_mgr = request.env['account.invoice']
         capital_request_count = invoice_mgr.search_count([
-            ('message_partner_ids', 'in',
+            ('partner_id', 'in',
              [partner.commercial_partner_id.id]),
             ('state', 'in', ['open', 'paid', 'cancelled']),
             # Get only the release capital request
@@ -69,7 +69,7 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         invoice_mgr = request.env['account.invoice']
 
         domain = [
-            ('message_partner_ids', 'in',
+            ('partner_id', 'in',
              [partner.commercial_partner_id.id]),
             ('state', 'in', ['open', 'paid', 'cancelled']),
             # Get only the release capital request
