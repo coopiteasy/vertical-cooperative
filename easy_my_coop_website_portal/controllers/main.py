@@ -10,6 +10,7 @@ from werkzeug.exceptions import Forbidden, NotFound
 
 from openerp import http
 from openerp.exceptions import AccessError, MissingError
+from openerp.fields import Date
 from openerp.http import request
 
 from openerp.addons.website_portal_v10.controllers.main import WebsiteAccount
@@ -40,7 +41,7 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         response = super(CooperatorWebsiteAccount, self).account()
         partner = request.env.user.partner_id
 
-        invoice_mgr = request.env['account.invoice']
+        invoice_mgr = request.env['account.invoice'].sudo()
         capital_request_count = invoice_mgr.search_count([
             ('partner_id', 'in',
              [partner.commercial_partner_id.id]),
@@ -66,7 +67,7 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         """
         values = self._prepare_portal_layout_values()
         partner = request.env.user.partner_id
-        invoice_mgr = request.env['account.invoice']
+        invoice_mgr = request.env['account.invoice'].sudo()
 
         domain = [
             ('partner_id', 'in',
@@ -75,7 +76,8 @@ class CooperatorWebsiteAccount(WebsiteAccount):
             # Get only the release capital request
             ('release_capital_request', '=', True),
         ]
-        archive_groups = self._get_archive_groups('account.invoice', domain)
+        archive_groups = self._get_archive_groups_sudo('account.invoice',
+                                                       domain)
         if date_begin and date_end:
             domain += [('create_date', '>=', date_begin),
                        ('create_date', '<', date_end)]
@@ -152,3 +154,34 @@ class CooperatorWebsiteAccount(WebsiteAccount):
             ('Content-Length', len(pdf))
         ]
         return request.make_response(pdf, headers=pdfhttpheaders)
+
+    def _get_archive_groups_sudo(self, model, domain=None, fields=None,
+                                 groupby="create_date",
+                                 order="create_date desc"):
+        """Same as the one from website_portal_v10 except that it runs
+        in root.
+        """
+        if not model:
+            return []
+        if domain is None:
+            domain = []
+        if fields is None:
+            fields = ['name', 'create_date']
+        groups = []
+        for group in request.env[model].sudo().read_group(
+                domain, fields=fields, groupby=groupby, orderby=order):
+            label = group[groupby]
+            date_begin = date_end = None
+            for leaf in group["__domain"]:
+                if leaf[0] == groupby:
+                    if leaf[1] == ">=":
+                        date_begin = leaf[2]
+                    elif leaf[1] == "<":
+                        date_end = leaf[2]
+            groups.append({
+                'date_begin': Date.to_string(Date.from_string(date_begin)),
+                'date_end': Date.to_string(Date.from_string(date_end)),
+                'name': label,
+                'item_count': group[groupby + '_count']
+            })
+        return groups
