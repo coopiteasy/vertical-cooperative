@@ -1,3 +1,5 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
 access_easy_my_coop_document,access_easy_my_coop_document,model_easy_my_coop_document,,1,0,0,0
 access_easy_my_coop_document_category,access_easy_my_coop_document_category,model_easy_my_coop_document_category,,1,0,0,0
+access_easy_my_coop_document_user_group,access_easy_my_coop_document,model_easy_my_coop_document,base.group_user,1,1,1,1
+access_easy_my_coop_document_category_user_group,access_easy_my_coop_document_category,model_easy_my_coop_document_category,base.group_user,1,1,1,1
