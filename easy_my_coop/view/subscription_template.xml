@@ -242,21 +242,15 @@
 
             <div t-attf-class="form-group" >
                 <label class="col-md-3 col-sm-4 control-label" for="data_policy_approved">Privacy Policy</label>
-                <div class="col-md-7 col-sm-8">
-                  <table>
-                    <tr>
-                      <td width='15%'>
-                        <input type="checkbox"
-                               class="form-control"
-                               name="data_policy_approved"
-                               required="True"
-                               t-attf-value="#{data_policy_approved or ''}"/>
-                      </td>
-                      <td width='85%'>
-                        La lucidité est la blessure la plus rapprochée du soleil.
-                      </td>
-                    </tr>
-                  </table>
+                <div class="col-md-1 col-sm-2">
+                    <input type="checkbox"
+                           class="form-control"
+                           name="data_policy_approved"
+                           required="True"
+                           t-attf-value="#{data_policy_approved or ''}"/>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                        <t t-call="website_legal_page.acceptance_full"/>
                 </div>
             </div>
 
@@ -521,6 +515,20 @@
 		            	<div class="bottom-line" style="margin-left:178px;margin-top:0px;width:61%"></div>							                
 		                		            			            	                    
  						<br/>
+
+            <div t-attf-class="form-group" >
+                <label class="col-md-3 col-sm-4 control-label" for="data_policy_approved">Privacy Policy</label>
+                <div class="col-md-1 col-sm-2">
+                        <input type="checkbox"
+                               class="form-control"
+                               name="data_policy_approved"
+                               required="True"
+                               t-attf-value="#{data_policy_approved or ''}"/>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                        <t t-call="website_legal_page.acceptance_full"/>
+                </div>
+            </div>
 
 						<table style="margin-left:195px">
 							<tr>
