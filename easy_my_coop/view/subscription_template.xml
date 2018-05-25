@@ -70,13 +70,19 @@
 							</label>
 						</div>
 						
-             <div t-attf-class="form-group">
-							<label>
-								<input type="checkbox" t-att-value="already_cooperator" name="already_cooperator" />
-								Already cooperator?
-							</label>
-						</div>
-
+            <div t-attf-class="form-group">
+              <div class="row">
+                <label class="col-md-3 col-sm-4 control-label" for="already_cooperator">Already cooperator?</label>
+                <div class="col-md-2 col-sm-2">
+                        <input type="checkbox"
+                               class="form-control"
+                               name="already_cooperator"
+                               t-att-value="already_cooperator"
+                        />
+                </div>
+              </div>
+            </div>
+			           
 			           <div name="email_from_container" t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="email">Email</label>
 			                <div class="col-md-7 col-sm-8 bottom-line" style="padding-bottom:20px">
