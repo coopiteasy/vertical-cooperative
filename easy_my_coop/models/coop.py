@@ -16,6 +16,7 @@ _REQUIRED = ['email',
              'city',
              'iban',
              'no_registre',
+             'data_policy_approved',
              'gender']  # Could be improved including required from model
 
 
@@ -329,6 +330,11 @@ class subscription_request(models.Model):
                               default="website",
                               readonly=True,
                               states={'draft': [('readonly', False)]})
+    data_policy_approved = fields.Boolean(
+        string='Data Policy Approved',
+        default=False,
+        # required=True,
+    )
     _order = "id desc"
 
     def get_person_info(self, partner):

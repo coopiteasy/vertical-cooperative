@@ -240,6 +240,26 @@
 		                		            			            	                    
  						<br/>
 
+            <div t-attf-class="form-group" >
+                <label class="col-md-3 col-sm-4 control-label" for="data_policy_approved">Privacy Policy</label>
+                <div class="col-md-7 col-sm-8">
+                  <table>
+                    <tr>
+                      <td width='15%'>
+                        <input type="checkbox"
+                               class="form-control"
+                               name="data_policy_approved"
+                               required="True"
+                               t-attf-value="#{data_policy_approved or ''}"/>
+                      </td>
+                      <td width='85%'>
+                        La lucidité est la blessure la plus rapprochée du soleil.
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+            </div>
+
 						<table style="margin-left:195px">
 							<tr>
 								<td width="80%">

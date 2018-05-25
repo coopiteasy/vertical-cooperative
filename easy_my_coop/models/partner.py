@@ -139,6 +139,7 @@ class ResPartner(models.Model):
     subscription_request_ids = fields.One2many('subscription.request',
                                                'partner_id',
                                                string="Subscription request")
+    data_policy_approved = fields.Boolean(string="Approved Data Policy")
 
     @api.multi
     @api.depends('subscription_request_ids.state')
