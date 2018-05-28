@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="certificate_i18n_fr" inherit_id="easy_my_coop.cooperator_certificat_G001_document" name="French Layout Certificate">
+			<xpath expr="//div[@name='label_coop_number']" position="replace">
+				<div name="label_coop_number" style="position:relative;top:35px;font-size:16;">
+					<span>Ce document atteste de la souscription de parts sociales au capital de la SAS Coopérative à Capital Variable SuperQuinquin par </span>
+					<b><span t-field="o.name"></span></b>
+					<span>, enregistré(e) sous le <b>numéro de coopérateur </b></span>
+					<span t-field="o.cooperator_register_number"></span>	
+				</div>	
+			</xpath>
+			
+			<xpath expr="//div[@name='total_table']" position="after">
+				<div name="legal_text" style="position:relative;top:145px;font-size:12;">
+					<div>Ce document atteste d’une souscription en numéraire au capital d’une société, répondant à la définition communautaire de la Petite et Moyenne Entreprise, dont les titres ne sont pas admis aux négociations sur un marché d’instruments financiers français ou étranger en application de l’article 199 terdecies 0A du CGI.<br/>
+Conformément aux statuts, les souscriptions de parts sociales de type A et B n’ouvre pas droit à rémunération.<br/>
+La société remplit les conditions mentionnées aux c, d et e du 2° du I de l’article 199 terdecies-0 A du code général des impôts : <br/>
+c) La société est soumise à l’impôt sur les sociétés dans les conditions de droit commun ;<br/>
+<br/>
+c bis) La société compte au moins deux salariés à la clôture de son premier exercice ou un salarié si elle est soumise à l’obligation de s’inscrire à la chambre de métiers et de l’artisanat ;<br/>
+<br/>
+d) La société exerce une activité commerciale, industrielle, artisanale, libérale ou agricole, à l’exclusion des activités procurant des revenus garantis en raison de l’existence d’un tarif réglementé de rachat de la production, des activités financières, des activités de gestion de patrimoine mobilier définie à l’article 885 O quater et des activités immobilières. Toutefois, les exclusions relatives à l’exercice d’une activité financière ou immobilière ne sont pas applicables aux entreprises solidaires mentionnées à l’article L. 3332-17-1 du code du travail.<br/>
+La société n’exerce pas une activité de production d’électricité utilisant l’énergie radiative du soleil ;<br/>
+<br/>
+d bis) Les actifs de la société ne sont pas constitués de façon prépondérante de métaux précieux, d’œuvres d’art, d’objets de collection, d’antiquités, de chevaux de course ou de concours ou, sauf si l’objet même de son activité consiste en leur consommation ou en leur vente au détail, de vins ou d’alcools ;<br/>
+<br/>
+d ter) Les souscriptions au capital de la société confèrent aux souscripteurs les seuls droits résultant de la qualité d’actionnaire ou d’associé, à l’exclusion de toute autre contrepartie notamment sous la forme de tarifs préférentiels ou d’accès prioritaire aux biens produits ou aux services rendus par la société ;<br/>
+<br/>
+e) La société doit être une petite et moyenne entreprise qui satisfait à la définition des petites et moyennes entreprises qui figure à l’annexe I au règlement (CE) n° 800/2008 de la Commission du 6 août 2008 déclarant certaines catégories d’aide compatibles avec le marché commun en application des articles 87 et 88 du traité (Règlement général d’exemption par catégorie) ;<br/>
+					</div>	
+				</div>	
+			</xpath>
+			<xpath expr="//div[@name='board_commitee']" position="replace">
+				<div name="" class="col-xs-6 pull-left" style="position:relative;top:105px;font-size:20;color:black;font-family:Roboto-Regular;">
+	                <div style="position:relative;top:105px;">
+	                	Pour le Conseil d'administration de <span t-field="o.company_id.name"/>.
+	                </div>
+	                <div style="position:relative;top:110px;">
+	                	<strong><span t-field="o.company_id.board_representative"/></strong>
+	                </div>
+	                <div style="position:relative;top:115px;">
+	                	<img t-if="o.company_id.signature_scan" t-att-src="'data:image/png;base64,%s' % o.company_id.signature_scan" style="width:240px;height:180px;padding-bottom:5px;"/>
+	                </div>
+                </div>
+			</xpath>
+		</template>
+		
+		<template id="capital_release_request_i18n_fr" inherit_id="easy_my_coop.theme_invoice_G002_document" name="French Layout Certificate">
+			<xpath expr="//p[@t-if='o.comment']" position="before">
+				<div class="row">
+					<div style="position:relative;top:225px;font-size:16;">
+					Votre demande de souscription de parts sociales, détaillé dans le tableau ci-dessus, a bien été prise en compte.<br/>
+					<br/>
+Afin de valider votre enregistrement en tant que coopérateur, vous devez tout d’abord procéder au paiement de celles-ci.<br/>
+<br/>
+Un email contenant les instructions de paiement vous a également été envoyé.<br/>
+					</div>
+				</div>
+			</xpath>
+		</template>
+	</data>
+</odoo>
