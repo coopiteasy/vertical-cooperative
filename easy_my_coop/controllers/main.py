@@ -112,7 +112,8 @@ class WebsiteSubscription(http.Controller):
         fields_desc = request.env['subscription.request'].sudo().fields_get(['company_type','gender'])
         values['company_types'] = fields_desc['company_type']['selection']
         values['genders'] = fields_desc['gender']['selection']
-        
+        values['company'] = company
+
         if not values.get('share_product_id'):
             products = request.env['product.template'].sudo().get_web_share_products(is_company)
             for product in products:
