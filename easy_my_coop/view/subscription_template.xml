@@ -213,10 +213,10 @@
 									        </span>
 									    </div>
 									</td>
-									<td width="5%">x </td>
-									<td id="share_price" width="7%">25</td>
-									<td width="3%"> €</td>
-									<td width="5%">= </td>
+									<td width="5%"> x </td>
+									<td id="share_price" width="5%">25</td>
+									<td width="7%" style="text-align:left;margin-right:20px"><span t-esc="company.currency_id.symbol"/></td>
+									<td width="4%">= </td>
 									<td width="20%">
 					                    <div style="margin-top:12px" t-attf-class="form-group #{error and 'total_parts' in error and 'has-error' or ''}">
 							                <div>
