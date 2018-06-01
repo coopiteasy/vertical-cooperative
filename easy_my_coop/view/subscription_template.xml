@@ -288,7 +288,7 @@
 						</div>
 						
 						<div t-attf-class="form-group #{error and 'company_register_number' in error and 'has-error' or ''}">
-			                <label class="col-md-3 col-sm-4 control-label" for="no_registre">Company Register Number</label>
+			                <label class="col-md-3 col-sm-4 control-label" for="company_register_number">Company Register Number</label>
 			                <div class="col-md-7 col-sm-8">
 			                    <input type="text" class="form-control mandatory-field" name="company_register_number" required="True" t-attf-value="#{company_register_number or ''}" placeholder="0647980091"/>
 			                </div>
