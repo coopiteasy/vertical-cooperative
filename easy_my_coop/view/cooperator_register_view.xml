@@ -42,13 +42,36 @@
             </field>
         </record>
         
+		<record id="view_subscription_register_filter" model="ir.ui.view">
+            <field name="name">Subscription Register Search</field>
+            <field name="model">subscription.register</field>
+            <field name="arch" type="xml">
+                <search string="Search Subscription Register">
+                   <field name="partner_id"
+                       filter_domain="[('partner_id','ilike',self)]"/>
+                   <field name="register_number_operation"/>
+                   <separator/>
+                   <filter string="Subscription" name="type_subscription" domain="[('type','=','subscription')]"/>
+                   <filter string="Transfer" name="type_transfer" domain="[('type','=','transfer')]"/>
+                   <filter string="Sell back" name="type_sell_back" domain="[('type','=','sell_back')]"/>
+                   <filter string="Convert" name="type_convert" domain="[('type','=','convert')]"/>
+                   <separator/>
+                   <group expand="0" name="group_by" string="Group By">
+                       <filter string="Entry type" context="{'group_by' : 'type'}" />
+                       <filter string="Date Month" context="{'group_by': 'date'}"/>
+                   </group>
+               </search>
+            </field>
+        </record>
+
         <record id="subscription_register_action" model="ir.actions.act_window">
             <field name="name">Subscription Register</field>
             <field name="res_model">subscription.register</field>
             <field name="view_type">form</field>
             <field name="view_id" ref="subscription_register_tree"/>
+            <field name="search_view_id" ref="view_subscription_register_filter"/>
         </record>
-	
+
 		<menuitem action="subscription_register_action" name="Subscription Register" id="menu_easy_my_coop_subscription_register"  parent="menu_easy_my_coop_main_subscription" sequence="20"/>
 	</data>
 </openerp>
