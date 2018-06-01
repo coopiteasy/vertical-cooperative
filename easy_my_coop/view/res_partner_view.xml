@@ -116,13 +116,13 @@
         <menuitem id="menu_easy_my_coop_cooperator" name="Cooperators" parent="menu_easy_my_coop_main_coop" action="action_partner_cooperator_form" sequence="100"/>
         
         <record id="action_partner_cooperator_candidate_form" model="ir.actions.act_window">
-            <field name="name">Cooperator</field>
+            <field name="name">Cooperator candidates</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
-            <field name="domain">[('cooperator','=',True),('coop_candidate','=',True)]</field>
-            <field name="context">{'default_cooperator':1, 'search_default_cooperator':1}</field>
+            <field name="domain">[('cooperator','=',True),('coop_candidate','=',True),('member','=',False)]</field>
+            <field name="context">{'default_cooperator':1}</field>
             <field name="filter" eval="True"/>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">
