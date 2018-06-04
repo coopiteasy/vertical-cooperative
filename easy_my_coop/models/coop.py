@@ -146,7 +146,7 @@ class subscription_request(models.Model):
     validated = fields.Boolean(compute='_validated_lines', string='Valid Line?', readonly=True)
     skip_control_ng = fields.Boolean(string="Skip control", 
                             help="if this field is checked then no control will be done on the national register number and on the iban bank account. To be done in case of the id card is from abroad or in case of a passport")
-    lang = fields.Selection(_lang_get, 'Language', default='fr_BE',
+    lang = fields.Selection(_lang_get, 'Language', default=lambda self: self.env['res.company']._company_default_get().default_lang_id.code,
         help="If the selected language is loaded in the system, all documents related to this contact will be printed in this language. If not, it will be English.")
     date = fields.Date(string='Subscription date request', default=lambda self: datetime.strftime(datetime.now(), '%Y-%m-%d'))
     company_id = fields.Many2one('res.company', string='Company', required=True, 
