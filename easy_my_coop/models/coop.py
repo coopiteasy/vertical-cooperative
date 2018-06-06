@@ -309,7 +309,9 @@ class subscription_request(models.Model):
             partner = partner[0]
 
         if self.is_company and not partner.has_representative(): 
-            contact = partner_obj.search([('national_register_number','=',self.no_registre)])
+            contact = False
+            if self.no_registre:
+                contact = partner_obj.search([('national_register_number','=',self.no_registre)])
             if not contact:
                 contact_vals = {'name':self.name, 'first_name':self.firstname, 'last_name': self.lastname,
                             'customer':False, 'is_company':False, 'cooperator':True, 
