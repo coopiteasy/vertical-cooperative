@@ -296,7 +296,7 @@ class subscription_request(models.Model):
         else:
             if self.already_cooperator:
                 raise UserError(_('The checkbox already cooperator is checked please select a cooperator.'))
-            elif self.is_company:
+            elif self.is_company and self.company_register_number:
                 partner = partner_obj.search([('company_register_number','=',self.company_register_number)])
             elif self.no_registre:
                 partner = partner_obj.search([('national_register_number','=',self.no_registre)])
