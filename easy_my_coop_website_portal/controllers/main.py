@@ -41,8 +41,8 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         response = super(CooperatorWebsiteAccount, self).account()
         partner = request.env.user.partner_id
 
-        invoice_mgr = request.env['account.invoice'].sudo()
-        capital_request_count = invoice_mgr.search_count([
+        invoice_mgr = request.env['account.invoice']
+        capital_request_count = invoice_mgr.sudo().search_count([
             ('partner_id', 'in',
              [partner.commercial_partner_id.id]),
             ('state', 'in', ['open', 'paid', 'cancelled']),
@@ -67,7 +67,7 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         """
         values = self._prepare_portal_layout_values()
         partner = request.env.user.partner_id
-        invoice_mgr = request.env['account.invoice'].sudo()
+        invoice_mgr = request.env['account.invoice']
 
         domain = [
             ('partner_id', 'in',
@@ -83,7 +83,7 @@ class CooperatorWebsiteAccount(WebsiteAccount):
                        ('create_date', '<', date_end)]
 
         # count for pager
-        capital_request_count = invoice_mgr.search_count(domain)
+        capital_request_count = invoice_mgr.sudo().search_count(domain)
         # pager
         pager = request.website.pager(
             url="/my/release_capital_request",
@@ -93,7 +93,7 @@ class CooperatorWebsiteAccount(WebsiteAccount):
             step=self._items_per_page
         )
         # content according to pager and archive selected
-        invoices = invoice_mgr.search(
+        invoices = invoice_mgr.sudo().search(
             domain, limit=self._items_per_page, offset=pager['offset'])
         values.update({
             'date': date_begin,
@@ -125,8 +125,8 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         except MissingError:
             raise NotFound()
         # Get the pdf
-        report_mgr = request.env['report'].sudo()
-        pdf = report_mgr.get_pdf(
+        report_mgr = request.env['report']
+        pdf = report_mgr.sudo().get_pdf(
             capital_request,
             'easy_my_coop.theme_invoice_G002'
         )
@@ -138,8 +138,8 @@ class CooperatorWebsiteAccount(WebsiteAccount):
     def get_cooperator_certificat(self, **kw):
         """Render the cooperator certificate pdf of the current user"""
         partner = request.env.user.partner_id
-        report_mgr = request.env['report'].sudo()
-        pdf = report_mgr.get_pdf(
+        report_mgr = request.env['report']
+        pdf = report_mgr.sudo().get_pdf(
             partner,
             'easy_my_coop.cooperator_certificat_G001'
         )
