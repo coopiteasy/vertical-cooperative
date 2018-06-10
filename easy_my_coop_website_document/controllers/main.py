@@ -18,10 +18,10 @@ class DocumentWebsite(http.Controller):
     @http.route('/documents/<int:oid>', auth='public', website=True)
     def get_document(self, oid=-1):
         """Render a http response for a document"""
-        document_mgr = request.env['easy_my_coop.document'].sudo()
-        doc = document_mgr.browse(oid)
-        ir_http_mgr = request.env['ir.http'].sudo()
-        status, headers, content = ir_http_mgr.binary_content(
+        document_mgr = request.env['easy_my_coop.document']
+        doc = document_mgr.sudo().browse(oid)
+        ir_http_mgr = request.env['ir.http']
+        status, headers, content = ir_http_mgr.sudo().binary_content(
             model=doc._name,
             id=oid,
             field='document',
@@ -120,19 +120,19 @@ class DocumentWebsite(http.Controller):
 
     def _data_tree(self, category=None):
         """Return a tree with categories and documents in it"""
-        category_mgr = request.env['easy_my_coop.document.category'].sudo()
-        document_mgr = request.env['easy_my_coop.document'].sudo()
+        category_mgr = request.env['easy_my_coop.document.category']
+        document_mgr = request.env['easy_my_coop.document']
         if category:
             categories = category.child_ids.sorted(
                 key=lambda r: r.name
             )
             documents = category.document_ids
         else:
-            categories = category_mgr.search(
+            categories = category_mgr.sudo().search(
                 [('parent_id', '=', False)],
                 order="name"
             )
-            documents = document_mgr.search(
+            documents = document_mgr.sudo().search(
                 [('category', '=', False)]
             )
         if categories.ids:
