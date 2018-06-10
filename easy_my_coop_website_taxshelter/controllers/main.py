@@ -15,12 +15,12 @@ from openerp.http import request
 from openerp.addons.website_portal_v10.controllers.main import WebsiteAccount
 
 
-class CooperatorWebsiteAccount(WebsiteAccount):
+class TaxShelterWebsiteAccount(WebsiteAccount):
 
     @http.route()
     def account(self):
         """ Add Tax Shelter Certificate to main account page """
-        response = super(CooperatorWebsiteAccount, self).account()
+        response = super(TaxShelterWebsiteAccount, self).account()
         partner = request.env.user.partner_id
 
         tax_shelter_mgr = request.env['tax.shelter.certificate']
@@ -40,7 +40,7 @@ class CooperatorWebsiteAccount(WebsiteAccount):
     def portal_my_tax_shelter_certificate(self, page=1, date_begin=None,
                                           date_end=None, **kw):
         """Render a page that lits the tax shelter report:
-            * Subscriptions Certificates
+            * Tax Shelter Certificates
             * Shares Certifcates
         """
         values = self._prepare_portal_layout_values()
@@ -84,11 +84,11 @@ class CooperatorWebsiteAccount(WebsiteAccount):
             values
         )
 
-    @http.route(['/my/subscription_certificate/pdf/<int:oid>'],
+    @http.route(['/my/taxshelter_certificate/pdf/<int:oid>'],
                 type='http', auth="user", website=True)
-    def get_subscription_certificate_pdf(self, oid=-1):
-        """Render the Subscription Certificate pdf of the given
-        Tax Shelter Report
+    def get_taxshelter_certificate_pdf(self, oid=-1):
+        """Render the Tax Shelter Certificate pdf of the given Tax
+        Shelter Report
         """
         # Get the subscription certificate and raise an error if the user
         # is not allowed to access to it or if the object is not found.
@@ -103,12 +103,12 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         except MissingError:
             raise NotFound()
         # Get the pdf
-        report_mgr = request.env['report'].sudo()
-        pdf = report_mgr.get_pdf(
+        report_mgr = request.env['report']
+        pdf = report_mgr.sudo().get_pdf(
             tax_shelter,
             'easy_my_coop_taxshelter_report.tax_shelter_subscription_report'
         )
-        filename = "Subscription Certificate - %s - %s" % (
+        filename = "Tax Shelter Certificate - %s - %s" % (
             partner.name,
             tax_shelter.declaration_id.fiscal_year
         )

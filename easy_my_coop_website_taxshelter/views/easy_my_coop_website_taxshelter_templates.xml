@@ -65,7 +65,7 @@
           <thead>
             <tr class="active">
               <th>Declaration Year</th>
-              <th>Subscription Certificate</th>
+              <th>Tax Shelter Certificate</th>
               <th>Share Certificate</th>
               <th>Total Amount</th>
             </tr>
@@ -76,9 +76,9 @@
                 <t t-esc="tax_shelter.declaration_id.name"/>
               </td>
               <td>
-                <a t-att-href="'/my/subscription_certificate/pdf/%s'
+                <a t-att-href="'/my/taxshelter_certificate/pdf/%s'
                   % tax_shelter.id">
-                  Subscription Certificate
+                  Tax Shelter Certificate
                 </a>
               </td>
               <td>
