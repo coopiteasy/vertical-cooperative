@@ -23,8 +23,8 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         response = super(CooperatorWebsiteAccount, self).account()
         partner = request.env.user.partner_id
 
-        tax_shelter_mgr = request.env['tax.shelter.certificate'].sudo()
-        tax_shelter_count = tax_shelter_mgr.search_count([
+        tax_shelter_mgr = request.env['tax.shelter.certificate']
+        tax_shelter_count = tax_shelter_mgr.sudo().search_count([
             ('partner_id', 'in', [partner.commercial_partner_id.id]),
         ])
 
@@ -45,7 +45,7 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         """
         values = self._prepare_portal_layout_values()
         partner = request.env.user.partner_id
-        tax_shelter_mgr = request.env['tax.shelter.certificate'].sudo()
+        tax_shelter_mgr = request.env['tax.shelter.certificate']
 
         domain = [
             ('partner_id', 'in', [partner.commercial_partner_id.id]),
@@ -56,7 +56,7 @@ class CooperatorWebsiteAccount(WebsiteAccount):
                        ('create_date', '<', date_end)]
 
         # count for pager
-        tax_shelter_count = tax_shelter_mgr.search_count(domain)
+        tax_shelter_count = tax_shelter_mgr.sudo().search_count(domain)
         # pager
         pager = request.website.pager(
             url="/my/tax_shelter_certificate",
@@ -66,7 +66,7 @@ class CooperatorWebsiteAccount(WebsiteAccount):
             step=self._items_per_page
         )
         # content according to pager and archive selected
-        tax_shelters = tax_shelter_mgr.search(
+        tax_shelters = tax_shelter_mgr.sudo().search(
             domain, limit=self._items_per_page, offset=pager['offset'])
         tax_shelters = tax_shelters.sorted(
             key=lambda r: r.declaration_id.fiscal_year,
@@ -93,8 +93,8 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         # Get the subscription certificate and raise an error if the user
         # is not allowed to access to it or if the object is not found.
         partner = request.env.user.partner_id
-        tax_shelter_mgr = request.env['tax.shelter.certificate'].sudo()
-        tax_shelter = tax_shelter_mgr.browse(oid)
+        tax_shelter_mgr = request.env['tax.shelter.certificate']
+        tax_shelter = tax_shelter_mgr.sudo().browse(oid)
         try:
             if tax_shelter.partner_id != partner:
                 raise Forbidden()
@@ -123,8 +123,8 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         # Get the share certificate and raise an error if the user
         # is not allowed to access to it or if the object is not found.
         partner = request.env.user.partner_id
-        tax_shelter_mgr = request.env['tax.shelter.certificate'].sudo()
-        tax_shelter = tax_shelter_mgr.browse(oid)
+        tax_shelter_mgr = request.env['tax.shelter.certificate']
+        tax_shelter = tax_shelter_mgr.sudo().browse(oid)
         try:
             if tax_shelter.partner_id != partner:
                 raise Forbidden()
@@ -133,8 +133,8 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         except MissingError:
             raise NotFound()
         # Get the pdf
-        report_mgr = request.env['report'].sudo()
-        pdf = report_mgr.get_pdf(
+        report_mgr = request.env['report']
+        pdf = report_mgr.sudo().get_pdf(
             tax_shelter,
             'easy_my_coop_taxshelter_report.tax_shelter_shares_report'
         )
