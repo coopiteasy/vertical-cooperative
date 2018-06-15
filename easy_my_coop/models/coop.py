@@ -288,7 +288,9 @@ class subscription_request(models.Model):
     @api.one
     def validate_subscription_request(self):
         partner_obj = self.env['res.partner']
-
+        
+        if self.ordered_parts <= 0:
+            raise UserError(_('Number of share must be greater than 0.'))
         if self.partner_id:
             if not self.partner_id.cooperator:
                 self.partner_id.cooperator = True
