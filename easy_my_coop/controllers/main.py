@@ -175,23 +175,25 @@ class WebsiteSubscription(http.Controller):
             values['partner_id'] = partner.id
             values['already_cooperator'] = partner.member
  
-        is_company = False
-        if kwargs.get("is_company") == 'on':
+        redirect = "easy_my_coop.becomecooperator"
+        email = kwargs.get('email')
+
+        is_company = kwargs.get("is_company") == 'on'
+        if is_company:
             is_company = True
+            redirect = "easy_my_coop.becomecompanycooperator"
+            email = kwargs.get('company_email')
+        
         values["is_company"] = is_company
         
-        redirect = "easy_my_coop.becomecooperator"
-        if is_company:
-           redirect = "easy_my_coop.becomecompanycooperator"
-               
         if not kwargs.has_key('g-recaptcha-response') or not request.website.is_captcha_valid(kwargs['g-recaptcha-response']):
            values = self.fill_values(values,is_company)
            values["error_msg"] = "the captcha has not been validated, please fill in the captcha"
            
            return request.website.render(kwargs.get("view_from", redirect), values)
         
-        if not logged and kwargs.has_key('email'):
-           user = user_obj.sudo().search([('login','=',kwargs.get("email"))])
+        if not logged and email:
+           user = user_obj.sudo().search([('login','=',email)])
            if user:
                values = self.fill_values(values,is_company)
                values.update(kwargs)
