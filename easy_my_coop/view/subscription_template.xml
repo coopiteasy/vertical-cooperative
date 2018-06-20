@@ -276,7 +276,7 @@
 								Logged
 							</label>
 							<label>
-								<input type="checkbox" t-att-value="company" checked="checked" name="is_company" />
+								<input type="checkbox" t-att-value="is_company" checked="checked" name="is_company" />
 								Is a company?
 							</label>
 						</div>
