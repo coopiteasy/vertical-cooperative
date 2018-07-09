@@ -177,7 +177,11 @@ class subscription_request(models.Model):
                                ('crm','CRM'),
                                ('manual','Manual')], string="Source", default="website")
     _order = "id desc"
-    
+
+    # declare this function in order to be overriden
+    def get_eater_vals(self, partner, share_product_id):
+        return {}
+
     def _prepare_invoice_line(self, product, partner, qty):
         self.ensure_one()
         res = {}
