@@ -28,6 +28,8 @@ class account_invoice(models.Model):
             sub_reg_num = sequence_id.next_by_id()
             self.partner_id.write({'member':True,'old_member':False,
                                    'cooperator_register_number':int(sub_reg_num)})
+        elif self.partner_id.old_member == False:
+            self.partner_id.write({'member':True,'old_member':False})
         else:
             mail_template_name = 'Share Increase - Payment Received Confirmation - Send By Email'
         sequence_operation = obj_sequence.search([('name','=','Register Operation')])[0]
