@@ -115,11 +115,10 @@ class ResPartner(models.Model):
     @api.depends('subscription_request_ids.state')
     def _compute_coop_candidate(self):
         for partner in self:
-            paid_sub_req = partner.subscription_request_ids.filtered(lambda record: record.state == 'paid')
-            if paid_sub_req:
+            if partner.member:
                 is_candidate = False
             else:
-                if len(partner.subscription_request_ids.filtered(lambda record: record.state != 'cancelled')) > 0:
+                if len(partner.subscription_request_ids.filtered(lambda record: record.state == 'done')) > 0:
                     is_candidate = True
                 else :
                     is_candidate = False
