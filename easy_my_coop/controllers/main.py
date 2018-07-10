@@ -188,7 +188,7 @@ class WebsiteSubscription(http.Controller):
         
         if not kwargs.has_key('g-recaptcha-response') or not request.website.is_captcha_valid(kwargs['g-recaptcha-response']):
            values = self.fill_values(values,is_company)
-           values["error_msg"] = "the captcha has not been validated, please fill in the captcha"
+           values["error_msg"] = _("the captcha has not been validated, please fill in the captcha")
            
            return request.website.render(kwargs.get("view_from", redirect), values)
         
@@ -197,7 +197,7 @@ class WebsiteSubscription(http.Controller):
            if user:
                values = self.fill_values(values,is_company)
                values.update(kwargs)
-               values["error_msg"] = "There is an existing account for this mail address. Please login before fill in the form"
+               values["error_msg"] = _("There is an existing account for this mail address. Please login before fill in the form")
                
                return request.website.render(redirect, values)
            
@@ -207,7 +207,7 @@ class WebsiteSubscription(http.Controller):
 
         if error:
             values = self.fill_values(values, is_company)
-            values["error_msg"] = "Some mandatory fields have not been filled"
+            values["error_msg"] = _("Some mandatory fields have not been filled")
             values = dict(values, error=error, kwargs=kwargs.items())
             return request.website.render(kwargs.get("view_from", redirect), values)
         
@@ -235,7 +235,7 @@ class WebsiteSubscription(http.Controller):
         
         if max_amount > 0 and total_amount > max_amount:
            values = self.fill_values(values,is_company)
-           values["error_msg"] = "You can't subscribe for an amount that exceed " + str(max_amount) + company.currency_id.symbol
+           values["error_msg"] = _("You can't subscribe for an amount that exceed ") + str(max_amount) + company.currency_id.symbol
            return request.website.render("easy_my_coop.becomecooperator", values)
         
         if is_company:
