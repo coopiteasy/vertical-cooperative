@@ -12,3 +12,8 @@ access_subscription_register_super_manager,subscription_register,model_subscript
 access_subscription_request_super_manager,subscription.request,model_subscription_request,group_energiris_super_manager,1,1,1,1
 access_operation_request,operation.request,model_operation_request,group_energiris_manager,1,1,1,0
 access_operation_request_super_manager,operation.request,model_operation_request,group_energiris_super_manager,1,1,1,1
+access_product_product_user,product.product,product.model_product_product,group_energiris_user,1,1,1,0
+access_product_product_manager,product.product,product.model_product_product,group_energiris_manager,1,1,1,1
+access_product_template_user,product.template,product.model_product_template,group_energiris_user,1,1,1,0
+access_product_template_manager,product.template,product.model_product_template,group_energiris_manager,1,1,1,1
+"",,,,,,,
