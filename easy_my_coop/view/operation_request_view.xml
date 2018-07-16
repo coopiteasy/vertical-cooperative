@@ -48,7 +48,7 @@
 		       				</group>
 		       			</group>
 		       			<group>
-		       				<field name="subscription_request" attrs="{'invisible':['|',('operation_type','!=','transfer'),('receiver_not_member','=',False)]}" context="{'default_is_operation': True, 'default_share_product_id': share_product_id}">
+		       				<field name="subscription_request" attrs="{'invisible':['|',('operation_type','!=','transfer'),('receiver_not_member','=',False)]}" context="{'default_is_operation': True, 'default_ordered_parts':quantity,'default_share_product_id': share_product_id, 'default_state':'transfer','default_source':'operation'}">
 		       					<tree>
 		       						<field name="name"/>
 					                <field name="no_registre"/>
@@ -79,6 +79,10 @@
 					       					<field name="lang"/>
 					       					<field name="validated"/>
 					       					<field name="skip_control_ng"/>
+					       					<field name="ordered_parts" invisible="True"/>
+					       					<field name="source" invisible="True"/>
+					       					<field name="state" invisible="True"/>
+					       					<field name="share_product_id" invisible="True"/>
 					       				</group>
 					       			</group>
 				       				</sheet>
