@@ -320,6 +320,7 @@ class subscription_request(models.Model):
             contact = False
             if self.no_registre:
                 contact = partner_obj.search([('national_register_number','=',self.no_registre)])
+                contact.type = 'representative'
             if not contact:
                 contact_vals = {'name':self.name, 'first_name':self.firstname, 'last_name': self.lastname,
                             'customer':False, 'is_company':False, 'cooperator':True, 
@@ -328,7 +329,7 @@ class subscription_request(models.Model):
                             'national_register_number':self.no_registre, 'out_inv_comm_type':'bba',
                             'out_inv_comm_algorithm':'random', 'country_id': self.country_id.id,
                             'lang':self.lang, 'birthdate_date':self.birthdate, 'parent_id': partner.id,
-                            'function':self.contact_person_function,'representative':True}
+                            'function':self.contact_person_function,'representative':True,'type':'representative'}
                 contact = partner_obj.create(contact_vals)
             else:
                 if len(contact) > 1:
@@ -336,7 +337,7 @@ class subscription_request(models.Model):
                 if contact.parent_id and contact.parent_id.id != partner.id:
                     raise UserError(_('This contact person is already defined for another company. Please select another contact'))
                 else:
-                    contact.parent_id = partner.id
+                    contact.write({'parent_id':partner.id,'representative':True})
 
         invoice = self.create_invoice(partner)
         self.write({'partner_id':partner.id, 'state':'done'})
