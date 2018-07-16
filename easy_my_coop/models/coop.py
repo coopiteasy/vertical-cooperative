@@ -125,6 +125,7 @@ class subscription_request(models.Model):
     state = fields.Selection([('draft','Draft'),
                               ('block','Blocked'),
                               ('done','Done'),
+                              ('transfer','Transfer'),
                               ('cancelled','Cancelled'),
                               ('paid','paid')],
                              string='State',required=True, default="draft")
@@ -175,7 +176,8 @@ class subscription_request(models.Model):
                                                help="Keep empty to use the current date", copy=False) 
     source = fields.Selection([('website','Website'),
                                ('crm','CRM'),
-                               ('manual','Manual')], string="Source", default="website")
+                               ('manual','Manual'),
+                               ('operation','Operation')], string="Source", default="website")
     _order = "id desc"
 
     # declare this function in order to be overriden
