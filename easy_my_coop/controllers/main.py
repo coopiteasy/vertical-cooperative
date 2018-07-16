@@ -113,6 +113,8 @@ class WebsiteSubscription(http.Controller):
         values['company_types'] = fields_desc['company_type']['selection']
         values['genders'] = fields_desc['gender']['selection']
         values['company'] = company
+        if is_company:
+            values['is_company'] = 'on'
 
         if not values.get('share_product_id'):
             products = request.env['product.template'].sudo().get_web_share_products(is_company)
@@ -190,7 +192,7 @@ class WebsiteSubscription(http.Controller):
            values = self.fill_values(values,is_company)
            values["error_msg"] = _("the captcha has not been validated, please fill in the captcha")
            
-           return request.website.render(kwargs.get("view_from", redirect), values)
+           return request.website.render(redirect, values)
         
         if not logged and email:
            user = user_obj.sudo().search([('login','=',email)])
