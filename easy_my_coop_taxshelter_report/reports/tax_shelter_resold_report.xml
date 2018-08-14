@@ -70,7 +70,7 @@
 									pour un montant total de <span t-field="o.partner_id.total_value" t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/> euros et que la condition prévue à l’article 145(26), $3, alinéa 2, CIR92 est remplie.
 								</div>
 		<div style="position:relative;top:35px;">
-		L' Article 145/26, CIR 92 sur les revenus <span t-field="o.declaration_id.fiscal_year"/>, connu aussi comme normative Tax Shelter, donnent droit à une réduction d’impôt à hauteur de 45% du montant de la valeur des parts souscrites depuis <span t-field="o.declaration_id.month_from"/> (et avant <span t-field="o.declaration_id.month_to"/> pour la déclaration des revenus <span t-field="o.declaration_id.fiscal_year"/>).<br/>
+		L' Article 145/26, CIR 92 sur les revenus <span t-field="o.declaration_id.fiscal_year"/>, connu aussi comme normative Tax Shelter, donnent droit à une réduction d’impôt à hauteur de  &#160; <span t-field="o.declaration_id.tax_shelter_percentage"/> du montant de la valeur des parts souscrites depuis <span t-field="o.declaration_id.month_from"/> (et avant <span t-field="o.declaration_id.month_to"/> pour la déclaration des revenus <span t-field="o.declaration_id.fiscal_year"/>).<br/>
 		<br/>
 		Cette lettre vaut donc comme certificat que <span t-field="o.company_id.name"/> remplit en effet tous les critères permettant un tel avantage fiscal. Dans les grandes lignes : <br/>
 		<br/>
