@@ -320,7 +320,8 @@ class subscription_request(models.Model):
             contact = False
             if self.no_registre:
                 contact = partner_obj.search([('national_register_number','=',self.no_registre)])
-                contact.type = 'representative'
+                if contact:
+                    contact.type = 'representative'
             if not contact:
                 contact_vals = {'name':self.name, 'first_name':self.firstname, 'last_name': self.lastname,
                             'customer':False, 'is_company':False, 'cooperator':True, 
