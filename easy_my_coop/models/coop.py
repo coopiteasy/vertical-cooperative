@@ -407,4 +407,20 @@ class subscription_register(models.Model):
     user_id = fields.Many2one('res.users', string='Responsible', readonly=True, default=lambda self: self.env.user)
     
     _order = "register_number_operation asc"
-    
+
+    @api.model
+    def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True):
+        if 'share_unit_price' in fields:
+            fields.remove('share_unit_price')
+        if 'register_number_operation' in fields:
+            fields.remove('register_number_operation')
+        res = super(subscription_register, self).read_group(domain, fields, groupby, offset=offset, limit=limit, orderby=orderby, lazy=lazy)
+        if 'total_amount_line' in fields:
+            for line in res:
+                if '__domain' in line:
+                    lines = self.search(line['__domain'])
+                    inv_value = 0.0
+                    for line2 in lines:
+                        inv_value += line2.total_amount_line
+                    line['total_amount_line'] = inv_value
+        return res
