@@ -28,7 +28,7 @@
     "category": "Cooperative management",
     'website': "www.coopiteasy.be",
     "description": """
-    This module allows to recompute the cooperator number subscription it has to be used carefully.    
+    This module computes the age of the partner.
     """,
     'data': [
         'view/partner_view.xml',

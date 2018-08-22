@@ -21,12 +21,12 @@
 {
     "name": "Easy My Coop Eater/worker",
     "version": "1.0",
-    "depends": ["easy_my_coop","partner_age"],
+    "depends": ["easy_my_coop", "partner_age"],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
     'website': "www.coopiteasy.be",
     "description": """
-    This module allows to manage the activity of the cooperator.    
+    This module allows to manage the activity of the cooperator.
     """,
     'data': [
         'view/product_view.xml',

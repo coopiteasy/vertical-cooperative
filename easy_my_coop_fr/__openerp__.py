@@ -23,12 +23,12 @@
     "version": "1.0",
     "depends": ["easy_my_coop",
                 "l10n_fr",
-                "theme_light",],
+                "theme_light"],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
     'webstite': "www.coopiteasy.be",
     "description": """
-    This is the french localization for the easy my coop module    
+    This is the french localization for the easy my coop module
     """,
     'data': [
         'views/subscription_template.xml',

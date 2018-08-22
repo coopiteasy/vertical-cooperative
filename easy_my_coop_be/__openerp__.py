@@ -22,14 +22,14 @@
     "name": "Easy My Coop Be",
     "version": "1.0",
     "depends": ["easy_my_coop",
-                "l10n_be", 
+                "l10n_be",
                 "l10n_be_invoice_bba",
                 ],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
     "website": "www.coopiteasy.be",
     "description": """
-    This is the belgian localization for the easy my coop module.    
+    This is the belgian localization for the easy my coop module.
     """,
     'data': [],
     'installable': True,
