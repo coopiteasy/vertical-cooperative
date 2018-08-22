@@ -22,14 +22,14 @@
     "name": "Easy My Coop Online Payment",
     "version": "1.0",
     "depends": ["easy_my_coop",
-                "website_payment", 
+                "website_payment",
                 "payment_paypal"],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
     'website': "www.coopiteasy.be",
     "description": """
-    This module allows the cooperator to pay the subscribed shares online 
-    during the subscription process    
+    This module allows the cooperator to pay the subscribed shares online
+    during the subscription process
     """,
     'data': [
         "views/online_payment_template.xml",
