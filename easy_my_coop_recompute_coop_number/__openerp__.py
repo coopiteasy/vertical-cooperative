@@ -26,7 +26,8 @@
     "category": "Cooperative management",
     'website': "www.coopiteasy.be",
     "description": """
-    This module allows to recompute the cooperator number subscription it has to be used carefully.    
+    This module allows to recompute the cooperator number subscription
+    it has to be used carefully.
     """,
     'data': [
         'wizard/cooperator_number_wizard.xml',

@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
 <openerp>
     <data>
-
         <record id="view_cooperative_history_wizard" model="ir.ui.view">
             <field name="name">cooperative.history.wizard.form</field>
             <field name="model">cooperative.history.report</field>
@@ -14,7 +13,6 @@
 				<label string="This report allows you to print a pdf of history and number of share for each cooperator"/>
 				<group>
 					<field name="display_cooperator"/>	
-					<!--<field name="display_time"/>-->	
 				</group>
 				
                 <footer>
@@ -37,20 +35,7 @@
             <field name="multi">True</field>
         </record>
 
-        <!--
-        <record model="ir.values" id="action_mission_history_wizard_values">
-            <field name="model_id" ref="fiducis.model_mission_mission"/>
-            <field name="object" eval="1"/>
-            <field name="name">Mission history</field>
-            <field name="key2">client_print_multi</field>
-            <field name="value"
-                eval="'ir.actions.act_window,' +str(ref('action_mission_history_wizard'))"/>
-            <field name="key">action</field>
-            <field name="model">mission.mission</field>
-        </record>
-     	-->
 		<menuitem id="menu_energiris_reporting" name="Reporting" parent="menu_main_energiris" sequence="20"/>
 		<menuitem id="menu_coop_history_wizard_report" name="Cooperative history report" parent="menu_energiris_reporting" action="action_cooperative_history_wizard" sequence="10"/>
-		<!--<menuitem id="menu_optify_rep_history" name="Mission hours history" action="action_mission_history_wizard" parent="menu_optify_reporting" sequence="2"/>-->
     </data>
 </openerp>

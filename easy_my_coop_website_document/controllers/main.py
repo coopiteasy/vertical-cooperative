@@ -33,7 +33,7 @@ class DocumentWebsite(http.Controller):
         elif status == 301:
             # TODO: test this case not sure if this render the same
             # return werkzeug.utils.redirect(content, code=301)
-            return request.redirec(content, code=301)
+            return request.redirect(content, code=301)
         elif status != 200:
             return request.not_found()
         content_base64 = base64.b64decode(content)
