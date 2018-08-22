@@ -21,8 +21,8 @@
 {
     "name": "Easy My Coop",
     "version": "1.1",
-    "depends": ["base", 
-                "sale", 
+    "depends": ["base",
+                "sale",
                 "purchase",
                 "account_accountant",
                 "product",
@@ -40,7 +40,8 @@
     "website": "www.coopiteasy.be",
     "license": "AGPL-3",
     "description": """
-    This module allows to manage the cooperator subscription and all the cooperative business processes.    
+    This module allows to manage the cooperator subscription and all the
+     cooperative business processes.
     """,
     'data': [
         'security/easy_my_coop_security.xml',
@@ -48,7 +49,7 @@
         'wizard/create_subscription_from_partner.xml',
         'wizard/update_partner_info.xml',
         'view/subscription_request_view.xml',
-        'view/email_template_view.xml',  
+        'view/email_template_view.xml',
         'view/res_partner_view.xml',
         'view/cooperator_register_view.xml',
         'view/operation_request_view.xml',
@@ -57,14 +58,13 @@
         'view/product_view.xml',
         'view/res_company_view.xml',
         'view/account_journal_view.xml',
-        'data/easy_my_coop_data.xml', 
+        'data/easy_my_coop_data.xml',
         'report/easy_my_coop_report.xml',
         'report/cooperator_invoice_G002.xml',
         'report/cooperator_certificat_G001.xml',
         'report/cooperator_subscription_G001.xml',
         'report/cooperator_register_G001.xml',
         'data/mail_template_data.xml',
-        #'wizard/cooperative_history_wizard.xml',
     ],
     'installable': True,
     'application': True,
