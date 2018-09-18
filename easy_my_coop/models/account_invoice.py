@@ -72,11 +72,12 @@ class account_invoice(models.Model):
     @api.multi
     def confirm_paid(self):
         for invoice in self:
+            #self.env.cr.commit()
             super(account_invoice, invoice).confirm_paid()
             # we check if there is an open refund for this invoice. in this case we
             # don't run the process_subscription function as the invoice has been 
             # reconciled with a refund and not a payment.
-            refund = self.search([('type', '=', 'out_refund'), ('origin', '=', invoice.number)]).filtered(lambda record: record.state == 'open')
+            refund = self.search([('type', '=', 'out_refund'), ('origin', '=', invoice.move_name)])
 
             if invoice.partner_id.cooperator and invoice.release_capital_request \
                 and invoice.type == 'out_invoice' and not refund:
