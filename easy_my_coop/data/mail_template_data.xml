@@ -122,7 +122,7 @@
 
     <p>Hello ${object.name},</p>
 
-	<p>We have received your subscription request for ${object.company_name} ${object.company_type}. Thank you for your support.</p>
+	<p>We have received your subscription request for ${object.company_id.name}. Thank you for your support.</p>
 	
 	<p>Your request will be soon processed by our team "gestion et participation des membres". If all the provided info are correct you will soon receive the payment information in another email</p>
 
