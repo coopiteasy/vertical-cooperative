@@ -58,9 +58,11 @@ class operation_request(models.Model):
     def refuse_operation(self):
         self.write({'state':'refused'})
     
-    @api.one
+    @api.multi
     def submit_operation(self):
-        self.write({'state':'waiting'})
+        for rec in self:
+            rec.validate()
+            rec.write({'state':'waiting'})
         
     @api.one
     def cancel_operation(self):
