@@ -149,6 +149,7 @@ class operation_request(models.Model):
         effective_date = self.get_date_now()
         ir_sequence = self.env['ir.sequence']
         sub_request = self.env['subscription.request']
+        email_template_obj = self.env['mail.template']
 
         for rec in self:
             rec.validate()
@@ -173,7 +174,7 @@ class operation_request(models.Model):
                 if rec.receiver_not_member:
                     partner = rec.subscription_request.create_coop_partner()
                     #get cooperator number
-                    sequence_id = ir_sequence.search([('name','=','Subscription Register')])[0]
+                    sequence_id = self.env.ref('easy_my_coop.sequence_subscription', False)
                     sub_reg_num = sequence_id.next_by_id()
                     partner_vals = sub_request.get_eater_vals(partner, rec.share_product_id)
                     partner_vals['member'] = True
@@ -197,7 +198,8 @@ class operation_request(models.Model):
             else:
                 raise ValidationError(_("This operation is not yet implemented."))
             
-            sequence_operation = ir_sequence.search([('name','=','Register Operation')])[0]
+            #sequence_operation = ir_sequence.search([('name','=','Register Operation')])[0]
+            sequence_operation = self.env.ref('easy_my_coop.sequence_register_operation', False)
             sub_reg_operation = sequence_operation.next_by_id()
             
             values = {'name':sub_reg_operation,'register_number_operation':int(sub_reg_operation),
@@ -208,14 +210,13 @@ class operation_request(models.Model):
             
             rec.write({'state':'done'})
             
-            email_template_obj = self.env['mail.template']
             if rec.operation_type == 'transfer':
                 values['partner_id_to'] = rec.partner_id_to.id
-                certificat_email_template = email_template_obj.search([('name', '=', "Share transfer - Send By Email")])[0]
+                certificat_email_template = self.env.ref('easy_my_coop.email_template_share_transfer', False)
                 certificat_email_template.send_mail(rec.partner_id_to.id, False)
     
             self.env['subscription.register'].create(values)
             
-            certificat_email_template = email_template_obj.search([('name', '=', "Share update - Send By Email")])[0]
+            certificat_email_template = self.env.ref('easy_my_coop.email_template_share_update', False)
             certificat_email_template.send_mail(rec.partner_id.id, False)
      
