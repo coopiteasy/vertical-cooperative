@@ -42,9 +42,11 @@
 			          			<field name="user_id"/>
 			          			<field name="share_product_id" attrs="{'readonly':[('state','!=','draft')]}"/>
 			          			<field name="share_short_name" readonly="True"/>
+			          			<field name="share_to_product_id" attrs="{'invisible':[('operation_type','!=','convert')],'required':[('operation_type','=','convert')],'readonly':[('state','!=','draft')]}"/>
+			          			<field name="share_to_short_name" readonly="True"/>
 			          			<field name="quantity" attrs="{'readonly':[('state','!=','draft')]}"/>
 			          			<field name="share_unit_price" readonly="True"/>
-			          			<field name="subscription_amount" attrs="{'readonly':[('state','!=','draft')]}"/>
+			          			<field name="subscription_amount" readonly="True" />
 		       				</group>
 		       			</group>
 		       			<group>
