@@ -50,13 +50,15 @@ class operation_request(models.Model):
     
     invoice = fields.Many2one('account.invoice', string="Invoice")
      
-    @api.one
+    @api.multi
     def approve_operation(self):
-        self.write({'state':'approved'})
+        for rec in self:
+            rec.write({'state':'approved'})
     
-    @api.one
+    @api.multi
     def refuse_operation(self):
-        self.write({'state':'refused'})
+        for rec in self:
+            rec.write({'state':'refused'})
     
     @api.multi
     def submit_operation(self):
@@ -64,13 +66,15 @@ class operation_request(models.Model):
             rec.validate()
             rec.write({'state':'waiting'})
         
-    @api.one
+    @api.multi
     def cancel_operation(self):
-        self.write({'state':'cancelled'})
+        for rec in self:
+            rec.write({'state':'cancelled'})
     
-    @api.one
+    @api.multi
     def reset_to_draft(self):
-        self.write({'state':'draft'})
+        for rec in self:
+            rec.write({'state':'draft'})
     
     def get_total_share_dic(self, partner):
         total_share_dic = {}
@@ -115,6 +119,7 @@ class operation_request(models.Model):
             if line.share_product_id.id == self.share_product_id.id:
                 return True
         return False
+
     def validate(self):
         if not self.has_share_type() and self.operation_type in ['sell_back', 'transfer']:
             raise ValidationError(_("The cooperator doesn't own this share type. Please choose the appropriate share type."))
