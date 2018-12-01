@@ -48,7 +48,7 @@ class subscription_request(models.Model):
                     vals['already_cooperator'] = True
         subscr_request = super(subscription_request, self).create(vals)
         mail_template_obj = self.env['mail.template']
-        confirmation_mail_template = mail_template_obj.search([('name', '=', 'Confirmation Email')])[0]
+        certificat_email_template = self.env.ref('easy_my_coop.email_template_confirmation', False)
         confirmation_mail_template.send_mail(subscr_request.id)
         return subscr_request
     
@@ -62,7 +62,7 @@ class subscription_request(models.Model):
                 vals['already_cooperator'] = True
         subscr_request = super(subscription_request, self).create(vals)
         mail_template_obj = self.env['mail.template']
-        confirmation_mail_template = mail_template_obj.search([('name', '=', 'Company Confirmation Email')])[0]
+        certificat_email_template = self.env.ref('easy_my_coop.email_template_confirmation_company', False)
         confirmation_mail_template.send_mail(subscr_request.id, True)
         return subscr_request
     
