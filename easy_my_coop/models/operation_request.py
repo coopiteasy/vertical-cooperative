@@ -25,10 +25,11 @@ class operation_request(models.Model):
                                        ('sell_back','Sell Back'),
                                        ('convert','Conversion')],string='Operation Type', required=True)
     share_product_id = fields.Many2one('product.product', string='Share type', domain=[('is_share','=',True)], required=True)
-    share_product_id_to = fields.Many2one('product.product', string='Concert to this share type', domain=[('is_share','=',True)])
+    share_to_product_id = fields.Many2one('product.product', string='Convert to this share type', domain=[('is_share','=',True)])
     share_short_name = fields.Char(related='share_product_id.short_name', string='Share type name')
+    share_to_short_name = fields.Char(related='share_to_product_id.short_name', string='Share to type name')
     share_unit_price = fields.Float(related='share_product_id.list_price', string='Share price')
-    subscription_amount = fields.Float(compute='_compute_subscription_amount', string='Subscription amount')
+    subscription_amount = fields.Float(compute='_compute_subscription_amount', string='Operation amount')
     quantity = fields.Integer(string='Number of share', required=True)
     state = fields.Selection([('draft','Draft'),
                               ('waiting','Waiting'),
@@ -112,12 +113,8 @@ class operation_request(models.Model):
             if line.share_product_id.id == self.share_product_id.id:
                 return True
         return False
-    
-    @api.one     
-    def execute_operation(self):
-        effective_date = self.get_date_now()
-        
-        if not self.has_share_type():
+    def validate(self):
+        if not self.has_share_type() and self.operation_type in ['sell_back', 'transfer']:
             raise ValidationError(_("The cooperator doesn't own this share type. Please choose the appropriate share type."))
         if self.state != 'approved':
             raise ValidationError(_("This operation must be approved before to be executed"))
@@ -128,68 +125,90 @@ class operation_request(models.Model):
             if self.quantity > total_share_dic[self.share_product_id.id]:
                 raise ValidationError(_("The cooperator can't hand over more shares that he/she owns."))
         
-        if self.operation_type == 'sell_back': 
-            self.hand_share_over(self.partner_id, self.share_product_id, self.quantity)
-        elif self.operation_type == 'convert':
-            print "convert"
-            amount_to_convert = self.share_unit_price * self.quantity
-            share_to_quant = int(amount_to_convert / self.share_product_id_to.list_price)
-            remainder = amount_to_convert % self.share_product_id_to.list_price 
-            print self.share_product_id_to.list_price
-            print amount_to_convert
-            print share_to_quant
-            print remainder
-            #self.hand_share_over(self.partner_id, self.share_product_id, self.quantity)
+        if self.operation_type == 'convert' and self.company_id.unmix_share_type:
+                if self.share_product_id.code == self.share_to_product_id.code:
+                    raise ValidationError(_("You can't convert the share to the same share type."))
+                if self.subscription_amount != self.partner_id.total_value :
+                    raise ValidationError(_("You must convert all the shares to the selected type."))
         elif self.operation_type == 'transfer':
-            if self.receiver_not_member:
-                partner = self.subscription_request.create_coop_partner()
-                #get cooperator number
-                sequence_id = self.env['ir.sequence'].search([('name','=','Subscription Register')])[0]
-                sub_reg_num = sequence_id.next_by_id()
-                partner_vals = self.env['subscription.request'].get_eater_vals(partner, self.share_product_id)
-                partner_vals['member'] = True
-                partner_vals['cooperator_register_number'] = int(sub_reg_num)
-                partner.write(partner_vals)
-                self.partner_id_to = partner 
-            else:
-                if self.company_id.unmix_share_type and (self.partner_id_to.cooperator_type and self.partner_id.cooperator_type != self.partner_id_to.cooperator_type):
+            if not self.receiver_not_member and self.company_id.unmix_share_type \
+                and (self.partner_id_to.cooperator_type \
+                     and self.partner_id.cooperator_type != self.partner_id_to.cooperator_type):
                    raise ValidationError(_("This share type could not be transfered "
                                            "to " + self.partner_id_to.name))
-                if not self.partner_id_to.member:
-                    partner_vals = self.env['subscription.request'].get_eater_vals(self.partner_id_to, self.share_product_id)
-                    partner_vals['member'] = True
-                    partner_vals['old_member'] = False
-                    self.partner_id_to.write(partner_vals)
-            #remove the parts to the giver
-            self.hand_share_over(self.partner_id, self.share_product_id, self.quantity)
-            #give the share to the receiver
-            self.env['share.line'].create({'share_number':self.quantity,
-                                       'partner_id':self.partner_id_to.id,
-                                       'share_product_id':self.share_product_id.id,
-                                       'share_unit_price':self.share_unit_price,
-                                       'effective_date':effective_date})   
-        else:
-            raise ValidationError(_("This operation is not yet implemented."))
-        
-        sequence_operation = self.env['ir.sequence'].search([('name','=','Register Operation')])[0]
-        sub_reg_operation = sequence_operation.next_by_id()
-        
-        values = {'name':sub_reg_operation,'register_number_operation':int(sub_reg_operation),
-                'partner_id':self.partner_id.id, 'quantity':self.quantity, 
-                'share_product_id':self.share_product_id.id, 'type':self.operation_type,
-                'share_unit_price': self.share_unit_price, 'date':effective_date,
-                }
-        
-        self.write({'state':'done'})
-        
-        email_template_obj = self.env['mail.template']
-        if self.operation_type == 'transfer':
-            values['partner_id_to'] = self.partner_id_to.id
-            certificat_email_template = email_template_obj.search([('name', '=', "Share transfer - Send By Email")])[0]
-            certificat_email_template.send_mail(self.partner_id_to.id, False)
+            
+    @api.multi
+    def execute_operation(self):
+        effective_date = self.get_date_now()
+        ir_sequence = self.env['ir.sequence']
+        sub_request = self.env['subscription.request']
 
-        self.env['subscription.register'].create(values)
+        for rec in self:
+            rec.validate()
         
-        certificat_email_template = email_template_obj.search([('name', '=', "Share update - Send By Email")])[0]
-        certificat_email_template.send_mail(self.partner_id.id, False)
+            if rec.operation_type == 'sell_back': 
+                self.hand_share_over(rec.partner_id, rec.share_product_id, rec.quantity)
+            elif rec.operation_type == 'convert':
+                amount_to_convert = rec.share_unit_price * rec.quantity
+                convert_quant = int(amount_to_convert / rec.share_to_product_id.list_price)
+                remainder = amount_to_convert % rec.share_to_product_id.list_price 
+                
+                if rec.company_id.unmix_share_type:
+                    if convert_quant > 0 and remainder == 0:
+                        share_ids = rec.partner_id.share_ids
+                        line = share_ids[0]
+                        if len(share_ids) > 1:
+                            share_ids[1:len(share_ids)].unlink()
+                        line.write({'share_number':convert_quant, 'share_product_id':rec.share_to_product_id.id})
+                else:
+                    raise ValidationError(_("Converting just part of the shares is not yet implemented"))
+            elif rec.operation_type == 'transfer':
+                if rec.receiver_not_member:
+                    partner = rec.subscription_request.create_coop_partner()
+                    #get cooperator number
+                    sequence_id = ir_sequence.search([('name','=','Subscription Register')])[0]
+                    sub_reg_num = sequence_id.next_by_id()
+                    partner_vals = sub_request.get_eater_vals(partner, rec.share_product_id)
+                    partner_vals['member'] = True
+                    partner_vals['cooperator_register_number'] = int(sub_reg_num)
+                    partner.write(partner_vals)
+                    rec.partner_id_to = partner 
+                else:
+                    if not rec.partner_id_to.member:
+                        partner_vals = sub_request.get_eater_vals(rec.partner_id_to, rec.share_product_id)
+                        partner_vals['member'] = True
+                        partner_vals['old_member'] = False
+                        rec.partner_id_to.write(partner_vals)
+                #remove the parts to the giver
+                self.hand_share_over(rec.partner_id, rec.share_product_id, rec.quantity)
+                #give the share to the receiver
+                self.env['share.line'].create({'share_number':rec.quantity,
+                                           'partner_id':rec.partner_id_to.id,
+                                           'share_product_id':rec.share_product_id.id,
+                                           'share_unit_price':rec.share_unit_price,
+                                           'effective_date':effective_date})   
+            else:
+                raise ValidationError(_("This operation is not yet implemented."))
+            
+            sequence_operation = ir_sequence.search([('name','=','Register Operation')])[0]
+            sub_reg_operation = sequence_operation.next_by_id()
+            
+            values = {'name':sub_reg_operation,'register_number_operation':int(sub_reg_operation),
+                    'partner_id':rec.partner_id.id, 'quantity':rec.quantity, 
+                    'share_product_id':rec.share_product_id.id, 'type':rec.operation_type,
+                    'share_unit_price': rec.share_unit_price, 'date':effective_date,
+                    }
+            
+            rec.write({'state':'done'})
+            
+            email_template_obj = self.env['mail.template']
+            if rec.operation_type == 'transfer':
+                values['partner_id_to'] = rec.partner_id_to.id
+                certificat_email_template = email_template_obj.search([('name', '=', "Share transfer - Send By Email")])[0]
+                certificat_email_template.send_mail(rec.partner_id_to.id, False)
+    
+            self.env['subscription.register'].create(values)
+            
+            certificat_email_template = email_template_obj.search([('name', '=', "Share update - Send By Email")])[0]
+            certificat_email_template.send_mail(rec.partner_id.id, False)
      
