@@ -396,6 +396,10 @@ class subscription_register(models.Model):
     total_amount_line = fields.Float(compute='_compute_total_line', string='Total amount line')
     share_product_id = fields.Many2one('product.product', string='Share type', required=True, readonly=True, domain=[('is_share','=',True)])
     share_short_name = fields.Char(related='share_product_id.short_name', string='Share type name', readonly=True)
+    share_to_product_id = fields.Many2one('product.product', string='Share to type', readonly=True, domain=[('is_share','=',True)])
+    share_to_short_name = fields.Char(related='share_to_product_id.short_name', string='Share to type name', readonly=True)
+    quantity_to = fields.Integer(string='Number of share to', readonly=True)
+    share_to_unit_price = fields.Float(string='Share to price', readonly=True)
     type = fields.Selection([('subscription','Subscription'),
                              ('transfer','Transfer'),
                              ('sell_back','Sell Back'),
