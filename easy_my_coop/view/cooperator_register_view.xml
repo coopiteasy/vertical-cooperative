@@ -26,16 +26,19 @@
 		                <group>
 			                <field name="register_number_operation"/>
 		          			<field name="date"/>
-							<field name="share_short_name"/>
 		          			<field name="partner_id"/>
-		          			<field name="partner_id_to" attrs="{'invisible':[('type','!=','transfer')]}"/>
-		          			<field name="user_id" invisible="True"/>
-	          			</group>
-	          			<group>
-		          			<field name="type"/>
+							<field name="share_short_name"/>
 		          			<field name="quantity"/>
 		          			<field name="share_unit_price"/>
 		          			<field name="total_amount_line"/>
+	          			</group>
+	          			<group>
+		          			<field name="partner_id_to" attrs="{'invisible':[('type','!=','transfer')]}"/>
+		          			<field name="type"/>
+		          			<field name="share_to_short_name"/>
+		          			<field name="quantity_to"/>
+		          			<field name="share_to_unit_price"/>
+		          			<field name="user_id" invisible="True"/>
 	          			</group>
 	          		</group>
                 </form>
