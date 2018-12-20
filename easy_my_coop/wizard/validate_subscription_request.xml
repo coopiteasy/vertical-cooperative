@@ -18,7 +18,7 @@
         </record>
 
         <record id="action_validate_subscription_request" model="ir.actions.act_window">
-            <field name="name">Update Cooperator Info</field>
+            <field name="name">Validate subscription request</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">validate.subscription.request</field>
             <field name="view_type">form</field>
@@ -28,8 +28,8 @@
         </record>
 		
 		<record model="ir.values" id="validate_subscription_request">
-            <field name="model_id" ref="resource.model_subscription_request" />
-            <field name="name">Subscription Request</field>
+            <field name="model_id" ref="easy_my_coop.model_subscription_request" />
+            <field name="name">Validate subscription Request</field>
             <field name="key2">client_action_multi</field>
             <field name="value" eval="'ir.actions.act_window,' + str(ref('action_validate_subscription_request'))" />
             <field name="key">action</field>
