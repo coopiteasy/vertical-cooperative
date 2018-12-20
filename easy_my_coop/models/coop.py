@@ -125,6 +125,7 @@ class subscription_request(models.Model):
     state = fields.Selection([('draft','Draft'),
                               ('block','Blocked'),
                               ('done','Done'),
+                              ('waiting','Waiting'),
                               ('transfer','Transfer'),
                               ('cancelled','Cancelled'),
                               ('paid','paid')],
@@ -358,6 +359,10 @@ class subscription_request(models.Model):
     @api.one    
     def cancel_subscription_request(self):
         self.write({'state':'cancelled'})
+
+    @api.one    
+    def put_on_waiting_list(self):
+        self.write({'state':'waiting'})
             
 class share_line(models.Model):
     _name='share.line'
