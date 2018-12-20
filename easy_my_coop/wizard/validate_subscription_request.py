@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from openerp import api, fields, models, _
-from openerp.exceptions import UserError
+from openerp import api, models
 
 
 class ValidateSubscriptionRequest(models.TransientModel):
@@ -10,8 +9,11 @@ class ValidateSubscriptionRequest(models.TransientModel):
 
     @api.multi
     def validate(self):
+        selected_requests = self.env['subscription.request'].browse(
+            self._context.get('active_ids'))
+        subscription_requests = selected_requests.filtered(
+            lambda record: record.state in ['draft', 'waiting'])
 
-        subscription_requests = self.filtered(lambda record: record.state in ['draft', 'waiting'])
         for subscription_request in subscription_requests:
-            subscription_request.validate_subscription_request
+            subscription_request.validate_subscription_request()
         return True
