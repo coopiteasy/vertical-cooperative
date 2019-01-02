@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from openerp import api, fields, models, _
+from openerp import fields, models
 
 class AccountJournal(models.Model):
     _inherit = "account.journal"

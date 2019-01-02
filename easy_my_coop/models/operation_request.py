@@ -2,8 +2,7 @@
 from datetime import datetime
 
 from openerp import api, fields, models, _
-from openerp.addons.base_iban import base_iban
-from openerp.exceptions import UserError, ValidationError
+from openerp.exceptions import ValidationError
 
 class operation_request(models.Model):
     _name = 'operation.request'
