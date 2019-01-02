@@ -44,10 +44,12 @@ class subscription_request(models.Model):
             if cooperator.member:
                     vals['type'] = 'increase'
                     vals['already_cooperator'] = True
+        
         subscr_request = super(subscription_request, self).create(vals)
-        mail_template_obj = self.env['mail.template']
+
         confirmation_mail_template = self.env.ref('easy_my_coop.email_template_confirmation', False)
         confirmation_mail_template.send_mail(subscr_request.id)
+        
         return subscr_request
     
     @api.model
@@ -59,9 +61,10 @@ class subscription_request(models.Model):
                 vals['type'] = 'increase'
                 vals['already_cooperator'] = True
         subscr_request = super(subscription_request, self).create(vals)
-        mail_template_obj = self.env['mail.template']
+
         confirmation_mail_template = self.env.ref('easy_my_coop.email_template_confirmation_company', False)
         confirmation_mail_template.send_mail(subscr_request.id, True)
+        
         return subscr_request
     
     def check_belgian_identification_id(self, nat_register_num):
