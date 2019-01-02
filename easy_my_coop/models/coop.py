@@ -2,7 +2,7 @@
 from datetime import datetime
 
 from openerp import api, fields, models, _
-from addons.base_iban import base_iban
+from openerp.addons.base_iban import base_iban
 from openerp.exceptions import UserError, ValidationError
 
 _REQUIRED = ['email','firstname','lastname','birthdate','address','share_product_id','ordered_parts','zip_code','city','iban','no_registre','gender']  # Could be improved including required from model
@@ -173,7 +173,9 @@ class subscription_request(models.Model):
     contact_person_function = fields.Char(string='Function')
     operation_request_id = fields.Many2one('operation.request', string="Operation Request")
     is_operation = fields.Boolean(string="Is Operation request")
-    capital_release_request = fields.One2many('account.invoice','subscription_request', string='Subscription request')
+    capital_release_request = fields.One2many('account.invoice','subscription_request',
+                                              string='Capital release request',
+                                              readonly=True)
     capital_release_request_date = fields.Date(string="Force the capital release request date",
                                                help="Keep empty to use the current date", copy=False) 
     source = fields.Selection([('website','Website'),
