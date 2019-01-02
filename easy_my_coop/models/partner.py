@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from openerp import api, fields, models, _
-from datetime import date
+from openerp import api, fields, models
+
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
