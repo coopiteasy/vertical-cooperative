@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2013-2017 Open Architects Consulting SPRL.
-#    Copyright (C) 2017-2018 Coop IT Easy SCRL.
+#    Copyright (C) 2013-2018 Open Architects Consulting SPRL.
+#    Copyright (C) 2018-     Coop IT Easy SCRL.
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
