@@ -2,10 +2,8 @@
 from datetime import datetime
 
 from openerp import api, fields, models, _
-from openerp.addons.base_iban import base_iban
+from addons.base_iban import base_iban
 from openerp.exceptions import UserError, ValidationError
-
-import openerp.addons.decimal_precision as dp
 
 _REQUIRED = ['email','firstname','lastname','birthdate','address','share_product_id','ordered_parts','zip_code','city','iban','no_registre','gender']  # Could be improved including required from model
 
