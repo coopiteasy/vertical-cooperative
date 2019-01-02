@@ -80,6 +80,11 @@
 		       					<field name="skip_control_ng"/>
 		       				</group>
 		       			</group>
+		       			<notebook>
+		       				<page name="capital_release_request" string="Capital release request">
+		       					<field name="capital_release_request"/>
+		       				</page>
+		       			</notebook>
        				</sheet>
        			</form>
             </field>
