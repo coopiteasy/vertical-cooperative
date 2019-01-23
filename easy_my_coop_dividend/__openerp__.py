@@ -39,9 +39,7 @@
     'category': 'Cooperative Management',
 
     'depends': [
-        'base',
-        'web',
-        'mail',
+        'easy_my_coop',
     ],
 
     'data': [
