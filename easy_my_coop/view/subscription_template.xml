@@ -185,7 +185,7 @@
 						
 						<div t-attf-class="form-group #{error and 'product_id' in error and 'has-error' or ''}">
 	                    	
-	                      <label class="col-md-3 col-sm-4 control-label" style="width:25%" for="country_id">Parts type</label>
+	                      <label class="col-md-3 col-sm-4 control-label" style="width:25%" for="share_product_id">Parts type</label>
 	                      <select id="share_product_id" name="share_product_id" class="col-md-7 col-sm-8 form-control " style="width:54%;margin-left:15px">
 	                          <t t-foreach="products or []" t-as="product">
 	                              <option t-att-value="product.id" t-att-selected="product.id == int(share_product_id)"><t t-esc="product.short_name"/></option>
