@@ -233,9 +233,15 @@ class WebsiteSubscription(http.Controller):
 
         # Check that required field from model subscription_request exists
         company = request.website.company_id
-        required_fields = request.env['subscription.request'].sudo().get_required_field()
         if company.allow_id_card_upload:
-            required_fields.append('file')
+            if not post_file:
+                values = self.fill_values(values, is_company)
+                values.update(kwargs)
+                values["error_msg"] = _("You need to upload a"
+                                        " scan of your id card")
+                return request.website.render(redirect, values)
+
+        required_fields = request.env['subscription.request'].sudo().get_required_field()
         error = set(field for field in required_fields if not values.get(field))
 
         if error:
