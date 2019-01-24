@@ -3,10 +3,7 @@ import base64
 from datetime import datetime
 import re
 
-import werkzeug
-import werkzeug.urls
-
-from openerp import http, SUPERUSER_ID
+from openerp import http
 from openerp.http import request
 from openerp.tools.translate import _
 
@@ -15,6 +12,18 @@ _TECHNICAL = ['view_from', 'view_callback']
 # Allow in description
 _BLACKLIST = ['id', 'create_uid', 'create_date', 'write_uid', 'write_date',
               'user_id', 'active']
+
+_COOP_FORM_FIELD = ['email', 'firstname', 'lastname', 'birthdate', 'iban',
+                    'share_product_id', 'no_registre', 'address', 'city',
+                    'zip_code', 'country_id', 'phone', 'lang', 'nb_parts',
+                    'total_parts', 'error_msg']
+
+_COMPANY_FORM_FIELD = ['is_company', 'company_register_number', 'company_name',
+                       'company_email', 'company_type', 'email', 'firstname',
+                       'lastname', 'birthdate', 'iban', 'share_product_id',
+                       'no_registre', 'address', 'city', 'zip_code',
+                       'country_id', 'phone', 'lang', 'nb_parts',
+                       'total_parts', 'error_msg']
 
 
 class WebsiteSubscription(http.Controller):
@@ -28,9 +37,9 @@ class WebsiteSubscription(http.Controller):
             partner = request.env.user.partner_id
             if partner.is_company:
                 return request.website.render("easy_my_coop.becomecompanycooperator", values)
-        values = self.fill_values(values,False,True)
+        values = self.fill_values(values, False, True)
 
-        for field in ['email','firstname','lastname','birthdate','iban','share_product_id','no_registre','address','city','zip_code','country_id','phone','lang','nb_parts','total_parts','error_msg']:
+        for field in _COOP_FORM_FIELD:
             if kwargs.get(field):
                 values[field] = kwargs.pop(field)
 
@@ -45,7 +54,7 @@ class WebsiteSubscription(http.Controller):
 
         values = self.fill_values(values, True, True)
 
-        for field in ['is_company','company_register_number','company_name','company_email','company_type','email','firstname','lastname','birthdate','iban','share_product_id','no_registre','address','city','zip_code','country_id','phone','lang','nb_parts','total_parts','error_msg']:
+        for field in _COMPANY_FORM_FIELD:
             if kwargs.get(field):
                 values[field] = kwargs.pop(field)
         values.update(kwargs=kwargs.items())
@@ -84,11 +93,11 @@ class WebsiteSubscription(http.Controller):
             values['country_id'] = partner.country_id.id
 
             if is_company:
-                #company values
+                # company values
                 values['company_register_number'] = partner.company_register_number
                 values['company_name'] = partner.name
                 values['company_email'] = partner.email
-                #contact person values
+                # contact person values
                 representative = partner.get_representative()
                 values['firstname'] = representative.firstname
                 values['lastname'] = representative.lastname
@@ -127,7 +136,7 @@ class WebsiteSubscription(http.Controller):
         if not values.get('share_product_id'):
             products = request.env['product.template'].sudo().get_web_share_products(is_company)
             for product in products:
-                if product.default_share_product == True:
+                if product.default_share_product is True:
                     values['share_product_id'] = product.id
                     break
         if not values.get('country_id'):
@@ -143,7 +152,7 @@ class WebsiteSubscription(http.Controller):
         if not values.get('lang'):
             if company.default_lang_id:
                 values['lang'] = company.default_lang_id.code
-        return values 
+        return values
 
     def get_products_share(self, is_company):
         products = request.env['product.template'].sudo().get_web_share_products(is_company)
@@ -280,6 +289,6 @@ class WebsiteSubscription(http.Controller):
                     'datas': base64.encodestring(field_value.read()),
                     'datas_fname': field_value.filename,
                 }
-                request.registry['ir.attachment'].sudo().create(attachment_value)
+                request.env['ir.attachment'].sudo().create(attachment_value)
 
         return self.get_subscription_response(values, kwargs)
