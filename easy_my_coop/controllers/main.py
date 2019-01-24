@@ -232,7 +232,10 @@ class WebsiteSubscription(http.Controller):
                 return request.website.render(redirect, values)
 
         # Check that required field from model subscription_request exists
-        required_fields = request.env['subscription.request'].sudo().get_required_field() 
+        company = request.website.company_id
+        required_fields = request.env['subscription.request'].sudo().get_required_field()
+        if company.allow_id_card_upload:
+            required_fields.append('file')
         error = set(field for field in required_fields if not values.get(field))
 
         if error:
@@ -259,7 +262,6 @@ class WebsiteSubscription(http.Controller):
             values["share_product_id"] = product.id
 
         # check the subscription's amount
-        company = request.website.company_id
         max_amount = company.subscription_maximum_amount
         total_amount = float(kwargs.get('total_parts'))
 
