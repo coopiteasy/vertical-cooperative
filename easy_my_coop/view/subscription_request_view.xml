@@ -3,6 +3,7 @@
 	<data>
 		<menuitem name="Easy-My Coop" id="menu_main_easy_my_coop" sequence="40" groups="easy_my_coop.group_energiris_user"/>
 		<menuitem name="Subscription" id="menu_easy_my_coop_main_subscription" parent="menu_main_easy_my_coop" sequence="10" groups="easy_my_coop.group_energiris_manager"/>
+		<menuitem name="Reporting" id="menu_easy_my_coop_main_reporting" parent="menu_main_easy_my_coop" sequence="40" groups="easy_my_coop.group_energiris_manager"/>
 		
 		<record id="subscription_request_tree" model="ir.ui.view">
             <field name="name">subscription.request.tree</field>
