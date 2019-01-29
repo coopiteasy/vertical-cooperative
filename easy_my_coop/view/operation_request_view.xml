@@ -24,7 +24,7 @@
        					<button string="Submit" type="object" name="submit_operation" states="draft"/>
        					<button string="Approve" type="object" name="approve_operation" states="waiting"/>
        					<button string="Refuse" type="object" name="refuse_operation" states="waiting"/>
-       					<button string="Cancel" type="object" name="cancel_operation" states="draft,waiting"/>
+       					<button string="Cancel" type="object" name="cancel_operation" states="draft,waiting,approved"/>
        					<button string="Draft" type="object" name="reset_to_draft" states="waiting,cancelled"/>
        					<button string="Execute" type="object" name="execute_operation" states="approved"/>
 	                    <field name="state" widget="statusbar" statusbar_visible="draft,done,cancelled,refused" statusbar_colors='{"draft":"grey","done":"green","cancelled":"orange","refused":"red"}'/>
