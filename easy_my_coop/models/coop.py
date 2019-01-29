@@ -152,26 +152,32 @@ class subscription_request(models.Model):
                               ('cancelled', 'Cancelled'),
                               ('paid', 'paid')],
                              string='State', required=True, default="draft")
-    email = fields.Char(string='Email')
+    email = fields.Char(string='Email', required=True)
     iban = fields.Char(string='Account Number')
     partner_id = fields.Many2one('res.partner',
                                  string='Cooperator')
     share_product_id = fields.Many2one('product.product',
                                        string='Share type',
-                                       domain=[('is_share', '=', True)])
+                                       domain=[('is_share', '=', True)],
+                                       required=True)
     share_short_name = fields.Char(related='share_product_id.short_name',
                                    string='Share type name')
     share_unit_price = fields.Float(related='share_product_id.list_price',
                                     string='Share price')
     subscription_amount = fields.Float(compute='_compute_subscription_amount',
                                        string='Subscription amount')
-    ordered_parts = fields.Integer(string='Number of Share')
-    address = fields.Char(string='Address')
-    city = fields.Char(string='City')
-    zip_code = fields.Char(string='Zip Code')
+    ordered_parts = fields.Integer(string='Number of Share',
+                                   required=True)
+    address = fields.Char(string='Address',
+                          required=True)
+    city = fields.Char(string='City',
+                       required=True)
+    zip_code = fields.Char(string='Zip Code',
+                           required=True)
     country_id = fields.Many2one('res.country',
                                  string='Country',
-                                 ondelete='restrict')
+                                 ondelete='restrict',
+                                 required=True)
     phone = fields.Char(string='Phone')
     no_registre = fields.Char(string='National Register Number')
     user_id = fields.Many2one('res.users',
@@ -189,8 +195,10 @@ class subscription_request(models.Model):
                                      " a passport")
     lang = fields.Selection(_lang_get,
                             string='Language',
+                            required=True,
                             default=lambda self: self.env['res.company']._company_default_get().default_lang_id.code)
     date = fields.Date(string='Subscription date request',
+                       required=True,
                        default=lambda self: datetime.strftime(datetime.now(), '%Y-%m-%d'))
     company_id = fields.Many2one('res.company', string='Company', required=True,
                                  change_default=True,
