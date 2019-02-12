@@ -270,7 +270,7 @@ class subscription_request(models.Model):
     def send_capital_release_request(self, invoice):
         invoice_email_template = self.env['mail.template'].search([('name', '=', 'Request to Release Capital - Send by Email')])[0]
 
-        # we send the email with the capital release request in attachment 
+        # we send the email with the capital release request in attachment
         invoice_email_template.send_mail(invoice.id, True)
         invoice.sent = True
 
@@ -278,7 +278,7 @@ class subscription_request(models.Model):
         # get subscription journal
         journal = self.env['account.journal'].search([('code', '=', 'SUBJ')])[0]
         # get the account for associate
-        # TODO this should be defined in configuration 
+        # TODO this should be defined in configuration
         if self.company_id.property_cooperator_account:
             account = self.company_id.property_cooperator_account
         else:
