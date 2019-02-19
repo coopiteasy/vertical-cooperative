@@ -4,7 +4,7 @@
 		<menuitem name="Easy-My Coop" id="menu_main_easy_my_coop" sequence="40" groups="easy_my_coop.group_energiris_user"/>
 		<menuitem name="Subscription" id="menu_easy_my_coop_main_subscription" parent="menu_main_easy_my_coop" sequence="10" groups="easy_my_coop.group_energiris_manager"/>
 		<menuitem name="Reporting" id="menu_easy_my_coop_main_reporting" parent="menu_main_easy_my_coop" sequence="40" groups="easy_my_coop.group_energiris_manager"/>
-		
+
 		<record id="subscription_request_tree" model="ir.ui.view">
             <field name="name">subscription.request.tree</field>
             <field name="model">subscription.request</field>
@@ -28,7 +28,7 @@
                 </tree>
             </field>
         </record>
-        
+
         <record id="subscription_request_form" model="ir.ui.view">
             <field name="name">subscription.request.form</field>
             <field name="model">subscription.request</field>
@@ -90,7 +90,7 @@
        			</form>
             </field>
         </record>    
-        
+
         <record id="view_subscription_request_filter" model="ir.ui.view">
             <field name="name">Cooperator Subscription Search</field>
             <field name="model">subscription.request</field>
@@ -105,13 +105,12 @@
                    <filter string="Unvalid" name="Unvalid" domain="[('validated', '=', False)]"/>
                    <group expand="0" name="group_by" string="Group By">
                        <filter string="Request type" context="{'group_by' : 'type'}" />
-                       <!-- <filter string="Part type" context="{'group_by': 'share_short_name'}"/> -->
                        <filter string="Date Month" context="{'group_by': 'date'}"/>
                    </group>
                </search>
             </field>
         </record>
-        
+
         <record id="subscription_request_action" model="ir.actions.act_window">
             <field name="name">Cooperator Subscription</field>
             <field name="res_model">subscription.request</field>
@@ -121,9 +120,9 @@
             <field name="view_id" ref="subscription_request_tree"/>
             <field name="search_view_id" ref="view_subscription_request_filter"/>
         </record>
-	
+
 		<menuitem action="subscription_request_action" name="Cooperator Subscription" id="menu_easy_my_coop_subscription_request"  parent="menu_easy_my_coop_main_subscription" sequence="10"/>
-		
+
 		<record id="company_subscription_request_tree" model="ir.ui.view">
             <field name="name">subscription.request.tree</field>
             <field name="model">subscription.request</field>
@@ -148,7 +147,7 @@
                 </tree>
             </field>
         </record>
-		
+
 		<record id="company_subscription_request_action" model="ir.actions.act_window">
             <field name="name">Company Subscription</field>
             <field name="res_model">subscription.request</field>
@@ -158,9 +157,9 @@
             <field name="view_id" ref="company_subscription_request_tree"/>
             <field name="search_view_id" ref="view_subscription_request_filter"/>
         </record>
-	
+
 		<menuitem action="company_subscription_request_action" name="Company Subscription" id="menu_easy_my_coop_company_subscription_request"  parent="menu_easy_my_coop_main_subscription" sequence="12"/>
-		
+
         <record id="share_line_form" model="ir.ui.view">
             <field name="name">share.line.form</field>
             <field name="model">share.line</field>
@@ -204,13 +203,29 @@
                 </tree>
             </field>
         </record>
-		
+
+        <record id="view_share_line_filter" model="ir.ui.view">
+            <field name="name">Share Line Search</field>
+            <field name="model">share.line</field>
+            <field name="arch" type="xml">
+                <search string="Search Share Line">
+                   <field name="partner_id"/>
+                   <field name="effective_date"/>
+                   <separator/>
+                   <group name="group_by" string="Group By">
+                       <filter string="Cooperator" context="{'group_by' : 'partner_id'}" />
+                       <filter string="Effective date" context="{'group_by': 'effective_date'}"/>
+                   </group>
+               </search>
+            </field>
+        </record>
+
 		<record id="share_line_action" model="ir.actions.act_window">
             <field name="name">Share Lines</field>
             <field name="res_model">share.line</field>
             <field name="view_type">form</field>
         </record>
-	
+
 		<menuitem action="share_line_action" name="Share lines" id="menu_easy_my_coop_share_line"  parent="menu_easy_my_coop_main_subscription" sequence="20" groups="group_energiris_super_manager"/>
 	</data>
 </openerp>
