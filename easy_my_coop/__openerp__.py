@@ -49,6 +49,7 @@
         'wizard/create_subscription_from_partner.xml',
         'wizard/update_partner_info.xml',
         'wizard/validate_subscription_request.xml',
+        'wizard/update_share_line.xml',
         'view/subscription_request_view.xml',
         'view/email_template_view.xml',
         'view/res_partner_view.xml',
