@@ -160,5 +160,57 @@
         </record>
 	
 		<menuitem action="company_subscription_request_action" name="Company Subscription" id="menu_easy_my_coop_company_subscription_request"  parent="menu_easy_my_coop_main_subscription" sequence="12"/>
+		
+        <record id="share_line_form" model="ir.ui.view">
+            <field name="name">share.line.form</field>
+            <field name="model">share.line</field>
+            <field name="arch" type="xml">
+        		<form string="Share line">
+       				<header>
+       					<button string="Update info" name="%(action_view_update_share_line_info)d"
+                                type="action" context="{'default_active_id': active_id}" groups="easy_my_coop.group_energiris_super_manager"/>
+       				</header>
+       				<sheet>
+	       				<group>
+	       					<group>
+	       						<field name="partner_id"/>
+	       						<field name="share_product_id"/>
+	       						<field name="share_number"/>
+		       				</group>
+		       				<group>
+		       					<field name="share_short_name"/>
+		       					<field name="share_unit_price"/>
+		       					<field name="effective_date"/>
+		       					<field name="total_amount_line"/>
+		       				</group>
+	       				</group>
+	       			</sheet>
+	       		</form>
+	       	</field>
+	    </record>
+
+		<record id="share_line_tree" model="ir.ui.view">
+            <field name="name">share.line.tree</field>
+            <field name="model">share.line</field>
+            <field name="arch" type="xml">
+                <tree>
+	                <field name="partner_id"/>
+	                <field name="share_product_id"/>
+	                <field name="share_number"/>
+          			<field name="share_short_name"/>
+          			<field name="share_unit_price"/>
+          			<field name="effective_date"/>
+          			<field name="total_amount_line"/>
+                </tree>
+            </field>
+        </record>
+		
+		<record id="share_line_action" model="ir.actions.act_window">
+            <field name="name">Share Lines</field>
+            <field name="res_model">share.line</field>
+            <field name="view_type">form</field>
+        </record>
+	
+		<menuitem action="share_line_action" name="Share lines" id="menu_easy_my_coop_share_line"  parent="menu_easy_my_coop_main_subscription" sequence="20" groups="group_energiris_super_manager"/>
 	</data>
 </openerp>
