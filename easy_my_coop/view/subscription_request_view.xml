@@ -96,8 +96,7 @@
             <field name="model">subscription.request</field>
             <field name="arch" type="xml">
                 <search string="Search Subscription Request">
-                   <field name="name"
-                       filter_domain="['|',('name','ilike',self),('email','ilike',self)]"/>
+                   <field name="name"/>
                    <separator/>
                    <filter string="draft" name="state_draft" domain="[('state','=','draft')]"/>
                    <filter string="done" name="state_done" domain="[('state','=','done')]"/>
