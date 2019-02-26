@@ -186,6 +186,8 @@ class operation_request(models.Model):
 
     @api.multi
     def execute_operation(self):
+        self.ensure_one()
+        
         effective_date = self.get_date_now()
         sub_request = self.env['subscription.request']
 
@@ -270,7 +272,7 @@ class operation_request(models.Model):
 
             rec.write({'state': 'done'})
 
-            # send mail and to the receiver
+            # send mail to the receiver
             if rec.operation_type == 'transfer':
                 certificat_email_template = self.env.ref('easy_my_coop.email_template_share_transfer', False)
                 certificat_email_template.send_mail(rec.partner_id_to.id, False)
