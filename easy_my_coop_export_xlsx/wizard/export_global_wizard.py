@@ -147,7 +147,7 @@ class export_global_report(models.TransientModel):
                 quantity = int(sub_request.ordered_parts)
                 worksheet1.write(j, i, quantity)
                 i += 1
-                amount = quantity * 250
+                amount = quantity * sub_request.share_unit_price
                 worksheet1.write(j, i, amount)
                 i += 2
                 worksheet1.write(j, i, sub_request.date)
@@ -222,7 +222,7 @@ class export_global_report(models.TransientModel):
                 quantity = int(sub_request.ordered_parts)
                 worksheet1bis.write(j, i, quantity)
                 i += 1
-                amount = quantity * 250
+                amount = quantity * sub_request.share_unit_price
                 worksheet1bis.write(j, i, amount)
                 i += 2
                 worksheet1bis.write(j, i, sub_request.sync_date)
@@ -247,7 +247,7 @@ class export_global_report(models.TransientModel):
             quantity = int(sub_request.ordered_parts)
             worksheet2.write(j, i, quantity)
             i += 1
-            amount = quantity * 250
+            amount = quantity * sub_request.share_unit_price
             worksheet2.write(j, i, amount)
             i += 1
             worksheet2.write(j, i, sub_request.state)
