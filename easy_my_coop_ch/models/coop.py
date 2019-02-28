@@ -15,12 +15,12 @@ class subscription_request(models.Model):
                                      ('fond','Foundation'),
                                      ('edp','Company under public law')])
         
-#     def get_required_field(self):
-#         required_fields = super(subscription_request,self).get_required_field()
-#         if 'iban' in required_fields:
-#             required_fields.remove('iban')
-#         
-#         return required_fields
+    def get_required_field(self):
+        required_fields = super(subscription_request,self).get_required_field()
+        if 'no_registre' in required_fields:
+            required_fields.remove('no_registre')
+         
+        return required_fields
 
     def check_belgian_identification_id(self, nat_register_num):
         #deactivate number validation for swiss localization
