@@ -39,7 +39,6 @@
         'python': ['xlsxwriter'],
     },
     'data': [
-        # 'security/ir.model.access.csv',
         'wizard/export_global_wizard.xml',
     ]
 }
