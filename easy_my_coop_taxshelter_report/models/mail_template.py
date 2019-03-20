@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
-from openerp import api, fields, models, _
+from openerp import api, models
+
 
 class MailTemplate(models.Model):
-    "Templates for sending email"
+
     _inherit = "mail.template"
-    
+
     @api.multi
-    def send_mail_with_multiple_attachments(self, res_id, additional_attachments, force_send=False, raise_exception=False):
+    def send_mail_with_multiple_attachments(self, res_id,
+                                            additional_attachments,
+                                            force_send=False,
+                                            raise_exception=False):
         """Generates a new mail message for the given template and record,
-           and schedules it for delivery through the ``mail`` module's scheduler.
+           and schedules it for delivery through the ``mail`` 
+           module's scheduler.
 
            :param int res_id: id of the record to render the template with
                               (model is taken from the template)
@@ -45,7 +50,7 @@ class MailTemplate(models.Model):
         if attachment_ids:
             values['attachment_ids'] = [(6, 0, attachment_ids)]
             mail.write({'attachment_ids': [(6, 0, attachment_ids)]})
-        
+
         if force_send:
             mail.send(raise_exception=raise_exception)
         return mail.id  # TDE CLEANME: return mail + api.returns ?
