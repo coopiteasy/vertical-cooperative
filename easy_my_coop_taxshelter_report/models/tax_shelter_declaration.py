@@ -77,14 +77,14 @@ class TaxShelterDeclaration(models.Model):
                 line_vals['tax_shelter'] = True
         return line_vals
 
-    def _compute_certificates(self,entries,partner_certificate):
+    def _compute_certificates(self, entries, partner_certificate):
         ongoing_capital_sub = 0.0
         for entry in entries:
             certificate = partner_certificate.get(entry.partner_id.id, False)
 
             if not certificate:
                 # create a certificate for this cooperator
-                cert_vals={}
+                cert_vals = {}
                 cert_vals['declaration_id'] = self.id
                 cert_vals['partner_id'] = entry.partner_id.id
                 cert_vals['cooperator_number'] = entry.partner_id.cooperator_register_number
