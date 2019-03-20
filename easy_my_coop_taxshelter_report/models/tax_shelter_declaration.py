@@ -127,7 +127,6 @@ class TaxShelterDeclaration(models.Model):
     @api.one
     def reset_declaration(self):
         if not self.state == 'validated':
-            certificate_ids = self.tax_shelter_certificates.ids
             self.tax_shelter_certificates.unlink()
             self.state = 'draft'
 
