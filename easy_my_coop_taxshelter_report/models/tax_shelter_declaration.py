@@ -51,6 +51,13 @@ class TaxShelterDeclaration(models.Model):
                                              required=True)
     previously_subscribed_capital = fields.Float(String="Capital previously subscribed",
                                                  readonly=True)
+    excluded_cooperator = fields.One2many('res.partner',
+                                          string="Excluded cooperator",
+                                          help="If these cooperator have"
+                                          " subscribed share during the time"
+                                          " frame of this Tax Shelter "
+                                          "Declaration. They will be marked "
+                                          "as non eligible")
 
     def _prepare_line(self, certificate, entry, ongoing_capital_sub):
         line_vals = {}
