@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import base64
-from datetime import datetime
 
 from openerp import api, fields, models, _
 
@@ -11,9 +10,12 @@ TYPE_MAP = {
 }
 REPORT_DIC = {'subscription':('easy_my_coop_taxshelter_report.tax_shelter_subscription_report','Tax Shelter Subscription'),
               'shares':('easy_my_coop_taxshelter_report.tax_shelter_shares_report','Tax Shelter Shares')}
+
+
 class TaxShelterDeclaration(models.Model):
+
     _name = "tax.shelter.declaration"
-    
+
     name = fields.Char(string='Declaration year', required=True)
     fiscal_year = fields.Char(String="Fiscal year", required=True)
     tax_shelter_certificates = fields.One2many('tax.shelter.certificate','declaration_id', string='Tax shelter certificates', readonly=True)
