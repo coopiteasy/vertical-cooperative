@@ -103,19 +103,21 @@ class TaxShelterDeclaration(models.Model):
         entries = self.env['subscription.register'].search([
                             ('partner_id.is_company', '=', False),
                             ('date', '<=', self.date_to),
-                            ('type', 'in', ['subscription', 'sell_back', 'transfer'])
+                            ('type', 'in', ['subscription',
+                                            'sell_back',
+                                            'transfer'])
                             ])
 
-        subscriptions = entries.filtered((lambda r: r.type == 'subscription' and r.date < self.date_from))
+        subscriptions = entries.filtered((lambda r: r.type == 'subscription' and r.date < self.date_from)) #noqa
         cap_prev_sub = 0.0
         for subscription in subscriptions:
             cap_prev_sub += subscription.total_amount_line
 
         self.previously_subscribed_capital = cap_prev_sub
 
-        partner_certificate = {}
+        partner_cert = {}
 
-        partner_certificate = self._compute_certificates(entries, partner_certificate)
+        partner_cert = self._compute_certificates(entries, partner_cert)
 
         self.state = 'computed'
 
