@@ -53,6 +53,7 @@ class TaxShelterDeclaration(models.Model):
                                                  readonly=True)
     excluded_cooperator = fields.Many2many('res.partner',
                                            string="Excluded cooperator",
+                                           domain=[('cooperator', '=', True)],
                                            help="If these cooperator have"
                                            " subscribed share during the time"
                                            " frame of this Tax Shelter "
@@ -81,6 +82,8 @@ class TaxShelterDeclaration(models.Model):
         if entry.type == 'subscription':
             if not excluded:
                 capital_after_sub = ongoing_capital_sub + entry.total_amount_line
+            else:
+                capital_after_sub = ongoing_capital_sub
             line_vals['capital_before_sub'] = ongoing_capital_sub
             line_vals['capital_after_sub'] = capital_after_sub
             line_vals['capital_limit'] = self.tax_shelter_capital_limit
@@ -102,7 +105,7 @@ class TaxShelterDeclaration(models.Model):
                 certificate = self.env['tax.shelter.certificate'].create(cert_vals)
                 partner_certificate[entry.partner_id.id] = certificate
             excluded = self._excluded_from_declaration(entry)
-            line_vals = self._prepare_line(certificate, entry, ongoing_capital_sub, is_excluded)
+            line_vals = self._prepare_line(certificate, entry, ongoing_capital_sub, excluded)
             certificate.write({'lines': [(0, 0, line_vals)]})
 
             if entry.type == 'subscription' and not excluded:
