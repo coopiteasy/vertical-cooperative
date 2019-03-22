@@ -51,15 +51,25 @@ class TaxShelterDeclaration(models.Model):
                                              required=True)
     previously_subscribed_capital = fields.Float(String="Capital previously subscribed",
                                                  readonly=True)
-    excluded_cooperator = fields.One2many('res.partner',
-                                          string="Excluded cooperator",
-                                          help="If these cooperator have"
-                                          " subscribed share during the time"
-                                          " frame of this Tax Shelter "
-                                          "Declaration. They will be marked "
-                                          "as non eligible")
+    excluded_cooperator = fields.Many2many('res.partner',
+                                           string="Excluded cooperator",
+                                           help="If these cooperator have"
+                                           " subscribed share during the time"
+                                           " frame of this Tax Shelter "
+                                           "Declaration. They will be marked "
+                                           "as non eligible")
 
-    def _prepare_line(self, certificate, entry, ongoing_capital_sub):
+    def _excluded_from_declaration(self, entry):
+        if entry.date >= self.date_from and entry.date <= self.date_to:
+            declaration = self
+        else:
+            declaration = self.search([('date_from', '<=', entry.date),
+                                       ('date_to', '>=', entry.date)])
+        if entry.partner_id.id in declaration.excluded_cooperator.ids:
+            return True
+        return False
+
+    def _prepare_line(self, certificate, entry, ongoing_capital_sub, excluded):
         line_vals = {}
         line_vals['tax_shelter_certificate'] = certificate.id
         line_vals['share_type'] = entry.share_product_id.id
@@ -69,11 +79,12 @@ class TaxShelterDeclaration(models.Model):
         line_vals['transaction_date'] = entry.date
         line_vals['type'] = TYPE_MAP[entry.type]
         if entry.type == 'subscription':
-            capital_after_sub = ongoing_capital_sub + entry.total_amount_line
+            if not excluded:
+                capital_after_sub = ongoing_capital_sub + entry.total_amount_line
             line_vals['capital_before_sub'] = ongoing_capital_sub
             line_vals['capital_after_sub'] = capital_after_sub
             line_vals['capital_limit'] = self.tax_shelter_capital_limit
-            if ongoing_capital_sub <= self.tax_shelter_capital_limit:
+            if ongoing_capital_sub <= self.tax_shelter_capital_limit and not excluded:
                 line_vals['tax_shelter'] = True
         return line_vals
 
@@ -90,11 +101,12 @@ class TaxShelterDeclaration(models.Model):
                 cert_vals['cooperator_number'] = entry.partner_id.cooperator_register_number
                 certificate = self.env['tax.shelter.certificate'].create(cert_vals)
                 partner_certificate[entry.partner_id.id] = certificate
-            line_vals = self._prepare_line(certificate, entry, ongoing_capital_sub)
+            excluded = self._excluded_from_declaration(entry)
+            line_vals = self._prepare_line(certificate, entry, ongoing_capital_sub, is_excluded)
             certificate.write({'lines': [(0, 0, line_vals)]})
 
-            # if entry.type == 'subscription' and entry.date >= self.date_from:
-            ongoing_capital_sub += entry.total_amount_line
+            if entry.type == 'subscription' and not excluded:
+                ongoing_capital_sub += entry.total_amount_line
 
         return partner_certificate
 
