@@ -87,7 +87,7 @@ class TaxShelterDeclaration(models.Model):
             line_vals['capital_before_sub'] = ongoing_capital_sub
             line_vals['capital_after_sub'] = capital_after_sub
             line_vals['capital_limit'] = self.tax_shelter_capital_limit
-            if ongoing_capital_sub <= self.tax_shelter_capital_limit and not excluded:
+            if ongoing_capital_sub < self.tax_shelter_capital_limit and not excluded:
                 line_vals['tax_shelter'] = True
         return line_vals
 
