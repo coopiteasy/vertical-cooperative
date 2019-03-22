@@ -42,6 +42,9 @@
 		                   			</tree>
 		                   		</field>
 	                   		</page>
+	                   		<page string="Excluded from Tax shelter">
+		                   		<field name="excluded_cooperator"/>
+	                   		</page>
                    		</notebook>
                    	</sheet>
                 </form>
