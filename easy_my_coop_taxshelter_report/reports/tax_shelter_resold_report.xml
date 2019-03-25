@@ -37,7 +37,7 @@
 		        	<t t-call="theme_light.invoice_header"/>
 		        	
 		            <div class="row">
-		                <div class="col-xs-5 col-xs-offset-7 easymy-coop-address" style="top:40px;">
+		                <div class="col-xs-5 col-xs-offset-7 easymy-coop-address" style="top:15px;">
 		                    <strong><span t-field="o.partner_id.name" /><br/></strong>
 		                    <span> numéro de coopérateur </span>
 							<span t-field="o.partner_id.cooperator_register_number"></span><br/><br/>
@@ -50,8 +50,8 @@
 		                </div>
 		            </div>
 		
-					<div style="position:absolute; top:300px">
-			            <h2 style="font-family:Bebasneue-Bold;font-size:20pt;line-height:14pt;">
+					<div style="position:absolute; top:145px">
+			            <h2 style="font-family:Bebasneue-Bold;font-size:16pt;">
 			            	<div>
 				            	<span>Déclaration Tax Shelter - Attestation concernant une des quatre années suivant l’acquisition de parts</span>		          					          			
 							</div>
@@ -59,7 +59,7 @@
 			            </h2>
 						
 						<div class="row">
-			                <div class="col-xs-12 pull-left" style="position:relative;top:35px;font-size:16;color:black;font-family:Roboto-Regular;">
+			                <div class="col-xs-12 pull-left" style="position:relative;top:15px;font-size:16;color:black;font-family:Roboto-Regular;">
 				                <div>
 				                	Cher membre,
 								</div>
@@ -69,7 +69,7 @@
 									Cette lettre  confirme qu’en date du <span t-field="o.declaration_id.date_to"/>, vous êtes toujours en possession de parts de <span t-field="o.company_id.name"/> 
 									pour un montant total de <span t-field="o.partner_id.total_value" t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/> euros et que la condition prévue à l’article 145(26), $3, alinéa 2, CIR92 est remplie.
 								</div>
-		<div style="position:relative;top:35px;">
+		<div style="position:relative;top:20px;">
 		L' Article 145/26, CIR 92 sur les revenus <span t-field="o.declaration_id.fiscal_year"/>, connu aussi comme normative Tax Shelter, donnent droit à une réduction d’impôt à hauteur de  &#160; <span t-field="o.declaration_id.tax_shelter_percentage"/> du montant de la valeur des parts souscrites depuis <span t-field="o.declaration_id.month_from"/> (et avant <span t-field="o.declaration_id.month_to"/> pour la déclaration des revenus <span t-field="o.declaration_id.fiscal_year"/>).<br/>
 		<br/>
 		Cette lettre vaut donc comme certificat que <span t-field="o.company_id.name"/> remplit en effet tous les critères permettant un tel avantage fiscal. Dans les grandes lignes : <br/>
