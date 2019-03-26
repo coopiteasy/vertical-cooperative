@@ -149,7 +149,7 @@
 	<div>
         <div class="row">
             <div class="col-xs-3">
-                <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.company_id.logo" style="height: 113px; width: auto;"/>
+                <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.company_id.logo" style="height: 100px;"/>
             </div>
         </div>
     </div>
