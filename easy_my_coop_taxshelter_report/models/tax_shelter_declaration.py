@@ -160,7 +160,7 @@ class TaxShelterCertificate(models.Model):
                                  required=True, readonly=True)
     state = fields.Selection([('draft', 'Draft'),
                               ('validated', 'Validated'),
-                              ('non_eligible', 'Non eligible'),
+                              ('no_eligible', 'No eligible'),
                               ('sent', 'Sent')],
                              string='State', required=True, default="draft")
     declaration_id = fields.Many2one('tax.shelter.declaration',
