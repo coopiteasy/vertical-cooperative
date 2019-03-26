@@ -2,11 +2,12 @@
 from datetime import datetime
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT as OE_DFORMAT
 
-from openerp import models, fields, api, _
+from openerp import models, fields, api
 
-class ResPartner(models.Model):    
+
+class ResPartner(models.Model):
     _inherit = 'res.partner'
-    
+
     def _search_age(self, operator, value):
         if operator not in ('=', '!=', '<', '<=', '>', '>=', 'in', 'not in'):
             return []
@@ -25,6 +26,7 @@ class ResPartner(models.Model):
             dToday = datetime.now().date()
             self.age = dToday.year - dBday.year - ((
                 dToday.month, dToday.day) < (dBday.month, dBday.day))
-            
-    age = fields.Integer(string='Age',compute='_compute_age',search='_search_age')
-    
+
+    age = fields.Integer(string='Age',
+                         compute='_compute_age',
+                         search='_search_age')
