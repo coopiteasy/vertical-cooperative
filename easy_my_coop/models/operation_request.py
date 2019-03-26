@@ -187,7 +187,7 @@ class operation_request(models.Model):
     @api.multi
     def execute_operation(self):
         self.ensure_one()
-        
+
         effective_date = self.get_date_now()
         sub_request = self.env['subscription.request']
 
@@ -199,9 +199,11 @@ class operation_request(models.Model):
                                         " before to be executed"))
 
             values = {
-                'partner_id': rec.partner_id.id, 'quantity': rec.quantity, 
-                'share_product_id': rec.share_product_id.id, 'type': rec.operation_type,
-                'share_unit_price': rec.share_unit_price, 'date': effective_date,
+                'partner_id': rec.partner_id.id, 'quantity': rec.quantity,
+                'share_product_id': rec.share_product_id.id,
+                'type': rec.operation_type,
+                'share_unit_price': rec.share_unit_price,
+                'date': effective_date,
             }
 
             if rec.operation_type == 'sell_back':
