@@ -29,11 +29,12 @@ class ResPartner(models.Model):
             # price_total is in the company currency
             all_partners_and_children[partner] = self.search([('id', 'child_of', partner.id)]).ids
             all_partner_ids += all_partners_and_children[partner]
- 
-        # searching account.invoice.report via the orm is comparatively expensive
-        # (generates queries "id in []" forcing to build the full table).
-        # In simple cases where all invoices are in the same currency than the user's company
-        # access directly these elements
+
+        # searching account.invoice.report via the orm is comparatively
+        # expensive (generates queries "id in []" forcing to build the
+        # full table).
+        # In simple cases where all invoices are in the same currency than
+        # the user's company access directly these elements
 
         # generate where clause to include multicompany rules
         where_query = account_invoice_report._where_calc([
@@ -103,7 +104,7 @@ class ResPartner(models.Model):
                             help="Check this box if this cooperator"
                             " is an effective member.")
     coop_candidate = fields.Boolean(string="Cooperator candidate",
-                                    compute="_compute_coop_candidate", 
+                                    compute="_compute_coop_candidate",
                                     store=True,
                                     readonly=True)
     old_member = fields.Boolean(string='Old cooperator',
