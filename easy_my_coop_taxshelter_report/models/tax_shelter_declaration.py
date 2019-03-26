@@ -235,7 +235,7 @@ class TaxShelterCertificate(models.Model):
                     tax_shelter_mail_template.send_mail_with_multiple_attachments(certificate.id, attachments,True)
                 certificate.state = 'sent'
             else:
-                certificate.state = 'non_eligible'
+                certificate.state = 'no_eligible'
             self.env.cr.commit()
 
     @api.multi
