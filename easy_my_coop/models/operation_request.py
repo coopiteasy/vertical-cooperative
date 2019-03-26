@@ -176,13 +176,20 @@ class operation_request(models.Model):
                 if self.subscription_amount != self.partner_id.total_value:
                     raise ValidationError(_("You must convert all the shares"
                                             " to the selected type."))
+
         elif self.operation_type == 'transfer':
             if not self.receiver_not_member and self.company_id.unmix_share_type \
-                and (self.partner_id_to.cooperator_type 
+                and (self.partner_id_to.cooperator_type
                      and self.partner_id.cooperator_type != self.partner_id_to.cooperator_type):
                 raise ValidationError(_("This share type could not be"
                                         " transfered to " +
                                         self.partner_id_to.name))
+            if self.receiver_not_member and self.subscription_request \
+                    and not self.subscription_request.validated:
+                raise ValidationError(_("The information of the receiver"
+                                        " are not correct. Please correct"
+                                        " the information before"
+                                        " submitting"))
 
     @api.multi
     def execute_operation(self):
