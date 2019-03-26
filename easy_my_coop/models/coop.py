@@ -330,7 +330,7 @@ class subscription_request(models.Model):
                         'out_inv_comm_type': 'bba',
                         'out_inv_comm_algorithm': 'random',
                         'country_id': self.country_id.id, 'lang': self.lang,
-                        'birthdate': self.birthdate,
+                        'birthdate_date': self.birthdate,
                         'customer': self.share_product_id.customer}
         return partner_vals
 
