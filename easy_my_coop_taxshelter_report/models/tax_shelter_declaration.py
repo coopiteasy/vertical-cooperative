@@ -160,6 +160,7 @@ class TaxShelterCertificate(models.Model):
                                  required=True, readonly=True)
     state = fields.Selection([('draft', 'Draft'),
                               ('validated', 'Validated'),
+                              ('non_eligible', 'Non eligible'),
                               ('sent', 'Sent')],
                              string='State', required=True, default="draft")
     declaration_id = fields.Many2one('tax.shelter.declaration',
@@ -172,6 +173,11 @@ class TaxShelterCertificate(models.Model):
                                                   comodel_name='certificate.line',
                                                   string='Previously Subscribed lines',
                                                   readonly=True)
+    previously_subscribed_eligible_lines = fields.One2many(
+                                        compute='_compute_certificate_lines',
+                                        comodel_name='certificate.line',
+                                        string='Previously Subscribed eligible lines',
+                                        readonly=True)
     subscribed_lines = fields.One2many(compute='_compute_certificate_lines',
                                        comodel_name='certificate.line',
                                        string='Shares subscribed',
@@ -186,6 +192,8 @@ class TaxShelterCertificate(models.Model):
                                        readonly=True)
     total_amount_previously_subscribed = fields.Float(compute='_compute_amounts',
                                                       string='Total previously subscribed')
+    total_amount_eligible_previously_subscribed = fields.Float(compute='_compute_amounts',
+                                                               string='Total eligible previously subscribed')
     total_amount_subscribed = fields.Float(compute='_compute_amounts',
                                            string='Total subscribed')
     total_amount_eligible = fields.Float(compute='_compute_amounts',
@@ -221,10 +229,13 @@ class TaxShelterCertificate(models.Model):
     def send_certificates(self):
         tax_shelter_mail_template = self.env.ref('easy_my_coop_taxshelter_report.email_template_tax_shelter_certificate', False)
         for certificate in self:
-            attachments = certificate.generate_certificates_report()
-            if len(attachments) > 0:
-                tax_shelter_mail_template.send_mail_with_multiple_attachments(certificate.id, attachments,True)
-            certificate.state = 'sent'
+            if certificate.total_amount_eligible + certificate.total_amount_eligible_previously_subscribed > 0:
+                attachments = certificate.generate_certificates_report()
+                if len(attachments) > 0:
+                    tax_shelter_mail_template.send_mail_with_multiple_attachments(certificate.id, attachments,True)
+                certificate.state = 'sent'
+            else:
+                certificate.state = 'non_eligible'
             self.env.cr.commit()
 
     @api.multi
@@ -241,6 +252,7 @@ class TaxShelterCertificate(models.Model):
     def _compute_amounts(self):
         for certificate in self:
             total_amount_previously_subscribed = 0
+            total_amount_previously_eligible = 0
             total_amount_subscribed = 0
             total_amount_elligible = 0
             total_amount_transfered = 0
@@ -248,11 +260,13 @@ class TaxShelterCertificate(models.Model):
 
             for line in certificate.subscribed_lines:
                 total_amount_subscribed += line.amount_subscribed
+                total_amount_elligible += line.amount_subscribed_eligible
             certificate.total_amount_subscribed = total_amount_subscribed
-
-            for line in certificate.subscribed_lines:
-                    total_amount_elligible += line.amount_subscribed_eligible
             certificate.total_amount_eligible = total_amount_elligible
+
+            for line in certificate.previously_subscribed_eligible_lines:
+                total_amount_previously_eligible += line.amount_subscribed_eligible
+            certificate.total_amount_eligible_previously_subscribed = total_amount_previously_eligible
 
             for line in certificate.previously_subscribed_lines:
                 total_amount_previously_subscribed += line.amount_subscribed
@@ -271,6 +285,7 @@ class TaxShelterCertificate(models.Model):
     def _compute_certificate_lines(self):
         for certificate in self:
             certificate.previously_subscribed_lines = certificate.lines.filtered(lambda r: r.type == 'subscribed' and r.transaction_date < certificate.declaration_id.date_from)
+            certificate.previously_subscribed_eligible_lines = certificate.lines.filtered(lambda r: r.type == 'subscribed' and r.transaction_date < certificate.declaration_id.date_from and r.tax_shelter)
             certificate.subscribed_lines = certificate.lines.filtered(lambda r: r.type == 'subscribed' and r.transaction_date >= certificate.declaration_id.date_from and r.transaction_date <= certificate.declaration_id.date_to)
             certificate.resold_lines = certificate.lines.filtered(lambda r: r.type == 'resold' and r.transaction_date >= certificate.declaration_id.date_from and r.transaction_date <= certificate.declaration_id.date_to)
             certificate.transfered_lines = certificate.lines.filtered(lambda r: r.type == 'transfered' and r.transaction_date >= certificate.declaration_id.date_from and r.transaction_date <= certificate.declaration_id.date_to)

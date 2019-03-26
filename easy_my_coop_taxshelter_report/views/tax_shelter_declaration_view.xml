@@ -95,6 +95,7 @@
 	                    	</group>
 		                	<group>
 	                    		<field name="total_amount_previously_subscribed"/>
+	                    		<field name="total_amount_eligible_previously_subscribed"/>
 	                    		<field name="total_amount_subscribed"/>
 	                    		<field name="total_amount_eligible"/>
 	                    		<field name="total_amount_resold"/>
