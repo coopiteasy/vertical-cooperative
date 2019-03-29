@@ -15,7 +15,11 @@ class operation_request(models.Model):
     @api.depends('share_product_id', 'share_product_id.list_price', 'quantity')
     def _compute_subscription_amount(self):
         for operation_request in self:
-            operation_request.subscription_amount = operation_request.share_product_id.list_price * operation_request.quantity
+            operation_request.subscription_amount = (operation_request.
+                                                     share_product_id.
+                                                     list_price *
+                                                     operation_request.
+                                                     quantity)
 
     request_date = fields.Date(string='Request date',
                                default=lambda self: self.get_date_now())
@@ -32,8 +36,8 @@ class operation_request(models.Model):
                                        ('convert', 'Conversion')],
                                       string='Operation Type',
                                       required=True)
-    share_product_id = fields.Many2one('product.product', 
-                                       string='Share type', 
+    share_product_id = fields.Many2one('product.product',
+                                       string='Share type',
                                        domain=[('is_share', '=', True)],
                                        required=True)
     share_to_product_id = fields.Many2one('product.product',
@@ -125,7 +129,8 @@ class operation_request(models.Model):
     # different kinds of share type
     def hand_share_over(self, partner, share_product_id, quantity):
         if not partner.member:
-            raise ValidationError(_("This operation can't be executed if the cooperator is not an effective member"))
+            raise ValidationError(_("This operation can't be executed if the"
+                                    " cooperator is not an effective member"))
 
         share_ind = len(partner.share_ids)
         i = 1
@@ -243,10 +248,10 @@ class operation_request(models.Model):
                     partner = rec.subscription_request.create_coop_partner()
                     # get cooperator number
                     sequence_id = self.env.ref('easy_my_coop.sequence_subscription', False)
-                    sub_reg_num = sequence_id.next_by_id()
+                    sub_reg_num = int(sequence_id.next_by_id())
                     partner_vals = sub_request.get_eater_vals(partner, rec.share_product_id)
                     partner_vals['member'] = True
-                    partner_vals['cooperator_register_number'] = int(sub_reg_num)
+                    partner_vals['cooperator_register_number'] = sub_reg_num
                     partner.write(partner_vals)
                     rec.partner_id_to = partner
                 else:
