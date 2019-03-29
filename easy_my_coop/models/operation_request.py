@@ -240,9 +240,10 @@ class operation_request(models.Model):
                             })
                         values['share_to_product_id'] = rec.share_to_product_id.id
                         values['quantity_to'] = convert_quant
-                else:
-                    raise ValidationError(_("Converting just part of the"
-                                            " shares is not yet implemented"))
+                    else:
+                        raise ValidationError(_("Converting just part of the"
+                                                " shares is not yet"
+                                                " implemented"))
             elif rec.operation_type == 'transfer':
                 if rec.receiver_not_member:
                     partner = rec.subscription_request.create_coop_partner()
