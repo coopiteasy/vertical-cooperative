@@ -226,20 +226,19 @@ class operation_request(models.Model):
                 convert_quant = int(amount_to_convert / rec.share_to_product_id.list_price)
                 remainder = amount_to_convert % rec.share_to_product_id.list_price 
 
-                if rec.company_id.unmix_share_type:
-                    if convert_quant > 0 and remainder == 0:
-                        share_ids = rec.partner_id.share_ids
-                        line = share_ids[0]
-                        if len(share_ids) > 1:
-                            share_ids[1:len(share_ids)].unlink()
-                        line.write({
-                            'share_number': convert_quant,
-                            'share_product_id': rec.share_to_product_id.id,
-                            'share_unit_price': rec.share_to_unit_price,
-                            'share_short_name': rec.share_to_short_name
-                            })
-                        values['share_to_product_id'] = rec.share_to_product_id.id
-                        values['quantity_to'] = convert_quant
+                if convert_quant > 0 and remainder == 0:
+                    share_ids = rec.partner_id.share_ids
+                    line = share_ids[0]
+                    if len(share_ids) > 1:
+                        share_ids[1:len(share_ids)].unlink()
+                    line.write({
+                        'share_number': convert_quant,
+                        'share_product_id': rec.share_to_product_id.id,
+                        'share_unit_price': rec.share_to_unit_price,
+                        'share_short_name': rec.share_to_short_name
+                        })
+                    values['share_to_product_id'] = rec.share_to_product_id.id
+                    values['quantity_to'] = convert_quant
                 else:
                     raise ValidationError(_("Converting just part of the"
                                             " shares is not yet implemented"))
