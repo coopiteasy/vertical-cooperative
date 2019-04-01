@@ -173,15 +173,18 @@ class operation_request(models.Model):
                 raise ValidationError(_("The cooperator can't hand over more"
                                         " shares that he/she owns."))
 
-        if self.operation_type == 'convert' and \
-                self.company_id.unmix_share_type:
+        if self.operation_type == 'convert':
+            if self.company_id.unmix_share_type:
                 if self.share_product_id.code == self.share_to_product_id.code:
                     raise ValidationError(_("You can't convert the share to"
                                             " the same share type."))
                 if self.subscription_amount != self.partner_id.total_value:
                     raise ValidationError(_("You must convert all the shares"
                                             " to the selected type."))
-
+            else:
+                if self.subscription_amount != self.partner_id.total_value:
+                    raise ValidationError(_("Converting just part of the"
+                                            " shares is not yet implemented"))
         elif self.operation_type == 'transfer':
             if not self.receiver_not_member and self.company_id.unmix_share_type \
                 and (self.partner_id_to.cooperator_type
