@@ -28,6 +28,7 @@ class ResCompany(models.Model):
                                                   " cooperators",
                                                   required=True)
     unmix_share_type = fields.Boolean(string="Unmix share type",
+                                      default=True,
                                       help="If checked, A cooperator will be"
                                       " authorised to have only one type"
                                       " of share")
