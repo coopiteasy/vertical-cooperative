@@ -308,6 +308,7 @@ class subscription_request(models.Model):
 
     def get_partner_company_vals(self):
         partner_vals = {'name': self.company_name,
+                        'last_name': self.company_name,
                         'is_company': self.is_company,
                         'company_register_number': self.company_register_number,
                         'customer': False, 'cooperator': True,
