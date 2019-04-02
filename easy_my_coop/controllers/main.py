@@ -139,6 +139,8 @@ class WebsiteSubscription(http.Controller):
                 if product.default_share_product is True:
                     values['share_product_id'] = product.id
                     break
+            if not values.get('share_product_id', False) and products:
+                values['share_product_id'] = products[0].id
         if not values.get('country_id'):
             if company.default_country_id:
                 values['country_id'] = company.default_country_id.id
@@ -173,8 +175,15 @@ class WebsiteSubscription(http.Controller):
                 auth="public",
                 methods=['POST'], website=True)
     def get_share_product(self, share_product_id, **kw):
-        product = request.env['product.template'].sudo().browse(int(share_product_id))
-        return {product.id: {'list_price': product.list_price, 'min_qty': product.minimum_quantity, 'force_min_qty': product.force_min_qty}}
+        product_template = request.env['product.template']
+        product = product_template.sudo().browse(int(share_product_id))
+        return {
+            product.id: {
+                'list_price': product.list_price,
+                'min_qty': product.minimum_quantity,
+                'force_min_qty': product.force_min_qty
+                }
+            }
 
     @http.route(['/subscription/subscribe_share'],
                 type='http',
