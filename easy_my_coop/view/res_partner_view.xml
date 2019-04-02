@@ -157,5 +157,14 @@
         </record>
         
         <menuitem id="menu_easy_my_coop_company_representative" name="Company representative" parent="menu_easy_my_coop_main_coop" action="action_company_representative_form" sequence="160"/>
+        
+        <record id="remove_partner_follower" model="ir.ui.view">
+            <field name="name">res.partner.remove.follower.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="mail.view_emails_partner_info_form"/>
+            <field name="arch" type="xml">
+            	<field name="message_follower_ids" position="replace"/>
+            </field>
+        </record>
 	</data>
 </openerp>
