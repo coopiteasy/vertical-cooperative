@@ -63,7 +63,7 @@
 		       					<field name="address"/>
 		       					<field name="zip_code"/>
 		       					<field name="city"/>
-		       					<field name="country_id"/>
+		       					<field name="country_id" options="{'no_create':True}"/>
 		       				</group>
 		       				<group>
 		       					<field name="capital_release_request_date" groups="easy_my_coop.group_energiris_super_manager"/>
