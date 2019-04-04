@@ -131,19 +131,34 @@ class subscription_request(models.Model):
         for sub_request in self:
             sub_request.subscription_amount = sub_request.share_product_id.list_price * sub_request.ordered_parts
 
-    already_cooperator = fields.Boolean(string="I'm already cooperator")
+    already_cooperator = fields.Boolean(string="I'm already cooperator",
+                                        readonly=True,
+                                        states={'draft': [('readonly', False)]})
     name = fields.Char(string='Name',
-                       required=True)
-    firstname = fields.Char(string='Firstname')
-    lastname = fields.Char(string='Lastname')
-    birthdate = fields.Date(string="Birthdate")
+                       required=True,
+                       readonly=True,
+                       states={'draft': [('readonly', False)]})
+    firstname = fields.Char(string='Firstname',
+                            readonly=True,
+                            states={'draft': [('readonly', False)]})
+    lastname = fields.Char(string='Lastname',
+                           readonly=True,
+                           states={'draft': [('readonly', False)]})
+    birthdate = fields.Date(string="Birthdate",
+                            readonly=True,
+                            states={'draft': [('readonly', False)]})
     gender = fields.Selection([('male', _('Male')),
                                ('female', _('Female')),
-                               ('other', _('Other'))], string='Gender')
+                               ('other', _('Other'))],
+                              string='Gender',
+                              readonly=True,
+                              states={'draft': [('readonly', False)]})
     type = fields.Selection([('new', 'New Cooperator'),
                              ('subscription', 'Subscription'),
                              ('increase', 'Increase number of share')],
-                            string='Type', default="new")
+                            string='Type', default="new",
+                            readonly=True,
+                            states={'draft': [('readonly', False)]})
     state = fields.Selection([('draft', 'Draft'),
                               ('block', 'Blocked'),
                               ('done', 'Done'),
@@ -152,34 +167,63 @@ class subscription_request(models.Model):
                               ('cancelled', 'Cancelled'),
                               ('paid', 'paid')],
                              string='State', required=True, default="draft")
-    email = fields.Char(string='Email', required=True)
-    iban = fields.Char(string='Account Number')
+    email = fields.Char(string='Email',
+                        required=True,
+                        readonly=True,
+                        states={'draft': [('readonly', False)]})
+    iban = fields.Char(string='Account Number',
+                       readonly=True,
+                       states={'draft': [('readonly', False)]})
     partner_id = fields.Many2one('res.partner',
-                                 string='Cooperator')
+                                 string='Cooperator',
+                                 readonly=True,
+                                 states={'draft': [('readonly', False)]})
     share_product_id = fields.Many2one('product.product',
                                        string='Share type',
                                        domain=[('is_share', '=', True)],
-                                       required=True)
+                                       required=True,
+                                       readonly=True,
+                                       states={'draft': [('readonly', False)]})
     share_short_name = fields.Char(related='share_product_id.short_name',
-                                   string='Share type name')
+                                   string='Share type name',
+                                   readonly=True,
+                                   states={'draft': [('readonly', False)]})
     share_unit_price = fields.Float(related='share_product_id.list_price',
-                                    string='Share price')
+                                    string='Share price',
+                                    readonly=True,
+                                    states={'draft': [('readonly', False)]})
     subscription_amount = fields.Float(compute='_compute_subscription_amount',
-                                       string='Subscription amount')
+                                       string='Subscription amount',
+                                       readonly=True,
+                                       states={'draft': [('readonly', False)]})
     ordered_parts = fields.Integer(string='Number of Share',
-                                   required=True)
+                                   required=True,
+                                   readonly=True,
+                                   states={'draft': [('readonly', False)]})
     address = fields.Char(string='Address',
-                          required=True)
+                          required=True,
+                          readonly=True,
+                          states={'draft': [('readonly', False)]})
     city = fields.Char(string='City',
-                       required=True)
+                       required=True,
+                       readonly=True,
+                       states={'draft': [('readonly', False)]})
     zip_code = fields.Char(string='Zip Code',
-                           required=True)
+                           required=True,
+                           readonly=True,
+                           states={'draft': [('readonly', False)]})
     country_id = fields.Many2one('res.country',
                                  string='Country',
                                  ondelete='restrict',
-                                 required=True)
-    phone = fields.Char(string='Phone')
-    no_registre = fields.Char(string='National Register Number')
+                                 required=True,
+                                 readonly=True,
+                                 states={'draft': [('readonly', False)]})
+    phone = fields.Char(string='Phone',
+                        readonly=True,
+                        states={'draft': [('readonly', False)]})
+    no_registre = fields.Char(string='National Register Number',
+                              readonly=True,
+                              states={'draft': [('readonly', False)]})
     user_id = fields.Many2one('res.users',
                               string='Responsible',
                               readonly=True)
@@ -192,52 +236,89 @@ class subscription_request(models.Model):
                                      " register number and on the iban bank"
                                      " account. To be done in case of the id"
                                      " card is from abroad or in case of"
-                                     " a passport")
+                                     " a passport",
+                                     readonly=True,
+                                     states={'draft': [('readonly', False)]})
     lang = fields.Selection(_lang_get,
                             string='Language',
                             required=True,
+                            readonly=True,
+                            states={'draft': [('readonly', False)]},
                             default=lambda self: self.env['res.company']._company_default_get().default_lang_id.code)
     date = fields.Date(string='Subscription date request',
                        required=True,
+                       readonly=True,
+                       states={'draft': [('readonly', False)]},
                        default=lambda self: datetime.strftime(datetime.now(), '%Y-%m-%d'))
     company_id = fields.Many2one('res.company', string='Company', required=True,
                                  change_default=True,
                                  readonly=True,
                                  default=lambda self: self.env['res.company']._company_default_get())
-    is_company = fields.Boolean(string='Is a company')
-    is_operation = fields.Boolean(string='Is an operation')
-    company_name = fields.Char(string="Company name")
-    company_email = fields.Char(string="Company email")
-    company_register_number = fields.Char(string='Company register number')
+    is_company = fields.Boolean(string='Is a company',
+                                readonly=True,
+                                states={'draft': [('readonly', False)]})
+    is_operation = fields.Boolean(string='Is an operation',
+                                  readonly=True,
+                                  states={'draft': [('readonly', False)]})
+    company_name = fields.Char(string="Company name",
+                               readonly=True,
+                               states={'draft': [('readonly', False)]})
+    company_email = fields.Char(string="Company email",
+                                readonly=True,
+                                states={'draft': [('readonly', False)]})
+    company_register_number = fields.Char(string='Company register number',
+                                          readonly=True,
+                                          states={'draft': [('readonly', False)]})
     company_type = fields.Selection([('scrl', 'SCRL'),
                                      ('asbl', 'ASBL'),
                                      ('sprl', 'SPRL'),
                                      ('sa', 'SA'),
-                                     ('other', 'Other')])
-    same_address = fields.Boolean(string='Same address')
-    activities_address = fields.Char(string='Activities address')
-    activities_city = fields.Char(string='Activities city')
-    activities_zip_code = fields.Char(string='Activities zip Code')
+                                     ('other', 'Other')],
+                                    string="Company type",
+                                    readonly=True,
+                                    states={'draft': [('readonly', False)]})
+    same_address = fields.Boolean(string='Same address',
+                                  readonly=True,
+                                  states={'draft': [('readonly', False)]})
+    activities_address = fields.Char(string='Activities address',
+                                     readonly=True,
+                                     states={'draft': [('readonly', False)]})
+    activities_city = fields.Char(string='Activities city',
+                                  readonly=True,
+                                  states={'draft': [('readonly', False)]})
+    activities_zip_code = fields.Char(string='Activities zip Code',
+                                      readonly=True,
+                                      states={'draft': [('readonly', False)]})
     activities_country_id = fields.Many2one('res.country',
                                             string='Activities country',
-                                            ondelete='restrict')
-    contact_person_function = fields.Char(string='Function')
+                                            ondelete='restrict',
+                                            readonly=True,
+                                            states={'draft': [('readonly', False)]})
+    contact_person_function = fields.Char(string='Function',
+                                          readonly=True,
+                                          states={'draft': [('readonly', False)]})
     operation_request_id = fields.Many2one('operation.request',
-                                           string="Operation Request")
-    is_operation = fields.Boolean(string="Is Operation request")
+                                           string="Operation Request",
+                                           readonly=True,
+                                           states={'draft': [('readonly', False)]})
     capital_release_request = fields.One2many('account.invoice',
                                               'subscription_request',
                                               string='Capital release request',
-                                              readonly=True)
+                                              readonly=True,
+                                              states={'draft': [('readonly', False)]})
     capital_release_request_date = fields.Date(string="Force the capital release request date",
                                                help="Keep empty to use the current date",
-                                               copy=False)
+                                               copy=False,
+                                               readonly=True,
+                                               states={'draft': [('readonly', False)]})
     source = fields.Selection([('website', 'Website'),
                                ('crm', 'CRM'),
                                ('manual', 'Manual'),
                                ('operation', 'Operation')],
                               string="Source",
-                              default="website")
+                              default="website",
+                              readonly=True,
+                              states={'draft': [('readonly', False)]})
     _order = "id desc"
 
     # declare this function in order to be overriden
@@ -310,7 +391,7 @@ class subscription_request(models.Model):
         partner_vals = {'name': self.company_name,
                         'last_name': self.company_name,
                         'is_company': self.is_company,
-                        'company_register_number': self.company_register_number,
+                        'company_register_number': self.company_register_number, #noqa
                         'customer': False, 'cooperator': True,
                         'street': self.address, 'zip': self.zip_code,
                         'city': self.city, 'email': self.company_email,
