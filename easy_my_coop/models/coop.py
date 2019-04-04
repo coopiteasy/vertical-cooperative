@@ -555,7 +555,8 @@ class share_line(models.Model):
                                   required=True,
                                   readonly=True)
     share_short_name = fields.Char(related='share_product_id.short_name',
-                                   string='Share type name')
+                                   string='Share type name',
+                                   readonly=True)
     share_unit_price = fields.Float(string='Share price',
                                     readonly=True)
     effective_date = fields.Date(string='Effective Date',
