@@ -70,7 +70,7 @@
 		       					<field name="date"/>
 		       					<field name="source"/>
 		       					<field name="ordered_parts"/>
-		       					<field name="share_product_id"/>
+		       					<field name="share_product_id" widget="selection"/>
 		       					<field name="share_short_name"/>
 		       					<field name="share_unit_price"/>
 		       					<field name="subscription_amount"/>
