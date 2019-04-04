@@ -74,7 +74,7 @@
 		       					<field name="share_short_name"/>
 		       					<field name="share_unit_price"/>
 		       					<field name="subscription_amount"/>
-		       					<field name="partner_id"/>
+		       					<field name="partner_id" options="{'no_create':True}"/>
 		       					<field name="type"/>
 		       					<field name="lang"/>
 		       					<field name="validated"/>
