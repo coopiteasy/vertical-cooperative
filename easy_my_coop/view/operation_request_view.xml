@@ -36,7 +36,7 @@
 			          			<field name="operation_type" attrs="{'readonly':[('state','!=','draft')]}"/>
 			          			<field name="receiver_not_member" attrs="{'invisible':[('operation_type','!=','transfer')]}"/>
 			          			<field name="partner_id" options="{'no_create':True}" attrs="{'readonly':[('state','!=','draft')]}"/>
-			          			<field name="partner_id_to" attrs="{'invisible':['|',('operation_type','!=','transfer'), ('receiver_not_member','=',True)]}"/>
+			          			<field name="partner_id_to" options="{'no_create':True}" attrs="{'invisible':['|',('operation_type','!=','transfer'), ('receiver_not_member','=',True)]}"/>
 		       				</group>
 		       				<group>
 			          			<field name="user_id"/>
