@@ -39,7 +39,7 @@
 			         		<field name="total_value"/>
 		         		</group>
 		         		<field name="share_ids">
-		         			<tree>
+		         			<tree create="false">
 		         				<field name="effective_date"/>
 		         				<field name="share_short_name"/>
 		         				<field name="share_number" sum="Total of shares"/>
