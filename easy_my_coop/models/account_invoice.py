@@ -30,10 +30,15 @@ class account_invoice(models.Model):
 
         user = user_obj.search([('login', '=', email)])
         if not user:
-            user_values = {'partner_id': partner.id, 'login': email}
-            user_id = user_obj.sudo()._signup_create_user(user_values)
-            user = user_obj.browse(user_id)
-            user.sudo().with_context({'create_user': True}).action_reset_password()
+            user = user_obj.search([('login', '=', email),
+                                    ('active', '=', False)])
+            if user:
+                user.sudo().write({'active': True})
+            else:
+                user_values = {'partner_id': partner.id, 'login': email}
+                user_id = user_obj.sudo()._signup_create_user(user_values)
+                user = user_obj.browse(user_id)
+                user.sudo().with_context({'create_user': True}).action_reset_password()
 
         return True
 
