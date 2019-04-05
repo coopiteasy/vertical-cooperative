@@ -83,7 +83,7 @@
 		       			</group>
 		       			<notebook>
 		       				<page name="capital_release_request" string="Capital release request">
-		       					<field name="capital_release_request"/>
+		       					<field name="capital_release_request" options="{'no_create':True}"/>
 		       				</page>
 		       			</notebook>
        				</sheet>
