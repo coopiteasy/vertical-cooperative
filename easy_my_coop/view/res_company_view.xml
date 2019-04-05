@@ -9,6 +9,7 @@
                     <group name="coop_grp" string="EasyMy Coop" groups="easy_my_coop.group_energiris_manager">
                         <field name="unmix_share_type"/>
                         <field name="allow_id_card_upload"/>
+                        <field name="create_user"/>
                         <field name="display_logo1"/>
                         <field name="bottom_logo1"/>
                         <field name="display_logo2"/>

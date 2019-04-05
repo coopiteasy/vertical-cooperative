@@ -21,6 +21,22 @@ class account_invoice(models.Model):
 
         return values
 
+    def create_user(self, partner):
+        user_obj = self.env['res.users']
+        # TODO replace self by partner
+        email = self.email
+        if self.is_company:
+            email = self.company_email
+
+        user = user_obj.search([('login', '=', email)])
+        if not user:
+            user_values = {'partner_id': partner.id, 'login': email}
+            user_id = user_obj.sudo()._signup_create_user(user_values)
+            user = user_obj.browse(user_id)
+            user.sudo().with_context({'create_user': True}).action_reset_password()
+
+        return True
+
     def set_cooperator_effective(self, effective_date):
         # flag the partner as a effective member
         mail_template_id = 'easy_my_coop.email_template_certificat'
@@ -61,6 +77,9 @@ class account_invoice(models.Model):
         certificat_email_template = self.env.ref(mail_template_id, False)
         # we send the email with the certificat in attachment
         certificat_email_template.send_mail(self.partner_id.id, False)
+
+        if self.company_id.create_user:
+            self.create_user(self.partner_id)
 
         return True
 
