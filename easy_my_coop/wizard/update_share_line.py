@@ -4,7 +4,7 @@ from openerp import api, fields, models, _
 from openerp.exceptions import UserError
 
 
-class PartnerUpdateInfo(models.TransientModel):
+class ShareLineUpdateInfo(models.TransientModel):
     _name = "share.line.update.info"
 
     @api.model
