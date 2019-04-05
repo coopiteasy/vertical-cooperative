@@ -114,9 +114,9 @@ class subscription_request(models.Model):
             except ValidationError:
                 validated = False
 
-            if sub_request.skip_control_ng \
-                    or self.check_belgian_identification_id(
-                                        sub_request.no_registre):
+            if validated and (sub_request.skip_control_ng or
+                              self.check_belgian_identification_id(
+                                sub_request.no_registre)):
                 validated = True
             else:
                 validated = False
