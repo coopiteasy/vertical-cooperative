@@ -472,22 +472,6 @@ class subscription_request(models.Model):
                     })
         return partner
 
-    def create_user(self, partner):
-        user_obj = self.env['res.users']
-        # TODO replace self by partner
-        email = self.email
-        if self.is_company:
-            email = self.company_email
-
-        user = user_obj.search([('login', '=', email)])
-        if not user:
-            user_values = {'partner_id': partner.id, 'login': email}
-            user_id = user_obj.sudo()._signup_create_user(user_values)
-            user = user_obj.browse(user_id)
-            user.sudo().with_context({'create_user': True}).action_reset_password()
-
-        return True
-
     @api.one
     def validate_subscription_request(self):
         partner_obj = self.env['res.partner']
@@ -557,8 +541,6 @@ class subscription_request(models.Model):
 
         invoice = self.create_invoice(partner)
         self.write({'partner_id': partner.id, 'state': 'done'})
-
-        self.create_user(partner)
 
         return invoice
 
