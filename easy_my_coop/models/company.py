@@ -15,6 +15,7 @@ class ResCompany(models.Model):
     default_lang_id = fields.Many2one('res.lang',
                                       string="Default lang")
     allow_id_card_upload = fields.Boolean(string="Allow ID Card upload")
+    create_user = fields.Boolean(string="Create user for cooperator")
     board_representative = fields.Char(string="Board representative name")
     signature_scan = fields.Binary(string="Board representative signature")
     property_cooperator_account = fields.Many2one('account.account',
