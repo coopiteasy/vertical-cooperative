@@ -129,11 +129,14 @@ class subscription_request(models.Model):
                  'ordered_parts')
     def _compute_subscription_amount(self):
         for sub_request in self:
-            sub_request.subscription_amount = sub_request.share_product_id.list_price * sub_request.ordered_parts
+            sub_request.subscription_amount = (sub_request.share_product_id.
+                                               list_price *
+                                               sub_request.ordered_parts)
 
     already_cooperator = fields.Boolean(string="I'm already cooperator",
                                         readonly=True,
-                                        states={'draft': [('readonly', False)]})
+                                        states={'draft': [('readonly', False)]}
+                                        )
     name = fields.Char(string='Name',
                        required=True,
                        readonly=True,
@@ -306,8 +309,10 @@ class subscription_request(models.Model):
                                               string='Capital release request',
                                               readonly=True,
                                               states={'draft': [('readonly', False)]})
-    capital_release_request_date = fields.Date(string="Force the capital release request date",
-                                               help="Keep empty to use the current date",
+    capital_release_request_date = fields.Date(string="Force the capital "
+                                                      "release request date",
+                                               help="Keep empty to use the "
+                                                    "current date",
                                                copy=False,
                                                readonly=True,
                                                states={'draft': [('readonly', False)]})
@@ -321,8 +326,43 @@ class subscription_request(models.Model):
                               states={'draft': [('readonly', False)]})
     _order = "id desc"
 
+    def get_person_info(self, partner):
+        self.firstname = partner.first_name
+        self.name = partner.name
+        self.lastname = partner.last_name
+        self.no_registre = partner.national_register_number
+        self.email = partner.email
+        self.birthdate = partner.birthdate_date
+        self.gender = partner.gender
+        self.address = partner.street
+        self.city = partner.city
+        self.zip_code = partner.zip
+        self.country_id = partner.country_id
+        self.phone = partner.phone
+        self.lang = partner.lang
+
+    @api.onchange('partner_id')
+    def onchange_partner(self):
+        partner = self.partner_id
+        if partner:
+            self.is_company = partner.is_company
+            self.already_cooperator = partner.member
+            if partner.bank_ids:
+                    self.iban = partner.bank_ids[0].acc_number
+            if partner.member:
+                self.type = 'increase'
+            if partner.is_company:
+                self.company_name = partner.name
+                self.company_email = partner.email
+                self.company_register_number = partner.company_register_number
+                representative = partner.get_representative()
+                self.get_person_info(representative)
+                self.contact_person_function = representative.function
+            else:
+                self.get_person_info(partner)
+
     # declare this function in order to be overriden
-    def get_eater_vals(self, partner, share_product_id):
+    def get_eater_vals(self, partner, share_product_id): #noqa
         return {}
 
     def _prepare_invoice_line(self, product, partner, qty):
@@ -459,15 +499,16 @@ class subscription_request(models.Model):
                 self.partner_id.cooperator = True
             partner = self.partner_id
         else:
+            partner = None
             if self.already_cooperator:
                 raise UserError(_('The checkbox already cooperator is'
                                   ' checked please select a cooperator.'))
             elif self.is_company and self.company_register_number:
-                partner = partner_obj.search([('company_register_number', '=', self.company_register_number)])
-            elif self.no_registre:
-                partner = partner_obj.search([('national_register_number', '=', self.no_registre)])
-            else:
-                partner = None
+                domain = [('company_register_number', '=', self.company_register_number)] #noqa
+            elif not self.is_company and self.no_registre:
+                domain = [('national_register_number', '=', self.no_registre)]
+
+            partner = partner_obj.search(domain)
 
         if not partner:
             partner = self.create_coop_partner()
@@ -477,7 +518,8 @@ class subscription_request(models.Model):
         if self.is_company and not partner.has_representative():
             contact = False
             if self.no_registre:
-                contact = partner_obj.search([('national_register_number', '=', self.no_registre)])
+                domain = [('national_register_number', '=', self.no_registre)]
+                contact = partner_obj.search(domain)
                 if contact:
                     contact.type = 'representative'
             if not contact:
