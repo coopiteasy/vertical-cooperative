@@ -83,7 +83,18 @@
 		       			</group>
 		       			<notebook>
 		       				<page name="capital_release_request" string="Capital release request">
-		       					<field name="capital_release_request" options="{'no_create':True}"/>
+		       					<field name="capital_release_request">
+			       					<tree options="{'no_create':True}">
+			       						<field string="Cooperator"  name="partner_id"/>
+			       						<field name="date_invoice"/>
+			       						<field name="number"/>
+			       						<field string="Reference" name="reference"/>
+			       						<field name="date_due"/>
+			       						<field name="amount_total_signed"/>
+			       						<field name="residual_signed"/>
+			       						<field name="state"/>
+			       					</tree>
+		       					</field>
 		       				</page>
 		       			</notebook>
        				</sheet>
