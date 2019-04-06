@@ -240,7 +240,6 @@ class WebsiteSubscription(http.Controller):
 
                 return request.website.render(redirect, values)
 
-        # Check that required field from model subscription_request exists
         company = request.website.company_id
         if company.allow_id_card_upload:
             if not post_file:
@@ -250,12 +249,16 @@ class WebsiteSubscription(http.Controller):
                                         " scan of your id card")
                 return request.website.render(redirect, values)
 
-        required_fields = request.env['subscription.request'].sudo().get_required_field()
-        error = set(field for field in required_fields if not values.get(field))
+        sub_req_obj = request.env['subscription.request']
+
+        # Check that required field from model subscription_request exists
+        required_fields = sub_req_obj.sudo().get_required_field()
+        error = set(field for field in required_fields if not values.get(field)) #noqa
 
         if error:
             values = self.fill_values(values, is_company)
-            values["error_msg"] = _("Some mandatory fields have not been filled")
+            values["error_msg"] = _("Some mandatory fields have not "
+                                    "been filled")
             values = dict(values, error=error, kwargs=kwargs.items())
             return request.website.render(kwargs.get("view_from", redirect), values)
 
@@ -268,7 +271,8 @@ class WebsiteSubscription(http.Controller):
         values["name"] = firstname + " " + lastname
         values["lastname"] = lastname
         values["firstname"] = firstname
-        values["birthdate"] = datetime.strptime(kwargs.get("birthdate"), "%d/%m/%Y").date()
+        values["birthdate"] = datetime.strptime(kwargs.get("birthdate"),
+                                                "%d/%m/%Y").date()
         values["source"] = "website"
 
         if kwargs.get("share_product_id"):
@@ -287,12 +291,16 @@ class WebsiteSubscription(http.Controller):
 
         if is_company:
             if kwargs.get("company_register_number", is_company):
-                values["company_register_number"] = re.sub('[^0-9a-zA-Z]+', '', kwargs.get("company_register_number"))
-            subscription_id = request.env['subscription.request'].sudo().create_comp_sub_req(values)
+                values["company_register_number"] = re.sub('[^0-9a-zA-Z]+',
+                                                           '',
+                                                           kwargs.get("company_register_number"))
+            subscription_id = sub_req_obj.sudo().create_comp_sub_req(values)
         else:
             if kwargs.get("no_registre"):
-                values["no_registre"] = re.sub('[^0-9a-zA-Z]+', '', kwargs.get("no_registre"))
-            subscription_id = request.env['subscription.request'].sudo().create(values)
+                values["no_registre"] = re.sub('[^0-9a-zA-Z]+',
+                                               '',
+                                               kwargs.get("no_registre"))
+            subscription_id = sub_req_obj.sudo().create(values)
 
         values.update(subscription_id=subscription_id)
 
