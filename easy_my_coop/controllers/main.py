@@ -262,6 +262,42 @@ class WebsiteSubscription(http.Controller):
             values = dict(values, error=error, kwargs=kwargs.items())
             return request.website.render(kwargs.get("view_from", redirect), values)
 
+        # check the subscription's amount
+        max_amount = company.subscription_maximum_amount
+        total_amount = float(kwargs.get('total_parts'))
+
+        if max_amount > 0 and total_amount > max_amount:
+            values = self.fill_values(values, is_company)
+            values["error_msg"] = _("You can't subscribe for an amount that exceed ") + str(max_amount) + company.currency_id.symbol
+            return request.website.render("easy_my_coop.becomecooperator", values)
+
+        if is_company:
+            if kwargs.get("company_register_number", is_company):
+                values["company_register_number"] = re.sub('[^0-9a-zA-Z]+',
+                                                           '',
+                                                           kwargs.get("company_register_number"))
+            subscription_id = sub_req_obj.sudo().create_comp_sub_req(values)
+        else:
+            if kwargs.get("no_registre"):
+                no_registre = re.sub('[^0-9a-zA-Z]+', '',
+                                     kwargs.get("no_registre"))
+                valid = sub_req_obj.check_belgian_identification_id(no_registre)
+                if not valid:
+                    values = self.fill_values(values, is_company)
+                    values["error_msg"] = _("You national register number "
+                                            "is not valid")
+                    return request.website.render("easy_my_coop.becomecooperator", values)
+                values["no_registre"] = no_registre
+
+        iban = kwargs.get("iban")
+        valid = sub_req_obj.check_iban(iban)
+
+        if not valid:
+            values = self.fill_values(values, is_company)
+            values["error_msg"] = _("You iban account number"
+                                    "is not valid")
+            return request.website.render("easy_my_coop.becomecooperator", values)
+
         if kwargs.get("already_cooperator") == 'on':
             values["already_cooperator"] = True
 
@@ -280,26 +316,6 @@ class WebsiteSubscription(http.Controller):
             product = request.env['product.template'].sudo().browse(int(product_id)).product_variant_ids[0]
             values["share_product_id"] = product.id
 
-        # check the subscription's amount
-        max_amount = company.subscription_maximum_amount
-        total_amount = float(kwargs.get('total_parts'))
-
-        if max_amount > 0 and total_amount > max_amount:
-            values = self.fill_values(values, is_company)
-            values["error_msg"] = _("You can't subscribe for an amount that exceed ") + str(max_amount) + company.currency_id.symbol
-            return request.website.render("easy_my_coop.becomecooperator", values)
-
-        if is_company:
-            if kwargs.get("company_register_number", is_company):
-                values["company_register_number"] = re.sub('[^0-9a-zA-Z]+',
-                                                           '',
-                                                           kwargs.get("company_register_number"))
-            subscription_id = sub_req_obj.sudo().create_comp_sub_req(values)
-        else:
-            if kwargs.get("no_registre"):
-                values["no_registre"] = re.sub('[^0-9a-zA-Z]+',
-                                               '',
-                                               kwargs.get("no_registre"))
             subscription_id = sub_req_obj.sudo().create(values)
 
         values.update(subscription_id=subscription_id)
