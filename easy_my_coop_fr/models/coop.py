@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-
 from openerp import fields, models
 
 
-class subscription_request(models.Model):
+class SubscriptionRequest(models.Model):
     _inherit = 'subscription.request'
 
     company_type = fields.Selection([
@@ -13,11 +12,11 @@ class subscription_request(models.Model):
                             ('sa', 'SA / SAS')])
 
     def get_required_field(self):
-        required_fields = super(subscription_request, self).get_required_field()
-        if 'iban' in required_fields:
-            required_fields.remove('iban')
+        req_fields = super(SubscriptionRequest, self).get_required_field()
+        if 'iban' in req_fields:
+            req_fields.remove('iban')
 
-        return required_fields
+        return req_fields
 
     # override function to disable the check
     def check_belgian_identification_id(self, nat_register_num):
