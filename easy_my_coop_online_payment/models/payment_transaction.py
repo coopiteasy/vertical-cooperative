@@ -2,25 +2,27 @@
 from datetime import datetime
 import logging
 
-from openerp import api, fields, models, _
+from openerp import api, fields, models
 
 _logger = logging.getLogger(__name__)
 
+
 class PaymentTransaction(models.Model):
-    
+
     _inherit = 'payment.transaction'
-    
-    release_capital_request = fields.Many2one('account.invoice', string="Release Capital request")
-    
+
+    release_capital_request = fields.Many2one('account.invoice',
+                                              string="Release Capital request")
+
     @api.model
-    def process_online_payment_reception(self,tx):
+    def process_online_payment_reception(self, tx):
         release_capital_request = tx.release_capital_request
         release_capital_request.subscription_request[0].state = 'paid'
         effective_date = datetime.now().strftime("%d/%m/%Y")
         release_capital_request.sudo().set_cooperator_effective(effective_date)
-        
+
         return True
-    
+
     @api.v7
     def _paypal_form_validate(self, cr, uid, tx, data, context=None):
         status = data.get('payment_status')
