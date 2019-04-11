@@ -120,21 +120,24 @@ class WebsiteSubscription(http.Controller):
         return values
 
     def fill_values(self, values, is_company, load_from_user=False):
+        sub_req_obj = request.env['subscription.request']
         company = request.website.company_id
+        products = self.get_products_share(is_company)
+
         if load_from_user:
             values = self.get_values_from_user(values, is_company)
+
+        if is_company:
+            values['is_company'] = 'on'
         values['countries'] = self.get_countries()
         values['langs'] = self.get_langs()
-        values['products'] = self.get_products_share(is_company)
-        fields_desc = request.env['subscription.request'].sudo().fields_get(['company_type', 'gender'])
+        values['products'] = products
+        fields_desc = sub_req_obj.sudo().fields_get(['company_type', 'gender'])
         values['company_types'] = fields_desc['company_type']['selection']
         values['genders'] = fields_desc['gender']['selection']
         values['company'] = company
-        if is_company:
-            values['is_company'] = 'on'
 
         if not values.get('share_product_id'):
-            products = request.env['product.template'].sudo().get_web_share_products(is_company)
             for product in products:
                 if product.default_share_product is True:
                     values['share_product_id'] = product.id
@@ -157,7 +160,8 @@ class WebsiteSubscription(http.Controller):
         return values
 
     def get_products_share(self, is_company):
-        products = request.env['product.template'].sudo().get_web_share_products(is_company)
+        product_obj = request.env['product.template']
+        products = product_obj.sudo().get_web_share_products(is_company)
 
         return products
 
@@ -206,10 +210,15 @@ class WebsiteSubscription(http.Controller):
                 post_description.append("%s: %s" % (field_name, field_value))
 
         logged = kwargs.get("logged") == 'on'
+        already_coop = False
         if logged:
             partner = request.env.user.partner_id
             values['partner_id'] = partner.id
-            values['already_cooperator'] = partner.member
+            already_coop = partner.member
+        elif kwargs.get("already_cooperator") == 'on':
+            already_coop = True
+
+        values["already_cooperator"] = already_coop
 
         redirect = "easy_my_coop.becomecooperator"
         email = kwargs.get('email')
@@ -297,9 +306,6 @@ class WebsiteSubscription(http.Controller):
             values["error_msg"] = _("You iban account number"
                                     "is not valid")
             return request.website.render("easy_my_coop.becomecooperator", values)
-
-        if kwargs.get("already_cooperator") == 'on':
-            values["already_cooperator"] = True
 
         lastname = kwargs.get("lastname").upper()
         firstname = kwargs.get("firstname").title()
