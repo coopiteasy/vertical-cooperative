@@ -174,68 +174,38 @@ class WebsiteSubscription(http.Controller):
         langs = request.env['res.lang'].sudo().search([])
         return langs
 
-    @http.route(['/subscription/get_share_product'],
-                type='json',
-                auth="public",
-                methods=['POST'], website=True)
-    def get_share_product(self, share_product_id, **kw):
-        product_template = request.env['product.template']
-        product = product_template.sudo().browse(int(share_product_id))
-        return {
-            product.id: {
-                'list_price': product.list_price,
-                'min_qty': product.minimum_quantity,
-                'force_min_qty': product.force_min_qty
-                }
-            }
-
-    @http.route(['/subscription/subscribe_share'],
-                type='http',
-                auth="public", website=True)
-    def share_subscription(self, **kwargs):
+    def validation(self, kwargs, logged, values, post_file):
         user_obj = request.env['res.users']
-        # List of file to add to ir_attachment once we have the ID
-        post_file = []
-        # Info to add after the message
-        post_description = []
-        values = {}
-
-        for field_name, field_value in kwargs.items():
-            if hasattr(field_value, 'filename'):
-                post_file.append(field_value)
-            elif field_name in request.registry['subscription.request']._fields and field_name not in _BLACKLIST:
-                values[field_name] = field_value
-            # allow to add some free fields or blacklisted field like ID
-            elif field_name not in _TECHNICAL:
-                post_description.append("%s: %s" % (field_name, field_value))
-
-        logged = kwargs.get("logged") == 'on'
-        already_coop = False
-        if logged:
-            partner = request.env.user.partner_id
-            values['partner_id'] = partner.id
-            already_coop = partner.member
-        elif kwargs.get("already_cooperator") == 'on':
-            already_coop = True
-
-        values["already_cooperator"] = already_coop
+        sub_req_obj = request.env['subscription.request']
 
         redirect = "easy_my_coop.becomecooperator"
-        email = kwargs.get('email')
 
+        email = kwargs.get('email')
         is_company = kwargs.get("is_company") == 'on'
+
         if is_company:
             is_company = True
             redirect = "easy_my_coop.becomecompanycooperator"
             email = kwargs.get('company_email')
 
-        values["is_company"] = is_company
-
-        if 'g-recaptcha-response' not in kwargs or not request.website.is_captcha_valid(kwargs['g-recaptcha-response']):
+        if ('g-recaptcha-response' not in kwargs
+                or not request.website.is_captcha_valid(
+                    kwargs['g-recaptcha-response'])):
             values = self.fill_values(values, is_company)
             values["error_msg"] = _("the captcha has not been validated,"
                                     " please fill in the captcha")
 
+            return request.website.render(redirect, values)
+
+        # Check that required field from model subscription_request exists
+        required_fields = sub_req_obj.sudo().get_required_field()
+        error = set(field for field in required_fields if not values.get(field)) #noqa
+
+        if error:
+            values = self.fill_values(values, is_company)
+            values["error_msg"] = _("Some mandatory fields have not "
+                                    "been filled")
+            values = dict(values, error=error, kwargs=kwargs.items())
             return request.website.render(redirect, values)
 
         if not logged and email:
@@ -258,27 +228,93 @@ class WebsiteSubscription(http.Controller):
                                         " scan of your id card")
                 return request.website.render(redirect, values)
 
-        sub_req_obj = request.env['subscription.request']
+        iban = kwargs.get("iban")
+        valid = sub_req_obj.check_iban(iban)
 
-        # Check that required field from model subscription_request exists
-        required_fields = sub_req_obj.sudo().get_required_field()
-        error = set(field for field in required_fields if not values.get(field)) #noqa
-
-        if error:
+        if not valid:
             values = self.fill_values(values, is_company)
-            values["error_msg"] = _("Some mandatory fields have not "
-                                    "been filled")
-            values = dict(values, error=error, kwargs=kwargs.items())
-            return request.website.render(kwargs.get("view_from", redirect), values)
+            values["error_msg"] = _("You iban account number"
+                                    "is not valid")
+            return request.website.render(redirect, values)
 
+        if not is_company:
+            no_registre = re.sub('[^0-9a-zA-Z]+', '',
+                                 kwargs.get("no_registre"))
+            valid = sub_req_obj.check_belgian_identification_id(no_registre)
+            if not valid:
+                values = self.fill_values(values, is_company)
+                values["error_msg"] = _("You national register number "
+                                        "is not valid")
+                return request.website.render(redirect, values)
+            values["no_registre"] = no_registre
         # check the subscription's amount
         max_amount = company.subscription_maximum_amount
         total_amount = float(kwargs.get('total_parts'))
 
         if max_amount > 0 and total_amount > max_amount:
             values = self.fill_values(values, is_company)
-            values["error_msg"] = _("You can't subscribe for an amount that exceed ") + str(max_amount) + company.currency_id.symbol
-            return request.website.render("easy_my_coop.becomecooperator", values)
+            values["error_msg"] = (_("You can't subscribe for an amount that "
+                                     "exceed ")
+                                   + str(max_amount)
+                                   + company.currency_id.symbol)
+            return request.website.render(redirect, values)
+        return True
+
+    @http.route(['/subscription/get_share_product'],
+                type='json',
+                auth="public",
+                methods=['POST'], website=True)
+    def get_share_product(self, share_product_id, **kw):
+        product_template = request.env['product.template']
+        product = product_template.sudo().browse(int(share_product_id))
+        return {
+            product.id: {
+                'list_price': product.list_price,
+                'min_qty': product.minimum_quantity,
+                'force_min_qty': product.force_min_qty
+                }
+            }
+
+    @http.route(['/subscription/subscribe_share'],
+                type='http',
+                auth="public", website=True)
+    def share_subscription(self, **kwargs):
+        sub_req_obj = request.env['subscription.request']
+        product_obj = request.env['product.template']
+        attach_obj = request.env['ir.attachment']
+        # List of file to add to ir_attachment once we have the ID
+        post_file = []
+        # Info to add after the message
+        post_description = []
+        values = {}
+
+        for field_name, field_value in kwargs.items():
+            if hasattr(field_value, 'filename'):
+                post_file.append(field_value)
+            elif (field_name in sub_req_obj._fields
+                    and field_name not in _BLACKLIST):
+                values[field_name] = field_value
+            # allow to add some free fields or blacklisted field like ID
+            elif field_name not in _TECHNICAL:
+                post_description.append("%s: %s" % (field_name, field_value))
+
+        logged = kwargs.get("logged") == 'on'
+        is_company = kwargs.get("is_company") == 'on'
+
+        response = self.validation(kwargs, logged, values, post_file)
+        if response is not True:
+            return response
+
+        already_coop = False
+        if logged:
+            partner = request.env.user.partner_id
+            values['partner_id'] = partner.id
+            already_coop = partner.member
+        elif kwargs.get("already_cooperator") == 'on':
+            already_coop = True
+
+        values["already_cooperator"] = already_coop
+        values["is_company"] = is_company
 
         if is_company:
             if kwargs.get("company_register_number", is_company):
@@ -287,25 +323,9 @@ class WebsiteSubscription(http.Controller):
                                                            kwargs.get("company_register_number"))
             subscription_id = sub_req_obj.sudo().create_comp_sub_req(values)
         else:
-            if kwargs.get("no_registre"):
-                no_registre = re.sub('[^0-9a-zA-Z]+', '',
-                                     kwargs.get("no_registre"))
-                valid = sub_req_obj.check_belgian_identification_id(no_registre)
-                if not valid:
-                    values = self.fill_values(values, is_company)
-                    values["error_msg"] = _("You national register number "
-                                            "is not valid")
-                    return request.website.render("easy_my_coop.becomecooperator", values)
-                values["no_registre"] = no_registre
-
-        iban = kwargs.get("iban")
-        valid = sub_req_obj.check_iban(iban)
-
-        if not valid:
-            values = self.fill_values(values, is_company)
-            values["error_msg"] = _("You iban account number"
-                                    "is not valid")
-            return request.website.render("easy_my_coop.becomecooperator", values)
+            no_registre = re.sub('[^0-9a-zA-Z]+', '',
+                                 kwargs.get("no_registre"))
+            values["no_registre"] = no_registre
 
         lastname = kwargs.get("lastname").upper()
         firstname = kwargs.get("firstname").title()
@@ -319,7 +339,7 @@ class WebsiteSubscription(http.Controller):
 
         if kwargs.get("share_product_id"):
             product_id = kwargs.get("share_product_id")
-            product = request.env['product.template'].sudo().browse(int(product_id)).product_variant_ids[0]
+            product = product_obj.sudo().browse(int(product_id)).product_variant_ids[0]
             values["share_product_id"] = product.id
 
             subscription_id = sub_req_obj.sudo().create(values)
@@ -336,6 +356,6 @@ class WebsiteSubscription(http.Controller):
                     'datas': base64.encodestring(field_value.read()),
                     'datas_fname': field_value.filename,
                 }
-                request.env['ir.attachment'].sudo().create(attachment_value)
+                attach_obj.sudo().create(attachment_value)
 
         return self.get_subscription_response(values, kwargs)
