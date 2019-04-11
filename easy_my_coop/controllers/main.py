@@ -69,7 +69,7 @@ class WebsiteSubscription(http.Controller):
 
     def get_subscription_response(self, values, kwargs):
         values = self.preRenderThanks(values, kwargs)
-        return request.website.render(kwargs.get("view_callback", "easy_my_coop.cooperator_thanks"), values)
+        return request.website.render("easy_my_coop.cooperator_thanks", values)
 
     def get_date_string(self, birthdate):
         if birthdate:
