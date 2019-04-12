@@ -23,10 +23,9 @@ class account_invoice(models.Model):
 
     def create_user(self, partner):
         user_obj = self.env['res.users']
-        # TODO replace self by partner
-        email = self.email
-        if self.is_company:
-            email = self.company_email
+        email = partner.email
+        if partner.is_company:
+            email = partner.company_email
 
         user = user_obj.search([('login', '=', email)])
         if not user:
