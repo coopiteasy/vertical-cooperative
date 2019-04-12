@@ -33,11 +33,13 @@ class WebsiteSubscription(http.Controller):
                 type='http', auth="public", website=True)
     def display_become_cooperator_page(self, **kwargs):
         values = {}
+        logged = False
         if request.env.user.login != 'public':
+            logged = True
             partner = request.env.user.partner_id
             if partner.is_company:
                 return request.website.render("easy_my_coop.becomecompanycooperator", values)
-        values = self.fill_values(values, False, True)
+        values = self.fill_values(values, False, logged, True)
 
         for field in _COOP_FORM_FIELD:
             if kwargs.get(field):
@@ -52,7 +54,10 @@ class WebsiteSubscription(http.Controller):
     def display_become_company_cooperator_page(self, **kwargs):
         values = {}
 
-        values = self.fill_values(values, True, True)
+        logged = False
+        if request.env.user.login != 'public':
+            logged = True
+        values = self.fill_values(values, True, logged, True)
 
         for field in _COMPANY_FORM_FIELD:
             if kwargs.get(field):
@@ -119,16 +124,17 @@ class WebsiteSubscription(http.Controller):
                 values['phone'] = partner.phone
         return values
 
-    def fill_values(self, values, is_company, load_from_user=False):
+    def fill_values(self, values, is_company, logged, load_from_user=False):
         sub_req_obj = request.env['subscription.request']
         company = request.website.company_id
         products = self.get_products_share(is_company)
 
         if load_from_user:
             values = self.get_values_from_user(values, is_company)
-
         if is_company:
             values['is_company'] = 'on'
+        if logged:
+            values['logged'] = 'on'
         values['countries'] = self.get_countries()
         values['langs'] = self.get_langs()
         values['products'] = products
@@ -174,6 +180,11 @@ class WebsiteSubscription(http.Controller):
         langs = request.env['res.lang'].sudo().search([])
         return langs
 
+    def get_selected_share(self, kwargs):
+        prod_obj = request.env['product.template']
+        product_id = kwargs.get("share_product_id")
+        return prod_obj.sudo().browse(int(product_id)).product_variant_ids[0]
+
     def validation(self, kwargs, logged, values, post_file):
         user_obj = request.env['res.users']
         sub_req_obj = request.env['subscription.request']
@@ -191,7 +202,7 @@ class WebsiteSubscription(http.Controller):
         if ('g-recaptcha-response' not in kwargs
                 or not request.website.is_captcha_valid(
                     kwargs['g-recaptcha-response'])):
-            values = self.fill_values(values, is_company)
+            values = self.fill_values(values, is_company, logged)
             values["error_msg"] = _("the captcha has not been validated,"
                                     " please fill in the captcha")
 
@@ -202,7 +213,7 @@ class WebsiteSubscription(http.Controller):
         error = set(field for field in required_fields if not values.get(field)) #noqa
 
         if error:
-            values = self.fill_values(values, is_company)
+            values = self.fill_values(values, is_company, logged)
             values["error_msg"] = _("Some mandatory fields have not "
                                     "been filled")
             values = dict(values, error=error, kwargs=kwargs.items())
@@ -211,7 +222,7 @@ class WebsiteSubscription(http.Controller):
         if not logged and email:
             user = user_obj.sudo().search([('login', '=', email)])
             if user:
-                values = self.fill_values(values, is_company)
+                values = self.fill_values(values, is_company, logged)
                 values.update(kwargs)
                 values["error_msg"] = _("There is an existing account for this"
                                         " mail address. Please login before "
@@ -222,7 +233,7 @@ class WebsiteSubscription(http.Controller):
         company = request.website.company_id
         if company.allow_id_card_upload:
             if not post_file:
-                values = self.fill_values(values, is_company)
+                values = self.fill_values(values, is_company, logged)
                 values.update(kwargs)
                 values["error_msg"] = _("You need to upload a"
                                         " scan of your id card")
@@ -232,7 +243,7 @@ class WebsiteSubscription(http.Controller):
         valid = sub_req_obj.check_iban(iban)
 
         if not valid:
-            values = self.fill_values(values, is_company)
+            values = self.fill_values(values, is_company, logged)
             values["error_msg"] = _("You iban account number"
                                     "is not valid")
             return request.website.render(redirect, values)
@@ -242,17 +253,29 @@ class WebsiteSubscription(http.Controller):
                                  kwargs.get("no_registre"))
             valid = sub_req_obj.check_belgian_identification_id(no_registre)
             if not valid:
-                values = self.fill_values(values, is_company)
+                values = self.fill_values(values, is_company, logged)
                 values["error_msg"] = _("You national register number "
                                         "is not valid")
                 return request.website.render(redirect, values)
             values["no_registre"] = no_registre
+
         # check the subscription's amount
         max_amount = company.subscription_maximum_amount
+        if logged:
+            partner = request.env.user.partner_id
+            if partner.member:
+                max_amount = max_amount - partner.total_value
+                if company.unmix_share_type:
+                    share = self.get_selected_share(kwargs)
+                    if int(partner.cooperator_type) != share.id:
+                        values = self.fill_values(values, is_company, logged)
+                        values["error_msg"] = (_("You can't subscribe two "
+                                                 "different types of share"))
+                        return request.website.render(redirect, values)
         total_amount = float(kwargs.get('total_parts'))
 
         if max_amount > 0 and total_amount > max_amount:
-            values = self.fill_values(values, is_company)
+            values = self.fill_values(values, is_company, logged)
             values["error_msg"] = (_("You can't subscribe for an amount that "
                                      "exceed ")
                                    + str(max_amount)
@@ -280,7 +303,6 @@ class WebsiteSubscription(http.Controller):
                 auth="public", website=True)
     def share_subscription(self, **kwargs):
         sub_req_obj = request.env['subscription.request']
-        product_obj = request.env['product.template']
         attach_obj = request.env['ir.attachment']
         # List of file to add to ir_attachment once we have the ID
         post_file = []
@@ -337,12 +359,9 @@ class WebsiteSubscription(http.Controller):
                                                 "%d/%m/%Y").date()
         values["source"] = "website"
 
-        if kwargs.get("share_product_id"):
-            product_id = kwargs.get("share_product_id")
-            product = product_obj.sudo().browse(int(product_id)).product_variant_ids[0]
-            values["share_product_id"] = product.id
+        values["share_product_id"] = self.get_selected_share(kwargs).id
 
-            subscription_id = sub_req_obj.sudo().create(values)
+        subscription_id = sub_req_obj.sudo().create(values)
 
         values.update(subscription_id=subscription_id)
 
