@@ -59,6 +59,8 @@ class account_invoice(models.Model):
         sequence_operation = self.env.ref('easy_my_coop.sequence_register_operation', False)
         sub_reg_operation = sequence_operation.next_by_id()
 
+        certificat_email_template = self.env.ref(mail_template_id, False)
+
         for line in self.invoice_line_ids:
             self.env['subscription.register'].create({
                 'name': sub_reg_operation,
@@ -77,8 +79,9 @@ class account_invoice(models.Model):
                 'share_unit_price': line.price_unit,
                 'effective_date': effective_date
                 })
+            if line.product_id.mail_template:
+                certificat_email_template = line.product_id.mail_template
 
-        certificat_email_template = self.env.ref(mail_template_id, False)
         # we send the email with the certificat in attachment
         certificat_email_template.send_mail(self.partner_id.id, False)
 
