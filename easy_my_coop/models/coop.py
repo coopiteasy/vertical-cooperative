@@ -329,9 +329,9 @@ class subscription_request(models.Model):
     _order = "id desc"
 
     def get_person_info(self, partner):
-        self.firstname = partner.first_name
+        self.firstname = partner.firstname
         self.name = partner.name
-        self.lastname = partner.last_name
+        self.lastname = partner.lastname
         self.no_registre = partner.national_register_number
         self.email = partner.email
         self.birthdate = partner.birthdate_date
@@ -445,8 +445,8 @@ class subscription_request(models.Model):
         return partner_vals
 
     def get_partner_vals(self):
-        partner_vals = {'name': self.name, 'first_name': self.firstname,
-                        'last_name': self.lastname, 'street': self.address,
+        partner_vals = {'name': self.name, 'firstname': self.firstname,
+                        'lastname': self.lastname, 'street': self.address,
                         'zip': self.zip_code, 'email': self.email,
                         'gender': self.gender, 'cooperator': True,
                         'city': self.city, 'phone': self.phone,
@@ -510,8 +510,8 @@ class subscription_request(models.Model):
                     contact.type = 'representative'
             if not contact:
                 contact_vals = {'name': self.name,
-                                'first_name': self.firstname,
-                                'last_name': self.lastname, 'customer': False,
+                                'firstname': self.firstname,
+                                'lastname': self.lastname, 'customer': False,
                                 'is_company': False, 'cooperator': True,
                                 'street': self.address, 'gender': self.gender,
                                 'zip': self.zip_code, 'city': self.city,
