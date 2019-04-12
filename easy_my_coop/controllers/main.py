@@ -363,8 +363,6 @@ class WebsiteSubscription(http.Controller):
 
         subscription_id = sub_req_obj.sudo().create(values)
 
-        values.update(subscription_id=subscription_id)
-
         if subscription_id:
             for field_value in post_file:
                 attachment_value = {
