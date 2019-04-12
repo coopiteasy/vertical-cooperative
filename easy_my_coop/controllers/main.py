@@ -338,17 +338,6 @@ class WebsiteSubscription(http.Controller):
         values["already_cooperator"] = already_coop
         values["is_company"] = is_company
 
-        if is_company:
-            if kwargs.get("company_register_number", is_company):
-                values["company_register_number"] = re.sub('[^0-9a-zA-Z]+',
-                                                           '',
-                                                           kwargs.get("company_register_number"))
-            subscription_id = sub_req_obj.sudo().create_comp_sub_req(values)
-        else:
-            no_registre = re.sub('[^0-9a-zA-Z]+', '',
-                                 kwargs.get("no_registre"))
-            values["no_registre"] = no_registre
-
         lastname = kwargs.get("lastname").upper()
         firstname = kwargs.get("firstname").title()
 
@@ -361,7 +350,18 @@ class WebsiteSubscription(http.Controller):
 
         values["share_product_id"] = self.get_selected_share(kwargs).id
 
-        subscription_id = sub_req_obj.sudo().create(values)
+        if is_company:
+            if kwargs.get("company_register_number", is_company):
+                values["company_register_number"] = re.sub('[^0-9a-zA-Z]+',
+                                                           '',
+                                                           kwargs.get("company_register_number"))
+            subscription_id = sub_req_obj.sudo().create_comp_sub_req(values)
+        else:
+            no_registre = re.sub('[^0-9a-zA-Z]+', '',
+                                 kwargs.get("no_registre"))
+            values["no_registre"] = no_registre
+
+            subscription_id = sub_req_obj.sudo().create(values)
 
         if subscription_id:
             for field_value in post_file:
