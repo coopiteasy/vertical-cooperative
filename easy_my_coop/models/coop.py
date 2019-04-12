@@ -204,6 +204,7 @@ class subscription_request(models.Model):
     ordered_parts = fields.Integer(string='Number of Share',
                                    required=True,
                                    readonly=True,
+                                   default=1,
                                    states={'draft': [('readonly', False)]})
     address = fields.Char(string='Address',
                           required=True,
