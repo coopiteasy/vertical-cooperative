@@ -69,6 +69,7 @@ class subscription_request(models.Model):
 
     @api.model
     def create_comp_sub_req(self, vals):
+        vals["name"] = vals['company_name']
         if not vals.get('partner_id'):
             cooperator = self.env['res.partner'].get_cooperator_from_crn(vals.get('company_register_number'))
             if cooperator:
