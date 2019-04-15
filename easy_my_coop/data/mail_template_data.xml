@@ -50,7 +50,7 @@
     %endif
 
     <div>
-        <img src=${object.company_id.logo_web}>
+        <img src=${object.company_id.logo_url}>
     </div>
 </div>
             ]]></field>
@@ -102,7 +102,7 @@
     %endif
 
     <div>
-        <img src=${object.company_id.logo_web}>
+        <img src=${object.company_id.logo_url}>
     </div>
 </div>
             ]]></field>
@@ -156,7 +156,7 @@
     %endif
 
     <div>
-        <img src=${object.company_id.logo_web}>
+        <img src=${object.company_id.logo_url}>
     </div>
 </div>
             ]]></field>
@@ -211,7 +211,7 @@
     %endif
 
     <div>
-        <img src=${object.company_id.logo_web}>
+        <img src=${object.company_id.logo_url}>
     </div>
 </div>
             ]]></field>
@@ -265,7 +265,7 @@
     %endif
 
     <div>
-        <img src=${object.company_id.logo_web}>
+        <img src=${object.company_id.logo_url}>
     </div>
 </div>
             ]]></field>
@@ -319,7 +319,7 @@
     %endif
 
     <div>
-        <img src=${object.company_id.logo_web}>
+        <img src=${object.company_id.logo_url}>
     </div>
 </div>
             ]]></field>
@@ -373,7 +373,7 @@
     %endif
 
      <div>
-         <img src=${object.company_id.logo_web}>
+         <img src=${object.company_id.logo_url}>
      </div>
 </div>
             ]]></field>
