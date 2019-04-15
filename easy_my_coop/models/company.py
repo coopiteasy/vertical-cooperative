@@ -5,6 +5,10 @@ from openerp import fields, models
 class ResCompany(models.Model):
     _inherit = 'res.company'
 
+    def _get_base_logo(self):
+        base_url = self.env['ir.config_parameter'].get_param('web.base.url')
+        self.logo_url = base_url + "/logo.png"
+
     coop_email_contact = fields.Char(string="Contact email address for the"
                                      " cooperator")
     subscription_maximum_amount = fields.Float(string="Maximum authorised"
@@ -38,3 +42,5 @@ class ResCompany(models.Model):
     display_logo2 = fields.Boolean(string="Display logo 2")
     bottom_logo1 = fields.Binary(string="Bottom logo 1")
     bottom_logo2 = fields.Binary(string="Bottom logo 2")
+    logo_url = fields.Char(string="logo url",
+                           compute="_get_base_logo")
