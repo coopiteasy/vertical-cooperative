@@ -32,6 +32,7 @@
        				<sheet>
 	       				<group>
 		       				<group>
+		       					<field name="state"/>
 		       					<field name="request_date" attrs="{'readonly':[('state','!=','draft')]}"/>
 			          			<field name="operation_type" attrs="{'readonly':[('state','!=','draft')]}"/>
 			          			<field name="receiver_not_member" attrs="{'invisible':[('operation_type','!=','transfer')]}"/>
@@ -58,6 +59,7 @@
 					                <field name="phone"/>
 				          			<field name="email"/>
 				          			<field name="iban"/>
+				          			<field name="state" invisible="True"/>
 		       					</tree>
 			       				<form string="Subscription Requests">
 			       					<sheet>
