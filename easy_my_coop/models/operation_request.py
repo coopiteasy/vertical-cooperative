@@ -246,10 +246,10 @@ class operation_request(models.Model):
                     raise ValidationError(_("Converting just part of the"
                                             " shares is not yet implemented"))
             elif rec.operation_type == 'transfer':
+                sequence_id = self.env.ref('easy_my_coop.sequence_subscription', False)
                 if rec.receiver_not_member:
                     partner = rec.subscription_request.create_coop_partner()
                     # get cooperator number
-                    sequence_id = self.env.ref('easy_my_coop.sequence_subscription', False)
                     sub_reg_num = int(sequence_id.next_by_id())
                     partner_vals = sub_request.get_eater_vals(partner, rec.share_product_id)
                     partner_vals['member'] = True
@@ -257,7 +257,11 @@ class operation_request(models.Model):
                     partner.write(partner_vals)
                     rec.partner_id_to = partner
                 else:
+                    # means an old member or cooperator candidate
                     if not rec.partner_id_to.member:
+                        if rec.partner_id_to.cooperator_register_number == 0:
+                            sub_reg_num = int(sequence_id.next_by_id())
+                            partner_vals['cooperator_register_number'] = sub_reg_num
                         partner_vals = sub_request.get_eater_vals(
                                             rec.partner_id_to,
                                             rec.share_product_id)
