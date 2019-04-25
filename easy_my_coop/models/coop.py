@@ -243,9 +243,7 @@ class subscription_request(models.Model):
                                      " register number and on the iban bank"
                                      " account. To be done in case of the id"
                                      " card is from abroad or in case of"
-                                     " a passport",
-                                     readonly=True,
-                                     states={'draft': [('readonly', False)]})
+                                     " a passport")
     lang = fields.Selection(_lang_get,
                             string='Language',
                             required=True,
