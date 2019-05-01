@@ -1,241 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-	<data>
-		<menuitem name="Easy-My Coop" id="menu_main_easy_my_coop" sequence="40" groups="easy_my_coop.group_energiris_user"/>
-		<menuitem name="Subscription" id="menu_easy_my_coop_main_subscription" parent="menu_main_easy_my_coop" sequence="10" groups="easy_my_coop.group_energiris_manager"/>
-		<menuitem name="Reporting" id="menu_easy_my_coop_main_reporting" parent="menu_main_easy_my_coop" sequence="40" groups="easy_my_coop.group_energiris_manager"/>
+<odoo>
+	<menuitem name="Easy-My Coop" id="menu_main_easy_my_coop" sequence="40" groups="easy_my_coop.group_energiris_user"/>
+	<menuitem name="Subscription" id="menu_easy_my_coop_main_subscription" parent="menu_main_easy_my_coop" sequence="10" groups="easy_my_coop.group_energiris_manager"/>
+	<menuitem name="Reporting" id="menu_easy_my_coop_main_reporting" parent="menu_main_easy_my_coop" sequence="40" groups="easy_my_coop.group_energiris_manager"/>
 
-		<record id="subscription_request_tree" model="ir.ui.view">
-            <field name="name">subscription.request.tree</field>
-            <field name="model">subscription.request</field>
-            <field name="arch" type="xml">
-                <tree string="Cooperator Subscriptions Request" colors="red:validated == False; blue:state in ('draft');grey: state in ('done')">
-	                <field name="name"/>
-	                <field name="date" string="Request Date"/>
-          			<field name="type"/>
-          			<field name="share_short_name" string="Share Type"/>
-          			<field name="ordered_parts" string="Quantity" sum="Total ordered parts"/>
-          			<field name="subscription_amount" sum="Total amount"/>
-          			<field name="email"/>
-          			<field name="iban"/>
-          			<field name="partner_id"/>
-          			<field name="source"/>
-          			<field name="state"/>
-          			<field name="validated" invisible="True"/>
-                    <button type="object" name="validate_subscription_request" attrs="{'invisible':['|',('state','!=','draft'),('validated','=',False)]}" icon="STOCK_MEDIA_PLAY" />
-                    <button type="object" name="block_subscription_request" states="draft" groups="easy_my_coop.group_energiris_user" icon="gtk-cancel"/>
-                    <button type="object" name="unblock_subscription_request" states="block" groups="easy_my_coop.group_energiris_manager" icon="gtk-jump-to"/>
-                </tree>
-            </field>
-        </record>
+	<record id="subscription_request_tree" model="ir.ui.view">
+        <field name="name">subscription.request.tree</field>
+        <field name="model">subscription.request</field>
+        <field name="arch" type="xml">
+            <!--<tree string="Cooperator Subscriptions Request" colors="red:validated == False; blue:state in ('draft');grey: state in ('done')">-->
+            <tree string="Cooperator Subscriptions Request">
+                <field name="name"/>
+                <field name="date" string="Request Date"/>
+      			<field name="type"/>
+      			<field name="share_short_name" string="Share Type"/>
+      			<field name="ordered_parts" string="Quantity" sum="Total ordered parts"/>
+      			<field name="subscription_amount" sum="Total amount"/>
+      			<field name="email"/>
+      			<field name="iban"/>
+      			<field name="partner_id"/>
+      			<field name="source"/>
+      			<field name="state"/>
+      			<field name="validated" invisible="True"/>
+                <button type="object" name="validate_subscription_request" attrs="{'invisible':['|',('state','!=','draft'),('validated','=',False)]}" icon="STOCK_MEDIA_PLAY" />
+                <button type="object" name="block_subscription_request" states="draft" groups="easy_my_coop.group_energiris_user" icon="gtk-cancel"/>
+                <button type="object" name="unblock_subscription_request" states="block" groups="easy_my_coop.group_energiris_manager" icon="gtk-jump-to"/>
+            </tree>
+        </field>
+    </record>
 
-        <record id="subscription_request_form" model="ir.ui.view">
-            <field name="name">subscription.request.form</field>
-            <field name="model">subscription.request</field>
-            <field name="arch" type="xml">
-        		<form string="Subscription Requests">
-       				<header>
-       					<button string="Validate" type="object" name="validate_subscription_request" attrs="{'invisible':['|',('state','not in',['draft','waiting']),('validated','=',False)]}"/>
-       					<button string="Waiting list" type="object" name="put_on_waiting_list" states="draft"/>
-       					<button string="Cancel" type="object" name="cancel_subscription_request" states="draft,done,block" groups="easy_my_coop.group_energiris_manager"/>
-       					<field name="state" widget="statusbar" statusbar_visible="draft,cancelled,done,failed"/>
-       				</header>
-       				<sheet>
+    <record id="subscription_request_form" model="ir.ui.view">
+        <field name="name">subscription.request.form</field>
+        <field name="model">subscription.request</field>
+        <field name="arch" type="xml">
+    		<form string="Subscription Requests">
+   				<header>
+   					<button string="Validate" type="object" name="validate_subscription_request" attrs="{'invisible':['|',('state','not in',['draft','waiting']),('validated','=',False)]}"/>
+   					<button string="Waiting list" type="object" name="put_on_waiting_list" states="draft"/>
+   					<button string="Cancel" type="object" name="cancel_subscription_request" states="draft,done,block" groups="easy_my_coop.group_energiris_manager"/>
+   					<field name="state" widget="statusbar" statusbar_visible="draft,cancelled,done,failed"/>
+   				</header>
+   				<sheet>
+       				<group>
 	       				<group>
-		       				<group>
-		       					<field name="already_cooperator"/>
-		       					<field name="is_company" groups="easy_my_coop.group_energiris_super_manager"/>
-		       					<field name="is_operation" invisible="True"/>
-		       					<field name="company_name" attrs="{'invisible':[('is_company','=',False)]}"/>
-		       					<field name="company_email" attrs="{'invisible':[('is_company','=',False)]}"/>
-		       					<field name="company_type" attrs="{'invisible':[('is_company','=',False)]}"/>
-		       					<field name="company_register_number" attrs="{'invisible':[('is_company','=',False)]}"/>
-		       					<field name="name"/>
-		       					<field name="firstname"/>
-		       					<field name="lastname"/>
-		       					<field name="birthdate"/>
-		       					<field name="gender"/>
-		       					<field name="email"/>
-		       					<field name="phone"/>
-		       					<field name="contact_person_function" attrs="{'invisible':[('is_company','=',False)]}"/>
-		       					<field name="no_registre"/>
-		       					<field name="iban"/>
-		       					<field name="address"/>
-		       					<field name="zip_code"/>
-		       					<field name="city"/>
-		       					<field name="country_id" options="{'no_create':True}"/>
-		       				</group>
-		       				<group>
-		       					<field name="capital_release_request_date" groups="easy_my_coop.group_energiris_super_manager"/>
-		       					<field name="date"/>
-		       					<field name="source"/>
-		       					<field name="ordered_parts"/>
-		       					<field name="share_product_id" widget="selection"/>
-		       					<field name="share_short_name"/>
-		       					<field name="share_unit_price"/>
-		       					<field name="subscription_amount"/>
-		       					<field name="partner_id" options="{'no_create':True}"/>
-		       					<field name="type"/>
-		       					<field name="lang"/>
-		       					<field name="validated"/>
-		       					<field name="skip_control_ng"/>
-		       				</group>
-		       			</group>
-		       			<notebook>
-		       				<page name="capital_release_request" string="Capital release request">
-		       					<field name="capital_release_request">
-			       					<tree options="{'no_create':True}">
-			       						<field string="Cooperator"  name="partner_id"/>
-			       						<field name="date_invoice"/>
-			       						<field name="number"/>
-			       						<field string="Reference" name="reference"/>
-			       						<field name="date_due"/>
-			       						<field name="amount_total_signed"/>
-			       						<field name="residual_signed"/>
-			       						<field name="state"/>
-			       					</tree>
-		       					</field>
-		       				</page>
-		       			</notebook>
-       				</sheet>
-       			</form>
-            </field>
-        </record>    
-
-        <record id="view_subscription_request_filter" model="ir.ui.view">
-            <field name="name">Cooperator Subscription Search</field>
-            <field name="model">subscription.request</field>
-            <field name="arch" type="xml">
-                <search string="Search Subscription Request">
-                   <field name="name"/>
-                   <separator/>
-                   <filter string="draft" name="state_draft" domain="[('state','=','draft')]"/>
-                   <filter string="done" name="state_done" domain="[('state','=','done')]"/>
-                   <separator/>
-                   <filter string="Unvalid" name="Unvalid" domain="[('validated', '=', False)]"/>
-                   <group expand="0" name="group_by" string="Group By">
-                       <filter string="Request type" context="{'group_by' : 'type'}" />
-                       <filter string="Date Month" context="{'group_by': 'date'}"/>
-                   </group>
-               </search>
-            </field>
-        </record>
-
-        <record id="subscription_request_action" model="ir.actions.act_window">
-            <field name="name">Cooperator Subscription</field>
-            <field name="res_model">subscription.request</field>
-            <field name="view_type">form</field>
-            <field name="domain">[('is_company','=',False),('is_operation','=',False)]</field>
-            <field name="context">{'default_source':'manual'}</field>
-            <field name="view_id" ref="subscription_request_tree"/>
-            <field name="search_view_id" ref="view_subscription_request_filter"/>
-        </record>
-
-		<menuitem action="subscription_request_action" name="Cooperator Subscription" id="menu_easy_my_coop_subscription_request"  parent="menu_easy_my_coop_main_subscription" sequence="10"/>
-
-		<record id="company_subscription_request_tree" model="ir.ui.view">
-            <field name="name">subscription.request.tree</field>
-            <field name="model">subscription.request</field>
-            <field name="arch" type="xml">
-                <tree string="Company Cooperator Subscriptions Request" colors="red:validated == False; blue:state in ('draft');grey: state in ('done')">
-	                <field name="company_name"/>
-	                <field name="name"/>
-	                <field name="date" string="Request Date"/>
-          			<field name="type"/>
-          			<field name="share_short_name" string="Share Type"/>
-          			<field name="ordered_parts" string="Quantity" sum="Total ordered parts"/>
-          			<field name="subscription_amount" sum="Total amount"/>
-          			<field name="email"/>
-          			<field name="iban"/>
-          			<field name="partner_id"/>
-          			<field name="source"/>
-          			<field name="state"/>
-          			<field name="validated" invisible="True"/>
-                    <button type="object" name="validate_subscription_request" attrs="{'invisible':['|',('state','!=','draft'),('validated','=',False)]}" icon="STOCK_MEDIA_PLAY"/>
-                    <button type="object" name="block_subscription_request" states="draft" groups="easy_my_coop.group_energiris_user" icon="gtk-cancel"/>
-                    <button type="object" name="unblock_subscription_request" states="block" groups="easy_my_coop.group_energiris_manager" icon="gtk-jump-to"/>
-                </tree>
-            </field>
-        </record>
-
-		<record id="company_subscription_request_action" model="ir.actions.act_window">
-            <field name="name">Company Subscription</field>
-            <field name="res_model">subscription.request</field>
-            <field name="view_type">form</field>
-            <field name="domain">[('is_company','=',True),('is_operation','=',False)]</field>
-            <field name="context">{'default_is_company': True,'default_source':'manual'}</field>
-            <field name="view_id" ref="company_subscription_request_tree"/>
-            <field name="search_view_id" ref="view_subscription_request_filter"/>
-        </record>
-
-		<menuitem action="company_subscription_request_action" name="Company Subscription" id="menu_easy_my_coop_company_subscription_request"  parent="menu_easy_my_coop_main_subscription" sequence="12"/>
-
-        <record id="share_line_form" model="ir.ui.view">
-            <field name="name">share.line.form</field>
-            <field name="model">share.line</field>
-            <field name="arch" type="xml">
-        		<form string="Share line">
-       				<header>
-       					<button string="Update info" name="%(action_view_update_share_line_info)d"
-                                type="action" context="{'default_active_id': active_id}" groups="easy_my_coop.group_energiris_super_manager"/>
-       				</header>
-       				<sheet>
-	       				<group>
-	       					<group>
-	       						<field name="partner_id"/>
-	       						<field name="share_product_id"/>
-	       						<field name="share_number"/>
-		       				</group>
-		       				<group>
-		       					<field name="share_short_name"/>
-		       					<field name="share_unit_price"/>
-		       					<field name="effective_date"/>
-		       					<field name="total_amount_line"/>
-		       				</group>
+	       					<field name="already_cooperator"/>
+	       					<field name="is_company" groups="easy_my_coop.group_energiris_super_manager"/>
+	       					<field name="is_operation" invisible="True"/>
+	       					<field name="company_name" attrs="{'invisible':[('is_company','=',False)]}"/>
+	       					<field name="company_email" attrs="{'invisible':[('is_company','=',False)]}"/>
+	       					<field name="company_type" attrs="{'invisible':[('is_company','=',False)]}"/>
+	       					<field name="company_register_number" attrs="{'invisible':[('is_company','=',False)]}"/>
+	       					<field name="name"/>
+	       					<field name="firstname"/>
+	       					<field name="lastname"/>
+	       					<field name="birthdate"/>
+	       					<field name="gender"/>
+	       					<field name="email"/>
+	       					<field name="phone"/>
+	       					<field name="contact_person_function" attrs="{'invisible':[('is_company','=',False)]}"/>
+	       					<field name="no_registre"/>
+	       					<field name="iban"/>
+	       					<field name="address"/>
+	       					<field name="zip_code"/>
+	       					<field name="city"/>
+	       					<field name="country_id" options="{'no_create':True}"/>
 	       				</group>
-	       			</sheet>
-	       		</form>
-	       	</field>
-	    </record>
+	       				<group>
+	       					<field name="capital_release_request_date" groups="easy_my_coop.group_energiris_super_manager"/>
+	       					<field name="date"/>
+	       					<field name="source"/>
+	       					<field name="ordered_parts"/>
+	       					<field name="share_product_id" widget="selection"/>
+	       					<field name="share_short_name"/>
+	       					<field name="share_unit_price"/>
+	       					<field name="subscription_amount"/>
+	       					<field name="partner_id" options="{'no_create':True}"/>
+	       					<field name="type"/>
+	       					<field name="lang"/>
+	       					<field name="validated"/>
+	       					<field name="skip_control_ng"/>
+	       				</group>
+	       			</group>
+	       			<notebook>
+	       				<page name="capital_release_request" string="Capital release request">
+	       					<field name="capital_release_request">
+		       					<tree options="{'no_create':True}">
+		       						<field string="Cooperator"  name="partner_id"/>
+		       						<field name="date_invoice"/>
+		       						<field name="number"/>
+		       						<field string="Reference" name="reference"/>
+		       						<field name="date_due"/>
+		       						<field name="amount_total_signed"/>
+		       						<field name="residual_signed"/>
+		       						<field name="state"/>
+		       					</tree>
+	       					</field>
+	       				</page>
+	       			</notebook>
+   				</sheet>
+   			</form>
+        </field>
+    </record>    
 
-		<record id="share_line_tree" model="ir.ui.view">
-            <field name="name">share.line.tree</field>
-            <field name="model">share.line</field>
-            <field name="arch" type="xml">
-                <tree>
-	                <field name="partner_id"/>
-	                <field name="share_product_id"/>
-	                <field name="share_number"/>
-          			<field name="share_short_name"/>
-          			<field name="share_unit_price"/>
-          			<field name="effective_date"/>
-          			<field name="total_amount_line"/>
-                </tree>
-            </field>
-        </record>
+    <record id="view_subscription_request_filter" model="ir.ui.view">
+        <field name="name">Cooperator Subscription Search</field>
+        <field name="model">subscription.request</field>
+        <field name="arch" type="xml">
+            <search string="Search Subscription Request">
+               <field name="name"/>
+               <separator/>
+               <filter string="draft" name="state_draft" domain="[('state','=','draft')]"/>
+               <filter string="done" name="state_done" domain="[('state','=','done')]"/>
+               <separator/>
+               <filter string="Unvalid" name="Unvalid" domain="[('validated', '=', False)]"/>
+               <group expand="0" name="group_by" string="Group By">
+                   <filter name="request_type" string="Request type" context="{'group_by' : 'type'}" />
+                   <filter name="date_month" string="Date Month" context="{'group_by': 'date'}"/>
+               </group>
+           </search>
+        </field>
+    </record>
 
-        <record id="view_share_line_filter" model="ir.ui.view">
-            <field name="name">Share Line Search</field>
-            <field name="model">share.line</field>
-            <field name="arch" type="xml">
-                <search string="Search Share Line">
-                   <field name="partner_id"/>
-                   <field name="effective_date"/>
-                   <separator/>
-                   <group name="group_by" string="Group By">
-                       <filter string="Cooperator" context="{'group_by' : 'partner_id'}" />
-                       <filter string="Effective date" context="{'group_by': 'effective_date'}"/>
-                   </group>
-               </search>
-            </field>
-        </record>
+    <record id="subscription_request_action" model="ir.actions.act_window">
+        <field name="name">Cooperator Subscription</field>
+        <field name="res_model">subscription.request</field>
+        <field name="view_type">form</field>
+        <field name="domain">[('is_company','=',False),('is_operation','=',False)]</field>
+        <field name="context">{'default_source':'manual'}</field>
+        <field name="view_id" ref="subscription_request_tree"/>
+        <field name="search_view_id" ref="view_subscription_request_filter"/>
+    </record>
 
-		<record id="share_line_action" model="ir.actions.act_window">
-            <field name="name">Share Lines</field>
-            <field name="res_model">share.line</field>
-            <field name="view_type">form</field>
-        </record>
+	<menuitem action="subscription_request_action" name="Cooperator Subscription" id="menu_easy_my_coop_subscription_request"  parent="menu_easy_my_coop_main_subscription" sequence="10"/>
 
-		<menuitem action="share_line_action" name="Share lines" id="menu_easy_my_coop_share_line"  parent="menu_easy_my_coop_main_subscription" sequence="20" groups="group_energiris_super_manager"/>
-	</data>
-</openerp>
+	<record id="company_subscription_request_tree" model="ir.ui.view">
+        <field name="name">subscription.request.tree</field>
+        <field name="model">subscription.request</field>
+        <field name="arch" type="xml">
+            <tree string="Company Cooperator Subscriptions Request" colors="red:validated == False; blue:state in ('draft');grey: state in ('done')">
+                <field name="company_name"/>
+                <field name="name"/>
+                <field name="date" string="Request Date"/>
+      			<field name="type"/>
+      			<field name="share_short_name" string="Share Type"/>
+      			<field name="ordered_parts" string="Quantity" sum="Total ordered parts"/>
+      			<field name="subscription_amount" sum="Total amount"/>
+      			<field name="email"/>
+      			<field name="iban"/>
+      			<field name="partner_id"/>
+      			<field name="source"/>
+      			<field name="state"/>
+      			<field name="validated" invisible="True"/>
+                <button type="object" name="validate_subscription_request" attrs="{'invisible':['|',('state','!=','draft'),('validated','=',False)]}" icon="STOCK_MEDIA_PLAY"/>
+                <button type="object" name="block_subscription_request" states="draft" groups="easy_my_coop.group_energiris_user" icon="gtk-cancel"/>
+                <button type="object" name="unblock_subscription_request" states="block" groups="easy_my_coop.group_energiris_manager" icon="gtk-jump-to"/>
+            </tree>
+        </field>
+    </record>
+
+	<record id="company_subscription_request_action" model="ir.actions.act_window">
+        <field name="name">Company Subscription</field>
+        <field name="res_model">subscription.request</field>
+        <field name="view_type">form</field>
+        <field name="domain">[('is_company','=',True),('is_operation','=',False)]</field>
+        <field name="context">{'default_is_company': True,'default_source':'manual'}</field>
+        <field name="view_id" ref="company_subscription_request_tree"/>
+        <field name="search_view_id" ref="view_subscription_request_filter"/>
+    </record>
+
+	<menuitem action="company_subscription_request_action" name="Company Subscription" id="menu_easy_my_coop_company_subscription_request"  parent="menu_easy_my_coop_main_subscription" sequence="12"/>
+
+    <record id="share_line_form" model="ir.ui.view">
+        <field name="name">share.line.form</field>
+        <field name="model">share.line</field>
+        <field name="arch" type="xml">
+    		<form string="Share line">
+   				<header>
+   					<button string="Update info" name="%(action_view_update_share_line_info)d"
+                            type="action" context="{'default_active_id': active_id}" groups="easy_my_coop.group_energiris_super_manager"/>
+   				</header>
+   				<sheet>
+       				<group>
+       					<group>
+       						<field name="partner_id"/>
+       						<field name="share_product_id"/>
+       						<field name="share_number"/>
+	       				</group>
+	       				<group>
+	       					<field name="share_short_name"/>
+	       					<field name="share_unit_price"/>
+	       					<field name="effective_date"/>
+	       					<field name="total_amount_line"/>
+	       				</group>
+       				</group>
+       			</sheet>
+       		</form>
+       	</field>
+    </record>
+
+	<record id="share_line_tree" model="ir.ui.view">
+        <field name="name">share.line.tree</field>
+        <field name="model">share.line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="partner_id"/>
+                <field name="share_product_id"/>
+                <field name="share_number"/>
+      			<field name="share_short_name"/>
+      			<field name="share_unit_price"/>
+      			<field name="effective_date"/>
+      			<field name="total_amount_line"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_share_line_filter" model="ir.ui.view">
+        <field name="name">Share Line Search</field>
+        <field name="model">share.line</field>
+        <field name="arch" type="xml">
+            <search string="Search Share Line">
+               <field name="partner_id"/>
+               <field name="effective_date"/>
+               <separator/>
+               <group name="group_by" string="Group By">
+                   <filter name="cooperator" string="Cooperator" context="{'group_by' : 'partner_id'}" />
+                   <filter name="effective_date" string="Effective date" context="{'group_by': 'effective_date'}"/>
+               </group>
+           </search>
+        </field>
+    </record>
+
+	<record id="share_line_action" model="ir.actions.act_window">
+        <field name="name">Share Lines</field>
+        <field name="res_model">share.line</field>
+        <field name="view_type">form</field>
+    </record>
+
+	<menuitem action="share_line_action" name="Share lines" id="menu_easy_my_coop_share_line"  parent="menu_easy_my_coop_main_subscription" sequence="20" groups="group_energiris_super_manager"/>
+</odoo>
