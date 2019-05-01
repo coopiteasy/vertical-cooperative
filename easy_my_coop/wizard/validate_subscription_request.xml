@@ -1,39 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data>
-        <record id="view_validate_subscription_request" model="ir.ui.view">
-            <field name="name">Validate subscription request</field>
-            <field name="model">validate.subscription.request</field>
-            <field name="arch" type="xml">
-                <form string="Validate the subscription request">
-                    <p class="oe_grey">
-                        Validate the subscription request.
-                    </p>
-                    <footer>
-                        <button name="validate" string="Validate" type="object" class="btn-primary"/>
-                        <button string="Cancel" class="btn-default" special="cancel"/>
-                    </footer>
-                </form>
-            </field>
-        </record>
+<odoo>
+    <record id="view_validate_subscription_request" model="ir.ui.view">
+        <field name="name">Validate subscription request</field>
+        <field name="model">validate.subscription.request</field>
+        <field name="arch" type="xml">
+            <form string="Validate the subscription request">
+                <p class="oe_grey">
+                    Validate the subscription request.
+                </p>
+                <footer>
+                    <button name="validate" string="Validate" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
 
-        <record id="action_validate_subscription_request" model="ir.actions.act_window">
-            <field name="name">Validate subscription request</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">validate.subscription.request</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">form</field>
-            <field name="target">new</field>
-            <field name="groups_id" eval="[(4,ref('easy_my_coop.group_energiris_manager'))]"/>
-        </record>
-		
-		<record model="ir.values" id="validate_subscription_request">
-            <field name="model_id" ref="easy_my_coop.model_subscription_request" />
-            <field name="name">Validate subscription Request</field>
-            <field name="key2">client_action_multi</field>
-            <field name="value" eval="'ir.actions.act_window,' + str(ref('action_validate_subscription_request'))" />
-            <field name="key">action</field>
-            <field name="model">subscription.request</field>
-        </record>
-    </data>
-</openerp>
+    <record id="action_validate_subscription_request" model="ir.actions.act_window">
+        <field name="name">Validate subscription request</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">validate.subscription.request</field>
+        <field name="src_model">subscription.request</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="key2">client_action_multi</field>
+        <field name="target">new</field>
+        <field name="groups_id" eval="[(4,ref('easy_my_coop.group_energiris_manager'))]"/>
+    </record>
+</odoo>

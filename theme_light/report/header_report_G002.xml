@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-<data>
-
-		
-<template id="theme_light.invoice_header_G002">
- 
-	<table style="width: 100%;font-size:10px">
+<odoo>
+	<template id="theme_light.invoice_header_G002">
+		<table style="width: 100%;font-size:10px">
           <tr height="30px">      
             <td style="width:20%;padding-right:15px" rowspan="4">
             	<img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.company_id.logo" style="max-height: 100px;"/>
@@ -63,12 +59,12 @@
 		  	<td></td>
 		  	<td></td>
 		  </tr>
-     </table>
-</template>
+		</table>
+	</template>
 
-<template id="theme_light.invoice_header_P002">
+	<template id="theme_light.invoice_header_P002">
  
-	<table style="width: 100%;font-size:10px">
+		<table style="width: 100%;font-size:10px">
           <tr height="30px">      
             <td style="width:20%;padding-right:15px" rowspan="4">
             	<img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.company_id.logo" style="max-height: 100px;"/>
@@ -126,13 +122,11 @@
 		  	<td></td>
 		  	<td></td>
 		  </tr>
-     </table>
-</template>
+		</table>
+	</template>
 	
-	
-	
-<template id="theme_light.list_header_G002">
-	<table style="width: 100%;font-size:10px">
+	<template id="theme_light.list_header_G002">
+		<table style="width: 100%;font-size:10px">
           <tr height="30px">      
             <td style="width:20%;padding-right:15px" rowspan="4">
             	<img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' % res_company.logo" style="max-height: 100px;"/>
@@ -190,8 +184,6 @@
 		  	<td></td>
 		  	<td></td>
 		  </tr>
-     </table>
-</template>		
-
-</data>
-</openerp>
+		</table>
+	</template>		
+</odoo>
