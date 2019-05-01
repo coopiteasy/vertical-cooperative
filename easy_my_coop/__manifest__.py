@@ -1,41 +1,25 @@
-# -*- coding: utf-8 -*-
-##############################################################################
-#
-#    Copyright (C) 2013-2018 Open Architects Consulting SPRL.
-#    Copyright (C) 2018-     Coop IT Easy SCRL.
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# Copyright 2013-2018 Open Architects Consulting SPRL.
+# Copyright 2018-Coop IT Easy SCRLfs (<http://www.coopiteasy.be>)
+# - Houssine BAKKALI - <houssine@coopiteasy.be>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).#
+
 {
     "name": "Easy My Coop",
-    "version": "1.1",
+    "version": "'12.0.1.0.0'",
     "depends": ["base",
                 "sale",
-                "purchase",
-                "account_accountant",
+                "account",
+                "base_iban",
                 "product",
                 "partner_firstname",
                 "partner_contact_birthdate",
                 "partner_contact_address",
                 "website",
-                "website_recaptcha_reloaded",
+                "website_form_recaptcha",
                 "theme_light",
-                "base_iban",
                 "email_template_config",
                 ],
-    "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
+    "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
     "website": "www.coopiteasy.be",
     "license": "AGPL-3",
@@ -56,7 +40,7 @@
         'view/cooperator_register_view.xml',
         'view/operation_request_view.xml',
         'view/account_invoice_view.xml',
-        'view/subscription_template.xml',
+        # 'view/subscription_template.xml',
         'view/product_view.xml',
         'view/res_company_view.xml',
         'view/account_journal_view.xml',

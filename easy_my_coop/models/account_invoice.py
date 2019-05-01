@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
 from datetime import datetime
-from openerp import api, fields, models
+
+from odoo import api, fields, models
 
 
 class account_invoice(models.Model):

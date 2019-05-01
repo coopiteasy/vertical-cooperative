@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
 from datetime import datetime
 
-from openerp import api, fields, models, _
-from openerp.addons.base_iban import base_iban
-from openerp.exceptions import UserError, ValidationError
+from odoo import api, fields, models, _
+from odoo.addons.base_iban.models.res_partner_bank import validate_iban
+from odoo.exceptions import UserError, ValidationError
 
 _REQUIRED = ['email',
              'firstname',
@@ -107,7 +106,7 @@ class subscription_request(models.Model):
     def check_iban(self, iban):
         validated = True
         try:
-            base_iban.validate_iban(iban)
+            validate_iban(iban)
         except ValidationError:
             validated = False
         return validated

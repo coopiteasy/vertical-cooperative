@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
+<odoo>
 <data>
 
 <!--  ****************** POUR IMPRESSION FACTURE **************** --> 
@@ -20,8 +20,6 @@
             <t t-call="theme_light.style"/>
         </style>
     </xpath>
-    <!-- Remove conflicting style -->
-    <xpath expr="//head/link[@href='/web/static/src/css/full.css']" position="replace"></xpath>
 </template>
 
 <!-- CSS -->	
@@ -207,5 +205,5 @@
     <t t-call="theme_light.report_footer_002" />
 </template>
 </data>
-</openerp>
+</odoo>
 
