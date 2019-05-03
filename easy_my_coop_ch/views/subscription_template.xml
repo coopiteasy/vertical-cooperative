@@ -3,10 +3,12 @@
 	<data>
 		<template id="subscription_i18n_ch" inherit_id="easy_my_coop.becomecooperator" name="Removing fields">
  			<xpath expr="//label[@for='no_registre']/.." position="replace"/>
+ 			<xpath expr="//label[@for='iban']/.." position="replace"/>
 		</template>
 		
 		<template id="company_subscription_i18n_ch" inherit_id="easy_my_coop.becomecompanycooperator" name="Company Removing fields">
  			<xpath expr="//label[@for='no_registre']/.." position="replace"/>
+ 			<xpath expr="//label[@for='iban']/.." position="replace"/>
 		</template>
 	</data>
 </odoo>

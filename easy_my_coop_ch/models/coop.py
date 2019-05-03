@@ -18,9 +18,14 @@ class subscription_request(models.Model):
         req_fields = super(subscription_request, self).get_required_field()
         if 'no_registre' in req_fields:
             req_fields.remove('no_registre')
+        if 'iban' in req_fields:
+            req_fields.remove('iban')
 
         return req_fields
 
     def check_belgian_identification_id(self, nat_register_num):
         # deactivate number validation for swiss localization
+        return True
+
+    def check_iban(self, iban):
         return True
