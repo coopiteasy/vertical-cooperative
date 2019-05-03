@@ -28,4 +28,6 @@ class subscription_request(models.Model):
         return True
 
     def check_iban(self, iban):
+        if iban:
+            return super(subscription_request, self).check_iban(iban)
         return True
