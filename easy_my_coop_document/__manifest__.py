@@ -29,5 +29,6 @@
         'security/ir.model.access.csv',
         'views/easy_my_coop_document_menu.xml',
         'views/easy_my_coop_document_views.xml',
-    ]
+    ],
+    'installable': False,
 }

@@ -19,19 +19,20 @@
 #
 ##############################################################################
 {
-    "name": "Easy My Coop Be",
+    "name": "Easy My Coop CH",
     "version": "1.0",
     "depends": ["easy_my_coop",
-                "l10n_be",
-                "l10n_be_invoice_bba",
-                ],
+                "l10n_ch",
+                "theme_light"],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
-    "website": "www.coopiteasy.be",
+    'webstite': "www.coopiteasy.be",
     "description": """
-    This is the belgian localization for the easy my coop module.
+    This is the swiss localization for the easy my coop module
     """,
-    'data': [],
-    'installable': True,
-    'application': False,
+    'data': [
+        'views/subscription_template.xml',
+        'views/subscription_request_view.xml'
+    ],
+    'installable': False,
 }
