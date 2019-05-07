@@ -253,8 +253,11 @@ class subscription_request(models.Model):
                        required=True,
                        readonly=True,
                        states={'draft': [('readonly', False)]},
-                       default=lambda self: datetime.strftime(datetime.now(), '%Y-%m-%d'))
-    company_id = fields.Many2one('res.company', string='Company', required=True,
+                       default=lambda self: datetime.strftime(datetime.now(),
+                                                              '%Y-%m-%d'))
+    company_id = fields.Many2one('res.company',
+                                 string='Company',
+                                 required=True,
                                  change_default=True,
                                  readonly=True,
                                  default=lambda self: self.env['res.company']._company_default_get())
@@ -485,6 +488,7 @@ class subscription_request(models.Model):
             partner = self.partner_id
         else:
             partner = None
+            domain = []
             if self.already_cooperator:
                 raise UserError(_('The checkbox already cooperator is'
                                   ' checked please select a cooperator.'))
@@ -493,7 +497,8 @@ class subscription_request(models.Model):
             elif not self.is_company and self.no_registre:
                 domain = [('national_register_number', '=', self.no_registre)]
 
-            partner = partner_obj.search(domain)
+            if domain:
+                partner = partner_obj.search(domain)
 
         if not partner:
             partner = self.create_coop_partner()
