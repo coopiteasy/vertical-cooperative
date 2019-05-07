@@ -248,7 +248,7 @@ class WebsiteSubscription(http.Controller):
                                     "is not valid")
             return request.website.render(redirect, values)
 
-        if not is_company:
+        if not is_company and 'no_registre' in required_fields:
             no_registre = re.sub('[^0-9a-zA-Z]+', '',
                                  kwargs.get("no_registre"))
             valid = sub_req_obj.check_belgian_identification_id(no_registre)
@@ -304,6 +304,8 @@ class WebsiteSubscription(http.Controller):
     def share_subscription(self, **kwargs):
         sub_req_obj = request.env['subscription.request']
         attach_obj = request.env['ir.attachment']
+        required_fields = sub_req_obj.sudo().get_required_field()
+
         # List of file to add to ir_attachment once we have the ID
         post_file = []
         # Info to add after the message
@@ -360,6 +362,10 @@ class WebsiteSubscription(http.Controller):
             no_registre = re.sub('[^0-9a-zA-Z]+', '',
                                  kwargs.get("no_registre"))
             values["no_registre"] = no_registre
+            if 'no_registre' in required_fields:
+                no_registre = re.sub('[^0-9a-zA-Z]+', '',
+                                     kwargs.get("no_registre"))
+                values["no_registre"] = no_registre
 
             subscription_id = sub_req_obj.sudo().create(values)
 
