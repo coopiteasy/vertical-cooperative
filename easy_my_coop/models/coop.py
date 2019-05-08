@@ -425,7 +425,7 @@ class subscription_request(models.Model):
         self.env['account.invoice.line'].create(vals)
 
         # validate the capital release request
-        invoice.signal_workflow('invoice_open')
+        invoice.action_invoice_open()
 
         self.send_capital_release_request(invoice)
 
