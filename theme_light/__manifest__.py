@@ -17,5 +17,6 @@
         'views/layout_template.xml',
         'report/header_report_G002.xml',
     ],
+    'installable': True,
     'application': True,
 }
