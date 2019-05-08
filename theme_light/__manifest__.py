@@ -5,7 +5,7 @@
     'name': 'Theme light',
     'description': 'extract of the theme zen',
     'category': 'Website',
-    'version': '1.0',
+    'version': '12.0.1.0.0',
     'author': 'Benjamin Dugardin',
     'author': 'Houssine BAKKALI',
     'website': "www.coopiteasy.be",
