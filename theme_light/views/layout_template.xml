@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-<data>
-
 <!--  ****************** POUR IMPRESSION FACTURE **************** --> 
 <template id="theme_light.layout" inherit_id="web.layout" primary="True">
     <!-- Add report attributes -->
@@ -204,6 +202,5 @@
     <t t-raw="0" />
     <t t-call="theme_light.report_footer_002" />
 </template>
-</data>
 </odoo>
 
