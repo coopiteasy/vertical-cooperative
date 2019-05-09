@@ -3,7 +3,7 @@
 <data>
 
 <template id="cooperator_certificat_G001_document">
-    <t t-call="theme_light.invoice_layout">
+    <t t-call="web.external_layout">
         <div class="page">
         	<head>
 				<link href="/easy_my_coop/static/src/css/coop_report.css" rel="stylesheet"/>
@@ -35,7 +35,7 @@
 				}
 				</style>
 			</head>
-        	<t t-call="theme_light.invoice_header"/>
+        	<!--<t t-call="theme_light.invoice_header"/>-->
         	
             <div class="row">
                 <div class="col-xs-5 col-xs-offset-7 easymy-coop-address" style="top:90px;">
@@ -159,7 +159,7 @@
     </template>
 
 	<template id="cooperator_certificat_G001">
-	    <t t-call="theme_light.html_container">
+	    <t t-call="web.html_container">
 	        <t t-set="data_report_margin_top" t-value="10"/>
 	        <t t-set="data_report_header_spacing" t-value="5"/>
 	        <t t-set="data_report_dpi" t-value="110"/>
