@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-<data>
-	
+<odoo>
 <template id="cooperator_subscription_G001">
-     <t t-call="theme_light.html_container">
+     <t t-call="web.html_container">
 
      <t t-set="data_report_margin_top" t-value="5"/>
      <t t-set="data_report_header_spacing" t-value="0"/>
      <t t-set="data_report_dpi" t-value="110"/>    
      
-     <t t-call="theme_light.report_layout_002">			 
+     <!--<t t-call="theme_light.report_layout_002">-->			 
 
      <div class="page">
 			<head>
-				<link href="/theme_light/static/css/invoice_G002.css" rel="stylesheet"/>
+				<!--<link href="/theme_light/static/css/invoice_G002.css" rel="stylesheet"/>-->
 			</head>
 	     		
- 			<t t-call="theme_light.list_header_G002"/>
+ 			<!--<t t-call="theme_light.list_header_G002"/>-->
 
 			<br/><br/><br/><br/><br/> 				
  				
@@ -103,8 +101,6 @@
 			</table>			    
 		</div>              		
 	</t>
-	</t>	
+	<!--</t>-->	
 </template>
-
-</data>
-</openerp>
+</odoo>
