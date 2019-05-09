@@ -16,7 +16,7 @@
                 "partner_contact_address",
                 "website",
                 "website_form_recaptcha",
-                "theme_light",
+                # "theme_light",
                 "email_template_config",
                 ],
     "author": "Coop IT Easy SCRLfs",
