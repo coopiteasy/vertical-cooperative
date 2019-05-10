@@ -39,7 +39,6 @@
         'view/cooperator_register_view.xml',
         'view/operation_request_view.xml',
         'view/account_invoice_view.xml',
-        # 'view/subscription_template.xml',
         'view/product_view.xml',
         'view/res_company_view.xml',
         'view/account_journal_view.xml',
