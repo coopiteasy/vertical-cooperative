@@ -35,8 +35,8 @@ class account_invoice(models.Model):
                 user.sudo().write({'active': True})
             else:
                 user_values = {'partner_id': partner.id, 'login': email}
-                user_id = user_obj.sudo()._signup_create_user(user_values)
-                user = user_obj.browse(user_id)
+                user = user_obj.sudo()._signup_create_user(user_values)
+                # user = user_obj.browse(user_id)
                 user.sudo().with_context({'create_user': True}).action_reset_password()
 
         return True
@@ -96,16 +96,17 @@ class account_invoice(models.Model):
         return True
 
     @api.multi
-    def confirm_paid(self):
+    def action_invoice_paid(self):
+        super(account_invoice, self).action_invoice_paid()
         for invoice in self:
-            super(account_invoice, invoice).confirm_paid()
             # we check if there is an open refund for this invoice. in this
             # case we don't run the process_subscription function as the
             # invoice has been reconciled with a refund and not a payment.
             refund = self.search([('type', '=', 'out_refund'),
                                   ('origin', '=', invoice.move_name)])
 
-            if invoice.partner_id.cooperator and invoice.release_capital_request \
+            if invoice.partner_id.cooperator \
+                    and invoice.release_capital_request \
                     and invoice.type == 'out_invoice' and not refund:
                 # take the effective date from the payment.
                 # by default the confirmation date is the payment date
