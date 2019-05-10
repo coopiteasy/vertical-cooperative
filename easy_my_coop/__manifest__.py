@@ -14,8 +14,6 @@
                 "partner_firstname",
                 "partner_contact_birthdate",
                 "partner_contact_address",
-                "website",
-                "website_form_recaptcha",
                 "email_template_config",
                 ],
     "author": "Coop IT Easy SCRLfs",
