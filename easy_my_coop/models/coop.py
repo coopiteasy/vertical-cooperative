@@ -674,11 +674,11 @@ class SubscriptionRegister(models.Model):
         if 'register_number_operation' in fields:
             fields.remove('register_number_operation')
         res = super(SubscriptionRegister, self).read_group(domain, fields,
-                                                            groupby,
-                                                            offset=offset,
-                                                            limit=limit,
-                                                            orderby=orderby,
-                                                            lazy=lazy)
+                                                           groupby,
+                                                           offset=offset,
+                                                           limit=limit,
+                                                           orderby=orderby,
+                                                           lazy=lazy)
         if 'total_amount_line' in fields:
             for line in res:
                 if '__domain' in line:
