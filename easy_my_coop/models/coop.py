@@ -24,7 +24,7 @@ def _lang_get(self):
     return [(language.code, language.name) for language in languages]
 
 
-class subscription_request(models.Model):
+class SubscriptionRequest(models.Model):
     _name = 'subscription.request'
     _description = 'Subscription Request'
 
@@ -59,7 +59,7 @@ class subscription_request(models.Model):
                     vals['type'] = 'increase'
                     vals['already_cooperator'] = True
 
-        subscr_request = super(subscription_request, self).create(vals)
+        subscr_request = super(SubscriptionRequest, self).create(vals)
 
         confirmation_mail_template = self.env.ref('easy_my_coop.email_template_confirmation', False)
         confirmation_mail_template.send_mail(subscr_request.id)
@@ -75,7 +75,7 @@ class subscription_request(models.Model):
                 vals['partner_id'] = cooperator.id
                 vals['type'] = 'increase'
                 vals['already_cooperator'] = True
-        subscr_request = super(subscription_request, self).create(vals)
+        subscr_request = super(SubscriptionRequest, self).create(vals)
 
         confirmation_mail_template = self.env.ref('easy_my_coop.email_template_confirmation_company', False)
         confirmation_mail_template.send_mail(subscr_request.id, True)
@@ -567,7 +567,7 @@ class subscription_request(models.Model):
         self.write({'state': 'waiting'})
 
 
-class share_line(models.Model):
+class ShareLine(models.Model):
     _name = 'share.line'
 
     @api.multi
@@ -600,7 +600,7 @@ class share_line(models.Model):
                                      string='Total amount line')
 
 
-class subscription_register(models.Model):
+class SubscriptionRegister(models.Model):
     _name = 'subscription.register'
 
     @api.multi
@@ -673,7 +673,7 @@ class subscription_register(models.Model):
             fields.remove('share_unit_price')
         if 'register_number_operation' in fields:
             fields.remove('register_number_operation')
-        res = super(subscription_register, self).read_group(domain, fields,
+        res = super(SubscriptionRegister, self).read_group(domain, fields,
                                                             groupby,
                                                             offset=offset,
                                                             limit=limit,
