@@ -34,7 +34,7 @@
 					</group>
 	         	</xpath>
                 
-	         	<xpath expr="//page[@name='sales_purchases']" position='after'>
+	         	<page name='sales_purchases' position="after>
             		<page string="Shares" name="share" attrs="{'invisible':[('member','=',False)]}" groups="easy_my_coop.group_energiris_user">
             			<group>
 			         		<field name="number_of_share"/>
@@ -62,7 +62,7 @@
 		         			</tree>
 		         		</field>
 		         	</page>
-            	</xpath>
+		        </page> 
             </field>
         </record>
         
