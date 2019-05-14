@@ -1,37 +1,37 @@
-<openerp>
+<odoo>
 	<record id="invoice_form" model="ir.ui.view">
-           <field name="name">account.invoice.form</field>
-           <field name="model">account.invoice</field>
-           <field name="inherit_id" ref="account.invoice_form"/>
-           <field name="arch" type="xml">
-           	<field name="move_id" position="after">
-           		<field name="subscription_request"/>
-           	</field>
-           </field>
-       </record>
-	
-	<record id="action_invoice_tree_coop" model="ir.actions.act_window">
-           <field name="name">Cooperator Invoices</field>
-           <field name="res_model">account.invoice</field>
-           <field name="view_type">form</field>
-           <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
-           <field eval="False" name="view_id"/>
-           <field name="domain">[('type','in',('out_invoice', 'out_refund')),('release_capital_request','=',True)]</field>
-           <field name="context">{'default_type':'out_invoice', 'type':'out_invoice', 'journal_type': 'sale'}</field>
-           <field name="search_view_id" ref="account.view_account_invoice_filter"/>
-           <field name="help" type="html">
-             <p class="oe_view_nocontent_create">
-               Click to create a cooperator invoice.
-             </p><p>
-               OpenERP's electronic invoicing allows to ease and fasten the
-               collection of cooperator payments. The cooperator customer receives the
-               invoice by email and he can pay online and/or import it
-               in his own system.
-             </p><p>
-               The discussions with the cooperator are automatically displayed at
-               the bottom of each invoice.
-             </p>
-           </field>
+		<field name="name">account.invoice.form</field>
+		<field name="model">account.invoice</field>
+		<field name="inherit_id" ref="account.invoice_form" />
+		<field name="arch" type="xml">
+			<field name="move_id" position="after">
+				<field name="subscription_request" />
+			</field>
+		</field>
+	</record>
+		
+	  <record id="action_invoice_tree_coop" model="ir.actions.act_window">
+	       <field name="name">Cooperator Invoices</field>
+	       <field name="res_model">account.invoice</field>
+	       <field name="view_type">form</field>
+	       <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
+	       <field eval="False" name="view_id"/>
+	       <field name="domain">[('type','in',('out_invoice', 'out_refund')),('release_capital_request','=',True)]</field>
+	       <field name="context">{'default_type':'out_invoice', 'type':'out_invoice', 'journal_type': 'sale'}</field>
+	       <field name="search_view_id" ref="account.view_account_invoice_filter"/>
+	       <field name="help" type="html">
+	         <p class="oe_view_nocontent_create">
+	           Click to create a cooperator invoice.
+	         </p><p>
+	           OpenERP's electronic invoicing allows to ease and fasten the
+	           collection of cooperator payments. The cooperator customer receives the
+	           invoice by email and he can pay online and/or import it
+	           in his own system.
+	         </p><p>
+	           The discussions with the cooperator are automatically displayed at
+	           the bottom of each invoice.
+	         </p>
+	       </field>
        </record>
        
        <record id="action_invoice_tree1_view1" model="ir.actions.act_window.view">
@@ -83,4 +83,4 @@
            <field name="context">{'default_type':'out_invoice', 'type':'out_invoice', 'journal_type': 'sale'}</field>
            <field name="search_view_id" ref="account.view_account_invoice_filter"/>
        </record>
-</openerp>
+</odoo>
