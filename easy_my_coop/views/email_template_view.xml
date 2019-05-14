@@ -1,4 +1,4 @@
-<openerp>
+<odoo>
 	<data>
 		<menuitem name="Configuration" id="menu_easy_my_coop_config"  parent="menu_main_easy_my_coop" sequence="20"/>
 		
@@ -13,4 +13,4 @@
         
         <menuitem id="menu_easy_my_coop_templates" parent="menu_easy_my_coop_config" action="action_easy_my_coop_email_templates" sequence="10" groups="group_energiris_manager"/>
 	</data>
-</openerp>
+</odoo>
