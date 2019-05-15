@@ -22,8 +22,6 @@ HEADER = [
         'Pays',
         'Nombre de part total',
         'Montant total des parts',
-#         'Numero de demande',
-#        'Statut',
         'Demande de liberation de capital',
         'Communication',
         'Nombre de part',
@@ -225,7 +223,7 @@ class export_global_report(models.TransientModel):
                 amount = quantity * sub_request.share_unit_price
                 worksheet1bis.write(j, i, amount)
                 i += 2
-                worksheet1bis.write(j, i, sub_request.sync_date)
+                worksheet1bis.write(j, i, sub_request.date)
                 j += 1
 
         worksheet2 = workbook.add_worksheet()
