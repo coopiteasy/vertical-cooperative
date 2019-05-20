@@ -125,7 +125,7 @@ class export_global_report(models.TransientModel):
                     worksheet1.write(j, i, line.price_subtotal)
                     i += 1
                 if invoice.payment_ids:
-                    worksheet1.write(j, i, invoice.payment_ids[0].date)
+                    worksheet1.write(j, i, invoice.payment_ids[0].payment_date)
                 i += 1
                 if invoice.subscription_request:
                     ind = len(invoice.subscription_request)-1
