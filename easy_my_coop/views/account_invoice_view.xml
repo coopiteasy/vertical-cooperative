@@ -42,7 +42,7 @@
            <field name="act_window_id" ref="action_invoice_tree_coop"/>
        </record>
        
-       <menuitem action="action_invoice_tree_coop" id="menu_action_invoice_tree_coop" parent="menu_easy_my_coop_main_coop" groups="easy_my_coop.group_energiris_user"/>
+       <menuitem action="action_invoice_tree_coop" id="menu_action_invoice_tree_coop" parent="menu_easy_my_coop_main_coop" groups="easy_my_coop.group_easy_my_coop_user"/>
        
        <record id="account.action_invoice_tree1" model="ir.actions.act_window">
            <field name="name">Customer Invoices</field>

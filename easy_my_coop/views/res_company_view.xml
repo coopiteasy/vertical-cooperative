@@ -5,7 +5,7 @@
            <field name="model">res.company</field>
            <field name="arch" type="xml">
                <group name="social_media" position="before">
-                   <group name="coop_grp" string="EasyMy Coop" groups="easy_my_coop.group_energiris_manager">
+                   <group name="coop_grp" string="EasyMy Coop" groups="easy_my_coop.group_easy_my_coop_manager">
                        <field name="unmix_share_type"/>
                        <field name="allow_id_card_upload"/>
                        <field name="create_user"/>
