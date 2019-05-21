@@ -9,9 +9,9 @@
             	<sheet position="before">
             		<header>
             			<button string="Create Subscription" name="%(action_view_create_subscription)d"
-                                type="action" context="{'default_active_id': active_id}" groups="easy_my_coop.group_energiris_manager"/>
+                                type="action" context="{'default_active_id': active_id}" groups="easy_my_coop.group_easy_my_coop_manager"/>
                         <button string="Update info" name="%(action_view_update_partner_info)d"
-                                type="action" context="{'default_active_id': active_id}" groups="easy_my_coop.group_energiris_manager"/>
+                                type="action" context="{'default_active_id': active_id}" groups="easy_my_coop.group_easy_my_coop_manager"/>
             		</header>
             	</sheet>
             	
@@ -21,10 +21,10 @@
 							<field name="representative" attrs="{'invisible':['|',('parent_id','=',False),('is_company','=',True)]}"/>
 							<field name="cooperator_register_number" readonly="True" attrs="{'invisible':[('member','=',False)]}"/>
 							<field name="company_register_number" readonly="True" attrs="{'invisible':[('is_company','=',False)]}"/>
-							<field name="national_register_number" readonly="True" attrs="{'invisible':[('is_company','=',True)]}" groups="easy_my_coop.group_energiris_manager"/>
-							<field name="coop_candidate" groups="easy_my_coop.group_energiris_user"/>
-							<field name="cooperator" invisible="True" groups="easy_my_coop.group_energiris_super_manager"/>
-							<field name="member" groups="easy_my_coop.group_energiris_super_manager"/>
+							<field name="national_register_number" readonly="True" attrs="{'invisible':[('is_company','=',True)]}" groups="easy_my_coop.group_easy_my_coop_manager"/>
+							<field name="coop_candidate" groups="easy_my_coop.group_easy_my_coop_user"/>
+							<field name="cooperator" invisible="True" groups="easy_my_coop.group_easy_my_coop_super_manager"/>
+							<field name="member" groups="easy_my_coop.group_easy_my_coop_super_manager"/>
 							<field name="cooperator_type" attrs="{'invisible':[('member','=',False)]}"/>
 							<field name="effective_date" attrs="{'invisible':[('member','=',False)]}"/>
 						</group>
@@ -35,7 +35,7 @@
 	         	</xpath>
                 
 	         	<page name='sales_purchases' position="after">
-            		<page string="Shares" name="share" attrs="{'invisible':[('member','=',False)]}" groups="easy_my_coop.group_energiris_user">
+            		<page string="Shares" name="share" attrs="{'invisible':[('member','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user">
             			<group>
 			         		<field name="number_of_share"/>
 			         		<field name="total_value"/>
@@ -50,7 +50,7 @@
 		         			</tree>
 		         		</field>
 		         	</page>
-		         	<page string="Share subscriptions" name="share_subscription" attrs="{'invisible':[('cooperator','=',False)]}" groups="easy_my_coop.group_energiris_user">
+		         	<page string="Share subscriptions" name="share_subscription" attrs="{'invisible':[('cooperator','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user">
 		         		<field name="subscription_request_ids">
 		         			<tree create="false" delete="false" edit="false">
 		         				<field name="share_short_name"/>
