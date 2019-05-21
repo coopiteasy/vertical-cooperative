@@ -22,9 +22,9 @@
       			<field name="source"/>
       			<field name="state"/>
       			<field name="validated" invisible="True"/>
-                <button type="object" name="validate_subscription_request" attrs="{'invisible':['|',('state','!=','draft'),('validated','=',False)]}" icon="STOCK_MEDIA_PLAY" />
-                <button type="object" name="block_subscription_request" states="draft" groups="easy_my_coop.group_easy_my_coop_user" icon="gtk-cancel"/>
-                <button type="object" name="unblock_subscription_request" states="block" groups="easy_my_coop.group_easy_my_coop_manager" icon="gtk-jump-to"/>
+                <button type="object" title="Validate" aria-label="Validate" name="validate_subscription_request" attrs="{'invisible':['|',('state','!=','draft'),('validated','=',False)]}" icon="STOCK_MEDIA_PLAY" />
+                <button type="object" title="Block" aria-label="Block" name="block_subscription_request" states="draft" groups="easy_my_coop.group_easy_my_coop_user" icon="gtk-cancel"/>
+                <button type="object" title="Unblock" aria-label="Unblock" name="unblock_subscription_request" states="block" groups="easy_my_coop.group_easy_my_coop_manager" icon="gtk-jump-to"/>
             </tree>
         </field>
     </record>
@@ -151,9 +151,9 @@
       			<field name="source"/>
       			<field name="state"/>
       			<field name="validated" invisible="True"/>
-                <button type="object" name="validate_subscription_request" attrs="{'invisible':['|',('state','!=','draft'),('validated','=',False)]}" icon="STOCK_MEDIA_PLAY"/>
-                <button type="object" name="block_subscription_request" states="draft" groups="easy_my_coop.group_easy_my_coop_user" icon="gtk-cancel"/>
-                <button type="object" name="unblock_subscription_request" states="block" groups="easy_my_coop.group_easy_my_coop_manager" icon="gtk-jump-to"/>
+      			<button type="object" title="Validate" aria-label="Validate" name="validate_subscription_request" attrs="{'invisible':['|',('state','!=','draft'),('validated','=',False)]}" icon="STOCK_MEDIA_PLAY" />
+                <button type="object" title="Block" aria-label="Block" name="block_subscription_request" states="draft" groups="easy_my_coop.group_easy_my_coop_user" icon="gtk-cancel"/>
+                <button type="object" title="Unblock" aria-label="Unblock" name="unblock_subscription_request" states="block" groups="easy_my_coop.group_easy_my_coop_manager" icon="gtk-jump-to"/>
             </tree>
         </field>
     </record>
