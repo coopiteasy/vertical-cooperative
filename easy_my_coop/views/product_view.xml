@@ -5,24 +5,24 @@
            <field name="inherit_id" ref="product.product_template_form_view"/>
            <field name="arch" type="xml">
                 <xpath expr="//field[@name='purchase_ok']/.." position="after">
-                	<div groups="easy_my_coop.group_energiris_super_manager">
+                	<div groups="easy_my_coop.group_easy_my_coop_super_manager">
                     	<field name="is_share"/>
                    		<label for="is_share"/>
                     </div>
-                    <div attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_energiris_user">
+                    <div attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user">
                    		<field name="display_on_website"/>
                    		<label for="display_on_website"/>
                     </div>
                 </xpath>
 				<xpath expr="//field[@name='type']" position="after">
-					<field name="short_name" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_energiris_user"/>
-					<field name="default_share_product" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_energiris_user"/>
-					<field name="force_min_qty" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_energiris_user"/>
-					<field name="minimum_quantity" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_energiris_user"/>
+					<field name="short_name" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user"/>
+					<field name="default_share_product" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user"/>
+					<field name="force_min_qty" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user"/>
+					<field name="minimum_quantity" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user"/>
 					<field name="customer" attrs="{'invisible':[('is_share','=',False)]}"/>
-					<field name="by_company" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_energiris_user"/>
-					<field name="by_individual" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_energiris_user"/>
-					<field name="mail_template" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_energiris_user"/>
+					<field name="by_company" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user"/>
+					<field name="by_individual" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user"/>
+					<field name="mail_template" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user"/>
 				</xpath>
            </field>
 	</record>

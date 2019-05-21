@@ -1,6 +1,6 @@
 <odoo>
 	<data>
-		<menuitem name="Dividend" id="menu_easy_my_coop_main_dividend" parent="easy_my_coop.menu_main_easy_my_coop" groups="easy_my_coop.group_energiris_manager" sequence="30" />
+		<menuitem name="Dividend" id="menu_easy_my_coop_main_dividend" parent="easy_my_coop.menu_main_easy_my_coop" groups="easy_my_coop.group_easy_my_coop_manager" sequence="30" />
 		
 		<record id="dividend_year_form" model="ir.ui.view">
             <field name="name">dividend.year.form</field>
