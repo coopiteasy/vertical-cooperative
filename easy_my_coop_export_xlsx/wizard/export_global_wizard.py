@@ -22,8 +22,6 @@ HEADER = [
         'Pays',
         'Nombre de part total',
         'Montant total des parts',
-#         'Numero de demande',
-#        'Statut',
         'Demande de liberation de capital',
         'Communication',
         'Nombre de part',
@@ -127,7 +125,7 @@ class export_global_report(models.TransientModel):
                     worksheet1.write(j, i, line.price_subtotal)
                     i += 1
                 if invoice.payment_ids:
-                    worksheet1.write(j, i, invoice.payment_ids[0].date)
+                    worksheet1.write(j, i, invoice.payment_ids[0].payment_date)
                 i += 1
                 if invoice.subscription_request:
                     ind = len(invoice.subscription_request)-1
@@ -225,7 +223,7 @@ class export_global_report(models.TransientModel):
                 amount = quantity * sub_request.share_unit_price
                 worksheet1bis.write(j, i, amount)
                 i += 2
-                worksheet1bis.write(j, i, sub_request.sync_date)
+                worksheet1bis.write(j, i, sub_request.date)
                 j += 1
 
         worksheet2 = workbook.add_worksheet()
