@@ -8,8 +8,7 @@
         <field name="name">subscription.request.tree</field>
         <field name="model">subscription.request</field>
         <field name="arch" type="xml">
-            <!--<tree string="Cooperator Subscriptions Request" colors="red:validated == False; blue:state in ('draft');grey: state in ('done')">-->
-            <tree string="Cooperator Subscriptions Request">
+            <tree string="Cooperator Subscriptions Request" colors="red:validated == False; blue:state in ('draft');grey: state in ('done')">
                 <field name="name"/>
                 <field name="date" string="Request Date"/>
       			<field name="type"/>
