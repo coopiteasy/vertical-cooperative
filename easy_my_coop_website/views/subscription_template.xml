@@ -217,7 +217,7 @@
 										<td width="20%">
 						                    <div style="margin-top:12px" t-attf-class="form-group #{error and 'total_parts' in error and 'has-error' or ''}">
 								                <div>
-								                    <input type="text" class="form-control total" name="total_parts" value="25" data-max="5000"
+								                    <input type="text" class="form-control total" name="total_parts" value="25" t-att-data-max="company.subscription_maximum_amount"
 														   t-att-readonly="'readonly'" 						                    
 								                    />
 								                </div>
