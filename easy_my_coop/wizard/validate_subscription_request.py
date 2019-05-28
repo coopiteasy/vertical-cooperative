@@ -3,7 +3,7 @@ from odoo import api, models
 
 class ValidateSubscriptionRequest(models.TransientModel):
     _name = "validate.subscription.request"
-    _description = "Update Partner Info"
+    _description = "Validate subscription request"
 
     @api.multi
     def validate(self):
