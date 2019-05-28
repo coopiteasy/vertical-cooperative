@@ -399,11 +399,13 @@ class SubscriptionRequest(models.Model):
         invoice_email_template.send_mail(invoice.id, True)
         invoice.sent = True
 
+    def get_journal(self):
+        return self.env['account.journal'].search([('code', '=', 'SUBJ')])[0]
+
     def create_invoice(self, partner):
         # get subscription journal
-        journal = self.env['account.journal'].search([('code', '=', 'SUBJ')])[0]
+        journal = self.get_journal()
         # get the account for associate
-        # TODO this should be defined in configuration
         if self.company_id.property_cooperator_account:
             account = self.company_id.property_cooperator_account
         else:
