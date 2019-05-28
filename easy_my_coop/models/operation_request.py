@@ -7,6 +7,7 @@ from odoo.exceptions import ValidationError
 
 class operation_request(models.Model):
     _name = 'operation.request'
+    _description = "Operation request"
 
     def get_date_now(self):
         return datetime.strftime(datetime.now(), '%Y-%m-%d')

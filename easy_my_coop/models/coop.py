@@ -569,6 +569,7 @@ class SubscriptionRequest(models.Model):
 
 class ShareLine(models.Model):
     _name = 'share.line'
+    _description = "Share line"
 
     @api.multi
     def _compute_total_line(self):
@@ -602,6 +603,7 @@ class ShareLine(models.Model):
 
 class SubscriptionRegister(models.Model):
     _name = 'subscription.register'
+    _description = "Subscription register"
 
     @api.multi
     def _compute_total_line(self):
