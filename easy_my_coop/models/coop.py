@@ -608,7 +608,7 @@ class SubscriptionRegister(models.Model):
         for register_line in self:
             register_line.total_amount_line = register_line.share_unit_price * register_line.quantity
 
-    name = fields.Char(string='Register Number Operation',
+    name = fields.Char(string='Number Operation',
                        required=True,
                        readonly=True)
     register_number_operation = fields.Integer(string='Register Number Operation',
