@@ -4,6 +4,7 @@ from odoo.exceptions import UserError
 
 class ShareLineUpdateInfo(models.TransientModel):
     _name = "share.line.update.info"
+    _description = "Share line update info"
 
     @api.model
     def _get_share_line(self):
