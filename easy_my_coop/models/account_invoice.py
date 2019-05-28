@@ -36,18 +36,28 @@ class account_invoice(models.Model):
             else:
                 user_values = {'partner_id': partner.id, 'login': email}
                 user = user_obj.sudo()._signup_create_user(user_values)
-                # user = user_obj.browse(user_id)
                 user.sudo().with_context({'create_user': True}).action_reset_password()
 
-        return True
+        return user
+
+    def get_mail_template_certificate(self):
+        if self.partner_id.member:
+            return 'easy_my_coop.email_template_certificat_increase'
+        return 'easy_my_coop.email_template_certificat'
+
+    def get_sequence_register(self):
+        return self.env.ref('easy_my_coop.sequence_subscription', False)
+
+    def get_sequence_operation(self):
+        return self.env.ref('easy_my_coop.sequence_register_operation', False)
 
     def set_cooperator_effective(self, effective_date):
         # flag the partner as a effective member
-        mail_template_id = 'easy_my_coop.email_template_certificat'
+        mail_template_id = self.get_mail_template_certificate()
 
         # if not yet cooperator we generate a cooperator number
         if self.partner_id.member is False and self.partner_id.old_member is False:
-            sequence_id = self.env.ref('easy_my_coop.sequence_subscription', False)
+            sequence_id = self.get_sequence_register()
             sub_reg_num = sequence_id.next_by_id()
             self.partner_id.write({
                 'member': True, 'old_member': False,
@@ -55,11 +65,11 @@ class account_invoice(models.Model):
         elif self.partner_id.old_member:
             self.partner_id.write({'member': True, 'old_member': False})
         else:
-            mail_template_id = 'easy_my_coop.email_template_certificat_increase'
-        sequence_operation = self.env.ref('easy_my_coop.sequence_register_operation', False)
+            mail_template_id = self.get_mail_template_certificate()
+        sequence_operation = self.get_sequence_operation()
         sub_reg_operation = sequence_operation.next_by_id()
 
-        certificat_email_template = self.env.ref(mail_template_id, False)
+        certificate_email_template = self.env.ref(mail_template_id, False)
 
         for line in self.invoice_line_ids:
             self.env['subscription.register'].create({
@@ -80,10 +90,10 @@ class account_invoice(models.Model):
                 'effective_date': effective_date
                 })
             if line.product_id.mail_template:
-                certificat_email_template = line.product_id.mail_template
+                certificate_email_template = line.product_id.mail_template
 
-        # we send the email with the certificat in attachment
-        certificat_email_template.send_mail(self.partner_id.id, False)
+        # we send the email with the certificate in attachment
+        certificate_email_template.send_mail(self.partner_id.id, False)
 
         if self.company_id.create_user:
             self.create_user(self.partner_id)
