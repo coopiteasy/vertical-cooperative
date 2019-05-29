@@ -51,12 +51,35 @@ class account_invoice(models.Model):
     def get_sequence_operation(self):
         return self.env.ref('easy_my_coop.sequence_register_operation', False)
 
+    def get_share_line_vals(self, line, effective_date):
+        return {
+            'share_number': line.quantity,
+            'share_product_id': line.product_id.id,
+            'partner_id': self.partner_id.id,
+            'share_unit_price': line.price_unit,
+            'effective_date': effective_date
+            }
+
+    def get_subscription_register(self, line, effective_date):
+        return {
+            'partner_id': self.partner_id.id,
+            'quantity': line.quantity,
+            'share_product_id': line.product_id.id,
+            'share_unit_price': line.price_unit,
+            'date': effective_date,
+            'type': 'subscription'
+            }
+
     def set_cooperator_effective(self, effective_date):
-        # flag the partner as a effective member
+        sub_register_obj = self.env['subscription.register']
+        share_line_obj = self.env['share.line']
+
         mail_template_id = self.get_mail_template_certificate()
 
+        # flag the partner as a effective member
         # if not yet cooperator we generate a cooperator number
-        if self.partner_id.member is False and self.partner_id.old_member is False:
+        if self.partner_id.member is False \
+                and self.partner_id.old_member is False:
             sequence_id = self.get_sequence_register()
             sub_reg_num = sequence_id.next_by_id()
             self.partner_id.write({
@@ -72,23 +95,15 @@ class account_invoice(models.Model):
         certificate_email_template = self.env.ref(mail_template_id, False)
 
         for line in self.invoice_line_ids:
-            self.env['subscription.register'].create({
-                'name': sub_reg_operation,
-                'register_number_operation': int(sub_reg_operation),
-                'partner_id': self.partner_id.id,
-                'quantity': line.quantity,
-                'share_product_id': line.product_id.id,
-                'share_unit_price': line.price_unit,
-                'date': effective_date,
-                'type': 'subscription'})
+            sub_reg_vals = self.get_subscription_register(line, effective_date)
+            sub_reg_vals['name'] = sub_reg_operation
+            sub_reg_vals['register_number_operation'] = int(sub_reg_operation)
 
-            self.env['share.line'].create({
-                'share_number': line.quantity,
-                'share_product_id': line.product_id.id,
-                'partner_id': self.partner_id.id,
-                'share_unit_price': line.price_unit,
-                'effective_date': effective_date
-                })
+            sub_register_obj.create(sub_reg_vals)
+
+            share_line_vals = self.get_share_line_vals(line, effective_date)
+            share_line_obj.create(share_line_vals)
+
             if line.product_id.mail_template:
                 certificate_email_template = line.product_id.mail_template
 
