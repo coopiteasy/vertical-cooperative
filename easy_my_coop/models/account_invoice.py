@@ -120,6 +120,12 @@ class account_invoice(models.Model):
 
         return True
 
+    def get_refund_domain(self, invoice):
+        return [
+                ('type', '=', 'out_refund'),
+                ('origin', '=', invoice.move_name)
+            ]
+
     @api.multi
     def action_invoice_paid(self):
         super(account_invoice, self).action_invoice_paid()
@@ -127,8 +133,8 @@ class account_invoice(models.Model):
             # we check if there is an open refund for this invoice. in this
             # case we don't run the process_subscription function as the
             # invoice has been reconciled with a refund and not a payment.
-            refund = self.search([('type', '=', 'out_refund'),
-                                  ('origin', '=', invoice.move_name)])
+            domain = self.get_refund_domain(invoice)
+            refund = self.search(domain)
 
             if invoice.partner_id.cooperator \
                     and invoice.release_capital_request \
@@ -144,7 +150,8 @@ class account_invoice(models.Model):
                 invoice.subscription_request.state = 'paid'
                 invoice.post_process_confirm_paid(effective_date)
             # if there is a open refund we mark the subscription as cancelled
-            elif invoice.partner_id.cooperator and invoice.release_capital_request \
+            elif invoice.partner_id.cooperator \
+                    and invoice.release_capital_request \
                     and invoice.type == 'out_invoice' and refund:
                 invoice.subscription_request.state = 'cancelled'
         return True
