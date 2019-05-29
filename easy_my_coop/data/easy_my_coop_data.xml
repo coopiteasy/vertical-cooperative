@@ -16,6 +16,7 @@
             <field name="name">Subscription Journal</field>
             <field name="code">SUBJ</field>
             <field name="type">sale</field>
+            <field name="use_date_range">True</field>
             <field name="sequence_id" ref="sequence_subscription_journal"/>
         </record>
         
