@@ -443,7 +443,7 @@ class subscription_request(models.Model):
                         'last_name': self.company_name,
                         'is_company': self.is_company,
                         'company_register_number': self.company_register_number, #noqa
-                        'customer': False, 'cooperator': True,
+                        'cooperator': True,
                         'street': self.address, 'zip': self.zip_code,
                         'city': self.city, 'email': self.company_email,
                         'out_inv_comm_type': 'bba',
