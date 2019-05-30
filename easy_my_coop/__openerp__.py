@@ -31,7 +31,6 @@
                 "partner_contact_address",
                 "website",
                 "website_recaptcha_reloaded",
-                "website_legal_page",
                 "theme_light",
                 "base_iban",
                 "email_template_config",

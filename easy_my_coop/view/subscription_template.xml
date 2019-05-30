@@ -256,7 +256,7 @@
                            t-attf-value="#{data_policy_approved or ''}"/>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                        <t t-call="website_legal_page.acceptance_full"/>
+                    <t t-call="easy_my_coop.data_policy_approved_text"/>
                 </div>
             </div>
 
@@ -532,7 +532,7 @@
                                t-attf-value="#{data_policy_approved or ''}"/>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                        <t t-call="website_legal_page.acceptance_full"/>
+                    <t t-call="easy_my_coop.data_policy_approved_text"/>
                 </div>
             </div>
 
@@ -587,6 +587,13 @@
         	<li t-ignore="true"><i class="fa fa-envelope"></i><span t-field="res_company.coop_email_contact"></span></li>
         </ul>
 	</xpath>
+</template>
+</data>
+
+<data noupdate="1">
+<template id="data_policy_approved_text"
+          name="Internal Rules Approved Text">
+    I accept the Data Policy.
 </template>
 </data>
 </openerp>
