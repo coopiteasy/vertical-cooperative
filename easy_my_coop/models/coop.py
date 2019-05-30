@@ -450,7 +450,8 @@ class subscription_request(models.Model):
                         'customer': self.share_product_id.customer,
                         'out_inv_comm_algorithm': 'random',
                         'country_id': self.country_id.id,
-                        'lang': self.lang}
+                        'lang': self.lang,
+                        'data_policy_approved': self.data_policy_approved}
         return partner_vals
 
     def get_partner_vals(self):
@@ -464,7 +465,8 @@ class subscription_request(models.Model):
                         'out_inv_comm_algorithm': 'random',
                         'country_id': self.country_id.id, 'lang': self.lang,
                         'birthdate_date': self.birthdate,
-                        'customer': self.share_product_id.customer}
+                        'customer': self.share_product_id.customer,
+                        'data_policy_approved': self.data_policy_approved}
         return partner_vals
 
     def create_coop_partner(self):
@@ -536,7 +538,8 @@ class subscription_request(models.Model):
                                 'parent_id': partner.id,
                                 'representative': True,
                                 'function': self.contact_person_function,
-                                'type': 'representative'}
+                                'type': 'representative',
+                                'data_policy_approved': self.data_policy_approved}
                 contact = partner_obj.create(contact_vals)
             else:
                 if len(contact) > 1:

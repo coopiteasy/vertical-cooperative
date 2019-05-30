@@ -30,6 +30,9 @@
 					<group>
 						<field name="gender" attrs="{'invisible':[('is_company','=',True)]}"/>
 					</group>
+					<group name="approvals">
+						<field name="data_policy_approved" />
+					</group>
 	         	</xpath>
                 
 	         	<xpath expr="//page[@name='sales_purchases']" position='after'>
