@@ -32,6 +32,7 @@
 					</group>
 					<group name="approvals">
 						<field name="data_policy_approved" />
+						<field name="internal_rules_approved" />
 					</group>
 	         	</xpath>
                 

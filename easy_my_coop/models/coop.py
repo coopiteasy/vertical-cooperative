@@ -17,6 +17,7 @@ _REQUIRED = ['email',
              'iban',
              'no_registre',
              'data_policy_approved',
+             'internal_rules_approved',
              'gender']  # Could be improved including required from model
 
 
@@ -335,6 +336,11 @@ class subscription_request(models.Model):
         default=False,
         # required=True,
     )
+    internal_rules_approved = fields.Boolean(
+        string='Approved Internal Rules',
+        default=False,
+        # required=True,
+    )
     _order = "id desc"
 
     def get_person_info(self, partner):
@@ -451,7 +457,8 @@ class subscription_request(models.Model):
                         'out_inv_comm_algorithm': 'random',
                         'country_id': self.country_id.id,
                         'lang': self.lang,
-                        'data_policy_approved': self.data_policy_approved}
+                        'data_policy_approved': self.data_policy_approved,
+                        'internal_rules_approved': self.internal_rules_approved}
         return partner_vals
 
     def get_partner_vals(self):
@@ -466,7 +473,8 @@ class subscription_request(models.Model):
                         'country_id': self.country_id.id, 'lang': self.lang,
                         'birthdate_date': self.birthdate,
                         'customer': self.share_product_id.customer,
-                        'data_policy_approved': self.data_policy_approved}
+                        'data_policy_approved': self.data_policy_approved,
+                        'internal_rules_approved': self.internal_rules_approved}
         return partner_vals
 
     def create_coop_partner(self):
@@ -539,7 +547,8 @@ class subscription_request(models.Model):
                                 'representative': True,
                                 'function': self.contact_person_function,
                                 'type': 'representative',
-                                'data_policy_approved': self.data_policy_approved}
+                                'data_policy_approved': self.data_policy_approved,
+                                'internal_rules_approved': self.internal_rules_approved}
                 contact = partner_obj.create(contact_vals)
             else:
                 if len(contact) > 1:

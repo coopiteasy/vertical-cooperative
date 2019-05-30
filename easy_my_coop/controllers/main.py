@@ -343,6 +343,9 @@ class WebsiteSubscription(http.Controller):
         if kwargs.get('data_policy_approved', 'off') == 'on':
             values['data_policy_approved'] = True
 
+        if kwargs.get('internal_rules_approved', 'off') == 'on':
+            values['internal_rules_approved'] = True
+
         lastname = kwargs.get("lastname").upper()
         firstname = kwargs.get("firstname").title()
 
