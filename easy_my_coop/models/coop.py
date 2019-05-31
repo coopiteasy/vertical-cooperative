@@ -46,7 +46,7 @@ class SubscriptionRequest(models.Model):
                                             vals.get('no_registre'))
             if cooperator:
                 # TODO remove the following line of code once it has
-                # been founded a way to avoid dubble entry
+                # been founded a way to avoid dubble encoding
                 cooperator = cooperator[0]
                 if cooperator.member:
                     vals['type'] = 'increase'
@@ -407,22 +407,27 @@ class SubscriptionRequest(models.Model):
     def get_journal(self):
         return self.env['account.journal'].search([('code', '=', 'SUBJ')])[0]
 
-    def create_invoice(self, partner):
-        # get subscription journal
-        journal = self.get_journal()
-        # get the account for associate
+    def get_accounting_account(self):
+        account_obj = self.env['account.account']
         if self.company_id.property_cooperator_account:
             account = self.company_id.property_cooperator_account
         else:
-            account = self.env['account.account'].search([('code', '=', '416000')])[0]
+            account = account_obj.search([('code', '=', '416000')])[0]
+        return account
 
+    def get_invoice_vals(self, partner):
+        return {
+                'partner_id': partner.id,
+                'journal_id': self.get_journal().id,
+                'account_id': self.get_accounting_account().id,
+                'type': 'out_invoice',
+                'release_capital_request': True,
+                'subscription_request': self.id
+            }
+
+    def create_invoice(self, partner):
         # creating invoice and invoice lines
-        invoice_vals = {'partner_id': partner.id,
-                        'journal_id': journal.id,
-                        'account_id': account.id,
-                        'type': 'out_invoice',
-                        'release_capital_request': True,
-                        'subscription_request': self.id}
+        invoice_vals = self.get_invoice_vals(partner)
         if self.capital_release_request_date:
             invoice_vals['date_invoice'] = self.capital_release_request_date
         invoice = self.env['account.invoice'].create(invoice_vals)
