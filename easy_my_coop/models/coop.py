@@ -31,9 +31,14 @@ class SubscriptionRequest(models.Model):
     def get_required_field(self):
         return _REQUIRED
 
+    def get_mail_template_notif(self):
+        return'easy_my_coop.email_template_confirmation'
+
     @api.model
     def create(self, vals):
         partner_obj = self.env['res.partner']
+        mail_template = self.get_mail_template_notif()
+
         if not vals.get('partner_id'):
             cooperator = False
             if vals.get('no_registre'):
@@ -61,7 +66,7 @@ class SubscriptionRequest(models.Model):
 
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
-        confirmation_mail_template = self.env.ref('easy_my_coop.email_template_confirmation', False)
+        confirmation_mail_template = self.env.ref(mail_template, False)
         confirmation_mail_template.send_mail(subscr_request.id)
 
         return subscr_request
