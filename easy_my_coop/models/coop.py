@@ -16,6 +16,8 @@ _REQUIRED = ['email',
              'city',
              'iban',
              'no_registre',
+             'data_policy_approved',
+             'internal_rules_approved',
              'gender']  # Could be improved including required from model
 
 
@@ -329,6 +331,16 @@ class subscription_request(models.Model):
                               default="website",
                               readonly=True,
                               states={'draft': [('readonly', False)]})
+    data_policy_approved = fields.Boolean(
+        string='Data Policy Approved',
+        default=False,
+        # required=True,
+    )
+    internal_rules_approved = fields.Boolean(
+        string='Approved Internal Rules',
+        default=False,
+        # required=True,
+    )
     _order = "id desc"
 
     def get_person_info(self, partner):
@@ -437,14 +449,16 @@ class subscription_request(models.Model):
                         'last_name': self.company_name,
                         'is_company': self.is_company,
                         'company_register_number': self.company_register_number, #noqa
-                        'customer': False, 'cooperator': True,
+                        'cooperator': True,
                         'street': self.address, 'zip': self.zip_code,
                         'city': self.city, 'email': self.company_email,
                         'out_inv_comm_type': 'bba',
                         'customer': self.share_product_id.customer,
                         'out_inv_comm_algorithm': 'random',
                         'country_id': self.country_id.id,
-                        'lang': self.lang}
+                        'lang': self.lang,
+                        'data_policy_approved': self.data_policy_approved,
+                        'internal_rules_approved': self.internal_rules_approved}
         return partner_vals
 
     def get_partner_vals(self):
@@ -458,7 +472,9 @@ class subscription_request(models.Model):
                         'out_inv_comm_algorithm': 'random',
                         'country_id': self.country_id.id, 'lang': self.lang,
                         'birthdate_date': self.birthdate,
-                        'customer': self.share_product_id.customer}
+                        'customer': self.share_product_id.customer,
+                        'data_policy_approved': self.data_policy_approved,
+                        'internal_rules_approved': self.internal_rules_approved}
         return partner_vals
 
     def create_coop_partner(self):
@@ -530,7 +546,9 @@ class subscription_request(models.Model):
                                 'parent_id': partner.id,
                                 'representative': True,
                                 'function': self.contact_person_function,
-                                'type': 'representative'}
+                                'type': 'representative',
+                                'data_policy_approved': self.data_policy_approved,
+                                'internal_rules_approved': self.internal_rules_approved}
                 contact = partner_obj.create(contact_vals)
             else:
                 if len(contact) > 1:
