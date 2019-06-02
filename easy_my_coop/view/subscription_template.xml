@@ -247,21 +247,6 @@
  						<br/>
 
             <div t-attf-class="form-group" >
-                <label class="col-md-3 col-sm-4 control-label" for="internal_rules_approved">Internal Rules</label>
-                <div class="col-md-1 col-sm-2">
-                    <input type="checkbox"
-                           class="form-control"
-                           name="internal_rules_approved"
-                           required="True"
-                           t-attf-value="#{internal_rules_approved or ''}"/>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <t t-call="easy_my_coop.internal_rules_approved_text"/>
-                </div>
-            </div>
-
-
-            <div t-attf-class="form-group" >
                 <label class="col-md-3 col-sm-4 control-label" for="data_policy_approved">Privacy Policy</label>
                 <div class="col-md-1 col-sm-2">
                     <input type="checkbox"
@@ -272,6 +257,20 @@
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <t t-call="easy_my_coop.data_policy_approved_text"/>
+                </div>
+            </div>
+
+            <div t-attf-class="form-group" >
+                <label class="col-md-3 col-sm-4 control-label" for="internal_rules_approved">Internal Rules</label>
+                <div class="col-md-1 col-sm-2">
+                    <input type="checkbox"
+                           class="form-control"
+                           name="internal_rules_approved"
+                           required="True"
+                           t-attf-value="#{internal_rules_approved or ''}"/>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <t t-call="easy_my_coop.internal_rules_approved_text"/>
                 </div>
             </div>
 
@@ -537,19 +536,6 @@
 		                		            			            	                    
  						<br/>
 
-            <div t-attf-class="form-group" >
-                <label class="col-md-3 col-sm-4 control-label" for="internal_rules_approved">Internal Rules</label>
-                <div class="col-md-1 col-sm-2">
-                    <input type="checkbox"
-                           class="form-control"
-                           name="internal_rules_approved"
-                           required="True"
-                           t-attf-value="#{internal_rules_approved or ''}"/>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <t t-call="easy_my_coop.internal_rules_approved_text"/>
-                </div>
-            </div>
 
             <div t-attf-class="form-group" >
                 <label class="col-md-3 col-sm-4 control-label" for="data_policy_approved">Privacy Policy</label>
@@ -562,6 +548,20 @@
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <t t-call="easy_my_coop.data_policy_approved_text"/>
+                </div>
+            </div>
+
+            <div t-attf-class="form-group" >
+                <label class="col-md-3 col-sm-4 control-label" for="internal_rules_approved">Internal Rules</label>
+                <div class="col-md-1 col-sm-2">
+                    <input type="checkbox"
+                           class="form-control"
+                           name="internal_rules_approved"
+                           required="True"
+                           t-attf-value="#{internal_rules_approved or ''}"/>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <t t-call="easy_my_coop.internal_rules_approved_text"/>
                 </div>
             </div>
 
