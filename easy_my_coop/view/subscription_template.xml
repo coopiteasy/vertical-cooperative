@@ -314,6 +314,12 @@
 								<input type="checkbox" t-att-value="is_company" checked="checked" name="is_company" />
 								Is a company?
 							</label>
+							<label>
+								Already cooperator?
+		                        <input type="checkbox"
+		                               name="already_cooperator"
+		                               t-att-checked="already_cooperator"/>
+	                        </label>
 						</div>
 
 					    <div t-attf-class="form-group">
