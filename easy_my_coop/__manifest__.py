@@ -18,7 +18,7 @@
                 ],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
-    "website": "www.coopiteasy.be",
+    "website": "https://www.coopiteasy.be",
     "license": "AGPL-3",
     "description": """
     This module allows to manage the cooperator subscription and all the
