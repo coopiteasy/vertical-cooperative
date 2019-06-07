@@ -28,7 +28,6 @@
         'security/easy_my_coop_security.xml',
         'security/ir.model.access.csv',
         'data/easy_my_coop_data.xml',
-        'data/mail_template_data.xml',
         'wizard/create_subscription_from_partner.xml',
         'wizard/update_partner_info.xml',
         'wizard/validate_subscription_request.xml',
@@ -47,6 +46,7 @@
         'report/cooperator_certificat_G001.xml',
         'report/cooperator_subscription_G001.xml',
         'report/cooperator_register_G001.xml',
+        'data/mail_template_data.xml',  # Must be loaded after reports
     ],
     'installable': True,
     'application': True,
