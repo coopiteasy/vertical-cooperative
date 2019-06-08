@@ -115,7 +115,8 @@ class operation_request(models.Model):
 
     def get_total_share_dic(self, partner):
         total_share_dic = {}
-        share_products = self.env['product.template'].search([('is_share', '=', True)])
+        prod_template_obj = self.env['product.template']
+        share_products = prod_template_obj.search([('is_share', '=', True)])
 
         for share_product in share_products:
             total_share_dic[share_product.id] = 0
