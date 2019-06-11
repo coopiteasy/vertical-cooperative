@@ -46,16 +46,6 @@ class WebsiteSubscription(http.Controller):
                 values[field] = kwargs.pop(field)
 
         values.update(kwargs=kwargs.items())
-        # Configuration
-        cmp = request.env['res.company']._company_default_get()
-        values.update({
-            'display_data_policy': cmp.display_data_policy_approval,
-            'data_policy_required': cmp.data_policy_approval_required,
-            'data_policy_text': cmp.data_policy_approval_text,
-            'display_internal_rules': cmp.display_internal_rules_approval,
-            'internal_rules_required': cmp.internal_rules_approval_required,
-            'internal_rules_text': cmp.internal_rules_approval_text,
-        })
         return request.website.render("easy_my_coop.becomecooperator", values)
 
     @http.route(['/page/become_company_cooperator',
@@ -73,16 +63,6 @@ class WebsiteSubscription(http.Controller):
             if kwargs.get(field):
                 values[field] = kwargs.pop(field)
         values.update(kwargs=kwargs.items())
-        # Configuration
-        cmp = request.env['res.company']._company_default_get()
-        values.update({
-            'display_data_policy': cmp.display_data_policy_approval,
-            'data_policy_required': cmp.data_policy_approval_required,
-            'data_policy_text': cmp.data_policy_approval_text,
-            'display_internal_rules': cmp.display_internal_rules_approval,
-            'internal_rules_required': cmp.internal_rules_approval_required,
-            'internal_rules_text': cmp.internal_rules_approval_text,
-        })
         return request.website.render("easy_my_coop.becomecompanycooperator", values)
 
     def preRenderThanks(self, values, kwargs):
@@ -183,6 +163,16 @@ class WebsiteSubscription(http.Controller):
         if not values.get('lang'):
             if company.default_lang_id:
                 values['lang'] = company.default_lang_id.code
+
+        cmp = request.env['res.company']._company_default_get()
+        values.update({
+            'display_data_policy': cmp.display_data_policy_approval,
+            'data_policy_required': cmp.data_policy_approval_required,
+            'data_policy_text': cmp.data_policy_approval_text,
+            'display_internal_rules': cmp.display_internal_rules_approval,
+            'internal_rules_required': cmp.internal_rules_approval_required,
+            'internal_rules_text': cmp.internal_rules_approval_text,
+        })
         return values
 
     def get_products_share(self, is_company):
