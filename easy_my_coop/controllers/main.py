@@ -277,7 +277,7 @@ class WebsiteSubscription(http.Controller):
                 max_amount = max_amount - partner.total_value
                 if company.unmix_share_type:
                     share = self.get_selected_share(kwargs)
-                    if int(partner.cooperator_type) != share.id:
+                    if partner.cooperator_type != share.short_name:
                         values = self.fill_values(values, is_company, logged)
                         values["error_msg"] = (_("You can't subscribe two "
                                                  "different types of share"))
