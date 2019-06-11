@@ -16,8 +16,6 @@ _REQUIRED = ['email',
              'city',
              'iban',
              'no_registre',
-             'data_policy_approved',
-             'internal_rules_approved',
              'gender']  # Could be improved including required from model
 
 
@@ -32,7 +30,13 @@ class subscription_request(models.Model):
     _description = 'Subscription Request'
 
     def get_required_field(self):
-        return _REQUIRED
+        required_fields = _REQUIRED
+        company = self.env['res.company']._company_default_get()
+        if company.data_policy_approval_required:
+            required_fields.append('data_policy_approved')
+        if company.internal_rules_approval_required:
+            required_fields.append('internal_rules_approved')
+        return required_fields
 
     @api.model
     def create(self, vals):
@@ -334,12 +338,10 @@ class subscription_request(models.Model):
     data_policy_approved = fields.Boolean(
         string='Data Policy Approved',
         default=False,
-        # required=True,
     )
     internal_rules_approved = fields.Boolean(
         string='Approved Internal Rules',
         default=False,
-        # required=True,
     )
     _order = "id desc"
 
