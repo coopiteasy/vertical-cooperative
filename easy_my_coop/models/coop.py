@@ -34,6 +34,12 @@ class SubscriptionRequest(models.Model):
     def get_mail_template_notif(self):
         return'easy_my_coop.email_template_confirmation'
 
+    def is_member(self, vals, cooperator):
+        if cooperator.member:
+            vals['type'] = 'increase'
+            vals['already_cooperator'] = True
+        return vals
+
     @api.model
     def create(self, vals):
         partner_obj = self.env['res.partner']
@@ -46,13 +52,12 @@ class SubscriptionRequest(models.Model):
                                             vals.get('no_registre'))
             if cooperator:
                 # TODO remove the following line of code once it has
-                # been founded a way to avoid dubble encoding
+                # been found a way to avoid dubble encoding
                 cooperator = cooperator[0]
-                if cooperator.member:
-                    vals['type'] = 'increase'
-                    vals['already_cooperator'] = True
-                else:
-                    vals['type'] = 'subscription'
+                vals['type'] = 'subscription'
+
+                vals = self.is_member(vals, cooperator)
+
                 vals['partner_id'] = cooperator.id
 
                 if not cooperator.cooperator:
@@ -60,9 +65,7 @@ class SubscriptionRequest(models.Model):
         else:
             cooperator_id = vals.get('partner_id')
             cooperator = partner_obj.browse(cooperator_id)
-            if cooperator.member:
-                    vals['type'] = 'increase'
-                    vals['already_cooperator'] = True
+            vals = self.is_member(vals, cooperator)
 
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
