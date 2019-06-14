@@ -76,7 +76,7 @@ class account_invoice(models.Model):
 
         mail_template_id = self.get_mail_template_certificate()
 
-        # flag the partner as a effective member
+        # flag the partner as an effective member
         # if not yet cooperator we generate a cooperator number
         if self.partner_id.member is False \
                 and self.partner_id.old_member is False:
@@ -87,8 +87,7 @@ class account_invoice(models.Model):
                 'cooperator_register_number': int(sub_reg_num)})
         elif self.partner_id.old_member:
             self.partner_id.write({'member': True, 'old_member': False})
-        else:
-            mail_template_id = self.get_mail_template_certificate()
+
         sequence_operation = self.get_sequence_operation()
         sub_reg_operation = sequence_operation.next_by_id()
 
