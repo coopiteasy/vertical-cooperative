@@ -491,6 +491,10 @@ class SubscriptionRequest(models.Model):
                     })
         return partner
 
+    def set_membership(self):
+        # To be overridden
+        return True
+
     @api.one
     def validate_subscription_request(self):
         partner_obj = self.env['res.partner']
@@ -562,6 +566,7 @@ class SubscriptionRequest(models.Model):
 
         invoice = self.create_invoice(partner)
         self.write({'partner_id': partner.id, 'state': 'done'})
+        self.set_membership()
 
         return invoice
 
