@@ -60,7 +60,7 @@ class account_invoice(models.Model):
             'effective_date': effective_date
             }
 
-    def get_subscription_register(self, line, effective_date):
+    def get_subscription_register_vals(self, line, effective_date):
         return {
             'partner_id': self.partner_id.id,
             'quantity': line.quantity,
@@ -70,23 +70,34 @@ class account_invoice(models.Model):
             'type': 'subscription'
             }
 
-    def set_cooperator_effective(self, effective_date):
-        sub_register_obj = self.env['subscription.register']
-        share_line_obj = self.env['share.line']
-
-        mail_template_id = self.get_mail_template_certificate()
-
+    def get_membership_vals(self):
         # flag the partner as an effective member
         # if not yet cooperator we generate a cooperator number
         if self.partner_id.member is False \
                 and self.partner_id.old_member is False:
             sequence_id = self.get_sequence_register()
             sub_reg_num = sequence_id.next_by_id()
-            self.partner_id.write({
-                'member': True, 'old_member': False,
-                'cooperator_register_number': int(sub_reg_num)})
+            vals = {'member': True, 'old_member': False,
+                    'cooperator_register_number': int(sub_reg_num)
+                    }
         elif self.partner_id.old_member:
-            self.partner_id.write({'member': True, 'old_member': False})
+            vals = {'member': True, 'old_member': False}
+
+        return vals
+
+    def set_membership(self):
+        vals = self.get_membership_vals()
+        self.partner_id.write(vals)
+
+        return True
+
+    def set_cooperator_effective(self, effective_date):
+        sub_register_obj = self.env['subscription.register']
+        share_line_obj = self.env['share.line']
+
+        mail_template_id = self.get_mail_template_certificate()
+
+        self.set_membership()
 
         sequence_operation = self.get_sequence_operation()
         sub_reg_operation = sequence_operation.next_by_id()
@@ -94,7 +105,8 @@ class account_invoice(models.Model):
         certificate_email_template = self.env.ref(mail_template_id, False)
 
         for line in self.invoice_line_ids:
-            sub_reg_vals = self.get_subscription_register(line, effective_date)
+            sub_reg_vals = self.get_subscription_register_vals(line,
+                                                               effective_date)
             sub_reg_vals['name'] = sub_reg_operation
             sub_reg_vals['register_number_operation'] = int(sub_reg_operation)
 
