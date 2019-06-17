@@ -31,5 +31,5 @@ def identification_id_to_gender(identification_id):
 
 INDENTITY_ID = generate_identification_id(date(1920, 1, 1), date(1995, 12, 31))
 GENDER = identification_id_to_gender(INDENTITY_ID)
-print 'Rijksregisternummer: ' + INDENTITY_ID
-print 'Geslacht: ' + ('Man' if GENDER else 'Vrouw')
+print('Rijksregisternummer: ' + INDENTITY_ID)
+print('Geslacht: ' + ('Man' if GENDER else 'Vrouw'))
