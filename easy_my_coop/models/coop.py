@@ -404,7 +404,8 @@ class SubscriptionRequest(models.Model):
         invoice_email_template = self.env['mail.template'].search([('name', '=', 'Request to Release Capital - Send by Email')])[0]
 
         # we send the email with the capital release request in attachment
-        invoice_email_template.send_mail(invoice.id, True)
+        # TODO remove sudo() and give necessary access right
+        invoice_email_template.sudo().send_mail(invoice.id, True)
         invoice.sent = True
 
     def get_journal(self):
