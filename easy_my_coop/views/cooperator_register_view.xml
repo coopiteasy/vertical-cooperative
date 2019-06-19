@@ -10,7 +10,7 @@
          			<field name="share_short_name"/>
          			<field name="quantity" sum="Total quantity"/>
          			<field name="share_unit_price"/>
-	          	<field name="total_amount_line" sum="Total amount"/>
+	          		<field name="total_amount_line" sum="Total amount"/>
          			<field name="type"/>
                </tree>
            </field>
