@@ -119,7 +119,7 @@ class account_invoice(models.Model):
                 certificate_email_template = line.product_id.mail_template
 
         # we send the email with the certificate in attachment
-        certificate_email_template.send_mail(self.partner_id.id, False)
+        certificate_email_template.sudo().send_mail(self.partner_id.id, False)
 
         if self.company_id.create_user:
             self.create_user(self.partner_id)
