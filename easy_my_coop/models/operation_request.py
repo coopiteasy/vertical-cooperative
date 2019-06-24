@@ -175,6 +175,13 @@ class operation_request(models.Model):
                                         " shares that he/she owns."))
 
         if self.operation_type == 'convert':
+            amount_to_convert = self.share_unit_price * self.quantity
+            share_price = self.share_to_product_id.list_price
+            remainder = amount_to_convert % share_price
+
+            if remainder != 0:
+                raise ValidationError(_("The conversion must give a whole"
+                                        " number for quantity"))
             if self.company_id.unmix_share_type:
                 if self.share_product_id.code == self.share_to_product_id.code:
                     raise ValidationError(_("You can't convert the share to"
@@ -228,7 +235,7 @@ class operation_request(models.Model):
             elif rec.operation_type == 'convert':
                 amount_to_convert = rec.share_unit_price * rec.quantity
                 convert_quant = int(amount_to_convert / rec.share_to_product_id.list_price)
-                remainder = amount_to_convert % rec.share_to_product_id.list_price 
+                remainder = amount_to_convert % rec.share_to_product_id.list_price
 
                 if convert_quant > 0 and remainder == 0:
                     share_ids = rec.partner_id.share_ids
