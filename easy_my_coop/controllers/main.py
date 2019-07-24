@@ -164,14 +164,14 @@ class WebsiteSubscription(http.Controller):
             if company.default_lang_id:
                 values['lang'] = company.default_lang_id.code
 
-        cmp = request.env['res.company']._company_default_get()
+        comp = request.env['res.company']._company_default_get()
         values.update({
-            'display_data_policy': cmp.display_data_policy_approval,
-            'data_policy_required': cmp.data_policy_approval_required,
-            'data_policy_text': cmp.data_policy_approval_text,
-            'display_internal_rules': cmp.display_internal_rules_approval,
-            'internal_rules_required': cmp.internal_rules_approval_required,
-            'internal_rules_text': cmp.internal_rules_approval_text,
+            'display_data_policy': comp.display_data_policy_approval,
+            'data_policy_required': comp.data_policy_approval_required,
+            'data_policy_text': comp.data_policy_approval_text,
+            'display_internal_rules': comp.display_internal_rules_approval,
+            'internal_rules_required': comp.internal_rules_approval_required,
+            'internal_rules_text': comp.internal_rules_approval_text,
         })
         return values
 
