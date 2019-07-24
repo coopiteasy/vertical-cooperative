@@ -64,7 +64,8 @@ class ResPartner(models.Model):
         product_obj = self.env['product.product']
         share_type_list = [('', '')]
         for share_type in product_obj.search([('is_share', '=', True)]):
-            share_type_list.append((str(share_type.id), share_type.short_name))
+            share_type_list.append([share_type.default_code,
+                                    share_type.short_name])
         return share_type_list
 
     @api.multi
@@ -76,12 +77,14 @@ class ResPartner(models.Model):
                 partner.effective_date = partner.share_ids[0].effective_date
 
     @api.multi
-    @api.depends('share_ids')
+    @api.depends('share_ids', 'share_ids.share_product_id',
+                 'share_ids.share_product_id.default_code',
+                 'share_ids.share_number')
     def _compute_cooperator_type(self):
         for partner in self:
             share_type = ''
             for line in partner.share_ids:
-                share_type = str(line.share_product_id.id)
+                share_type = str(line.share_product_id.default_code)
             if share_type != '':
                 partner.cooperator_type = share_type
 
@@ -119,16 +122,16 @@ class ResPartner(models.Model):
                                 'partner_id',
                                 string='Share Lines')
     cooperator_register_number = fields.Integer(string='Cooperator Number')
-    number_of_share = fields.Integer(compute="_compute_share_info",
+    number_of_share = fields.Integer(compute=_compute_share_info,
                                      multi='share',
                                      string='Number of share',
                                      readonly=True)
-    total_value = fields.Float(compute="_compute_share_info",
+    total_value = fields.Float(compute=_compute_share_info,
                                multi='share',
                                string='Total value of shares',
                                readonly=True)
     company_register_number = fields.Char(string='Company Register Number')
-    cooperator_type = fields.Selection(selection='_get_share_type',
+    cooperator_type = fields.Selection(selection=_get_share_type,
                                        compute=_compute_cooperator_type,
                                        string='Cooperator Type',
                                        store=True)
