@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<template id="assets_frontend" inherit_id="website.assets_frontend" name="Coop">
-	 	<!--<xpath expr="." position="inside">
+	<template id="assets_frontend" inherit_id="web.assets_frontend" name="Coop">
+	 	<xpath expr="." position="inside">
 			<script type="text/javascript" src="/easy_my_coop/static/src/js/easy_my_coop.js"></script>
 			<script type="text/javascript" src="/easy_my_coop/static/src/js/jquery.inputmask.bundle.js"></script>
-		</xpath>-->
+		</xpath>
 	</template>
 	
 	<template id="company_operational_offices" inherit_id="website.company_description" name="Company Description">
@@ -14,7 +14,7 @@
 	    </address>
 	</template>
 	
-	<template id="cooperator_thanks" name="Cooperator contact us" page="True">
+	<template id="cooperator_thanks" name="Cooperator contact us">
 	    <t t-call="website.layout">
 	      <div id="wrap">
 	        <div class="oe_structure"/>
@@ -44,7 +44,7 @@
 	    </t>
 	</template>
 			
-	<template id="easy_my_coop.becomecooperator" name="Become Cooperator" page="True">
+	<template id="becomecooperator" name="Become Cooperator">
 		 <t t-call="website.layout">
 	      <div id="wrap">
 	        <div class="oe_structure"/>
@@ -263,7 +263,7 @@
 	    </t>
 	</template>
 	
-	<template id="easy_my_coop.becomecompanycooperator" name="Become Cooperator" page="True">
+	<template id="becomecompanycooperator" name="Become Cooperator">
 		 <t t-call="website.layout">
 	      <div id="wrap">
 	        <div class="oe_structure"/>
@@ -532,11 +532,11 @@
 	    <field name="sequence" type="int">65</field>
 	</record>
 	
-	<template id="footer_coop_email_contact" inherit_id="website.footer_default" customize_show="True" name="Coop email contact">
+	<!--<template id="footer_coop_email_contact" inherit_id="website.footer_default" customize_show="True" name="Coop email contact">
 		<xpath expr="//span[@t-field='res_company.email']" position="replace">
 			<span t-field="res_company.coop_email_contact"></span>
 		</xpath>
-	</template>
+	</template>-->
 	
 	<template id="company_description_coop_email_contact" inherit_id="website.company_description" name="Company Description Email Contact">
 		<xpath expr="//div[@t-field='res_company.partner_id']" position="replace">
