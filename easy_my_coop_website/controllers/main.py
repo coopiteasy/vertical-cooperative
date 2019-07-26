@@ -118,7 +118,7 @@ class WebsiteSubscription(http.Controller):
                 values['email'] = partner.email
                 values['gender'] = partner.gender
                 values['no_registre'] = partner.national_register_number
-                values['birthdate'] = self.get_date_string(partner.birthdate)
+                values['birthdate'] = self.get_date_string(partner.birthdate_date)
                 values['lang'] = partner.lang
                 values['phone'] = partner.phone
         return values
