@@ -20,7 +20,7 @@
      shares online.
     """,
     'data': [
-        'view/subscription_template.xml',
+        'views/subscription_template.xml',
         'data/website_cooperator_data.xml',
     ],
     'installable': True,
