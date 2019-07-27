@@ -10,7 +10,9 @@
 	<template id="company_operational_offices" inherit_id="website.company_description" name="Company Description">
 	    <address itemscope="itemscope" position="inside">
 		    <div class="fa fa-building-o" t-field="res_company.company_registry"/><br/>
-		    <div class="fa fa-bank" t-field="res_company.partner_id.bank_ids[0].sanitized_acc_number"/>
+		    <t t-if="res_company.partner_id.bank_ids">
+		    	<div class="fa fa-bank" t-field="res_company.partner_id.bank_ids[0].sanitized_acc_number"/>
+		    </t>
 	    </address>
 	</template>
 	
@@ -241,7 +243,7 @@
 							<table style="margin-left:195px">
 								<tr>
 									<td width="80%">
-										<div class="g-recaptcha" t-att-data-sitekey="website.recaptcha_site_key" data-theme="green"/><br/>			
+										<div class="g-recaptcha" t-att-data-sitekey="website.recaptcha_key_site" data-theme="green"/><br/>			
 									</td>
 									<td>
 				 						<div class="form-group">
