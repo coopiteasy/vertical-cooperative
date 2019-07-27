@@ -37,7 +37,7 @@ class WebsiteSubscription(http.Controller):
             logged = True
             partner = request.env.user.partner_id
             if partner.is_company:
-                return request.website.render("easy_my_coop.becomecompanycooperator", values)
+                return request.render("easy_my_coop_website.becomecompanycooperator", values)
         values = self.fill_values(values, False, logged, True)
 
         for field in _COOP_FORM_FIELD:
@@ -45,7 +45,7 @@ class WebsiteSubscription(http.Controller):
                 values[field] = kwargs.pop(field)
 
         values.update(kwargs=kwargs.items())
-        return request.website.render("easy_my_coop.becomecooperator", values)
+        return request.render("easy_my_coop_website.becomecooperator", values)
 
     @http.route(['/page/become_company_cooperator',
                  '/become_company_cooperator'],
@@ -62,7 +62,7 @@ class WebsiteSubscription(http.Controller):
             if kwargs.get(field):
                 values[field] = kwargs.pop(field)
         values.update(kwargs=kwargs.items())
-        return request.website.render("easy_my_coop.becomecompanycooperator", values)
+        return request.render("easy_my_coop_website.becomecompanycooperator", values)
 
     def preRenderThanks(self, values, kwargs):
         """ Allow to be overrided """
@@ -73,7 +73,7 @@ class WebsiteSubscription(http.Controller):
 
     def get_subscription_response(self, values, kwargs):
         values = self.preRenderThanks(values, kwargs)
-        return request.website.render("easy_my_coop.cooperator_thanks", values)
+        return request.render("easy_my_coop_website.cooperator_thanks", values)
 
     def get_date_string(self, birthdate):
         if birthdate:
@@ -188,14 +188,14 @@ class WebsiteSubscription(http.Controller):
         user_obj = request.env['res.users']
         sub_req_obj = request.env['subscription.request']
 
-        redirect = "easy_my_coop.becomecooperator"
+        redirect = "easy_my_coop_website.becomecooperator"
 
         email = kwargs.get('email')
         is_company = kwargs.get("is_company") == 'on'
 
         if is_company:
             is_company = True
-            redirect = "easy_my_coop.becomecompanycooperator"
+            redirect = "easy_my_coop_website.becomecompanycooperator"
             email = kwargs.get('company_email')
 
         if ('g-recaptcha-response' not in kwargs
@@ -205,7 +205,7 @@ class WebsiteSubscription(http.Controller):
             values["error_msg"] = _("the captcha has not been validated,"
                                     " please fill in the captcha")
 
-            return request.website.render(redirect, values)
+            return request.render(redirect, values)
 
         # Check that required field from model subscription_request exists
         required_fields = sub_req_obj.sudo().get_required_field()
@@ -216,7 +216,7 @@ class WebsiteSubscription(http.Controller):
             values["error_msg"] = _("Some mandatory fields have not "
                                     "been filled")
             values = dict(values, error=error, kwargs=kwargs.items())
-            return request.website.render(redirect, values)
+            return request.render(redirect, values)
 
         if not logged and email:
             user = user_obj.sudo().search([('login', '=', email)])
@@ -227,7 +227,7 @@ class WebsiteSubscription(http.Controller):
                                         " mail address. Please login before "
                                         "fill in the form")
 
-                return request.website.render(redirect, values)
+                return request.render(redirect, values)
 
         company = request.website.company_id
         if company.allow_id_card_upload:
@@ -236,7 +236,7 @@ class WebsiteSubscription(http.Controller):
                 values.update(kwargs)
                 values["error_msg"] = _("You need to upload a"
                                         " scan of your id card")
-                return request.website.render(redirect, values)
+                return request.render(redirect, values)
 
         iban = kwargs.get("iban")
         valid = sub_req_obj.check_iban(iban)
@@ -245,7 +245,7 @@ class WebsiteSubscription(http.Controller):
             values = self.fill_values(values, is_company, logged)
             values["error_msg"] = _("You iban account number"
                                     "is not valid")
-            return request.website.render(redirect, values)
+            return request.render(redirect, values)
 
         if not is_company and 'no_registre' in required_fields:
             no_registre = re.sub('[^0-9a-zA-Z]+', '',
@@ -255,7 +255,7 @@ class WebsiteSubscription(http.Controller):
                 values = self.fill_values(values, is_company, logged)
                 values["error_msg"] = _("You national register number "
                                         "is not valid")
-                return request.website.render(redirect, values)
+                return request.render(redirect, values)
             values["no_registre"] = no_registre
 
         # check the subscription's amount
@@ -270,7 +270,7 @@ class WebsiteSubscription(http.Controller):
                         values = self.fill_values(values, is_company, logged)
                         values["error_msg"] = (_("You can't subscribe two "
                                                  "different types of share"))
-                        return request.website.render(redirect, values)
+                        return request.render(redirect, values)
         total_amount = float(kwargs.get('total_parts'))
 
         if max_amount > 0 and total_amount > max_amount:
@@ -279,7 +279,7 @@ class WebsiteSubscription(http.Controller):
                                      "exceed ")
                                    + str(max_amount)
                                    + company.currency_id.symbol)
-            return request.website.render(redirect, values)
+            return request.render(redirect, values)
         return True
 
     @http.route(['/subscription/get_share_product'],
