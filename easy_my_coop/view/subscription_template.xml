@@ -254,35 +254,35 @@
 		                		            			            	                    
  						<br/>
 
-            <div id="data_policy_approved" t-if="display_data_policy" t-attf-class="form-group" >
-                <label class="col-md-3 col-sm-4 control-label" for="data_policy_approved">Privacy Policy</label>
-                <div class="col-md-9 col-sm-8">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"
-                                   name="data_policy_approved"
-                                   t-att="{'required': 'required'} if data_policy_required else {}"
-                                   t-attf-value="#{data_policy_approved or ''}"/>
-                            <t t-raw="data_policy_text"/>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div id="internal_rules_approved" t-if="display_internal_rules" t-attf-class="form-group" >
-                <label class="col-md-3 col-sm-4 control-label" for="internal_rules_approved">Internal Rules</label>
-                <div class="col-md-9 col-sm-8">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"
-                                   name="internal_rules_approved"
-                                   t-att="{'required': 'required'} if internal_rules_required else {}"
-                                   t-attf-value="#{internal_rules_approved or ''}"/>
-                            <t t-raw="internal_rules_text"/>
-                        </label>
-                    </div>
-                </div>
-            </div>
+			            <div id="data_policy_approved" t-if="display_data_policy" t-attf-class="form-group" >
+			                <label class="col-md-3 col-sm-4 control-label" for="data_policy_approved">Privacy Policy</label>
+			                <div class="col-md-9 col-sm-8">
+			                    <div class="checkbox">
+			                        <label>
+			                            <input type="checkbox"
+			                                   name="data_policy_approved"
+			                                   t-att="{'required': 'required'} if data_policy_required else {}"
+			                                   t-attf-value="#{data_policy_approved or ''}"/>
+			                            <t t-raw="data_policy_text"/>
+			                        </label>
+			                    </div>
+			                </div>
+			            </div>
+			
+			            <div id="internal_rules_approved" t-if="display_internal_rules" t-attf-class="form-group" >
+			                <label class="col-md-3 col-sm-4 control-label" for="internal_rules_approved">Internal Rules</label>
+			                <div class="col-md-9 col-sm-8">
+			                    <div class="checkbox">
+			                        <label>
+			                            <input type="checkbox"
+			                                   name="internal_rules_approved"
+			                                   t-att="{'required': 'required'} if internal_rules_required else {}"
+			                                   t-attf-value="#{internal_rules_approved or ''}"/>
+			                            <t t-raw="internal_rules_text"/>
+			                        </label>
+			                    </div>
+			                </div>
+			            </div>
 
 						<table style="margin-left:195px">
 							<tr>
