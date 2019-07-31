@@ -63,7 +63,8 @@ class WebsiteSubscription(http.Controller):
             if kwargs.get(field):
                 values[field] = kwargs.pop(field)
         values.update(kwargs=kwargs.items())
-        return request.website.render("easy_my_coop.becomecompanycooperator", values)
+        return request.website.render("easy_my_coop.becomecompanycooperator",
+                                      values)
 
     def preRenderThanks(self, values, kwargs):
         """ Allow to be overrided """
