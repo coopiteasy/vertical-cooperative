@@ -301,7 +301,6 @@ class WebsiteSubscription(http.Controller):
     def share_subscription(self, **kwargs):
         sub_req_obj = request.env['subscription.request']
         attach_obj = request.env['ir.attachment']
-        required_fields = sub_req_obj.sudo().get_required_field()
 
         # List of file to add to ir_attachment once we have the ID
         post_file = []
