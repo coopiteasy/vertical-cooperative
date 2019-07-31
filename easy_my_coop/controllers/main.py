@@ -356,7 +356,7 @@ class WebsiteSubscription(http.Controller):
         values["share_product_id"] = self.get_selected_share(kwargs).id
 
         if is_company:
-            if kwargs.get("company_register_number", is_company):
+            if kwargs.get("company_register_number", False):
                 values["company_register_number"] = re.sub('[^0-9a-zA-Z]+',
                                                            '',
                                                            kwargs.get("company_register_number"))
