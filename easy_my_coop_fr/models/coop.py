@@ -17,8 +17,3 @@ class SubscriptionRequest(models.Model):
             req_fields.remove('iban')
 
         return req_fields
-
-    # override function to disable the check
-    def check_belgian_identification_id(self, nat_register_num):
-        # deactivate number validation for french localization
-        return True

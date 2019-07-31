@@ -32,7 +32,6 @@
     """,
     'data': [
         'views/subscription_template.xml',
-        'views/subscription_request_view.xml'
     ],
     'installable': True,
 }

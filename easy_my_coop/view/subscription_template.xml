@@ -114,13 +114,6 @@
 			                    <input type="text" data-inputmask="'alias': 'date'" class="form-control mandatory-field" name="birthdate" required="True" t-attf-value="#{birthdate or ''}" placeholder="05/03/1978"/>
 			                </div>
 			            </div>
-						
-						<div t-attf-class="form-group #{error and 'no_registre' in error and 'has-error' or ''}">
-			                <label class="col-md-3 col-sm-4 control-label" for="no_registre">National Register Number</label>
-			                <div class="col-md-7 col-sm-8">
-			                    <input type="text" class="form-control mandatory-field" name="no_registre" t-attf-value="#{no_registre or ''}" placeholder="78230226321"/>
-			                </div>
-			            </div>
 			            
 			            <div t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="iban">Bank Account Number</label>
@@ -460,13 +453,6 @@
 			                    <input type="text" class="form-control mandatory-field" name="contact_person_function" required="True" t-attf-value="#{contact_person_function or ''}"/>
 			                </div>
 			            </div>	
-			            
-						<div t-attf-class="form-group #{error and 'no_registre' in error and 'has-error' or ''}">
-			                <label class="col-md-3 col-sm-4 control-label" for="no_registre">National Register Number</label>
-			                <div class="col-md-7 col-sm-8">
-			                    <input type="text" class="form-control mandatory-field" name="no_registre" required="True" t-attf-value="#{no_registre or ''}" placeholder="78230226321"/>
-			                </div>
-			            </div>
 			            
 						<div t-attf-class="form-group #{error and 'birthday' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="birthdate">Birthdate</label>

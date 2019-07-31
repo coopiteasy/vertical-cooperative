@@ -29,7 +29,6 @@ class ShareLineUpdateInfo(models.TransientModel):
 
     @api.multi
     def update(self):
-
         line = self.share_line
         cooperator = line.partner_id
 

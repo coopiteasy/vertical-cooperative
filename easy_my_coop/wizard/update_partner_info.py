@@ -28,13 +28,6 @@ class PartnerUpdateInfo(models.TransientModel):
                                  string="Cooperator",
                                  default=_get_partner)
 
-    def check_belgian_ident_id(self, register_number):
-        if self.env['subscription.request'].check_belgian_identification_id(
-                                                register_number):
-            return True
-        else:
-            raise UserError(_("The national register number is not valid."))
-
     @api.multi
     def update(self):
 
@@ -43,9 +36,6 @@ class PartnerUpdateInfo(models.TransientModel):
 
         if cooperator.is_company:
             coop_vals['company_register_number'] = self.register_number
-        else:
-            if self.check_belgian_ident_id(self.register_number):
-                coop_vals['national_register_number'] = self.register_number
 
         if coop_vals:
             cooperator.write(coop_vals)
