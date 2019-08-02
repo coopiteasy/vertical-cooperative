@@ -167,10 +167,10 @@ class ResPartner(models.Model):
     def get_representative(self):
         return self.child_ids.filtered('representative')
 
-    def get_cooperator_from_nin(self, national_id_number):
+    def get_cooperator_from_email(self, email):
         return self.search([('cooperator', '=', True),
-                            ('national_register_number', '=', national_id_number)])
+                            ('email', '=', email)])
 
-    def get_cooperator_from_crn(self, company_register_number):
+    def get_cooperator_from_crn(self, comp_reg_number):
         return self.search([('cooperator', '=', True),
-                            ('company_register_number', '=', company_register_number)])
+                            ('company_register_number', '=', comp_reg_number)])

@@ -10,7 +10,6 @@ import xlsxwriter
 
 HEADER = [
         'Num. Coop',
-        'Numero de registre national',
         'Nom',
         'Email',
         'Banque',
@@ -36,7 +35,6 @@ HEADER2 = [
         'Nombre de part',
         'Montant',
         'Statut',
-        'Numero de registre national',
         'Email',
         'Mobile',
         'Adresse',
@@ -76,8 +74,6 @@ class export_global_report(models.TransientModel):
         for coop in cooperators:
             i = 0
             worksheet1.write(j, i, coop.cooperator_register_number)
-            i += 1
-            worksheet1.write(j, i, coop.national_register_number)
             i += 1
             worksheet1.write(j, i, coop.name)
             i += 1
@@ -249,8 +245,6 @@ class export_global_report(models.TransientModel):
             worksheet2.write(j, i, amount)
             i += 1
             worksheet2.write(j, i, sub_request.state)
-            i += 1
-            worksheet2.write(j, i, sub_request.no_registre)
             i += 1
             worksheet2.write(j, i, sub_request.email)
             i += 1

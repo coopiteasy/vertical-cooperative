@@ -80,27 +80,34 @@
 			           <div name="email_from_container" t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="email">Email</label>
 			                <div class="col-md-7 col-sm-8 bottom-line" style="padding-bottom:20px">
-			                    <input type="email" class="form-control mandatory-field" name="email" required="True" t-attf-value="#{email or ''}" placeholder="didier.bourdon@bees-coop.be"/>
+			                    <input type="email" class="form-control mandatory-field" name="email" 
+			                    required="required" t-att-readonly="logged"
+			                    t-attf-value="#{email or ''}" placeholder="didier.bourdon@bees-coop.be"/>
 			                </div>
 			            </div>
 
 			            <div t-attf-class="form-group #{error and 'firstname' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="name">First Name</label>
 			                <div class="col-md-7 col-sm-8" style="padding-top:5px">
-			                    <input type="text" class="form-control mandatory-field" name="firstname" required="True" t-attf-value="#{firstname or ''}" placeholder="Didier"/>
+			                    <input type="text" class="form-control mandatory-field" name="firstname" 
+			                    required="required" t-att-readonly="logged" 
+			                    t-attf-value="#{firstname or ''}" placeholder="Didier"/>
 			                </div>
 			            </div>							
 			            
  			            <div t-attf-class="form-group #{error and 'lastname' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="name">Last Name</label>
 			                <div class="col-md-7 col-sm-8">
-			                    <input type="text" class="form-control mandatory-field" name="lastname" required="True" t-attf-value="#{lastname or ''}" placeholder="Bourdon"/>
+			                    <input type="text" class="form-control mandatory-field" name="lastname" 
+			                    required="required" t-att-readonly="logged"
+			                    t-attf-value="#{lastname or ''}" placeholder="Bourdon"/>
 			                </div>
 			            </div>							
 						
 						<div t-attf-class="form-group #{error and 'gender' in error and 'has-error' or ''}">
 			               <label class="col-md-3 col-sm-4 control-label" for="company_type">Gender</label>
-		                   <select name="gender" class="col-md-7 col-sm-8 form-control" required="True" style="width:54%;margin-left:15px">
+		                   <select name="gender" class="col-md-7 col-sm-8 form-control" required="required" 
+		                   		t-att-readonly="logged" style="width:54%;margin-left:15px">
 		                       <option value=""></option>
 		                       <t t-foreach="genders or []" t-as="type">
 		                           <option t-att-value="type[0]" t-att-selected="type[0] == gender"><t t-esc="type[1]"/></option>
@@ -111,27 +118,25 @@
 						<div t-attf-class="form-group #{error and 'birthdate' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="birthdate">Birthdate</label>
 			                <div class="col-md-7 col-sm-8">
-			                    <input type="text" data-inputmask="'alias': 'date'" class="form-control mandatory-field" name="birthdate" required="True" t-attf-value="#{birthdate or ''}" placeholder="05/03/1978"/>
-			                </div>
-			            </div>
-						
-						<div t-attf-class="form-group #{error and 'no_registre' in error and 'has-error' or ''}">
-			                <label class="col-md-3 col-sm-4 control-label" for="no_registre">National Register Number</label>
-			                <div class="col-md-7 col-sm-8">
-			                    <input type="text" class="form-control mandatory-field" name="no_registre" t-attf-value="#{no_registre or ''}" placeholder="78230226321"/>
+			                    <input type="text" data-inputmask="'alias': 'date'" class="form-control mandatory-field" 
+			                    name="birthdate" required="required" t-att-readonly="logged"
+			                    t-attf-value="#{birthdate or ''}" placeholder="05/03/1978"/>
 			                </div>
 			            </div>
 			            
 			            <div t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="iban">Bank Account Number</label>
 			                <div class="col-md-7 col-sm-8">
-			                    <input type="text" class="form-control mandatory-field" name="iban" required="True" t-attf-value="#{iban or ''}" placeholder="BE48523080767127"/>
+			                    <input type="text" class="form-control mandatory-field" name="iban" 
+			                    required="required" t-att-readonly="logged"
+			                    t-attf-value="#{iban or ''}" placeholder="BE48523080767127"/>
 			                </div>
 			            </div>
 	                    
 	                    <div t-attf-class="form-group #{error and 'lang' in error and 'has-error' or ''}" >
 	                      <label class="col-md-3 col-sm-4 control-label" style="width:25%" for="lang">Language</label>
-	                      <select name="lang" class="col-md-7 col-sm-8 form-control " style="width:30%;margin-left:15px">
+	                      <select name="lang" class="col-md-7 col-sm-8 form-control" t-att-readonly="logged" 
+	                      		style="width:30%;margin-left:15px">
 	                          <option value="2">Language...</option>
 	                          <t t-foreach="langs or []" t-as="langue">
 	                              <option t-att-value="langue.code" t-att-selected="langue.code == lang"><t t-esc="langue.name"/></option>
@@ -144,7 +149,9 @@
  			            <div t-attf-class="form-group #{error and 'address' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="address">Address</label>
 			                <div class="col-md-7 col-sm-8">
-			                    <input type="text" class="form-control mandatory-field" name="address" required="True" t-attf-value="#{address or ''}" placeholder="rue Van Hove, 19"/>
+			                    <input type="text" class="form-control mandatory-field" name="address" 
+			                    required="required" t-att-readonly="logged"
+			                    t-attf-value="#{address or ''}" placeholder="rue Van Hove, 19"/>
 			                </div>
 			            </div>							
 	                    	                    			            	
@@ -154,11 +161,15 @@
 								<table>			
 									<tr>
 										<td width="20%">
-											<input type="text" class="form-control mandatory-field" name="zip_code" required="True" t-attf-value="#{zip_code or ''}" placeholder="1030"/>
+											<input type="text" class="form-control mandatory-field" name="zip_code" 
+											required="required" t-att-readonly="logged"
+											t-attf-value="#{zip_code or ''}" placeholder="1030"/>
 										</td>
 										<td width="3%"></td>
 										<td>
-											<input type="text" class="form-control mandatory-field" name="city" required="True" t-attf-value="#{city or ''}" placeholder="Bruxelles"/>
+											<input type="text" class="form-control mandatory-field" name="city" 
+											required="required" t-att-readonly="logged" 
+											t-attf-value="#{city or ''}" placeholder="Bruxelles"/>
 										</td>										
 									</tr>   
 								</table>           	
@@ -167,7 +178,8 @@
 
 	                    <div t-attf-class="form-group #{error and 'country_id' in error and 'has-error' or ''}">
 	                      <label class="col-md-3 col-sm-4 control-label" style="width:25%" for="country_id">Country</label>
-	                      <select name="country_id" class="col-md-7 col-sm-8 form-control " style="width:54%;margin-left:15px">
+	                      <select name="country_id" class="col-md-7 col-sm-8 form-control " t-att-readonly="logged"
+	                      		  style="width:54%;margin-left:15px">
 	                          <option value="">Country...</option>
 	                          <t t-foreach="countries or []" t-as="country">
 	                              <option t-att-value="country.id" t-att-selected="country.id == int(country_id)"><t t-esc="country.name"/></option>
@@ -178,7 +190,9 @@
 	                    <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="phone">Phone</label>
 			                <div class="col-md-7 col-sm-8 bottom-line" style="padding-bottom:20px">
-			                    <input type="text" class="form-control" name="phone" required="True" t-attf-value="#{phone or ''}" placeholder="e.g. (+32).81.81.37.00"/>
+			                    <input type="text" class="form-control" name="phone" 
+			                    required="required" t-att-readonly="logged"
+			                    t-attf-value="#{phone or ''}" placeholder="e.g. (+32).81.81.37.00"/>
 			                </div>
 			            </div>							
 						
@@ -240,35 +254,35 @@
 		                		            			            	                    
  						<br/>
 
-            <div id="data_policy_approved" t-if="display_data_policy" t-attf-class="form-group" >
-                <label class="col-md-3 col-sm-4 control-label" for="data_policy_approved">Privacy Policy</label>
-                <div class="col-md-9 col-sm-8">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"
-                                   name="data_policy_approved"
-                                   t-att="{'required': 'required'} if data_policy_required else {}"
-                                   t-attf-value="#{data_policy_approved or ''}"/>
-                            <t t-raw="data_policy_text"/>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div id="internal_rules_approved" t-if="display_internal_rules" t-attf-class="form-group" >
-                <label class="col-md-3 col-sm-4 control-label" for="internal_rules_approved">Internal Rules</label>
-                <div class="col-md-9 col-sm-8">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"
-                                   name="internal_rules_approved"
-                                   t-att="{'required': 'required'} if internal_rules_required else {}"
-                                   t-attf-value="#{internal_rules_approved or ''}"/>
-                            <t t-raw="internal_rules_text"/>
-                        </label>
-                    </div>
-                </div>
-            </div>
+			            <div id="data_policy_approved" t-if="display_data_policy" t-attf-class="form-group" >
+			                <label class="col-md-3 col-sm-4 control-label" for="data_policy_approved">Privacy Policy</label>
+			                <div class="col-md-9 col-sm-8">
+			                    <div class="checkbox">
+			                        <label>
+			                            <input type="checkbox"
+			                                   name="data_policy_approved"
+			                                   t-att="{'required': 'required'} if data_policy_required else {}"
+			                                   t-attf-value="#{data_policy_approved or ''}"/>
+			                            <t t-raw="data_policy_text"/>
+			                        </label>
+			                    </div>
+			                </div>
+			            </div>
+			
+			            <div id="internal_rules_approved" t-if="display_internal_rules" t-attf-class="form-group" >
+			                <label class="col-md-3 col-sm-4 control-label" for="internal_rules_approved">Internal Rules</label>
+			                <div class="col-md-9 col-sm-8">
+			                    <div class="checkbox">
+			                        <label>
+			                            <input type="checkbox"
+			                                   name="internal_rules_approved"
+			                                   t-att="{'required': 'required'} if internal_rules_required else {}"
+			                                   t-attf-value="#{internal_rules_approved or ''}"/>
+			                            <t t-raw="internal_rules_text"/>
+			                        </label>
+			                    </div>
+			                </div>
+			            </div>
 
 						<table style="margin-left:195px">
 							<tr>
@@ -333,20 +347,20 @@
 						<div t-attf-class="form-group #{error and 'company_register_number' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="company_register_number">Company Register Number</label>
 			                <div class="col-md-7 col-sm-8">
-			                    <input type="text" class="form-control mandatory-field" name="company_register_number" required="True" t-attf-value="#{company_register_number or ''}" placeholder="0647980091"/>
+			                    <input type="text" class="form-control mandatory-field" name="company_register_number" required="required" t-attf-value="#{company_register_number or ''}" placeholder="0647980091"/>
 			                </div>
 			            </div>
 			            
 						<div t-attf-class="form-group #{error and 'company_name' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="company_name">Company name</label>
 			                <div class="col-md-7 col-sm-8">
-			                    <input type="text" class="form-control mandatory-field" name="company_name" required="True" t-attf-value="#{company_name or ''}" placeholder="La super coopérative"/>
+			                    <input type="text" class="form-control mandatory-field" name="company_name" required="required" t-attf-value="#{company_name or ''}" placeholder="La super coopérative"/>
 			                </div>
 			            </div>
 			            
 						<div t-attf-class="form-group #{error and 'company_type' in error and 'has-error' or ''}">
 			               <label class="col-md-3 col-sm-4 control-label" for="company_type">Company type</label>
-		                   <select name="company_type" class="col-md-7 col-sm-8 form-control" required="True" style="width:54%;margin-left:15px">
+		                   <select name="company_type" class="col-md-7 col-sm-8 form-control" required="required" style="width:54%;margin-left:15px">
 		                       <option value=""></option>
 		                       <t t-foreach="company_types or []" t-as="type">
 		                           <option t-att-value="type[0]" t-att-selected="type[0] == company_type"><t t-esc="type[1]"/></option>
@@ -357,14 +371,14 @@
 		           		<div t-attf-class="form-group #{error and 'company_email' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="company_email">Company email</label>
 			                <div class="col-md-7 col-sm-8">
-			                    <input type="text" class="form-control mandatory-field" name="company_email" required="True" t-attf-value="#{company_email or ''}" placeholder="administration@beescoop.be"/>
+			                    <input type="text" class="form-control mandatory-field" name="company_email" required="required" t-attf-value="#{company_email or ''}" placeholder="administration@beescoop.be"/>
 			                </div>
 			            </div>
 			            
 			            <div t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="iban">Bank Account Number</label>
 			                <div class="col-md-7 col-sm-8">
-			                    <input type="text" class="form-control mandatory-field" name="iban"  required="True" t-attf-value="#{iban or ''}" placeholder="BE48523080767127"/>
+			                    <input type="text" class="form-control mandatory-field" name="iban"  required="required" t-attf-value="#{iban or ''}" placeholder="BE48523080767127"/>
 			                </div>
 			            </div>
 			            
@@ -378,7 +392,7 @@
 						<div t-attf-class="form-group #{error and 'address' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="address">Address</label>
 			                <div class="col-md-7 col-sm-8">
-			                    <input type="text" class="form-control mandatory-field" name="address" required="True" t-attf-value="#{address or ''}" placeholder="rue Van Hove, 19"/>
+			                    <input type="text" class="form-control mandatory-field" name="address" required="required" t-attf-value="#{address or ''}" placeholder="rue Van Hove, 19"/>
 			                </div>
 			            </div>							
 	                    	                    			            	
@@ -388,11 +402,11 @@
 								<table>			
 									<tr>
 										<td width="20%">
-											<input type="text" class="form-control mandatory-field" name="zip_code" required="True" t-attf-value="#{zip_code or ''}" placeholder="1030"/>
+											<input type="text" class="form-control mandatory-field" name="zip_code" required="required" t-attf-value="#{zip_code or ''}" placeholder="1030"/>
 										</td>
 										<td width="3%"></td>
 										<td>
-											<input type="text" class="form-control mandatory-field" name="city" required="True" t-attf-value="#{city or ''}" placeholder="Bruxelles"/>
+											<input type="text" class="form-control mandatory-field" name="city" required="required" t-attf-value="#{city or ''}" placeholder="Bruxelles"/>
 										</td>										
 									</tr>   
 								</table>           	
@@ -419,20 +433,20 @@
 			            <div t-attf-class="form-group #{error and 'firstname' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="firstname">First Name</label>
 			                <div class="col-md-7 col-sm-8" style="padding-top:5px">
-			                    <input type="text" class="form-control mandatory-field" name="firstname" required="True" t-attf-value="#{firstname or ''}" placeholder="Didier"/>
+			                    <input type="text" class="form-control mandatory-field" name="firstname" required="required" t-attf-value="#{firstname or ''}" placeholder="Didier"/>
 			                </div>
 			            </div>							
 			            
  			            <div t-attf-class="form-group #{error and 'lastname' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="lastname">Last Name</label>
 			                <div class="col-md-7 col-sm-8">
-			                    <input type="text" class="form-control mandatory-field" name="lastname" required="True" t-attf-value="#{lastname or ''}" placeholder="Bourdon"/>
+			                    <input type="text" class="form-control mandatory-field" name="lastname" required="required" t-attf-value="#{lastname or ''}" placeholder="Bourdon"/>
 			                </div>
 			            </div>							
 						
 						<div t-attf-class="form-group #{error and 'gender' in error and 'has-error' or ''}">
 			               <label class="col-md-3 col-sm-4 control-label" for="gender">Gender</label>
-		                   <select name="gender" class="col-md-7 col-sm-8 form-control" required="True" style="width:54%;margin-left:15px">
+		                   <select name="gender" class="col-md-7 col-sm-8 form-control" required="required" style="width:54%;margin-left:15px">
 		                       <option value=""></option>
 		                       <t t-foreach="genders or []" t-as="type">
 		                           <option t-att-value="type[0]" t-att-selected="type[0] == gender"><t t-esc="type[1]"/></option>
@@ -443,35 +457,28 @@
 			            <div name="email_from_container" t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="email">Email</label>
 			                <div class="col-md-7 col-sm-8 bottom-line" style="padding-bottom:20px">
-			                    <input type="email" class="form-control mandatory-field" name="email" required="True" t-attf-value="#{email or ''}" placeholder="didier.bourdon@bees-coop.be"/>
+			                    <input type="email" class="form-control mandatory-field" name="email" required="required" t-attf-value="#{email or ''}" placeholder="didier.bourdon@bees-coop.be"/>
 			                </div>
 			            </div>
 			            
 	                    <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="phone">Phone</label>
 			                <div class="col-md-7 col-sm-8 bottom-line" style="padding-bottom:20px">
-			                    <input type="text" class="form-control" name="phone" required="True" t-attf-value="#{phone or ''}" placeholder="e.g. (+32).81.81.37.00"/>
+			                    <input type="text" class="form-control" name="phone" required="required" t-attf-value="#{phone or ''}" placeholder="e.g. (+32).81.81.37.00"/>
 			                </div>
 			            </div>
 			            	
 			            <div t-attf-class="form-group #{error and 'contact_person_function' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="contact_person_function">Function</label>
 			                <div class="col-md-7 col-sm-8">
-			                    <input type="text" class="form-control mandatory-field" name="contact_person_function" required="True" t-attf-value="#{contact_person_function or ''}"/>
+			                    <input type="text" class="form-control mandatory-field" name="contact_person_function" required="required" t-attf-value="#{contact_person_function or ''}"/>
 			                </div>
 			            </div>	
-			            
-						<div t-attf-class="form-group #{error and 'no_registre' in error and 'has-error' or ''}">
-			                <label class="col-md-3 col-sm-4 control-label" for="no_registre">National Register Number</label>
-			                <div class="col-md-7 col-sm-8">
-			                    <input type="text" class="form-control mandatory-field" name="no_registre" required="True" t-attf-value="#{no_registre or ''}" placeholder="78230226321"/>
-			                </div>
-			            </div>
 			            
 						<div t-attf-class="form-group #{error and 'birthday' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="birthdate">Birthdate</label>
 			                <div class="col-md-7 col-sm-8">
-			                    <input type="text" data-inputmask="'alias': 'date'" class="form-control mandatory-field" name="birthdate" required="True" t-attf-value="#{birthdate or ''}" placeholder="05/03/1978"/>
+			                    <input type="text" data-inputmask="'alias': 'date'" class="form-control mandatory-field" name="birthdate" required="required" t-attf-value="#{birthdate or ''}" placeholder="05/03/1978"/>
 			                </div>
 			            </div>
 						

@@ -15,7 +15,6 @@ _REQUIRED = ['email',
              'zip_code',
              'city',
              'iban',
-             'no_registre',
              'gender']  # Could be improved including required from model
 
 
@@ -43,12 +42,12 @@ class subscription_request(models.Model):
         partner_obj = self.env['res.partner']
         if not vals.get('partner_id'):
             cooperator = False
-            if vals.get('no_registre'):
-                cooperator = partner_obj.get_cooperator_from_nin(
-                                            vals.get('no_registre'))
+            if vals.get('email'):
+                cooperator = partner_obj.get_cooperator_from_email(
+                                            vals.get('email'))
             if cooperator:
                 # TODO remove the following line of code once it has
-                # been founded a way to avoid dubble entry
+                # been found a way to avoid double entry
                 cooperator = cooperator[0]
                 if cooperator.member:
                     vals['type'] = 'increase'
@@ -89,22 +88,6 @@ class subscription_request(models.Model):
 
         return subscr_request
 
-    def check_belgian_identification_id(self, nat_register_num):
-        if not self.check_empty_string(nat_register_num):
-            return False
-        if len(nat_register_num) != 11:
-            return False
-        if not nat_register_num.isdigit():
-            return False
-        birthday_number = nat_register_num[0:9]
-        controle = nat_register_num[9:11]
-        check_controle = 97 - (int(birthday_number) % 97)
-        if int(check_controle) != int(controle):
-            check_controle = 97 - ((2000000000 + int(birthday_number)) % 97)
-            if int(check_controle) != int(controle):
-                return False
-        return True
-
     def check_empty_string(self, value):
         if value is None or value is False or value == '':
             return False
@@ -119,17 +102,10 @@ class subscription_request(models.Model):
         return validated
 
     @api.multi
-    @api.depends('iban', 'no_registre', 'skip_control_ng', 'is_company')
+    @api.depends('iban', 'skip_control_ng', 'is_company')
     def _validated_lines(self):
         for sub_request in self:
             validated = self.check_iban(sub_request.iban)
-
-            if validated and (sub_request.skip_control_ng or
-                              self.check_belgian_identification_id(
-                                sub_request.no_registre)):
-                validated = True
-            else:
-                validated = False
             sub_request.validated = validated
 
     @api.multi
@@ -234,9 +210,6 @@ class subscription_request(models.Model):
     phone = fields.Char(string='Phone',
                         readonly=True,
                         states={'draft': [('readonly', False)]})
-    no_registre = fields.Char(string='National Register Number',
-                              readonly=True,
-                              states={'draft': [('readonly', False)]})
     user_id = fields.Many2one('res.users',
                               string='Responsible',
                               readonly=True)
@@ -349,7 +322,6 @@ class subscription_request(models.Model):
         self.firstname = partner.firstname
         self.name = partner.name
         self.lastname = partner.lastname
-        self.no_registre = partner.national_register_number
         self.email = partner.email
         self.birthdate = partner.birthdate_date
         self.gender = partner.gender
@@ -469,7 +441,6 @@ class subscription_request(models.Model):
                         'zip': self.zip_code, 'email': self.email,
                         'gender': self.gender, 'cooperator': True,
                         'city': self.city, 'phone': self.phone,
-                        'national_register_number': self.no_registre,
                         'out_inv_comm_type': 'bba',
                         'out_inv_comm_algorithm': 'random',
                         'country_id': self.country_id.id, 'lang': self.lang,
@@ -513,8 +484,8 @@ class subscription_request(models.Model):
                                   ' checked please select a cooperator.'))
             elif self.is_company and self.company_register_number:
                 domain = [('company_register_number', '=', self.company_register_number)] #noqa
-            elif not self.is_company and self.no_registre:
-                domain = [('national_register_number', '=', self.no_registre)]
+            elif not self.is_company and self.email:
+                domain = [('email', '=', self.email)]
 
             if domain:
                 partner = partner_obj.search(domain)
@@ -526,8 +497,8 @@ class subscription_request(models.Model):
 
         if self.is_company and not partner.has_representative():
             contact = False
-            if self.no_registre:
-                domain = [('national_register_number', '=', self.no_registre)]
+            if self.email:
+                domain = [('email', '=', self.email)]
                 contact = partner_obj.search(domain)
                 if contact:
                     contact.type = 'representative'
@@ -539,7 +510,6 @@ class subscription_request(models.Model):
                                 'street': self.address, 'gender': self.gender,
                                 'zip': self.zip_code, 'city': self.city,
                                 'phone': self.phone, 'email': self.email,
-                                'national_register_number': self.no_registre,
                                 'country_id': self.country_id.id,
                                 'out_inv_comm_type': 'bba',
                                 'out_inv_comm_algorithm': 'random',

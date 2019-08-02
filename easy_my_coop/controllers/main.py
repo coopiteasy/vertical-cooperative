@@ -14,14 +14,14 @@ _BLACKLIST = ['id', 'create_uid', 'create_date', 'write_uid', 'write_date',
               'user_id', 'active']
 
 _COOP_FORM_FIELD = ['email', 'firstname', 'lastname', 'birthdate', 'iban',
-                    'share_product_id', 'no_registre', 'address', 'city',
+                    'share_product_id', 'address', 'city',
                     'zip_code', 'country_id', 'phone', 'lang', 'nb_parts',
                     'total_parts', 'error_msg']
 
 _COMPANY_FORM_FIELD = ['is_company', 'company_register_number', 'company_name',
                        'company_email', 'company_type', 'email', 'firstname',
                        'lastname', 'birthdate', 'iban', 'share_product_id',
-                       'no_registre', 'address', 'city', 'zip_code',
+                       'address', 'city', 'zip_code',
                        'country_id', 'phone', 'lang', 'nb_parts',
                        'total_parts', 'error_msg']
 
@@ -63,7 +63,8 @@ class WebsiteSubscription(http.Controller):
             if kwargs.get(field):
                 values[field] = kwargs.pop(field)
         values.update(kwargs=kwargs.items())
-        return request.website.render("easy_my_coop.becomecompanycooperator", values)
+        return request.website.render("easy_my_coop.becomecompanycooperator",
+                                      values)
 
     def preRenderThanks(self, values, kwargs):
         """ Allow to be overrided """
@@ -109,7 +110,6 @@ class WebsiteSubscription(http.Controller):
                 values['gender'] = representative.gender
                 values['email'] = representative.email
                 values['contact_person_function'] = representative.function
-                values['no_registre'] = representative.national_register_number
                 values['birthdate'] = self.get_date_string(representative.birthdate)
                 values['lang'] = representative.lang
                 values['phone'] = representative.phone
@@ -118,7 +118,6 @@ class WebsiteSubscription(http.Controller):
                 values['lastname'] = partner.lastname
                 values['email'] = partner.email
                 values['gender'] = partner.gender
-                values['no_registre'] = partner.national_register_number
                 values['birthdate'] = self.get_date_string(partner.birthdate)
                 values['lang'] = partner.lang
                 values['phone'] = partner.phone
@@ -258,17 +257,6 @@ class WebsiteSubscription(http.Controller):
                                     "is not valid")
             return request.website.render(redirect, values)
 
-        if not is_company and 'no_registre' in required_fields:
-            no_registre = re.sub('[^0-9a-zA-Z]+', '',
-                                 kwargs.get("no_registre"))
-            valid = sub_req_obj.check_belgian_identification_id(no_registre)
-            if not valid:
-                values = self.fill_values(values, is_company, logged)
-                values["error_msg"] = _("You national register number "
-                                        "is not valid")
-                return request.website.render(redirect, values)
-            values["no_registre"] = no_registre
-
         # check the subscription's amount
         max_amount = company.subscription_maximum_amount
         if logged:
@@ -314,7 +302,6 @@ class WebsiteSubscription(http.Controller):
     def share_subscription(self, **kwargs):
         sub_req_obj = request.env['subscription.request']
         attach_obj = request.env['ir.attachment']
-        required_fields = sub_req_obj.sudo().get_required_field()
 
         # List of file to add to ir_attachment once we have the ID
         post_file = []
@@ -369,17 +356,12 @@ class WebsiteSubscription(http.Controller):
         values["share_product_id"] = self.get_selected_share(kwargs).id
 
         if is_company:
-            if kwargs.get("company_register_number", is_company):
+            if kwargs.get("company_register_number", False):
                 values["company_register_number"] = re.sub('[^0-9a-zA-Z]+',
                                                            '',
                                                            kwargs.get("company_register_number"))
             subscription_id = sub_req_obj.sudo().create_comp_sub_req(values)
         else:
-            if 'no_registre' in required_fields:
-                no_registre = re.sub('[^0-9a-zA-Z]+', '',
-                                     kwargs.get("no_registre"))
-                values["no_registre"] = no_registre
-
             subscription_id = sub_req_obj.sudo().create(values)
 
         if subscription_id:
