@@ -19,6 +19,7 @@
 					<group>
 						<field name="representative" attrs="{'invisible':['|',('parent_id','=',False),('is_company','=',True)]}"/>
 						<field name="cooperator_register_number" readonly="True" attrs="{'invisible':[('member','=',False)]}"/>
+						<field name="legal_form" attrs="{'invisible':[('is_company','=',False)]}"/>
 						<field name="company_register_number" readonly="True" attrs="{'invisible':[('is_company','=',False)]}"/>
 						<field name="coop_candidate" groups="easy_my_coop.group_energiris_user"/>
 						<field name="cooperator" invisible="True" groups="easy_my_coop.group_energiris_super_manager"/>
