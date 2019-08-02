@@ -256,7 +256,7 @@ class subscription_request(models.Model):
     company_register_number = fields.Char(string='Company register number',
                                           readonly=True,
                                           states={'draft': [('readonly', False)]})
-    company_type = fields.Selection([('other', 'Other')],
+    company_type = fields.Selection([('', '')],
                                     string="Company type",
                                     readonly=True,
                                     states={'draft': [('readonly', False)]})

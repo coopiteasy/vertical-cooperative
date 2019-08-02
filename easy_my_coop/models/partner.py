@@ -142,6 +142,8 @@ class ResPartner(models.Model):
     subscription_request_ids = fields.One2many('subscription.request',
                                                'partner_id',
                                                string="Subscription request")
+    legal_form = fields.Selection([('', '')],
+                                  string="Legal form")
     data_policy_approved = fields.Boolean(string="Approved Data Policy")
     internal_rules_approved = fields.Boolean(string="Approved Internal Rules")
 
