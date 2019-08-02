@@ -2,12 +2,10 @@
 from openerp import fields, models
 
 
-class subscription_request(models.Model):
+class SubscriptionRequest(models.Model):
     _inherit = 'subscription.request'
 
-    company_type = fields.Selection(selection_add=[
-                                    ('scrl', 'SCRL'),
-                                    ('asbl', 'ASBL'),
-                                    ('sprl', 'SPRL'),
-                                    ('sa', 'SA')
-                                    ])
+    company_type = fields.Selection([('scrl', 'SCRL'),
+                                     ('asbl', 'ASBL'),
+                                     ('sprl', 'SPRL'),
+                                     ('sa', 'SA')])
