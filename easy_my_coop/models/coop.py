@@ -47,7 +47,7 @@ class subscription_request(models.Model):
                                             vals.get('email'))
             if cooperator:
                 # TODO remove the following line of code once it has
-                # been founded a way to avoid double entry
+                # been found a way to avoid double entry
                 cooperator = cooperator[0]
                 if cooperator.member:
                     vals['type'] = 'increase'
@@ -87,22 +87,6 @@ class subscription_request(models.Model):
         confirmation_mail_template.send_mail(subscr_request.id, True)
 
         return subscr_request
-
-#     def check_belgian_identification_id(self, nat_register_num):
-#         if not self.check_empty_string(nat_register_num):
-#             return False
-#         if len(nat_register_num) != 11:
-#             return False
-#         if not nat_register_num.isdigit():
-#             return False
-#         birthday_number = nat_register_num[0:9]
-#         controle = nat_register_num[9:11]
-#         check_controle = 97 - (int(birthday_number) % 97)
-#         if int(check_controle) != int(controle):
-#             check_controle = 97 - ((2000000000 + int(birthday_number)) % 97)
-#             if int(check_controle) != int(controle):
-#                 return False
-#         return True
 
     def check_empty_string(self, value):
         if value is None or value is False or value == '':

@@ -35,7 +35,7 @@ class PartnerCreateSubscription(models.TransientModel):
         return False
 
     @api.model
-    def _get_representative_mail(self):
+    def _get_representative_email(self):
         representative = self._get_representative()
         if representative:
             return representative.email
@@ -124,14 +124,7 @@ class PartnerCreateSubscription(models.TransientModel):
     representative_name = fields.Char(string='Representative name',
                                       default=_get_representative_name)
     representative_email = fields.Char(string='Representative email',
-                                       default=_get_representative_mail)
-
-#     def check_belgian_ident_id(self, register_number):
-#         sub_req = self.env['subscription.request']
-#         if sub_req.check_belgian_identification_id(register_number):
-#             return True
-#         else:
-#             raise UserError(_("The national register number is not valid."))
+                                       default=_get_representative_email)
 
     @api.multi
     def create_subscription(self):
@@ -171,10 +164,8 @@ class PartnerCreateSubscription(models.TransientModel):
         if self.is_company and not self._get_representative():
             representative = False
             if self.representative_email:
-                representative = partner_obj.search([('email',
-                                                      '=',
-                                                      self.representative_email
-                                                      )])
+                representative = partner_obj.search(
+                    [('email', '=', self.representative_email)])
 
             if representative:
                 if len(representative) > 1:

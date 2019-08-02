@@ -171,11 +171,6 @@ class ResPartner(models.Model):
         return self.search([('cooperator', '=', True),
                             ('email', '=', email)])
 
-#     def get_cooperator_from_nin(self, national_id_number):
-#         return self.search([('cooperator', '=', True),
-#                             ('national_register_number', '=', 
-#      national_id_number)])
-
     def get_cooperator_from_crn(self, comp_reg_number):
         return self.search([('cooperator', '=', True),
                             ('company_register_number', '=', comp_reg_number)])
