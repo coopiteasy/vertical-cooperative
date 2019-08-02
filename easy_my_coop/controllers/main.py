@@ -103,6 +103,7 @@ class WebsiteSubscription(http.Controller):
                 values['company_register_number'] = partner.company_register_number
                 values['company_name'] = partner.name
                 values['company_email'] = partner.email
+                values['company_email'] = partner.legal_form
                 # contact person values
                 representative = partner.get_representative()
                 values['firstname'] = representative.firstname
