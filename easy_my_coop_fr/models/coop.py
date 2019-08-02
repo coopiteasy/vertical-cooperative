@@ -5,11 +5,12 @@ from openerp import fields, models
 class SubscriptionRequest(models.Model):
     _inherit = 'subscription.request'
 
-    company_type = fields.Selection([
+    company_type = fields.Selection(selection_add=[
                             ('asso', 'Association'),
                             ('eurl', 'EURL / Entreprise individuelle'),
                             ('sarl', 'SARL'),
-                            ('sa', 'SA / SAS')])
+                            ('sa', 'SA / SAS')
+                            ])
 
     def get_required_field(self):
         req_fields = super(SubscriptionRequest, self).get_required_field()
