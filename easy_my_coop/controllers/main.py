@@ -38,7 +38,7 @@ class WebsiteSubscription(http.Controller):
             logged = True
             partner = request.env.user.partner_id
             if partner.is_company:
-                return request.website.render("easy_my_coop.becomecompanycooperator", values)
+                return self.display_become_company_cooperator_page()
         values = self.fill_values(values, False, logged, True)
 
         for field in _COOP_FORM_FIELD:
@@ -103,7 +103,7 @@ class WebsiteSubscription(http.Controller):
                 values['company_register_number'] = partner.company_register_number
                 values['company_name'] = partner.name
                 values['company_email'] = partner.email
-                values['company_email'] = partner.legal_form
+                values['company_type'] = partner.legal_form
                 # contact person values
                 representative = partner.get_representative()
                 values['firstname'] = representative.firstname
@@ -119,7 +119,6 @@ class WebsiteSubscription(http.Controller):
                 values['lastname'] = partner.lastname
                 values['email'] = partner.email
                 values['gender'] = partner.gender
-                values['function'] = partner.function
                 values['birthdate'] = self.get_date_string(partner.birthdate)
                 values['lang'] = partner.lang
                 values['phone'] = partner.phone
@@ -358,9 +357,9 @@ class WebsiteSubscription(http.Controller):
         values["share_product_id"] = self.get_selected_share(kwargs).id
 
         if is_company:
+            values['company_type'] = kwargs.get("company_type")
             if kwargs.get("company_register_number", False):
-                values["company_register_number"] = re.sub('[^0-9a-zA-Z]+',
-                                                           '',
+                values["company_register_number"] = re.sub('[^0-9a-zA-Z]+', '',
                                                            kwargs.get("company_register_number"))
             subscription_id = sub_req_obj.sudo().create_comp_sub_req(values)
         else:
