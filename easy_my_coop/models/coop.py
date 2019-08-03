@@ -418,6 +418,7 @@ class subscription_request(models.Model):
         partner_vals = {'name': self.company_name,
                         'last_name': self.company_name,
                         'is_company': self.is_company,
+                        'legal_form': self.company_type,
                         'company_register_number': self.company_register_number, #noqa
                         'cooperator': True,
                         'street': self.address, 'zip': self.zip_code,
@@ -428,7 +429,8 @@ class subscription_request(models.Model):
                         'country_id': self.country_id.id,
                         'lang': self.lang,
                         'data_policy_approved': self.data_policy_approved,
-                        'internal_rules_approved': self.internal_rules_approved}
+                        'internal_rules_approved': self.internal_rules_approved
+                        }
         return partner_vals
 
     def get_partner_vals(self):
