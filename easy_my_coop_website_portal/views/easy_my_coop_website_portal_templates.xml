@@ -73,10 +73,6 @@
           <label>Bank Account: </label>
           <t t-esc="coop_bank.acc_number"/>
         </p>
-        <p t-if="coop.national_register_number">
-          <label>National Register Number: </label>
-          <t t-esc="coop.national_register_number"/>
-        </p>
         <p t-if="coop.is_company and coop.company_register_number">
           <label>Company Register Number: </label>
           <t t-esc="coop.company_register_number"/>
