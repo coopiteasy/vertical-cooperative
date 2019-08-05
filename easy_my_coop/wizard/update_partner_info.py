@@ -25,6 +25,8 @@ class PartnerUpdateInfo(models.TransientModel):
                                  default=_get_partner)
     all = fields.Boolean(string="Update from subscription request")
     birthdate = fields.Boolean(string="set missing birth date")
+    legal_form = fields.Boolean(string="Set legal form")
+    representative_function = fields.Boolean(string="Set function")
 
     @api.multi
     def update(self):
@@ -33,14 +35,30 @@ class PartnerUpdateInfo(models.TransientModel):
         coop_vals = {}
 
         if self.all:
-            if self.birthdate:
+            if self.legal_form or self.representative_function:
+                coops = partner_obj.search([('cooperator', '=', True),
+                                            ('is_company', '=', True)])
+                for coop in coops:
+                    coop_vals = {}
+                    if coop.subscription_request_ids:
+                        sub_req = coop.subscription_request_ids[0]
+                        if self.legal_form:
+                            coop_vals['legal_form'] = sub_req.company_type
+                            coop.write(coop_vals)
+                        if self.representative_function:
+                            contact = coop.get_representative()
+                            contact.function = sub_req.contact_person_function
+            else:
                 coops = partner_obj.search([('cooperator', '=', True),
                                             ('birthdate_date', '=', False),
                                             ('is_company', '=', False)])
                 for coop in coops:
+                    coop_vals = {}
                     if coop.subscription_request_ids:
                         sub_req = coop.subscription_request_ids[0]
-                        coop.birthdate_date = sub_req.birthdate
+                        if self.birthdate:
+                            coop_vals['birthdate_date'] = sub_req.birthdate
+                        coop.write(coop_vals)
         else:
             if cooperator:
                 if cooperator.is_company:
