@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class ResCompany(models.Model):
@@ -43,3 +43,35 @@ class ResCompany(models.Model):
     bottom_logo2 = fields.Binary(string="Bottom logo 2")
     logo_url = fields.Char(string="logo url",
                            compute="_get_base_logo")
+    display_data_policy_approval = fields.Boolean(
+        help="Choose to display a data policy checkbox on the cooperator"
+        " website form."
+    )
+    data_policy_approval_required = fields.Boolean(
+        string="Is data policy approval required?"
+    )
+    data_policy_approval_text = fields.Html(
+        translate=True,
+        help="Text to display aside the checkbox to approve data policy."
+    )
+    display_internal_rules_approval = fields.Boolean(
+        help="Choose to display an internal rules checkbox on the"
+        " cooperator website form."
+    )
+    internal_rules_approval_required = fields.Boolean(
+        string="Is internal rules approval required?"
+    )
+    internal_rules_approval_text = fields.Html(
+        translate=True,
+        help="Text to display aside the checkbox to approve internal rules."
+    )
+
+    @api.onchange('data_policy_approval_required')
+    def onchange_data_policy_approval_required(self):
+        if self.data_policy_approval_required:
+            self.display_data_policy_approval = True
+
+    @api.onchange('internal_rules_approval_required')
+    def onchange_internal_rules_approval_required(self):
+        if self.internal_rules_approval_required:
+            self.display_internal_rules_approval = True

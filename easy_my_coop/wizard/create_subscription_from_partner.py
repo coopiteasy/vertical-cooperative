@@ -29,15 +29,15 @@ class PartnerCreateSubscription(models.TransientModel):
     def _get_representative(self):
         partner = self._get_partner()
         if partner.is_company:
-            return self.env['res.partner'].search([('parent_id', '=', partner.id),
-                                                   ('representative', '=', True)])
+            return partner.search([('parent_id', '=', partner.id),
+                                   ('representative', '=', True)])
         return False
 
     @api.model
-    def _get_representative_number(self):
+    def _get_representative_email(self):
         representative = self._get_representative()
         if representative:
-            return representative.national_register_number
+            return representative.email
         return False
 
     @api.model
@@ -58,16 +58,13 @@ class PartnerCreateSubscription(models.TransientModel):
 
     @api.model
     def _get_email(self):
-        partner = self._get_partner()
-        return partner.email
+        return self._get_partner().email
 
     @api.model
     def _get_register_number(self):
         partner = self._get_partner()
         if partner.is_company:
             return partner.company_register_number
-        else:
-            return partner.national_register_number
 
     @api.model
     def _get_bank_account(self):
@@ -100,7 +97,7 @@ class PartnerCreateSubscription(models.TransientModel):
     cooperator = fields.Many2one('res.partner',
                                  string="Cooperator",
                                  default=_get_partner)
-    register_number = fields.Char(string="Register Number",
+    register_number = fields.Char(string="Register Company Number",
                                   required=True,
                                   default=_get_register_number)
     email = fields.Char(string="Email",
@@ -125,16 +122,8 @@ class PartnerCreateSubscription(models.TransientModel):
                                        readonly=True)
     representative_name = fields.Char(string='Representative name',
                                       default=_get_representative_name)
-    representative_number = fields.Char(string='Representative national '
-                                               'register number',
-                                        default=_get_representative_number)
-
-    def check_belgian_ident_id(self, register_number):
-        sub_req = self.env['subscription.request']
-        if sub_req.check_belgian_identification_id(register_number):
-            return True
-        else:
-            raise UserError(_("The national register number is not valid."))
+    representative_email = fields.Char(string='Representative email',
+                                       default=_get_representative_email)
 
     @api.multi
     def create_subscription(self):
@@ -162,7 +151,6 @@ class PartnerCreateSubscription(models.TransientModel):
             vals['is_company'] = True
         else:
             vals['name'] = cooperator.name
-            vals['no_registre'] = self.register_number
 
         coop_vals = {}
         if not self._get_email():
@@ -171,15 +159,12 @@ class PartnerCreateSubscription(models.TransientModel):
         if not self._get_register_number():
             if self.is_company:
                 coop_vals['company_register_number'] = self.register_number
-            else:
-                if self.check_belgian_ident_id(self.register_number):
-                    coop_vals['national_register_number'] = self.register_number
 
         if self.is_company and not self._get_representative():
             representative = False
-            if self.representative_number:
-                representative_number = self.representative_number
-                representative = partner_obj.search([('national_register_number', '=', representative_number)])
+            if self.representative_email:
+                representative = partner_obj.search(
+                    [('email', '=', self.representative_email)])
 
             if representative:
                 if len(representative) > 1:
@@ -192,10 +177,10 @@ class PartnerCreateSubscription(models.TransientModel):
                                       "two different companies."))
                 representative.parent_id = cooperator.id
             else:
-                if self.check_belgian_ident_id(representative_number):
+                if self.representative_email:
                     represent_vals = {'name': self.representative_name,
                                       'cooperator': True,
-                                      'national_register_number': representative_number,
+                                      'email': self.representative_email,
                                       'parent_id': cooperator.id,
                                       'representative': True}
                     partner_obj.create(represent_vals)
@@ -208,7 +193,6 @@ class PartnerCreateSubscription(models.TransientModel):
         if self.is_company:
             representative = self._get_representative()
             vals['name'] = representative.name
-            vals['no_registre'] = representative.national_register_number
 
         if coop_vals:
             cooperator.write(coop_vals)

@@ -16,7 +16,7 @@ class PartnerUpdateInfo(models.TransientModel):
         if partner.is_company:
             return partner.company_register_number
 
-    register_number = fields.Char(string="Register Number",
+    register_number = fields.Char(string="Register Company Number",
                                   required=True,
                                   default=_get_register_number)
     cooperator = fields.Many2one('res.partner',
