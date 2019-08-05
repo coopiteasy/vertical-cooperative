@@ -10,8 +10,10 @@
                         Update Cooperator Info.
                     </p>
                     <group>
+                    	<field name="all"/>
+                    	<field name="birthdate"/>
                     	<field name="cooperator" readonly="True"/>
-                    	<field name="register_number"/>
+                    	<field name="register_number" attrs="{'required':[('all', '=', False)]}"/>
                     </group>
                     <footer>
                         <button name="update" string="Update Info" type="object" class="btn-primary"/>

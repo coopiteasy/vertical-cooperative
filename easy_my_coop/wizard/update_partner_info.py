@@ -1,5 +1,4 @@
-from odoo import api, fields, models, _
-from odoo.exceptions import UserError
+from odoo import api, fields, models
 
 
 class PartnerUpdateInfo(models.TransientModel):
@@ -16,8 +15,6 @@ class PartnerUpdateInfo(models.TransientModel):
         partner = self._get_partner()
         if partner.is_company:
             return partner.company_register_number
-        else:
-            return partner.national_register_number
 
     register_number = fields.Char(string="Register Number",
                                   required=True,
@@ -25,27 +22,29 @@ class PartnerUpdateInfo(models.TransientModel):
     cooperator = fields.Many2one('res.partner',
                                  string="Cooperator",
                                  default=_get_partner)
-
-    def check_belgian_ident_id(self, register_number):
-        if self.env['subscription.request'].check_belgian_identification_id(
-                                                register_number):
-            return True
-        else:
-            raise UserError(_("The national register number is not valid."))
+    all = fields.Boolean(string="Update from subscription request")
+    birthdate = fields.Boolean(string="set missing birth date")
 
     @api.multi
     def update(self):
-
+        partner_obj = self.env['res.partner']
         cooperator = self.cooperator
         coop_vals = {}
 
-        if cooperator.is_company:
-            coop_vals['company_register_number'] = self.register_number
+        if self.all:
+            if self.birthdate:
+                coops = partner_obj.search([('cooperator', '=', True),
+                                            ('birthdate_date', '=', False),
+                                            ('is_company', '=', False)])
+                for coop in coops:
+                    if coop.subscription_request_ids:
+                        sub_req = coop.subscription_request_ids[0]
+                        coop.birthdate_date = sub_req.birthdate
         else:
-            if self.check_belgian_ident_id(self.register_number):
-                coop_vals['national_register_number'] = self.register_number
-
-        if coop_vals:
-            cooperator.write(coop_vals)
+            if cooperator:
+                if cooperator.is_company:
+                    coop_vals['company_register_number'] = self.register_number
+                if coop_vals:
+                    cooperator.write(coop_vals)
 
         return True
