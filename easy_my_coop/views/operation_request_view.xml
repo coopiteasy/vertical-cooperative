@@ -53,7 +53,6 @@
 	       				<field name="subscription_request" attrs="{'invisible':['|',('operation_type','!=','transfer'),('receiver_not_member','=',False)]}" context="{'default_is_operation': True, 'default_ordered_parts':quantity,'default_share_product_id': share_product_id, 'default_source':'operation'}">
 	       					<tree>
 	       						<field name="name"/>
-				                <field name="no_registre"/>
 				                <field name="birthdate"/>
 				                <field name="phone"/>
 			          			<field name="email"/>
@@ -71,7 +70,6 @@
 				       					<field name="gender"/>
 				       					<field name="email"/>
 				       					<field name="phone"/>
-				       					<field name="no_registre"/>
 				       					<field name="iban"/>
 				       				</group>
 				       				<group>

@@ -12,17 +12,17 @@ _TECHNICAL = ['view_from', 'view_callback']
 _BLACKLIST = ['id', 'create_uid', 'create_date', 'write_uid', 'write_date',
               'user_id', 'active']
 
-_COOP_FORM_FIELD = ['email', 'firstname', 'lastname', 'birthdate', 'iban',
-                    'share_product_id', 'no_registre', 'address', 'city',
-                    'zip_code', 'country_id', 'phone', 'lang', 'nb_parts',
-                    'total_parts', 'error_msg']
+_COOP_FORM_FIELD = ['email',  'confirm_email', 'firstname', 'lastname',
+                    'birthdate', 'iban', 'share_product_id', 'no_registre',
+                    'address', 'city', 'zip_code', 'country_id', 'phone',
+                    'lang', 'nb_parts', 'total_parts', 'error_msg']
 
 _COMPANY_FORM_FIELD = ['is_company', 'company_register_number', 'company_name',
-                       'company_email', 'company_type', 'email', 'firstname',
+                       'company_email', 'confirm_email', 'email', 'firstname',
                        'lastname', 'birthdate', 'iban', 'share_product_id',
                        'no_registre', 'address', 'city', 'zip_code',
                        'country_id', 'phone', 'lang', 'nb_parts',
-                       'total_parts', 'error_msg']
+                       'total_parts', 'error_msg', 'company_type']
 
 
 class WebsiteSubscription(http.Controller):
@@ -37,7 +37,7 @@ class WebsiteSubscription(http.Controller):
             logged = True
             partner = request.env.user.partner_id
             if partner.is_company:
-                return request.render("easy_my_coop_website.becomecompanycooperator", values)
+                return self.display_become_company_cooperator_page()
         values = self.fill_values(values, False, logged, True)
 
         for field in _COOP_FORM_FIELD:
@@ -52,8 +52,8 @@ class WebsiteSubscription(http.Controller):
                 type='http', auth="public", website=True)
     def display_become_company_cooperator_page(self, **kwargs):
         values = {}
-
         logged = False
+
         if request.env.user.login != 'public':
             logged = True
         values = self.fill_values(values, True, logged, True)
@@ -62,7 +62,8 @@ class WebsiteSubscription(http.Controller):
             if kwargs.get(field):
                 values[field] = kwargs.pop(field)
         values.update(kwargs=kwargs.items())
-        return request.render("easy_my_coop_website.becomecompanycooperator", values)
+        return request.render("easy_my_coop_website.becomecompanycooperator",
+                              values)
 
     def preRenderThanks(self, values, kwargs):
         """ Allow to be overrided """
@@ -101,6 +102,7 @@ class WebsiteSubscription(http.Controller):
                 values['company_register_number'] = partner.company_register_number
                 values['company_name'] = partner.name
                 values['company_email'] = partner.email
+                values['company_type'] = partner.legal_form
                 # contact person values
                 representative = partner.get_representative()
                 values['firstname'] = representative.firstname
@@ -108,7 +110,6 @@ class WebsiteSubscription(http.Controller):
                 values['gender'] = representative.gender
                 values['email'] = representative.email
                 values['contact_person_function'] = representative.function
-                values['no_registre'] = representative.national_register_number
                 values['birthdate'] = self.get_date_string(representative.birthdate)
                 values['lang'] = representative.lang
                 values['phone'] = representative.phone
@@ -117,7 +118,6 @@ class WebsiteSubscription(http.Controller):
                 values['lastname'] = partner.lastname
                 values['email'] = partner.email
                 values['gender'] = partner.gender
-                values['no_registre'] = partner.national_register_number
                 values['birthdate'] = self.get_date_string(partner.birthdate_date)
                 values['lang'] = partner.lang
                 values['phone'] = partner.phone
@@ -162,6 +162,16 @@ class WebsiteSubscription(http.Controller):
         if not values.get('lang'):
             if company.default_lang_id:
                 values['lang'] = company.default_lang_id.code
+
+        comp = request.env['res.company']._company_default_get()
+        values.update({
+            'display_data_policy': comp.display_data_policy_approval,
+            'data_policy_required': comp.data_policy_approval_required,
+            'data_policy_text': comp.data_policy_approval_text,
+            'display_internal_rules': comp.display_internal_rules_approval,
+            'internal_rules_required': comp.internal_rules_approval_required,
+            'internal_rules_text': comp.internal_rules_approval_text,
+        })
         return values
 
     def get_products_share(self, is_company):
@@ -228,6 +238,15 @@ class WebsiteSubscription(http.Controller):
                                         "fill in the form")
 
                 return request.render(redirect, values)
+            else:
+                confirm_email = kwargs.get('confirm_email')
+                if email != confirm_email:
+                    values = self.fill_values(values, is_company, logged)
+                    values.update(kwargs)
+                    values["error_msg"] = _("The email and the confirmation "
+                                            "email doesn't match.Please check "
+                                            "the given mail addresses")
+                    return request.render(redirect, values)
 
         company = request.website.company_id
         if company.allow_id_card_upload:
@@ -246,17 +265,6 @@ class WebsiteSubscription(http.Controller):
             values["error_msg"] = _("You iban account number"
                                     "is not valid")
             return request.render(redirect, values)
-
-        if not is_company and 'no_registre' in required_fields:
-            no_registre = re.sub('[^0-9a-zA-Z]+', '',
-                                 kwargs.get("no_registre"))
-            valid = sub_req_obj.check_belgian_identification_id(no_registre)
-            if not valid:
-                values = self.fill_values(values, is_company, logged)
-                values["error_msg"] = _("You national register number "
-                                        "is not valid")
-                return request.render(redirect, values)
-            values["no_registre"] = no_registre
 
         # check the subscription's amount
         max_amount = company.subscription_maximum_amount
@@ -339,6 +347,12 @@ class WebsiteSubscription(http.Controller):
         values["already_cooperator"] = already_coop
         values["is_company"] = is_company
 
+        if kwargs.get('data_policy_approved', 'off') == 'on':
+            values['data_policy_approved'] = True
+
+        if kwargs.get('internal_rules_approved', 'off') == 'on':
+            values['internal_rules_approved'] = True
+
         lastname = kwargs.get("lastname").upper()
         firstname = kwargs.get("firstname").title()
 
@@ -358,14 +372,6 @@ class WebsiteSubscription(http.Controller):
                                                            kwargs.get("company_register_number"))
             subscription_id = sub_req_obj.sudo().create_comp_sub_req(values)
         else:
-            no_registre = re.sub('[^0-9a-zA-Z]+', '',
-                                 kwargs.get("no_registre"))
-            values["no_registre"] = no_registre
-            if 'no_registre' in required_fields:
-                no_registre = re.sub('[^0-9a-zA-Z]+', '',
-                                     kwargs.get("no_registre"))
-                values["no_registre"] = no_registre
-
             subscription_id = sub_req_obj.sudo().create(values)
 
         if subscription_id:

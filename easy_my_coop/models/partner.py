@@ -4,17 +4,6 @@ from odoo import api, fields, models
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-#     def _auto_init(self, cr, context=None):
-#         """
-#             Convert the column birthdate into date if it's not the case to avoid warning and data loss with orm conversion
-#         """
-#         cr.execute("select data_type from information_schema.columns where table_name = 'res_partner' and column_name= 'birthdate';")
-#         res = cr.fetchone()
-#         if not 'date' in res:
-#             cr.execute("ALTER TABLE res_partner ALTER COLUMN birthdate TYPE date USING birthdate::date;")
-#
-#         return super(ResPartner, self)._auto_init(cr, context=context)
-
     @api.multi
     def _invoice_total(self):
         account_invoice_report = self.env['account.invoice.report']
@@ -138,6 +127,10 @@ class ResPartner(models.Model):
     subscription_request_ids = fields.One2many('subscription.request',
                                                'partner_id',
                                                string="Subscription request")
+    legal_form = fields.Selection([('', '')],
+                                  string="Legal form")
+    data_policy_approved = fields.Boolean(string="Approved Data Policy")
+    internal_rules_approved = fields.Boolean(string="Approved Internal Rules")
 
     @api.multi
     @api.depends('subscription_request_ids.state')
@@ -161,9 +154,9 @@ class ResPartner(models.Model):
     def get_representative(self):
         return self.child_ids.filtered('representative')
 
-    def get_cooperator_from_nin(self, national_id_number):
+    def get_cooperator_from_email(self, email):
         return self.search([('cooperator', '=', True),
-                            ('national_register_number', '=', national_id_number)])
+                            ('email', '=', email)])
 
     def get_cooperator_from_crn(self, company_register_number):
         return self.search([('cooperator', '=', True),
