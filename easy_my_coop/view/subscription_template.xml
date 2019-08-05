@@ -77,7 +77,7 @@
 	                               t-att-checked="already_cooperator"/>
                 		</div>
 			           
-			           <div name="email_from_container" t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+			            <div name="email_container" t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="email">Email</label>
 			                <div class="col-md-7 col-sm-8 bottom-line" style="padding-bottom:20px">
 			                    <input type="email" class="form-control mandatory-field" name="email" 
@@ -85,7 +85,16 @@
 			                    t-attf-value="#{email or ''}" placeholder="didier.bourdon@bees-coop.be"/>
 			                </div>
 			            </div>
-
+						
+						<div name="confirm_email_container" t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+			                <label class="col-md-3 col-sm-4 control-label" for="confirm_email">Confirm Email</label>
+			                <div class="col-md-7 col-sm-8 bottom-line" style="padding-bottom:20px">
+			                    <input type="confirm_email" class="form-control mandatory-field" name="confirm_email" 
+			                    required="required" t-att-readonly="logged"
+			                    t-attf-value="#{confirm_email or ''}" placeholder="didier.bourdon@bees-coop.be"/>
+			                </div>
+			            </div>
+			            
 			            <div t-attf-class="form-group #{error and 'firstname' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="name">First Name</label>
 			                <div class="col-md-7 col-sm-8" style="padding-top:5px">
@@ -382,6 +391,14 @@
 			                </div>
 			            </div>
 			            
+			            <div t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+			                <label class="col-md-3 col-sm-4 control-label" for="confirm_email">Confirm Email</label>
+			                <div class="col-md-7 col-sm-8 bottom-line" style="padding-bottom:20px">
+			                    <input type="confirm_email" class="form-control mandatory-field" name="confirm_email" 
+			                    required="required" t-att-readonly="logged"
+			                    t-attf-value="#{confirm_email or ''}" placeholder="didier.bourdon@bees-coop.be"/>
+			                </div>
+			            </div>
 			            <div t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}">
 			                <label class="col-md-3 col-sm-4 control-label" for="iban">Bank Account Number</label>
 			                <div class="col-md-7 col-sm-8">

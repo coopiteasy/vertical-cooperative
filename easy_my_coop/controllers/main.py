@@ -13,8 +13,8 @@ _TECHNICAL = ['view_from', 'view_callback']
 _BLACKLIST = ['id', 'create_uid', 'create_date', 'write_uid', 'write_date',
               'user_id', 'active']
 
-_COOP_FORM_FIELD = ['email', 'firstname', 'lastname', 'birthdate', 'iban',
-                    'share_product_id', 'address', 'city',
+_COOP_FORM_FIELD = ['email', 'confirm_email', 'firstname', 'lastname',
+                    'birthdate', 'iban', 'share_product_id', 'address', 'city',
                     'zip_code', 'country_id', 'phone', 'lang', 'nb_parts',
                     'total_parts', 'error_msg']
 
@@ -239,6 +239,15 @@ class WebsiteSubscription(http.Controller):
                                         "fill in the form")
 
                 return request.website.render(redirect, values)
+            else:
+                confirm_email = kwargs.get('confirm_email')
+                if email != confirm_email:
+                    values = self.fill_values(values, is_company, logged)
+                    values.update(kwargs)
+                    values["error_msg"] = _("The email and the confirmation "
+                                            "email doesn't match.Please check "
+                                            "the given mail addresses")
+                    return request.website.render(redirect, values)
 
         company = request.website.company_id
         if company.allow_id_card_upload:
