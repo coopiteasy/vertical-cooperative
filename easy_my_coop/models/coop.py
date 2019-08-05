@@ -15,7 +15,7 @@ _REQUIRED = ['email',
              'city',
              'iban',
              'no_registre',
-             'gender']  # Could be improved including required from model
+             'gender']
 
 
 @api.model
@@ -29,10 +29,16 @@ class SubscriptionRequest(models.Model):
     _description = 'Subscription Request'
 
     def get_required_field(self):
-        return _REQUIRED
+        required_fields = _REQUIRED
+        company = self.env['res.company']._company_default_get()
+        if company.data_policy_approval_required:
+            required_fields.append('data_policy_approved')
+        if company.internal_rules_approval_required:
+            required_fields.append('internal_rules_approved')
+        return required_fields
 
     def get_mail_template_notif(self):
-        return'easy_my_coop.email_template_confirmation'
+        return 'easy_my_coop.email_template_confirmation'
 
     def is_member(self, vals, cooperator):
         if cooperator.member:
@@ -47,12 +53,12 @@ class SubscriptionRequest(models.Model):
 
         if not vals.get('partner_id'):
             cooperator = False
-            if vals.get('no_registre'):
-                cooperator = partner_obj.get_cooperator_from_nin(
-                                            vals.get('no_registre'))
+            if vals.get('email'):
+                cooperator = partner_obj.get_cooperator_from_email(
+                                            vals.get('email'))
             if cooperator:
                 # TODO remove the following line of code once it has
-                # been found a way to avoid dubble encoding
+                # been found a way to avoid double encoding
                 cooperator = cooperator[0]
                 vals['type'] = 'subscription'
 
@@ -90,22 +96,6 @@ class SubscriptionRequest(models.Model):
 
         return subscr_request
 
-    def check_belgian_identification_id(self, nat_register_num):
-        if not self.check_empty_string(nat_register_num):
-            return False
-        if len(nat_register_num) != 11:
-            return False
-        if not nat_register_num.isdigit():
-            return False
-        birthday_number = nat_register_num[0:9]
-        controle = nat_register_num[9:11]
-        check_controle = 97 - (int(birthday_number) % 97)
-        if int(check_controle) != int(controle):
-            check_controle = 97 - ((2000000000 + int(birthday_number)) % 97)
-            if int(check_controle) != int(controle):
-                return False
-        return True
-
     def check_empty_string(self, value):
         if value is None or value is False or value == '':
             return False
@@ -120,17 +110,10 @@ class SubscriptionRequest(models.Model):
         return validated
 
     @api.multi
-    @api.depends('iban', 'no_registre', 'skip_control_ng', 'is_company')
+    @api.depends('iban', 'skip_control_ng', 'is_company')
     def _validated_lines(self):
         for sub_request in self:
             validated = self.check_iban(sub_request.iban)
-
-            if validated and (sub_request.skip_control_ng or
-                              self.check_belgian_identification_id(
-                                sub_request.no_registre)):
-                validated = True
-            else:
-                validated = False
             sub_request.validated = validated
 
     @api.multi
@@ -235,9 +218,6 @@ class SubscriptionRequest(models.Model):
     phone = fields.Char(string='Phone',
                         readonly=True,
                         states={'draft': [('readonly', False)]})
-    no_registre = fields.Char(string='National Register Number',
-                              readonly=True,
-                              states={'draft': [('readonly', False)]})
     user_id = fields.Many2one('res.users',
                               string='Responsible',
                               readonly=True)
@@ -284,11 +264,7 @@ class SubscriptionRequest(models.Model):
     company_register_number = fields.Char(string='Company register number',
                                           readonly=True,
                                           states={'draft': [('readonly', False)]})
-    company_type = fields.Selection([('scrl', 'SCRL'),
-                                     ('asbl', 'ASBL'),
-                                     ('sprl', 'SPRL'),
-                                     ('sa', 'SA'),
-                                     ('other', 'Other')],
+    company_type = fields.Selection([('', '')],
                                     string="Company type",
                                     readonly=True,
                                     states={'draft': [('readonly', False)]})
@@ -336,13 +312,20 @@ class SubscriptionRequest(models.Model):
                               default="website",
                               readonly=True,
                               states={'draft': [('readonly', False)]})
+    data_policy_approved = fields.Boolean(
+        string='Data Policy Approved',
+        default=False,
+    )
+    internal_rules_approved = fields.Boolean(
+        string='Approved Internal Rules',
+        default=False,
+    )
     _order = "id desc"
 
     def get_person_info(self, partner):
         self.firstname = partner.firstname
         self.name = partner.name
         self.lastname = partner.lastname
-        self.no_registre = partner.national_register_number
         self.email = partner.email
         self.birthdate = partner.birthdate_date
         self.gender = partner.gender
@@ -401,11 +384,11 @@ class SubscriptionRequest(models.Model):
         return res
 
     def send_capital_release_request(self, invoice):
-        invoice_email_template = self.env['mail.template'].search([('name', '=', 'Request to Release Capital - Send by Email')])[0]
+        email_template = self.env.ref('email_template_release_capital', False)
 
         # we send the email with the capital release request in attachment
         # TODO remove sudo() and give necessary access right
-        invoice_email_template.sudo().send_mail(invoice.id, True)
+        email_template.sudo().send_mail(invoice.id, True)
         invoice.sent = True
 
     def get_journal(self):
@@ -459,7 +442,10 @@ class SubscriptionRequest(models.Model):
                         'customer': self.share_product_id.customer,
                         'out_inv_comm_algorithm': 'random',
                         'country_id': self.country_id.id,
-                        'lang': self.lang}
+                        'lang': self.lang,
+                        'data_policy_approved': self.data_policy_approved,
+                        'internal_rules_approved': self.internal_rules_approved
+                        }
         return partner_vals
 
     def get_partner_vals(self):
@@ -468,12 +454,14 @@ class SubscriptionRequest(models.Model):
                         'zip': self.zip_code, 'email': self.email,
                         'gender': self.gender, 'cooperator': True,
                         'city': self.city, 'phone': self.phone,
-                        'national_register_number': self.no_registre,
                         'out_inv_comm_type': 'bba',
                         'out_inv_comm_algorithm': 'random',
                         'country_id': self.country_id.id, 'lang': self.lang,
                         'birthdate_date': self.birthdate,
-                        'customer': self.share_product_id.customer}
+                        'customer': self.share_product_id.customer,
+                        'data_policy_approved': self.data_policy_approved,
+                        'internal_rules_approved': self.internal_rules_approved
+                        }
         return partner_vals
 
     def create_coop_partner(self):
@@ -514,8 +502,8 @@ class SubscriptionRequest(models.Model):
                                   ' checked please select a cooperator.'))
             elif self.is_company and self.company_register_number:
                 domain = [('company_register_number', '=', self.company_register_number)] #noqa
-            elif not self.is_company and self.no_registre:
-                domain = [('national_register_number', '=', self.no_registre)]
+            elif not self.is_company and self.email:
+                domain = [('email', '=', self.email)]
 
             if domain:
                 partner = partner_obj.search(domain)
@@ -527,8 +515,8 @@ class SubscriptionRequest(models.Model):
 
         if self.is_company and not partner.has_representative():
             contact = False
-            if self.no_registre:
-                domain = [('national_register_number', '=', self.no_registre)]
+            if self.email:
+                domain = [('email', '=', self.email)]
                 contact = partner_obj.search(domain)
                 if contact:
                     contact.type = 'representative'
@@ -540,7 +528,6 @@ class SubscriptionRequest(models.Model):
                                 'street': self.address, 'gender': self.gender,
                                 'zip': self.zip_code, 'city': self.city,
                                 'phone': self.phone, 'email': self.email,
-                                'national_register_number': self.no_registre,
                                 'country_id': self.country_id.id,
                                 'out_inv_comm_type': 'bba',
                                 'out_inv_comm_algorithm': 'random',
@@ -549,7 +536,10 @@ class SubscriptionRequest(models.Model):
                                 'parent_id': partner.id,
                                 'representative': True,
                                 'function': self.contact_person_function,
-                                'type': 'representative'}
+                                'type': 'representative',
+                                'data_policy_approved': self.data_policy_approved,
+                                'internal_rules_approved': self.internal_rules_approved
+                                }
                 contact = partner_obj.create(contact_vals)
             else:
                 if len(contact) > 1:
