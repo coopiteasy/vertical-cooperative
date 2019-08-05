@@ -20,6 +20,12 @@
                        <field name="default_lang_id"/>
                        <field name="board_representative"/>
                        <field name="signature_scan"/>
+                       <field name="display_data_policy_approval"/>
+                       <field name="data_policy_approval_required"/>
+                       <field name="data_policy_approval_text"/>
+                       <field name="display_internal_rules_approval"/>
+                       <field name="internal_rules_approval_required"/>
+                       <field name="internal_rules_approval_text"/>
                    </group>
                </group>
            </field>

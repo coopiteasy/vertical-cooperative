@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).#
 {
     "name": "Easy My Coop Fr",
-    "version": "12.0.1.0.0",
+    "version": "12.0.1.0.1",
     "depends": ["easy_my_coop",
                 "l10n_fr"],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
@@ -16,7 +16,6 @@
     """,
     'data': [
         'views/subscription_template.xml',
-        # 'views/layout_template.xml',
         'views/certificate_template.xml'
     ],
     'installable': True,
