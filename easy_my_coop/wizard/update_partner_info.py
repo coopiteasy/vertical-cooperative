@@ -42,7 +42,7 @@ class PartnerUpdateInfo(models.TransientModel):
                     coop_vals = {}
                     sub_reqs = coop.subscription_request_ids.filtered(lambda r: r.state in ['done', 'paid'])
                     if sub_reqs:
-                        sub_req = sub_reqs
+                        sub_req = sub_reqs[0]
                         if self.legal_form:
                             coop_vals['legal_form'] = sub_req.company_type
                             coop.write(coop_vals)
@@ -57,7 +57,7 @@ class PartnerUpdateInfo(models.TransientModel):
                     coop_vals = {}
                     sub_reqs = coop.subscription_request_ids.filtered(lambda r: r.state in ['done', 'paid'])
                     if sub_reqs:
-                        sub_req = sub_reqs
+                        sub_req = sub_reqs[0]
                         if self.birthdate:
                             coop_vals['birthdate_date'] = sub_req.birthdate
                         coop.write(coop_vals)
