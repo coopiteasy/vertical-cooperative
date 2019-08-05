@@ -20,7 +20,7 @@
 ##############################################################################
 {
     "name": "Easy My Coop CH",
-    "version": "1.0",
+    "version": "12.0.1.0.2",
     "depends": ["easy_my_coop",
                 "l10n_ch"],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
