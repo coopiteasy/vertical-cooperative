@@ -33,6 +33,7 @@ class PartnerUpdateInfo(models.TransientModel):
         partner_obj = self.env['res.partner']
         cooperator = self.cooperator
         coop_vals = {}
+        req_filter = "lambda r: r.type == 'done'"
 
         if self.all:
             if self.legal_form or self.representative_function:
@@ -40,8 +41,9 @@ class PartnerUpdateInfo(models.TransientModel):
                                             ('is_company', '=', True)])
                 for coop in coops:
                     coop_vals = {}
-                    if coop.subscription_request_ids:
-                        sub_req = coop.subscription_request_ids[0]
+                    sub_reqs = coop.subscription_request_ids.filtered(req_filter)
+                    if sub_reqs:
+                        sub_req = sub_reqs
                         if self.legal_form:
                             coop_vals['legal_form'] = sub_req.company_type
                             coop.write(coop_vals)
@@ -54,8 +56,9 @@ class PartnerUpdateInfo(models.TransientModel):
                                             ('is_company', '=', False)])
                 for coop in coops:
                     coop_vals = {}
-                    if coop.subscription_request_ids:
-                        sub_req = coop.subscription_request_ids[0]
+                    sub_reqs = coop.subscription_request_ids.filtered(req_filter)
+                    if sub_reqs:
+                        sub_req = sub_reqs
                         if self.birthdate:
                             coop_vals['birthdate_date'] = sub_req.birthdate
                         coop.write(coop_vals)
