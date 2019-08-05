@@ -10,8 +10,10 @@
                         Update Cooperator Info.
                     </p>
                     <group>
+                    	<field name="all"/>
+                    	<field name="birthdate"/>
                     	<field name="cooperator" readonly="True"/>
-                    	<field name="register_number"/>
+                    	<field name="register_number" attrs="{'required':[('all', '=', False)]}"/>
                     </group>
                     <footer>
                         <button name="update" string="Update Info" type="object" class="btn-primary"/>
@@ -30,6 +32,6 @@
             <field name="target">new</field>
             <field name="groups_id" eval="[(4,ref('easy_my_coop.group_energiris_manager'))]"/>
         </record>
-
+		<menuitem action="action_view_update_partner_info" name="Update coop partner" id="menu_view_update_partner_info"  parent="menu_easy_my_coop_main_subscription" sequence="60" groups="base.group_system"/>
     </data>
 </openerp>
