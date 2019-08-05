@@ -12,6 +12,8 @@
                     <group>
                     	<field name="all"/>
                     	<field name="birthdate"/>
+                    	<field name="legal_form"/>
+                    	<field name="representative_function"/>
                     	<field name="cooperator" readonly="True"/>
                     	<field name="register_number" attrs="{'required':[('all', '=', False)]}"/>
                     </group>
