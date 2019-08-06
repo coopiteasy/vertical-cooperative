@@ -20,8 +20,3 @@ class SubscriptionRequest(models.Model):
             req_fields.remove('iban')
 
         return req_fields
-
-    def check_iban(self, iban):
-        if iban:
-            return super(SubscriptionRequest, self).check_iban(iban)
-        return True
