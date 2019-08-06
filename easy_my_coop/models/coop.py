@@ -106,10 +106,11 @@ class SubscriptionRequest(models.Model):
 
     def check_iban(self, iban):
         validated = True
-        try:
-            validate_iban(iban)
-        except ValidationError:
-            validated = False
+        if iban:
+            try:
+                validate_iban(iban)
+            except ValidationError:
+                validated = False
         return validated
 
     @api.multi
