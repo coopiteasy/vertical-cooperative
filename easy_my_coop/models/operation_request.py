@@ -248,12 +248,12 @@ class operation_request(models.Model):
                                             " shares is not yet implemented"))
             elif rec.operation_type == 'transfer':
                 sequence_id = self.env.ref('easy_my_coop.sequence_subscription', False)
+                partner_vals = {'member': True}
                 if rec.receiver_not_member:
                     partner = rec.subscription_request.create_coop_partner()
                     # get cooperator number
                     sub_reg_num = int(sequence_id.next_by_id())
                     partner_vals = sub_request.get_eater_vals(partner, rec.share_product_id)
-                    partner_vals['member'] = True
                     partner_vals['cooperator_register_number'] = sub_reg_num
                     partner.write(partner_vals)
                     rec.partner_id_to = partner
@@ -266,7 +266,6 @@ class operation_request(models.Model):
                         partner_vals = sub_request.get_eater_vals(
                                             rec.partner_id_to,
                                             rec.share_product_id)
-                        partner_vals['member'] = True
                         partner_vals['old_member'] = False
                         rec.partner_id_to.write(partner_vals)
                 # remove the parts to the giver
@@ -285,7 +284,7 @@ class operation_request(models.Model):
                 raise ValidationError(_("This operation is not yet"
                                         " implemented."))
 
-            sequence_operation = self.env.ref('easy_my_coop.sequence_register_operation', False)
+            sequence_operation = self.env.ref('easy_my_coop.sequence_register_operation', False) #noqa
             sub_reg_operation = sequence_operation.next_by_id()
 
             values['name'] = sub_reg_operation
@@ -295,10 +294,12 @@ class operation_request(models.Model):
 
             # send mail to the receiver
             if rec.operation_type == 'transfer':
-                certificat_email_template = self.env.ref('easy_my_coop.email_template_share_transfer', False)
-                certificat_email_template.send_mail(rec.partner_id_to.id, False)
+                mail_template = 'easy_my_coop.email_template_share_transfer'
+                cert_email_template = self.env.ref(mail_template, False)
+                cert_email_template.send_mail(rec.partner_id_to.id, False)
 
             self.env['subscription.register'].create(values)
 
-            certificat_email_template = self.env.ref('easy_my_coop.email_template_share_update', False)
-            certificat_email_template.send_mail(rec.partner_id.id, False)
+            mail_template = 'easy_my_coop.email_template_share_update'
+            cert_email_template = self.env.ref(mail_template, False)
+            cert_email_template.send_mail(rec.partner_id.id, False)
