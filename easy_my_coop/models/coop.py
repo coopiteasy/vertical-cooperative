@@ -384,7 +384,7 @@ class SubscriptionRequest(models.Model):
         return res
 
     def send_capital_release_request(self, invoice):
-        email_template = self.env.ref('email_template_release_capital', False)
+        email_template = self.env.ref('easy_my_coop.email_template_release_capital', False)
 
         # we send the email with the capital release request in attachment
         # TODO remove sudo() and give necessary access right
