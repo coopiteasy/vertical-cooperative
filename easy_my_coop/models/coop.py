@@ -14,7 +14,6 @@ _REQUIRED = ['email',
              'zip_code',
              'city',
              'iban',
-             'no_registre',
              'gender']
 
 
