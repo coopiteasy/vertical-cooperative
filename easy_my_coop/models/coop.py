@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from odoo import api, fields, models, _
-from odoo.addons.base_iban.models.res_partner_bank import validate_iban
+from addons.base_iban.models.res_partner_bank import validate_iban
 from odoo.exceptions import UserError, ValidationError
 
 _REQUIRED = ['email',
