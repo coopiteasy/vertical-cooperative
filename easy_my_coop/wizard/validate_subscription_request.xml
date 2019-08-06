@@ -16,15 +16,10 @@
         </field>
     </record>
 
-    <record id="action_validate_subscription_request" model="ir.actions.act_window">
-        <field name="name">Validate subscription request</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="res_model">validate.subscription.request</field>
-        <field name="src_model">subscription.request</field>
-        <field name="view_type">form</field>
-        <field name="view_mode">form</field>
-        <field name="key2">client_action_multi</field>
-        <field name="target">new</field>
-        <field name="groups_id" eval="[(4,ref('easy_my_coop.group_easy_my_coop_manager'))]"/>
-    </record>
+	<act_window id="action_account_invoice_confirm"
+            multi="True"
+            key2="client_action_multi" name="Validate subscription request"
+            res_model="validate.subscription.request" src_model="subscription.request"
+            view_mode="form" target="new" view_type="form" />
+
 </odoo>
