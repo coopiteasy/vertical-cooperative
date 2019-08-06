@@ -36,8 +36,11 @@ class SubscriptionRequest(models.Model):
             required_fields.append('internal_rules_approved')
         return required_fields
 
-    def get_mail_template_notif(self):
-        return 'easy_my_coop.email_template_confirmation'
+    def get_mail_template_notif(self, is_company=False):
+        if is_company:
+            return 'easy_my_coop.email_template_confirmation_company'
+        else:
+            return 'easy_my_coop.email_template_confirmation'
 
     def is_member(self, vals, cooperator):
         if cooperator.member:
@@ -48,7 +51,7 @@ class SubscriptionRequest(models.Model):
     @api.model
     def create(self, vals):
         partner_obj = self.env['res.partner']
-        mail_template = self.get_mail_template_notif()
+        mail_template = self.get_mail_template_notif(False)
 
         if not vals.get('partner_id'):
             cooperator = False
@@ -81,6 +84,7 @@ class SubscriptionRequest(models.Model):
 
     @api.model
     def create_comp_sub_req(self, vals):
+        mail_template = self.get_mail_template_notif(True)
         vals["name"] = vals['company_name']
         if not vals.get('partner_id'):
             cooperator = self.env['res.partner'].get_cooperator_from_crn(vals.get('company_register_number'))
@@ -90,7 +94,7 @@ class SubscriptionRequest(models.Model):
                 vals['already_cooperator'] = True
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
-        confirmation_mail_template = self.env.ref('easy_my_coop.email_template_confirmation_company', False)
+        confirmation_mail_template = self.env.ref(mail_template, False)
         confirmation_mail_template.send_mail(subscr_request.id, True)
 
         return subscr_request
@@ -383,7 +387,8 @@ class SubscriptionRequest(models.Model):
         return res
 
     def send_capital_release_request(self, invoice):
-        email_template = self.env.ref('easy_my_coop.email_template_release_capital', False)
+        template = 'easy_my_coop.email_template_release_capital'
+        email_template = self.env.ref(template, False)
 
         # we send the email with the capital release request in attachment
         # TODO remove sudo() and give necessary access right
@@ -520,24 +525,25 @@ class SubscriptionRequest(models.Model):
                 if contact:
                     contact.type = 'representative'
             if not contact:
-                contact_vals = {'name': self.name,
-                                'firstname': self.firstname,
-                                'lastname': self.lastname, 'customer': False,
-                                'is_company': False, 'cooperator': True,
-                                'street': self.address, 'gender': self.gender,
-                                'zip': self.zip_code, 'city': self.city,
-                                'phone': self.phone, 'email': self.email,
-                                'country_id': self.country_id.id,
-                                'out_inv_comm_type': 'bba',
-                                'out_inv_comm_algorithm': 'random',
-                                'lang': self.lang,
-                                'birthdate_date': self.birthdate,
-                                'parent_id': partner.id,
-                                'representative': True,
-                                'function': self.contact_person_function,
-                                'type': 'representative',
-                                'data_policy_approved': self.data_policy_approved,
-                                'internal_rules_approved': self.internal_rules_approved
+                contact_vals = {
+                    'name': self.name,
+                    'firstname': self.firstname,
+                    'lastname': self.lastname, 'customer': False,
+                    'is_company': False, 'cooperator': True,
+                    'street': self.address, 'gender': self.gender,
+                    'zip': self.zip_code, 'city': self.city,
+                    'phone': self.phone, 'email': self.email,
+                    'country_id': self.country_id.id,
+                    'out_inv_comm_type': 'bba',
+                    'out_inv_comm_algorithm': 'random',
+                    'lang': self.lang,
+                    'birthdate_date': self.birthdate,
+                    'parent_id': partner.id,
+                    'representative': True,
+                    'function': self.contact_person_function,
+                    'type': 'representative',
+                    'data_policy_approved': self.data_policy_approved,
+                    'internal_rules_approved': self.internal_rules_approved
                                 }
                 contact = partner_obj.create(contact_vals)
             else:
@@ -617,8 +623,8 @@ class SubscriptionRegister(models.Model):
 
     @api.multi
     def _compute_total_line(self):
-        for register_line in self:
-            register_line.total_amount_line = register_line.share_unit_price * register_line.quantity
+        for line in self:
+            line.total_amount_line = line.share_unit_price * line.quantity
 
     name = fields.Char(string='Number Operation',
                        required=True,
