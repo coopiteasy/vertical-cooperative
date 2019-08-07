@@ -75,7 +75,7 @@
 	       					<field name="partner_id" options="{'no_create':True}"/>
 	       					<field name="type"/>
 	       					<field name="lang"/>
-	       					<field name="validated"/>
+	       					<field name="validated" invisible="True"/>
 	       					<field name="skip_control_ng"/>
 	       				</group>
 	       			</group>
