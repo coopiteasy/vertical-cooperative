@@ -5,9 +5,10 @@
 
 {
     "name": "Easy My Coop",
-    "version": "12.0.2.0.1",
+    "version": "12.0.2.0.2",
     "depends": [
         "base",
+        "web",
         "sale",
         "account",
         "base_iban",
@@ -43,6 +44,7 @@
         'views/res_company_view.xml',
         'views/account_journal_view.xml',
         'report/easy_my_coop_report.xml',
+        'report/layout.xml',
         'report/cooperator_invoice_G002.xml',
         'report/cooperator_certificat_G001.xml',
         'report/cooperator_subscription_G001.xml',
