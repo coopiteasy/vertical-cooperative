@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="emc_external_layout_standard" inherit_id="web.external_layout_standard" primary="True">
+        <xpath expr="//div[hasclass('header')]//div//img" position="replace">
+            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="min-height: 75px; max-height: 75px" alt="Logo"/>
+        </xpath>
+    </template>
+
+</odoo>
