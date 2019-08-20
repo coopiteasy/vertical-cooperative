@@ -2,9 +2,9 @@ import base64
 from datetime import datetime
 import re
 
-from openerp import http
-from openerp.http import request
-from openerp.tools.translate import _
+from odoo import http
+from odoo.http import request
+from odoo.tools.translate import _
 
 # Only use for behavior, don't stock it
 _TECHNICAL = ['view_from', 'view_callback']
@@ -280,7 +280,7 @@ class WebsiteSubscription(http.Controller):
                 max_amount = max_amount - partner.total_value
                 if company.unmix_share_type:
                     share = self.get_selected_share(kwargs)
-                    if int(partner.cooperator_type) != share.id:
+                    if partner.cooperator_type != share.default_code:
                         values = self.fill_values(values, is_company, logged)
                         values["error_msg"] = (_("You can't subscribe two "
                                                  "different types of share"))
