@@ -1,0 +1,27 @@
+# Copyright 2019      Coop IT Easy SCRLfs (<http://www.coopiteasy.be>)
+# - Houssine BAKKALI - <houssine@coopiteasy.be>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+
+{
+    "name": "Easy My Coop Bond and Subordinated Loan Issues",
+    "version": "12.0.1.0.1",
+    "depends": [
+        "easy_my_coop",
+    ],
+    "author": "Coop IT Easy SCRLfs",
+    "category": "Cooperative management",
+    "website": "http://www.coopiteasy.be",
+    "license": "AGPL-3",
+    "description": """
+    This module allows to manage the bonds and subordinated loans subscription
+    life cycle.
+    """,
+    'data': [
+        'security/ir.model.access.csv',
+        'views/term_view.xml',
+        'views/loan_view.xml',
+        'views/partner_view.xml',
+        'data/mail_template_data.xml',
+    ],
+    'installable': True,
+}

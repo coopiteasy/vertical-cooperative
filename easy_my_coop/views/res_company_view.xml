@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 	<record model="ir.ui.view" id="view_company_inherit_form2">
            <field name="name">res.company.form.easymy.coop</field>
