@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 	<record id="operation_request_tree" model="ir.ui.view">
            <field name="name">operation.request.tree</field>
@@ -102,5 +103,5 @@
            <field name="view_id" ref="operation_request_tree"/>
        </record>
 
-	<menuitem action="operation_request_action" name="Operation request" id="menu_easy_my_coop_operation_request" parent="menu_easy_my_coop_main_subscription" sequence="20" groups="easy_my_coop.group_easy_my_coop_manager"/>
+	<menuitem action="operation_request_action" name="Operation request" id="menu_easy_my_coop_operation_request" parent="menu_easy_my_coop_main_subscription" sequence="30" groups="easy_my_coop.group_easy_my_coop_manager"/>
 </odoo>
