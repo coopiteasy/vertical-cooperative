@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Mail template are declared in a NOUPDATE block
+         so users can freely customize/delete them -->
+    <data noupdate="1">
+    <!--<data>-->
+        <record id="loan_subscription_confirmation" model="mail.template">
+            <field name="name">Loan Subscription Confirmation Email</field>
+            <field name="email_from">${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}</field>
+            <field name="subject">${object.company_id.name} Loan subscription confirmation (Ref ${object.loan_issue_id.name or 'n/a'})</field>
+            <field name="email_to">${object.partner_id.email}</field>
+            <field name="reply_to">${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}</field>
+            <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello ${object.partner_id.name},</p>
+
+    <p>Your request will be soon processed by our team. If all the provided info are correct you will soon receive the payment information in another email</p>
+
+    <br/>
+    <p>If you have any question, do not hesitate to contact us.</p>
+    <br/>
+
+    <p>Sustainably your,</p>
+    <p>${object.company_id.name}.</p>
+
+    % if object.company_id.street:
+        ${object.company_id.street}
+    % endif
+    % if object.company_id.street2:
+        ${object.company_id.street2}<br/>
+    % endif
+    % if object.company_id.city or object.company_id.zip:
+        ${object.company_id.zip} ${object.company_id.city}<br/>
+    % endif
+    % if object.company_id.country_id:
+        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>
+    % endif
+    % if object.company_id.phone:
+        Phone:&nbsp; ${object.company_id.phone}
+    % endif
+
+    % if object.company_id.website:
+        <div>
+            Web :&nbsp;<a href="${object.company_id.website}">${object.company_id.website}</a>
+        </div>
+    %endif
+
+    <div>
+        <img src=${object.company_id.logo_url}>
+    </div>
+</div>
+            ]]></field>
+        </record>
+        <!--Request the payment of the subscribed loan issue -->
+        <record id="loan_issue_payment_request" model="mail.template">
+            <field name="name">Loan Issue Payment Request - Send by Email</field>
+            <field name="email_from">${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}</field>
+            <field name="subject">${object.company_id.name} Payment request (Ref ${object.loan_issue_id.name or 'n/a'})</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="reply_to">${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}</field>
+            <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello ${object.partner_id.name},</p>
+
+    <p>Find here after the necessary information for the payment. We kindly remind you that your subscription will be effective only once we received the payment.</p>
+
+    <p>Amount: ${object.amount} ${object.loan_issue_id.company_currency_id.symbol}</p>
+    <p>Account number: ${object.company_id.partner_id.bank_ids[0].sanitized_acc_number}</p>
+    <p>Communication: ${object.loan_issue_id.name} + ${object.partner_id.name}</p>
+
+    <p>Sustainably your,</p>
+    <p>${object.company_id.name}.</p>
+
+    % if object.company_id.street:
+        ${object.company_id.street}
+    % endif
+    % if object.company_id.street2:
+        ${object.company_id.street2}<br/>
+    % endif
+    % if object.company_id.city or object.company_id.zip:
+        ${object.company_id.zip} ${object.company_id.city}<br/>
+    % endif
+    % if object.company_id.country_id:
+        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>
+    % endif
+    % if object.company_id.phone:
+        Phone:&nbsp; ${object.company_id.phone}
+    % endif
+
+    % if object.company_id.website:
+        <div>
+            Web :&nbsp;<a href="${object.company_id.website}">${object.company_id.website}</a>
+        </div>
+    %endif
+
+    <div>
+        <img src=${object.company_id.logo_url}>
+    </div>
+</div>
+            ]]></field>
+        </record>
+
+    </data>
+</odoo>
