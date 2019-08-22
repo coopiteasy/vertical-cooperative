@@ -71,6 +71,7 @@ class account_invoice(models.Model):
     def get_membership_vals(self):
         # flag the partner as an effective member
         # if not yet cooperator we generate a cooperator number
+        vals = {}
         if self.partner_id.member is False \
                 and self.partner_id.old_member is False:
             sequence_id = self.get_sequence_register()
