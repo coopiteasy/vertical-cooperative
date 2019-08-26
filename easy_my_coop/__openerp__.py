@@ -30,6 +30,7 @@
     'data': [
         'security/easy_my_coop_security.xml',
         'security/ir.model.access.csv',
+        # 'wizard/cooperative_history_wizard.xml',   # not loaded, why?
         'wizard/create_subscription_from_partner.xml',
         'wizard/update_partner_info.xml',
         'wizard/validate_subscription_request.xml',
@@ -44,6 +45,7 @@
         'view/product_view.xml',
         'view/res_company_view.xml',
         'view/account_journal_view.xml',
+        'view/menu.xml',
         'data/easy_my_coop_data.xml',
         'report/easy_my_coop_report.xml',
         'report/cooperator_invoice_G002.xml',

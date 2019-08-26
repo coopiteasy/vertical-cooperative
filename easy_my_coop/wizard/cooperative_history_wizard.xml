@@ -35,7 +35,5 @@
             <field name="multi">True</field>
         </record>
 
-		<menuitem id="menu_energiris_reporting" name="Reporting" parent="menu_main_energiris" sequence="20"/>
-		<menuitem id="menu_coop_history_wizard_report" name="Cooperative history report" parent="menu_energiris_reporting" action="action_cooperative_history_wizard" sequence="10"/>
-    </data>
+		</data>
 </openerp>

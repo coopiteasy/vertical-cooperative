@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 	<data>
-		<menuitem name="Easy-My Coop" id="menu_main_easy_my_coop" sequence="40" groups="easy_my_coop.group_energiris_user"/>
-		<menuitem name="Subscription" id="menu_easy_my_coop_main_subscription" parent="menu_main_easy_my_coop" sequence="10" groups="easy_my_coop.group_energiris_manager"/>
-		<menuitem name="Reporting" id="menu_easy_my_coop_main_reporting" parent="menu_main_easy_my_coop" sequence="40" groups="easy_my_coop.group_energiris_manager"/>
-
 		<record id="subscription_request_tree" model="ir.ui.view">
             <field name="name">subscription.request.tree</field>
             <field name="model">subscription.request</field>
@@ -132,7 +128,6 @@
             <field name="search_view_id" ref="view_subscription_request_filter"/>
         </record>
 
-		<menuitem action="subscription_request_action" name="Cooperator Subscription" id="menu_easy_my_coop_subscription_request"  parent="menu_easy_my_coop_main_subscription" sequence="10"/>
 
 		<record id="company_subscription_request_tree" model="ir.ui.view">
             <field name="name">subscription.request.tree</field>
@@ -169,7 +164,6 @@
             <field name="search_view_id" ref="view_subscription_request_filter"/>
         </record>
 
-		<menuitem action="company_subscription_request_action" name="Company Subscription" id="menu_easy_my_coop_company_subscription_request"  parent="menu_easy_my_coop_main_subscription" sequence="12"/>
 
         <record id="share_line_form" model="ir.ui.view">
             <field name="name">share.line.form</field>
@@ -237,6 +231,5 @@
             <field name="view_type">form</field>
         </record>
 
-		<menuitem action="share_line_action" name="Share lines" id="menu_easy_my_coop_share_line"  parent="menu_easy_my_coop_main_subscription" sequence="20" groups="group_energiris_super_manager"/>
 	</data>
 </openerp>
