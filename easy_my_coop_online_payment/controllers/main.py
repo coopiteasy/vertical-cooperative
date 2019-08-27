@@ -47,7 +47,6 @@ class SubscriptionWebsitePayment(website_payment):
             'amount': float(amount),
             'currency_id': int(currency_id),
             'partner_id': partner_id,
-            'release_capital_request': capital_release_request.id,
         }
 
         if len(capital_release_request) > 0:
