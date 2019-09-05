@@ -208,9 +208,14 @@ class WebsiteSubscription(http.Controller):
             redirect = "easy_my_coop_website.becomecompanycooperator"
             email = kwargs.get('company_email')
 
-        if ('g-recaptcha-response' not in kwargs
-                or not request.website.is_captcha_valid(
-                    kwargs['g-recaptcha-response'])):
+        if 'g-recaptcha-response' not in kwargs:
+            values = self.fill_values(values, is_company, logged)
+            values["error_msg"] = _("the captcha has not been validated,"
+                                    " please fill in the captcha")
+
+            return request.render(redirect, values)
+        if not request.website.is_captcha_valid(
+                    kwargs['g-recaptcha-response']):
             values = self.fill_values(values, is_company, logged)
             values["error_msg"] = _("the captcha has not been validated,"
                                     " please fill in the captcha")
@@ -311,7 +316,6 @@ class WebsiteSubscription(http.Controller):
     def share_subscription(self, **kwargs):
         sub_req_obj = request.env['subscription.request']
         attach_obj = request.env['ir.attachment']
-        required_fields = sub_req_obj.sudo().get_required_field()
 
         # List of file to add to ir_attachment once we have the ID
         post_file = []
