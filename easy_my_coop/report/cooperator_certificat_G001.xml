@@ -12,7 +12,7 @@
                     <span>Cooperator Certificate</span>
                 </h2>
 
-                <p class="mt16">
+                <p name="label_coop_number" class="mt16">
                     <span t-field="o.name"/>
                     is recorded in the register of cooperators under number
                     <span t-field="o.cooperator_register_number"/>.
