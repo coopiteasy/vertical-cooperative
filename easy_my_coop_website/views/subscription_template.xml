@@ -86,11 +86,11 @@
 				                </div>
 				            </div>
 				            
-				            <div name="confirm_email_container" t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+				            <div t-if="not logged" name="confirm_email_container" t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
 				                <label class="col-md-3 col-sm-4 control-label" for="confirm_email">Confirm Email</label>
 				                <div class="col-md-7 col-sm-8 bottom-line" style="padding-bottom:20px">
 				                    <input type="confirm_email" class="form-control mandatory-field" name="confirm_email" 
-				                    required="required" t-att-readonly="logged"
+				                    t-att-required="logged" t-att-readonly="logged"
 				                    t-attf-value="#{confirm_email or ''}" placeholder="didier.bourdon@bees-coop.be"/>
 				                </div>
 				            </div>
@@ -379,11 +379,11 @@
 				                    <input type="text" class="form-control mandatory-field" name="company_email" required="True" t-attf-value="#{company_email or ''}" placeholder="administration@beescoop.be"/>
 				                </div>
 				            </div>
-				            <div t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+				            <div t-if="not logged" t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
 				                <label class="col-md-3 col-sm-4 control-label" for="confirm_email">Confirm Email</label>
 				                <div class="col-md-7 col-sm-8 bottom-line" style="padding-bottom:20px">
 				                    <input type="confirm_email" class="form-control mandatory-field" name="confirm_email" 
-				                    required="required" t-att-readonly="logged"
+				                    t-att-required="not logged" t-att-readonly="logged"
 				                    t-attf-value="#{confirm_email or ''}" placeholder="didier.bourdon@bees-coop.be"/>
 				                </div>
 				            </div>
