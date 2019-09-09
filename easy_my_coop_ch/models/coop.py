@@ -4,7 +4,7 @@ from odoo import fields, models
 class SubscriptionRequest(models.Model):
     _inherit = 'subscription.request'
 
-    company_type = fields.Selection([
+    company_type = fields.Selection(selection_add=[
                                     ('ei', 'Individual company'),
                                     ('snc', 'Partnership'),
                                     ('sa', 'Limited company (SA)'),
