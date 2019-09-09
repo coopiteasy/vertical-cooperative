@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	<data>
-		<template id="subscription_i18n_ch" inherit_id="easy_my_coop.becomecooperator" name="Removing fields">
+		<template id="subscription_i18n_ch" inherit_id="easy_my_coop_website.becomecooperator" name="Removing fields">
  			<xpath expr="//label[@for='iban']/.." position="replace">
  				<div t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}">
 	                <label class="col-md-3 col-sm-4 control-label" for="iban">Bank Account Number</label>
@@ -12,7 +12,7 @@
  			</xpath>
 		</template>
 		
-		<template id="company_subscription_i18n_ch" inherit_id="easy_my_coop.becomecompanycooperator" name="Company Removing fields">
+		<template id="company_subscription_i18n_ch" inherit_id="easy_my_coop_website.becomecompanycooperator" name="Company Removing fields">
  			<xpath expr="//label[@for='iban']/.." position="replace">
  				<div t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}">
 	                <label class="col-md-3 col-sm-4 control-label" for="iban">Bank Account Number</label>
