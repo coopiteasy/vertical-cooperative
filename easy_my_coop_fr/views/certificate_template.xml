@@ -2,13 +2,13 @@
 <odoo>
 	<data>
 		<template id="certificate_i18n_fr" inherit_id="easy_my_coop.cooperator_certificat_G001_document" name="French Layout Certificate">
-			<xpath expr="//div[@name='label_coop_number']" position="replace">
-				<div name="label_coop_number" style="position:relative;top:35px;font-size:16;">
+			<xpath expr="//p[@name='label_coop_number']" position="replace">
+				<p name="label_coop_number" class="mt16">
 					<span>Ce document atteste de la souscription de parts sociales au capital de la SAS Coopérative à Capital Variable SuperQuinquin par </span>
 					<b><span t-field="o.name"></span></b>
 					<span>, enregistré(e) sous le <b>numéro de coopérateur </b></span>
 					<span t-field="o.cooperator_register_number"></span>	
-				</div>	
+				</p>	
 			</xpath>
 			
 			<xpath expr="//div[@name='total_table']" position="after">
