@@ -3,7 +3,7 @@ from datetime import datetime
 from openerp import api, fields, models
 
 
-class account_invoice(models.Model):
+class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
     subscription_request = fields.Many2one('subscription.request',
@@ -14,7 +14,7 @@ class account_invoice(models.Model):
     @api.model
     def _prepare_refund(self, invoice, date_invoice=None, date=None,
                         description=None, journal_id=None):
-        values = super(account_invoice, self)._prepare_refund(
+        values = super(AccountInvoice, self)._prepare_refund(
                                         invoice, date_invoice, date,
                                         description, journal_id)
         values['release_capital_request'] = self.release_capital_request
@@ -96,7 +96,7 @@ class account_invoice(models.Model):
     @api.multi
     def confirm_paid(self):
         for invoice in self:
-            super(account_invoice, invoice).confirm_paid()
+            super(AccountInvoice, invoice).confirm_paid()
             # we check if there is an open refund for this invoice. in this
             # case we don't run the process_subscription function as the
             # invoice has been reconciled with a refund and not a payment.
