@@ -270,8 +270,8 @@
 			                        <label>
 			                            <input type="checkbox"
 			                                   name="data_policy_approved"
-			                                   t-att="{'required': 'required'} if data_policy_required else {}"
-			                                   t-attf-value="#{data_policy_approved or ''}"/>
+			                                   t-att-required="data_policy_required"
+			                                   t-att-checked="data_policy_approved"/>
 			                            <t t-raw="data_policy_text"/>
 			                        </label>
 			                    </div>
@@ -285,8 +285,8 @@
 			                        <label>
 			                            <input type="checkbox"
 			                                   name="internal_rules_approved"
-			                                   t-att="{'required': 'required'} if internal_rules_required else {}"
-			                                   t-attf-value="#{internal_rules_approved or ''}"/>
+			                                   t-att-required="internal_rules_required"
+			                                   t-att-checked="internal_rules_approved"/>
 			                            <t t-raw="internal_rules_text"/>
 			                        </label>
 			                    </div>
@@ -601,8 +601,8 @@
                         <label>
                             <input type="checkbox"
                                    name="data_policy_approved"
-                                   t-att="{'required': 'required'} if data_policy_required else {}"
-                                   t-attf-value="#{data_policy_approved or ''}"/>
+                                   t-att-required="data_policy_required"
+                                   t-att-checked="data_policy_approved"/>
                             <t t-raw="data_policy_text"/>
                         </label>
                     </div>
@@ -616,8 +616,8 @@
                         <label>
                             <input type="checkbox"
                                    name="internal_rules_approved"
-                                   t-att="{'required': 'required'} if internal_rules_required else {}"
-                                   t-attf-value="#{internal_rules_approved or ''}"/>
+                                   t-att-required="data_policy_required"
+                                   t-att-checked="internal_rules_approved"/>
                             <t t-raw="internal_rules_text"/>
                         </label>
                     </div>
