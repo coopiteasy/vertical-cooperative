@@ -208,15 +208,17 @@ class WebsiteSubscription(http.Controller):
             redirect = "easy_my_coop_website.becomecompanycooperator"
             email = kwargs.get('company_email')
 
-        if 'g-recaptcha-response' not in kwargs:
+        if 'g-recaptcha-response' not in kwargs or kwargs['g-recaptcha-response'] == '':
             values = self.fill_values(values, is_company, logged)
+            values.update(kwargs)
             values["error_msg"] = _("the captcha has not been validated,"
                                     " please fill in the captcha")
 
             return request.render(redirect, values)
-        if not request.website.is_captcha_valid(
+        elif not request.website.is_captcha_valid(
                     kwargs['g-recaptcha-response']):
             values = self.fill_values(values, is_company, logged)
+            values.update(kwargs)
             values["error_msg"] = _("the captcha has not been validated,"
                                     " please fill in the captcha")
 
