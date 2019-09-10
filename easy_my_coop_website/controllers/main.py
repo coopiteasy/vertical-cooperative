@@ -109,7 +109,7 @@ class WebsiteSubscription(http.Controller):
                 values['gender'] = representative.gender
                 values['email'] = representative.email
                 values['contact_person_function'] = representative.function
-                values['birthdate'] = self.get_date_string(representative.birthdate)
+                values['birthdate'] = self.get_date_string(representative.birthdate_date)
                 values['lang'] = representative.lang
                 values['phone'] = representative.phone
             else:
