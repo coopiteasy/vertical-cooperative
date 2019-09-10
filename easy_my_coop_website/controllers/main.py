@@ -78,7 +78,6 @@ class WebsiteSubscription(http.Controller):
 
     def get_date_string(self, birthdate):
         if birthdate:
-            birthdate = datetime.strptime(birthdate, "%Y-%m-%d")
             return datetime.strftime(birthdate, "%d/%m/%Y")
         return False
 
