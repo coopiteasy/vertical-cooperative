@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Easy My Coop",
-    "version": "9.1.0.0.0",
+    "version": "9.1.0.0.1",
     "depends": ["base",
                 "sale",
                 "purchase",
@@ -30,6 +30,7 @@
     'data': [
         'security/easy_my_coop_security.xml',
         'security/ir.model.access.csv',
+        'view/menu_item_view.xml',
         'wizard/create_subscription_from_partner.xml',
         'wizard/update_partner_info.xml',
         'wizard/validate_subscription_request.xml',
