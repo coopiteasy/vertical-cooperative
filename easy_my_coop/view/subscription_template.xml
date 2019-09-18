@@ -631,7 +631,7 @@
                         <label>
                             <input type="checkbox"
                                    name="internal_rules_approved"
-                                   t-att-required="data_policy_required"
+                                   t-att-required="internal_rules_required"
                                    t-att-checked="internal_rules_approved"/>
                             <t t-raw="internal_rules_text"/>
                         </label>
