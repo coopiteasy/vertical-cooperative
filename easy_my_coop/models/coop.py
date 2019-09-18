@@ -35,6 +35,8 @@ class subscription_request(models.Model):
             required_fields.append('data_policy_approved')
         if company.internal_rules_approval_required:
             required_fields.append('internal_rules_approved')
+        if company.financial_risk_approval_required:
+            required_fields.append('financial_risk_approved')
         return required_fields
 
     @api.model
@@ -309,7 +311,11 @@ class subscription_request(models.Model):
         default=False,
     )
     internal_rules_approved = fields.Boolean(
-        string='Approved Internal Rules',
+        string='Internal Rules Approved ',
+        default=False,
+    )
+    financial_risk_approved = fields.Boolean(
+        string='Financial Risk Approved',
         default=False,
     )
     _order = "id desc"
@@ -429,7 +435,8 @@ class subscription_request(models.Model):
                         'country_id': self.country_id.id,
                         'lang': self.lang,
                         'data_policy_approved': self.data_policy_approved,
-                        'internal_rules_approved': self.internal_rules_approved
+                        'internal_rules_approved': self.internal_rules_approved,
+                        'financial_risk_approved': self.financial_risk_approved
                         }
         return partner_vals
 
@@ -445,7 +452,9 @@ class subscription_request(models.Model):
                         'birthdate_date': self.birthdate,
                         'customer': self.share_product_id.customer,
                         'data_policy_approved': self.data_policy_approved,
-                        'internal_rules_approved': self.internal_rules_approved}
+                        'internal_rules_approved': self.internal_rules_approved,
+                        'financial_risk_approved': self.financial_risk_approved
+                        }
         return partner_vals
 
     def create_coop_partner(self):
@@ -518,7 +527,9 @@ class subscription_request(models.Model):
                                 'function': self.contact_person_function,
                                 'type': 'representative',
                                 'data_policy_approved': self.data_policy_approved,
-                                'internal_rules_approved': self.internal_rules_approved}
+                                'internal_rules_approved': self.internal_rules_approved,
+                                'financial_risk_approved': self.financial_risk_approved
+                                }
                 contact = partner_obj.create(contact_vals)
             else:
                 if len(contact) > 1:
