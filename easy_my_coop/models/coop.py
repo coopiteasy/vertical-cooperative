@@ -34,6 +34,8 @@ class SubscriptionRequest(models.Model):
             required_fields.append('data_policy_approved')
         if company.internal_rules_approval_required:
             required_fields.append('internal_rules_approved')
+        if company.financial_risk_approval_required:
+            required_fields.append('financial_risk_approved')
         return required_fields
 
     def get_mail_template_notif(self, is_company=False):
@@ -321,7 +323,11 @@ class SubscriptionRequest(models.Model):
         default=False,
     )
     internal_rules_approved = fields.Boolean(
-        string='Approved Internal Rules',
+        string='Internal Rules Approved',
+        default=False,
+    )
+    financial_risk_approved = fields.Boolean(
+        string='Financial Risk Approved',
         default=False,
     )
     _order = "id desc"
@@ -449,7 +455,8 @@ class SubscriptionRequest(models.Model):
                         'country_id': self.country_id.id,
                         'lang': self.lang,
                         'data_policy_approved': self.data_policy_approved,
-                        'internal_rules_approved': self.internal_rules_approved
+                        'internal_rules_approved': self.internal_rules_approved,
+                        'financial_risk_approved': self.financial_risk_approved
                         }
         return partner_vals
 
@@ -466,6 +473,7 @@ class SubscriptionRequest(models.Model):
                         'customer': self.share_product_id.customer,
                         'data_policy_approved': self.data_policy_approved,
                         'internal_rules_approved': self.internal_rules_approved
+                        'financial_risk_approved': self.financial_risk_approved
                         }
         return partner_vals
 
@@ -544,7 +552,8 @@ class SubscriptionRequest(models.Model):
                     'function': self.contact_person_function,
                     'type': 'representative',
                     'data_policy_approved': self.data_policy_approved,
-                    'internal_rules_approved': self.internal_rules_approved
+                    'internal_rules_approved': self.internal_rules_approved,
+                    'financial_risk_approved': self.financial_risk_approved,
                                 }
                 contact = partner_obj.create(contact_vals)
             else:

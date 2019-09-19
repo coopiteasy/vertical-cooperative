@@ -131,6 +131,7 @@ class ResPartner(models.Model):
                                   string="Legal form")
     data_policy_approved = fields.Boolean(string="Approved Data Policy")
     internal_rules_approved = fields.Boolean(string="Approved Internal Rules")
+    financial_risk_approved = fields.Boolean(string="Approved Financial Risk")
 
     @api.multi
     @api.depends('subscription_request_ids.state')
