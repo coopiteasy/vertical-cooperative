@@ -59,7 +59,7 @@ class ResPartner(models.Model):
         for partner, child_ids in all_partners_and_children.items():
             partner.total_invoiced = sum(price['total'] for price in price_totals if price['partner_id'] in child_ids)
 
-    @api.multi
+    @api.model
     def _get_share_type(self):
         product_obj = self.env['product.product']
         share_type_list = [('', '')]
