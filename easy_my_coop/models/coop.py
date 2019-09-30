@@ -376,7 +376,7 @@ class subscription_request(models.Model):
         return res
 
     def send_capital_release_request(self, invoice):
-        invoice_email_template = self.env['mail.template'].search([('name', '=', 'Request to Release Capital - Send by Email')])[0]
+        invoice_email_template = self.env.ref('easy_my_coop.email_template_release_capital', False)
 
         # we send the email with the capital release request in attachment
         invoice_email_template.send_mail(invoice.id, True)
