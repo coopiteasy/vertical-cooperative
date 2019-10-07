@@ -404,7 +404,13 @@ class SubscriptionRequest(models.Model):
         if self.company_id.property_cooperator_account:
             account = self.company_id.property_cooperator_account
         else:
-            account = account_obj.search([('code', '=', '416000')])[0]
+            accounts = account_obj.search([('code', '=', '416000')])
+            if accounts:
+                account = accounts[0]
+            else:
+                raise UserError(_(
+                    'You must set a cooperator account on you company.'
+                ))
         return account
 
     def get_invoice_vals(self, partner):
