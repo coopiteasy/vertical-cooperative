@@ -87,7 +87,7 @@ class ResPartner(models.Model):
 
     cooperator = fields.Boolean(string='Cooperator',
                                 help="Check this box if this contact is a"
-                                " cooperator(effective or not).")
+                                " cooperator (effective or not).")
     member = fields.Boolean(string='Effective cooperator',
                             help="Check this box if this cooperator"
                             " is an effective member.")
@@ -98,6 +98,7 @@ class ResPartner(models.Model):
     old_member = fields.Boolean(string='Old cooperator',
                                 help="Check this box if this cooperator is"
                                 " no more an effective member.")
+    # todo use oca partner_contact_gender
     gender = fields.Selection([('male', 'Male'),
                                ('female', 'Female'),
                                ('other', 'Other')],
