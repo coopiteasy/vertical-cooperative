@@ -445,7 +445,6 @@ class SubscriptionRequest(models.Model):
                         'city': self.city, 'email': self.company_email,
                         'out_inv_comm_type': 'bba',
                         'customer': self.share_product_id.customer,
-                        'out_inv_comm_algorithm': 'random',
                         'country_id': self.country_id.id,
                         'lang': self.lang,
                         'data_policy_approved': self.data_policy_approved,
@@ -459,8 +458,6 @@ class SubscriptionRequest(models.Model):
                         'zip': self.zip_code, 'email': self.email,
                         'gender': self.gender, 'cooperator': True,
                         'city': self.city, 'phone': self.phone,
-                        'out_inv_comm_type': 'bba',
-                        'out_inv_comm_algorithm': 'random',
                         'country_id': self.country_id.id, 'lang': self.lang,
                         'birthdate_date': self.birthdate,
                         'customer': self.share_product_id.customer,
@@ -468,6 +465,29 @@ class SubscriptionRequest(models.Model):
                         'internal_rules_approved': self.internal_rules_approved
                         }
         return partner_vals
+
+    def get_representative_vals(self):
+        contact_vals = {
+            'name': self.name,
+            'firstname': self.firstname,
+            'lastname': self.lastname, 'customer': False,
+            'is_company': False, 'cooperator': True,
+            'street': self.address, 'gender': self.gender,
+            'zip': self.zip_code, 'city': self.city,
+            'phone': self.phone, 'email': self.email,
+            'country_id': self.country_id.id,
+            'out_inv_comm_type': 'bba',
+            'out_inv_comm_algorithm': 'random',
+            'lang': self.lang,
+            'birthdate_date': self.birthdate,
+            'parent_id': partner.id,
+            'representative': True,
+            'function': self.contact_person_function,
+            'type': 'representative',
+            'data_policy_approved': self.data_policy_approved,
+            'internal_rules_approved': self.internal_rules_approved
+        }
+        return contact_vals
 
     def create_coop_partner(self):
         partner_obj = self.env['res.partner']
@@ -526,27 +546,8 @@ class SubscriptionRequest(models.Model):
                 if contact:
                     contact.type = 'representative'
             if not contact:
-                contact_vals = {
-                    'name': self.name,
-                    'firstname': self.firstname,
-                    'lastname': self.lastname, 'customer': False,
-                    'is_company': False, 'cooperator': True,
-                    'street': self.address, 'gender': self.gender,
-                    'zip': self.zip_code, 'city': self.city,
-                    'phone': self.phone, 'email': self.email,
-                    'country_id': self.country_id.id,
-                    'out_inv_comm_type': 'bba',
-                    'out_inv_comm_algorithm': 'random',
-                    'lang': self.lang,
-                    'birthdate_date': self.birthdate,
-                    'parent_id': partner.id,
-                    'representative': True,
-                    'function': self.contact_person_function,
-                    'type': 'representative',
-                    'data_policy_approved': self.data_policy_approved,
-                    'internal_rules_approved': self.internal_rules_approved
-                                }
-                contact = partner_obj.create(contact_vals)
+                contact_vals = self.get_representative_vals()
+                partner_obj.create(contact_vals)
             else:
                 if len(contact) > 1:
                     raise UserError(_('There is two different persons with the'

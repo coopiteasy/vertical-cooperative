@@ -8,3 +8,20 @@ class SubscriptionRequest(models.Model):
                                      ('asbl', 'ASBL'),
                                      ('sprl', 'SPRL'),
                                      ('sa', 'SA')])
+
+    def get_partner_company_vals(self):
+        vals = super(SubscriptionRequest).get_partner_company_vals()
+        vals['out_inv_comm_algorithm'] = 'random'
+        return vals
+
+    def get_partner_vals(self):
+        vals = super(SubscriptionRequest).get_partner_vals()
+        vals['out_inv_comm_type'] = 'bba'
+        vals['out_inv_comm_algorithm'] = 'random'
+        return vals
+
+    def get_representative_valst(self):
+        vals = super(SubscriptionRequest).get_representative_vals()
+        vals['out_inv_comm_type'] = 'bba'
+        vals['out_inv_comm_algorithm'] = 'random'
+        return vals
