@@ -4,25 +4,25 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 {
-    "name": "Easy My Coop",
-    "version": "12.0.2.0.2",
-    "depends": [
-        "base",
-        "web",
-        "sale",
-        "account",
-        "base_iban",
-        "product",
-        "partner_firstname",
-        "partner_contact_birthdate",
-        "partner_contact_address",
-        "email_template_config",
+    'name': 'Easy My Coop',
+    'version': '12.0.2.0.2',
+    'depends': [
+        'base',
+        'web',
+        'sale',
+        'account',
+        'base_iban',
+        'product',
+        'partner_firstname',
+        'partner_contact_birthdate',
+        'partner_contact_address',
+        'email_template_config',
     ],
-    "author": "Coop IT Easy SCRLfs",
-    "category": "Cooperative management",
-    "website": "https://www.coopiteasy.be",
-    "license": "AGPL-3",
-    "description": """
+    'author': 'Coop IT Easy SCRLfs',
+    'category': 'Cooperative management',
+    'website': 'https://www.coopiteasy.be',
+    'license': 'AGPL-3',
+    'description': """
     This module allows to manage the cooperator subscription and all the
      cooperative business processes.
     """,
@@ -50,6 +50,9 @@
         'report/cooperator_subscription_G001.xml',
         'report/cooperator_register_G001.xml',
         'data/mail_template_data.xml',  # Must be loaded after reports
+    ],
+    'demo': [
+        'demo/coop.xml',
     ],
     'installable': True,
     'application': True,
