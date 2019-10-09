@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+# Copyright 2019 Coop IT Easy SCRL fs
+#   Houssine Bakkali <houssine@coopiteasy.be>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+
+
 from odoo import api, fields, models
 
 
@@ -87,7 +93,7 @@ class ResPartner(models.Model):
 
     cooperator = fields.Boolean(string='Cooperator',
                                 help="Check this box if this contact is a"
-                                " cooperator(effective or not).")
+                                " cooperator (effective or not).")
     member = fields.Boolean(string='Effective cooperator',
                             help="Check this box if this cooperator"
                             " is an effective member.")
@@ -98,6 +104,7 @@ class ResPartner(models.Model):
     old_member = fields.Boolean(string='Old cooperator',
                                 help="Check this box if this cooperator is"
                                 " no more an effective member.")
+    # todo use oca partner_contact_gender
     gender = fields.Selection([('male', 'Male'),
                                ('female', 'Female'),
                                ('other', 'Other')],

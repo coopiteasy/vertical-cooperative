@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+# Copyright 2019 Coop IT Easy SCRL fs
+#   Houssine Bakkali <houssine@coopiteasy.be>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+
+
 from datetime import datetime
 
 from odoo import api, fields, models, _
@@ -10,6 +15,7 @@ class operation_request(models.Model):
     _description = "Operation request"
 
     def get_date_now(self):
+        # fixme odoo 12 uses date types
         return datetime.strftime(datetime.now(), '%Y-%m-%d')
 
     @api.multi
