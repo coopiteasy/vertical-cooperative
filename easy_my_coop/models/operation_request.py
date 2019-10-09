@@ -10,6 +10,7 @@ class operation_request(models.Model):
     _description = "Operation request"
 
     def get_date_now(self):
+        # fixme odoo 12 uses date types
         return datetime.strftime(datetime.now(), '%Y-%m-%d')
 
     @api.multi
