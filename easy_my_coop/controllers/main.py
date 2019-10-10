@@ -198,6 +198,11 @@ class WebsiteSubscription(http.Controller):
         product_id = kwargs.get("share_product_id")
         return prod_obj.sudo().browse(int(product_id)).product_variant_ids[0]
 
+    def remove_field_from_list(self, required_fields, field):
+        if required_fields.count(field) > 0:
+            required_fields.remove(field)
+        return required_fields
+
     def validation(self, kwargs, logged, values, post_file):
         user_obj = request.env['res.users']
         sub_req_obj = request.env['subscription.request']
@@ -223,6 +228,12 @@ class WebsiteSubscription(http.Controller):
 
         # Check that required field from model subscription_request exists
         required_fields = sub_req_obj.sudo().get_required_field()
+        if logged:
+            # these fields are readonly when logged
+            # we want to ease the process if user was a subscriber
+            self.remove_field_from_list(required_fields, 'iban')
+            self.remove_field_from_list(required_fields, 'birthdate')
+
         error = set(field for field in required_fields if not values.get(field)) #noqa
 
         if error:
@@ -262,13 +273,14 @@ class WebsiteSubscription(http.Controller):
                 return request.website.render(redirect, values)
 
         iban = kwargs.get("iban")
-        valid = sub_req_obj.check_iban(iban)
+        if iban:
+            valid = sub_req_obj.check_iban(iban)
 
-        if not valid:
-            values = self.fill_values(values, is_company, logged)
-            values["error_msg"] = _("You iban account number"
-                                    "is not valid")
-            return request.website.render(redirect, values)
+            if not valid:
+                values = self.fill_values(values, is_company, logged)
+                values["error_msg"] = _("You iban account number "
+                                        "is not valid")
+                return request.website.render(redirect, values)
 
         # check the subscription's amount
         max_amount = company.subscription_maximum_amount
@@ -365,8 +377,12 @@ class WebsiteSubscription(http.Controller):
         values["name"] = firstname + " " + lastname
         values["lastname"] = lastname
         values["firstname"] = firstname
-        values["birthdate"] = datetime.strptime(kwargs.get("birthdate"),
-                                                "%d/%m/%Y").date()
+        birthdate = kwargs.get("birthdate")
+        if birthdate:
+            values["birthdate"] = datetime.strptime(birthdate,
+                                                    ("%d/%m/%Y")).date()
+        else:
+            values["birthdate"] = False
         values["source"] = "website"
 
         values["share_product_id"] = self.get_selected_share(kwargs).id

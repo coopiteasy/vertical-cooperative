@@ -107,7 +107,9 @@ class subscription_request(models.Model):
     @api.depends('iban', 'skip_control_ng', 'is_company')
     def _validated_lines(self):
         for sub_request in self:
-            validated = self.check_iban(sub_request.iban)
+            validated = (self.check_iban(sub_request.iban)
+                         or sub_request.skip_control_ng
+                         )
             sub_request.validated = validated
 
     @api.multi
