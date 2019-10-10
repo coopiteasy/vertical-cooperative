@@ -6,7 +6,6 @@ import re
 from openerp import http
 from openerp.http import request
 from openerp.tools.translate import _
-from __builtin__ import list
 
 # Only use for behavior, don't stock it
 _TECHNICAL = ['view_from', 'view_callback']
