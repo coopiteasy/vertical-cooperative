@@ -244,8 +244,6 @@ class export_global_report(models.TransientModel):
             i += 1
             worksheet2.write(j, i, sub_request.state)
             i += 1
-            worksheet2.write(j, i, sub_request.no_registre)
-            i += 1
             worksheet2.write(j, i, sub_request.email)
             i += 1
             worksheet2.write(j, i, sub_request.phone)

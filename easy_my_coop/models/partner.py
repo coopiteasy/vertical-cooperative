@@ -109,7 +109,6 @@ class ResPartner(models.Model):
                                ('female', 'Female'),
                                ('other', 'Other')],
                               string='Gender')
-    national_register_number = fields.Char(string='National Register Number')
     share_ids = fields.One2many('share.line',
                                 'partner_id',
                                 string='Share Lines')
