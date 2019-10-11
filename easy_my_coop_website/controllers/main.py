@@ -13,16 +13,16 @@ _BLACKLIST = ['id', 'create_uid', 'create_date', 'write_uid', 'write_date',
               'user_id', 'active']
 
 _COOP_FORM_FIELD = ['email',  'confirm_email', 'firstname', 'lastname',
-                    'birthdate', 'iban', 'share_product_id', 'no_registre',
+                    'birthdate', 'iban', 'share_product_id',
                     'address', 'city', 'zip_code', 'country_id', 'phone',
                     'lang', 'nb_parts', 'total_parts', 'error_msg']
 
 _COMPANY_FORM_FIELD = ['is_company', 'company_register_number', 'company_name',
                        'company_email', 'confirm_email', 'email', 'firstname',
                        'lastname', 'birthdate', 'iban', 'share_product_id',
-                       'no_registre', 'address', 'city', 'zip_code',
-                       'country_id', 'phone', 'lang', 'nb_parts',
-                       'total_parts', 'error_msg', 'company_type']
+                       'address', 'city', 'zip_code', 'country_id', 'phone',
+                       'lang', 'nb_parts', 'total_parts', 'error_msg',
+                       'company_type']
 
 
 class WebsiteSubscription(http.Controller):
