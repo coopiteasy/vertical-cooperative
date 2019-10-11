@@ -38,6 +38,12 @@
         <field name="country_id" ref="base.be"/>
     </record>
 
+    <record id="bank_account_vincent_demo" model="res.partner.bank">
+            <field name="acc_number">BE68539007547034</field>
+            <field name="bank_name">Bank</field>
+            <field name="partner_id" ref="res_partner_cooperator_3_demo"/>
+    </record>
+
     <record id="res_partner_cooperator_4_demo" model="res.partner">
         <field name="name">Rémy Commit</field>
         <field name="customer" eval="True"/>
