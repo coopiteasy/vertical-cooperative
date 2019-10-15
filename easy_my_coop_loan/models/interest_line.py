@@ -3,6 +3,7 @@ from odoo import fields, models
 
 class LoanInterestLine(models.Model):
     _name = 'loan.interest.line'
+    _description = "Loan Interest Line"
 
     name = fields.Integer(string="Year",
                           required=True)

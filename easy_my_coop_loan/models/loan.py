@@ -7,6 +7,7 @@ _logger = logging.getLogger(__name__)
 
 class LoanTerm(models.Model):
     _name = 'loan.term'
+    _description = 'Loan Term'
 
     name = fields.Char(string="Name",
                        required=True)
@@ -16,6 +17,7 @@ class LoanTerm(models.Model):
 
 class LoanIssue(models.Model):
     _name = 'loan.issue'
+    _description = 'Loan Issue'
 
     @api.multi
     def _compute_subscribed_amount(self):

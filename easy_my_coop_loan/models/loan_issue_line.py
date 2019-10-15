@@ -6,6 +6,7 @@ from odoo import api, fields, models
 
 class LoanIssueLine(models.Model):
     _name = 'loan.issue.line'
+    _description = 'Loan Issue Line'
     _order = 'date desc, id'
 
     @api.multi
