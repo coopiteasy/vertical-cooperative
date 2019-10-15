@@ -45,8 +45,7 @@
 		</field>
 	</record>
        
-    <menuitem action="share_product_action" name="Share type" id="menu_easy_my_coop_share_product"  parent="menu_easy_my_coop_main_subscription" sequence="20"/>
-       
+
        <!-- overriding product views to not display share product in the purchase and sale views-->
        
 	<record id="product.product_normal_action" model="ir.actions.act_window">

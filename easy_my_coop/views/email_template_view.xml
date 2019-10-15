@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<menuitem name="Configuration" id="menu_easy_my_coop_config" parent="menu_main_easy_my_coop" sequence="80" />
 
 	<record model="ir.actions.act_window"
 		id="action_easy_my_coop_email_templates">
@@ -12,5 +11,4 @@
 		<field name="search_view_id" ref="mail.view_email_template_search" />
 	</record>
 
-	<menuitem id="menu_easy_my_coop_templates" parent="menu_easy_my_coop_config" action="action_easy_my_coop_email_templates" sequence="10" groups="group_easy_my_coop_manager" />
 </odoo>
