@@ -31,10 +31,10 @@ class subscription_request(models.Model):
     def get_required_field(self):
         required_fields = _REQUIRED
         company = self.env['res.company']._company_default_get()
-        if company.data_policy_approval_required:
-            required_fields.append('data_policy_approved')
         if company.internal_rules_approval_required:
             required_fields.append('internal_rules_approved')
+        if company.data_policy_approval_required:
+            required_fields.append('data_policy_approved')
         if company.financial_risk_approval_required:
             required_fields.append('financial_risk_approved')
         return required_fields
@@ -308,12 +308,12 @@ class subscription_request(models.Model):
                               default="website",
                               readonly=True,
                               states={'draft': [('readonly', False)]})
-    data_policy_approved = fields.Boolean(
-        string='Data Policy Approved',
-        default=False,
-    )
     internal_rules_approved = fields.Boolean(
         string='Internal Rules Approved ',
+        default=False,
+    )
+    data_policy_approved = fields.Boolean(
+        string='Data Policy Approved',
         default=False,
     )
     financial_risk_approved = fields.Boolean(
@@ -436,8 +436,8 @@ class subscription_request(models.Model):
                         'out_inv_comm_algorithm': 'random',
                         'country_id': self.country_id.id,
                         'lang': self.lang,
-                        'data_policy_approved': self.data_policy_approved,
                         'internal_rules_approved': self.internal_rules_approved,
+                        'data_policy_approved': self.data_policy_approved,
                         'financial_risk_approved': self.financial_risk_approved
                         }
         return partner_vals
@@ -453,8 +453,8 @@ class subscription_request(models.Model):
                         'country_id': self.country_id.id, 'lang': self.lang,
                         'birthdate_date': self.birthdate,
                         'customer': self.share_product_id.customer,
-                        'data_policy_approved': self.data_policy_approved,
                         'internal_rules_approved': self.internal_rules_approved,
+                        'data_policy_approved': self.data_policy_approved,
                         'financial_risk_approved': self.financial_risk_approved
                         }
         return partner_vals
@@ -528,8 +528,8 @@ class subscription_request(models.Model):
                                 'representative': True,
                                 'function': self.contact_person_function,
                                 'type': 'representative',
-                                'data_policy_approved': self.data_policy_approved,
                                 'internal_rules_approved': self.internal_rules_approved,
+                                'data_policy_approved': self.data_policy_approved,
                                 'financial_risk_approved': self.financial_risk_approved
                                 }
                 contact = partner_obj.create(contact_vals)

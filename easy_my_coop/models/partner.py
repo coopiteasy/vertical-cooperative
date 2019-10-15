@@ -144,8 +144,8 @@ class ResPartner(models.Model):
                                                string="Subscription request")
     legal_form = fields.Selection([('', '')],
                                   string="Legal form")
-    data_policy_approved = fields.Boolean(string="Data Policy Approved ")
     internal_rules_approved = fields.Boolean(string="Internal Rules Approved ")
+    data_policy_approved = fields.Boolean(string="Data Policy Approved ")
     financial_risk_approved = fields.Boolean(string="Financial Risk Approved ")
 
     @api.multi
