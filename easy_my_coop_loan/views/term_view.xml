@@ -36,5 +36,4 @@
 		<field name="view_mode">tree,form</field>
 	</record>
 
-	<menuitem action="action_loan_term" id="loan_term_menu" parent="easy_my_coop.menu_easy_my_coop_config" sequence="5" />
 </odoo>

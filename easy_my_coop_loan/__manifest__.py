@@ -21,6 +21,7 @@
         'views/term_view.xml',
         'views/loan_view.xml',
         'views/partner_view.xml',
+        'views/menus.xml',
         'data/mail_template_data.xml',
     ],
     'installable': True,

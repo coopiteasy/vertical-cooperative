@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <menuitem name="Easy-My Coop" id="menu_main_easy_my_coop" groups="easy_my_coop.group_easy_my_coop_user" sequence="40" />
+
+    <menuitem name="Cooperators" id="menu_easy_my_coop_main_coop" parent="menu_main_easy_my_coop" sequence="5" />
+    <menuitem id="menu_action_invoice_tree_coop" parent="menu_easy_my_coop_main_coop" action="action_invoice_tree_coop" groups="easy_my_coop.group_easy_my_coop_user" />
+    <menuitem name="Cooperators" id="menu_easy_my_coop_cooperator" action="action_partner_cooperator_form" parent="menu_easy_my_coop_main_coop" sequence="100" />
+    <menuitem name="Cooperator Candidates" id="menu_easy_my_coop_cooperator_candidate" action="action_partner_cooperator_candidate_form" parent="menu_easy_my_coop_main_coop" sequence="150" />
+    <menuitem name="Company representative" id="menu_easy_my_coop_company_representative" action="action_company_representative_form" parent="menu_easy_my_coop_main_coop" sequence="160" />
+
+    <menuitem name="Subscription" id="menu_easy_my_coop_main_subscription" parent="menu_main_easy_my_coop" groups="easy_my_coop.group_easy_my_coop_manager" sequence="10" />
+    <menuitem name="Company Subscription" id="menu_easy_my_coop_company_subscription_request" action="company_subscription_request_action" parent="menu_easy_my_coop_main_subscription" sequence="15" />
+    <menuitem name="Cooperator Subscription" id="menu_easy_my_coop_subscription_request" action="subscription_request_action" parent="menu_easy_my_coop_main_subscription" sequence="10" />
+    <menuitem name="Share lines" id="menu_easy_my_coop_share_line" action="share_line_action" parent="menu_easy_my_coop_main_subscription" groups="group_easy_my_coop_super_manager" sequence="20" />
+    <menuitem name="Share type" id="menu_easy_my_coop_share_product" action="share_product_action" parent="menu_easy_my_coop_main_subscription" sequence="20" />
+    <menuitem name="Subscription Register" id="menu_easy_my_coop_subscription_register" action="subscription_register_action" parent="menu_easy_my_coop_main_subscription" sequence="20" />
+    <menuitem name="Operation request" id="menu_easy_my_coop_operation_request" action="operation_request_action" parent="menu_easy_my_coop_main_subscription" groups="easy_my_coop.group_easy_my_coop_manager" sequence="30" />
+
+    <menuitem name="Reporting" id="menu_easy_my_coop_main_reporting" parent="menu_main_easy_my_coop" groups="easy_my_coop.group_easy_my_coop_manager" sequence="40" />
+
+    <menuitem name="Configuration" id="menu_easy_my_coop_config" parent="menu_main_easy_my_coop" sequence="80" />
+    <menuitem id="menu_easy_my_coop_templates" action="action_easy_my_coop_email_templates" parent="menu_easy_my_coop_config" groups="group_easy_my_coop_manager" sequence="10" />
+</odoo>
