@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_loan_term_tree" model="ir.ui.view">
+		<field name="name">loan.term.tree</field>
+		<field name="model">loan.term</field>
+		<field name="arch" type="xml">
+			<tree string="Loan terms">
+				<field name="name" />
+				<field name="term" />
+			</tree>
+		</field>
+	</record>
+	
+	<record id="view_loan_term_form" model="ir.ui.view">
+		<field name="name">loan.term.form</field>
+		<field name="model">loan.term</field>
+		<field name="arch" type="xml">
+			<form string="Loan terms">
+				<group>
+					<group>
+						<field name="name" />
+					</group>
+					<group>
+						<field name="term" />
+					</group>
+				</group>
+			</form>
+		</field>
+	</record>
+	
+	<record id="action_loan_term" model="ir.actions.act_window">
+		<field name="name">Loan term</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">loan.term</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<menuitem action="action_loan_term" id="loan_term_menu" parent="easy_my_coop.menu_easy_my_coop_config" sequence="5" />
+</odoo>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<menuitem name="Loan Issue" id="menu_easy_my_coop_main_loan_issue" parent="easy_my_coop.menu_main_easy_my_coop" sequence="20" groups="easy_my_coop.group_easy_my_coop_user"/>
+	<record id="view_loan_issue_tree" model="ir.ui.view">
+		<field name="name">loan.issue.tree</field>
+		<field name="model">loan.issue</field>
+		<field name="arch" type="xml">
+			<tree string="Loan issues">
+				<field name="name" />
+				<field name="subscription_start_date" />
+				<field name="subscription_end_date" />
+				<field name="term_date" />
+				<field name="term" />
+				<field name="rate" />
+				<field name="minimum_amount" />
+				<field name="maximum_amount" />
+				<field name="subscribed_amount" />
+				<field name="user_id" />
+				<field name="state" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_loan_issue_form" model="ir.ui.view">
+		<field name="name">loan.issue.form</field>
+		<field name="model">loan.issue</field>
+		<field name="arch" type="xml">
+			<form string="Loan issue">
+				<header>
+					<button name="action_confirm" string="Confirm" type="object" states="draft" 
+						groups="easy_my_coop.group_easy_my_coop_manager"/>
+					<button name="action_cancel" string="Cancel" type="object" states="draft,ongoing"
+						confirm="Are you sure you want to cancel this loan issue?"
+						groups="easy_my_coop.group_easy_my_coop_manager"/>
+					<button name="action_open" string="Open" type="object"
+						states="confirmed" groups="easy_my_coop.group_easy_my_coop_manager"/>
+					<button name="action_close" string="Close" type="object" states="ongoing"
+						confirm="Are you sure you want to close this loan issue?"
+						groups="easy_my_coop.group_easy_my_coop_manager"/>
+					<button name="action_draft" string="Set to draft"
+						type="object" states="confirmed,cancelled"
+						groups="easy_my_coop.group_easy_my_coop_manager"/>
+					<button name="compute_loan_interest" string="Compute interest"
+						type="object" states="closed,ongoing"
+						groups="easy_my_coop.group_easy_my_coop_manager"/>
+						
+					<field name="state" widget="statusbar" statusbar_visible="draft,confirmed,ongoing,closed"/>
+				</header>
+				<sheet>
+					<div class="oe_button_box" name="button_box">
+                        <button name="toggle_display" type="object"
+                                class="oe_stat_button" icon="fa-globe">
+                            <field name="display_on_website" widget="website_button"/>
+                        </button>
+                    </div>
+					<group>
+						<group>
+							<field name="name" />
+							<field name="is_loan" />
+							<field name="is_bond" />
+							<field name="default_issue" />
+							<field name="face_value" />
+							<field name="minimum_amount" />
+							<field name="maximum_amount" />
+							<field name="maximum_amount_per_sub" />
+							<field name="subscribed_amount" />
+							<field name="by_individual" />
+							<field name="by_company" />
+						</group>
+						<group>
+							<field name="user_id" widget="selection" />
+							<field name="rate" />
+							<field name="taxes_rate" />
+							<field name="subscription_start_date" />
+							<field name="subscription_end_date" />
+							<field name="term_date" />
+							<field name="term" widget="selection"/>
+							<field name="interest_payment" widget="selection" />
+						</group>
+					</group>
+					<notebook>
+						<page string="Lines">
+							<field name="loan_issue_lines">
+								<tree delete="false">
+									<field name="name" />
+									<field name="partner_id" />
+									<field name="date" />
+									<field name="quantity" />
+									<field name="face_value" />
+									<field name="amount" />
+									<field name="state" />
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_loan_issue" model="ir.actions.act_window">
+		<field name="name">Loan issue</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">loan.issue</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<menuitem action="action_loan_issue" id="loan_issue_menu" parent="menu_easy_my_coop_main_loan_issue" sequence="25" />
+	
+	<record id="view_loan_issue_line_form" model="ir.ui.view">
+		<field name="name">loan.issue.line.form</field>
+		<field name="model">loan.issue.line</field>
+		<field name="arch" type="xml">
+			<form string="Loan issue">
+				<header>
+					<button name="action_validate" string="Validate"
+						type="object" states="draft" />
+					<button name="action_request_payment" string="Request Payment"
+						type="object" states="subscribed" />
+					<button name="action_cancel" string="Cancel" type="object"
+						states="draft,subscribed,waiting"
+						confirm="Are you sure you want to cancel this loan subscription ?" />
+					<button name="action_draft" string="Set to draft"
+						type="object" states="cancelled" />
+					<button name="action_paid" string="Paid"
+						type="object" states="waiting" />
+					<field name="state" widget="statusbar" />
+				</header>
+				<sheet>
+					<group>
+						<group>
+							<field name="name" />
+							<field name="quantity" />
+							<field name="face_value" />
+						</group>
+						<group>
+							<field name="date" />
+							<field name="partner_id" />
+							<field name="amount" />
+						</group>
+					</group>
+					<notebook>
+						<page string="Interst lines">
+							<field name="interest_lines">
+								<tree delete="false" create="false">
+									<field name="name" />
+									<field name="amount" />
+									<field name="accrued_amount" />
+									<field name="interest" />
+									<field name="net_interest" />
+									<field name="taxes_amount" />
+									<field name="due_date" />
+									<field name="state" />
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+</odoo>

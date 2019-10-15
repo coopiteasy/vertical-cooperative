@@ -101,7 +101,7 @@ class SubscriptionRequest(models.Model):
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
         confirmation_mail_template = self.env.ref(mail_template, False)
-        confirmation_mail_template.send_mail(subscr_request.id, True)
+        confirmation_mail_template.send_mail(subscr_request.id)
 
         return subscr_request
 
