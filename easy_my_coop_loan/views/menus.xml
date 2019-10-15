@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+	<menuitem name="Loan Management" id="menu_easy_my_coop_main_loan_issue" parent="easy_my_coop.menu_main_easy_my_coop" groups="easy_my_coop.group_easy_my_coop_user" sequence="15"/>
+	<menuitem name="Create Loan" id="loan_issue_menu" action="action_loan_issue" parent="menu_easy_my_coop_main_loan_issue" sequence="25"/>
+
+	<menuitem name="Loan Term" id="loan_term_menu" action="action_loan_term" parent="easy_my_coop.menu_easy_my_coop_config" sequence="420"/>
+</odoo>
