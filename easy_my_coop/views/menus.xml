@@ -8,7 +8,6 @@
 
     <menuitem name="Share Management" id="menu_easy_my_coop_main_subscription" parent="menu_main_easy_my_coop" groups="easy_my_coop.group_easy_my_coop_manager" sequence="10" />
     <menuitem name="Subscriptions" id="menu_easy_my_coop_subscription_request" action="subscription_request_action" parent="menu_easy_my_coop_main_subscription" sequence="110" />
-    <menuitem name="Company Subscription" id="menu_easy_my_coop_company_subscription_request" action="company_subscription_request_action" parent="menu_easy_my_coop_main_subscription" sequence="120" />
     <menuitem name="Register Payment" id="menu_action_invoice_tree_coop" action="action_invoice_tree_coop" parent="menu_easy_my_coop_main_subscription" groups="easy_my_coop.group_easy_my_coop_user" sequence="130" />
     <menuitem name="Cooperator Candidates" id="menu_easy_my_coop_cooperator_candidate" action="action_partner_cooperator_candidate_form" parent="menu_easy_my_coop_main_subscription" sequence="140" />
     <menuitem name="Subscription Register" id="menu_easy_my_coop_subscription_register" action="subscription_register_action" parent="menu_easy_my_coop_main_subscription" sequence="150" />

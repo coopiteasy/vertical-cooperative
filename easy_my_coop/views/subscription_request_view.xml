@@ -5,8 +5,9 @@
         <field name="name">subscription.request.tree</field>
         <field name="model">subscription.request</field>
         <field name="arch" type="xml">
-            <tree string="Cooperator Subscriptions Request" colors="red:validated == False; blue:state in ('draft');grey: state in ('done')">
+            <tree string="Subscription Requests" colors="red:validated == False; blue:state in ('draft'); grey: state in ('done')">
                 <field name="name"/>
+                <field name="company_name"/>
                 <field name="date" string="Request Date"/>
       			<field name="type"/>
       			<field name="share_short_name" string="Share Type"/>
@@ -104,10 +105,10 @@
             <search string="Search Subscription Request">
                <field name="name"/>
                <separator/>
-               <filter string="draft" name="state_draft" domain="[('state','=','draft')]"/>
-               <filter string="done" name="state_done" domain="[('state','=','done')]"/>
+               <filter string="Draft" name="state_draft" domain="[('state','=','draft')]"/>
+               <filter string="Done" name="state_done" domain="[('state','=','done')]"/>
                <separator/>
-               <filter string="Unvalid" name="Unvalid" domain="[('validated', '=', False)]"/>
+               <filter string="Not Validated" name="Not Validated" domain="[('validated', '=', False)]"/>
                <group expand="0" name="group_by" string="Group By">
                    <filter name="request_type" string="Request type" context="{'group_by' : 'type'}" />
                    <filter name="date_month" string="Date Month" context="{'group_by': 'date'}"/>
@@ -117,47 +118,12 @@
     </record>
 
     <record id="subscription_request_action" model="ir.actions.act_window">
-        <field name="name">Cooperator Subscription</field>
+        <field name="name">Subscriptions</field>
         <field name="res_model">subscription.request</field>
         <field name="view_type">form</field>
-        <field name="domain">[('is_company','=',False),('is_operation','=',False)]</field>
+        <field name="domain">[('is_operation','=',False)]</field>
         <field name="context">{'default_source':'manual'}</field>
         <field name="view_id" ref="subscription_request_tree"/>
-        <field name="search_view_id" ref="view_subscription_request_filter"/>
-    </record>
-
-	<record id="company_subscription_request_tree" model="ir.ui.view">
-        <field name="name">subscription.request.tree</field>
-        <field name="model">subscription.request</field>
-        <field name="arch" type="xml">
-            <tree string="Company Cooperator Subscriptions Request" colors="red:validated == False; blue:state in ('draft');grey: state in ('done')">
-                <field name="company_name"/>
-                <field name="name"/>
-                <field name="date" string="Request Date"/>
-      			<field name="type"/>
-      			<field name="share_short_name" string="Share Type"/>
-      			<field name="ordered_parts" string="Quantity" sum="Total ordered parts"/>
-      			<field name="subscription_amount" sum="Total amount"/>
-      			<field name="email"/>
-      			<field name="iban"/>
-      			<field name="partner_id"/>
-      			<field name="source"/>
-      			<field name="state"/>
-      			<field name="validated" invisible="True"/>
-      			<button type="object" title="Validate" aria-label="Validate" name="validate_subscription_request" attrs="{'invisible':['|',('state','!=','draft'),('validated','=',False)]}" icon="STOCK_MEDIA_PLAY" />
-                <button type="object" title="Block" aria-label="Block" name="block_subscription_request" states="draft" groups="easy_my_coop.group_easy_my_coop_user" icon="gtk-cancel"/>
-                <button type="object" title="Unblock" aria-label="Unblock" name="unblock_subscription_request" states="block" groups="easy_my_coop.group_easy_my_coop_manager" icon="gtk-jump-to"/>
-            </tree>
-        </field>
-    </record>
-
-	<record id="company_subscription_request_action" model="ir.actions.act_window">
-        <field name="name">Company Subscription</field>
-        <field name="res_model">subscription.request</field>
-        <field name="view_type">form</field>
-        <field name="domain">[('is_company','=',True),('is_operation','=',False)]</field>
-        <field name="context">{'default_is_company': True,'default_source':'manual'}</field>
-        <field name="view_id" ref="company_subscription_request_tree"/>
         <field name="search_view_id" ref="view_subscription_request_filter"/>
     </record>
 
