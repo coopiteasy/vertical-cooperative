@@ -8,5 +8,7 @@
 	<menuitem name="Loan Issues" id="loan_issue_menu" action="action_loan_issue" parent="menu_easy_my_coop_main_loan_issue" sequence="110"/>
 	<menuitem name="Loans" id="individual_loan_menu" action="action_follow_individual_loan" parent="menu_easy_my_coop_main_loan_issue" sequence="120"/>
 
+	<menuitem name="Loaners" id="loaners_menu" action="action_loaners" parent="easy_my_coop.menu_easy_my_coop_main_coop" sequence="215" />
+
 	<menuitem name="Loan Term" id="loan_term_menu" action="action_loan_term" parent="easy_my_coop.menu_easy_my_coop_config" sequence="420"/>
 </odoo>
