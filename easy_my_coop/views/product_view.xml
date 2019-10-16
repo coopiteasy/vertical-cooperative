@@ -15,16 +15,24 @@
                    		<label for="display_on_website"/>
                     </div>
                 </xpath>
-				<xpath expr="//field[@name='type']" position="after">
-					<field name="short_name" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user"/>
-					<field name="default_share_product" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user"/>
-					<field name="force_min_qty" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user"/>
-					<field name="minimum_quantity" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user"/>
-					<field name="customer" attrs="{'invisible':[('is_share','=',False)]}"/>
-					<field name="by_company" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user"/>
-					<field name="by_individual" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user"/>
-					<field name="mail_template" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user"/>
-				</xpath>
+                <page name="general_information" position="after">
+                	<page string="Share Information" name="share_information" attrs="{'invisible':[('is_share','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user">
+                		<group>
+                			<group name="Info" string="Info">
+								<field name="short_name"/>
+								<field name="default_share_product"/>
+								<field name="mail_template"/>
+                			</group>
+                			<group name="configuration" string="Configuration">
+                				<field name="force_min_qty"/>
+								<field name="minimum_quantity"/>
+								<field name="customer" attrs="{'invisible':[('is_share','=',False)]}"/>
+								<field name="by_company"/>
+								<field name="by_individual"/>
+                			</group>
+                		</group>
+                	</page>
+                </page>
            </field>
 	</record>
 		
