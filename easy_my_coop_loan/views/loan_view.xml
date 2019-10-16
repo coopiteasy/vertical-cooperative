@@ -104,7 +104,7 @@
 		<field name="view_mode">tree,form</field>
 	</record>
 
-	<record id="action_follow_individual_loan" model="ir.actions.act_window">
+	<record id="action_loan_issue_lines" model="ir.actions.act_window">
 		<field name="name">Loans</field>
 		<field name="res_model">loan.issue.line</field>
 		<field name="view_type">form</field>
