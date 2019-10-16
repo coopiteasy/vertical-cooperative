@@ -6,4 +6,4 @@ class ResPartner(models.Model):
 
     loan_line_ids = fields.One2many('loan.issue.line',
                                     'partner_id',
-                                    string="Name")
+                                    string="Loans")

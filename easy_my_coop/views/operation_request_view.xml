@@ -103,5 +103,4 @@
            <field name="view_id" ref="operation_request_tree"/>
        </record>
 
-	<menuitem action="operation_request_action" name="Operation request" id="menu_easy_my_coop_operation_request" parent="menu_easy_my_coop_main_subscription" sequence="30" groups="easy_my_coop.group_easy_my_coop_manager"/>
 </odoo>
