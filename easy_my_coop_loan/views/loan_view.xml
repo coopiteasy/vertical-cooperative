@@ -98,11 +98,34 @@
 	</record>
 
 	<record id="action_loan_issue" model="ir.actions.act_window">
-		<field name="name">Loan issue</field>
-		<field name="type">ir.actions.act_window</field>
+		<field name="name">Loan Issues</field>
 		<field name="res_model">loan.issue</field>
 		<field name="view_type">form</field>
 		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="action_follow_individual_loan" model="ir.actions.act_window">
+		<field name="name">Loans</field>
+		<field name="res_model">loan.issue.line</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="loan_issue_line_view_tree" model="ir.ui.view">
+	    <field name="name">loan_issue_line_view_tree</field>
+	    <field name="model">loan.issue.line</field>
+	    <field name="arch" type="xml">
+	        <tree string="Loans">
+	            <field name="name"/>
+				<field name="partner_id"/>
+				<field name="loan_issue_id"/>
+				<field name="quantity"/>
+				<field name="face_value"/>
+				<field name="amount"/>
+				<field name="date"/>
+				<field name="state"/>
+	        </tree>
+	    </field>
 	</record>
 
 	<record id="view_loan_issue_line_form" model="ir.ui.view">
