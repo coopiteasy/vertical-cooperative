@@ -73,7 +73,7 @@
     <p>Find here after the necessary information for the payment. We kindly remind you that your subscription will be effective only once we received the payment.</p>
 
     <p>Amount: ${object.amount} ${object.loan_issue_id.company_currency_id.symbol}</p>
-    <p>Account number: ${object.company_id.partner_id.bank_ids[0].sanitized_acc_number}</p>
+    <p>Account number: ${object.company_id.bank_ids[0].sanitized_acc_number}</p>
     <p>Communication: ${object.loan_issue_id.name} + ${object.partner_id.name}</p>
 
     <p>Sustainably your,</p>
