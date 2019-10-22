@@ -78,7 +78,7 @@
 						</group>
 					</group>
 					<notebook>
-						<page string="Lines">
+						<page name="lines" string="Lines">
 							<field name="loan_issue_lines">
 								<tree delete="false">
 									<field name="name" />
