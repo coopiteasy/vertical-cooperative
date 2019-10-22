@@ -63,7 +63,6 @@ class dividend_year(models.Model):
         number_of_days = (datetime.strptime(self.date_to, '%Y-%m-%d')
                           - datetime.strptime(self.date_from, '%Y-%m-%d')
                           ).days + 1
-        print number_of_days
 
         for partner in partner_ids:
             total_amount_dividend = 0.0
