@@ -14,6 +14,7 @@
         <field name="city">Namur (Loyers)</field>
         <field name="zip">5101</field>
         <field name="country_id" ref="base.be"/>
+        <field name="member" eval="True"/>
     </record>
 
     <record id="bank_account_virginie_demo" model="res.partner.bank">
@@ -31,6 +32,7 @@
         <field name="city">Namur (Loyers)</field>
         <field name="zip">5101</field>
         <field name="country_id" ref="base.be"/>
+        <field name="member" eval="True"/>
     </record>
 
     <record id="bank_account_houssine_demo" model="res.partner.bank">
