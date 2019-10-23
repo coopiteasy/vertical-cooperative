@@ -88,7 +88,9 @@
             <field name="inherit_id" ref="base.view_res_partner_filter"/>
             <field name="arch" type="xml">
             	<xpath expr="//filter[@name='supplier']" position='after'>
-                   <filter string="Cooperators" name="cooperator" domain="[('member','=',1)]" help="Cooperator Partners"/>
+                   <filter string="Cooperators" name="cooperators" domain="[('member','=',1)]" help="Cooperator Partners"/>
+                   <filter string="Old Cooperators" name="old_cooperators" domain="[('old_member','=',1)]" help="Cooperator Partners"/>
+                   <filter string="Cooperator Candidates" name="cooperator_candidates" domain="[('coop_candidate','=',1)]" help="Cooperator Partners"/>
                 </xpath>
                 <filter name="salesperson" position="before">
                 	<filter name="Cooperator Type" context="{'group_by': 'cooperator_type'}"/>
@@ -102,7 +104,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
             <field name="domain">['|', ('cooperator','=',True), '|', ('member','=',True),('old_member','=', True)]</field>
-            <field name="context">{'default_cooperator':1, 'search_default_cooperator':1}</field>
+            <field name="context">{'default_cooperator':1, 'search_default_cooperators':1}</field>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">
                 Click to add a contact in your address book.
@@ -120,8 +122,8 @@
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
-            <field name="domain">[('cooperator','=',True),('coop_candidate','=',True),('member','=',False)]</field>
-            <field name="context">{'default_cooperator':1}</field>
+            <field name="domain">[('cooperator','=',True)]</field>
+            <field name="context">{'default_cooperator':1, 'search_default_cooperator_candidates':1}</field>
             <field name="filter" eval="True"/>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">
