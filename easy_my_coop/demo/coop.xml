@@ -135,7 +135,7 @@
 
     <record id="product_product_share_type_1_demo" model="product.product">
         <field name="product_tmpl_id" ref="product_template_share_type_1_demo"/>
-        <field name="default_code">share_founder</field>
+        <field name="default_code">share_a</field>
     </record>
 
     <record id="product_template_share_type_2_demo" model="product.template">
@@ -153,7 +153,7 @@
 
     <record id="product_product_share_type_2_demo" model="product.product">
         <field name="product_tmpl_id" ref="product_template_share_type_2_demo"/>
-        <field name="default_code">share_worker</field>
+        <field name="default_code">share_b</field>
     </record>
 
     <record id="subscription_request_1_demo" model="subscription.request">
