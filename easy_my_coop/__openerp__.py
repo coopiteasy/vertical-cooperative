@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Easy My Coop",
-    "version": "9.1.0.0.1",
+    "version": "9.1.0.0.2",
     "depends": ["base",
                 "sale",
                 "purchase",

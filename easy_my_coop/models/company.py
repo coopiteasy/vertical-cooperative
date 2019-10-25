@@ -95,3 +95,18 @@ class ResCompany(models.Model):
     def onchange_financial_risk_approval_required(self):
         if self.financial_risk_approval_required:
             self.display_financial_risk_rules_approval = True
+
+    _sql_constraints = [(
+        'approval_constraint',
+        """CHECK (((internal_rules_approval_required=FALSE
+            AND display_internal_rules_approval=FALSE)
+            OR display_internal_rules_approval=TRUE)
+        AND ((data_policy_approval_required=FALSE
+            AND display_data_policy_approval=FALSE)
+            OR display_data_policy_approval=TRUE)
+        AND ((financial_risk_approval_required=FALSE
+            AND display_financial_risk_approval=FALSE)
+            OR display_financial_risk_approval=TRUE))
+        """,
+        "Approval can't be mandatory and not displayed."
+    )]
