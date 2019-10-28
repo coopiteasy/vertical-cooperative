@@ -19,6 +19,7 @@
 #
 ##############################################################################
 {
+    # todo check ir model access
     "name": "Easy My Coop tax shelter report",
     "version": "1.0",
     "depends": ["easy_my_coop"],
