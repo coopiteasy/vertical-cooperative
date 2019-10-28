@@ -4,6 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
+# migrate in v12 and isolate from emc
     'name': 'Easy My Coop Document',
 
     'summary': """
