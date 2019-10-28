@@ -31,5 +31,8 @@
     'data': [
         'view/product_view.xml',
     ],
+    'demo': [
+        'demo/eaters.xml',
+    ],
     'installable': True,
 }
