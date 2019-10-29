@@ -1,9 +1,30 @@
-from odoo import fields, models
+# -*- coding: utf-8 -*-
+# Copyright 2019 Coop IT Easy SCRL fs
+#   Robin Keunen <robin@coopiteasy.be>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+
+from odoo import fields, models, api
 
 
 class ResPartner(models.Model):
-    _inherit = 'res.partner'
+    _inherit = "res.partner"
 
-    loan_line_ids = fields.One2many('loan.issue.line',
-                                    'partner_id',
-                                    string="Loans")
+    loan_line_ids = fields.One2many(
+        comodel_name="loan.issue.line",
+        inverse_name="partner_id",
+        string="Loans",
+    )
+    is_loaner = fields.Boolean(
+        string="Loaner",
+        compute="_compute_is_loaner",
+        store=True,
+    )
+
+    @api.multi
+    @api.depends("loan_line_ids", "loan_line_ids.state")
+    def _compute_is_loaner(self):
+        for partner in self:
+            loans = partner.loan_line_ids.filtered(
+                lambda l: l.state in ["subscribed", "waiting", "paid"]
+            )
+            partner.is_loaner = bool(loans)
