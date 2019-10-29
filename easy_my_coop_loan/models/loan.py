@@ -28,7 +28,8 @@ class LoanIssue(models.Model):
                 susbscribed_amount += line.amount
             issue.subscribed_amount = susbscribed_amount
 
-    name = fields.Char(string="Name")
+    name = fields.Char(string="Name",
+                       translate=True)
     is_bond = fields.Boolean(string="Is a bond issue?")
     is_loan = fields.Boolean(string="Is a subordinated loan issue?")
     default_issue = fields.Boolean(string="Default issue")
