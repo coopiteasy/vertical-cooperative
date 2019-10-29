@@ -10,5 +10,4 @@
 
 	<menuitem name="Loaners" id="loaners_menu" action="action_loaners" parent="easy_my_coop.menu_easy_my_coop_main_coop" sequence="215" />
 
-	<menuitem name="Loan Term" id="loan_term_menu" action="action_loan_term" parent="easy_my_coop.menu_easy_my_coop_config" sequence="420"/>
 </odoo>
