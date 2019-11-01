@@ -93,10 +93,6 @@
         <field name="display_on_website" eval="True"/>
     </record>
 
-    <record id="product_product_share_type_1_demo" model="product.product">
-        <field name="product_tmpl_id" ref="product_template_share_type_1_demo"/>
-    </record>
-
     <record id="product_template_share_type_2_demo" model="product.template">
         <field name="name">Part B - Worker</field>
         <field name="short_name">Part B</field>
@@ -110,10 +106,6 @@
         <field name="display_on_website" eval="True"/>
     </record>
 
-    <record id="product_product_share_type_2_demo" model="product.product">
-        <field name="product_tmpl_id" ref="product_template_share_type_2_demo"/>
-    </record>
-
     <record id="subscription_request_1_demo" model="subscription.request">
         <field name="name">Manuel Dublues</field>
         <field name="email">manuel@demo.net</field>
@@ -124,12 +116,12 @@
         <field name="date" eval="datetime.now() - timedelta(days=12)"/>
         <field name="source">manual</field>
         <field name="ordered_parts">3</field>
-        <field name="share_product_id" ref="product_product_share_type_2_demo"/>
+        <field name="share_product_id" model="product.template" eval="obj(ref('product_template_share_type_2_demo')).product_variant_id.id"/>
         <field name="lang">en_US</field>
     </record>
 
     <record id="share_line_1_demo" model="share.line">
-        <field name="share_product_id" ref="product_product_share_type_1_demo"/>
+        <field name="share_product_id" model="product.template" eval="obj(ref('product_template_share_type_1_demo')).product_variant_id.id"/>
         <field name="share_number">2</field>
         <field name="share_unit_price">50</field>
         <field name="partner_id" ref="res_partner_cooperator_1_demo"/>
@@ -137,7 +129,7 @@
     </record>
 
     <record id="share_line_2_demo" model="share.line">
-        <field name="share_product_id" ref="product_product_share_type_1_demo"/>
+        <field name="share_product_id" model="product.template" eval="obj(ref('product_template_share_type_1_demo')).product_variant_id.id"/>
         <field name="share_number">4</field>
         <field name="share_unit_price">50</field>
         <field name="partner_id" ref="res_partner_cooperator_2_demo"/>
