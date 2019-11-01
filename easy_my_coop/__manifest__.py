@@ -27,9 +27,9 @@
      cooperative business processes.
     """,
     'data': [
-        'security/easy_my_coop_security.xml',
-        'security/ir.model.access.csv',
         'data/easy_my_coop_data.xml',
+        'security/res_groups.xml',
+        'security/ir.model.access.csv',
         'wizard/create_subscription_from_partner.xml',
         'wizard/update_partner_info.xml',
         'wizard/validate_subscription_request.xml',
@@ -54,6 +54,7 @@
     ],
     'demo': [
         'demo/coop.xml',
+        'demo/users.xml',
     ],
     'installable': True,
     'application': True,
