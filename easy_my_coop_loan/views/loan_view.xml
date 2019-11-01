@@ -26,7 +26,8 @@
 		<field name="arch" type="xml">
 			<form string="Loan issue">
 				<header>
-					<button name="action_confirm" string="Confirm" type="object" states="draft" 
+<!--					todo check access rights  -->
+					<button name="action_confirm" string="Confirm" type="object" states="draft"
 						groups="easy_my_coop.group_easy_my_coop_manager"/>
 					<button name="action_cancel" string="Cancel" type="object" states="draft,ongoing"
 						confirm="Are you sure you want to cancel this loan issue?"
@@ -139,6 +140,7 @@
 	    <field name="arch" type="xml">
 	        <tree string="Loans">
 	            <field name="name"/>
+				<field name="loan_issue_id"/>
 				<field name="partner_id"/>
 				<field name="loan_issue_id"/>
 				<field name="quantity"/>
@@ -172,6 +174,7 @@
 				<sheet>
 					<group>
 						<group>
+							<field name="loan_issue_id"/>
 							<field name="name" />
 							<field name="quantity" />
 							<field name="face_value" />
@@ -183,7 +186,7 @@
 						</group>
 					</group>
 					<notebook>
-						<page string="Interst lines">
+						<page string="Interest lines">
 							<field name="interest_lines">
 								<tree delete="false" create="false">
 									<field name="name" />
