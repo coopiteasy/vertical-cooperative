@@ -21,7 +21,7 @@
       			<field name="validated" invisible="True"/>
                 <button type="object" string="Validate" aria-label="Validate" name="validate_subscription_request" attrs="{'invisible':['|',('state','!=','draft'),('validated','=',False)]}"/>
                 <button type="object" string="Block" aria-label="Block" name="block_subscription_request" states="draft" groups="easy_my_coop.group_easy_my_coop_user"/>
-                <button type="object" string="Unblock" aria-label="Unblock" name="unblock_subscription_request" states="block" groups="easy_my_coop.group_easy_my_coop_manager"/>
+                <button type="object" string="Unblock" aria-label="Unblock" name="unblock_subscription_request" states="block" groups="easy_my_coop.group_easy_my_coop_user"/>
             </tree>
         </field>
     </record>
@@ -34,14 +34,14 @@
    				<header>
    					<button string="Validate" type="object" name="validate_subscription_request" attrs="{'invisible':['|',('state','not in',['draft','waiting']),('validated','=',False)]}"/>
    					<button string="Waiting list" type="object" name="put_on_waiting_list" states="draft"/>
-   					<button string="Cancel" type="object" name="cancel_subscription_request" states="draft,done,block" groups="easy_my_coop.group_easy_my_coop_manager"/>
+   					<button string="Cancel" type="object" name="cancel_subscription_request" states="draft,done,block" groups="easy_my_coop.group_easy_my_coop_user"/>
    					<field name="state" widget="statusbar" statusbar_visible="draft,cancelled,done,failed"/>
    				</header>
    				<sheet>
        				<group>
 	       				<group>
 	       					<field name="already_cooperator"/>
-	       					<field name="is_company" groups="easy_my_coop.group_easy_my_coop_super_manager"/>
+	       					<field name="is_company" groups="easy_my_coop.group_easy_my_coop_manager"/>
 	       					<field name="is_operation" invisible="True"/>
 	       					<field name="company_name" attrs="{'invisible':[('is_company','=',False)]}"/>
 	       					<field name="company_email" attrs="{'invisible':[('is_company','=',False)]}"/>
@@ -62,7 +62,7 @@
 	       					<field name="country_id" options="{'no_create':True}"/>
 	       				</group>
 	       				<group>
-	       					<field name="capital_release_request_date" groups="easy_my_coop.group_easy_my_coop_super_manager"/>
+	       					<field name="capital_release_request_date" groups="easy_my_coop.group_easy_my_coop_manager"/>
 	       					<field name="date"/>
 	       					<field name="source"/>
 	       					<field name="ordered_parts"/>
@@ -136,7 +136,7 @@
     		<form string="Share line">
    				<header>
    					<button string="Update info" name="%(action_view_update_share_line_info)d"
-                            type="action" context="{'default_active_id': active_id}" groups="easy_my_coop.group_easy_my_coop_super_manager"/>
+                            type="action" context="{'default_active_id': active_id}" groups="easy_my_coop.group_easy_my_coop_manager"/>
    				</header>
    				<sheet>
        				<group>
