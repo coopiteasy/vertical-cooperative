@@ -57,6 +57,7 @@ class LoanIssueLine(models.Model):
                                  string="Company",
                                  readonly=True)
 
+    @api.model
     def create(self, vals):
         mail_template = 'easy_my_coop_loan.loan_subscription_confirmation'
         confirmation_mail_template = self.env.ref(mail_template, False)
