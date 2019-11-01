@@ -11,7 +11,7 @@ class ResCompany(models.Model):
     _inherit = 'res.company'
 
     def _get_base_logo(self):
-        base_url = self.env['ir.config_parameter'].get_param('web.base.url')
+        base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
         self.logo_url = base_url + "/logo.png"
 
     coop_email_contact = fields.Char(string="Contact email address for the"
