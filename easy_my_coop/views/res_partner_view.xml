@@ -12,10 +12,10 @@
             <field name="arch" type="xml">
             	<sheet position="before">
             		<header>
-            			<button id="action_view_create_subscription" string="Create Subscription" name="%(action_view_create_subscription)d"
-                                type="action" context="{'default_active_id': active_id}" groups="easy_my_coop.group_easy_my_coop_manager"/>
-                        <button id="action_view_update_partner_info" string="Update info" name="%(action_view_update_partner_info)d"
-                                type="action" context="{'default_active_id': active_id}" groups="easy_my_coop.group_easy_my_coop_manager"/>
+            			<button string="Create Subscription" name="%(action_view_create_subscription)d"
+                                type="action" context="{'default_active_id': active_id}" groups="easy_my_coop.group_easy_my_coop_user"/>
+                        <button string="Update info" name="%(action_view_update_partner_info)d"
+                                type="action" context="{'default_active_id': active_id}" groups="easy_my_coop.group_easy_my_coop_user"/>
             		</header>
             	</sheet>
             	
@@ -26,8 +26,8 @@
 							<field name="cooperator_register_number" readonly="True" attrs="{'invisible':[('member','=',False)]}"/>
 							<field name="company_register_number" readonly="True" attrs="{'invisible':[('is_company','=',False)]}"/>
 							<field name="coop_candidate" groups="easy_my_coop.group_easy_my_coop_user"/>
-							<field name="cooperator" invisible="True" groups="easy_my_coop.group_easy_my_coop_super_manager"/>
-							<field name="member" groups="easy_my_coop.group_easy_my_coop_super_manager"/>
+							<field name="cooperator" invisible="True" groups="easy_my_coop.group_easy_my_coop_manager"/>
+							<field name="member" groups="easy_my_coop.group_easy_my_coop_manager"/>
 							<field name="cooperator_type" attrs="{'invisible':[('member','=',False)]}"/>
 							<field name="effective_date" attrs="{'invisible':[('member','=',False)]}"/>
 						</group>

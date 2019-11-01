@@ -29,7 +29,7 @@
             <field name="multi">True</field>
         </record>
         
-        <menuitem id="menu_register_number_wizard" parent="easy_my_coop.menu_easy_my_coop_config" action="action_register_number_wizard" sequence="30" groups="easy_my_coop.group_easy_my_coop_super_manager"/>
+        <menuitem id="menu_register_number_wizard" parent="easy_my_coop.menu_easy_my_coop_config" action="action_register_number_wizard" sequence="30" groups="easy_my_coop.group_easy_my_coop_manager"/>
             
 	</data>
 </openerp>
