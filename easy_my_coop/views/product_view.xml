@@ -6,7 +6,7 @@
            <field name="inherit_id" ref="product.product_template_form_view"/>
            <field name="arch" type="xml">
                 <xpath expr="//field[@name='purchase_ok']/.." position="after">
-                	<div groups="easy_my_coop.group_easy_my_coop_super_manager">
+                	<div groups="easy_my_coop.group_easy_my_coop_manager">
                     	<field name="is_share"/>
                    		<label for="is_share"/>
                     </div>
