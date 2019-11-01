@@ -23,5 +23,8 @@
         'views/menus.xml',
         'data/mail_template_data.xml',
     ],
+    "demo": [
+        "demo/coop.xml",
+    ],
     'installable': True,
 }
