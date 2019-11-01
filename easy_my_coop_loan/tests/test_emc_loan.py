@@ -106,5 +106,5 @@ class EMCLoanCase(EMCBaseCase):
         line.action_request_payment()
         line.action_paid()
 
-        # loan_issue.compute_loan_interest()
+        loan_issue.compute_loan_interest()
 
