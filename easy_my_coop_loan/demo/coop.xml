@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="loan_issue_1_demo" model="loan.issue">
+        <field name="name">test loan issue</field>
+        <field name="is_bond" eval="False"/>
+        <field name="is_loan" eval="True"/>
+        <field name="default_issue" eval="True"/>
+        <field name="subscription_start_date" eval="datetime.today()"/>
+        <field name="subscription_end_date" eval="datetime.today() + timedelta(days=60)"/>
+        <field name="term_date" eval="datetime.today() + timedelta(days=600)"/>
+        <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo"/>
+        <field name="rate">0.03</field>
+        <field name="face_value">100</field>
+        <field name="minimum_amount">4000</field>
+        <field name="maximum_amount">10000</field>
+        <field name="maximum_amount_per_sub">1000</field>
+        <field name="interest_payment">yearly</field>
+        <field name="by_company" eval="True"/>
+        <field name="by_individual" eval="True"/>
+        <field name="display_on_website" eval="True"/>
+        <field name="taxes_rate">0.08</field>
+        <field name="state">ongoing</field>
+    </record>
+
+    <record id="loan_issue_line_1_demo" model="loan.issue.line">
+        <field name="loan_issue_id" ref="loan_issue_1_demo"/>
+        <field name="quantity">3</field>
+        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_4_demo"/>
+    </record>
+</odoo>

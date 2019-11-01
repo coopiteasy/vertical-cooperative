@@ -4,7 +4,9 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
-# migrate in v12 and isolate from emc
+    # migrate in v12 and isolate from emc
+    # add manager group or use relevant existing group
+    # add ir.model.access rules for that user
     'name': 'Easy My Coop Document',
 
     'summary': """
