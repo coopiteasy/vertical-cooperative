@@ -172,6 +172,9 @@ class LoanIssue(models.Model):
 
         if self.interest_payment == 'end':
             due_date = self.term_date
+        else:
+            raise NotImplementedError(_("Interest payment by year hasn't been "
+                                        "implemented yet"))
         for line in self.loan_issue_lines:
             # TODO remove this line
             line.interest_lines.unlink()
@@ -186,4 +189,5 @@ class LoanIssue(models.Model):
             rounded_term = int(self.term.term)
             if self.term.term - rounded_term > 0:
                 # TODO Handle this case
-                _logger.info("todo")
+                raise NotImplementedError(_("Calculation on non entire year "
+                                            "hasn't been implemented yet"))
