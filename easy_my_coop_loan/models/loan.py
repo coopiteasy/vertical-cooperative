@@ -5,16 +5,6 @@ from odoo import api, fields, models
 _logger = logging.getLogger(__name__)
 
 
-class LoanTerm(models.Model):
-    _name = 'loan.term'
-    _description = 'Loan Term'
-
-    name = fields.Char(string="Name",
-                       required=True)
-    term = fields.Float(string="Term",
-                        required=True)
-
-
 class LoanIssue(models.Model):
     _name = 'loan.issue'
     _description = 'Loan Issue'
@@ -38,6 +28,7 @@ class LoanIssue(models.Model):
     user_id = fields.Many2one('res.users',
                               string="Responsible")
     term_date = fields.Date(string="Term date")
+    loan_term = fields.Float(string="term of the loan")
     rate = fields.Float(string="Interest rate")
     face_value = fields.Monetary(string="Facial value",
                                  currency_field='company_currency_id',
@@ -55,8 +46,6 @@ class LoanIssue(models.Model):
     interest_payment = fields.Selection([('end', 'End'),
                                          ('yearly', 'Yearly')],
                                         string="Interest payment")
-    term = fields.Many2one('loan.term',
-                           string="term of the loan")
     loan_issue_lines = fields.One2many('loan.issue.line',
                                        'loan_issue_id',
                                        string="Loan issue lines")
@@ -148,7 +137,7 @@ class LoanIssue(models.Model):
         accrued_interest = 0
         accrued_net_interest = 0
         accrued_taxes = 0
-        for year in range(1, int(self.term.term) + 1):
+        for year in range(1, int(self.loan_term) + 1):
             interest = accrued_amount * (line.loan_issue_id.rate / 100)
             accrued_amount += interest
             taxes_amount = interest * (self.taxes_rate / 100)
@@ -183,7 +172,7 @@ class LoanIssue(models.Model):
                 }
             self.get_interest_vals(line, vals)
 
-            rounded_term = int(self.term.term)
-            if self.term.term - rounded_term > 0:
+            rounded_term = int(self.loan_term)
+            if self.loan_term - rounded_term > 0:
                 # TODO Handle this case
                 _logger.info("todo")

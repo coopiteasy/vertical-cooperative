@@ -9,7 +9,7 @@
 				<field name="subscription_start_date" />
 				<field name="subscription_end_date" />
 				<field name="term_date" />
-				<field name="term" />
+				<field name="loan_term" />
 				<field name="rate" />
 				<field name="minimum_amount" />
 				<field name="maximum_amount" />
@@ -73,7 +73,7 @@
 							<field name="subscription_start_date" />
 							<field name="subscription_end_date" />
 							<field name="term_date" />
-							<field name="term" widget="selection"/>
+							<field name="loan_term" />
 							<field name="interest_payment" widget="selection" />
 						</group>
 					</group>
