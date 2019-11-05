@@ -18,7 +18,6 @@
     """,
     'data': [
         'security/ir.model.access.csv',
-        'views/term_view.xml',
         'views/loan_view.xml',
         'views/partner_view.xml',
         'views/menus.xml',
