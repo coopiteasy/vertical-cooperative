@@ -22,19 +22,19 @@ class LoanIssue(models.Model):
                        translate=True)
     is_bond = fields.Boolean(string="Is a bond issue?")
     default_issue = fields.Boolean(string="Default issue")
-    subscription_start_date = fields.Date(string="Start date")
-    subscription_end_date = fields.Date(string="End date")
+    subscription_start_date = fields.Date(string="Start date subscription period")
+    subscription_end_date = fields.Date(string="End date subscription period")
     user_id = fields.Many2one('res.users',
                               string="Responsible")
     term_date = fields.Date(string="Term date")
-    loan_term = fields.Float(string="term of the loan")
+    loan_term = fields.Float(string="Duration of the loan")
     rate = fields.Float(string="Interest rate")
     face_value = fields.Monetary(string="Facial value",
                                  currency_field='company_currency_id',
                                  required=True)
-    minimum_amount = fields.Monetary(string="Minimum amount",
+    minimum_amount = fields.Monetary(string="Minimum amount of issue",
                                      currency_field='company_currency_id')
-    maximum_amount = fields.Monetary(string="Maximum amount",
+    maximum_amount = fields.Monetary(string="Maximum amount of issue",
                                      currency_field='company_currency_id')
     min_amount_company = fields.Monetary(string="Minimum amount for a company",
                                          currency_field='company_currency_id')
