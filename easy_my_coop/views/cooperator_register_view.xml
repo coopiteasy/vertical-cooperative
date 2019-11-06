@@ -60,7 +60,7 @@
                   <separator/>
                   <group expand="0" name="group_by" string="Group By">
                       <filter name="entry_type" string="Entry type" context="{'group_by' : 'type'}" />
-                      <filter name="date_month" string="Date Month" context="{'group_by': 'date'}"/>
+                      <filter name="subscription_date" string="Subscription Date" context="{'group_by': 'date'}"/>
                   </group>
               </search>
            </field>
