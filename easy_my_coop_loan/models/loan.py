@@ -37,9 +37,14 @@ class LoanIssue(models.Model):
                                      currency_field='company_currency_id')
     maximum_amount = fields.Monetary(string="Maximum amount",
                                      currency_field='company_currency_id')
-    maximum_amount_per_sub = fields.Monetary(
-                            string="Maximum amount per subscription",
-                            currency_field='company_currency_id')
+    min_amount_company = fields.Monetary(string="Minimum amount for a company",
+                                         currency_field='company_currency_id')
+    max_amount_company = fields.Monetary(string="Maximum amount for a company",
+                                         currency_field='company_currency_id')
+    min_amount_person = fields.Monetary(string="Minimum amount for a person",
+                                        currency_field='company_currency_id')
+    max_amount_person = fields.Monetary(string="Maximum amount for a person",
+                                        currency_field='company_currency_id')
     subscribed_amount = fields.Monetary(string="Subscribed amount",
                                         compute="_compute_subscribed_amount",
                                         currency_field='company_currency_id')
@@ -70,6 +75,18 @@ class LoanIssue(models.Model):
     display_on_website = fields.Boolean(sting='Display on website')
     taxes_rate = fields.Float(string="Taxes on interest",
                               required=True)
+
+    @api.multi
+    def get_max_amount(self, partner):
+        max_amount = 0
+        lines = self.loan_issue_lines.filtered(
+            lambda r: r.partner_id == partner and r.state != 'cancelled')
+        already_subscribed = sum(line.amount for line in lines)
+        if partner.is_company:
+            max_amount = self.max_amount_company - already_subscribed
+        else:
+            max_amount = self.max_amount_person - already_subscribed
+        return max_amount
 
     @api.multi
     def toggle_display(self):

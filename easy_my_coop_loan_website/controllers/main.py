@@ -12,11 +12,13 @@ class WebsiteLoanIssueSubscription(http.Controller):
                 methods=['POST'], website=True)
     def get_loan_issue(self, loan_issue_id, **kw):
         loan_issue_obj = request.env['loan.issue']
+        partner = request.env.user.partner_id
         if loan_issue_id:
             loan_issue = loan_issue_obj.sudo().browse(int(loan_issue_id))
+            max_amount = loan_issue.get_max_amount(partner)
             return {
                 loan_issue.id: {
-                    'max_amount': loan_issue.maximum_amount_per_sub,
+                    'max_amount': max_amount,
                     'face_value': loan_issue.face_value,
                     }
                 }

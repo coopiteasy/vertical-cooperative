@@ -61,8 +61,11 @@
 							<field name="face_value" />
 							<field name="minimum_amount" />
 							<field name="maximum_amount" />
-							<field name="maximum_amount_per_sub" />
 							<field name="subscribed_amount" />
+							<field name="min_amount_person" />
+							<field name="max_amount_person" />
+							<field name="min_amount_company" />
+							<field name="max_amount_company" />
 							<field name="by_individual" />
 							<field name="by_company" />
 						</group>
