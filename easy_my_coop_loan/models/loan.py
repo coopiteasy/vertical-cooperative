@@ -21,7 +21,6 @@ class LoanIssue(models.Model):
     name = fields.Char(string="Name",
                        translate=True)
     is_bond = fields.Boolean(string="Is a bond issue?")
-    is_loan = fields.Boolean(string="Is a subordinated loan issue?")
     default_issue = fields.Boolean(string="Default issue")
     subscription_start_date = fields.Date(string="Start date")
     subscription_end_date = fields.Date(string="End date")
@@ -94,19 +93,7 @@ class LoanIssue(models.Model):
             loan_issue.display_on_website = not loan_issue.display_on_website
 
     @api.multi
-    def get_web_loan_issues(self, is_company):
-        loan_issues = self.search([
-                            ('is_loan', '=', True),
-                            ('display_on_website', '=', True),
-                            ('state', '=', 'ongoing')
-                            ])
-        if is_company is True:
-            return loan_issues.filtered('by_company')
-        else:
-            return loan_issues.filtered('by_individual')
-
-    @api.multi
-    def get_web_bond_issues(self, is_company):
+    def get_web_issues(self, is_company):
         bond_issues = self.search([
                             ('is_bond', '=', True),
                             ('display_on_website', '=', True),
@@ -116,12 +103,6 @@ class LoanIssue(models.Model):
             return bond_issues.filtered('by_company')
         else:
             return bond_issues.filtered('by_company')
-
-    @api.multi
-    def get_web_issues(self, is_company):
-        issues = self.get_web_loan_issues(is_company)
-        issues = issues + self.get_web_bond_issues(is_company)
-        return issues
 
     @api.multi
     def action_confirm(self):
