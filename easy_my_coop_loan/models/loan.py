@@ -77,7 +77,6 @@ class LoanIssue(models.Model):
 
     @api.multi
     def get_max_amount(self, partner):
-        max_amount = 0
         lines = self.loan_issue_lines.filtered(
             lambda r: r.partner_id == partner and r.state != 'cancelled')
         already_subscribed = sum(line.amount for line in lines)
