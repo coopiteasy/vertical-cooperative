@@ -21,25 +21,29 @@ class LoanIssue(models.Model):
     name = fields.Char(string="Name",
                        translate=True)
     is_bond = fields.Boolean(string="Is a bond issue?")
-    is_loan = fields.Boolean(string="Is a subordinated loan issue?")
     default_issue = fields.Boolean(string="Default issue")
-    subscription_start_date = fields.Date(string="Start date")
-    subscription_end_date = fields.Date(string="End date")
+    subscription_start_date = fields.Date(string="Start date subscription period")
+    subscription_end_date = fields.Date(string="End date subscription period")
     user_id = fields.Many2one('res.users',
                               string="Responsible")
     term_date = fields.Date(string="Term date")
-    loan_term = fields.Float(string="term of the loan")
+    loan_term = fields.Float(string="Duration of the loan")
     rate = fields.Float(string="Interest rate")
     face_value = fields.Monetary(string="Facial value",
                                  currency_field='company_currency_id',
                                  required=True)
-    minimum_amount = fields.Monetary(string="Minimum amount",
+    minimum_amount = fields.Monetary(string="Minimum amount of issue",
                                      currency_field='company_currency_id')
-    maximum_amount = fields.Monetary(string="Maximum amount",
+    maximum_amount = fields.Monetary(string="Maximum amount of issue",
                                      currency_field='company_currency_id')
-    maximum_amount_per_sub = fields.Monetary(
-                            string="Maximum amount per subscription",
-                            currency_field='company_currency_id')
+    min_amount_company = fields.Monetary(string="Minimum amount for a company",
+                                         currency_field='company_currency_id')
+    max_amount_company = fields.Monetary(string="Maximum amount for a company",
+                                         currency_field='company_currency_id')
+    min_amount_person = fields.Monetary(string="Minimum amount for a person",
+                                        currency_field='company_currency_id')
+    max_amount_person = fields.Monetary(string="Maximum amount for a person",
+                                        currency_field='company_currency_id')
     subscribed_amount = fields.Monetary(string="Subscribed amount",
                                         compute="_compute_subscribed_amount",
                                         currency_field='company_currency_id')
@@ -72,24 +76,23 @@ class LoanIssue(models.Model):
                               required=True)
 
     @api.multi
+    def get_max_amount(self, partner):
+        lines = self.loan_issue_lines.filtered(
+            lambda r: r.partner_id == partner and r.state != 'cancelled')
+        already_subscribed = sum(line.amount for line in lines)
+        if partner.is_company:
+            max_amount = self.max_amount_company - already_subscribed
+        else:
+            max_amount = self.max_amount_person - already_subscribed
+        return max_amount
+
+    @api.multi
     def toggle_display(self):
         for loan_issue in self:
             loan_issue.display_on_website = not loan_issue.display_on_website
 
     @api.multi
-    def get_web_loan_issues(self, is_company):
-        loan_issues = self.search([
-                            ('is_loan', '=', True),
-                            ('display_on_website', '=', True),
-                            ('state', '=', 'ongoing')
-                            ])
-        if is_company is True:
-            return loan_issues.filtered('by_company')
-        else:
-            return loan_issues.filtered('by_individual')
-
-    @api.multi
-    def get_web_bond_issues(self, is_company):
+    def get_web_issues(self, is_company):
         bond_issues = self.search([
                             ('is_bond', '=', True),
                             ('display_on_website', '=', True),
@@ -99,12 +102,6 @@ class LoanIssue(models.Model):
             return bond_issues.filtered('by_company')
         else:
             return bond_issues.filtered('by_company')
-
-    @api.multi
-    def get_web_issues(self, is_company):
-        issues = self.get_web_loan_issues(is_company)
-        issues = issues + self.get_web_bond_issues(is_company)
-        return issues
 
     @api.multi
     def action_confirm(self):

@@ -55,21 +55,32 @@
 					<group>
 						<group>
 							<field name="name" />
-							<field name="is_loan" />
 							<field name="is_bond" />
 							<field name="default_issue" />
 							<field name="face_value" />
 							<field name="minimum_amount" />
 							<field name="maximum_amount" />
-							<field name="maximum_amount_per_sub" />
 							<field name="subscribed_amount" />
+							<field name="min_amount_person" />
+							<field name="max_amount_person" />
+							<field name="min_amount_company" />
+							<field name="max_amount_company" />
 							<field name="by_individual" />
 							<field name="by_company" />
+							<field name="company_currency_id" invisible="True" />
 						</group>
 						<group>
 							<field name="user_id" widget="selection" />
-							<field name="rate" />
-							<field name="taxes_rate" />
+							<label for="rate" string="Interest rate"/>
+							<div>
+								<field name="rate" class="oe_inline"/>
+								<span class="o_form_label oe_inline">%</span>
+							</div>
+							<label for="taxes_rate" string="Taxes on interest"/>
+							<div>
+								<field name="taxes_rate" class="oe_inline"/>
+								<span class="o_form_label oe_inline">%</span>
+							</div>
 							<field name="subscription_start_date" />
 							<field name="subscription_end_date" />
 							<field name="term_date" />
@@ -88,6 +99,7 @@
 									<field name="face_value" />
 									<field name="amount" />
 									<field name="state" />
+									<field name="company_currency_id" invisible="True"/>
 								</tree>
 							</field>
 						</page>
