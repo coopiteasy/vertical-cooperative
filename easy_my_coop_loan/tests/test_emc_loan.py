@@ -14,7 +14,6 @@ class EMCLoanCase(EMCBaseCase):
         loan_issue_values = {
             "name": "test loan issue",
             "is_bond": False,
-            "is_loan": True,
             "default_issue": "xx",
             "subscription_start_date": Date.today(),
             "subscription_end_date": Date.today() + timedelta(days=60),
@@ -24,8 +23,7 @@ class EMCLoanCase(EMCBaseCase):
             "face_value": 100,
             "minimum_amount": 4000,
             "maximum_amount": 10,  # ?
-            "maximum_amount_per_sub": 1000,
-            "interest_payment": "yearly",
+            "interest_payment": "end",
             "by_company": True,
             "by_individual": True,
             "display_on_website": True,
@@ -40,13 +38,12 @@ class EMCLoanCase(EMCBaseCase):
         loan_issue.action_draft()
         loan_issue.action_open()
 
-    def test_emc_user_cannot_manager_loan_issue(self):
+    def test_emc_user_cannot_manage_loan_issue(self):
         self.as_emc_user()
 
         loan_issue_values = {
             "name": "test loan issue",
             "is_bond": False,
-            "is_loan": True,
             "default_issue": True,
             "user_id": self.ref("easy_my_coop.res_users_manager_emc_demo"),
             "subscription_start_date": Date.today(),
@@ -56,8 +53,7 @@ class EMCLoanCase(EMCBaseCase):
             "face_value": 100,
             "minimum_amount": 2000,
             "maximum_amount": 10000,  # ?
-            "maximum_amount_per_sub": 1000,
-            "interest_payment": "yearly",
+            "interest_payment": "end",
             "by_company": True,
             "by_individual": True,
             "display_on_website": True,

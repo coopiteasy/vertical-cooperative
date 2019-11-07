@@ -7,7 +7,6 @@
     <record id="loan_issue_1_demo" model="loan.issue">
         <field name="name">test loan issue</field>
         <field name="is_bond" eval="False"/>
-        <field name="is_loan" eval="True"/>
         <field name="default_issue" eval="True"/>
         <field name="subscription_start_date" eval="datetime.today()"/>
         <field name="subscription_end_date" eval="datetime.today() + timedelta(days=60)"/>
@@ -17,8 +16,7 @@
         <field name="face_value">100</field>
         <field name="minimum_amount">4000</field>
         <field name="maximum_amount">10000</field>
-        <field name="maximum_amount_per_sub">1000</field>
-        <field name="interest_payment">yearly</field>
+        <field name="interest_payment">end</field>
         <field name="by_company" eval="True"/>
         <field name="by_individual" eval="True"/>
         <field name="display_on_website" eval="True"/>
