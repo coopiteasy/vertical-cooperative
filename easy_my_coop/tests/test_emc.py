@@ -84,7 +84,7 @@ class EMCCase(EMCBaseCase):
             "date": Date.today(),
             "source": "manual",
             "ordered_parts": 3,
-            "share_product_id": self.ref(
+            "share_product_id": self.browse_ref(
                 "easy_my_coop.product_template_share_type_2_demo"
             ).product_variant_id.id,
             "lang": "en_US",
