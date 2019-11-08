@@ -1,10 +1,17 @@
-# -*- coding: utf-8 -*-
-from openerp import api, models
+from odoo import api, models
+
+EMAIL_TEMPLATE_IDS = [
+    "easy_my_coop_taxshelter_report.email_template_tax_shelter_certificate",
+    ]
 
 
 class MailTemplate(models.Model):
-
     _inherit = "mail.template"
+
+    def init(self):
+        for template_id in EMAIL_TEMPLATE_IDS:
+            mail_template = self.env.ref(template_id)
+            mail_template.easy_my_coop = True
 
     @api.multi
     def send_mail_with_multiple_attachments(self, res_id,
@@ -12,7 +19,7 @@ class MailTemplate(models.Model):
                                             force_send=False,
                                             raise_exception=False):
         """Generates a new mail message for the given template and record,
-           and schedules it for delivery through the ``mail`` 
+           and schedules it for delivery through the ``mail``
            module's scheduler.
 
            :param int res_id: id of the record to render the template with
@@ -24,7 +31,8 @@ class MailTemplate(models.Model):
         """
         self.ensure_one()
         Mail = self.env['mail.mail']
-        Attachment = self.env['ir.attachment']  # TDE FIXME: should remove dfeault_type from context
+        # TDE FIXME: should remove dfeault_type from context
+        Attachment = self.env['ir.attachment']
 
         # create a mail_mail based on values, without attachments
         values = self.generate_email(res_id)
