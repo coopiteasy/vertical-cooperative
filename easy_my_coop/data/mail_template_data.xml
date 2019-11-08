@@ -15,6 +15,7 @@
             <field name="report_template" ref="action_cooperator_invoices"/>
             <field name="report_name">${(object.number or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}</field>
             <field name="lang">${object.partner_id.lang}</field>
+            <field name="easy_my_coop" eval="True"/>
             <field name="body_html"><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
@@ -65,6 +66,7 @@
             <field name="model_id" ref="model_subscription_request"/>
             <field name="auto_delete" eval="True"/>
             <field name="lang">${object.lang}</field>
+            <field name="easy_my_coop" eval="True"/>
             <field name="body_html"><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
@@ -117,6 +119,7 @@
             <field name="model_id" ref="model_subscription_request"/>
             <field name="auto_delete" eval="True"/>
             <field name="lang">${object.lang}</field>
+            <field name="easy_my_coop" eval="True"/>
             <field name="body_html"><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
@@ -166,7 +169,6 @@
             <field name="name">Payment Received Confirmation - Send By Email</field>
             <field name="email_from">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
             <field name="subject">Payment Received Confirmation</field>
-            <!-- <field name="email_recipients">${object.partner_id.id}</field> -->
             <field name="partner_to">${object.id}</field>
             <field name="reply_to">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
             <field name="model_id" ref="model_res_partner"/>
@@ -174,6 +176,7 @@
             <field name="report_template" ref="action_cooperator_report_certificat"/>
             <field name="report_name">Certificat ${(object.cooperator_register_number or '')}</field>
             <field name="lang">${object.lang}</field>
+            <field name="easy_my_coop" eval="True"/>
             <field name="body_html"><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
@@ -228,6 +231,7 @@
             <field name="report_template" ref="action_cooperator_report_certificat"/>
             <field name="report_name">Certificat ${(object.cooperator_register_number or '')}</field>
             <field name="lang">${object.lang}</field>
+            <field name="easy_my_coop" eval="True"/>
             <field name="body_html"><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
@@ -282,6 +286,7 @@
             <field name="report_template" ref="action_cooperator_report_certificat"/>
             <field name="report_name">Certificat ${(object.cooperator_register_number or '')}</field>
             <field name="lang">${object.lang}</field>
+            <field name="easy_my_coop" eval="True"/>
             <field name="body_html"><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
@@ -336,6 +341,7 @@
             <field name="report_template" ref="action_cooperator_report_certificat"/>
             <field name="report_name">Certificat ${(object.cooperator_register_number or '')}</field>
             <field name="lang">${object.lang}</field>
+            <field name="easy_my_coop" eval="True"/>
             <field name="body_html"><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
