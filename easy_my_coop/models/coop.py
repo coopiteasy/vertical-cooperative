@@ -65,22 +65,19 @@ class SubscriptionRequest(models.Model):
                 cooperator = partner_obj.get_cooperator_from_email(
                                             vals.get('email'))
             if cooperator:
-                # TODO remove the following line of code once it has
+                # TODO remove the following line once it has
                 # been found a way to avoid double encoding
                 cooperator = cooperator[0]
                 vals['type'] = 'subscription'
-
                 vals = self.is_member(vals, cooperator)
-
                 vals['partner_id'] = cooperator.id
-
-                if not cooperator.cooperator:
-                    cooperator.write({'cooperator': True})
         else:
             cooperator_id = vals.get('partner_id')
             cooperator = partner_obj.browse(cooperator_id)
             vals = self.is_member(vals, cooperator)
 
+        if not cooperator.cooperator:
+            cooperator.write({'cooperator': True})
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
         confirmation_mail_template = self.env.ref(mail_template, False)
@@ -530,8 +527,6 @@ class SubscriptionRequest(models.Model):
         if self.ordered_parts <= 0:
             raise UserError(_('Number of share must be greater than 0.'))
         if self.partner_id:
-            if not self.partner_id.cooperator:
-                self.partner_id.cooperator = True
             partner = self.partner_id
         else:
             partner = None
@@ -546,6 +541,9 @@ class SubscriptionRequest(models.Model):
 
             if domain:
                 partner = partner_obj.search(domain)
+
+        if not partner.cooperator:
+                partner.cooperator = True
 
         if not partner:
             partner = self.create_coop_partner()
