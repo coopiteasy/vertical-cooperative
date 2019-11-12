@@ -553,6 +553,9 @@ class SubscriptionRequest(models.Model):
             if domain:
                 partner = partner_obj.search(domain)
 
+        if not partner.cooperator:
+                partner.cooperator = True
+
         if not partner:
             partner = self.create_coop_partner()
         else:
