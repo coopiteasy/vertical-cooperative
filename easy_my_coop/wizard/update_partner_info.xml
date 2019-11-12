@@ -10,12 +10,13 @@
                         Update Cooperator Info.
                     </p>
                     <group>
+                    	<field name="is_company" invisible="True"/>
                     	<field name="all"/>
                     	<field name="birthdate"/>
                     	<field name="legal_form"/>
                     	<field name="representative_function"/>
                     	<field name="cooperator" readonly="True"/>
-                    	<field name="register_number" attrs="{'required':[('all', '=', False)]}"/>
+                    	<field name="register_number" attrs="{'required':['|', ('is_company', '=', True), ('all', '=', False)], 'invisible':[('is_company', '=', False)]}"/>
                     </group>
                     <footer>
                         <button name="update" string="Update Info" type="object" class="btn-primary"/>
