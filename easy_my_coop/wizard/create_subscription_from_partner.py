@@ -98,7 +98,6 @@ class PartnerCreateSubscription(models.TransientModel):
                                  string="Cooperator",
                                  default=_get_partner)
     register_number = fields.Char(string="Register Company Number",
-                                  required=True,
                                   default=_get_register_number)
     email = fields.Char(string="Email",
                         required=True,
