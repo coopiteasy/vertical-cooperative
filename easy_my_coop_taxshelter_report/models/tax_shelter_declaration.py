@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import base64
 
-from openerp import api, fields, models
+from odoo import api, fields, models
 
 TYPE_MAP = {
     'subscription': 'subscribed',

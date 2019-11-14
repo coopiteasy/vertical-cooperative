@@ -21,15 +21,15 @@
 {
     # todo check ir model access
     "name": "Easy My Coop tax shelter report",
-    "version": "1.0",
+    "version": "10.0.1.0.0,
     "depends": ["easy_my_coop"],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
     'website': "www.coopiteasy.be",
     "license": "AGPL-3",
     "description": """
-    This module allows to create a fiscal declaration year and to print
-    tax shelter declaration each cooperator
+    This module allows you to create a fiscal declaration year and to print
+    tax shelter declaration for each cooperator.
     """,
     'data': [
         'security/ir.model.access.csv',
