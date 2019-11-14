@@ -21,7 +21,7 @@
 {
     # todo check ir model access
     "name": "Easy My Coop tax shelter report",
-    "version": "10.0.1.0.0,
+    "version": "11.0.1.0.0",
     "depends": ["easy_my_coop"],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
