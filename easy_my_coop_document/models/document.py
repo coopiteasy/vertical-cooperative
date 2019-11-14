@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 
-from openerp import models, fields, api
+from odoo import models, fields, api
 
 
 class Document(models.Model):
