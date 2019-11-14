@@ -40,5 +40,8 @@
         'data/mail_template_data.xml',
         'data/scheduler_data.xml',
     ],
+    'demo': [
+        'demo/tax_shelter_demo.xml',
+    ],
     'installable': True,
 }
