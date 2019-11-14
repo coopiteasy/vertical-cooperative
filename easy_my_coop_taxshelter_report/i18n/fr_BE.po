@@ -593,7 +593,7 @@ msgstr "Montant total"
 
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate_total_amount_eligible
-msgid "Total amount eligible To Tax shelter"
+msgid "Total eligible amount"
 msgstr "Montant total éligible au Tax Shelter"
 
 #. module: easy_my_coop_taxshelter_report

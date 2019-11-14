@@ -280,7 +280,7 @@ class TaxShelterCertificate(models.Model):
             certificate.total_amount_resold = total_amount_resold
             certificate.total_amount = certificate.total_amount_previously_subscribed + certificate.total_amount_subscribed + certificate.total_amount_resold + certificate.total_amount_transfered
 
-    @api.multi
+    @api.depends('lines')
     def _compute_certificate_lines(self):
         for certificate in self:
             certificate.previously_subscribed_lines = certificate.lines.filtered(lambda r: r.type == 'subscribed' and r.transaction_date < certificate.declaration_id.date_from)
