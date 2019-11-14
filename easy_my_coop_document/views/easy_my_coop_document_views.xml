@@ -69,9 +69,9 @@
         <search>
           <field name="name"/>
           <field name="category"/>
-          <filter string="Public" domain="[('public', '=', True)]"/>
-          <filter string="Published" domain="[('published', '=', True)]"/>
-          <filter string="Category" context="{'group_by': 'category'}"/>
+          <filter name="public" string="Public" domain="[('public', '=', True)]"/>
+          <filter name="published" string="Published" domain="[('published', '=', True)]"/>
+          <filter name="category" string="Category" context="{'group_by': 'category'}"/>
         </search>
       </field>
     </record>
@@ -116,7 +116,7 @@
       <field name="arch" type="xml">
         <search>
           <field name="name"/>
-          <filter string="Parent Category"
+          <filter name="parent_category" string="Parent Category"
             context="{'group_by': 'parent_id'}"/>
         </search>
       </field>

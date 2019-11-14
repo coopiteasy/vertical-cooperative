@@ -16,7 +16,7 @@
 
     'author': 'Rémy Taymans',
     'license': 'AGPL-3',
-    'version': '11.0.1.0.0',
+    'version': '12.0.1.0.0',
     'website': "https://github.com/coopiteasy/vertical-cooperative",
 
     'category': 'Cooperative Management',
