@@ -3,7 +3,5 @@ access_loan_issue_user,loan.issue,model_loan_issue,base.group_user,1,0,0,0
 access_loan_issue_manager,loan.issue,model_loan_issue,easy_my_coop.group_easy_my_coop_manager,1,1,1,0
 access_loan_issue_line_user,loan.issue.line,model_loan_issue_line,base.group_user,1,0,0,0
 access_loan_issue_line_manager,loan.issue.line,model_loan_issue_line,easy_my_coop.group_easy_my_coop_manager,1,1,1,0
-access_loan_term_user,loan.term,model_loan_term,base.group_user,1,0,0,0
-access_loan_term_manager,loan.term,model_loan_term,easy_my_coop.group_easy_my_coop_manager,1,1,1,0
 access_loan_interest_line_user,loan.interest.line,model_loan_interest_line,base.group_user,1,0,0,0
 access_loan_interest_line_manager,loan.interest.line,model_loan_interest_line,easy_my_coop.group_easy_my_coop_manager,1,1,1,1
