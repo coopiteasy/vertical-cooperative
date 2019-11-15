@@ -123,8 +123,8 @@
 		                       </t>
 		                   </select>
 		           		</div>
-						
-						<div t-attf-class="form-group #{error and 'birthdate' in error and 'has-error' or ''}">
+
+						<div t-attf-class="form-group #{error and 'birthdate' in error and 'has-error' or ''}" t-att-style="'display: none;' if logged else None">
 			                <label class="col-md-3 col-sm-4 control-label" for="birthdate">Birthdate</label>
 			                <div class="col-md-7 col-sm-8">
 			                    <input type="text" data-inputmask="'alias': 'date'" class="form-control mandatory-field" 
@@ -132,8 +132,8 @@
 			                    t-attf-value="#{birthdate or ''}" placeholder="05/03/1978"/>
 			                </div>
 			            </div>
-			            
-			            <div t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}">
+
+			            <div t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}" t-att-style="'display: none;' if logged else None">
 			                <label class="col-md-3 col-sm-4 control-label" for="iban">Bank Account Number</label>
 			                <div class="col-md-7 col-sm-8">
 			                    <input type="text" class="form-control mandatory-field" name="iban" 
