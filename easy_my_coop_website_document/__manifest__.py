@@ -7,7 +7,7 @@
     "version": "12.0.1.0.0",
     'depends': [
         'website',
-        'easy_my_coop_document',
+        'document_hosting',
     ],
     'author': 'Coop IT Easy SCRLfs',
     'license': 'AGPL-3',
