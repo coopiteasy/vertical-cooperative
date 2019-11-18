@@ -32,6 +32,8 @@ class WebsiteSubscription(http.Controller):
                  '/become_cooperator'],
                 type='http', auth="public", website=True)
     def display_become_cooperator_page(self, **kwargs):
+        if request.httprequest.method == "POST":
+            return self.share_subscription(**kwargs)
         values = {}
         logged = False
         if request.env.user.login != 'public':
@@ -52,6 +54,8 @@ class WebsiteSubscription(http.Controller):
                  '/become_company_cooperator'],
                 type='http', auth="public", website=True)
     def display_become_company_cooperator_page(self, **kwargs):
+        if request.httprequest.method == "POST":
+            return self.share_subscription(**kwargs)
         values = {}
 
         logged = False
@@ -327,9 +331,6 @@ class WebsiteSubscription(http.Controller):
                 }
             }
 
-    @http.route(['/subscription/subscribe_share'],
-                type='http',
-                auth="public", website=True)
     def share_subscription(self, **kwargs):
         sub_req_obj = request.env['subscription.request']
         attach_obj = request.env['ir.attachment']

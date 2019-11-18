@@ -54,7 +54,7 @@
             <h2 class="energie">Become Cooperator</h2><br/>
             <div class="row">
                 <div class="col-md-8">
-					<form action="/subscription/subscribe_share" method="post" class="form-horizontal mt32" enctype="multipart/form-data">                    
+					<form method="post" class="form-horizontal mt32" enctype="multipart/form-data">
 					   <p style="color:red;"><t t-esc="error_msg"/></p>
 			           <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 			           					           
@@ -90,7 +90,7 @@
 			                <label class="col-md-3 col-sm-4 control-label" for="confirm_email">Confirm Email</label>
 			                <div class="col-md-7 col-sm-8 bottom-line" style="padding-bottom:20px">
 			                    <input type="confirm_email" class="form-control mandatory-field" name="confirm_email" 
-			                    t-att-required="not logged" t-att-readonly="logged"
+			                    required="required" t-att-readonly="logged"
 			                    t-attf-value="#{confirm_email or ''}" placeholder="didier.bourdon@bees-coop.be"/>
 			                </div>
 			            </div>
@@ -341,7 +341,7 @@
             <h2 class="energie">Become Cooperator</h2><br/>
             <div class="row">
                 <div class="col-md-8">
-					<form action="/subscription/subscribe_share" method="post" class="form-horizontal mt32" enctype="multipart/form-data">                    
+					<form method="post" class="form-horizontal mt32" enctype="multipart/form-data">
 					   <p style="color:red;"><t t-esc="error_msg"/></p>
 			           <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 					   
