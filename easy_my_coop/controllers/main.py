@@ -100,7 +100,9 @@ class WebsiteSubscription(http.Controller):
 
             if is_company:
                 # company values
-                values['company_register_number'] = partner.company_register_number
+                values['company_register_number'] = (
+                    partner.company_register_number
+                )
                 values['company_name'] = partner.name
                 values['company_email'] = partner.email
                 values['company_type'] = partner.legal_form
@@ -111,7 +113,9 @@ class WebsiteSubscription(http.Controller):
                 values['gender'] = representative.gender
                 values['email'] = representative.email
                 values['contact_person_function'] = representative.function
-                values['birthdate'] = self.get_date_string(representative.birthdate)
+                values['birthdate'] = self.get_date_string(
+                    representative.birthdate
+                )
                 values['lang'] = representative.lang
                 values['phone'] = representative.phone
             else:
@@ -234,7 +238,9 @@ class WebsiteSubscription(http.Controller):
             self.remove_field_from_list(required_fields, 'iban')
             self.remove_field_from_list(required_fields, 'birthdate')
 
-        error = set(field for field in required_fields if not values.get(field)) #noqa
+        error = set(
+            field for field in required_fields if not values.get(field)
+        )
 
         if error:
             values = self.fill_values(values, is_company, logged)
@@ -390,8 +396,9 @@ class WebsiteSubscription(http.Controller):
         if is_company:
             values['company_type'] = kwargs.get("company_type")
             if kwargs.get("company_register_number", False):
-                values["company_register_number"] = re.sub('[^0-9a-zA-Z]+', '',
-                                                           kwargs.get("company_register_number"))
+                values["company_register_number"] = re.sub(
+                    '[^0-9a-zA-Z]+', '', kwargs.get("company_register_number")
+                )
             subscription_id = sub_req_obj.sudo().create_comp_sub_req(values)
         else:
             subscription_id = sub_req_obj.sudo().create(values)
