@@ -18,7 +18,7 @@ class DocumentWebsite(http.Controller):
     @http.route('/documents/<int:oid>', auth='public', website=True)
     def get_document(self, oid=-1):
         """Render a http response for a document"""
-        document_mgr = request.env['easy_my_coop.document']
+        document_mgr = request.env['document_hosting.document']
         doc = document_mgr.sudo().browse(oid)
         ir_http_mgr = request.env['ir.http']
         status, headers, content = ir_http_mgr.sudo().binary_content(
@@ -75,7 +75,7 @@ class DocumentWebsite(http.Controller):
             domains.append(('document_date', '<', date_end))
         return {
             'archive_groups': self._get_archive_groups(
-                'easy_my_coop.document',
+                'document_hosting.document',
                 domains,
                 fields=['name', 'document_date'],
                 groupby='document_date',
@@ -120,8 +120,8 @@ class DocumentWebsite(http.Controller):
 
     def _data_tree(self, category=None):
         """Return a tree with categories and documents in it"""
-        category_mgr = request.env['easy_my_coop.document.category']
-        document_mgr = request.env['easy_my_coop.document']
+        category_mgr = request.env['document_hosting.document.category']
+        document_mgr = request.env['document_hosting.document']
         if category:
             categories = category.child_ids.sorted(
                 key=lambda r: r.name
