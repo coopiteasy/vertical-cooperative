@@ -68,7 +68,7 @@ class LoanIssue(models.Model):
                                  string='Company',
                                  required=True,
                                  readonly=True,
-                                 default=lambda self: self.env['res.company']._company_default_get()) #noqa
+                                 default=lambda self: self.env['res.company']._company_default_get())  # noqa
     by_company = fields.Boolean(string="By company")
     by_individual = fields.Boolean(string='By individuals')
     display_on_website = fields.Boolean(sting='Display on website')
