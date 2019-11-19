@@ -450,7 +450,7 @@ class SubscriptionRequest(models.Model):
         partner_vals = {'name': self.company_name,
                         'last_name': self.company_name,
                         'is_company': self.is_company,
-                        'company_register_number': self.company_register_number, #noqa
+                        'company_register_number': self.company_register_number,  # noqa
                         'customer': False, 'cooperator': True,
                         'street': self.address, 'zip': self.zip_code,
                         'city': self.city, 'email': self.company_email,
@@ -535,20 +535,19 @@ class SubscriptionRequest(models.Model):
                 raise UserError(_('The checkbox already cooperator is'
                                   ' checked please select a cooperator.'))
             elif self.is_company and self.company_register_number:
-                domain = [('company_register_number', '=', self.company_register_number)] #noqa
+                domain = [('company_register_number', '=', self.company_register_number)]  # noqa
             elif not self.is_company and self.email:
                 domain = [('email', '=', self.email)]
 
             if domain:
                 partner = partner_obj.search(domain)
 
-        if not partner.cooperator:
-                partner.cooperator = True
-
         if not partner:
             partner = self.create_coop_partner()
         else:
             partner = partner[0]
+
+        partner.cooperator = True
 
         if self.is_company and not partner.has_representative():
             contact = False
