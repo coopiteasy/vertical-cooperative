@@ -75,8 +75,8 @@ class ResPartner(models.Model):
         for partner in self:
             share_type = ''
             for line in partner.share_ids:
-                share_type = str(line.share_product_id.id)
-            if share_type != '':
+                share_type = line.share_product_id.default_code
+            if share_type:
                 partner.cooperator_type = share_type
 
     @api.multi
