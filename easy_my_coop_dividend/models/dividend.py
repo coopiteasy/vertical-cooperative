@@ -141,18 +141,27 @@ class DetailedDividendLine(models.Model):
                                     readonly=True)
     share_number = fields.Integer(related='share_line_id.share_number',
                                   string='Number of Share')
-    share_unit_price = fields.Float(related='share_line_id.share_unit_price',
-                                    string='Share unit price')
+    share_unit_price = fields.Monetary(
+        string='Share unit price',
+        related='share_line_id.share_unit_price',
+    )
     effective_date = fields.Date(related='share_line_id.effective_date',
                                  string='Effective date')
-    total_amount_line = fields.Float(compute=_compute_total_line,
-                                     string="Total value of share",
-                                     readonly=True)
+    total_amount_line = fields.Monetary(
+        string="Total value of share",
+        currency_field="company_currency_id",
+        compute=_compute_total_line,
+        readonly=True,
+    )
     coeff = fields.Float(string='Coefficient to apply',
                          digits=(2, 4))
     dividend_amount = fields.Float(string='Gross Dividend')
     dividend_amount_net = fields.Float(string='Dividend net')
     dividend_taxes = fields.Float(string='Taxes')
+    company_currency_id = fields.Many2one(
+        related="share_line_id.company_currency_id",
+        readonly=True,
+    )
 
 
 class dividend_line(models.Model):
