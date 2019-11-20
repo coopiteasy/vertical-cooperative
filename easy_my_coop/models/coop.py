@@ -197,10 +197,13 @@ class SubscriptionRequest(models.Model):
                                     string='Share price',
                                     readonly=True,
                                     states={'draft': [('readonly', False)]})
-    subscription_amount = fields.Float(compute='_compute_subscription_amount',
-                                       string='Subscription amount',
-                                       readonly=True,
-                                       states={'draft': [('readonly', False)]})
+    subscription_amount = fields.Monetary(
+        compute='_compute_subscription_amount',
+        string='Subscription amount',
+        currency_field="company_currency_id",
+        readonly=True,
+        states={'draft': [('readonly', False)]},
+    )
     ordered_parts = fields.Integer(string='Number of Share',
                                    required=True,
                                    readonly=True,
@@ -258,6 +261,12 @@ class SubscriptionRequest(models.Model):
                                  change_default=True,
                                  readonly=True,
                                  default=lambda self: self.env['res.company']._company_default_get())
+    company_currency_id = fields.Many2one(
+        "res.currency",
+        related="company_id.currency_id",
+        string="Company Currency",
+        readonly=True,
+    )
     is_company = fields.Boolean(string='Is a company',
                                 readonly=True,
                                 states={'draft': [('readonly', False)]})
@@ -617,8 +626,11 @@ class ShareLine(models.Model):
     share_short_name = fields.Char(related='share_product_id.short_name',
                                    string='Share type name',
                                    readonly=True)
-    share_unit_price = fields.Float(string='Share price',
-                                    readonly=True)
+    share_unit_price = fields.Monetary(
+        string='Share price',
+        currency_field="company_currency_id",
+        readonly=True,
+    )
     effective_date = fields.Date(string='Effective Date',
                                  readonly=True)
     partner_id = fields.Many2one('res.partner',
@@ -626,8 +638,24 @@ class ShareLine(models.Model):
                                  required=True,
                                  ondelete='cascade',
                                  readonly=True)
-    total_amount_line = fields.Float(compute='_compute_total_line',
-                                     string='Total amount line')
+    total_amount_line = fields.Monetary(
+        string='Total amount line',
+        currency_field="company_currency_id",
+        compute='_compute_total_line',
+    )
+    company_id = fields.Many2one(
+        "res.company",
+        string='Company',
+        required=True,
+        change_default=True, readonly=True,
+        default=lambda self: self.env['res.company']._company_default_get(),
+    )
+    company_currency_id = fields.Many2one(
+        "res.currency",
+        string="Company Currency",
+        related="company_id.currency_id",
+        readonly=True,
+    )
 
 
 class SubscriptionRegister(models.Model):
@@ -657,10 +685,16 @@ class SubscriptionRegister(models.Model):
                        readonly=True)
     quantity = fields.Integer(string='Number of share',
                               readonly=True)
-    share_unit_price = fields.Float(string='Share price',
-                                    readonly=True)
-    total_amount_line = fields.Float(compute='_compute_total_line',
-                                     string='Total amount line')
+    share_unit_price = fields.Monetary(
+        string='Share price',
+        currency_field="company_currency_id",
+        readonly=True,
+    )
+    total_amount_line = fields.Monetary(
+        string='Total amount line',
+        currency_field="company_currency_id",
+        compute='_compute_total_line',
+    )
     share_product_id = fields.Many2one('product.product',
                                        string='Share type',
                                        required=True,
@@ -678,8 +712,11 @@ class SubscriptionRegister(models.Model):
                                       readonly=True)
     quantity_to = fields.Integer(string='Number of share to',
                                  readonly=True)
-    share_to_unit_price = fields.Float(string='Share to price',
-                                       readonly=True)
+    share_to_unit_price = fields.Monetary(
+        string='Share to price',
+        currency_field="company_currency_id",
+        readonly=True,
+    )
     type = fields.Selection([('subscription', 'Subscription'),
                              ('transfer', 'Transfer'),
                              ('sell_back', 'Sell Back'),
@@ -689,6 +726,12 @@ class SubscriptionRegister(models.Model):
                                  required=True,
                                  change_default=True, readonly=True,
                                  default=lambda self: self.env['res.company']._company_default_get())
+    company_currency_id = fields.Many2one(
+        "res.currency",
+        related="company_id.currency_id",
+        string="Company Currency",
+        readonly=True,
+    )
     user_id = fields.Many2one('res.users',
                               string='Responsible',
                               readonly=True,
