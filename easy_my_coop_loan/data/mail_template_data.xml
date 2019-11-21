@@ -3,7 +3,6 @@
     <!-- Mail template are declared in a NOUPDATE block
          so users can freely customize/delete them -->
     <data noupdate="1">
-    <!--<data>-->
         <record id="loan_subscription_confirmation" model="mail.template">
             <field name="name">Loan Subscription Confirmation Email</field>
             <field name="email_from">${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}</field>

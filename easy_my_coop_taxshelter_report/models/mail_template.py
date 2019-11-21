@@ -1,17 +1,13 @@
 from odoo import api, models
 
-EMAIL_TEMPLATE_IDS = [
-    "easy_my_coop_taxshelter_report.email_template_tax_shelter_certificate",
-    ]
-
 
 class MailTemplate(models.Model):
     _inherit = "mail.template"
 
-    def init(self):
-        for template_id in EMAIL_TEMPLATE_IDS:
-            mail_template = self.env.ref(template_id)
-            mail_template.easy_my_coop = True
+#     def init(self):
+#         for template_id in EMAIL_TEMPLATE_IDS:
+#             mail_template = self.env.ref(template_id)
+#             mail_template.easy_my_coop = True
 
     @api.multi
     def send_mail_with_multiple_attachments(self, res_id,
