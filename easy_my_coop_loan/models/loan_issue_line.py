@@ -57,10 +57,17 @@ class LoanIssueLine(models.Model):
                                  string="Company",
                                  readonly=True)
 
+    def get_loan_sub_mail_template(self):
+        return self.env.ref('easy_my_coop_loan.loan_subscription_confirmation',
+                            False)
+
+    def get_loan_pay_req_mail_template(self):
+        return self.env.ref('easy_my_coop_loan.loan_issue_payment_request',
+                            False)
+
     @api.model
     def create(self, vals):
-        mail_template = 'easy_my_coop_loan.loan_subscription_confirmation'
-        confirmation_mail_template = self.env.ref(mail_template, False)
+        confirmation_mail_template = self.get_loan_sub_mail_template()
 
         line = super(LoanIssueLine, self).create(vals)
         confirmation_mail_template.send_mail(line.id)
@@ -79,8 +86,7 @@ class LoanIssueLine(models.Model):
 
     @api.multi
     def action_request_payment(self):
-        mail_template = 'easy_my_coop_loan.loan_issue_payment_request'
-        pay_req_mail_template = self.env.ref(mail_template, False)
+        pay_req_mail_template = self.get_loan_pay_req_mail_template()
 
         for line in self:
             pay_req_mail_template.send_mail(line.id)
