@@ -46,8 +46,10 @@ class account_invoice(models.Model):
 
     def get_mail_template_certificate(self):
         if self.partner_id.member:
-            return 'easy_my_coop.email_template_certificat_increase'
-        return 'easy_my_coop.email_template_certificat'
+            mail_template = 'easy_my_coop.email_template_certificat_increase'
+        else:
+            mail_template = 'easy_my_coop.email_template_certificat'
+        return self.env.ref(mail_template)
 
     def get_sequence_register(self):
         return self.env.ref('easy_my_coop.sequence_subscription', False)
@@ -100,14 +102,12 @@ class account_invoice(models.Model):
         sub_register_obj = self.env['subscription.register']
         share_line_obj = self.env['share.line']
 
-        mail_template_id = self.get_mail_template_certificate()
-
         self.set_membership()
 
         sequence_operation = self.get_sequence_operation()
         sub_reg_operation = sequence_operation.next_by_id()
 
-        certificate_email_template = self.env.ref(mail_template_id, False)
+        certificate_email_template = self.get_mail_template_certificate()
 
         for line in self.invoice_line_ids:
             sub_reg_vals = self.get_subscription_register_vals(line,

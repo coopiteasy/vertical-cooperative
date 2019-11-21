@@ -44,9 +44,10 @@ class SubscriptionRequest(models.Model):
 
     def get_mail_template_notif(self, is_company=False):
         if is_company:
-            return 'easy_my_coop.email_template_confirmation_company'
+            mail_template = 'easy_my_coop.email_template_confirmation_company'
         else:
-            return 'easy_my_coop.email_template_confirmation'
+            mail_template = 'easy_my_coop.email_template_confirmation'
+        return self.env.ref(mail_template, False)
 
     def is_member(self, vals, cooperator):
         if cooperator.member:
@@ -57,7 +58,7 @@ class SubscriptionRequest(models.Model):
     @api.model
     def create(self, vals):
         partner_obj = self.env['res.partner']
-        mail_template = self.get_mail_template_notif(False)
+        mail_template_notif = self.get_mail_template_notif(False)
 
         if not vals.get('partner_id'):
             cooperator = False
@@ -80,14 +81,13 @@ class SubscriptionRequest(models.Model):
             cooperator.write({'cooperator': True})
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
-        confirmation_mail_template = self.env.ref(mail_template, False)
-        confirmation_mail_template.send_mail(subscr_request.id)
+        mail_template_notif.send_mail(subscr_request.id)
 
         return subscr_request
 
     @api.model
     def create_comp_sub_req(self, vals):
-        mail_template = self.get_mail_template_notif(True)
+        confirmation_mail_template = self.get_mail_template_notif(True)
         vals["name"] = vals['company_name']
         if not vals.get('partner_id'):
             cooperator = self.env['res.partner'].get_cooperator_from_crn(vals.get('company_register_number'))
@@ -97,7 +97,6 @@ class SubscriptionRequest(models.Model):
                 vals['already_cooperator'] = True
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
-        confirmation_mail_template = self.env.ref(mail_template, False)
         confirmation_mail_template.send_mail(subscr_request.id)
 
         return subscr_request
@@ -401,9 +400,12 @@ class SubscriptionRequest(models.Model):
         }
         return res
 
-    def send_capital_release_request(self, invoice):
+    def get_capital_release_mail_template(self):
         template = 'easy_my_coop.email_template_release_capital'
-        email_template = self.env.ref(template, False)
+        return self.env.ref(template, False)
+
+    def send_capital_release_request(self, invoice):
+        email_template = self.get_capital_release_mail_template()
 
         # we send the email with the capital release request in attachment
         # TODO remove sudo() and give necessary access right

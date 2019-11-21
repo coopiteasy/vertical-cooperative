@@ -206,6 +206,14 @@ class operation_request(models.Model):
                                         " the information before"
                                         " submitting"))
 
+    def get_share_trans_mail_template(self):
+        return self.env.ref('easy_my_coop.email_template_share_transfer',
+                            False)
+
+    def get_share_update_mail_template(self):
+        return self.env.ref('easy_my_coop.email_template_share_update',
+                            False)
+
     @api.multi
     def execute_operation(self):
         self.ensure_one()
@@ -300,12 +308,10 @@ class operation_request(models.Model):
 
             # send mail to the receiver
             if rec.operation_type == 'transfer':
-                mail_template = 'easy_my_coop.email_template_share_transfer'
-                cert_email_template = self.env.ref(mail_template, False)
+                cert_email_template = self.get_share_trans_mail_template()
                 cert_email_template.send_mail(rec.partner_id_to.id, False)
 
             self.env['subscription.register'].create(values)
 
-            mail_template = 'easy_my_coop.email_template_share_update'
-            cert_email_template = self.env.ref(mail_template, False)
+            cert_email_template = self.get_share_update_mail_template()
             cert_email_template.send_mail(rec.partner_id.id, False)
