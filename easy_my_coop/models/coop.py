@@ -607,6 +607,8 @@ class SubscriptionRequest(models.Model):
 
     @api.one
     def put_on_waiting_list(self):
+        waiting_list_mail_template = self.env.ref('easy_my_coop.email_template_waiting_list', False)
+        waiting_list_mail_template.send_mail(self.id, True)
         self.write({'state': 'waiting'})
 
 
