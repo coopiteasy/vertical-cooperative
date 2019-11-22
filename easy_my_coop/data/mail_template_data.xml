@@ -110,6 +110,61 @@
             ]]></field>
         </record>
 
+        <record id="email_template_waiting_list" model="mail.template">
+            <field name="name">Waiting List Email</field>
+            <field name="email_from">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="subject">Subscription request added on waiting list. </field>
+            <field name="email_to">${object.email}</field>
+            <field name="reply_to">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="model_id" ref="model_subscription_request"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.lang}</field>
+            <field name="easy_my_coop" eval="True"/>
+            <field name="body_html"><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello ${object.name},</p>
+
+    <p>Thank you for your subscription request. There are currently no project to raise funds for, thus we added it on waiting list.
+        We will contact you as soon as the subscription requests are re-opened.
+     </p>
+
+    <br/>
+    <p>If you have any question, do not hesitate to contact us.</p>
+    <br/>
+
+    <p>Sustainably yours,</p>
+    <p>${object.company_id.name}.</p>
+
+    % if object.company_id.street:
+        ${object.company_id.street}
+    % endif
+    % if object.company_id.street2:
+        ${object.company_id.street2}<br/>
+    % endif
+    % if object.company_id.city or object.company_id.zip:
+        ${object.company_id.zip} ${object.company_id.city}<br/>
+    % endif
+    % if object.company_id.country_id:
+        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>
+    % endif
+    % if object.company_id.phone:
+        Phone:&nbsp; ${object.company_id.phone}
+    % endif
+
+    % if object.company_id.website:
+        <div>
+            Web :&nbsp;<a href="${object.company_id.website}">${object.company_id.website}</a>
+        </div>
+    %endif
+
+    <div>
+        <img src=${object.company_id.logo_url}>
+    </div>
+</div>
+            ]]></field>
+        </record>
+
         <record id="email_template_confirmation_company" model="mail.template">
             <field name="name">Company Confirmation Email</field>
             <field name="email_from">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
