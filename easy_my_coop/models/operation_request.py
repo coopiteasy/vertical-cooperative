@@ -214,6 +214,23 @@ class operation_request(models.Model):
         return self.env.ref('easy_my_coop.email_template_share_update',
                             False)
 
+    def send_share_trans_mail(self, sub_register_line):
+        cert_email_template = self.get_share_trans_mail_template()
+        cert_email_template.send_mail(rec.partner_id_to.id, False)
+
+    def send_share_update_mail(self, sub_register_line):
+        cert_email_template = self.get_share_update_mail_template()
+        cert_email_template.send_mail(rec.partner_id.id, False)
+    
+    def get_subscription_register_vals(self, effective_date):
+        return {
+                'partner_id': self.partner_id.id, 'quantity': self.quantity,
+                'share_product_id': self.share_product_id.id,
+                'type': self.operation_type,
+                'share_unit_price': self.share_unit_price,
+                'date': effective_date,
+            }
+
     @api.multi
     def execute_operation(self):
         self.ensure_one()
@@ -228,13 +245,7 @@ class operation_request(models.Model):
                 raise ValidationError(_("This operation must be approved"
                                         " before to be executed"))
 
-            values = {
-                'partner_id': rec.partner_id.id, 'quantity': rec.quantity,
-                'share_product_id': rec.share_product_id.id,
-                'type': rec.operation_type,
-                'share_unit_price': rec.share_unit_price,
-                'date': effective_date,
-            }
+            values = rec.get_subscription_register_vals(effective_date)
 
             if rec.operation_type == 'sell_back':
                 self.hand_share_over(rec.partner_id, rec.share_product_id,
@@ -308,10 +319,8 @@ class operation_request(models.Model):
 
             # send mail to the receiver
             if rec.operation_type == 'transfer':
-                cert_email_template = self.get_share_trans_mail_template()
-                cert_email_template.send_mail(rec.partner_id_to.id, False)
+                self.send_share_trans_mail(sub_register_line)
 
-            self.env['subscription.register'].create(values)
+            sub_register_line = self.env['subscription.register'].create(values)
 
-            cert_email_template = self.get_share_update_mail_template()
-            cert_email_template.send_mail(rec.partner_id.id, False)
+            self.send_share_update_mail(sub_register_line)
