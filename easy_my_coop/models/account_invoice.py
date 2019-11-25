@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2019 Coop IT Easy SCRL fs
 #   Houssine Bakkali <houssine@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
@@ -98,6 +97,10 @@ class account_invoice(models.Model):
 
         return True
 
+    def send_certificate_email(self, certificate_email_template, sub_reg_line):
+        # we send the email with the certificate in attachment
+        certificate_email_template.sudo().send_mail(self.partner_id.id, False)
+        
     def set_cooperator_effective(self, effective_date):
         sub_register_obj = self.env['subscription.register']
         share_line_obj = self.env['share.line']
@@ -115,7 +118,7 @@ class account_invoice(models.Model):
             sub_reg_vals['name'] = sub_reg_operation
             sub_reg_vals['register_number_operation'] = int(sub_reg_operation)
 
-            sub_register_obj.create(sub_reg_vals)
+            sub_reg_line = sub_register_obj.create(sub_reg_vals)
 
             share_line_vals = self.get_share_line_vals(line, effective_date)
             share_line_obj.create(share_line_vals)
@@ -123,8 +126,7 @@ class account_invoice(models.Model):
             if line.product_id.mail_template:
                 certificate_email_template = line.product_id.mail_template
 
-        # we send the email with the certificate in attachment
-        certificate_email_template.sudo().send_mail(self.partner_id.id, False)
+        self.send_certificate_email(certificate_email_template, sub_reg_line)
 
         if self.company_id.create_user:
             self.create_user(self.partner_id)
