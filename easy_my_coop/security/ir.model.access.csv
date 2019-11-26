@@ -4,8 +4,7 @@ access_product_product_manager,product.product,product.model_product_product,gro
 access_product_template_user,product.template,product.model_product_template,group_easy_my_coop_user,1,1,0,0
 access_product_template_manager,product.template,product.model_product_template,group_easy_my_coop_manager,1,1,1,1
 access_subscription_request_employee,access.subscription.request user,model_subscription_request,base.group_user,1,0,0,0
-access_subscription_request_manager,subscription.request,model_subscription_request,group_easy_my_coop_manager,1,1,1,1
-access_subscription_request,subscription.request,model_subscription_request,group_easy_my_coop_user,1,1,1,0
+access_subscription_request_m,subscription.request,model_subscription_request,group_easy_my_coop_user,1,1,1,1
 access_share_line_employee,share.line,model_share_line,base.group_user,1,0,0,0
 access_share_line_manager,share.line,model_share_line,group_easy_my_coop_user,1,1,1,0
 access_res_partner_emc_user,res.partner,base.model_res_partner,group_easy_my_coop_user,1,1,1,0

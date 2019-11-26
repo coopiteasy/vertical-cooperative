@@ -15,7 +15,8 @@
 						<field name="is_loaner"/>
 					</group>
 	         		<field name="loan_line_ids">
-	         			<tree create="false" delete="false" edit="false">
+	         			<tree>
+<!--	         			<tree create="false" delete="false" edit="false">-->
 	         				<field name="loan_issue_id"/>
 	         				<field name="date"/>
 	         				<field name="quantity"/>
