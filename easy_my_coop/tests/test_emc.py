@@ -28,6 +28,7 @@ class EMCCase(EMCBaseCase):
 
     def test_validate_subscription_request(self):
         self.as_emc_user()
+        # todo missing structure fails the rules?
         self.request.validate_subscription_request()
 
         self.assertEquals(self.request.state, "done")
