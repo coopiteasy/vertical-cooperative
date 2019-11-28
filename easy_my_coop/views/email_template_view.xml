@@ -7,6 +7,7 @@
 		<field name="res_model">mail.template</field>
 		<field name="view_type">form</field>
 		<field name="view_mode">form,tree</field>
+		<field name="domain">[('easy_my_coop','=',True)]</field>
 		<field name="view_id" ref="mail.email_template_tree" />
 		<field name="search_view_id" ref="mail.view_email_template_search" />
 	</record>
