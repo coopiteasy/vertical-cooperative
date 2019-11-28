@@ -61,12 +61,12 @@
 							<field name="minimum_amount" />
 							<field name="maximum_amount" />
 							<field name="subscribed_amount" />
-							<field name="min_amount_person" />
-							<field name="max_amount_person" />
-							<field name="min_amount_company" />
-							<field name="max_amount_company" />
 							<field name="by_individual" />
+							<field name="min_amount_person" attrs="{'invisible':[('by_individual','=',False)]}" />
+							<field name="max_amount_person" attrs="{'invisible':[('by_individual','=',False)]}" />
 							<field name="by_company" />
+							<field name="min_amount_company" attrs="{'invisible':[('by_company','=',False)]}" />
+							<field name="max_amount_company" attrs="{'invisible':[('by_company','=',False)]}" />
 							<field name="company_currency_id" invisible="True" />
 						</group>
 						<group>
