@@ -58,7 +58,6 @@ class SubscriptionRequest(models.Model):
     @api.model
     def create(self, vals):
         partner_obj = self.env['res.partner']
-        mail_template_notif = self.get_mail_template_notif(False)
 
         if not vals.get('partner_id'):
             cooperator = False
@@ -81,13 +80,13 @@ class SubscriptionRequest(models.Model):
             cooperator.write({'cooperator': True})
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
+        mail_template_notif = subscr_request.get_mail_template_notif(False)
         mail_template_notif.send_mail(subscr_request.id)
 
         return subscr_request
 
     @api.model
     def create_comp_sub_req(self, vals):
-        confirmation_mail_template = self.get_mail_template_notif(True)
         vals["name"] = vals['company_name']
         if not vals.get('partner_id'):
             cooperator = self.env['res.partner'].get_cooperator_from_crn(vals.get('company_register_number'))
@@ -97,6 +96,7 @@ class SubscriptionRequest(models.Model):
                 vals['already_cooperator'] = True
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
+        confirmation_mail_template = subscr_request.get_mail_template_notif(True)
         confirmation_mail_template.send_mail(subscr_request.id)
 
         return subscr_request
