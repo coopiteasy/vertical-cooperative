@@ -502,7 +502,7 @@ class SubscriptionRequest(models.Model):
             'out_inv_comm_algorithm': 'random',
             'lang': self.lang,
             'birthdate_date': self.birthdate,
-            'parent_id': self.partner.id,
+            'parent_id': self.partner_id.id,
             'representative': True,
             'function': self.contact_person_function,
             'type': 'representative',
