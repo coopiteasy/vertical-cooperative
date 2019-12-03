@@ -555,6 +555,7 @@ class SubscriptionRequest(models.Model):
 
         if not partner:
             partner = self.create_coop_partner()
+            self.partner_id = partner
         else:
             partner = partner[0]
 
@@ -585,7 +586,7 @@ class SubscriptionRequest(models.Model):
                                    'representative': True})
 
         invoice = self.create_invoice(partner)
-        self.write({'partner_id': partner.id, 'state': 'done'})
+        self.write({'state': 'done'})
         self.set_membership()
 
         return invoice
