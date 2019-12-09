@@ -49,6 +49,8 @@ class LoanIssue(models.Model):
     interest_payment = fields.Selection([('end', 'End'),
                                          ('yearly', 'Yearly')],
                                         string="Interest payment")
+    payment_date = fields.Date(string="Interest payment date")
+    yearly_payement_on = fields.Char(string="Yearly payment on")
     loan_issue_lines = fields.One2many('loan.issue.line',
                                        'loan_issue_id',
                                        string="Loan issue lines")
