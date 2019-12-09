@@ -67,9 +67,9 @@ class LoanIssueLine(models.Model):
 
     @api.model
     def create(self, vals):
-        line = super(LoanIssueLine, self).create(vals)
+        confirmation_mail_template = self.get_loan_sub_mail_template()
 
-        confirmation_mail_template = line.get_loan_sub_mail_template()
+        line = super(LoanIssueLine, self).create(vals)
         confirmation_mail_template.send_mail(line.id)
 
         return line
