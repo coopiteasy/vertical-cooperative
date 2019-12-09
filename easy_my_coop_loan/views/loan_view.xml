@@ -86,6 +86,8 @@
 							<field name="term_date" />
 							<field name="loan_term" />
 							<field name="interest_payment" widget="selection" />
+							<field name="payment_date" attrs="{'invisible':[('interest_payment','!=','end')]}" />
+							<field name="yearly_payement_on" attrs="{'invisible':[('interest_payment','!=','yearly')]}" />
 						</group>
 					</group>
 					<notebook>
