@@ -49,8 +49,7 @@ class LoanIssue(models.Model):
     interest_payment = fields.Selection([('end', 'End'),
                                          ('yearly', 'Yearly')],
                                         string="Interest payment")
-    payment_date = fields.Date(string="Interest payment date")
-    yearly_payement_on = fields.Char(string="Yearly payment on")
+    interest_payment_info = fields.Char(string="Yearly payment on")
     loan_issue_lines = fields.One2many('loan.issue.line',
                                        'loan_issue_id',
                                        string="Loan issue lines")
@@ -87,10 +86,10 @@ class LoanIssue(models.Model):
             max_amount = self.max_amount_person - already_subscribed
         return max_amount
 
-    @api.multi
-    def toggle_display(self):
-        for loan_issue in self:
-            loan_issue.display_on_website = not loan_issue.display_on_website
+#     @api.multi
+#     def toggle_display(self):
+#         for loan_issue in self:
+#             loan_issue.display_on_website = not loan_issue.display_on_website
 
     @api.multi
     def get_web_issues(self, is_company):

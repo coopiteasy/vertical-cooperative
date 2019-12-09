@@ -47,15 +47,18 @@
 					<field name="state" widget="statusbar" statusbar_visible="draft,confirmed,ongoing,closed"/>
 				</header>
 				<sheet>
-					<div class="oe_button_box" name="button_box">
-                        <button name="toggle_display" type="object"
-                                class="oe_stat_button" icon="fa-globe">
-                            <field name="display_on_website" widget="website_button"/>
-                        </button>
+					<div class="oe_title">
+                        <label class="oe_edit_only" for="name" string="Name"/>
+                        <h1><field name="name" placeholder="Loan issue Name"/></h1>
+                        <div name="options">
+                            <div>
+                                <field name="display_on_website"/>
+                                <label for="display_on_website"/>
+                            </div>
+                        </div>
                     </div>
 					<group>
 						<group>
-							<field name="name" />
 							<field name="default_issue" />
 							<field name="face_value" />
 							<field name="minimum_amount" />
@@ -86,8 +89,7 @@
 							<field name="term_date" />
 							<field name="loan_term" />
 							<field name="interest_payment" widget="selection" />
-							<field name="payment_date" attrs="{'invisible':[('interest_payment','!=','end')]}" />
-							<field name="yearly_payement_on" attrs="{'invisible':[('interest_payment','!=','yearly')]}" />
+							<field name="interest_payment_info" attrs="{'invisible':[('interest_payment','not in',['end','yearly'])]}" />
 						</group>
 					</group>
 					<notebook>
