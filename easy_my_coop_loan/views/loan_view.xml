@@ -8,6 +8,7 @@
 				<field name="name" />
 				<field name="subscription_start_date" />
 				<field name="subscription_end_date" />
+				<field name="loan_start_date" />
 				<field name="term_date" />
 				<field name="loan_term" />
 				<field name="rate" />
@@ -86,6 +87,7 @@
 							</div>
 							<field name="subscription_start_date" />
 							<field name="subscription_end_date" />
+							<field name="loan_start_date" />
 							<field name="term_date" />
 							<field name="loan_term" />
 							<field name="interest_payment" widget="selection" />
