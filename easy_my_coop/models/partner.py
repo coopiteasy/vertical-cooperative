@@ -54,20 +54,21 @@ class ResPartner(models.Model):
             partner.total_invoiced = sum(price['total'] for price in price_totals if price['partner_id'] in child_ids)
 
     @api.multi
-    def _get_share_type(self):
-        product_obj = self.env['product.product']
-        share_type_list = [('', '')]
-        for share_type in product_obj.search([('is_share', '=', True)]):
-            share_type_list.append((str(share_type.id), share_type.short_name))
-        return share_type_list
-
-    @api.multi
     @api.depends('share_ids')
     def _compute_effective_date(self):
         # TODO change it to compute it from the share register
         for partner in self:
             if partner.share_ids:
                 partner.effective_date = partner.share_ids[0].effective_date
+
+    @api.multi
+    def _get_share_type(self):
+        shares = (
+            self.env['product.product']
+                .search([('is_share', '=', True)])
+        )
+        share_types = [(share.default_code, share.short_name) for share in shares]
+        return [('', '')] + share_types
 
     @api.multi
     @api.depends('share_ids')
