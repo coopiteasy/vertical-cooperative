@@ -20,7 +20,6 @@ class LoanIssue(models.Model):
 
     name = fields.Char(string="Name",
                        translate=True)
-    is_bond = fields.Boolean(string="Is a bond issue?")
     default_issue = fields.Boolean(string="Default issue")
     subscription_start_date = fields.Date(string="Start date subscription period")
     subscription_end_date = fields.Date(string="End date subscription period")
@@ -94,7 +93,6 @@ class LoanIssue(models.Model):
     @api.multi
     def get_web_issues(self, is_company):
         bond_issues = self.search([
-                            ('is_bond', '=', True),
                             ('display_on_website', '=', True),
                             ('state', '=', 'ongoing')
                             ])
