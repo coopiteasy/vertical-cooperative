@@ -12,7 +12,7 @@
     <menuitem name="Cooperator Candidates" id="menu_easy_my_coop_cooperator_candidate" action="action_partner_cooperator_candidate_form" parent="menu_easy_my_coop_main_subscription" sequence="140" />
     <menuitem name="Subscription Register" id="menu_easy_my_coop_subscription_register" action="subscription_register_action" parent="menu_easy_my_coop_main_subscription" sequence="150" />
     <menuitem name="Operation request" id="menu_easy_my_coop_operation_request" action="operation_request_action" parent="menu_easy_my_coop_main_subscription" groups="easy_my_coop.group_easy_my_coop_user" sequence="160" />
-    <menuitem name="Share Lines" id="menu_easy_my_coop_share_line" action="share_line_action" parent="menu_easy_my_coop_main_subscription" groups="base.group_system" sequence="170" />
+<!--    <menuitem name="Share Lines" id="menu_easy_my_coop_share_line" action="share_line_action" parent="menu_easy_my_coop_main_subscription" groups="base.group_erp_manager" sequence="170" />-->
 
     <menuitem name="Contacts" id="menu_easy_my_coop_main_coop" parent="menu_main_easy_my_coop" sequence="20"/>
     <menuitem name="Cooperators" id="menu_easy_my_coop_cooperator" action="action_partner_cooperator_form" parent="menu_easy_my_coop_main_coop" sequence="210" />
