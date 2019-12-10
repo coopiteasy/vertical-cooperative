@@ -67,7 +67,7 @@ class ResPartner(models.Model):
             self.env['product.product']
                 .search([('is_share', '=', True)])
         )
-        share_types = [(share.id, share.short_name) for share in shares]
+        share_types = [(share.default_code, share.short_name) for share in shares]
         return [('', '')] + share_types
 
     @api.multi
@@ -76,7 +76,7 @@ class ResPartner(models.Model):
         for partner in self:
             share_type = ''
             for line in partner.share_ids:
-                share_type = line.share_product_id.id
+                share_type = line.share_product_id.default_code
             if share_type:
                 partner.cooperator_type = share_type
 
