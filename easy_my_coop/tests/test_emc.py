@@ -173,3 +173,28 @@ class EMCCase(EMCBaseCase):
         )
         share_type.list_price = 30
         share_type.unlink()
+
+    def test_validated_lines_on_subscription_request(self):
+        request = self.request
+        self.assertFalse(request.skip_control_ng)
+        self.assertFalse(request.iban)
+
+        # empty iban - don't skip
+        self.assertFalse(request.validated)
+
+        # good iban - don't skip
+        request.skip_control_ng = False
+        self.request.iban = "BE71096123456769"
+        self.assertTrue(request.validated)
+
+        # wrong iban - don't skip
+        self.request.iban = "xxxx"
+        self.assertFalse(request.validated)
+
+        # wrong iban - skip
+        request.skip_control_ng = True
+        self.assertTrue(request.validated)
+
+        # empty iban - skip
+        self.request.iban = False
+        self.assertTrue(request.validated)

@@ -107,21 +107,23 @@ class SubscriptionRequest(models.Model):
         return True
 
     def check_iban(self, iban):
-        validated = True
-        if iban:
-            try:
+        try:
+            if iban:
                 validate_iban(iban)
-            except ValidationError:
-                validated = False
-        return validated
+                return True
+            else:
+                return False
+        except ValidationError:
+            return False
 
     @api.multi
-    @api.depends('iban', 'skip_control_ng', 'is_company')
+    @api.depends('iban', 'skip_control_ng')
     def _validated_lines(self):
         for sub_request in self:
-            validated = (self.check_iban(sub_request.iban)
-                         or sub_request.skip_control_ng
-                         )
+            validated = (
+                 sub_request.skip_control_ng
+                 or self.check_iban(sub_request.iban)
+             )
             sub_request.validated = validated
 
     @api.multi
