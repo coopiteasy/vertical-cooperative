@@ -6,7 +6,6 @@
 <odoo>
     <record id="loan_issue_1_demo" model="loan.issue">
         <field name="name">test loan issue</field>
-        <field name="is_bond" eval="False"/>
         <field name="default_issue" eval="True"/>
         <field name="subscription_start_date" eval="datetime.today()"/>
         <field name="subscription_end_date" eval="datetime.today() + timedelta(days=60)"/>
