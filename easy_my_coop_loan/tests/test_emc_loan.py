@@ -13,7 +13,6 @@ class EMCLoanCase(EMCBaseCase):
 
         loan_issue_values = {
             "name": "test loan issue",
-            "is_bond": False,
             "default_issue": "xx",
             "subscription_start_date": Date.today(),
             "subscription_end_date": Date.today() + timedelta(days=60),
@@ -43,7 +42,6 @@ class EMCLoanCase(EMCBaseCase):
 
         loan_issue_values = {
             "name": "test loan issue",
-            "is_bond": False,
             "default_issue": True,
             "user_id": self.ref("easy_my_coop.res_users_manager_emc_demo"),
             "subscription_start_date": Date.today(),
