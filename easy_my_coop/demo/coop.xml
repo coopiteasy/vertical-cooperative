@@ -77,7 +77,7 @@
     </record>
 
     <record id="base.main_company" model="res.company">
-        <field name="property_cooperator_account" ref="account_cooperator_demo"/>
+        <field name="property_cooperator_account" ref="easy_my_coop.account_cooperator_demo"/>
     </record>
 
     <record id="product_template_share_type_1_demo" model="product.template">
