@@ -19,7 +19,7 @@
       			<field name="source"/>
       			<field name="state"/>
       			<field name="validated" invisible="True"/>
-                <button type="object" string="Validate" aria-label="Validate" name="validate_subscription_request" attrs="{'invisible':['|',('state','!=','draft'),('validated','=',False)]}"/>
+                <button type="object" string="Validate" aria-label="Validate" name="validate_subscription_request" attrs="{'invisible':['|',('state','not in',['draft','waiting']),('validated','=',False)]}"/>
                 <button type="object" string="Block" aria-label="Block" name="block_subscription_request" states="draft" groups="easy_my_coop.group_easy_my_coop_user"/>
                 <button type="object" string="Unblock" aria-label="Unblock" name="unblock_subscription_request" states="block" groups="easy_my_coop.group_easy_my_coop_user"/>
             </tree>
@@ -40,6 +40,7 @@
    				<sheet>
        				<group>
 	       				<group>
+							<field name="validated" invisible="True"/>
 	       					<field name="already_cooperator"/>
 	       					<field name="is_company" groups="easy_my_coop.group_easy_my_coop_manager"/>
 	       					<field name="is_operation" invisible="True"/>
@@ -73,7 +74,6 @@
 	       					<field name="partner_id" options="{'no_create':True}"/>
 	       					<field name="type"/>
 	       					<field name="lang"/>
-	       					<field name="validated" invisible="True"/>
 	       					<field name="skip_control_ng"/>
 	       				</group>
 	       			</group>
