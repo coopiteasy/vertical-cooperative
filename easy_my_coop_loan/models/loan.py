@@ -1,3 +1,7 @@
+# Copyright 2019 Coop IT Easy SCRL fs
+#   Houssine BAKKALI <houssine@coopiteasy.be>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+
 import logging
 
 from odoo import api, fields, models, _
@@ -25,6 +29,7 @@ class LoanIssue(models.Model):
     subscription_end_date = fields.Date(string="End date subscription period")
     user_id = fields.Many2one('res.users',
                               string="Responsible")
+    loan_start_date = fields.Date(string="Loan start date")
     term_date = fields.Date(string="Term date")
     loan_term = fields.Float(string="Duration of the loan in month")
     rate = fields.Float(string="Interest rate")
@@ -49,6 +54,7 @@ class LoanIssue(models.Model):
     interest_payment = fields.Selection([('end', 'End'),
                                          ('yearly', 'Yearly')],
                                         string="Interest payment")
+    interest_payment_info = fields.Char(string="Yearly payment on")
     loan_issue_lines = fields.One2many('loan.issue.line',
                                        'loan_issue_id',
                                        string="Loan issue lines")
@@ -84,11 +90,6 @@ class LoanIssue(models.Model):
         else:
             max_amount = self.max_amount_person - already_subscribed
         return max_amount
-
-    @api.multi
-    def toggle_display(self):
-        for loan_issue in self:
-            loan_issue.display_on_website = not loan_issue.display_on_website
 
     @api.multi
     def get_web_issues(self, is_company):
