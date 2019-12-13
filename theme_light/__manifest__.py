@@ -8,7 +8,7 @@
     'version': '12.0.1.0.0',
     'author': 'Benjamin Dugardin',
     'author': 'Houssine BAKKALI',
-    'website': "www.coopiteasy.be",
+    'website': "https://coopiteasy.be",
     'depends': ['base',
                 'web',
                 'website_theme_install'

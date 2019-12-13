@@ -20,13 +20,13 @@
 ##############################################################################
 {
     "name": "Easy My Coop Online Payment",
-    "version": "1.0",
+    "version": "9.0.1.0.0",
     "depends": ["easy_my_coop",
                 "website_payment",
                 "payment_paypal"],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
-    'website': "www.coopiteasy.be",
+    'website': "https://coopiteasy.be",
     "description": """
     This module allows the cooperator to pay the subscribed shares online
     during the subscription process

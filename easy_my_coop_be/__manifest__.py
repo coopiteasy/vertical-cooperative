@@ -11,7 +11,7 @@
                 ],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
-    "website": "www.coopiteasy.be",
+    "website": "https://coopiteasy.be",
     "license": "AGPL-3",
     "description": """
     This is the belgian localization for the easy my coop module.

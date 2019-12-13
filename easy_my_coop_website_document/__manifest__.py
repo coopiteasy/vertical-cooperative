@@ -3,26 +3,23 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
-    'name': 'Easy My Coop Tax Shelter Website',
+    'name': 'Easy My Coop Website Document',
     "version": "12.0.1.0.0",
     'depends': [
         'website',
-        'website_portal_v10',
-        'easy_my_coop_taxshelter_report',
-        'report',
+        'easy_my_coop_document',
     ],
-    'description': """
-        Give access to Tax Shelter Report in the website portal.
-    """,
     'author': 'Coop IT Easy SCRLfs',
     'license': 'AGPL-3',
     'category': 'Cooperative Management',
     "website": "https://coopiteasy.be",
-
-    'category': 'Cooperative Management',
-
+    'description': """
+    Show documents in the website.
+    """,
     'data': [
-        'views/easy_my_coop_website_taxshelter_templates.xml',
+        'views/easy_my_coop_website_document_templates.xml',
+        'security/easy_my_coop_website_document_security.xml',
+        'security/ir.model.access.csv',
     ],
     'installable': False,
     'application': False,

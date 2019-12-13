@@ -10,7 +10,7 @@
         "partner_contact_birthdate"],
     "author": "Houssine BAKKALI <houssine.bakkali@gmail.com>",
     "category": "Cooperative management",
-    'website': "www.coopiteasy.be",
+    'website': "https://coopiteasy.be",
     "license": "AGPL-3",
     "description": """
     This module computes the age of the partner.

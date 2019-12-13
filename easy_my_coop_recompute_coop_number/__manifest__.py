@@ -20,11 +20,11 @@
 ##############################################################################
 {
     "name": "Easy My Coop Recompute Coop Number",
-    "version": "1.0",
+    "version": "12.0.1.0.0",
     "depends": ["easy_my_coop"],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
-    'website': "www.coopiteasy.be",
+    'website': "https://coopiteasy.be",
     "description": """
     This module allows to recompute the cooperator number subscription
     it has to be used carefully.

@@ -15,7 +15,7 @@
 
     'author': 'Rémy Taymans',
     'license': 'AGPL-3',
-    'version': '9.0.1.0',
+    'version': '9.0.1.0.0',
     'website': "https://github.com/houssine78/vertical-cooperative",
 
     'category': 'Website',

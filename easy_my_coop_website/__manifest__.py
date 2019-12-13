@@ -13,7 +13,7 @@
     ],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
-    "website": "www.coopiteasy.be",
+    "website": "https://coopiteasy.be",
     "license": "AGPL-3",
     "description": """
     This module adds the cooperator subscription form allowing to subscribe for

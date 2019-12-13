@@ -21,11 +21,11 @@
 {
     # todo check ir model access
     "name": "Easy My Coop tax shelter report",
-    "version": "1.0",
+    "version": "9.0.1.0.0",
     "depends": ["easy_my_coop"],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
-    'website': "www.coopiteasy.be",
+    'website': "https://coopiteasy.be",
     "license": "AGPL-3",
     "description": """
     This module allows to create a fiscal declaration year and to print
