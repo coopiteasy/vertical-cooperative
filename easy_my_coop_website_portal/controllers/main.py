@@ -8,39 +8,28 @@
 
 from werkzeug.exceptions import Forbidden, NotFound
 
-from openerp import http
-from openerp.exceptions import AccessError, MissingError
-from openerp.fields import Date
-from openerp.http import request
+from odoo import http
+from odoo.exceptions import AccessError, MissingError
+from odoo.fields import Date
+from odoo.http import request
 
-from openerp.addons.website_portal_v10.controllers.main import WebsiteAccount
+from odoo.addons.portal.controllers.portal import CustomerPortal
 
 
-class CooperatorWebsiteAccount(WebsiteAccount):
+class CooperatorPortalAccount(CustomerPortal):
 
     def _prepare_portal_layout_values(self):
-        values = super(CooperatorWebsiteAccount,
+        values = super(CooperatorPortalAccount,
                        self)._prepare_portal_layout_values()
         # We assume that commercial_partner_id always point to the
         # partner itself or to the linked partner. So there is no
         # need to check if the partner is a "contact" or not.
-        coop = request.env.user.partner_id.commercial_partner_id
+        partner = request.env.user.partner_id
+        coop = partner.commercial_partner_id
         coop_bank = request.env['res.partner.bank'].sudo().search(
             [('partner_id', 'in', [coop.id])],
             limit=1
         )
-        values.update({
-            'coop': coop,
-            'coop_bank': coop_bank,
-        })
-        return values
-
-    @http.route()
-    def account(self):
-        """ Add Release Capital Request to main account page """
-        response = super(CooperatorWebsiteAccount, self).account()
-        partner = request.env.user.partner_id
-
         invoice_mgr = request.env['account.invoice']
         capital_request_count = invoice_mgr.sudo().search_count([
             ('partner_id', 'in',
@@ -49,11 +38,12 @@ class CooperatorWebsiteAccount(WebsiteAccount):
             # Get only the release capital request
             ('release_capital_request', '=', True),
         ])
-
-        response.qcontext.update({
-            'capital_request_count': capital_request_count,
+        values.update({
+            'coop': coop,
+            'coop_bank': coop_bank,
+            'capital_request_count': capital_request_count
         })
-        return response
+        return values
 
     @http.route(
         ['/my/release_capital_request',
@@ -103,7 +93,7 @@ class CooperatorWebsiteAccount(WebsiteAccount):
             'archive_groups': archive_groups,
             'default_url': '/my/release_capital_request',
         })
-        return request.website.render(
+        return request.render(
             "easy_my_coop_website_portal.portal_my_capital_releases",
             values
         )
@@ -125,7 +115,7 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         except MissingError:
             raise NotFound()
         # Get the pdf
-        report_mgr = request.env['report']
+        report_mgr = request.env.ref
         pdf = report_mgr.sudo().get_pdf(
             capital_request,
             'easy_my_coop.theme_invoice_G002'
@@ -133,18 +123,41 @@ class CooperatorWebsiteAccount(WebsiteAccount):
         filename = "Release Capital Request - %d" % capital_request.id
         return self._render_pdf(pdf, filename)
 
-    @http.route(['/my/cooperator_certificate/pdf'],
-                type='http', auth="user", website=True)
-    def get_cooperator_certificat(self, **kw):
-        """Render the cooperator certificate pdf of the current user"""
-        partner = request.env.user.partner_id
-        report_mgr = request.env['report']
-        pdf = report_mgr.sudo().get_pdf(
-            partner,
-            'easy_my_coop.cooperator_certificat_G001'
-        )
-        filename = "Cooperator Certificate - %s" % partner.name
-        return self._render_pdf(pdf, filename)
+    @http.route(['/my/release_capital_request/<int:oid_id>'],
+                type='http',
+                auth="public",
+                website=True)
+    def get_release_capital_request(self, oid=-1,
+                                    access_token=None,
+                                    report_type=None,
+                                    download=False,
+                                    **kw):
+        try:
+            invoice_sudo = self._document_check_access('account.invoice',
+                                                       oid,
+                                                       access_token)
+        except (AccessError, MissingError):
+            return request.redirect('/my')
+ 
+        if report_type in ('html', 'pdf', 'text'):
+            return self._show_report(
+                        model=invoice_sudo,
+                        report_type=report_type,
+                        report_ref='easy_my_coop.theme_invoice_G002',
+                        download=download)
+
+#     @http.route(['/my/cooperator_certificate/pdf'],
+#                 type='http', auth="user", website=True)
+#     def get_cooperator_certificat(self, **kw):
+#         """Render the cooperator certificate pdf of the current user"""
+#         partner = request.env.user.partner_id
+#         report_mgr = request.env['report']
+#         pdf = report_mgr.sudo().get_pdf(
+#             partner,
+#             'easy_my_coop.cooperator_certificat_G001'
+#         )
+#         filename = "Cooperator Certificate - %s" % partner.name
+#         return self._render_pdf(pdf, filename)
 
     def _render_pdf(self, pdf, filename):
         """Render a http response for a pdf"""

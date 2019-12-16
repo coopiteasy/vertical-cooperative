@@ -5,14 +5,14 @@
      Copyright 2018 Rémy Taymans <remytaymans@gmail.com>
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
-<openerp>
+<odoo>
 
   <!-- Add cooperator information -->
   <template
     id="website_portal_details_form"
     name="Website Portal Details Form"
-    inherit_id="website_portal_v10.portal_layout">
-    <xpath expr="//div[@class='o_my_details']" position="after">
+    inherit_id="portal.portal_layout">
+    <xpath expr="//div[@class='o_portal_my_details']" position="after">
       <div class="o_my_details_coop" t-if="coop.member">
         <h3 class="page-header">Your Cooperator Details</h3>
         <p class="text-center">
@@ -65,9 +65,9 @@
           <label>Gender: </label>
           <t t-esc="coop.gender"/>
         </p>
-        <p t-if="coop.birthdate">
+        <p t-if="coop.birthdate_date">
           <label>Date of Birth: </label>
-          <t t-esc="coop.birthdate"/>
+          <t t-esc="coop.birthdate_date"/>
         </p>
         <p t-if="coop_bank and coop_bank.acc_number">
           <label>Bank Account: </label>
@@ -91,10 +91,10 @@
   </template>
 
   <!-- Release Capital Requests in the menu -->
-  <template
+  <!--<template
       id="portal_my_home_menu_capital_release"
       name="Portal Menu: Easy My Coop Capital Release"
-      inherit_id="website_portal_v10.portal_layout"
+      inherit_id="portal.portal_layout"
       priority="20">
     <xpath expr="//ul[contains(@class,'o_portal_submenu')]"
         position="inside">
@@ -103,12 +103,25 @@
       </li>
     </xpath>
   </template>
+  
+  <template id="portal_my_home_menu_capital_request" name="Portal layout : capital request menu entries" inherit_id="portal.portal_breadcrumbs" priority="30">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'capital request'" t-attf-class="breadcrumb-item #{'active ' if not capital_requests else ''}">
+                <a t-if="capital_request" t-attf-href="/my/release_capital_request?{{ keep_query() }}">Capital Request</a>
+                <t t-else="">Capital Request</t>
+            </li>
+            <li t-if="capital_request" class="breadcrumb-item active">
+                <t t-esc="capital_request.number" t-if="capital_request.number"/>
+                <t t-else=""><em>Draft Request</em></t>
+            </li>
+        </xpath>
+    </template>-->
 
   <!-- Release Capital Requests on the main page -->
-  <template
+  <!--<template
       id="portal_my_home_capital_release"
       name="Portal My Home : Easy My Coop Capital Release Requests"
-      inherit_id="website_portal_v10.portal_my_home"
+      inherit_id="portal.portal_my_home"
       priority="20">
     <xpath expr="//div[contains(@class,'o_my_home_content')]"
         position="inside">
@@ -129,71 +142,72 @@
         </a>
       </h3>
     </xpath>
-  </template>
+  </template>-->
+  
+      <template id="portal_my_home_capital_release"
+      name="Portal My Home : Easy My Coop Capital Release Requests"
+      inherit_id="portal.portal_my_home" priority="30">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-if="capital_request_count" t-call="portal.portal_docs_entry">
+                <t t-set="title">Your Release Capital Requests</t>
+                <t t-set="url" t-value="'/my/release_capital_request'"/>
+                <t t-set="count" t-value="capital_request_count"/>
+            </t>
+        </xpath>
+    </template>
 
-  <!-- Release Capital Request page -->
-  <template id="portal_my_capital_releases" name="My Capital Releases">
-    <t t-call="website_portal_v10.portal_layout">
-      <h3 class="page-header">Your Capital Release Requests</h3>
-      <t t-if="not capital_requests">
-        <p>
-          There are currently no capital release request for your
-          account.
-        </p>
-      </t>
-      <t t-if="capital_requests">
-        <table class="table table-hover o_my_status_table">
-          <thead>
-            <tr class="active">
-              <th>Request #</th>
-              <th>Request Date</th>
-              <th>Due Date</th>
-              <th></th>
-              <th>Amount Due</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr t-foreach="capital_requests" t-as="capital_request">
-              <td>
-                <a t-att-href="'/my/release_capital_request/pdf/%s' %
-                  capital_request.id">
-                  <t t-esc="capital_request.number"/>
-                </a>
-              </td>
-              <td><span t-field="capital_request.date_invoice"/></td>
-              <td><span t-field="capital_request.date_due"/></td>
-              <td>
-                <t t-if="capital_request.state == 'open'">
-                  <span class="label label-info">
-                    <i class="fa fa-fw fa-clock-o"/> Waiting for Payment
-                  </span>
-                </t>
-                <t t-if="capital_request.state == 'paid'">
-                  <span class="label label-default">
-                    <i class="fa fa-fw fa-check"/> Paid
-                  </span>
-                </t>
-                <t t-if="capital_request.state == 'cancel'">
-                  <span class="label label-default">
-                    <i class="fa fa-fw fa-remove"/> Cancelled
-                  </span>
-                </t>
-              </td>
-              <td>
-                <span t-field="capital_request.residual"
-                    t-field-options='{
-                      "widget": "monetary",
-                      "display_currency": "capital_request.currency_id"
-                      }'/>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div t-if="pager" class="o_portal_pager text-center">
-          <t t-call="website.pager"/>
-        </div>
-      </t>
-    </t>
-  </template>
+    <template id="portal_my_capital_releases" name="My Capital Releases">
+      <t t-call="portal.portal_layout">
+        <t t-set="breadcrumbs_searchbar" t-value="True"/>
 
-</openerp>
+        <t t-call="portal.portal_searchbar">
+            <t t-set="title">My Capital Releases</t>
+        </t>
+        <t t-if="not capital_requests">
+            <p>There are currently no capital release request for your
+          	   account.
+          </p>
+        </t>
+        <t t-if="capital_requests" t-call="portal.portal_table">
+            <thead>
+                <tr class="active">
+                    <th>Request #</th>
+                    <th>Request Date</th>
+                    <th class='d-none d-md-table-cell'>Due Date</th>
+                    <th/>
+                    <th class="text-right">Amount Due</th>
+                </tr>
+            </thead>
+            <tbody>
+                <t t-foreach="capital_requests" t-as="capital_request">
+                    <tr>
+                        <td>
+                            <a t-att-href="capital_request.get_portal_url(report_type='easy_my_coop.theme_invoice_G002')" t-att-title="capital_request.number">
+                                <t t-esc="capital_request.number" t-if="capital_request.number"/>
+                                <em t-else="">Draft Request</em>
+                            </a>
+                            <!--<a t-att-href="'/my/release_capital_request/pdf/%s' % capital_request.id">
+			                  <t t-esc="capital_request.number"/>
+			                </a>-->
+                        </td>
+                        <td><span t-field="capital_request.date_invoice"/></td>
+                        <td class='d-none d-md-table-cell'><span t-field="capital_request.date_due"/></td>
+                        <td class="tx_status">
+                            <t t-if="capital_request.state == 'open'">
+                                <span class="badge badge-pill badge-info"><i class="fa fa-fw fa-clock-o" aria-label="Opened" title="Opened" role="img"></i><span class="d-none d-md-inline"> Waiting for Payment</span></span>
+                            </t>
+                            <t t-if="capital_request.state == 'paid'">
+                                <span class="badge badge-pill badge-success"><i class="fa fa-fw fa-check" aria-label="Paid" title="Paid" role="img"></i><span class="d-none d-md-inline"> Paid</span></span>
+                            </t>
+                            <t t-if="capital_request.state == 'cancel'">
+                                <span class="badge badge-pill badge-warning"><i class="fa fa-fw fa-remove" aria-label="Cancelled" title="Cancelled" role="img"></i><span class="d-none d-md-inline"> Cancelled</span></span>
+                            </t>
+                        </td>
+                        <td class="text-right"><span t-esc="-capital_request.residual if capital_request.type == 'out_refund' else capital_request.residual" t-options='{"widget": "monetary", "display_currency": capital_request.currency_id}'/></td>
+                    </tr>
+                </t>
+            </tbody>
+        </t>
+      </t>
+    </template>
+</odoo>

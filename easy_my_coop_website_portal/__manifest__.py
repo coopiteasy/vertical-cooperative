@@ -5,10 +5,9 @@
     'name': 'Easy My Coop Website Portal',
     "version": "12.0.1.0.0",
     'depends': [
-        'website',
-        'website_portal_v10',
         'easy_my_coop',
-        'report',
+        'website',
+        'portal',
     ],
     'description': """
         Show cooperator information in the website portal.
@@ -20,6 +19,5 @@
     'data': [
         'views/easy_my_coop_website_portal_templates.xml',
     ],
-    'installable': False,
-    'application': False,
+    'installable': True,
 }
