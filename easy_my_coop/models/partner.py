@@ -11,6 +11,14 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     @api.multi
+    def _get_report_base_filename(self):
+        self.ensure_one()
+        if self.member:
+            return "Cooperator Certificate - %s" % self.name
+        else:
+            return 'unknow'
+
+    @api.multi
     def _invoice_total(self):
         account_invoice_report = self.env['account.invoice.report']
         if not self.ids:
