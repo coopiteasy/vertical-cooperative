@@ -122,6 +122,7 @@ class CooperatorPortalAccount(CustomerPortal):
                 type='http', auth="public", website=True)
     def portal_my_invoice_detail(self, invoice_id, access_token=None,
                                  report_type=None, download=False, **kw):
+        # override in order to not retrieve release capital request as invoices
         try:
             invoice_sudo = self._document_check_access('account.invoice',
                                                        invoice_id,
@@ -148,13 +149,13 @@ class CooperatorPortalAccount(CustomerPortal):
     def get_cooperator_certificat(self, **kw):
         """Render the cooperator certificate pdf of the current user"""
         partner = request.env.user.partner_id
-        report_mgr = request.env['report']
-        pdf = report_mgr.sudo().get_pdf(
-            partner,
-            'easy_my_coop.cooperator_certificat_G001'
-        )
-        filename = "Cooperator Certificate - %s" % partner.name
-        return self._render_pdf(pdf, filename)
+
+        return self._show_report(
+                model=partner,
+                report_type='pdf',
+                report_ref='easy_my_coop.action_cooperator_report_certificat',
+                download=True
+            )
 
     def _render_pdf(self, pdf, filename):
         """Render a http response for a pdf"""
