@@ -1,12 +1,8 @@
-# -*- coding: utf-8 -*-
-
-# Copyright 2015-2016 Odoo S.A.
 # Copyright 2016 Jairo Llopis <jairo.llopis@tecnativa.com>
-# Copyright 2017-2018 Rémy Taymans <remytaymans@gmail.com>
+# Copyright 2017-2018 Rémy Taymans <remy@coopiteasy.be>
+# Copyright 2019 Houssine Bakkali <houssine@coopiteasy.be>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-
-from werkzeug.exceptions import Forbidden, NotFound
 
 from odoo import http
 from odoo.exceptions import AccessError, MissingError
@@ -14,6 +10,8 @@ from odoo.fields import Date
 from odoo.http import request
 
 from odoo.addons.portal.controllers.portal import CustomerPortal
+from odoo.addons.portal.controllers.portal import pager as portal_pager
+from odoo.addons.payment.controllers.portal import PaymentProcessing
 
 
 class CooperatorPortalAccount(CustomerPortal):
@@ -31,26 +29,47 @@ class CooperatorPortalAccount(CustomerPortal):
             limit=1
         )
         invoice_mgr = request.env['account.invoice']
-        capital_request_count = invoice_mgr.sudo().search_count([
-            ('partner_id', 'in',
-             [partner.commercial_partner_id.id]),
+        capital_request_count = invoice_mgr.search_count([
+            # ('partner_id', 'in', [partner.commercial_partner_id.id]),
             ('state', 'in', ['open', 'paid', 'cancelled']),
             # Get only the release capital request
             ('release_capital_request', '=', True),
         ])
+
+        invoice_count = invoice_mgr.search_count([
+            # ('partner_id', 'in', [partner.commercial_partner_id.id]),
+            ('release_capital_request', '=', False)
+        ])
+
         values.update({
             'coop': coop,
             'coop_bank': coop_bank,
-            'capital_request_count': capital_request_count
+            'capital_request_count': capital_request_count,
+            'invoice_count': invoice_count
         })
         return values
+
+    @http.route(['/my/invoices', '/my/invoices/page/<int:page>'], type='http',
+                auth="user", website=True)
+    def portal_my_invoices(self, page=1, date_begin=None, date_end=None,
+                           sortby=None, **kw):
+        res = super(CooperatorPortalAccount, self).portal_my_invoices(
+                    page, date_begin, date_end, sortby, **kw)
+        invoice_obj = request.env['account.invoice']
+        qcontext = res.qcontext
+        if qcontext:
+            invoices = invoice_obj.search([('release_capital_request', '=', False)])
+            invoice_count = len(invoices)
+            qcontext['invoices'] = invoices
+            qcontext['pager']['invoice_count'] = invoice_count
+        return res
 
     @http.route(
         ['/my/release_capital_request',
          '/my/release_capital_request/page/<int:page>'],
         type='http', auth="user", website=True)
     def portal_my_release_capital_request(self, page=1, date_begin=None,
-                                          date_end=None, **kw):
+                                          date_end=None, sortby=None, **kw):
         """Render a page with the list of release capital request.
         A release capital request is an invoice with a flag that tell
         if it's a capital request or not.
@@ -75,9 +94,10 @@ class CooperatorPortalAccount(CustomerPortal):
         # count for pager
         capital_request_count = invoice_mgr.sudo().search_count(domain)
         # pager
-        pager = request.website.pager(
+        pager = portal_pager(
             url="/my/release_capital_request",
-            url_args={'date_begin': date_begin, 'date_end': date_end},
+            url_args={'date_begin': date_begin, 'date_end': date_end,
+                      'sortby': sortby},
             total=capital_request_count,
             page=page,
             step=self._items_per_page
@@ -88,7 +108,7 @@ class CooperatorPortalAccount(CustomerPortal):
         values.update({
             'date': date_begin,
             'capital_requests': invoices,
-            'page_name': 'invoice',
+            'page_name': 'Release request',
             'pager': pager,
             'archive_groups': archive_groups,
             'default_url': '/my/release_capital_request',
@@ -98,66 +118,43 @@ class CooperatorPortalAccount(CustomerPortal):
             values
         )
 
-    @http.route(['/my/release_capital_request/pdf/<int:oid>'],
-                type='http', auth="user", website=True)
-    def get_release_capital_request(self, oid=-1, **kw):
-        """Render the pdf of the given release capital request"""
-        # Get the release capital request and raise an error if the user
-        # is not allowed to access to it or if the object is not found.
-        partner = request.env.user.partner_id
-        invoice_mgr = request.env['account.invoice']
-        capital_request = invoice_mgr.sudo().browse(oid)
-        try:
-            if capital_request.partner_id != partner:
-                raise Forbidden()
-        except AccessError:
-            raise Forbidden()
-        except MissingError:
-            raise NotFound()
-        # Get the pdf
-        report_mgr = request.env.ref
-        pdf = report_mgr.sudo().get_pdf(
-            capital_request,
-            'easy_my_coop.theme_invoice_G002'
-        )
-        filename = "Release Capital Request - %d" % capital_request.id
-        return self._render_pdf(pdf, filename)
-
-    @http.route(['/my/release_capital_request/<int:oid_id>'],
-                type='http',
-                auth="public",
-                website=True)
-    def get_release_capital_request(self, oid=-1,
-                                    access_token=None,
-                                    report_type=None,
-                                    download=False,
-                                    **kw):
+    @http.route(['/my/invoices/<int:invoice_id>'],
+                type='http', auth="public", website=True)
+    def portal_my_invoice_detail(self, invoice_id, access_token=None,
+                                 report_type=None, download=False, **kw):
         try:
             invoice_sudo = self._document_check_access('account.invoice',
-                                                       oid,
+                                                       invoice_id,
                                                        access_token)
         except (AccessError, MissingError):
             return request.redirect('/my')
- 
+        if invoice_sudo.release_capital_request:
+            report_ref = 'easy_my_coop.action_cooperator_invoices'
+        else:
+            report_ref = 'account.account_invoices'
         if report_type in ('html', 'pdf', 'text'):
-            return self._show_report(
-                        model=invoice_sudo,
-                        report_type=report_type,
-                        report_ref='easy_my_coop.theme_invoice_G002',
-                        download=download)
+            return self._show_report(model=invoice_sudo,
+                                     report_type=report_type,
+                                     report_ref=report_ref,
+                                     download=download)
 
-#     @http.route(['/my/cooperator_certificate/pdf'],
-#                 type='http', auth="user", website=True)
-#     def get_cooperator_certificat(self, **kw):
-#         """Render the cooperator certificate pdf of the current user"""
-#         partner = request.env.user.partner_id
-#         report_mgr = request.env['report']
-#         pdf = report_mgr.sudo().get_pdf(
-#             partner,
-#             'easy_my_coop.cooperator_certificat_G001'
-#         )
-#         filename = "Cooperator Certificate - %s" % partner.name
-#         return self._render_pdf(pdf, filename)
+        values = self._invoice_get_page_view_values(invoice_sudo, access_token,
+                                                    **kw)
+        PaymentProcessing.remove_payment_transaction(invoice_sudo.transaction_ids)
+        return request.render("account.portal_invoice_page", values)
+
+    @http.route(['/my/cooperator_certificate/pdf'],
+                type='http', auth="user", website=True)
+    def get_cooperator_certificat(self, **kw):
+        """Render the cooperator certificate pdf of the current user"""
+        partner = request.env.user.partner_id
+        report_mgr = request.env['report']
+        pdf = report_mgr.sudo().get_pdf(
+            partner,
+            'easy_my_coop.cooperator_certificat_G001'
+        )
+        filename = "Cooperator Certificate - %s" % partner.name
+        return self._render_pdf(pdf, filename)
 
     def _render_pdf(self, pdf, filename):
         """Render a http response for a pdf"""

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright 2015-2016 Odoo S.A.
      Copyright 2016 Jairo Llopis <jairo.llopis@tecnativa.com>
-     Copyright 2018 Rémy Taymans <remytaymans@gmail.com>
+     Copyright 2018 Rémy Taymans <remy@cooptieasy.be>
+     Copyright 2019 Houssine Bakkali <houssine@cooptieasy.be>
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
 <odoo>
@@ -90,61 +90,21 @@
     </xpath>
   </template>
 
-  <!-- Release Capital Requests in the menu -->
-  <!--<template
-      id="portal_my_home_menu_capital_release"
-      name="Portal Menu: Easy My Coop Capital Release"
-      inherit_id="portal.portal_layout"
-      priority="20">
-    <xpath expr="//ul[contains(@class,'o_portal_submenu')]"
-        position="inside">
-      <li>
-        <a href="/my/release_capital_request">Capital Releases</a>
-      </li>
-    </xpath>
-  </template>
   
   <template id="portal_my_home_menu_capital_request" name="Portal layout : capital request menu entries" inherit_id="portal.portal_breadcrumbs" priority="30">
-        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
-            <li t-if="page_name == 'capital request'" t-attf-class="breadcrumb-item #{'active ' if not capital_requests else ''}">
-                <a t-if="capital_request" t-attf-href="/my/release_capital_request?{{ keep_query() }}">Capital Request</a>
-                <t t-else="">Capital Request</t>
-            </li>
-            <li t-if="capital_request" class="breadcrumb-item active">
-                <t t-esc="capital_request.number" t-if="capital_request.number"/>
-                <t t-else=""><em>Draft Request</em></t>
-            </li>
-        </xpath>
-    </template>-->
+  	 <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+     	<li t-if="page_name == 'capital request'" t-attf-class="breadcrumb-item #{'active ' if not capital_requests else ''}">
+            <a t-if="capital_request" t-attf-href="/my/release_capital_request?{{ keep_query() }}">Capital Request</a>
+            <t t-else="">Capital Request</t>
+        </li>
+        <li t-if="capital_request" class="breadcrumb-item active">
+            <t t-esc="capital_request.number" t-if="capital_request.number"/>
+            <t t-else=""><em>Draft Request</em></t>
+        </li>
+   	 </xpath>
+   </template>
 
-  <!-- Release Capital Requests on the main page -->
-  <!--<template
-      id="portal_my_home_capital_release"
-      name="Portal My Home : Easy My Coop Capital Release Requests"
-      inherit_id="portal.portal_my_home"
-      priority="20">
-    <xpath expr="//div[contains(@class,'o_my_home_content')]"
-        position="inside">
-      <h3 class="page-header">
-        <a href="/my/release_capital_request">
-          Your Release Capital Requests
-          <small class="ml8">
-            <t t-if="capital_request_count">
-              <span class='badge'>
-                <t t-esc="capital_request_count"/>
-              </span>
-            </t>
-            <t t-if="not capital_request_count">
-              There are currently no release capital request for your
-              account.
-            </t>
-          </small>
-        </a>
-      </h3>
-    </xpath>
-  </template>-->
-  
-      <template id="portal_my_home_capital_release"
+   <template id="portal_my_home_capital_release"
       name="Portal My Home : Easy My Coop Capital Release Requests"
       inherit_id="portal.portal_my_home" priority="30">
         <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
@@ -182,13 +142,10 @@
                 <t t-foreach="capital_requests" t-as="capital_request">
                     <tr>
                         <td>
-                            <a t-att-href="capital_request.get_portal_url(report_type='easy_my_coop.theme_invoice_G002')" t-att-title="capital_request.number">
+                            <a t-att-href="capital_request.get_portal_url()" t-att-title="capital_request.number">
                                 <t t-esc="capital_request.number" t-if="capital_request.number"/>
                                 <em t-else="">Draft Request</em>
                             </a>
-                            <!--<a t-att-href="'/my/release_capital_request/pdf/%s' % capital_request.id">
-			                  <t t-esc="capital_request.number"/>
-			                </a>-->
                         </td>
                         <td><span t-field="capital_request.date_invoice"/></td>
                         <td class='d-none d-md-table-cell'><span t-field="capital_request.date_due"/></td>
