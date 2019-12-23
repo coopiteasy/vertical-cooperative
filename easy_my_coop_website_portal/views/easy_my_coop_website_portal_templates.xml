@@ -6,7 +6,15 @@
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
 <odoo>
-
+	<template id="portal_my_details_emc" inherit_id="portal.portal_my_details" name="Portal user details">
+		<xpath expr="//input[@name='phone']/.." position="after">
+			<div t-attf-class="form-group #{error.get('iban') and 'o_has_error' or ''} col-xl-6">
+	            <label class="col-form-label" for="phone">Iban</label>
+	            <input type="input" name="iban" t-attf-class="form-control #{error.get('iban') and 'is-invalid' or ''}" t-att-value="iban" />
+	        </div>
+        </xpath>
+	</template>
+	
   <!-- Add cooperator information -->
   <template
     id="website_portal_details_form"
