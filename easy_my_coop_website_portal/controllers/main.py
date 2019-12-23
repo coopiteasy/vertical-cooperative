@@ -4,10 +4,10 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 
-from odoo import http
 from odoo.exceptions import AccessError, MissingError
 from odoo.fields import Date
-from odoo.http import request
+from odoo.http import request, route
+from odoo import _
 
 from odoo.addons.portal.controllers.portal import CustomerPortal
 from odoo.addons.portal.controllers.portal import pager as portal_pager
@@ -15,6 +15,7 @@ from odoo.addons.payment.controllers.portal import PaymentProcessing
 
 
 class CooperatorPortalAccount(CustomerPortal):
+    CustomerPortal.MANDATORY_BILLING_FIELDS.append("iban")
 
     def _prepare_portal_layout_values(self):
         values = super(CooperatorPortalAccount,
@@ -30,27 +31,59 @@ class CooperatorPortalAccount(CustomerPortal):
         )
         invoice_mgr = request.env['account.invoice']
         capital_request_count = invoice_mgr.search_count([
-            # ('partner_id', 'in', [partner.commercial_partner_id.id]),
             ('state', 'in', ['open', 'paid', 'cancelled']),
             # Get only the release capital request
             ('release_capital_request', '=', True),
         ])
 
         invoice_count = invoice_mgr.search_count([
-            # ('partner_id', 'in', [partner.commercial_partner_id.id]),
             ('release_capital_request', '=', False)
         ])
-
+        iban = ''
+        if partner.bank_ids:
+                iban = partner.bank_ids[0].acc_number
         values.update({
             'coop': coop,
             'coop_bank': coop_bank,
             'capital_request_count': capital_request_count,
-            'invoice_count': invoice_count
+            'invoice_count': invoice_count,
+            'iban': iban
         })
         return values
 
-    @http.route(['/my/invoices', '/my/invoices/page/<int:page>'], type='http',
-                auth="user", website=True)
+    def details_form_validate(self, data):
+        error, error_message = super(CooperatorPortalAccount,
+                                     self).details_form_validate(data)
+        sub_req_obj = request.env['subscription.request']
+        iban = data.get("iban")
+        valid = sub_req_obj.check_iban(iban)
+
+        if not valid:
+            error['iban'] = 'error'
+            error_message.append(_("You iban account number is not valid"))
+        return error, error_message
+
+    @route(['/my/account'], type='http', auth='user', website=True)
+    def account(self, redirect=None, **post):
+        res = super(CooperatorPortalAccount, self).account(
+                    redirect, **post)
+        if not res.qcontext.get('error'):
+            partner = request.env.user.partner_id
+            partner_bank = request.env['res.partner.bank']
+            iban = post.get('iban')
+            if iban:
+                if partner.bank_ids:
+                    bank_account = partner.bank_ids[0]
+                    bank_account.acc_number = iban
+                else:
+                    partner_bank.sudo().create({
+                        'partner_id': partner.id,
+                        'acc_number': iban
+                        })
+        return res
+
+    @route(['/my/invoices', '/my/invoices/page/<int:page>'], type='http',
+           auth="user", website=True)
     def portal_my_invoices(self, page=1, date_begin=None, date_end=None,
                            sortby=None, **kw):
         res = super(CooperatorPortalAccount, self).portal_my_invoices(
@@ -64,7 +97,7 @@ class CooperatorPortalAccount(CustomerPortal):
             qcontext['pager']['invoice_count'] = invoice_count
         return res
 
-    @http.route(
+    @route(
         ['/my/release_capital_request',
          '/my/release_capital_request/page/<int:page>'],
         type='http', auth="user", website=True)
@@ -118,8 +151,8 @@ class CooperatorPortalAccount(CustomerPortal):
             values
         )
 
-    @http.route(['/my/invoices/<int:invoice_id>'],
-                type='http', auth="public", website=True)
+    @route(['/my/invoices/<int:invoice_id>'],
+           type='http', auth="public", website=True)
     def portal_my_invoice_detail(self, invoice_id, access_token=None,
                                  report_type=None, download=False, **kw):
         # override in order to not retrieve release capital request as invoices
@@ -144,8 +177,8 @@ class CooperatorPortalAccount(CustomerPortal):
         PaymentProcessing.remove_payment_transaction(invoice_sudo.transaction_ids)
         return request.render("account.portal_invoice_page", values)
 
-    @http.route(['/my/cooperator_certificate/pdf'],
-                type='http', auth="user", website=True)
+    @route(['/my/cooperator_certificate/pdf'],
+           type='http', auth="user", website=True)
     def get_cooperator_certificat(self, **kw):
         """Render the cooperator certificate pdf of the current user"""
         partner = request.env.user.partner_id
