@@ -15,7 +15,9 @@ from odoo.addons.payment.controllers.portal import PaymentProcessing
 
 
 class CooperatorPortalAccount(CustomerPortal):
-    CustomerPortal.MANDATORY_BILLING_FIELDS.append("iban")
+    CustomerPortal.MANDATORY_BILLING_FIELDS.extend(["iban",
+                                                    "birthdate_date",
+                                                    "gender"])
 
     def _prepare_portal_layout_values(self):
         values = super(CooperatorPortalAccount,
@@ -25,6 +27,7 @@ class CooperatorPortalAccount(CustomerPortal):
         # need to check if the partner is a "contact" or not.
         partner = request.env.user.partner_id
         coop = partner.commercial_partner_id
+        partner_obj = request.env['res.partner']
         coop_bank = request.env['res.partner.bank'].sudo().search(
             [('partner_id', 'in', [coop.id])],
             limit=1
@@ -42,12 +45,16 @@ class CooperatorPortalAccount(CustomerPortal):
         iban = ''
         if partner.bank_ids:
                 iban = partner.bank_ids[0].acc_number
+
+        fields_desc = partner_obj.sudo().fields_get(['gender'])
+
         values.update({
             'coop': coop,
             'coop_bank': coop_bank,
             'capital_request_count': capital_request_count,
             'invoice_count': invoice_count,
-            'iban': iban
+            'iban': iban,
+            'genders': fields_desc['gender']['selection']
         })
         return values
 
