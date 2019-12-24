@@ -8,9 +8,24 @@
 <odoo>
 	<template id="portal_my_details_emc" inherit_id="portal.portal_my_details" name="Portal user details">
 		<xpath expr="//input[@name='phone']/.." position="after">
+			<div t-attf-class="form-group #{error.get('gender') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="gender">Gender</label>
+                <select name="gender" t-attf-class="form-control #{error.get('gender') or ''}">
+                    <option value=""></option>
+                    <t t-foreach="genders or []" t-as="item">
+                        <option t-att-value="item[0]" t-att-selected="item[0] == partner.gender">
+                            <t t-esc="item[1]" />
+                        </option>
+                    </t>
+                </select>
+            </div>
+	        <div t-attf-class="form-group #{error.get('birthdate_date') and 'o_has_error' or ''} col-xl-6">
+	            <label class="col-form-label" for="birthdate_date">Birthdate</label>
+	            <input type="date" name="birthdate_date" t-attf-class="form-control #{error.get('birthdate_date') or ''}" t-att-value="birthdate_date or partner.birthdate_date" />
+	        </div>
 			<div t-attf-class="form-group #{error.get('iban') and 'o_has_error' or ''} col-xl-6">
-	            <label class="col-form-label" for="phone">Iban</label>
-	            <input type="input" name="iban" t-attf-class="form-control #{error.get('iban') and 'is-invalid' or ''}" t-att-value="iban" />
+	            <label class="col-form-label" for="iban">Iban</label>
+	            <input type="input" name="iban" t-attf-class="form-control #{error.get('iban') or ''}" t-att-value="iban" />
 	        </div>
         </xpath>
 	</template>
