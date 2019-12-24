@@ -7,6 +7,12 @@
 -->
 <odoo>
 	<template id="portal_my_details_emc" inherit_id="portal.portal_my_details" name="Portal user details">
+        <input name="name" position="attributes">
+        	<attribute name="t-att-readonly">True</attribute>
+        </input>
+        <input name="email" position="attributes">
+        	<attribute name="t-att-readonly">True</attribute>
+        </input>
 		<xpath expr="//input[@name='phone']/.." position="after">
 			<div t-attf-class="form-group #{error.get('gender') and 'o_has_error' or ''} col-xl-6">
                 <label class="col-form-label" for="gender">Gender</label>
