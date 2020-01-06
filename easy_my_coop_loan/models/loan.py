@@ -82,6 +82,7 @@ class LoanIssue(models.Model):
 
     @api.multi
     def get_max_amount(self, partner):
+        self.ensure_one()
         lines = self.loan_issue_lines.filtered(
             lambda r: r.partner_id == partner and r.state != 'cancelled')
         already_subscribed = sum(line.amount for line in lines)
@@ -90,6 +91,18 @@ class LoanIssue(models.Model):
         else:
             max_amount = self.max_amount_person - already_subscribed
         return max_amount
+
+    @api.multi
+    def get_min_amount(self, partner):
+        self.ensure_one()
+        lines = self.loan_issue_lines.filtered(
+            lambda r: r.partner_id == partner and r.state != 'cancelled')
+        amount_subscribed = sum(line.amount for line in lines)
+        if partner.is_company:
+            min_amount = self.min_amount_company - amount_subscribed
+        else:
+            min_amount = self.min_amount_person - amount_subscribed
+        return max(0, min_amount)
 
     @api.multi
     def get_web_issues(self, is_company):
