@@ -11,6 +11,14 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     @api.multi
+    def _get_report_base_filename(self):
+        self.ensure_one()
+        if self.member:
+            return "Cooperator Certificate - %s" % self.name
+        else:
+            return 'unknown'
+
+    @api.multi
     def _invoice_total(self):
         account_invoice_report = self.env['account.invoice.report']
         if not self.ids:
@@ -146,25 +154,28 @@ class ResPartner(models.Model):
             if partner.member:
                 is_candidate = False
             else:
-                if len(partner.subscription_request_ids.filtered(lambda record: record.state == 'done')) > 0:
-                    is_candidate = True
-                else:
-                    is_candidate = False
+                sub_requests = partner.subscription_request_ids.filtered(
+                                lambda record: record.state == 'done')
+                is_candidate = bool(sub_requests)
 
             partner.coop_candidate = is_candidate
 
+    @api.multi
     def has_representative(self):
+        self.ensure_one()
         if self.child_ids.filtered('representative'):
             return True
         return False
 
+    @api.multi
     def get_representative(self):
+        self.ensure_one()
         return self.child_ids.filtered('representative')
 
     def get_cooperator_from_email(self, email):
-        return self.search([('cooperator', '=', True),
-                            ('email', '=', email)])
+        return self.env['res.partner'].search([('cooperator', '=', True),
+                                               ('email', '=', email)])
 
     def get_cooperator_from_crn(self, company_register_number):
-        return self.search([('cooperator', '=', True),
-                            ('company_register_number', '=', company_register_number)])
+        return self.env['res.partner'].search([('cooperator', '=', True),
+                                               ('company_register_number', '=', company_register_number)])
