@@ -154,10 +154,9 @@ class ResPartner(models.Model):
             if partner.member:
                 is_candidate = False
             else:
-                if len(partner.subscription_request_ids.filtered(lambda record: record.state == 'done')) > 0:
-                    is_candidate = True
-                else:
-                    is_candidate = False
+                sub_requests = partner.subscription_request_ids.filtered(
+                                lambda record: record.state == 'done')
+                is_candidate = bool(sub_requests)
 
             partner.coop_candidate = is_candidate
 
