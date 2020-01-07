@@ -160,18 +160,22 @@ class ResPartner(models.Model):
 
             partner.coop_candidate = is_candidate
 
+    @api.multi
     def has_representative(self):
+        self.ensure_one()
         if self.child_ids.filtered('representative'):
             return True
         return False
 
+    @api.multi
     def get_representative(self):
+        self.ensure_one()
         return self.child_ids.filtered('representative')
 
     def get_cooperator_from_email(self, email):
-        return self.search([('cooperator', '=', True),
-                            ('email', '=', email)])
+        return self.env['res.partner'].search([('cooperator', '=', True),
+                                               ('email', '=', email)])
 
     def get_cooperator_from_crn(self, company_register_number):
-        return self.search([('cooperator', '=', True),
-                            ('company_register_number', '=', company_register_number)])
+        return self.env['res.partner'].search([('cooperator', '=', True),
+                                               ('company_register_number', '=', company_register_number)])
