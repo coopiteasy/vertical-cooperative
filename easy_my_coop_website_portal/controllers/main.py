@@ -44,7 +44,7 @@ class CooperatorPortalAccount(CustomerPortal):
         ])
         iban = ''
         if partner.bank_ids:
-                iban = partner.bank_ids[0].acc_number
+            iban = partner.bank_ids[0].acc_number
 
         fields_desc = partner_obj.sudo().fields_get(['gender'])
 
