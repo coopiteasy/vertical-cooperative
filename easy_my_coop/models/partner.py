@@ -16,7 +16,7 @@ class ResPartner(models.Model):
         if self.member:
             return "Cooperator Certificate - %s" % self.name
         else:
-            return 'unknow'
+            return 'unknown'
 
     @api.multi
     def _invoice_total(self):
