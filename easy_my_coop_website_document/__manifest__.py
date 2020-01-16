@@ -3,24 +3,21 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
-    'name': 'Easy My Coop Website Document',
+    "name": "Easy My Coop Website Document",
     "version": "12.0.1.0.0",
-    'depends': [
-        'website',
-        'document_hosting',
-    ],
-    'author': 'Coop IT Easy SCRLfs',
-    'license': 'AGPL-3',
-    'category': 'Cooperative Management',
+    "depends": ["website", "document_hosting",],
+    "author": "Coop IT Easy SCRLfs",
+    "license": "AGPL-3",
+    "category": "Cooperative Management",
     "website": "www.coopiteasy.be",
-    'description': """
+    "description": """
     Show documents in the website.
     """,
-    'data': [
-        'views/easy_my_coop_website_document_templates.xml',
-        'security/easy_my_coop_website_document_security.xml',
-        'security/ir.model.access.csv',
+    "data": [
+        "views/easy_my_coop_website_document_templates.xml",
+        "security/easy_my_coop_website_document_security.xml",
+        "security/ir.model.access.csv",
     ],
-    'installable': True,
-    'application': False,
+    "installable": True,
+    "application": False,
 }
