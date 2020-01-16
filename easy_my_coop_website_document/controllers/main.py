@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 # Copyright 2018 Rémy Taymans <remytaymans@gmail.com>
 # Copyright 2015-2016 Odoo S.A.
