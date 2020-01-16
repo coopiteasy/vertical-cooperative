@@ -8,9 +8,9 @@
 
 import base64
 
-from openerp import http
-from openerp.http import request, Response
-from openerp.fields import Date
+from odoo import http
+from odoo.http import request, Response
+from odoo.fields import Date
 
 
 class DocumentWebsite(http.Controller):

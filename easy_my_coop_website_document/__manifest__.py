@@ -4,7 +4,7 @@
 
 {
     'name': 'Easy My Coop Website Document',
-    "version": "12.0.1.0.0",
+    "version": "10.0.1.0.0",
     'depends': [
         'website',
         'document_hosting',
@@ -21,6 +21,6 @@
         'security/easy_my_coop_website_document_security.xml',
         'security/ir.model.access.csv',
     ],
-    'installable': False,
+    'installable': True,
     'application': False,
 }
