@@ -2,10 +2,6 @@
 <odoo>
 
     <template id="emc_external_layout_standard" inherit_id="web.external_layout_standard" primary="True">
-        <xpath expr="//div[hasclass('header')]//div//img" position="replace">
-            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="min-height: 75px; max-height: 75px" alt="Logo"/>
-        </xpath>
-
         <xpath expr="//div[hasclass('o_standard_footer')]" position="attributes">
             <attribute name="style">display: none;</attribute>
         </xpath>
@@ -40,6 +36,19 @@
                     </div>
                 </div>
             </div>
+        </xpath>
+    </template>
+
+    <template
+        id="emc_external_layout_larger_logo"
+        inherit_id="easy_my_coop.emc_external_layout_standard"
+        primary="True">
+        <!--
+        This template should be used with the special paperformat
+        that extend margin. See paperformat in data.
+        -->
+        <xpath expr="//div[hasclass('header')]//div//img" position="attributes">
+            <attribute name="style">min-height: 75px; max-height: 75px;</attribute>
         </xpath>
     </template>
 
