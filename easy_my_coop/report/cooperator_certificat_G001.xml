@@ -59,7 +59,7 @@
 				
 				<div name="label_coop_number" style="position:relative;top:45px;">
 					<span> Certificate generated on </span>
-					<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/>
+					<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/>
 				</div>
 
 				<div name="label_coop_number" style="position:relative;top:55px;">
