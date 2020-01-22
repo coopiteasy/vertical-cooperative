@@ -223,7 +223,12 @@ class WebsiteSubscription(http.Controller):
         if is_company:
             is_company = True
             redirect = "easy_my_coop.becomecompanycooperator"
-            email = kwargs.get('company_email')
+            company_email = kwargs.get('company_email')
+            if email == company_email:
+                values["error_msg"] = _("Cooperator and company emails"
+                                        " should be different.")
+                return request.website.render(redirect, values)
+            email = company_email
 
         if ('g-recaptcha-response' not in kwargs
                 or not request.website.is_captcha_valid(
