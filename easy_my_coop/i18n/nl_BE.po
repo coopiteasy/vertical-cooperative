@@ -441,6 +441,11 @@ msgstr "<p>Access this document <a href=\"%s\">directly in OpenERP</a></p>"
 
 #. module: easy_my_coop
 #: model:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
+msgid "<span> Certificate generated on </span>"
+msgstr "<span> Certificate generated on </span>"
+
+#. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
 msgid "<span> is recorded in the register of cooperators under number </span>"
 msgstr "<span> is recorded in the register of cooperators under number </span>"
 

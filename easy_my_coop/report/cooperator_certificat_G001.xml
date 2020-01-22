@@ -57,12 +57,17 @@
 	                <div style="width:125px;position:relative;top:10px;border-bottom: 4pt solid #fcc300;"/>
 	            </h2>
 				
+				<div name="label_coop_number" style="position:relative;top:45px;">
+					<span> Certificate generated on </span>
+					<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/>
+				</div>
+
 				<div name="label_coop_number" style="position:relative;top:55px;">
 					<span t-field="o.name"></span>
 					<span> is recorded in the register of cooperators under number </span>
-					<span t-field="o.cooperator_register_number"></span>	
-				</div>	
-			
+					<span t-field="o.cooperator_register_number"></span>
+				</div>
+
 	            <table class="table border-easymy-coop-cert" style="position:relative;top:85px;width:90%;align:center;">
 	                <thead class="easymy-coop-info-title">
 	                    <tr>
@@ -141,7 +146,7 @@
 	            </div>
 	            
 	            <div class="row">
-	                <div name="board_commitee" class="col-xs-6 pull-left" style="position:relative;top:205px;font-size:20;color:black;font-family:Roboto-Regular;">
+	                <div name="board_commitee" class="col-xs-6 pull-left" style="position:relative;top:205px;color:black;font-family:Roboto-Regular;">
 		                <div style="position:relative;top:205px;">
 		                	Pour le Conseil d'administration de <span t-field="o.company_id.name"/>.
 		                </div>
@@ -149,7 +154,7 @@
 		                	<strong><span t-field="o.company_id.board_representative"/></strong>
 		                </div>
 		                <div style="position:relative;top:225px;">
-		                	<img t-if="o.company_id.signature_scan" t-att-src="'data:image/png;base64,%s' % o.company_id.signature_scan" style="width:240px;height:200px;padding-bottom:5px;"/>
+		                	<img t-if="o.company_id.signature_scan" t-att-src="'data:image/png;base64,%s' % o.company_id.signature_scan" style="width:200px;height:150px;padding-bottom:5px;"/>
 		                </div>
 	                </div>
 	            </div>
