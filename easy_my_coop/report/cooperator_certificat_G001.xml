@@ -57,7 +57,7 @@
 	                <div style="width:125px;position:relative;top:10px;border-bottom: 4pt solid #fcc300;"/>
 	            </h2>
 				
-				<div name="label_coop_number" style="position:relative;top:45px;">
+				<div name="certificate_generation_date" style="position:relative;top:45px;">
 					<span> Certificate generated on </span>
 					<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/>
 				</div>
