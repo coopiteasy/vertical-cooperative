@@ -2281,6 +2281,11 @@ msgid "if this field is checked then no control will be done on the national reg
 msgstr ""
 
 #. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
+msgid "<span> Certificate generated on </span>"
+msgstr "<span> Certificat généré le </span>"
+
+#. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
 msgid "is recorded in the register of cooperators under number"
 msgstr ""
