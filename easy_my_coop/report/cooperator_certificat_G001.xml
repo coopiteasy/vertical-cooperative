@@ -12,6 +12,11 @@
                     <span>Cooperator Certificate</span>
                 </h2>
 
+                <p name="certificate_generation_date" class="mt16">
+					<span> Certificate generated on </span>
+					<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/>
+				</p>
+
                 <p name="label_coop_number" class="mt16">
                     <span t-field="o.name"/>
                     is recorded in the register of cooperators under number
