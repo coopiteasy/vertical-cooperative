@@ -82,18 +82,27 @@ class LoanIssue(models.Model):
 
     @api.multi
     def get_max_amount(self, partner):
+        """
+        Return the maximum amount that partner can buy.
+        A negative value means that there is no maximum.
+        """
         self.ensure_one()
         lines = self.loan_issue_lines.filtered(
             lambda r: r.partner_id == partner and r.state != 'cancelled')
         already_subscribed = sum(line.amount for line in lines)
-        if partner.is_company:
-            max_amount = self.max_amount_company - already_subscribed
-        else:
-            max_amount = self.max_amount_person - already_subscribed
+        max_amount = -1  # No max amount
+        if partner.is_company and self.max_amount_company > 0:
+            max_amount = max(0, self.max_amount_company - already_subscribed)
+        if not partner.is_company and self.max_amount_person > 0:
+            max_amount = max(0, self.max_amount_person - already_subscribed)
         return max_amount
 
     @api.multi
     def get_min_amount(self, partner):
+        """
+        Return the minimum amount that a partner must buy.
+        A zero value means that there is no minimum amount.
+        """
         self.ensure_one()
         lines = self.loan_issue_lines.filtered(
             lambda r: r.partner_id == partner and r.state != 'cancelled')
