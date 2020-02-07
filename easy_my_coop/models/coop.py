@@ -533,7 +533,7 @@ class SubscriptionRequest(models.Model):
         # To be overridden
         return True
 
-    @api.one
+    @api.one  # todo remove api.one
     def validate_subscription_request(self):
         partner_obj = self.env['res.partner']
 
