@@ -57,6 +57,7 @@
 	       					<field name="email"/>
 	       					<field name="phone"/>
 	       					<field name="contact_person_function" attrs="{'invisible':[('is_company','=',False)]}"/>
+							<!-- todo highlight iban if not valid -->
 	       					<field name="iban"/>
 	       					<field name="address"/>
 	       					<field name="zip_code"/>
