@@ -29,6 +29,7 @@ def _lang_get(self):
     return [(language.code, language.name) for language in languages]
 
 
+# todo move to subscription_request.py
 class SubscriptionRequest(models.Model):
     _name = 'subscription.request'
     _description = 'Subscription Request'
@@ -535,6 +536,7 @@ class SubscriptionRequest(models.Model):
 
     @api.one  # todo remove api.one
     def validate_subscription_request(self):
+        # todo rename to validate (careful with iwp dependencies)
         partner_obj = self.env['res.partner']
 
         if self.ordered_parts <= 0:
@@ -593,25 +595,26 @@ class SubscriptionRequest(models.Model):
 
         return invoice
 
-    @api.one
+    @api.one  # todo remove api.one
     def block_subscription_request(self):
         self.write({'state': 'block'})
 
-    @api.one
+    @api.one  # todo remove api.one
     def unblock_subscription_request(self):
         self.write({'state': 'draft'})
 
-    @api.one
+    @api.one  # todo remove api.one
     def cancel_subscription_request(self):
         self.write({'state': 'cancelled'})
 
-    @api.one
+    @api.one  # todo remove api.one
     def put_on_waiting_list(self):
         waiting_list_mail_template = self.env.ref('easy_my_coop.email_template_waiting_list', False)
         waiting_list_mail_template.send_mail(self.id, True)
         self.write({'state': 'waiting'})
 
 
+# todo move to share_line.py
 class ShareLine(models.Model):
     _name = 'share.line'
     _description = "Share line"
@@ -665,6 +668,7 @@ class ShareLine(models.Model):
     )
 
 
+# todo move to subscription_register.py
 class SubscriptionRegister(models.Model):
     _name = 'subscription.register'
     _description = "Subscription register"
