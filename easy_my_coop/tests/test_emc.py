@@ -176,6 +176,8 @@ class EMCCase(EMCBaseCase):
 
     def test_validated_lines_on_subscription_request(self):
         request = self.request
+        request.skip_control_ng = False
+
         self.assertFalse(request.skip_control_ng)
         self.assertFalse(request.iban)
 

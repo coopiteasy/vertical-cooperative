@@ -118,6 +118,7 @@
         <field name="ordered_parts">3</field>
         <field name="share_product_id" model="product.template" eval="obj(ref('product_template_share_type_2_demo')).product_variant_id.id"/>
         <field name="lang">en_US</field>
+        <field name="skip_control_ng" eval="True"/>
     </record>
 
     <record id="share_line_1_demo" model="share.line">
