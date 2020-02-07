@@ -33,7 +33,7 @@
         <field name="arch" type="xml">
     		<form string="Subscription Requests">
    				<header>
-   					<button string="Validate" type="object" name="validate_subscription_request" states="draft,waiting,transfer" />
+   					<button string="Validate" type="object" name="validate_subscription_request" attrs="{'invisible':['|',('state','not in',['draft','waiting']),('validated','=',False)]}"/>
    					<button string="Waiting list" type="object" name="put_on_waiting_list" states="draft"/>
    					<button string="Cancel" type="object" name="cancel_subscription_request" states="draft,waiting,done,block" groups="easy_my_coop.group_easy_my_coop_user"/>
    					<field name="state" widget="statusbar" statusbar_visible="draft,cancelled,done,failed"/>
