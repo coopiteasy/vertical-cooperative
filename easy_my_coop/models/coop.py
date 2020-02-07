@@ -235,8 +235,9 @@ class SubscriptionRequest(models.Model):
     user_id = fields.Many2one('res.users',
                               string='Responsible',
                               readonly=True)
+    # todo rename to valid_subscription_request
     validated = fields.Boolean(compute='_validated_lines',
-                               string='Valid Line?',
+                               string='Valid Subscription request?',
                                readonly=True)
     skip_control_ng = fields.Boolean(string="Skip control",
                                      help="if this field is checked then no"
