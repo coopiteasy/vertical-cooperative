@@ -25,7 +25,7 @@
                 "l10n_ch"],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
-    'webstite': "www.coopiteasy.be",
+    'webstite': "https://coopiteasy.be",
     "description": """
     This is the swiss localization for the easy my coop module
     """,

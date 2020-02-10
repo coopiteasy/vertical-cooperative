@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-#    Copyright (C) 2018- Coop IT Easy SCRLfs.
+#    Copyright (C) 2013-2018 Open Architects Consulting SPRL.
+#    Copyright (C) 2013-2018 Coop IT Easy SCRLfs.
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,26 +20,30 @@
 
 
 {
-    'name': 'Easy My Coop Export XLSX',
+    'name': 'Easy My Coop Dividend Engine',
 
     'summary': """
-    Generate a xlsx file with information on current state of subscription
-    request, cooperators and capital release request.
+    Manage the dividend calculation for a fiscal year.
     """,
+    'description': """
+    This module allows to calculate the dividend to give to a cooperator base
+    on the amount of his shares, the percentage allocated and for how long the
+    shares have been owned on prorata temporis calculation.
+    """,
+
     'author': 'Houssine BAKKALI, <houssine@coopiteasy.be>',
     'license': 'AGPL-3',
-    'version': '9.0.1.0',
-    'website': "www.coopiteasy.be",
+    'version': '9.0.1.0.0',
+    'website': "https://coopiteasy.be",
 
     'category': 'Cooperative Management',
 
     'depends': [
         'easy_my_coop',
     ],
-    'external_dependencies': {
-        'python': ['xlsxwriter'],
-    },
+
     'data': [
-        'wizard/export_global_wizard.xml',
+        'security/ir.model.access.csv',
+        'views/dividend_views.xml',
     ]
 }
