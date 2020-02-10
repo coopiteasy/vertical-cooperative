@@ -19,17 +19,19 @@
 #
 ##############################################################################
 {
-    "name": "Easy My Coop Eater/worker",
-    "version": "1.0",
-    "depends": ["easy_my_coop", "partner_age"],
+    "name": "Easy My Coop Recompute Coop Number",
+    "version": "12.0.1.0.0",
+    "depends": ["easy_my_coop"],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
-    'website': "www.coopiteasy.be",
+    'website': "https://coopiteasy.be",
     "description": """
-    This module allows to manage the activity of the cooperator.
+    This module allows to recompute the cooperator number subscription
+    it has to be used carefully.
     """,
     'data': [
-        'view/product_view.xml',
+        'wizard/cooperator_number_wizard.xml',
     ],
     'installable': True,
+    'active': False,
 }

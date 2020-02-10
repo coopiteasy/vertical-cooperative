@@ -9,7 +9,7 @@
                 "l10n_fr"],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
-    'webstite': "www.coopiteasy.be",
+    'webstite': "https://coopiteasy.be",
     "license": "AGPL-3",
     "description": """
     This is the french localization for the easy my coop module
