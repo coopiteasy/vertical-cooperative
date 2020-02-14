@@ -240,12 +240,14 @@ class TaxShelterCertificate(models.Model):
     @api.multi
     def print_subscription_certificate(self):
         self.ensure_one()
-        return self.env['report'].get_action(self, 'easy_my_coop_taxshelter_report.tax_shelter_subscription_report')
+        report = self.env.ref("easy_my_coop_taxshelter_report.action_tax_shelter_subscription_report")
+        return report.report_action(self)
 
     @api.multi
     def print_shares_certificate(self):
         self.ensure_one()
-        return self.env['report'].get_action(self, 'easy_my_coop_taxshelter_report.tax_shelter_shares_report')
+        report = self.env.ref("easy_my_coop_taxshelter_report.action_tax_shelter_shares_report")
+        return report.report_action(self)
 
     @api.multi
     def _compute_amounts(self):
