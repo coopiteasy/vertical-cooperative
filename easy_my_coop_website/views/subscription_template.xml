@@ -297,7 +297,7 @@
 							<table style="margin-left:195px">
 								<tr>
 									<td width="80%">
-										<div class="g-recaptcha" t-att-data-sitekey="website.recaptcha_key_site" data-theme="green"/><br/>			
+										<!--div class="g-recaptcha" t-att-data-sitekey="website.recaptcha_key_site" data-theme="green"/--><br/>			
 									</td>
 									<td>
 				 						<div class="form-group">
@@ -618,7 +618,7 @@
 							<table style="margin-left:195px">
 								<tr>
 									<td width="80%">
-										<div class="g-recaptcha" t-att-data-sitekey="website.recaptcha_key_site" data-theme="green"/><br/>			
+										<!--div class="g-recaptcha" t-att-data-sitekey="website.recaptcha_key_site" data-theme="green"/--><br/>			
 									</td>
 									<td>
 				 						<div class="form-group">
