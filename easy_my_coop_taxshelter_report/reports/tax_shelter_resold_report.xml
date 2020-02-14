@@ -2,74 +2,42 @@
 <odoo>
 	<data>
 		<template id="tax_shelter_report_shares_document">
-		    <t t-call="theme_light.invoice_layout">
+		    <t t-call="web.external_layout">
 		        <div class="page">
-		        	<head>
-						<link href="/easy_my_coop_taxshelter_report/static/src/css/coop_report.css" rel="stylesheet"/>
-						
-						<style type="text/css">
-						/* Montserrat */
-						  @font-face {
-						  font-family: 'Montserrat-Regular';
-						  font-style: normal;
-						  src: local('Montserrat Regular'), url('/theme_light/static/font/Montserrat-Regular.ttf') format('truetype');
-						}
-						/* Roboto Regular */
-						  @font-face {
-						  font-family: 'Roboto-Regular';
-						  font-style: normal;
-						  src: local('Roboto Regular'), url('/theme_light/static/font/Roboto-Regular.ttf') format('truetype');
-						}
-						/* Roboto Bold */
-						  @font-face {
-						  font-family: 'Roboto-Bold';
-						  font-style: normal;
-						  src: local('Roboto Bold'), url('/theme_light/static/font/Roboto-Bold.ttf') format('truetype');
-						}
-						/* BEBASNEUE Bold */
-						  @font-face {
-						  font-family: 'Bebasneue-Bold';
-						  font-style: normal;
-						  src: local('Bebasneue-Bold'), url('/theme_light/static/font/BEBASNEUE_BOLD.ttf') format('truetype');
-						}
-						</style>
-					</head>
-		        	<t t-call="theme_light.invoice_header"/>
-		        	
+
 		            <div class="row">
-		                <div class="col-xs-5 col-xs-offset-7 easymy-coop-address" style="top:15px;">
+		                <div class="col-xs-5 col-xs-offset-7 easymy-coop-address">
 		                    <strong><span t-field="o.partner_id.name" /><br/></strong>
 		                    <span> numéro de coopérateur </span>
 							<span t-field="o.partner_id.cooperator_register_number"></span><br/><br/>
 			            	<span t-field="o.partner_id.street" /><br/>
-			            	<span>  
-			            		<span t-field="o.partner_id.zip"/>  
+			            	<span>
+			            		<span t-field="o.partner_id.zip"/>
 			            		<span t-field="o.partner_id.city"/>
 			            	</span><br/>
 			            	<span t-field="o.partner_id.country_id.name" /><br/>
 		                </div>
 		            </div>
-		
-					<div style="position:absolute; top:240px">
-			            <h2 style="font-family:Bebasneue-Bold;font-size:16pt;">
+
+			            <h2>
 			            	<div>
-				            	<span>Déclaration Tax Shelter - Attestation concernant une des quatre années suivant l’acquisition de parts</span>		          					          			
+				            	<span>Déclaration Tax Shelter - Attestation concernant une des quatre années suivant l’acquisition de parts</span>
 							</div>
-			                <div style="width:125px;position:relative;top:10px;border-bottom: 4pt solid #fcc300;"/>
+			                <div/>
 			            </h2>
-						
+
 						<div class="row">
-			                <div class="col-xs-12 pull-left" style="position:relative;top:15px;font-size:16;color:black;font-family:Roboto-Regular;">
+			                <div class="col-xs-12 pull-left">
 				                <div>
 				                	Cher membre,
 								</div>
-								<div style="position:relative;top:10px;">
+								<div>
 									A la date du <span t-field="o.partner_id.effective_date"/>, vous êtes devenu coopérateur de <span t-field="o.company_id.name"/>.<br/>
 									<br/>
-									Cette lettre  confirme qu’en date du <span t-field="o.declaration_id.date_to"/>, vous êtes toujours en possession de parts de <span t-field="o.company_id.name"/> 
+									Cette lettre  confirme qu’en date du <span t-field="o.declaration_id.date_to"/>, vous êtes toujours en possession de parts de <span t-field="o.company_id.name"/>
 									pour un montant total de <span t-field="o.partner_id.total_value" t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/> euros et que la condition prévue à l’article 145(26), $3, alinéa 2, CIR92 est remplie.
 								</div>
-		<div style="position:relative;top:20px;">
+		<div>
 		L' Article 145/26, CIR 92 sur les revenus <span t-field="o.declaration_id.fiscal_year"/>, connu aussi comme normative Tax Shelter, donnent droit à une réduction d’impôt à hauteur de  &#160; <span t-field="o.declaration_id.tax_shelter_percentage"/> du montant de la valeur des parts souscrites depuis <span t-field="o.declaration_id.month_from"/> (et avant <span t-field="o.declaration_id.month_to"/> pour la déclaration des revenus <span t-field="o.declaration_id.fiscal_year"/>).<br/>
 		<br/>
 		Cette lettre vaut donc comme certificat que <span t-field="o.company_id.name"/> remplit en effet tous les critères permettant un tel avantage fiscal. Dans les grandes lignes : <br/>
@@ -92,35 +60,34 @@
 		Cordialement,
 				                </div>
 			                </div>
-			
+
 			            <div class="row">
-			                <div class="col-xs-6 pull-left" style="position:relative;top:100px;font-size:16;color:black;font-family:Roboto-Regular;">
-				                <div style="position:relative;top:10px;">
+			                <div class="col-xs-6 pull-left">
+				                <div>
 				                	Pour le Conseil d'administration de <span t-field="o.company_id.name"/>.
 				                </div>
-				                <div style="position:relative;top:20px;">
+				                <div>
 				                	<strong><span t-field="o.company_id.board_representative"/></strong>
 				                </div>
-				                <div style="position:relative;top:25px;">
-				                	<img t-if="o.company_id.signature_scan" t-att-src="'data:image/png;base64,%s' % o.company_id.signature_scan" style="width:140px;height:100px;padding-bottom:5px;"/>
+				                <div>
+				                	<img t-if="o.company_id.signature_scan" t-att-src="'data:image/png;base64,%s' % o.company_id.signature_scan"/>
 				                </div>
 			                </div>
 			            </div>
 			        </div>
-		        </div>
 				</div>
 		    </t>
 		    </template>
-		
+
 			<template id="tax_shelter_shares_report">
-			    <t t-call="theme_light.html_container">
+			    <t t-call="web.html_container">
 			        <t t-set="data_report_margin_top" t-value="10"/>
 			        <t t-set="data_report_header_spacing" t-value="5"/>
 			        <t t-set="data_report_dpi" t-value="110"/>
-			        
+
 			        <t t-foreach="docs" t-as="o">
 			            <t t-call="easy_my_coop_taxshelter_report.tax_shelter_report_shares_document" t-lang="o.partner_id.lang"/>
-			        </t>    	    	
+			        </t>
 			    </t>
 			</template>
 	</data>
