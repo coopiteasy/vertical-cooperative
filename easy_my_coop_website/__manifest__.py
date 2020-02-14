@@ -9,6 +9,7 @@
     "depends": [
         "easy_my_coop",
         "website",
+        # "website_recaptcha_reloaded",
     ],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
