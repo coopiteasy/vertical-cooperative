@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-12 16:36+0000\n"
-"PO-Revision-Date: 2020-02-14 14:59+0100\n"
+"PO-Revision-Date: 2020-02-14 15:17+0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -640,7 +640,7 @@ msgstr ""
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.cooperator_thanks
 msgid "&amp;times;"
-msgstr ""
+msgstr "&amp;times;"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
@@ -822,7 +822,7 @@ msgstr ""
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "Already cooperator?"
-msgstr ""
+msgstr "Ja ets cooperador/a?"
 
 #. module: easy_my_coop
 #: selection:subscription.request,gender:0
@@ -1062,14 +1062,14 @@ msgstr "Moneda de l'empresa"
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "Company Info"
-msgstr ""
+msgstr "Informació de la companyia"
 
 #. modules: easy_my_coop_website, easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_partner__company_register_number
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_users__company_register_number
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "Company Register Number"
-msgstr ""
+msgstr "Codi de registre de la companyia"
 
 #. module: easy_my_coop
 #: model:product.category,name:easy_my_coop.product_category_company_share
@@ -1080,7 +1080,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__company_email
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "Company email"
-msgstr ""
+msgstr "Correu de la companyia"
 
 #. modules: easy_my_coop_website, easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__company_name
@@ -1103,7 +1103,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__company_type
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "Company type"
-msgstr ""
+msgstr "Tipus de companyia"
 
 #. module: easy_my_coop
 #: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_config
@@ -1115,7 +1115,7 @@ msgstr "Configuració"
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "Confirm Email"
-msgstr ""
+msgstr "Confirma el correu"
 
 #. module: easy_my_coop
 #: model:ir.model,name:easy_my_coop.model_res_partner
@@ -1125,7 +1125,7 @@ msgstr "Contacte"
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "Contact Person"
-msgstr ""
+msgstr "Persona de contacte"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__coop_email_contact
@@ -1554,7 +1554,7 @@ msgstr ""
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "Idendity card scan"
-msgstr ""
+msgstr "Document d'identitat escanejat"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_res_company__unmix_share_type
@@ -1580,7 +1580,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "Internal Rules"
-msgstr ""
+msgstr "Reglament intern"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__internal_rules_approval_text
@@ -1612,7 +1612,7 @@ msgstr ""
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "Is a company?"
-msgstr ""
+msgstr "És una companyia?"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__is_operation
@@ -1653,20 +1653,20 @@ msgstr "Deixa-ho buit per utilitzar la data actual."
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "La super coopérative"
-msgstr ""
+msgstr "Coco-coop"
 
 #. modules: easy_my_coop_website, easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__lang
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "Language"
-msgstr "Idioma"
+msgstr "Llengua"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "Language..."
-msgstr ""
+msgstr "Llengua..."
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request____last_update
@@ -1731,7 +1731,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "Logged"
-msgstr ""
+msgstr "Sessió iniciada"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.emc_external_layout_standard
@@ -1753,7 +1753,7 @@ msgstr ""
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "Main Address"
-msgstr ""
+msgstr "Adreça principal"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/coop.py:154 selection:res.partner,gender:0
@@ -1973,7 +1973,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "Privacy Policy"
-msgstr ""
+msgstr "Política de privacitat"
 
 #. module: easy_my_coop
 #: model:ir.model,name:easy_my_coop.model_product_template
@@ -2277,7 +2277,7 @@ msgstr ""
 #: code:addons/easy_my_coop_website/controllers/main.py:232
 #, python-format
 msgid "Some mandatory fields have not been filled"
-msgstr ""
+msgstr "Hi ha camps obligatoris sense omplir"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__source
@@ -2401,7 +2401,7 @@ msgstr ""
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.cooperator_thanks
 msgid "Thanks!"
-msgstr ""
+msgstr "Gràcies!"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/coop.py:546
@@ -2425,7 +2425,7 @@ msgstr ""
 #: code:addons/easy_my_coop_website/controllers/main.py:252
 #, python-format
 msgid "The email and the confirmation email doesn't match.Please check the given mail addresses"
-msgstr ""
+msgstr "Els dos correus no coincideixen. Comprova'ls tots dos i corregeix l'error."
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/operation_request.py:204
@@ -2437,7 +2437,7 @@ msgstr ""
 #: code:addons/easy_my_coop_website/controllers/main.py:242
 #, python-format
 msgid "There is an existing account for this mail address. Please login before fill in the form"
-msgstr ""
+msgstr "Ja hi ha un compte amb aquest correu. Inicia la sessió abans d'omplir el formulari."
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/coop.py:576
@@ -2665,7 +2665,7 @@ msgstr ""
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.cooperator_thanks
 msgid "We will get back to you shortly."
-msgstr ""
+msgstr "T'avisarem aviat."
 
 #. module: easy_my_coop
 #: selection:subscription.request,source:0
@@ -2675,7 +2675,7 @@ msgstr ""
 #. module: easy_my_coop_website
 #: model:ir.actions.act_url,name:easy_my_coop_website.action_open_website
 msgid "Website Cooperator contact Form"
-msgstr ""
+msgstr "Formulari de contacte de la persona cooperadora"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/operation_request.py:186
@@ -2687,24 +2687,24 @@ msgstr ""
 #: code:addons/easy_my_coop_website/controllers/main.py:292
 #, python-format
 msgid "You can't subscribe for an amount that exceed "
-msgstr ""
+msgstr "No pots subscriure't per una quantitat superior a"
 
 #. module: easy_my_coop_website
 #: code:addons/easy_my_coop_website/controllers/main.py:285
 #, python-format
 msgid "You can't subscribe two different types of share"
-msgstr ""
+msgstr "No pots adquirir dos tipus diferents de participació"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "You have already an account?"
-msgstr ""
+msgstr "Que potser ja tens un compte registrat?"
 
 #. module: easy_my_coop_website
 #: code:addons/easy_my_coop_website/controllers/main.py:271
 #, python-format
 msgid "You iban account numberis not valid"
-msgstr ""
+msgstr "El número de compte IBAN no és vàlid"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/operation_request.py:189
@@ -2722,12 +2722,12 @@ msgstr ""
 #: code:addons/easy_my_coop_website/controllers/main.py:262
 #, python-format
 msgid "You need to upload a scan of your id card"
-msgstr ""
+msgstr "Has de pujar una imatge del teu document d'identitat escanejat"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.cooperator_thanks
 msgid "Your subscription has been successfully registered."
-msgstr ""
+msgstr "S'ha registrat amb èxit la teva subscripció."
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__zip_code
@@ -2737,7 +2737,7 @@ msgstr ""
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "administration@beescoop.be"
-msgstr ""
+msgstr "coco@pera.coop"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
@@ -2793,4 +2793,4 @@ msgstr "plaça del Forn de Vidre, 1"
 #: code:addons/easy_my_coop_website/controllers/main.py:221
 #, python-format
 msgid "the captcha has not been validated, please fill in the captcha"
-msgstr ""
+msgstr "No s'ha validat el Captcha. Si us plau, resol-lo per continuar."
