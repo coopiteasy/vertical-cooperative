@@ -1,24 +1,27 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* easy_my_coop_website
-#	* easy_my_coop
+# 	* easy_my_coop_website
+# 	* easy_my_coop
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-12 16:36+0000\n"
-"PO-Revision-Date: 2020-02-12 16:36+0000\n"
+"PO-Revision-Date: 2020-02-14 14:59+0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"Language: ca_ES\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. module: easy_my_coop
 #: model:mail.template,body_html:easy_my_coop.email_template_certificat_increase
-msgid "\n"
+msgid ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hello ${object.name},</p>\n"
@@ -59,7 +62,8 @@ msgid "\n"
 "    </div>\n"
 "</div>\n"
 "            "
-msgstr "\n"
+msgstr ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hola ${object.name},</p>\n"
@@ -103,7 +107,8 @@ msgstr "\n"
 
 #. module: easy_my_coop
 #: model:mail.template,body_html:easy_my_coop.email_template_certificat
-msgid "\n"
+msgid ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hello ${object.name},</p>\n"
@@ -144,7 +149,8 @@ msgid "\n"
 "    </div>\n"
 "</div>\n"
 "            "
-msgstr "\n"
+msgstr ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hola ${object.name},</p>\n"
@@ -188,7 +194,8 @@ msgstr "\n"
 
 #. module: easy_my_coop
 #: model:mail.template,body_html:easy_my_coop.email_template_share_update
-msgid "\n"
+msgid ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hello ${object.name},</p>\n"
@@ -229,7 +236,8 @@ msgid "\n"
 "     </div>\n"
 "</div>\n"
 "            "
-msgstr "\n"
+msgstr ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hola ${object.name},</p>\n"
@@ -273,7 +281,8 @@ msgstr "\n"
 
 #. module: easy_my_coop
 #: model:mail.template,body_html:easy_my_coop.email_template_share_transfer
-msgid "\n"
+msgid ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hello ${object.name},</p>\n"
@@ -314,7 +323,8 @@ msgid "\n"
 "    </div>\n"
 "</div>\n"
 "            "
-msgstr "\n"
+msgstr ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hola ${object.name},</p>\n"
@@ -358,7 +368,8 @@ msgstr "\n"
 
 #. module: easy_my_coop
 #: model:mail.template,body_html:easy_my_coop.email_template_confirmation_company
-msgid "\n"
+msgid ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hello ${object.name},</p>\n"
@@ -401,7 +412,8 @@ msgid "\n"
 "    </div>\n"
 "</div>\n"
 "            "
-msgstr "\n"
+msgstr ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hola ${object.name},</p>\n"
@@ -447,7 +459,8 @@ msgstr "\n"
 
 #. module: easy_my_coop
 #: model:mail.template,body_html:easy_my_coop.email_template_confirmation
-msgid "\n"
+msgid ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hello ${object.name},</p>\n"
@@ -488,7 +501,8 @@ msgid "\n"
 "    </div>\n"
 "</div>\n"
 "            "
-msgstr "\n"
+msgstr ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hola ${object.name},</p>\n"
@@ -532,7 +546,8 @@ msgstr "\n"
 
 #. module: easy_my_coop
 #: model:mail.template,body_html:easy_my_coop.email_template_release_capital
-msgid "\n"
+msgid ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hello ${object.partner_id.name},</p>\n"
@@ -571,7 +586,8 @@ msgid "\n"
 "    </div>\n"
 "</div>\n"
 "            "
-msgstr "\n"
+msgstr ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hola ${object.partner_id.name},</p>\n"
@@ -651,9 +667,11 @@ msgstr ""
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
-msgid "<span groups=\"account.group_show_line_subtotals_tax_excluded\">Amount</span>\n"
+msgid ""
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Amount</span>\n"
 "                                <span groups=\"account.group_show_line_subtotals_tax_included\">Total Price</span>"
-msgstr "<span groups=\"account.group_show_line_subtotals_tax_excluded\">Quantitat</span>\n"
+msgstr ""
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Quantitat</span>\n"
 "                                <span groups=\"account.group_show_line_subtotals_tax_included\">Preu total</span>"
 
 #. module: easy_my_coop
@@ -950,8 +968,7 @@ msgid "Cancel"
 msgstr "Cancel·lar"
 
 #. module: easy_my_coop
-#: selection:operation.request,state:0
-#: selection:subscription.request,state:0
+#: selection:operation.request,state:0 selection:subscription.request,state:0
 msgid "Cancelled"
 msgstr "Canceŀlat"
 
@@ -1368,16 +1385,14 @@ msgstr ""
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_subscription_request_filter
-#: selection:operation.request,state:0
-#: selection:subscription.request,state:0
+#: selection:operation.request,state:0 selection:subscription.request,state:0
 msgid "Done"
 msgstr "Fet"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.operation_request_form
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_subscription_request_filter
-#: selection:operation.request,state:0
-#: selection:subscription.request,state:0
+#: selection:operation.request,state:0 selection:subscription.request,state:0
 msgid "Draft"
 msgstr "Esborrany"
 
@@ -1453,8 +1468,7 @@ msgid "Execute"
 msgstr ""
 
 #. module: easy_my_coop
-#: code:addons/easy_my_coop/models/coop.py:155
-#: selection:res.partner,gender:0
+#: code:addons/easy_my_coop/models/coop.py:155 selection:res.partner,gender:0
 #: selection:subscription.request,gender:0
 #, python-format
 msgid "Female"
@@ -1742,8 +1756,7 @@ msgid "Main Address"
 msgstr ""
 
 #. module: easy_my_coop
-#: code:addons/easy_my_coop/models/coop.py:154
-#: selection:res.partner,gender:0
+#: code:addons/easy_my_coop/models/coop.py:154 selection:res.partner,gender:0
 #: selection:subscription.request,gender:0
 #, python-format
 msgid "Male"
@@ -1841,7 +1854,8 @@ msgstr ""
 #: model_terms:ir.actions.act_window,help:easy_my_coop.action_company_representative_form
 #: model_terms:ir.actions.act_window,help:easy_my_coop.action_partner_cooperator_candidate_form
 #: model_terms:ir.actions.act_window,help:easy_my_coop.action_partner_cooperator_form
-msgid "OpenERP helps you easily track all activities related to\n"
+msgid ""
+"OpenERP helps you easily track all activities related to\n"
 "                a cooperator: discussions, history of business opportunities,\n"
 "                documents, etc."
 msgstr ""
@@ -1891,8 +1905,7 @@ msgid "Operation type"
 msgstr ""
 
 #. module: easy_my_coop
-#: code:addons/easy_my_coop/models/coop.py:156
-#: selection:res.partner,gender:0
+#: code:addons/easy_my_coop/models/coop.py:156 selection:res.partner,gender:0
 #, python-format
 msgid "Other"
 msgstr ""
@@ -2285,8 +2298,7 @@ msgstr "Desa"
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_subscription_register_filter
 #: selection:operation.request,operation_type:0
-#: selection:subscription.register,type:0
-#: selection:subscription.request,type:0
+#: selection:subscription.register,type:0 selection:subscription.request,type:0
 msgid "Subscription"
 msgstr ""
 
@@ -2641,8 +2653,7 @@ msgid "Vendor Credit Note"
 msgstr ""
 
 #. module: easy_my_coop
-#: selection:operation.request,state:0
-#: selection:subscription.request,state:0
+#: selection:operation.request,state:0 selection:subscription.request,state:0
 msgid "Waiting"
 msgstr ""
 
@@ -2783,4 +2794,3 @@ msgstr "plaça del Forn de Vidre, 1"
 #, python-format
 msgid "the captcha has not been validated, please fill in the captcha"
 msgstr ""
-
