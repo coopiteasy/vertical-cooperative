@@ -122,7 +122,7 @@ class operation_request(models.Model):
 
     def get_total_share_dic(self, partner):
         total_share_dic = {}
-        share_products = self.env['product.template'].search([('is_share', '=', True)])
+        share_products = self.env['product.product'].search([('is_share', '=', True)])
 
         for share_product in share_products:
             total_share_dic[share_product.id] = 0
@@ -215,12 +215,14 @@ class operation_request(models.Model):
                             False)
 
     def send_share_trans_mail(self, sub_register_line):
-        cert_email_template = self.get_share_trans_mail_template()
-        cert_email_template.send_mail(rec.partner_id_to.id, False)
+        for rec in self:
+            cert_email_template = self.get_share_trans_mail_template()
+            cert_email_template.send_mail(rec.partner_id_to.id, False)
 
     def send_share_update_mail(self, sub_register_line):
-        cert_email_template = self.get_share_update_mail_template()
-        cert_email_template.send_mail(rec.partner_id.id, False)
+        for rec in self:
+            cert_email_template = self.get_share_update_mail_template()
+            cert_email_template.send_mail(rec.partner_id.id, False)
     
     def get_subscription_register_vals(self, effective_date):
         return {
