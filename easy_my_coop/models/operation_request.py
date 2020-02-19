@@ -214,15 +214,13 @@ class operation_request(models.Model):
         return self.env.ref('easy_my_coop.email_template_share_update',
                             False)
 
-    def send_share_trans_mail(self, sub_register_line):
-        for rec in self:
-            cert_email_template = self.get_share_trans_mail_template()
-            cert_email_template.send_mail(rec.partner_id_to.id, False)
+    def send_share_trans_mail(self, sub_register_line):  # Unused argument is used in synergie project. Do not remove.
+        cert_email_template = self.get_share_trans_mail_template()
+        cert_email_template.send_mail(self.partner_id_to.id, False)
 
-    def send_share_update_mail(self, sub_register_line):
-        for rec in self:
-            cert_email_template = self.get_share_update_mail_template()
-            cert_email_template.send_mail(rec.partner_id.id, False)
+    def send_share_update_mail(self, sub_register_line):  # Unused argument is used in synergie project. Do not remove.
+        cert_email_template = self.get_share_update_mail_template()
+        cert_email_template.send_mail(self.partner_id.id, False)
     
     def get_subscription_register_vals(self, effective_date):
         return {
@@ -240,89 +238,88 @@ class operation_request(models.Model):
         effective_date = self.get_date_now()
         sub_request = self.env['subscription.request']
 
-        for rec in self:
-            rec.validate()
+        self.validate()
 
-            if rec.state != 'approved':
-                raise ValidationError(_("This operation must be approved"
-                                        " before to be executed"))
+        if self.state != 'approved':
+            raise ValidationError(_("This operation must be approved"
+                                    " before to be executed"))
 
-            values = rec.get_subscription_register_vals(effective_date)
+        values = self.get_subscription_register_vals(effective_date)
 
-            if rec.operation_type == 'sell_back':
-                self.hand_share_over(rec.partner_id, rec.share_product_id,
-                                     rec.quantity)
-            elif rec.operation_type == 'convert':
-                amount_to_convert = rec.share_unit_price * rec.quantity
-                convert_quant = int(amount_to_convert / rec.share_to_product_id.list_price)
-                remainder = amount_to_convert % rec.share_to_product_id.list_price 
+        if self.operation_type == 'sell_back':
+            self.hand_share_over(self.partner_id, self.share_product_id,
+                                 self.quantity)
+        elif self.operation_type == 'convert':
+            amount_to_convert = self.share_unit_price * self.quantity
+            convert_quant = int(amount_to_convert / self.share_to_product_id.list_price)
+            remainder = amount_to_convert % self.share_to_product_id.list_price
 
-                if convert_quant > 0 and remainder == 0:
-                    share_ids = rec.partner_id.share_ids
-                    line = share_ids[0]
-                    if len(share_ids) > 1:
-                        share_ids[1:len(share_ids)].unlink()
-                    line.write({
-                        'share_number': convert_quant,
-                        'share_product_id': rec.share_to_product_id.id,
-                        'share_unit_price': rec.share_to_unit_price,
-                        'share_short_name': rec.share_to_short_name
-                        })
-                    values['share_to_product_id'] = rec.share_to_product_id.id
-                    values['quantity_to'] = convert_quant
-                else:
-                    raise ValidationError(_("Converting just part of the"
-                                            " shares is not yet implemented"))
-            elif rec.operation_type == 'transfer':
-                sequence_id = self.env.ref('easy_my_coop.sequence_subscription', False)
-                partner_vals = {'member': True}
-                if rec.receiver_not_member:
-                    partner = rec.subscription_request.create_coop_partner()
-                    # get cooperator number
-                    sub_reg_num = int(sequence_id.next_by_id())
-                    partner_vals = sub_request.get_eater_vals(partner, rec.share_product_id)
-                    partner_vals['cooperator_register_number'] = sub_reg_num
-                    partner.write(partner_vals)
-                    rec.partner_id_to = partner
-                else:
-                    # means an old member or cooperator candidate
-                    if not rec.partner_id_to.member:
-                        if rec.partner_id_to.cooperator_register_number == 0:
-                            sub_reg_num = int(sequence_id.next_by_id())
-                            partner_vals['cooperator_register_number'] = sub_reg_num
-                        partner_vals = sub_request.get_eater_vals(
-                                            rec.partner_id_to,
-                                            rec.share_product_id)
-                        partner_vals['old_member'] = False
-                        rec.partner_id_to.write(partner_vals)
-                # remove the parts to the giver
-                self.hand_share_over(rec.partner_id,
-                                     rec.share_product_id,
-                                     rec.quantity)
-                # give the share to the receiver
-                self.env['share.line'].create({
-                                'share_number': rec.quantity,
-                                'partner_id': rec.partner_id_to.id,
-                                'share_product_id': rec.share_product_id.id,
-                                'share_unit_price': rec.share_unit_price,
-                                'effective_date': effective_date})
-                values['partner_id_to'] = rec.partner_id_to.id
+            if convert_quant > 0 and remainder == 0:
+                share_ids = self.partner_id.share_ids
+                line = share_ids[0]
+                if len(share_ids) > 1:
+                    share_ids[1:len(share_ids)].unlink()
+                line.write({
+                    'share_number': convert_quant,
+                    'share_product_id': self.share_to_product_id.id,
+                    'share_unit_price': self.share_to_unit_price,
+                    'share_short_name': self.share_to_short_name
+                    })
+                values['share_to_product_id'] = self.share_to_product_id.id
+                values['quantity_to'] = convert_quant
             else:
-                raise ValidationError(_("This operation is not yet"
-                                        " implemented."))
+                raise ValidationError(_("Converting just part of the"
+                                        " shares is not yet implemented"))
+        elif self.operation_type == 'transfer':
+            sequence_id = self.env.ref('easy_my_coop.sequence_subscription', False)
+            partner_vals = {'member': True}
+            if self.receiver_not_member:
+                partner = self.subscription_request.create_coop_partner()
+                # get cooperator number
+                sub_reg_num = int(sequence_id.next_by_id())
+                partner_vals = sub_request.get_eater_vals(partner, self.share_product_id)
+                partner_vals['cooperator_register_number'] = sub_reg_num
+                partner.write(partner_vals)
+                self.partner_id_to = partner
+            else:
+                # means an old member or cooperator candidate
+                if not self.partner_id_to.member:
+                    if self.partner_id_to.cooperator_register_number == 0:
+                        sub_reg_num = int(sequence_id.next_by_id())
+                        partner_vals['cooperator_register_number'] = sub_reg_num
+                    partner_vals = sub_request.get_eater_vals(
+                                        self.partner_id_to,
+                                        self.share_product_id)
+                    partner_vals['old_member'] = False
+                    self.partner_id_to.write(partner_vals)
+            # remove the parts to the giver
+            self.hand_share_over(self.partner_id,
+                                 self.share_product_id,
+                                 self.quantity)
+            # give the share to the receiver
+            self.env['share.line'].create({
+                            'share_number': self.quantity,
+                            'partner_id': self.partner_id_to.id,
+                            'share_product_id': self.share_product_id.id,
+                            'share_unit_price': self.share_unit_price,
+                            'effective_date': effective_date})
+            values['partner_id_to'] = self.partner_id_to.id
+        else:
+            raise ValidationError(_("This operation is not yet"
+                                    " implemented."))
 
-            sequence_operation = self.env.ref('easy_my_coop.sequence_register_operation', False) #noqa
-            sub_reg_operation = sequence_operation.next_by_id()
+        sequence_operation = self.env.ref('easy_my_coop.sequence_register_operation', False) #noqa
+        sub_reg_operation = sequence_operation.next_by_id()
 
-            values['name'] = sub_reg_operation
-            values['register_number_operation'] = int(sub_reg_operation)
+        values['name'] = sub_reg_operation
+        values['register_number_operation'] = int(sub_reg_operation)
 
-            rec.write({'state': 'done'})
+        self.write({'state': 'done'})
 
-            # send mail to the receiver
-            if rec.operation_type == 'transfer':
-                self.send_share_trans_mail(sub_register_line)
+        # send mail to the receiver
+        if self.operation_type == 'transfer':
+            self.send_share_trans_mail(sub_register_line)
 
-            sub_register_line = self.env['subscription.register'].create(values)
+        sub_register_line = self.env['subscription.register'].create(values)
 
-            self.send_share_update_mail(sub_register_line)
+        self.send_share_update_mail(sub_register_line)
