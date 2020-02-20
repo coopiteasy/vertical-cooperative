@@ -316,10 +316,10 @@ class operation_request(models.Model):
 
         self.write({'state': 'done'})
 
+        sub_register_line = self.env['subscription.register'].create(values)
+
         # send mail to the receiver
         if self.operation_type == 'transfer':
             self.send_share_trans_mail(sub_register_line)
-
-        sub_register_line = self.env['subscription.register'].create(values)
 
         self.send_share_update_mail(sub_register_line)
