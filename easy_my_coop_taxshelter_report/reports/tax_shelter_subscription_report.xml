@@ -5,7 +5,7 @@
 		    <t t-call="web.external_layout">
 		        <div class="page mt32">
 		            <div class="row">
-		                <div class="col-sm-5 col-sm-offset-7 easymy-coop-address">
+		                <div class="col-sm-5 col-sm-offset-7 easymy-coop-address" style="margin-top:100px;">
 		                    <strong><span t-field="o.partner_id.name" /><br/></strong>
 		                    <span> numéro de coopérateur </span>
 							<span t-field="o.partner_id.cooperator_register_number"></span><br/><br/>
