@@ -10,11 +10,11 @@ TYPE_MAP = {
 
 REPORT_DIC = {
     'subscription': (
-        'easy_my_coop_taxshelter_report.tax_shelter_subscription_report',
+        'easy_my_coop_taxshelter_report.action_tax_shelter_subscription_report',
         'Tax Shelter Subscription'
     ),
     'shares': (
-        'easy_my_coop_taxshelter_report.tax_shelter_shares_report',
+        'easy_my_coop_taxshelter_report.action_tax_shelter_shares_report',
         'Tax Shelter Shares'
     )
 }
@@ -23,6 +23,7 @@ REPORT_DIC = {
 class TaxShelterDeclaration(models.Model):
 
     _name = "tax.shelter.declaration"
+    _description = "Tax Shelter Declaration"
 
     name = fields.Char(string='Declaration year', required=True)
     fiscal_year = fields.Char(String="Fiscal year", required=True)
@@ -149,7 +150,7 @@ class TaxShelterDeclaration(models.Model):
 
 class TaxShelterCertificate(models.Model):
     _name = "tax.shelter.certificate"
-
+    _description = "Tax Shelter Certificate"
     _order = "cooperator_number asc"
 
     cooperator_number = fields.Integer(string='Cooperator number',
@@ -164,7 +165,7 @@ class TaxShelterCertificate(models.Model):
                              string='State', required=True, default="draft")
     declaration_id = fields.Many2one('tax.shelter.declaration',
                                      string='Declaration', required=True,
-                                     readonly=True)
+                                     readonly=True, ondelete="restrict")
     lines = fields.One2many('certificate.line',
                             'tax_shelter_certificate',
                             string='Certificate lines', readonly=True)
@@ -207,8 +208,8 @@ class TaxShelterCertificate(models.Model):
                                  string="Company")
 
     def generate_pdf_report(self, report_type):
-        report_action, name = REPORT_DIC[report_type]
-        report = self.env['report'].get_pdf(self, report_action)
+        report, name = REPORT_DIC[report_type]
+        report = self.env.ref(report).render_qweb_pdf(self)
         report = base64.b64encode(report)
         report_name = self.partner_id.name + ' ' + name + ' ' + self.declaration_id.name + '.pdf'
 
@@ -240,14 +241,14 @@ class TaxShelterCertificate(models.Model):
     @api.multi
     def print_subscription_certificate(self):
         self.ensure_one()
-        report = self.env.ref("easy_my_coop_taxshelter_report.action_tax_shelter_subscription_report")
-        return report.report_action(self)
+        report, name = REPORT_DIC['subscription']
+        return self.env.ref(report).report_action(self)
 
     @api.multi
     def print_shares_certificate(self):
         self.ensure_one()
-        report = self.env.ref("easy_my_coop_taxshelter_report.action_tax_shelter_shares_report")
-        return report.report_action(self)
+        report, name = REPORT_DIC['shares']
+        return self.env.ref(report).report_action(self)
 
     @api.multi
     def _compute_amounts(self):
@@ -300,6 +301,7 @@ class TaxShelterCertificate(models.Model):
 class TaxShelterCertificateLine(models.Model):
 
     _name = "certificate.line"
+    _description = "Tax Shelter Certificate Line"
 
     declaration_id = fields.Many2one(related='tax_shelter_certificate.declaration_id',
                                      string="Declaration")
