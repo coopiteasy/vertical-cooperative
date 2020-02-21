@@ -3,9 +3,9 @@
 	<data>
 		<template id="tax_shelter_report_subscription_document">
 		    <t t-call="web.external_layout">
-		        <div class="page">
+		        <div class="page mt32">
 		            <div class="row">
-		                <div class="col-xs-5 col-xs-offset-7 easymy-coop-address">
+		                <div class="col-sm-5 col-sm-offset-7 easymy-coop-address">
 		                    <strong><span t-field="o.partner_id.name" /><br/></strong>
 		                    <span> numéro de coopérateur </span>
 							<span t-field="o.partner_id.cooperator_register_number"></span><br/><br/>
@@ -26,7 +26,7 @@
 			            </h2>
 
 						<div class="row">
-			                <div class="col-xs-12 pull-left">
+			                <div class="col-sm-12 pull-left">
 				                <div>
 				                	Cher membre,
 								</div>
@@ -92,7 +92,7 @@
 		Cordialement,
 						</div>
 								</div>
-			         			<div class="col-xs-10 pull-left">
+			         			<div class="col-sm-10 pull-left">
          						<div>
          							Pour le Conseil d'administration de <span t-field="o.company_id.name"/>.
          						</div>
