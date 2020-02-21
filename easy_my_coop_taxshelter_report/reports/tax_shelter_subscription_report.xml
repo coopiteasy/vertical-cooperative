@@ -100,7 +100,10 @@
          							<strong><span t-field="o.company_id.board_representative"/></strong>
          						</div>
          						<div>
-         							<img t-if="o.company_id.signature_scan" t-att-src="'data:image/png;base64,%s' % o.company_id.signature_scan"/>
+									<img t-if="o.company_id.signature_scan"
+										 t-attf-class="mt16 w-50"
+										 t-attf-style="{{ 'min-width: 100px; max-width: 250px' if report_type == 'pdf' else '' }}"
+										 t-att-src="'data:image/png;base64,%s' % o.company_id.signature_scan.decode()"/>
          						</div>
 			                </div>
 			            </div>
