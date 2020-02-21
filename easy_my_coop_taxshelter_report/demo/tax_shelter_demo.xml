@@ -26,7 +26,7 @@
 
     <record id="certificate_line_1_demo" model="certificate.line">
         <field name="tax_shelter_certificate" ref="easy_my_coop_taxshelter_report.tax_shelter_certificate_1_demo"/>
-        <field name="share_type" ref="easy_my_coop.product_product_share_type_1_demo"/>
+        <field name="share_type" model="product.template" eval="obj(ref('easy_my_coop.product_template_share_type_1_demo')).product_variant_id.id"/>
         <field name="share_unit_price">25</field>
         <field name="quantity">12</field>
         <field name="transaction_date" eval="datetime.now() - timedelta(days=45)"/>
