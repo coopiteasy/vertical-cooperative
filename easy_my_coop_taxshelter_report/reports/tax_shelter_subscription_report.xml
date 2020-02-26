@@ -19,7 +19,7 @@
                 </p>
 
                 <p>
-                    Durant l'année <span t-field="o.declaration_id.fiscal_year"/> vous avez souscrit des parts de la <span t-field="o.company_id.name"/>. pour un montant total de
+                    Durant l'année <span t-field="o.declaration_id.fiscal_year"/> vous avez souscrit des parts de <span t-field="o.company_id.name"/> pour un montant total de
                     <span t-field="o.total_amount_subscribed" t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/> euros.<br/>
                     Le montant éligible pour le Tax shelter est de <span t-field="o.total_amount_eligible" t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/> euros.<br/>
                 </p>
