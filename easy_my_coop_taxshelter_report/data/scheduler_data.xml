@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<data noupdate="1">
+    <data noupdate="1">
         <record forcecreate="True" id="ir_cron_mail_tax_shelter_action" model="ir.cron">
             <field name="name">Tax shelter mail batch mail</field>
             <field name="model_id" ref="model_tax_shelter_certificate"/>
@@ -11,5 +11,5 @@
             <field name="numbercall">-1</field>
             <field name="doall" eval="False"/>
         </record>
-	</data>
+    </data>
 </odoo>
