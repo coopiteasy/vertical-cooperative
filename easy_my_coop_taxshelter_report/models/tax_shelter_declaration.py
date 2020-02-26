@@ -354,13 +354,19 @@ class TaxShelterCertificateLine(models.Model):
             if line.type == 'subscribed' and line.tax_shelter:
                 if (line.capital_before_sub < line.capital_limit
                         and line.capital_after_sub >= line.capital_limit):
-                    line.amount_subscribed_eligible = line.capital_limit - line.capital_before_sub #noqa
+                    line.amount_subscribed_eligible = (
+                        line.capital_limit - line.capital_before_sub
+                    )
                 elif (line.capital_before_sub < line.capital_limit
                         and line.capital_after_sub <= line.capital_limit):
-                    line.amount_subscribed_eligible = line.share_unit_price * line.quantity #noqa
+                    line.amount_subscribed_eligible = (
+                        line.share_unit_price * line.quantity
+                    )
                 elif line.capital_before_sub >= line.capital_limit:
                     line.amount_subscribed_eligible = 0
             if line.type == 'resold':
                 line.amount_resold = line.share_unit_price * -(line.quantity)
             if line.type == 'transfered':
-                line.amount_transfered = line.share_unit_price * -(line.quantity) #noqa
+                line.amount_transfered = (
+                    line.share_unit_price * -(line.quantity)
+                )
