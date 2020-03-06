@@ -101,7 +101,7 @@
 				            </div>
 	
 				            <div t-attf-class="form-group #{error and 'firstname' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="name">First Name</label>
+				                <label class="col-md-3 col-sm-4 control-label" for="firstname">First Name</label>
 				                <div class="col-md-7 col-sm-8" style="padding-top:5px">
 				                    <input type="text" class="form-control mandatory-field" name="firstname"
 				                    required="True" t-att-readonly="logged"
@@ -110,7 +110,7 @@
 				            </div>							
 				            
 	 			            <div t-attf-class="form-group #{error and 'lastname' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="name">Last Name</label>
+				                <label class="col-md-3 col-sm-4 control-label" for="lastname">Last Name</label>
 				                <div class="col-md-7 col-sm-8">
 				                    <input type="text" class="form-control mandatory-field" name="lastname"
 				                    required="True" t-att-readonly="logged" t-attf-value="#{lastname or ''}" placeholder="Bourdon"/>
@@ -118,7 +118,7 @@
 				            </div>							
 							
 							<div t-attf-class="form-group #{error and 'gender' in error and 'has-error' or ''}">
-				               <label class="col-md-3 col-sm-4 control-label" for="company_type">Gender</label>
+				               <label class="col-md-3 col-sm-4 control-label" for="gender">Gender</label>
 			                   <select name="gender" class="col-md-7 col-sm-8 form-control"
 			                   		   required="True" t-att-readonly="logged"
 			                   		   style="width:54%;margin-left:15px">
