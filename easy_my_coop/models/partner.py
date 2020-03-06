@@ -234,6 +234,8 @@ class ResPartner(models.Model):
         return partner
 
     def get_cooperator_from_crn(self, company_register_number):
+        if not company_register_number:
+            company_register_number = ""
         company_register_number = company_register_number.strip()
         partner = self.search([
             ('cooperator', '=', True),
