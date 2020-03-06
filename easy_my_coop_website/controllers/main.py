@@ -482,7 +482,7 @@ class WebsiteSubscription(http.Controller):
         del values["house_number"]
 
         if is_company:
-            if kwargs.get("company_register_number", is_company):
+            if kwargs.get("company_register_number"):
                 values["company_register_number"] = re.sub(
                     "[^0-9a-zA-Z]+", "", kwargs.get("company_register_number")
                 )

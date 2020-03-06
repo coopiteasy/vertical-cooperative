@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record model="ir.ui.view" id="hola">
+    <record model="ir.ui.view" id="subscription_request_form">
         <field name="name">subscription.request.form</field>
         <field name="model">subscription.request</field>
         <field name="inherit_id" ref="easy_my_coop.subscription_request_form"/>
@@ -8,8 +8,8 @@
             <field name="lastname" position="after">
                 <field name="vat"/>
             </field>
-            <field name="subscription_amount" position="after">
-                <field name="voluntary_contribution"/>
+            <field name="company_register_number" position="attributes">
+                <attribute name="invisible">1</attribute>
             </field>
         </field>
     </record>
