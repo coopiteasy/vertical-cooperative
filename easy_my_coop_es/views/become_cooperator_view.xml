@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="become_cooperator_es" inherit_id="easy_my_coop_website.becomecooperator" name="Become cooperator">
+            <xpath expr="//label[@for='iban']/.." position="after">
+                <div t-attf-class="form-group #{error and 'vat' in error and 'has-error' or ''}">
+                    <label class="col-md-3 col-sm-4 control-label" for="vat">VAT</label>
+                    <div class="col-md-7 col-sm-8 bottom-line" style="padding-bottom:20px">
+                        <input type="text" class="form-control" name="vat" placeholder="Y5643925S" required="True"/>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[@name='share_div']" position="attributes">
+                <attribute name="hidden">1</attribute>
+            </xpath>
+        </template>
+    </data>
+</odoo>
