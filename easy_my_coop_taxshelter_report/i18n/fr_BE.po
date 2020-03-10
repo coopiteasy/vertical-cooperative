@@ -572,12 +572,12 @@ msgid "Tax shelter eligible"
 msgstr "Eligible au Tax Shelter"
 
 #. module: easy_my_coop_taxshelter_report
-#: model:ir.actions.report.xml,name:easy_my_coop_taxshelter_report.action_tax_shelter_shares_report
+#: model:ir.actions.report,name:easy_my_coop_taxshelter_report.action_tax_shelter_shares_report
 msgid "Tax shelter shares report"
 msgstr "Attestation de parts Tax Shelter"
 
 #. module: easy_my_coop_taxshelter_report
-#: model:ir.actions.report.xml,name:easy_my_coop_taxshelter_report.action_tax_shelter_subscription_report
+#: model:ir.actions.report,name:easy_my_coop_taxshelter_report.action_tax_shelter_subscription_report
 msgid "Tax shelter subscription report"
 msgstr "Attestation de souscription Tax Shelter"
 
@@ -593,7 +593,7 @@ msgstr "Montant total"
 
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate_total_amount_eligible
-msgid "Total amount eligible To Tax shelter"
+msgid "Total eligible amount"
 msgstr "Montant total éligible au Tax Shelter"
 
 #. module: easy_my_coop_taxshelter_report
