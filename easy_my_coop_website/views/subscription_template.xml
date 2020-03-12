@@ -544,7 +544,7 @@
 		                          </t>
 		                      </select>
 		                    </div>
-			                <div class="form-group">
+			                <div name="share_div" class="form-group">
 								<table style="width:80%">			
 									<tr>
 										<td width="30%">
