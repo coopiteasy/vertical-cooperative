@@ -199,6 +199,14 @@ class operation_request(models.Model):
                 raise ValidationError(_("This share type could not be"
                                         " transfered to " +
                                         self.partner_id_to.name))
+            if self.partner_id_to.is_company \
+                    and not self.share_product_id.by_company:
+                raise ValidationError(_("This share can not be"
+                                        " subscribed by a company"))
+            if not self.partner_id_to.is_company \
+                    and not self.share_product_id.by_individual:
+                raise ValidationError(_("This share can not be"
+                                        " subscribed an individual"))
             if self.receiver_not_member and self.subscription_request \
                     and not self.subscription_request.validated:
                 raise ValidationError(_("The information of the receiver"
