@@ -79,7 +79,9 @@ class ResPartner(models.Model):
         return [('', '')] + share_types
 
     @api.multi
-    @api.depends('share_ids')
+    @api.depends('share_ids', 'share_ids.share_product_id',
+                 'share_ids.share_product_id.default_code',
+                 'share_ids.share_number')
     def _compute_cooperator_type(self):
         for partner in self:
             share_type = ''
