@@ -2,9 +2,15 @@
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+import logging
 from odoo.addons.component.core import Component
+from odoo.addons.base_rest.http import wrapJsonException
+from werkzeug.exceptions import NotFound
 from odoo.fields import Date
+from odoo import _
 from . import schemas
+
+_logger = logging.getLogger(__name__)
 
 
 class SubscriptionRequestService(Component):
@@ -47,14 +53,19 @@ class SubscriptionRequestService(Component):
                 NotFound(_("No subscription request for id %s") % _id)
             )
 
-        return {"response": "Get called with message " + message}
-
-    def search(self, params=None):
+    def search(self, date_from=None, date_to=None):
         # fixme remove sudo
-        if params is None:
-            requests = self.env["subscription.request"].sudo().search([])
-        else:
-            requests = self.env["subscription.request"].sudo().search([])
+        _logger.info("search from %s to %s" % (date_from, date_to))
+
+        domain = []
+        if date_from:
+            date_from = Date.from_string(date_from)
+            domain.append(("date", ">=", date_from))
+        if date_to:
+            date_to = Date.from_string(date_to)
+            domain.append(("date", "<=", date_to))
+
+        requests = self.env["subscription.request"].sudo().search(domain)
 
         response = {
             "count": len(requests),
@@ -69,7 +80,16 @@ class SubscriptionRequestService(Component):
         return schemas.S_SUBSCRIPTION_REQUEST
 
     def _validator_search(self):
-        return {}
+        return {
+            "date_from": {
+                "type": "string",
+                "check_with": schemas.date_validator,
+            },
+            "date_to": {
+                "type": "string",
+                "check_with": schemas.date_validator,
+            },
+        }
 
     def _validator_return_search(self):
         return schemas.S_SUBSCRIPTION_REQUEST_LIST
