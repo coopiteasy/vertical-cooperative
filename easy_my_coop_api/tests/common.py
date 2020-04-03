@@ -6,6 +6,7 @@
 import requests
 import json
 import odoo
+from lxml import html
 
 from odoo.addons.base_rest.tests.common import BaseRestCase
 
@@ -54,3 +55,23 @@ class BaseEMCRestCase(BaseRestCase):
         if url.startswith("/"):
             url = "http://%s:%s%s" % (HOST, PORT, url)
         return self.session.post(url, data=data)
+
+    @staticmethod
+    def html_doc(response):
+        """Get an HTML LXML document."""
+        return html.fromstring(response.content)
+
+    def login(self, login, password):
+        url = "/web/login"
+        response = self.http_get(url)
+        self.assertEquals(response.status_code, 200)
+
+        doc = self.html_doc(response)
+        token = doc.xpath("//input[@name='csrf_token']")[0].get("value")
+
+        response = self.http_post(
+            url=url,
+            data={"login": login, "password": password, "csrf_token": token},
+        )
+        self.assertEquals(response.status_code, 200)
+        return response

@@ -10,23 +10,22 @@ from odoo import _
 class PingService(Component):
     _inherit = "base.rest.service"
     _name = "emc.services"
-    # _name = "ping.services"
     _usage = "ping"  # service_name
     _collection = "emc.services"
     _description = """
-    Ping services (test the api)
+        Ping services (test the api)
     """
 
-    def ping(self):
+    def test(self):
         return {"message": _("Called ping on ping API")}
 
     def search(self):
         return {"message": _("Called search on ping API")}
 
-    def _validator_ping(self):
+    def _validator_test(self):
         return {}
 
-    def _validator_return_ping(self):
+    def _validator_return_test(self):
         return {"message": {"type": "string"}}
 
     def _validator_search(self):
