@@ -3,8 +3,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 
-import json
-
 from datetime import date, timedelta
 import odoo
 from odoo.fields import Date
@@ -42,7 +40,6 @@ class TestSRController(BaseEMCRestCase):
         self.assertTrue(date_sr)
 
     def test_route_get(self):
-        self.login("manager-emc", "demo")
         id_ = self.demo_request_1.id
         route = "/api/subscription_request/%s" % id_
         content = self.http_get_content(route)
@@ -50,25 +47,21 @@ class TestSRController(BaseEMCRestCase):
 
     @odoo.tools.mute_logger("odoo.addons.base_rest.http")
     def test_route_get_returns_not_found(self):
-        self.login("manager-emc", "demo")
         route = "/api/subscription_request/%s" % "99999"
         response = self.http_get(route)
         self.assertEquals(response.status_code, 404)
 
     def test_route_get_string_returns_method_not_allowed(self):
-        self.login("manager-emc", "demo")
         route = "/api/subscription_request/%s" % "abc"
         response = self.http_get(route)
         self.assertEquals(response.status_code, 405)
 
     def test_route_search_all(self):
-        self.login("manager-emc", "demo")
         route = "/api/subscription_request"
         content = self.http_get_content(route)
         self.assertIn(self.demo_request_1_dict, content["rows"])
 
     def test_route_search_by_date(self):
-        self.login("manager-emc", "demo")
         sr_date = self.demo_request_1.date
         date_from = Date.to_string(sr_date - timedelta(days=1))
         date_to = Date.to_string(sr_date + timedelta(days=1))
@@ -98,7 +91,8 @@ class TestSRController(BaseEMCRestCase):
 
     @odoo.tools.mute_logger("odoo.addons.base_rest.http")
     def test_route_search_acd_date_returns_bad_request(self):
-        self.login("manager-emc", "demo")
         route = "/api/subscription_request?date_from=%s" % "20200101"
         response = self.http_get(route)
         self.assertEquals(response.status_code, 400)
+
+    # def test_route_create(self):

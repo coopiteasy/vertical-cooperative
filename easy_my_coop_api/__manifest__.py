@@ -5,7 +5,10 @@
 {
     "name": "Easy My Coop API",
     "version": "12.0.0.0.1",
-    "depends": ["base_rest", "easy_my_coop"],
+    "depends": [
+        "base_rest",
+        "easy_my_coop",
+    ],  # auth_api_key + running_env = dev
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
     "website": "www.coopiteasy.be",

@@ -15,6 +15,15 @@ PORT = odoo.tools.config["http_port"]
 
 
 class BaseEMCRestCase(BaseRestCase):
+    @classmethod
+    def setUpClass(cls, *args, **kwargs):
+        super().setUpClass(*args, **kwargs)
+        cls.AuthApiKey = cls.env["auth.api.key"]
+        emc_manager = cls.env.ref("easy_my_coop.res_users_manager_emc_demo")
+        cls.api_key_test = cls.AuthApiKey.create(
+            {"name": "test-key", "key": "api-key", "user_id": emc_manager.id}
+        )
+
     def setUp(self):
         super().setUp()
         self.session = requests.Session()
@@ -40,13 +49,19 @@ class BaseEMCRestCase(BaseRestCase):
             "lang": "en_US",
         }
 
-    def http_get(self, url):
+    def http_get(self, url, headers=None):
+        key_dict = {"API-KEY": "api-key"}
+        if headers:
+            headers.update(key_dict)
+        else:
+            headers = key_dict
+
         if url.startswith("/"):
             url = "http://%s:%s%s" % (HOST, PORT, url)
-        return self.session.get(url)
+        return self.session.get(url, headers=headers)
 
-    def http_get_content(self, route):
-        response = self.http_get(route)
+    def http_get_content(self, route, headers=None):
+        response = self.http_get(route, headers=headers)
         self.assertEquals(response.status_code, 200)
 
         return json.loads(response.content)

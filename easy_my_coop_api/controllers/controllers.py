@@ -10,7 +10,7 @@ from odoo.http import route
 class UserController(main.RestController):
     _root_path = "/api/"
     _collection_name = "emc.services"
-    _default_auth = "user"
+    _default_auth = "api_key"
 
     @route(
         _root_path + "<string:_service_name>/test",
