@@ -179,5 +179,8 @@ class ResPartner(models.Model):
                                                ('email', '=', email)])
 
     def get_cooperator_from_crn(self, company_register_number):
+        if not company_register_number:
+            return None
+
         return self.env['res.partner'].search([('cooperator', '=', True),
                                                ('company_register_number', '=', company_register_number)])
