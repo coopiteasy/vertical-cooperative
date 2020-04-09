@@ -8,7 +8,8 @@
     "depends": [
         "base_rest",
         "easy_my_coop",
-    ],  # auth_api_key + running_env = dev
+        "auth_api_key",  # todo conf running_env = dev
+    ],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
     "website": "www.coopiteasy.be",

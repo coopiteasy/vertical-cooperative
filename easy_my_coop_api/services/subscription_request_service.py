@@ -5,7 +5,7 @@
 import logging
 from odoo.addons.component.core import Component
 from odoo.addons.base_rest.http import wrapJsonException
-from werkzeug.exceptions import NotFound
+from werkzeug.exceptions import NotFound, BadRequest
 from odoo.fields import Date
 from odoo import _
 from . import schemas
@@ -43,6 +43,31 @@ class SubscriptionRequestService(Component):
             "lang": sr.lang,
         }
 
+    def _get_country(self, code):
+        country = self.env["res.country"].search([("code", "=", code)])
+        if country:
+            return country
+        else:
+            raise wrapJsonException(
+                BadRequest(_("No country for isocode %s") % code)
+            )
+
+    def _prepare_create(self, params):
+        address = params["address"]
+        country = self._get_country(address["country"])
+
+        return {
+            "name": params["name"],
+            "email": params["email"],
+            "ordered_parts": params["ordered_parts"],
+            "share_product_id": params["share_product"],
+            "address": address["street"],
+            "zip_code": address["zip_code"],
+            "city": address["city"],
+            "country_id": country.id,
+            "lang": params["lang"],
+        }
+
     def get(self, _id):
         # fixme remove sudo
         sr = self.env["subscription.request"].sudo().search([("id", "=", _id)])
@@ -73,11 +98,16 @@ class SubscriptionRequestService(Component):
         }
         return response
 
+    def create(self, **params):
+        params = self._prepare_create(params)
+        sr = self.env["subscription.request"].create(params)
+        return self._to_dict(sr)
+
     def _validator_get(self):
         return {"_id": {"type": "integer"}}
 
     def _validator_return_get(self):
-        return schemas.S_SUBSCRIPTION_REQUEST
+        return schemas.S_SUBSCRIPTION_REQUEST_GET
 
     def _validator_search(self):
         return {
@@ -93,3 +123,9 @@ class SubscriptionRequestService(Component):
 
     def _validator_return_search(self):
         return schemas.S_SUBSCRIPTION_REQUEST_LIST
+
+    def _validator_create(self):
+        return schemas.S_SUBSCRIPTION_REQUEST_CREATE
+
+    def _validator_return_create(self):
+        return schemas.S_SUBSCRIPTION_REQUEST_GET

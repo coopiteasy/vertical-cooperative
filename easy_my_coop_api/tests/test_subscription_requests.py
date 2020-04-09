@@ -2,8 +2,8 @@
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-
-from datetime import date, timedelta
+import json
+from datetime import timedelta
 import odoo
 from odoo.fields import Date
 from odoo.addons.base_rest.controllers.main import _PseudoCollection
@@ -95,4 +95,35 @@ class TestSRController(BaseEMCRestCase):
         response = self.http_get(route)
         self.assertEquals(response.status_code, 400)
 
-    # def test_route_create(self):
+    def test_route_create(self):
+        url = "/api/subscription_request"
+        data = {
+            "name": "Lisa des Danses",
+            "email": "lisa@desdanses.be",
+            "ordered_parts": 3,
+            "share_product": self.demo_share_product.id,
+            "address": {
+                "street": "schaerbeekstraat",
+                "zip_code": "1111",
+                "city": "Brussels",
+                "country": "BE",
+            },
+            "lang": "en_US",
+        }
+
+        response = self.http_post(url, data=data)
+        self.assertEquals(response.status_code, 200)
+        content = json.loads(response.content)
+
+        content.pop("id")  # can't know id in advance
+        expected = {
+            **data,
+            **{
+                "date": Date.to_string(Date.today()),
+                "share_product": {
+                    "id": self.demo_share_product.id,
+                    "name": self.demo_share_product.name,
+                },
+            },
+        }
+        self.assertEquals(expected, content)
