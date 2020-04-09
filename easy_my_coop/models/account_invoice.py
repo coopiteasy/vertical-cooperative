@@ -100,17 +100,17 @@ class account_invoice(models.Model):
     def send_certificate_email(self, certificate_email_template, sub_reg_line):
         # we send the email with the certificate in attachment
         certificate_email_template.sudo().send_mail(self.partner_id.id, False)
-        
+
     def set_cooperator_effective(self, effective_date):
         sub_register_obj = self.env['subscription.register']
         share_line_obj = self.env['share.line']
+
+        certificate_email_template = self.get_mail_template_certificate()
 
         self.set_membership()
 
         sequence_operation = self.get_sequence_operation()
         sub_reg_operation = sequence_operation.next_by_id()
-
-        certificate_email_template = self.get_mail_template_certificate()
 
         for line in self.invoice_line_ids:
             sub_reg_vals = self.get_subscription_register_vals(line,
