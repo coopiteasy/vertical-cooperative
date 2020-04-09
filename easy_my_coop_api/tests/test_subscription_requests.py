@@ -120,10 +120,23 @@ class TestSRController(BaseEMCRestCase):
             **data,
             **{
                 "date": Date.to_string(Date.today()),
+                "state": "draft",
                 "share_product": {
                     "id": self.demo_share_product.id,
                     "name": self.demo_share_product.name,
                 },
             },
         }
+        self.assertEquals(expected, content)
+
+    def test_route_update(self):
+        url = "/api/subscription_request/%s" % self.demo_request_1.id
+        data = {"state": "done"}
+
+        response = self.http_post(url, data=data)
+        self.assertEquals(response.status_code, 200)
+        content = json.loads(response.content)
+
+        expected = self.demo_request_1_dict
+        expected["state"] = "done"
         self.assertEquals(expected, content)

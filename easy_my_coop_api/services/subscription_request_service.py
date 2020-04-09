@@ -22,12 +22,56 @@ class SubscriptionRequestService(Component):
     Subscription requests
     """
 
+    def get(self, _id):
+        sr = self.env["subscription.request"].browse(_id)
+        if sr:
+            return self._to_dict(sr)
+        else:
+            raise wrapJsonException(
+                NotFound(_("No subscription request for id %s") % _id)
+            )
+
+    def search(self, date_from=None, date_to=None):
+        _logger.info("search from %s to %s" % (date_from, date_to))
+
+        domain = []
+        if date_from:
+            date_from = Date.from_string(date_from)
+            domain.append(("date", ">=", date_from))
+        if date_to:
+            date_to = Date.from_string(date_to)
+            domain.append(("date", "<=", date_to))
+
+        requests = self.env["subscription.request"].search(domain)
+
+        response = {
+            "count": len(requests),
+            "rows": [self._to_dict(sr) for sr in requests],
+        }
+        return response
+
+    def create(self, **params):
+        params = self._prepare_create(params)
+        sr = self.env["subscription.request"].create(params)
+        return self._to_dict(sr)
+
+    def update(self, _id, **params):
+        params = self._prepare_update(params)
+        sr = self.env["subscription.request"].browse(_id)
+        if not sr:
+            raise wrapJsonException(
+                NotFound(_("No subscription request for id %s") % _id)
+            )
+        sr.write(params)
+        return self._to_dict(sr)
+
     def _to_dict(self, sr):
         sr.ensure_one()
         return {
             "id": sr.id,
             "name": sr.name,
             "email": sr.email,
+            "state": sr.state,
             "date": Date.to_string(sr.date),
             "ordered_parts": sr.ordered_parts,
             "share_product": {
@@ -68,40 +112,29 @@ class SubscriptionRequestService(Component):
             "lang": params["lang"],
         }
 
-    def get(self, _id):
-        # fixme remove sudo
-        sr = self.env["subscription.request"].sudo().search([("id", "=", _id)])
-        if sr:
-            return self._to_dict(sr)
+    def _prepare_update(self, params):
+        if "address" in params:
+            address = params["address"]
+            if "country" in address:
+                country = self._get_country(address["country"]).id
+                address["country"] = country
         else:
-            raise wrapJsonException(
-                NotFound(_("No subscription request for id %s") % _id)
-            )
+            address = {}
 
-    def search(self, date_from=None, date_to=None):
-        # fixme remove sudo
-        _logger.info("search from %s to %s" % (date_from, date_to))
-
-        domain = []
-        if date_from:
-            date_from = Date.from_string(date_from)
-            domain.append(("date", ">=", date_from))
-        if date_to:
-            date_to = Date.from_string(date_to)
-            domain.append(("date", "<=", date_to))
-
-        requests = self.env["subscription.request"].sudo().search(domain)
-
-        response = {
-            "count": len(requests),
-            "rows": [self._to_dict(sr) for sr in requests],
+        params = {
+            "name": params.get("name"),
+            "email": params.get("email"),
+            "state": params.get("state"),
+            "ordered_parts": params.get("ordered_parts"),
+            "share_product_id": params.get("share_product"),
+            "address": address.get("street"),
+            "zip_code": address.get("zip_code"),
+            "city": address.get("city"),
+            "country_id": address.get("country"),
+            "lang": params.get("lang"),
         }
-        return response
-
-    def create(self, **params):
-        params = self._prepare_create(params)
-        sr = self.env["subscription.request"].create(params)
-        return self._to_dict(sr)
+        params = {k: v for k, v in params.items() if v is not None}
+        return params
 
     def _validator_get(self):
         return {"_id": {"type": "integer"}}
@@ -128,4 +161,10 @@ class SubscriptionRequestService(Component):
         return schemas.S_SUBSCRIPTION_REQUEST_CREATE
 
     def _validator_return_create(self):
+        return schemas.S_SUBSCRIPTION_REQUEST_GET
+
+    def _validator_update(self):
+        return schemas.S_SUBSCRIPTION_REQUEST_UPDATE
+
+    def _validator_return_update(self):
         return schemas.S_SUBSCRIPTION_REQUEST_GET

@@ -48,6 +48,7 @@ class BaseEMCRestCase(BaseRestCase):
             "name": "Manuel Dublues",
             "email": "manuel@demo.net",
             "date": date,
+            "state": "draft",
             "ordered_parts": 3,
             "share_product": {
                 "id": self.demo_share_product.id,

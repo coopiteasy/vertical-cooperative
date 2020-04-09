@@ -16,6 +16,7 @@ def date_validator(field, value, error):
 
 
 # todo consistency: S_SR_GET, S_SR_RETURN_GET, S_SR_POST ...
+#  and denormalize dict rather than updating them
 
 
 S_SUBSCRIPTION_REQUEST_BASE = {
@@ -39,6 +40,7 @@ S_SUBSCRIPTION_REQUEST_GET = {
     **{
         "id": {"type": "integer", "required": True},
         "date": {"type": "string", "required": True, "empty": False},
+        "state": {"type": "string", "required": True, "empty": False},
         "share_product": {
             "type": "dict",
             "schema": {
@@ -52,6 +54,24 @@ S_SUBSCRIPTION_REQUEST_GET = {
 S_SUBSCRIPTION_REQUEST_CREATE = {
     **S_SUBSCRIPTION_REQUEST_BASE,
     **{"share_product": {"type": "integer", "required": True}},
+}
+
+S_SUBSCRIPTION_REQUEST_UPDATE = {
+    "name": {"type": "string"},
+    "email": {"type": "string"},
+    "ordered_parts": {"type": "integer"},
+    "state": {"type": "string"},
+    "address": {
+        "type": "dict",
+        "schema": {
+            "street": {"type": "string"},
+            "zip_code": {"type": "string"},
+            "city": {"type": "string"},
+            "country": {"type": "string"},
+        },
+    },
+    "lang": {"type": "string"},
+    "share_product": {"type": "integer"},
 }
 
 S_SUBSCRIPTION_REQUEST_LIST = {
