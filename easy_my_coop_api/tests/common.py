@@ -8,10 +8,20 @@ import json
 import odoo
 from lxml import html
 
+from odoo.fields import Date
 from odoo.addons.base_rest.tests.common import BaseRestCase
 
 HOST = "127.0.0.1"
 PORT = odoo.tools.config["http_port"]
+
+
+def _add_api_key(headers):
+    key_dict = {"API-KEY": "api-key"}
+    if headers:
+        headers.update(key_dict)
+    else:
+        headers = key_dict
+    return headers
 
 
 class BaseEMCRestCase(BaseRestCase):
@@ -30,15 +40,18 @@ class BaseEMCRestCase(BaseRestCase):
         self.demo_request_1 = self.browse_ref(
             "easy_my_coop.subscription_request_1_demo"
         )
+        self.demo_share_product = self.demo_request_1.share_product_id
+
+        date = Date.to_string(self.demo_request_1.date)
         self.demo_request_1_dict = {
             "id": self.demo_request_1.id,
             "name": "Manuel Dublues",
             "email": "manuel@demo.net",
-            "date": "2020-02-23",
+            "date": date,
             "ordered_parts": 3,
             "share_product": {
-                "id": self.demo_request_1.share_product_id.id,
-                "name": "Part B - Worker",
+                "id": self.demo_share_product.id,
+                "name": self.demo_share_product.name,
             },
             "address": {
                 "street": "schaerbeekstraat",
@@ -50,14 +63,10 @@ class BaseEMCRestCase(BaseRestCase):
         }
 
     def http_get(self, url, headers=None):
-        key_dict = {"API-KEY": "api-key"}
-        if headers:
-            headers.update(key_dict)
-        else:
-            headers = key_dict
-
+        headers = _add_api_key(headers)
         if url.startswith("/"):
             url = "http://%s:%s%s" % (HOST, PORT, url)
+
         return self.session.get(url, headers=headers)
 
     def http_get_content(self, route, headers=None):
@@ -66,10 +75,12 @@ class BaseEMCRestCase(BaseRestCase):
 
         return json.loads(response.content)
 
-    def http_post(self, url, data):
+    def http_post(self, url, data, headers=None):
+        headers = _add_api_key(headers)
         if url.startswith("/"):
             url = "http://%s:%s%s" % (HOST, PORT, url)
-        return self.session.post(url, data=data)
+
+        return self.session.post(url, json=data, headers=headers)
 
     @staticmethod
     def html_doc(response):
