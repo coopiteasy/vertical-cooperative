@@ -25,7 +25,7 @@
     Generate a xlsx file with information on current state of subscription
     request, cooperators and capital release request.
     """,
-    'author': 'Houssine BAKKALI, <houssine@coopiteasy.be>',
+    "author": "Coop IT Easy SCRLfs",
     'license': 'AGPL-3',
     'version': '9.0.1.0',
     'website': "www.coopiteasy.be",

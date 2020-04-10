@@ -25,10 +25,8 @@
     'summary': """
     Manage the dividend calculation for a fiscal year.
     """,
-    'description': """
-    This module allows to calculate the dividend to give to a cooperator base
-    on the amount of his shares, the percentage allocated and for how long the
-    shares have been owned on prorata temporis calculation.
+    'summary': """
+    This module allows to calculate the dividend of the cooperative.
     """,
 
     'author': 'Houssine BAKKALI, <houssine@coopiteasy.be>',
