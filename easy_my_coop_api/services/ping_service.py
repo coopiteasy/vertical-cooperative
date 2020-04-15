@@ -16,11 +16,11 @@ class PingService(Component):
         Ping services (test the api)
     """
 
-    def test(self):
-        return {"message": _("Called ping on ping API")}
-
     def search(self):
         return {"message": _("Called search on ping API")}
+
+    def test(self):
+        return {"message": _("Called ping on ping API")}
 
     def _validator_test(self):
         return {}

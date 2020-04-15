@@ -15,14 +15,22 @@ def date_validator(field, value, error):
         )
 
 
-# todo consistency: S_SR_GET, S_SR_RETURN_GET, S_SR_POST ...
-#  and denormalize dict rather than updating them
+S_SUBSCRIPTION_REQUEST_GET = {"_id": {"type": "integer"}}
 
-
-S_SUBSCRIPTION_REQUEST_BASE = {
-    "name": {"type": "string", "required": True, "empty": False},
+S_SUBSCRIPTION_REQUEST_RETURN_GET = {
+    "id": {"type": "integer", "required": True},
     "email": {"type": "string", "required": True, "empty": False},
+    "name": {"type": "string", "required": True, "empty": False},
+    "date": {"type": "string", "required": True, "empty": False},
+    "state": {"type": "string", "required": True, "empty": False},
     "ordered_parts": {"type": "integer", "required": True},
+    "share_product": {
+        "type": "dict",
+        "schema": {
+            "id": {"type": "integer", "required": True},
+            "name": {"type": "string", "required": True, "empty": False},
+        },
+    },
     "address": {
         "type": "dict",
         "schema": {
@@ -35,25 +43,37 @@ S_SUBSCRIPTION_REQUEST_BASE = {
     "lang": {"type": "string", "required": True, "empty": False},
 }
 
-S_SUBSCRIPTION_REQUEST_GET = {
-    **S_SUBSCRIPTION_REQUEST_BASE,
-    **{
-        "id": {"type": "integer", "required": True},
-        "date": {"type": "string", "required": True, "empty": False},
-        "state": {"type": "string", "required": True, "empty": False},
-        "share_product": {
+S_SUBSCRIPTION_REQUEST_SEARCH = {
+    "date_from": {"type": "string", "check_with": date_validator},
+    "date_to": {"type": "string", "check_with": date_validator},
+}
+
+S_SUBSCRIPTION_REQUEST_RETURN_SEARCH = {
+    "count": {"type": "integer", "required": True},
+    "rows": {
+        "type": "list",
+        "schema": {
             "type": "dict",
-            "schema": {
-                "id": {"type": "integer", "required": True},
-                "name": {"type": "string", "required": True, "empty": False},
-            },
+            "schema": S_SUBSCRIPTION_REQUEST_RETURN_GET,
         },
     },
 }
 
 S_SUBSCRIPTION_REQUEST_CREATE = {
-    **S_SUBSCRIPTION_REQUEST_BASE,
-    **{"share_product": {"type": "integer", "required": True}},
+    "name": {"type": "string", "required": True, "empty": False},
+    "email": {"type": "string", "required": True, "empty": False},
+    "ordered_parts": {"type": "integer", "required": True},
+    "share_product": {"type": "integer", "required": True},
+    "address": {
+        "type": "dict",
+        "schema": {
+            "street": {"type": "string", "required": True, "empty": False},
+            "zip_code": {"type": "string", "required": True, "empty": False},
+            "city": {"type": "string", "required": True, "empty": False},
+            "country": {"type": "string", "required": True, "empty": False},
+        },
+    },
+    "lang": {"type": "string", "required": True, "empty": False},
 }
 
 S_SUBSCRIPTION_REQUEST_UPDATE = {
@@ -72,12 +92,4 @@ S_SUBSCRIPTION_REQUEST_UPDATE = {
     },
     "lang": {"type": "string"},
     "share_product": {"type": "integer"},
-}
-
-S_SUBSCRIPTION_REQUEST_LIST = {
-    "count": {"type": "integer", "required": True},
-    "rows": {
-        "type": "list",
-        "schema": {"type": "dict", "schema": S_SUBSCRIPTION_REQUEST_GET},
-    },
 }

@@ -16,7 +16,8 @@ _logger = logging.getLogger(__name__)
 class SubscriptionRequestService(Component):
     _inherit = "base.rest.service"
     _name = "subscription.request.services"
-    _usage = "subscription_request"  # service_name
+    # service_name todo subscription-request
+    _usage = "subscription_request"
     _collection = "emc.services"
     _description = """
     Subscription requests
@@ -137,34 +138,25 @@ class SubscriptionRequestService(Component):
         return params
 
     def _validator_get(self):
-        return {"_id": {"type": "integer"}}
-
-    def _validator_return_get(self):
         return schemas.S_SUBSCRIPTION_REQUEST_GET
 
+    def _validator_return_get(self):
+        return schemas.S_SUBSCRIPTION_REQUEST_RETURN_GET
+
     def _validator_search(self):
-        return {
-            "date_from": {
-                "type": "string",
-                "check_with": schemas.date_validator,
-            },
-            "date_to": {
-                "type": "string",
-                "check_with": schemas.date_validator,
-            },
-        }
+        return schemas.S_SUBSCRIPTION_REQUEST_SEARCH
 
     def _validator_return_search(self):
-        return schemas.S_SUBSCRIPTION_REQUEST_LIST
+        return schemas.S_SUBSCRIPTION_REQUEST_RETURN_SEARCH
 
     def _validator_create(self):
         return schemas.S_SUBSCRIPTION_REQUEST_CREATE
 
     def _validator_return_create(self):
-        return schemas.S_SUBSCRIPTION_REQUEST_GET
+        return schemas.S_SUBSCRIPTION_REQUEST_RETURN_GET
 
     def _validator_update(self):
         return schemas.S_SUBSCRIPTION_REQUEST_UPDATE
 
     def _validator_return_update(self):
-        return schemas.S_SUBSCRIPTION_REQUEST_GET
+        return schemas.S_SUBSCRIPTION_REQUEST_RETURN_GET
