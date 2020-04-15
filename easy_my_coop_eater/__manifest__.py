@@ -23,12 +23,10 @@
     "depends": ["easy_my_coop", "partner_age"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
-    'website': "www.coopiteasy.be",
+    "website": "www.coopiteasy.be",
     "description": """
     This module allows to manage the activity of the cooperator.
     """,
-    'data': [
-        'view/product_view.xml',
-    ],
-    'installable': True,
+    "data": ["view/product_view.xml"],
+    "installable": True,
 }
