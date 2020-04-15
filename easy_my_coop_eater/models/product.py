@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-from openerp import fields, models
+from odoo import fields, models
 
 
 class ProductTemplate(models.Model):

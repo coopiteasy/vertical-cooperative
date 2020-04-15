@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (C) 2013-2017 Open Architects Consulting SPRL.
@@ -20,9 +19,9 @@
 ##############################################################################
 {
     "name": "Easy My Coop Eater/worker",
-    "version": "1.0",
+    "version": "12.0.1.0.0",
     "depends": ["easy_my_coop", "partner_age"],
-    "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
+    "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
     'website': "www.coopiteasy.be",
     "description": """
