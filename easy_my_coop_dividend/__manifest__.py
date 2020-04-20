@@ -45,5 +45,6 @@
     'data': [
         'security/ir.model.access.csv',
         'views/dividend_views.xml',
-    ]
+    ],
+    'installable': False,
 }
