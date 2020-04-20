@@ -40,5 +40,6 @@
     },
     'data': [
         'wizard/export_global_wizard.xml',
-    ]
+    ],
+    'installable': False,
 }
