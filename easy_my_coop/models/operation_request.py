@@ -297,7 +297,7 @@ class operation_request(models.Model):
                     if self.partner_id_to.cooperator_register_number == 0:
                         sub_reg_num = int(sequence_id.next_by_id())
                         partner_vals['cooperator_register_number'] = sub_reg_num
-                    partner_vals.replace(sub_request.get_eater_vals(
+                    partner_vals.update(sub_request.get_eater_vals(
                                         self.partner_id_to,
                                         self.share_product_id))
                     partner_vals['old_member'] = False
