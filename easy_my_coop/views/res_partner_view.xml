@@ -18,7 +18,7 @@
                                 type="action" context="{'default_active_id': active_id}" groups="easy_my_coop.group_easy_my_coop_user"/>
             		</header>
             	</sheet>
-            	
+
             	<xpath expr="/form/sheet/group" position='before'>
 					<group>
 						<group>
@@ -40,7 +40,7 @@
 					    </group>
 					</group>
 	         	</xpath>
-                
+
 	         	<page name='sales_purchases' position="after">
             		<page string="Shares" name="share" attrs="{'invisible':[('member','=',False)]}" groups="easy_my_coop.group_easy_my_coop_user">
             			<group>
@@ -72,7 +72,7 @@
 		        </page>
             </field>
         </record>
-        
+
         <record id="view_partner_tree_easy_my_coop" model="ir.ui.view">
             <field name="name">res.partner.tree.easy_my_coop</field>
             <field name="model">res.partner</field>
@@ -85,7 +85,7 @@
                 </xpath>
             </field>
         </record>
-        
+
         <record id="view_res_partner_filter_coop" model="ir.ui.view">
             <field name="name">res.partner.select</field>
             <field name="model">res.partner</field>
@@ -101,7 +101,7 @@
                 </filter>
             </field>
         </record>
-        
+
         <record id="action_partner_cooperator_form" model="ir.actions.act_window">
             <field name="name">Cooperators</field>
             <field name="res_model">res.partner</field>
@@ -158,7 +158,7 @@
               </p>
             </field>
         </record>
-        
+
         <record id="remove_partner_follower" model="ir.ui.view">
             <field name="name">res.partner.remove.follower.inherit</field>
             <field name="model">res.partner</field>

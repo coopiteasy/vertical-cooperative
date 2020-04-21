@@ -68,7 +68,7 @@
         <field name="zip">5101</field>
         <field name="country_id" ref="base.be"/>
     </record>
-    
+
     <record id="easy_my_coop.account_cooperator_demo" model="account.account">
         <field name="code">416101</field>
         <field name="name">Cooperators</field>
