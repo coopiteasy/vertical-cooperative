@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #    Copyright (C) 2013-2018 Open Architects Consulting SPRL.
 #    Copyright (C) 2013-2018 Coop IT Easy SCRLfs.
 #
@@ -20,29 +18,16 @@
 
 
 {
-    'name': 'Easy My Coop Dividend Engine',
-
-    'summary': """
-    Manage the dividend calculation for a fiscal year.
+    "name": "Easy My Coop Dividend Engine",
+    "summary": """
+    Manage the dividend computation for a fiscal year.
     """,
-    'summary': """
-    This module allows to calculate the dividend of the cooperative.
-    """,
-
-    'author': 'Houssine BAKKALI, <houssine@coopiteasy.be>',
-    'license': 'AGPL-3',
-    'version': '9.0.1.0',
-    'website': "www.coopiteasy.be",
-
-    'category': 'Cooperative Management',
-
-    'depends': [
-        'easy_my_coop',
-    ],
-
-    'data': [
-        'security/ir.model.access.csv',
-        'views/dividend_views.xml',
-    ],
-    'installable': False,
+    "author": "Houssine BAKKALI, <houssine@coopiteasy.be>",
+    "license": "AGPL-3",
+    "version": "12.0.0.0.1",
+    "website": "www.coopiteasy.be",
+    "category": "Cooperative Management",
+    "depends": ["easy_my_coop"],
+    "data": ["security/ir.model.access.csv", "views/dividend_views.xml"],
+    "installable": False,
 }

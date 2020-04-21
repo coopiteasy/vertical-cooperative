@@ -8,86 +8,101 @@ from datetime import datetime
 from odoo import api, fields, models
 
 
-class account_invoice(models.Model):
-    _inherit = 'account.invoice'
+class AccountInvoice(models.Model):
+    _inherit = "account.invoice"
 
-    subscription_request = fields.Many2one('subscription.request',
-                                           string='Subscription request')
+    subscription_request = fields.Many2one(
+        "subscription.request", string="Subscription request"
+    )
     release_capital_request = fields.Boolean(
-                                        string='Release of capital request')
+        string="Release of capital request"
+    )
 
     @api.model
-    def _prepare_refund(self, invoice, date_invoice=None, date=None,
-                        description=None, journal_id=None):
-        values = super(account_invoice, self)._prepare_refund(
-                                        invoice, date_invoice, date,
-                                        description, journal_id)
-        values['release_capital_request'] = self.release_capital_request
+    def _prepare_refund(
+        self,
+        invoice,
+        date_invoice=None,
+        date=None,
+        description=None,
+        journal_id=None,
+    ):
+        values = super(AccountInvoice, self)._prepare_refund(
+            invoice, date_invoice, date, description, journal_id
+        )
+        values["release_capital_request"] = self.release_capital_request
 
         return values
 
     def create_user(self, partner):
-        user_obj = self.env['res.users']
+        user_obj = self.env["res.users"]
         email = partner.email
 
-        user = user_obj.search([('login', '=', email)])
+        user = user_obj.search([("login", "=", email)])
         if not user:
-            user = user_obj.search([('login', '=', email),
-                                    ('active', '=', False)])
+            user = user_obj.search(
+                [("login", "=", email), ("active", "=", False)]
+            )
             if user:
-                user.sudo().write({'active': True})
+                user.sudo().write({"active": True})
             else:
-                user_values = {'partner_id': partner.id, 'login': email}
+                user_values = {"partner_id": partner.id, "login": email}
                 user = user_obj.sudo()._signup_create_user(user_values)
-                user.sudo().with_context({'create_user': True}).action_reset_password()
+                user.sudo().with_context(
+                    {"create_user": True}
+                ).action_reset_password()
 
         return user
 
     def get_mail_template_certificate(self):
         if self.partner_id.member:
-            mail_template = 'easy_my_coop.email_template_certificat_increase'
+            mail_template = "easy_my_coop.email_template_certificat_increase"
         else:
-            mail_template = 'easy_my_coop.email_template_certificat'
+            mail_template = "easy_my_coop.email_template_certificat"
         return self.env.ref(mail_template)
 
     def get_sequence_register(self):
-        return self.env.ref('easy_my_coop.sequence_subscription', False)
+        return self.env.ref("easy_my_coop.sequence_subscription", False)
 
     def get_sequence_operation(self):
-        return self.env.ref('easy_my_coop.sequence_register_operation', False)
+        return self.env.ref("easy_my_coop.sequence_register_operation", False)
 
     def get_share_line_vals(self, line, effective_date):
         return {
-            'share_number': line.quantity,
-            'share_product_id': line.product_id.id,
-            'partner_id': self.partner_id.id,
-            'share_unit_price': line.price_unit,
-            'effective_date': effective_date
-            }
+            "share_number": line.quantity,
+            "share_product_id": line.product_id.id,
+            "partner_id": self.partner_id.id,
+            "share_unit_price": line.price_unit,
+            "effective_date": effective_date,
+        }
 
     def get_subscription_register_vals(self, line, effective_date):
         return {
-            'partner_id': self.partner_id.id,
-            'quantity': line.quantity,
-            'share_product_id': line.product_id.id,
-            'share_unit_price': line.price_unit,
-            'date': effective_date,
-            'type': 'subscription'
-            }
+            "partner_id": self.partner_id.id,
+            "quantity": line.quantity,
+            "share_product_id": line.product_id.id,
+            "share_unit_price": line.price_unit,
+            "date": effective_date,
+            "type": "subscription",
+        }
 
     def get_membership_vals(self):
         # flag the partner as an effective member
         # if not yet cooperator we generate a cooperator number
         vals = {}
-        if self.partner_id.member is False \
-                and self.partner_id.old_member is False:
+        if (
+            self.partner_id.member is False
+            and self.partner_id.old_member is False
+        ):
             sequence_id = self.get_sequence_register()
             sub_reg_num = sequence_id.next_by_id()
-            vals = {'member': True, 'old_member': False,
-                    'cooperator_register_number': int(sub_reg_num)
-                    }
+            vals = {
+                "member": True,
+                "old_member": False,
+                "cooperator_register_number": int(sub_reg_num),
+            }
         elif self.partner_id.old_member:
-            vals = {'member': True, 'old_member': False}
+            vals = {"member": True, "old_member": False}
 
         return vals
 
@@ -102,8 +117,8 @@ class account_invoice(models.Model):
         certificate_email_template.sudo().send_mail(self.partner_id.id, False)
 
     def set_cooperator_effective(self, effective_date):
-        sub_register_obj = self.env['subscription.register']
-        share_line_obj = self.env['share.line']
+        sub_register_obj = self.env["subscription.register"]
+        share_line_obj = self.env["share.line"]
 
         certificate_email_template = self.get_mail_template_certificate()
 
@@ -113,10 +128,11 @@ class account_invoice(models.Model):
         sub_reg_operation = sequence_operation.next_by_id()
 
         for line in self.invoice_line_ids:
-            sub_reg_vals = self.get_subscription_register_vals(line,
-                                                               effective_date)
-            sub_reg_vals['name'] = sub_reg_operation
-            sub_reg_vals['register_number_operation'] = int(sub_reg_operation)
+            sub_reg_vals = self.get_subscription_register_vals(
+                line, effective_date
+            )
+            sub_reg_vals["name"] = sub_reg_operation
+            sub_reg_vals["register_number_operation"] = int(sub_reg_operation)
 
             sub_reg_line = sub_register_obj.create(sub_reg_vals)
 
@@ -140,13 +156,13 @@ class account_invoice(models.Model):
 
     def get_refund_domain(self, invoice):
         return [
-                ('type', '=', 'out_refund'),
-                ('origin', '=', invoice.move_name)
-            ]
+            ("type", "=", "out_refund"),
+            ("origin", "=", invoice.move_name),
+        ]
 
     @api.multi
     def action_invoice_paid(self):
-        super(account_invoice, self).action_invoice_paid()
+        super(AccountInvoice, self).action_invoice_paid()
         for invoice in self:
             # we check if there is an open refund for this invoice. in this
             # case we don't run the process_subscription function as the
@@ -154,9 +170,12 @@ class account_invoice(models.Model):
             domain = self.get_refund_domain(invoice)
             refund = self.search(domain)
 
-            if invoice.partner_id.cooperator \
-                    and invoice.release_capital_request \
-                    and invoice.type == 'out_invoice' and not refund:
+            if (
+                invoice.partner_id.cooperator
+                and invoice.release_capital_request
+                and invoice.type == "out_invoice"
+                and not refund
+            ):
                 # take the effective date from the payment.
                 # by default the confirmation date is the payment date
                 effective_date = datetime.now().strftime("%d/%m/%Y")
@@ -165,11 +184,14 @@ class account_invoice(models.Model):
                     move_line = invoice.payment_move_line_ids[0]
                     effective_date = move_line.date
 
-                invoice.subscription_request.state = 'paid'
+                invoice.subscription_request.state = "paid"
                 invoice.post_process_confirm_paid(effective_date)
             # if there is a open refund we mark the subscription as cancelled
-            elif invoice.partner_id.cooperator \
-                    and invoice.release_capital_request \
-                    and invoice.type == 'out_invoice' and refund:
-                invoice.subscription_request.state = 'cancelled'
+            elif (
+                invoice.partner_id.cooperator
+                and invoice.release_capital_request
+                and invoice.type == "out_invoice"
+                and refund
+            ):
+                invoice.subscription_request.state = "cancelled"
         return True

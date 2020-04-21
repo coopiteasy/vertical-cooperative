@@ -7,10 +7,12 @@ class ValidateSubscriptionRequest(models.TransientModel):
 
     @api.multi
     def validate(self):
-        selected_requests = self.env['subscription.request'].browse(
-            self._context.get('active_ids'))
+        selected_requests = self.env["subscription.request"].browse(
+            self._context.get("active_ids")
+        )
         subscription_requests = selected_requests.filtered(
-            lambda record: record.state in ['draft', 'waiting'])
+            lambda record: record.state in ["draft", "waiting"]
+        )
 
         for subscription_request in subscription_requests:
             subscription_request.validate_subscription_request()

@@ -3,7 +3,7 @@
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import fields, models, api
+from odoo import api, fields, models
 
 
 class ResPartner(models.Model):
@@ -15,9 +15,7 @@ class ResPartner(models.Model):
         string="Loans",
     )
     is_loaner = fields.Boolean(
-        string="Loaner",
-        compute="_compute_is_loaner",
-        store=True,
+        string="Loaner", compute="_compute_is_loaner", store=True
     )
 
     @api.multi

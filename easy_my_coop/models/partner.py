@@ -7,7 +7,7 @@ from odoo import api, fields, models
 
 
 class ResPartner(models.Model):
-    _inherit = 'res.partner'
+    _inherit = "res.partner"
 
     @api.multi
     def _get_report_base_filename(self):
@@ -15,11 +15,11 @@ class ResPartner(models.Model):
         if self.member:
             return "Cooperator Certificate - %s" % self.name
         else:
-            return 'unknown'
+            return "unknown"
 
     @api.multi
     def _invoice_total(self):
-        account_invoice_report = self.env['account.invoice.report']
+        account_invoice_report = self.env["account.invoice.report"]
         if not self.ids:
             self.total_invoiced = 0.0
             return True
@@ -28,7 +28,9 @@ class ResPartner(models.Model):
         all_partner_ids = []
         for partner in self:
             # price_total is in the company currency
-            all_partners_and_children[partner] = self.search([('id', 'child_of', partner.id)]).ids
+            all_partners_and_children[partner] = self.search(
+                [("id", "child_of", partner.id)]
+            ).ids
             all_partner_ids += all_partners_and_children[partner]
 
         # searching account.invoice.report via the orm is comparatively
@@ -38,30 +40,39 @@ class ResPartner(models.Model):
         # the user's company access directly these elements
 
         # generate where clause to include multicompany rules
-        where_query = account_invoice_report._where_calc([
-            ('partner_id', 'in', all_partner_ids),
-            ('state', 'not in', ['draft', 'cancel']),
-            ('company_id', '=', self.env.user.company_id.id),
-            ('type', 'in', ('out_invoice', 'out_refund')),
-            ('release_capital_request', '=', False),
-        ])
-        account_invoice_report._apply_ir_rules(where_query, 'read')
+        where_query = account_invoice_report._where_calc(
+            [
+                ("partner_id", "in", all_partner_ids),
+                ("state", "not in", ["draft", "cancel"]),
+                ("company_id", "=", self.env.user.company_id.id),
+                ("type", "in", ("out_invoice", "out_refund")),
+                ("release_capital_request", "=", False),
+            ]
+        )
+        account_invoice_report._apply_ir_rules(where_query, "read")
         from_clause, where_clause, where_clause_params = where_query.get_sql()
 
         # price_total is in the company currency
-        query = """
+        query = (
+            """
                   SELECT SUM(price_total) as total, partner_id
                     FROM account_invoice_report account_invoice_report
                    WHERE %s
                    GROUP BY partner_id
-                """ % where_clause
+                """
+            % where_clause
+        )
         self.env.cr.execute(query, where_clause_params)
         price_totals = self.env.cr.dictfetchall()
         for partner, child_ids in all_partners_and_children.items():
-            partner.total_invoiced = sum(price['total'] for price in price_totals if price['partner_id'] in child_ids)
+            partner.total_invoiced = sum(
+                price["total"]
+                for price in price_totals
+                if price["partner_id"] in child_ids
+            )
 
     @api.multi
-    @api.depends('share_ids')
+    @api.depends("share_ids")
     def _compute_effective_date(self):
         # TODO change it to compute it from the share register
         for partner in self:
@@ -70,22 +81,20 @@ class ResPartner(models.Model):
 
     @api.multi
     def _get_share_type(self):
-        shares = (
-            self.env['product.product']
-                .search([('is_share', '=', True)])
-        )
-        share_types = [
-                    (share.default_code, share.short_name) for share in shares
-                    ]
-        return [('', '')] + share_types
+        shares = self.env["product.product"].search([("is_share", "=", True)])
+        share_types = [(s.default_code, s.short_name) for s in shares]
+        return [("", "")] + share_types
 
     @api.multi
-    @api.depends('share_ids', 'share_ids.share_product_id',
-                 'share_ids.share_product_id.default_code',
-                 'share_ids.share_number')
+    @api.depends(
+        "share_ids",
+        "share_ids.share_product_id",
+        "share_ids.share_product_id.default_code",
+        "share_ids.share_number",
+    )
     def _compute_cooperator_type(self):
         for partner in self:
-            share_type = ''
+            share_type = ""
             for line in partner.share_ids:
                 if line.share_number > 0:
                     share_type = line.share_product_id.default_code
@@ -93,7 +102,7 @@ class ResPartner(models.Model):
             partner.cooperator_type = share_type
 
     @api.multi
-    @api.depends('share_ids')
+    @api.depends("share_ids")
     def _compute_share_info(self):
         for partner in self:
             number_of_share = 0
@@ -104,62 +113,75 @@ class ResPartner(models.Model):
             partner.number_of_share = number_of_share
             partner.total_value = total_value
 
-    cooperator = fields.Boolean(string='Cooperator',
-                                help="Check this box if this contact is a"
-                                " cooperator (effective or not).")
-    member = fields.Boolean(string='Effective cooperator',
-                            help="Check this box if this cooperator"
-                            " is an effective member.")
-    coop_candidate = fields.Boolean(string="Cooperator candidate",
-                                    compute="_compute_coop_candidate",
-                                    store=True,
-                                    readonly=True)
-    old_member = fields.Boolean(string='Old cooperator',
-                                help="Check this box if this cooperator is"
-                                " no more an effective member.")
+    cooperator = fields.Boolean(
+        string="Cooperator",
+        help="Check this box if this contact is a"
+        " cooperator (effective or not).",
+    )
+    member = fields.Boolean(
+        string="Effective cooperator",
+        help="Check this box if this cooperator" " is an effective member.",
+    )
+    coop_candidate = fields.Boolean(
+        string="Cooperator candidate",
+        compute="_compute_coop_candidate",
+        store=True,
+        readonly=True,
+    )
+    old_member = fields.Boolean(
+        string="Old cooperator",
+        help="Check this box if this cooperator is"
+        " no more an effective member.",
+    )
     # todo use oca partner_contact_gender
-    gender = fields.Selection([('male', 'Male'),
-                               ('female', 'Female'),
-                               ('other', 'Other')],
-                              string='Gender')
-    share_ids = fields.One2many('share.line',
-                                'partner_id',
-                                string='Share Lines')
-    cooperator_register_number = fields.Integer(string='Cooperator Number')
-    number_of_share = fields.Integer(compute="_compute_share_info",
-                                     multi='share',
-                                     string='Number of share',
-                                     readonly=True)
-    total_value = fields.Float(compute="_compute_share_info",
-                               multi='share',
-                               string='Total value of shares',
-                               readonly=True)
-    company_register_number = fields.Char(string='Company Register Number')
-    cooperator_type = fields.Selection(selection='_get_share_type',
-                                       compute=_compute_cooperator_type,
-                                       string='Cooperator Type',
-                                       store=True)
-    effective_date = fields.Date(sting="Effective Date",
-                                 compute=_compute_effective_date,
-                                 store=True)
+    gender = fields.Selection(
+        [("male", "Male"), ("female", "Female"), ("other", "Other")],
+        string="Gender",
+    )
+    share_ids = fields.One2many(
+        "share.line", "partner_id", string="Share Lines"
+    )
+    cooperator_register_number = fields.Integer(string="Cooperator Number")
+    number_of_share = fields.Integer(
+        compute="_compute_share_info",
+        multi="share",
+        string="Number of share",
+        readonly=True,
+    )
+    total_value = fields.Float(
+        compute="_compute_share_info",
+        multi="share",
+        string="Total value of shares",
+        readonly=True,
+    )
+    company_register_number = fields.Char(string="Company Register Number")
+    cooperator_type = fields.Selection(
+        selection="_get_share_type",
+        compute=_compute_cooperator_type,
+        string="Cooperator Type",
+        store=True,
+    )
+    effective_date = fields.Date(
+        sting="Effective Date", compute=_compute_effective_date, store=True
+    )
     representative = fields.Boolean(string="Legal Representative")
-    subscription_request_ids = fields.One2many('subscription.request',
-                                               'partner_id',
-                                               string="Subscription request")
-    legal_form = fields.Selection([('', '')],
-                                  string="Legal form")
+    subscription_request_ids = fields.One2many(
+        "subscription.request", "partner_id", string="Subscription request"
+    )
+    legal_form = fields.Selection([("", "")], string="Legal form")
     data_policy_approved = fields.Boolean(string="Approved Data Policy")
     internal_rules_approved = fields.Boolean(string="Approved Internal Rules")
 
     @api.multi
-    @api.depends('subscription_request_ids.state')
+    @api.depends("subscription_request_ids.state")
     def _compute_coop_candidate(self):
         for partner in self:
             if partner.member:
                 is_candidate = False
             else:
                 sub_requests = partner.subscription_request_ids.filtered(
-                                lambda record: record.state == 'done')
+                    lambda record: record.state == "done"
+                )
                 is_candidate = bool(sub_requests)
 
             partner.coop_candidate = is_candidate
@@ -167,19 +189,24 @@ class ResPartner(models.Model):
     @api.multi
     def has_representative(self):
         self.ensure_one()
-        if self.child_ids.filtered('representative'):
+        if self.child_ids.filtered("representative"):
             return True
         return False
 
     @api.multi
     def get_representative(self):
         self.ensure_one()
-        return self.child_ids.filtered('representative')
+        return self.child_ids.filtered("representative")
 
     def get_cooperator_from_email(self, email):
-        return self.env['res.partner'].search([('cooperator', '=', True),
-                                               ('email', '=', email)])
+        return self.env["res.partner"].search(
+            [("cooperator", "=", True), ("email", "=", email)]
+        )
 
     def get_cooperator_from_crn(self, company_register_number):
-        return self.env['res.partner'].search([('cooperator', '=', True),
-                                               ('company_register_number', '=', company_register_number)])
+        return self.env["res.partner"].search(
+            [
+                ("cooperator", "=", True),
+                ("company_register_number", "=", company_register_number),
+            ]
+        )

@@ -5,18 +5,17 @@
 {
     "name": "Easy My Coop Fr",
     "version": "12.0.1.0.1",
-    "depends": ["easy_my_coop",
-                "l10n_fr"],
+    "depends": ["easy_my_coop", "l10n_fr"],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
-    'webstite': "www.coopiteasy.be",
+    "webstite": "www.coopiteasy.be",
     "license": "AGPL-3",
-    "description": """
-    This is the french localization for the easy my coop module
+    "summary": """
+        This is the french localization for the easy my coop module
     """,
-    'data': [
-        'views/subscription_template.xml',
-        'views/certificate_template.xml'
+    "data": [
+        "views/subscription_template.xml",
+        "views/certificate_template.xml",
     ],
-    'installable': True,
+    "installable": True,
 }
