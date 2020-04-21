@@ -10,6 +10,9 @@ class ResPartner(models.Model):
     def _search_age(self, operator, value):
         if operator not in ("=", "!=", "<", "<=", ">", ">=", "in", "not in"):
             return []
+        # pylint: disable=sql-injection
+        # fixme while you're here, please fix the query to pass
+        #  pylint sql-injection
         query = """SELECT id
                    FROM "%s"
                    WHERE extract(year from age(CURRENT_DATE,

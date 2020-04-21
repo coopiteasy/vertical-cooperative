@@ -322,6 +322,19 @@ class TaxShelterCertificate(models.Model):
                 certificate.state = "sent"
             else:
                 certificate.state = "no_eligible"
+            # pylint: disable=invalid-commit
+            # fixme while you're here, please fix the query
+            #  to pass pylint invalid-commit
+            #  Use of cr.commit() directly is dangerous
+            #  More info https://github.com/OCA/odoo-community.org/blob/master/website/Contribution/CONTRIBUTING.rst#never-commit-the-transaction  # noqa
+
+            # Note: c'est n'est pas executé par du rpc-client mais via un
+            # cron. En sachant que l'on ne veut pas faire de roll back de
+            # toute la transaction parce que justement des mails sont
+            # envoyés. Et on ne peut pas rollbacker des emails envoyés ici
+            # c'est un rollback qui rendre le processus métier inconsistant
+            # sachant que chaque ligne à son propre état et est indépendante
+            # du statut de la déclaration tax shelter dont elle dépend
             self.env.cr.commit()
 
     @api.multi
