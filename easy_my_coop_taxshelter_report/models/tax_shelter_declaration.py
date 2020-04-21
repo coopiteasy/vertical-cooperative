@@ -38,10 +38,16 @@ class TaxShelterDeclaration(models.Model):
     month_from = fields.Char(String="Month from", required=True)
     month_to = fields.Char(String="Month to", required=True)
     tax_shelter_percentage = fields.Selection(
-        [("30", "30%"), ("45", "45%")], string="Tax Shelter percentage", required=True
+        [("30", "30%"), ("45", "45%")],
+        string="Tax Shelter percentage",
+        required=True,
     )
     state = fields.Selection(
-        [("draft", "Draft"), ("computed", "Computed"), ("validated", "Validated")],
+        [
+            ("draft", "Draft"),
+            ("computed", "Computed"),
+            ("validated", "Validated"),
+        ],
         string="State",
         required=True,
         default="draft",
@@ -76,7 +82,10 @@ class TaxShelterDeclaration(models.Model):
             declaration = self
         else:
             declaration = self.search(
-                [("date_from", "<=", entry.date), ("date_to", ">=", entry.date)]
+                [
+                    ("date_from", "<=", entry.date),
+                    ("date_to", ">=", entry.date),
+                ]
             )
         if entry.partner_id.id in declaration.excluded_cooperator.ids:
             return True
@@ -93,13 +102,18 @@ class TaxShelterDeclaration(models.Model):
         line_vals["type"] = TYPE_MAP[entry.type]
         if entry.type == "subscription":
             if not excluded:
-                capital_after_sub = ongoing_capital_sub + entry.total_amount_line
+                capital_after_sub = (
+                    ongoing_capital_sub + entry.total_amount_line
+                )
             else:
                 capital_after_sub = ongoing_capital_sub
             line_vals["capital_before_sub"] = ongoing_capital_sub
             line_vals["capital_after_sub"] = capital_after_sub
             line_vals["capital_limit"] = self.tax_shelter_capital_limit
-            if ongoing_capital_sub < self.tax_shelter_capital_limit and not excluded:
+            if (
+                ongoing_capital_sub < self.tax_shelter_capital_limit
+                and not excluded
+            ):
                 line_vals["tax_shelter"] = True
         return line_vals
 
@@ -116,7 +130,9 @@ class TaxShelterDeclaration(models.Model):
                 cert_vals[
                     "cooperator_number"
                 ] = entry.partner_id.cooperator_register_number
-                certificate = self.env["tax.shelter.certificate"].create(cert_vals)
+                certificate = self.env["tax.shelter.certificate"].create(
+                    cert_vals
+                )
                 partner_certificate[entry.partner_id.id] = certificate
             excluded = self._excluded_from_declaration(entry)
             line_vals = self._prepare_line(
@@ -129,8 +145,9 @@ class TaxShelterDeclaration(models.Model):
 
         return partner_certificate
 
-    @api.one
+    @api.multi
     def compute_declaration(self):
+        self.ensure_one()
         entries = self.env["subscription.register"].search(
             [
                 ("partner_id.is_company", "=", False),
@@ -140,7 +157,7 @@ class TaxShelterDeclaration(models.Model):
         )
 
         subscriptions = entries.filtered(
-            (lambda r: r.type == "subscription" and r.date < self.date_from)
+            lambda r: r.type == "subscription" and r.date < self.date_from
         )  # noqa
         cap_prev_sub = 0.0
         for subscription in subscriptions:
@@ -154,13 +171,15 @@ class TaxShelterDeclaration(models.Model):
 
         self.state = "computed"
 
-    @api.one
+    @api.multi
     def validate_declaration(self):
+        self.ensure_one()
         self.tax_shelter_certificates.write({"state": "validated"})
         self.state = "validated"
 
-    @api.one
+    @api.multi
     def reset_declaration(self):
+        self.ensure_one()
         if not self.state == "validated":
             self.tax_shelter_certificates.unlink()
             self.state = "draft"
@@ -235,13 +254,15 @@ class TaxShelterCertificate(models.Model):
         compute="_compute_amounts", string="Total previously subscribed"
     )
     total_amount_eligible_previously_subscribed = fields.Float(
-        compute="_compute_amounts", string="Total eligible previously subscribed"
+        compute="_compute_amounts",
+        string="Total eligible previously subscribed",
     )
     total_amount_subscribed = fields.Float(
         compute="_compute_amounts", string="Total subscribed"
     )
     total_amount_eligible = fields.Float(
-        compute="_compute_amounts", string="Total amount eligible To Tax shelter"
+        compute="_compute_amounts",
+        string="Total amount eligible To Tax shelter",
     )
     total_amount_resold = fields.Float(
         compute="_compute_amounts", string="Total resold"
@@ -252,14 +273,21 @@ class TaxShelterCertificate(models.Model):
     total_amount = fields.Float(
         compute="_compute_amounts", string="Total", readonly=True
     )
-    company_id = fields.Many2one(related="declaration_id.company_id", string="Company")
+    company_id = fields.Many2one(
+        related="declaration_id.company_id", string="Company"
+    )
 
     def generate_pdf_report(self, report_type):
         report, name = REPORT_DIC[report_type]
         report = self.env.ref(report).render_qweb_pdf(self.id)[0]
         report = base64.b64encode(report)
         report_name = (
-            self.partner_id.name + " " + name + " " + self.declaration_id.name + ".pdf"
+            self.partner_id.name
+            + " "
+            + name
+            + " "
+            + self.declaration_id.name
+            + ".pdf"
         )
 
         return (report_name, report)
@@ -325,7 +353,9 @@ class TaxShelterCertificate(models.Model):
             certificate.total_amount_eligible = total_amount_elligible
 
             for line in certificate.previously_subscribed_eligible_lines:
-                total_amount_previously_eligible += line.amount_subscribed_eligible
+                total_amount_previously_eligible += (
+                    line.amount_subscribed_eligible
+                )
             certificate.total_amount_eligible_previously_subscribed = (
                 total_amount_previously_eligible
             )
@@ -357,7 +387,7 @@ class TaxShelterCertificate(models.Model):
                 lambda r: r.type == "subscribed"
                 and r.transaction_date < certificate.declaration_id.date_from
             )
-            certificate.previously_subscribed_eligible_lines = certificate.lines.filtered(
+            certificate.previously_subscribed_eligible_lines = certificate.lines.filtered(  # noqa
                 lambda r: r.type == "subscribed"
                 and r.transaction_date < certificate.declaration_id.date_from
                 and r.tax_shelter
@@ -401,8 +431,12 @@ class TaxShelterCertificateLine(models.Model):
     share_type = fields.Many2one(
         "product.product", string="Share type", required=True, readonly=True
     )
-    share_unit_price = fields.Float(string="Share price", required=True, readonly=True)
-    quantity = fields.Integer(string="Number of shares", required=True, readonly=True)
+    share_unit_price = fields.Float(
+        string="Share price", required=True, readonly=True
+    )
+    quantity = fields.Integer(
+        string="Number of shares", required=True, readonly=True
+    )
     transaction_date = fields.Date(string="Transaction date")
     tax_shelter = fields.Boolean(string="Tax shelter eligible", readonly=True)
     type = fields.Selection(
@@ -419,7 +453,9 @@ class TaxShelterCertificateLine(models.Model):
         compute="_compute_totals", string="Amount subscribed", store=True
     )
     amount_subscribed_eligible = fields.Float(
-        compute="_compute_totals", string="Amount subscribed eligible", store=True
+        compute="_compute_totals",
+        string="Amount subscribed eligible",
+        store=True,
     )
     amount_resold = fields.Float(
         compute="_compute_totals", string="Amount resold", store=True
@@ -431,7 +467,9 @@ class TaxShelterCertificateLine(models.Model):
     capital_before_sub = fields.Float(
         string="Capital before subscription", readonly=True
     )
-    capital_after_sub = fields.Float(string="Capital after subscription", readonly=True)
+    capital_after_sub = fields.Float(
+        string="Capital after subscription", readonly=True
+    )
     capital_limit = fields.Float(string="Capital limit", readonly=True)
 
     @api.multi
@@ -460,4 +498,6 @@ class TaxShelterCertificateLine(models.Model):
             if line.type == "resold":
                 line.amount_resold = line.share_unit_price * -(line.quantity)
             if line.type == "transfered":
-                line.amount_transfered = line.share_unit_price * -(line.quantity)
+                line.amount_transfered = line.share_unit_price * -(
+                    line.quantity
+                )

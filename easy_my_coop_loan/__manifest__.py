@@ -5,26 +5,22 @@
 {
     "name": "Easy My Coop Bond and Subordinated Loan Issues",
     "version": "12.0.1.0.1",
-    "depends": [
-        "easy_my_coop",
-    ],
+    "depends": ["easy_my_coop"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
     "website": "http://www.coopiteasy.be",
     "license": "AGPL-3",
-    "description": """
-    This module allows to manage the bonds and subordinated loans subscription
-    life cycle.
+    "summary": """
+    This module allows to manage the bonds and
+    subordinated loans subscription life cycle.
     """,
-    'data': [
-        'security/ir.model.access.csv',
-        'views/loan_view.xml',
-        'views/partner_view.xml',
-        'views/menus.xml',
-        'data/mail_template_data.xml',
+    "data": [
+        "security/ir.model.access.csv",
+        "views/loan_view.xml",
+        "views/partner_view.xml",
+        "views/menus.xml",
+        "data/mail_template_data.xml",
     ],
-    "demo": [
-        "demo/coop.xml",
-    ],
-    'installable': True,
+    "demo": ["demo/coop.xml"],
+    "installable": True,
 }
