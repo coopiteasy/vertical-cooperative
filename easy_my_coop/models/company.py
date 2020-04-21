@@ -9,7 +9,7 @@ from odoo import api, fields, models
 class ResCompany(models.Model):
     _inherit = "res.company"
 
-    def _get_base_logo(self):
+    def _compute_base_logo(self):
         base_url = (
             self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         )
@@ -58,7 +58,7 @@ class ResCompany(models.Model):
     display_logo2 = fields.Boolean(string="Display logo 2")
     bottom_logo1 = fields.Binary(string="Bottom logo 1")
     bottom_logo2 = fields.Binary(string="Bottom logo 2")
-    logo_url = fields.Char(string="logo url", compute="_get_base_logo")
+    logo_url = fields.Char(string="logo url", compute="_compute_base_logo")
     display_data_policy_approval = fields.Boolean(
         help="Choose to display a data policy checkbox on the cooperator"
         " website form."
