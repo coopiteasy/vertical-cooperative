@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2019 Coop IT Easy SCRL fs
 #   Houssine Bakkali <houssine@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
@@ -75,7 +74,9 @@ class ResPartner(models.Model):
             self.env['product.product']
                 .search([('is_share', '=', True)])
         )
-        share_types = [(share.default_code, share.short_name) for share in shares]
+        share_types = [
+                    (share.default_code, share.short_name) for share in shares
+                    ]
         return [('', '')] + share_types
 
     @api.multi
@@ -86,9 +87,10 @@ class ResPartner(models.Model):
         for partner in self:
             share_type = ''
             for line in partner.share_ids:
-                share_type = line.share_product_id.default_code
-            if share_type:
-                partner.cooperator_type = share_type
+                if line.share_number > 0:
+                    share_type = line.share_product_id.default_code
+                    break
+            partner.cooperator_type = share_type
 
     @api.multi
     @api.depends('share_ids')
