@@ -11,7 +11,7 @@
         	</field>
         </field>
 	</record>
-	
+
 	<record id="view_account_bank_journal_form_coop" model="ir.ui.view">
         <field name="name">account.bank.journal.form</field>
         <field name="model">account.journal</field>
