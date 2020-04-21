@@ -126,7 +126,7 @@ class SubscriptionRequest(models.Model):
 
     @api.multi
     @api.depends("iban", "skip_control_ng")
-    def _validated_lines(self):
+    def _compute_validated_lines(self):
         for sub_request in self:
             validated = sub_request.skip_control_ng or self.check_iban(
                 sub_request.iban
@@ -284,7 +284,7 @@ class SubscriptionRequest(models.Model):
     user_id = fields.Many2one("res.users", string="Responsible", readonly=True)
     # todo rename to valid_subscription_request
     validated = fields.Boolean(
-        compute="_validated_lines",
+        compute="_compute_validated_lines",
         string="Valid Subscription request?",
         readonly=True,
     )
