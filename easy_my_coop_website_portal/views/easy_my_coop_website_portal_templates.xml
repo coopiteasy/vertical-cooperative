@@ -35,7 +35,7 @@
 	        </div>
         </xpath>
 	</template>
-	
+
   <!-- Add cooperator information -->
   <template
     id="website_portal_details_form"
@@ -119,7 +119,7 @@
     </xpath>
   </template>
 
-  
+
   <template id="portal_my_home_menu_capital_request" name="Portal layout : capital request menu entries" inherit_id="portal.portal_breadcrumbs" priority="30">
   	 <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
      	<li t-if="page_name == 'capital request'" t-attf-class="breadcrumb-item #{'active ' if not capital_requests else ''}">
