@@ -4,11 +4,10 @@
 		<template id="layout_i18n_fr" inherit_id="theme_light.invoice_footer" name="French Layout Customization">
 			<xpath expr="//t[@t-if='company.company_registry']" position="before">
 				<t t-if="company.siret">
-            		<span>Siret</span> : 
+            		<span>Siret</span> :
             		<span t-field="company.siret"/>
-           		</t>  
+           		</t>
 			</xpath>
 		</template>
 	</data>
 </odoo>
-

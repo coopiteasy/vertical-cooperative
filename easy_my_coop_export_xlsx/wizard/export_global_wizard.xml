@@ -27,7 +27,7 @@
             <field name="target">new</field>
             <field name="multi">True</field>
         </record>
-		
+
 		<menuitem id="menu_export_global_report_wizard" name="Global report export" parent="easy_my_coop.menu_easy_my_coop_main_reporting" action="action_export_global_report_wizard" sequence="10"/>
     </data>
 </openerp>

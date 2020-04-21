@@ -14,7 +14,7 @@
                </tree>
            </field>
        </record>
-       
+
        <record id="operation_request_form" model="ir.ui.view">
            <field name="name">operation.request.form</field>
            <field name="model">operation.request</field>
@@ -93,8 +93,8 @@
       				</sheet>
       			</form>
            </field>
-       </record>    
-       
+       </record>
+
        <record id="operation_request_action" model="ir.actions.act_window">
            <field name="name">Operation request</field>
            <field name="res_model">operation.request</field>

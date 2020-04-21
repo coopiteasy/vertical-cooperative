@@ -7,7 +7,7 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
-  font-family:Montserrat-Regular;	
+  font-family:Montserrat-Regular;
   margin: 0;
   color: #000
  }
@@ -16,7 +16,7 @@ address {
 
 		}
 
-address::first-line { 	
+address::first-line {
 						font-weight:bold;
 					  	color: #000;
 					 }
@@ -24,8 +24,8 @@ address::first-line {
 .title_table {
 	width: 100%;
 	border-bottom: #53cf00 1px solid;
-	vertical-align:middle;	
-	color:#53cf00;	
+	vertical-align:middle;
+	color:#53cf00;
 }
 
 .title_doc {
@@ -33,17 +33,17 @@ address::first-line {
   	font-size: 36px;
 	padding-bottom: 10px;
 	text-align : right;
-	
+
 		}
 
 .color_text {
 	color:#53cf00;
 		}
-		
+
 .color_background {
 	background-color:#53cf00;
 		}
-		
+
 
 .white_line_border {
 	background-color:#ffffff;
@@ -53,10 +53,10 @@ address::first-line {
 
 .total_table {
     text-align: right;
-    vertical-align:middle;	
+    vertical-align:middle;
     font-weight:bold;
-   	border-bottom : 1px solid #53cf00;    
-   	border-top : 1px solid #53cf00;   	
+   	border-bottom : 1px solid #53cf00;
+   	border-top : 1px solid #53cf00;
 }
 
 .info_table {
@@ -66,7 +66,7 @@ address::first-line {
     	border-spacing: 3px;
 				}
 
-	
+
 .info_table th {
     color: white;
     text-align: center;
@@ -76,7 +76,7 @@ address::first-line {
 	vertical-align:middle;
 	font-size: 12px;
     }
-    
+
 .info_table td {
     text-align: center;
 	height: 25px;
@@ -93,7 +93,7 @@ div h4 {
 
 .list_line_table_head {
 	text-align: center ;
-	
+
     }
 
 
@@ -108,8 +108,8 @@ div h4 {
 	vertical-align : middle;
     border-collapse: separate;
     border-spacing: 2px;
-    padding-right:5px;	
- 	font-size: 11px;    
+    padding-right:5px;
+ 	font-size: 11px;
     }
 
 .single_line {
@@ -120,7 +120,7 @@ div h4 {
 }
 
 .line_only {
-	border-bottom: #8b8b8b 1px solid;	
+	border-bottom: #8b8b8b 1px solid;
 }
 
 .total_table {
@@ -133,7 +133,7 @@ div h4 {
     border-collapse: separate;
     border-spacing: 2px;
     background-color : #def1d1;
-    padding-right:5px;	
+    padding-right:5px;
 }
 
 .total_table td {
@@ -142,9 +142,9 @@ div h4 {
     border-collapse: separate;
     border-spacing: 2px;
     background-color : #53cf00;
-    padding-right:5px;	
+    padding-right:5px;
     }
-    
+
 .tva_table {
     	margin-top:20px;
     	border: 2px ridge #53cf00;
@@ -155,8 +155,8 @@ div h4 {
 .tva_table th {
 		color : #53cf00;
 		text-align: center ;
-   		border-bottom: #53cf00 1px solid;	
-    }		
+   		border-bottom: #53cf00 1px solid;
+    }
 
 
 .orange_line {
@@ -181,9 +181,9 @@ div h4 {
 }
 
 .lgn_pair{
- 
+
     background-color:#def1d1;
-		
+
 }
 
 

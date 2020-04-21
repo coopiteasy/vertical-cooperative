@@ -7,17 +7,17 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
-  font-family:Montserrat-Regular;	
+  font-family:Montserrat-Regular;
   margin: 0;
   color: #000
  }
 
 address {
-	font-family:Lato-Regular;	
+	font-family:Lato-Regular;
 	font-size: 18px;
 		}
 
-address::first-line { 	
+address::first-line {
 						font-weight:bold;
 					  	color: #000;
 					 }
@@ -36,7 +36,7 @@ address::first-line {
 	padding-top: 15px;
 	width: 150px;
 		}
-		
+
 .info_table {
     	margin-top:20px;
     	border: 2px ridge #009ceb;
@@ -44,7 +44,7 @@ address::first-line {
     	border-spacing: 3px;
 				}
 
-	
+
 .info_table th {
     color: white;
     text-align: center;
@@ -54,7 +54,7 @@ address::first-line {
 	vertical-align:middle;
 	font-size: 12px;
     }
-    
+
 .info_table td {
 	font-family:Lato-Regular;
     text-align: center;
@@ -87,9 +87,9 @@ div h4 {
 	font-family:Lato-Regular;
 	vertical-align : middle;
 
-    
+
     }
-    
+
 .tva_table {
     	margin-top:20px;
     	border: 2px ridge #009ceb;
@@ -100,8 +100,8 @@ div h4 {
 .tva_table th {
 		color : #009ceb;
 		text-align: center ;
-   		border-bottom: #009ceb 1px solid;	
-    }		
+   		border-bottom: #009ceb 1px solid;
+    }
 
 
 .standard_line {
@@ -126,9 +126,9 @@ div h4 {
 }
 
 .lgn_pair{
- 
+
     background-color:#e2f4fd;
-		
+
 }
 
 

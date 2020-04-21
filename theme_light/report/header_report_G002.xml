@@ -2,7 +2,7 @@
 <odoo>
 	<template id="theme_light.invoice_header_G002">
 		<table style="width: 100%;font-size:10px">
-          <tr height="30px">      
+          <tr height="30px">
             <td style="width:20%;padding-right:15px" rowspan="4">
             	<img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.company_id.logo" style="max-height: 100px;"/>
             </td>
@@ -17,26 +17,26 @@
             	<img src="theme_light/static/img/gallery/www_green.png" style="max-height: 30px;padding-bottom:10px"/>
             </td>
           </tr>
-          
+
           <tr  height="20px">
           	<td style="font-size:14px"></td>
           	<td>
-      		   <span t-field="o.company_id.partner_id.street"/>  
+      		   <span t-field="o.company_id.partner_id.street"/>
     		</td>
     		<td>
 				<span>Phone</span>
-    			<span t-field="o.company_id.partner_id.phone"/> 
+    			<span t-field="o.company_id.partner_id.phone"/>
     		</td>
     		<td>
-    			<span t-field="o.company_id.partner_id.website"/> 
+    			<span t-field="o.company_id.partner_id.website"/>
     		</td>
           </tr>
-          
+
 		  <tr style="vertical-align:top" height="20px">
 			<td style="vertical-align:middle"></td>
 		  	<td style="vertical-align:middle">
-    		   <span t-field="o.company_id.partner_id.zip"/>  -    
-    		   <span t-field="o.company_id.partner_id.city"/>  
+    		   <span t-field="o.company_id.partner_id.zip"/>  -
+    		   <span t-field="o.company_id.partner_id.city"/>
 		  	</td>
 		  	<td style="vertical-align:middle">
 		  	   <span>Fax</span>
@@ -44,7 +44,7 @@
 		  	</td>
 		  </tr>
 		  <tr>
-				
+
 		  	<td></td>
 		  	<td style="vertical-align:top">
     		   <span t-field="o.company_id.partner_id.country_id.name"/>
@@ -52,7 +52,7 @@
 		  	<td></td>
 		  </tr>
 		  <tr>
-		  	<td colspan="2"><span style="margin-left:10px" t-field="o.company_id.rml_header1"/> </td>		  	
+		  	<td colspan="2"><span style="margin-left:10px" t-field="o.company_id.rml_header1"/> </td>
 			<td style="vertical-align:bottom">
 				<span t-field="o.company_id.partner_id.vat"/>
 			</td>
@@ -63,9 +63,9 @@
 	</template>
 
 	<template id="theme_light.invoice_header_P002">
- 
+
 		<table style="width: 100%;font-size:10px">
-          <tr height="30px">      
+          <tr height="30px">
             <td style="width:20%;padding-right:15px" rowspan="4">
             	<img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.company_id.logo" style="max-height: 100px;"/>
             </td>
@@ -80,26 +80,26 @@
             	<img src="theme_light/static/img/gallery/www_purple.png" style="max-height: 30px;padding-bottom:10px"/>
             </td>
           </tr>
-          
+
           <tr  height="20px">
           	<td style="font-size:14px"></td>
           	<td>
-      		   <span t-field="o.company_id.partner_id.street"/>  
+      		   <span t-field="o.company_id.partner_id.street"/>
     		</td>
     		<td>
 				<span>Phone</span>
-    			<span t-field="o.company_id.partner_id.phone"/> 
+    			<span t-field="o.company_id.partner_id.phone"/>
     		</td>
     		<td>
-    			<span t-field="o.company_id.partner_id.website"/> 
+    			<span t-field="o.company_id.partner_id.website"/>
     		</td>
           </tr>
-          
+
 		  <tr style="vertical-align:top" height="20px">
 			<td style="vertical-align:middle"></td>
 		  	<td style="vertical-align:middle">
-    		   <span t-field="o.company_id.partner_id.zip"/>  -    
-    		   <span t-field="o.company_id.partner_id.city"/>  
+    		   <span t-field="o.company_id.partner_id.zip"/>  -
+    		   <span t-field="o.company_id.partner_id.city"/>
 		  	</td>
 		  	<td style="vertical-align:middle">
 		  	   <span>Fax</span>
@@ -107,7 +107,7 @@
 		  	</td>
 		  </tr>
 		  <tr>
-				
+
 		  	<td></td>
 		  	<td style="vertical-align:top">
     		   <span t-field="o.company_id.partner_id.country_id.name"/>
@@ -115,7 +115,7 @@
 		  	<td></td>
 		  </tr>
 		  <tr>
-		  	<td colspan="2"><span style="margin-left:10px" t-field="o.company_id.rml_header1"/> </td>		  	
+		  	<td colspan="2"><span style="margin-left:10px" t-field="o.company_id.rml_header1"/> </td>
 			<td style="vertical-align:bottom">
 				<span t-field="o.company_id.partner_id.vat"/>
 			</td>
@@ -124,10 +124,10 @@
 		  </tr>
 		</table>
 	</template>
-	
+
 	<template id="theme_light.list_header_G002">
 		<table style="width: 100%;font-size:10px">
-          <tr height="30px">      
+          <tr height="30px">
             <td style="width:20%;padding-right:15px" rowspan="4">
             	<img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' % res_company.logo" style="max-height: 100px;"/>
             </td>
@@ -142,26 +142,26 @@
             	<img src="theme_light/static/img/gallery/www_green.png" style="max-height: 30px;padding-bottom:10px"/>
             </td>
           </tr>
-          
+
           <tr  height="20px">
           	<td style="font-size:14px"></td>
           	<td>
-      		   <span t-field="res_company.partner_id.street"/>  
+      		   <span t-field="res_company.partner_id.street"/>
     		</td>
     		<td>
 				<span>Phone</span>
-    			<span t-field="res_company.partner_id.phone"/> 
+    			<span t-field="res_company.partner_id.phone"/>
     		</td>
     		<td>
-    			<span t-field="res_company.partner_id.website"/> 
+    			<span t-field="res_company.partner_id.website"/>
     		</td>
           </tr>
-          
+
 		  <tr style="vertical-align:top" height="20px">
 			<td style="vertical-align:middle"></td>
 		  	<td style="vertical-align:middle">
-    		   <span t-field="res_company.partner_id.zip"/>  -    
-    		   <span t-field="res_company.partner_id.city"/>  
+    		   <span t-field="res_company.partner_id.zip"/>  -
+    		   <span t-field="res_company.partner_id.city"/>
 		  	</td>
 		  	<td style="vertical-align:middle">
 		  	   <span>Fax</span>
@@ -169,7 +169,7 @@
 		  	</td>
 		  </tr>
 		  <tr>
-				
+
 		  	<td></td>
 		  	<td style="vertical-align:top">
     		   <span t-field="res_company.partner_id.country_id.name"/>
@@ -177,7 +177,7 @@
 		  	<td></td>
 		  </tr>
 		  <tr>
-		  	<td colspan="2"><span style="margin-left:10px" t-field="res_company.rml_header1"/> </td>		  	
+		  	<td colspan="2"><span style="margin-left:10px" t-field="res_company.rml_header1"/> </td>
 			<td style="vertical-align:bottom">
 				<span t-field="res_company.partner_id.vat"/>
 			</td>
@@ -185,5 +185,5 @@
 		  	<td></td>
 		  </tr>
 		</table>
-	</template>		
+	</template>
 </odoo>

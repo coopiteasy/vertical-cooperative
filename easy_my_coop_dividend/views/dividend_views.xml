@@ -1,7 +1,7 @@
 <odoo>
 	<data>
 		<menuitem name="Dividend" id="menu_easy_my_coop_main_dividend" parent="easy_my_coop.menu_main_easy_my_coop" groups="easy_my_coop.group_easy_my_coop_user" sequence="30" />
-		
+
 		<record id="dividend_year_form" model="ir.ui.view">
             <field name="name">dividend.year.form</field>
             <field name="model">dividend.year</field>
@@ -47,16 +47,16 @@
 		                    			<field name="days"/>
 		                    			<field name="total_amount_line"/>
 		                    			<field name="coeff"/>
-		                    			<field name="dividend_amount" string="Dividend" sum="Total dividend"/>		                    			
+		                    			<field name="dividend_amount" string="Dividend" sum="Total dividend"/>
 		                   			</tree>
 		                   		</field>
-	                   		</page>	                   		
+	                   		</page>
                    		</notebook>
                    	</sheet>
                 </form>
             </field>
         </record>
-        
+
         <record id="dividend_year_tree" model="ir.ui.view">
             <field name="name">dividend.year.tree</field>
             <field name="model">dividend.year</field>
@@ -67,16 +67,16 @@
                 </tree>
             </field>
         </record>
-        
+
         <record id="dividend_year_action" model="ir.actions.act_window">
             <field name="name">Dividend year</field>
             <field name="res_model">dividend.year</field>
             <field name="view_type">form</field>
             <field name="view_id" ref="dividend_year_tree"/>
         </record>
-	
+
 		<menuitem action="dividend_year_action" name="Dividend" id="menu_dividend_year"  parent="menu_easy_my_coop_main_dividend" sequence="10"/>
-		
+
 		<record id="view_detailed_dividend_line_filter" model="ir.ui.view">
             <field name="name">detailed.dividend.line.select</field>
             <field name="model">detailed.dividend.line</field>
@@ -90,7 +90,7 @@
                     <filter string="Dividend Year" domain="[]"  context="{'group_by':'dividend_year_id'}"/>
                </search>
             </field>
-        </record>		
+        </record>
 		<record id="detailed_dividend_line_tree" model="ir.ui.view">
             <field name="name">detailed.dividend.line.tree</field>
             <field name="model">detailed.dividend.line</field>
@@ -109,16 +109,16 @@
                 </tree>
             </field>
         </record>
-        
+
         <record id="detailed_dividend_line_action" model="ir.actions.act_window">
             <field name="name">Detailed dividend lines</field>
             <field name="res_model">detailed.dividend.line</field>
             <field name="view_type">form</field>
             <field name="view_id" ref="detailed_dividend_line_tree"/>
         </record>
-	
+
 		<menuitem action="detailed_dividend_line_action" name="Detailed dividend lines" id="menu_det_dividend_line"  parent="menu_easy_my_coop_main_dividend" sequence="20"/>
-		
+
 		<record id="view_dividend_line_filter" model="ir.ui.view">
             <field name="name">dividend.line.select</field>
             <field name="model">dividend.line</field>
@@ -135,7 +135,7 @@
                </search>
             </field>
         </record>
-        
+
 		<record id="dividend_line_tree" model="ir.ui.view">
             <field name="name">dividend.line.tree</field>
             <field name="model">dividend.line</field>
@@ -151,14 +151,14 @@
                 </tree>
             </field>
         </record>
-        
+
         <record id="dividend_line_action" model="ir.actions.act_window">
             <field name="name">Dividend lines</field>
             <field name="res_model">dividend.line</field>
             <field name="view_type">form</field>
             <field name="view_id" ref="dividend_line_tree"/>
         </record>
-	
+
 		<menuitem action="dividend_line_action" name="Dividend lines" id="menu_dividend_line" parent="menu_easy_my_coop_main_dividend" sequence="30"/>
 	</data>
 </odoo>

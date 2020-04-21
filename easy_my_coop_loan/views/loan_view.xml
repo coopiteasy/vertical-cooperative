@@ -44,7 +44,7 @@
 					<button name="compute_loan_interest" string="Compute interest"
 						type="object" states="closed,ongoing"
 						groups="easy_my_coop.group_easy_my_coop_manager"/>
-						
+
 					<field name="state" widget="statusbar" statusbar_visible="draft,confirmed,ongoing,closed"/>
 				</header>
 				<sheet>

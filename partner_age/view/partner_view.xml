@@ -10,7 +10,7 @@
             </xpath>
         </field>
     </record>
-    
+
     <record id="view_partner_tree_age" model="ir.ui.view">
        <field name="name">res.partner.tree.easy_my_coop</field>
        <field name="model">res.partner</field>
