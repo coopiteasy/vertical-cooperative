@@ -227,6 +227,8 @@ class WebsiteSubscription(http.Controller):
             if email == company_email:
                 values["error_msg"] = _("Cooperator and company emails"
                                         " should be different.")
+                values = self.fill_values(values, is_company, logged)
+                values.update(kwargs)
                 return request.website.render(redirect, values)
             email = company_email
 
@@ -234,6 +236,7 @@ class WebsiteSubscription(http.Controller):
                 or not request.website.is_captcha_valid(
                     kwargs['g-recaptcha-response'])):
             values = self.fill_values(values, is_company, logged)
+            values.update(kwargs)
             values["error_msg"] = _("the captcha has not been validated,"
                                     " please fill in the captcha")
 
@@ -293,6 +296,7 @@ class WebsiteSubscription(http.Controller):
 
             if not valid:
                 values = self.fill_values(values, is_company, logged)
+                values.update(kwargs)
                 values["error_msg"] = _("You iban account number "
                                         "is not valid")
                 return request.website.render(redirect, values)
@@ -307,6 +311,7 @@ class WebsiteSubscription(http.Controller):
                     share = self.get_selected_share(kwargs)
                     if partner.cooperator_type != share.default_code:
                         values = self.fill_values(values, is_company, logged)
+                        values.update(kwargs)
                         values["error_msg"] = (_("You can't subscribe two "
                                                  "different types of share"))
                         return request.website.render(redirect, values)
@@ -314,6 +319,7 @@ class WebsiteSubscription(http.Controller):
 
         if max_amount > 0 and total_amount > max_amount:
             values = self.fill_values(values, is_company, logged)
+            values.update(kwargs)
             values["error_msg"] = (_("You can't subscribe for an amount that "
                                      "exceed ")
                                    + str(max_amount)
