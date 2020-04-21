@@ -85,11 +85,12 @@ class ResPartner(models.Model):
                  'share_ids.share_number')
     def _compute_cooperator_type(self):
         for partner in self:
-            if partner.share_ids and partner.share_ids[0].share_number > 0:
-                share = partner.share_ids[0]
-                partner.cooperator_type = share.share_product_id.default_code
-            else:
-                partner.cooperator_type = ''
+            share_type = ''
+            for line in partner.share_ids:
+                if line.share_number > 0:
+                    share_type = line.share_product_id.default_code
+                    break
+            partner.cooperator_type = share_type
 
     @api.multi
     @api.depends('share_ids')
