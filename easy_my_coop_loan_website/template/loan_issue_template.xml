@@ -14,10 +14,10 @@
 		            <h2 class="energie">Subscribe to Loan Issue</h2><br/>
 		            <div class="row">
 		                <div class="col-md-8">
-							<form action="/subscription/subscribe_loan_issue" method="post" class="form-horizontal mt32" enctype="multipart/form-data">                    
+							<form action="/subscription/subscribe_loan_issue" method="post" class="form-horizontal mt32" enctype="multipart/form-data">
 								<p style="color:red;"><t t-esc="error_msg"/></p>
 					        	<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-					           
+
 								<div t-attf-class="form-group #{error and 'loan_issue_id' in error and 'has-error' or ''}">
 		                        	<label class="col-md-3 col-sm-4 control-label" style="width:25%" for="share_product_id">Loan issue</label>
 			                        <select id="loan_issue" name="loan_issue_id" class="col-md-7 col-sm-8 form-control" style="width:54%;margin-left:15px">
@@ -33,7 +33,7 @@
 				                <table style="margin-left:195px">
 								<tr>
 									<!--<td width="80%">
-										<div class="g-recaptcha" t-att-data-sitekey="website.recaptcha_key_site" data-theme="green"/><br/>			
+										<div class="g-recaptcha" t-att-data-sitekey="website.recaptcha_key_site" data-theme="green"/><br/>
 									</td>-->
 									<td>
 				 						<div class="form-group">
@@ -41,8 +41,8 @@
 							                    <button class="btn btn-primary btn-lg">Send</button>
 							                </div>
 							            </div>
-									</td>								
-								</tr> 							
+									</td>
+								</tr>
 							</table>
 							</form>
 						</div>

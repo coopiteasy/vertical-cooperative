@@ -7,10 +7,10 @@
 					<span>Ce document atteste de la souscription de parts sociales au capital de la SAS Coopérative à Capital Variable SuperQuinquin par </span>
 					<b><span t-field="o.name"></span></b>
 					<span>, enregistré(e) sous le <b>numéro de coopérateur </b></span>
-					<span t-field="o.cooperator_register_number"></span>	
-				</p>	
+					<span t-field="o.cooperator_register_number"></span>
+				</p>
 			</xpath>
-			
+
 			<xpath expr="//div[@name='total_table']" position="after">
 				<div name="legal_text" style="position:relative;top:145px;font-size:12;">
 					<div>Ce document atteste d’une souscription en numéraire au capital d’une société, répondant à la définition communautaire de la Petite et Moyenne Entreprise, dont les titres ne sont pas admis aux négociations sur un marché d’instruments financiers français ou étranger en application de l’article 199 terdecies 0A du CGI.<br/>
@@ -28,8 +28,8 @@ d bis) Les actifs de la société ne sont pas constitués de façon prépondéra
 d ter) Les souscriptions au capital de la société confèrent aux souscripteurs les seuls droits résultant de la qualité d’actionnaire ou d’associé, à l’exclusion de toute autre contrepartie notamment sous la forme de tarifs préférentiels ou d’accès prioritaire aux biens produits ou aux services rendus par la société ;<br/>
 <br/>
 e) La société doit être une petite et moyenne entreprise qui satisfait à la définition des petites et moyennes entreprises qui figure à l’annexe I au règlement (CE) n° 800/2008 de la Commission du 6 août 2008 déclarant certaines catégories d’aide compatibles avec le marché commun en application des articles 87 et 88 du traité (Règlement général d’exemption par catégorie) ;<br/>
-					</div>	
-				</div>	
+					</div>
+				</div>
 			</xpath>
 			<xpath expr="//div[@name='board_commitee']" position="replace">
 				<div name="" class="col-xs-6 pull-left" style="position:relative;top:105px;font-size:20;color:black;font-family:Roboto-Regular;">

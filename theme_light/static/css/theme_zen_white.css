@@ -8,7 +8,7 @@ body {
   margin: 0;
 }
 article,
-aside,  
+aside,
 details,
 figcaption,
 figure,
@@ -60,7 +60,7 @@ h1 {
 
 h7,.h7 {
   text-transform: uppercase;
-  font-weight: bold;	
+  font-weight: bold;
 }
 
 
@@ -68,7 +68,7 @@ h7,.h7 {
 .text_100 {
 	font-size:100%;
      }
-     
+
 .text_85 {
 	font-size:85%;
      }
@@ -79,7 +79,7 @@ h7,.h7 {
 .text_100 {
 	font-size:90%;
      }
-     
+
 .text_85 {
 	font-size:65%;
      }
@@ -92,8 +92,8 @@ h7,.h7 {
 
 .text_85 {
 	font-size:55%;
-     }     
-     
+     }
+
 	}
 
 @media (min-width: 1368px) {
@@ -113,7 +113,7 @@ h7,.h7 {
 	font-size:60%;
      }
 	}
- 
+
 
 mark {
   background: #ff0;
@@ -199,7 +199,7 @@ input::-moz-focus-inner {
  	border : solid 1px #7d7d7d;
 	-webkit-border-radius: 15px;
   	-moz-border-radius: 15px;
-  	border-radius: 15px;  
+  	border-radius: 15px;
   	padding:5px;
   	padding-left:10px;
   	padding-right:10px;
@@ -211,7 +211,7 @@ input::-moz-focus-inner {
 	border : solid 2px black;
 	-webkit-border-radius: 15px;
   	-moz-border-radius: 15px;
-  	border-radius: 15px;  
+  	border-radius: 15px;
   	padding:5px;
   	padding-left:10px;
   	padding-right:10px;
@@ -225,7 +225,7 @@ input::-moz-focus-inner {
 	border : solid 2px #64812b;
 	-webkit-border-radius: 15px;
   	-moz-border-radius: 15px;
-  	border-radius: 15px;  
+  	border-radius: 15px;
   	padding:5px;
   	padding-left:10px;
   	padding-right:10px;
@@ -240,7 +240,7 @@ input::-moz-focus-inner {
 	border : solid 2px #64812b;
 	-webkit-border-radius: 15px;
   	-moz-border-radius: 15px;
-  	border-radius: 15px;  
+  	border-radius: 15px;
   	padding:5px;
   	padding-left:10px;
   	padding-right:10px;
@@ -258,7 +258,7 @@ input::-moz-focus-inner {
 	border : solid 2px #64812b;
 	-webkit-border-radius: 15px;
   	-moz-border-radius: 15px;
-  	border-radius: 15px;  
+  	border-radius: 15px;
   	padding:5px;
   	padding-left:10px;
   	padding-right:10px;
@@ -272,7 +272,7 @@ input::-moz-focus-inner {
 	border : solid 2px #808080;
 	-webkit-border-radius: 15px;
   	-moz-border-radius: 15px;
-  	border-radius: 15px;  
+  	border-radius: 15px;
   	padding:5px;
   	padding-left:10px;
   	padding-right:10px;
@@ -285,7 +285,7 @@ input::-moz-focus-inner {
 	border : solid 2px black;
 	-webkit-border-radius: 15px;
   	-moz-border-radius: 15px;
-  	border-radius: 15px;  
+  	border-radius: 15px;
   	padding:5px;
   	padding-left:10px;
   	padding-right:10px;
@@ -302,7 +302,7 @@ input::-moz-focus-inner {
 	border : solid 0px #64812b;
 	-webkit-border-radius: 15px;
   	-moz-border-radius: 15px;
-  	border-radius: 15px;  
+  	border-radius: 15px;
   	padding:5px;
   	padding-left:10px;
   	padding-right:10px;
@@ -332,14 +332,14 @@ input::-moz-focus-inner {
     -moz-transition: .4s,opacity .6s;
     -o-transition: .4s,opacity .6s;
     transition: .4s,opacity .6s;
-    
+
     font-weight: bold;
     background-color: rgba(255, 255, 255, 0.6);
 	color : black;
 	border : solid 0px white;
 	-webkit-border-radius: 15px;
   	-moz-border-radius: 15px;
-  	border-radius: 15px;  
+  	border-radius: 15px;
   	padding:5px;
   	padding-left:10px;
   	padding-right:10px;
@@ -357,9 +357,9 @@ input::-moz-focus-inner {
     transform: translate(-150%,0);
 }
 
-/*  
-    We show :before pseudo-element on :hover 
-    and :after pseudo-element on :active 
+/*
+    We show :before pseudo-element on :hover
+    and :after pseudo-element on :active
 */
 
 .button_green_hover:hover:before,
@@ -397,7 +397,7 @@ input::-moz-focus-inner {
 	border : solid 0px #808080;;
 	-webkit-border-radius: 15px;
   	-moz-border-radius: 15px;
-  	border-radius: 15px;  
+  	border-radius: 15px;
   	padding:5px;
   	padding-left:10px;
   	padding-right:10px;
@@ -427,14 +427,14 @@ input::-moz-focus-inner {
     -moz-transition: .4s,opacity .6s;
     -o-transition: .4s,opacity .6s;
     transition: .4s,opacity .6s;
-    
+
     font-weight: bold;
     background-color: rgba(255, 255, 255, 0.6);
 	color : black;
 	border : solid 0px white;
 	-webkit-border-radius: 15px;
   	-moz-border-radius: 15px;
-  	border-radius: 15px;  
+  	border-radius: 15px;
   	padding:5px;
   	padding-left:10px;
   	padding-right:10px;
@@ -452,9 +452,9 @@ input::-moz-focus-inner {
     transform: translate(-150%,0);
 }
 
-/*  
-    We show :before pseudo-element on :hover 
-    and :after pseudo-element on :active 
+/*
+    We show :before pseudo-element on :hover
+    and :after pseudo-element on :active
 */
 
 .button_grey_hover:hover:before,
@@ -487,7 +487,7 @@ input::-moz-focus-inner {
 
 
 .grey_button {
-	
+
 	display: inline-block;
     position: relative;
     overflow: hidden;
@@ -497,12 +497,12 @@ input::-moz-focus-inner {
 	border : solid 0px #808080;
 	-webkit-border-radius: 15px;
   	-moz-border-radius: 15px;
-  	border-radius: 15px;  
+  	border-radius: 15px;
   	padding:5px;
   	padding-left:10px;
   	padding-right:10px;
   	font-size:90%;
-	
+
 }
 
 .fa-shopping-cart:before {
@@ -515,7 +515,7 @@ input::-moz-focus-inner {
 }
 
 .small_text {
-	font-size:85%;	
+	font-size:85%;
 }
 
 
@@ -616,8 +616,8 @@ th {
   .navbar {
     display: none;
   }
-  
-  
+
+
   .table td,
   .table th {
     background-color: #fff !important;
@@ -654,7 +654,7 @@ html {
 }
 
 body {
-  font-size:14px;	
+  font-size:14px;
   font-family: 'lineto', serif;
   line-height: 1.6;
   color: #333;
@@ -742,7 +742,7 @@ ul.product_content li {
 ul.product_content li:first-child {
     margin-top:30px;
 }
-    
+
 ul.product_content:hover{
   opacity: 0.75;
   top: 1.2em;
@@ -760,10 +760,10 @@ z-index:4;
   display: initial;
   float:left;
   margin-left:25px;
-  margin-right:25px; 
+  margin-right:25px;
   margin-bottom:35px;
-  width:95%; 
-}  
+  width:95%;
+}
 
 hr {
   margin-top: 22px;
@@ -899,21 +899,21 @@ p {
   .lead {
     font-size: 24px;
   }
-}  
+}
 
 @media (min-width: 768px) {
-	
-	div .oe_website_sale {		
+
+	div .oe_website_sale {
     }
-    
+
     #products_grid_before {
-	    width:175px;	    	
+	    width:175px;
     }
   }
 
 .product_title a {
 	color:#506655;
-	font-size: 125%;		 
+	font-size: 125%;
 }
 
 
@@ -928,7 +928,7 @@ p {
   cursor: pointer;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
-  border-radius: 10px;  
+  border-radius: 10px;
 }
 .css_attribute_variant input {
   height: 0px;
@@ -937,13 +937,13 @@ p {
 .css_attribute_variant.active {
   border: 2px ridge black;
   background-color:white;
-  color:black;  
+  color:black;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  border-radius: 5px;   
+  border-radius: 5px;
 }
 
-.css_attribute_variant.active:after { 
+.css_attribute_variant.active:after {
 content: '';
 position: relative;
 border-style: solid;
@@ -957,7 +957,7 @@ bottom: -15px;
 left: 50%;
 }
 
-.css_attribute_variant.active:before { 
+.css_attribute_variant.active:before {
 content:'';
 position: relative;
 border-style: solid;
@@ -981,16 +981,16 @@ label.css_attribute_variant.css_not_available {
   opacity: 1;
   background-image: url("/website_sale/static/src/img/redcross.png");
   background-size: cover;
-}  
+}
 
 .confirm-primary  {
-	color : white; 
+	color : white;
 	background-color :#64812b;
 }
 
 .confirm-other {
-	background-color :white; 
-	color : #64812b; 
+	background-color :white;
+	color : #64812b;
 }
 
 /* Wizard */
@@ -1087,19 +1087,19 @@ ul.wizard_cart li:first-child {
 
 
 chevron-primary {
-	background-color :#64812b; 
+	background-color :#64812b;
 }
 
 
 .cleanse_main ul{
-    width: 100%; 
+    width: 100%;
     margin: auto;
     box-sizing: border-box;
     height: 490px;
 }
 
 .cleanse_main li{
-    width: 25%; 
+    width: 25%;
     float: left;
     box-sizing: border-box;
 }
@@ -1117,7 +1117,7 @@ chevron-primary {
 }
 
 .cleanse_main .clense_type img{
-    margin: 10px 0; 
+    margin: 10px 0;
 }
 
 .clense_type_head {
@@ -1181,7 +1181,7 @@ cite {
 }
 .text-muted {
   color: #4d4d4d;
-  
+
 }
 .text-primary {
   color: #777777;
@@ -1333,7 +1333,7 @@ blockquote .small {
 blockquote footer:before,
 blockquote small:before,
 blockquote .small:before {
-  
+
 	}
 .blockquote-reverse,
 blockquote.pull-right {
@@ -1357,7 +1357,7 @@ blockquote.pull-right footer:after,
 blockquote.pull-right small:after,
 .blockquote-reverse .small:after,
 blockquote.pull-right .small:after {
-  
+
 }
 
 blockquote:before,
@@ -4481,7 +4481,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #333;
   font-weight: bolder;
   background-image:url(/upper_website/static/img/upper_big_logo.png);
-  background-position:50% 0%; 
+  background-position:50% 0%;
   background-size: 25% ;
   background-repeat:no-repeat;
 }
@@ -4634,18 +4634,18 @@ h3 {
 }
 
 
-.text_menu { 
+.text_menu {
 	padding-top: 5px;
 	border:solid 1px #333;
-	max-height: 35px; 
-	width: 100%; 
-	overflow: hidden; 
-	-webkit-transition:max-height 0s ease; 
-	-moz-transition:max-height 0s ease; 
-	-o-transition:max-height 0s ease; 
-	-htm-transition:max-height 0s ease; 
-	transition:max-height 0s ease; 
-		} 
+	max-height: 35px;
+	width: 100%;
+	overflow: hidden;
+	-webkit-transition:max-height 0s ease;
+	-moz-transition:max-height 0s ease;
+	-o-transition:max-height 0s ease;
+	-htm-transition:max-height 0s ease;
+	transition:max-height 0s ease;
+		}
 
 .text_menu ul{
   padding-left: 5px;
@@ -4660,9 +4660,9 @@ h3 {
   vertical-align:top;
 }
 
-.text_menu:hover { 
-	max-height: 9000px; 
-	} 
+.text_menu:hover {
+	max-height: 9000px;
+	}
 
 .text_menu_detail {
  padding-left: 10px;
@@ -4672,8 +4672,8 @@ h3 {
 }
 
 
-.text_menu_title { 
-	font-size: 100%; 
+.text_menu_title {
+	font-size: 100%;
 	height:30px;
     border-bottom:solid 1px #333;
 	background-color:white;
@@ -4824,7 +4824,7 @@ h3 {
   }
 }
 .navbar-nav {
-  margin: 7px -15px; 
+  margin: 7px -15px;
   text-transform:uppercase;
 }
 
@@ -4833,7 +4833,7 @@ h3 {
  display:flex;
  justify-content:space-between;
  float: none;
- font-size:90%; 
+ font-size:90%;
 	}
 
 .navbar-nav > li{
@@ -6626,7 +6626,7 @@ button.close {
 #wrap .carousel-indicators li{
  border: 2px solid #fff;
  background-color : black;
- 
+
 }
 
 #wrap .carousel-indicators .active {
@@ -7027,7 +7027,7 @@ h4 {
   font-family: "lineto", Helvetica, Arial, sans-serif;
   color: #333;
   font-weight: bold;
- 
+
 }
 
 .static_text {
@@ -7061,7 +7061,7 @@ h4 {
 	padding-bottom:30px;
 
 					}
- 
+
 .label {
     display: inline;
     font-size: 75%;
@@ -7128,7 +7128,7 @@ h4 {
 }
 
 .img {
-  
+
 }
 
 .text-muted {
@@ -7168,7 +7168,7 @@ h4 {
 	background-attachment: relative;
 	background-position: center center;
 	width: 100%;
-	
+
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
     -o-background-size: 100%;
@@ -7368,7 +7368,7 @@ h4 {
 }
 
 .navbar-nav a {
-  color :#000000;	
+  color :#000000;
 }
 /*
 .footer {
@@ -7378,7 +7378,7 @@ h4 {
 /*#footer_container {
     background-color: @brand-primary-darker;
     background-size: cover;
-    
+
     }*/
 #footer h4 {
   padding-left: 50px;
@@ -7688,9 +7688,9 @@ footer .fa {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=99)";
   /*IE8*/
 }
-/* 
-	100% Height for Opera as the max-height seems to be ignored, not optimal for large screens 
-	http://bricss.net/post/11230266445/css-hack-to-target-opera 
+/*
+	100% Height for Opera as the max-height seems to be ignored, not optimal for large screens
+	http://bricss.net/post/11230266445/css-hack-to-target-opera
 */
 x:-o-prefocus,
 .lb-overlay img {
@@ -10674,7 +10674,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 /* Global textual link color.*/
 /* Link hover color set via `darken()` function.*/
 /* == Typography*/
-/* 
+/*
 /* ## Font, line-height, and color for body text, headings, and more.*/
 /* Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.*/
 /* Unit-less `line-height` for use in components like buttons.*/
@@ -10738,4 +10738,3 @@ lineto-couriersans-regular
 .fontsforweb_fontid_1962 {
   font-family: 'Bitter-Bold' !important;
 }
-

@@ -99,7 +99,7 @@
    				</sheet>
    			</form>
         </field>
-    </record>    
+    </record>
 
     <record id="view_subscription_request_filter" model="ir.ui.view">
         <field name="name">Cooperator Subscription Search</field>
