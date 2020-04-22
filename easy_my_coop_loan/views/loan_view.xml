@@ -161,7 +161,6 @@
                 <field name="name"/>
                 <field name="loan_issue_id"/>
                 <field name="partner_id"/>
-                <field name="loan_issue_id"/>
                 <field name="quantity"/>
                 <field name="face_value"/>
                 <field name="amount"/>
