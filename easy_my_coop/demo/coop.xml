@@ -69,7 +69,7 @@
         <field name="country_id" ref="base.be"/>
     </record>
 
-    <record id="easy_my_coop.account_cooperator_demo" model="account.account">
+    <record id="account_cooperator_demo" model="account.account">
         <field name="code">416101</field>
         <field name="name">Cooperators</field>
         <field name="user_type_id" ref="account.data_account_type_receivable"/>
@@ -78,7 +78,7 @@
 
     <record id="base.main_company" model="res.company">
         <field name="property_cooperator_account"
-               ref="easy_my_coop.account_cooperator_demo"/>
+               ref="account_cooperator_demo"/>
     </record>
 
     <record id="product_template_share_type_1_demo" model="product.template">
