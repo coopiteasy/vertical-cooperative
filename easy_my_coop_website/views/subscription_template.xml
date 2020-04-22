@@ -1,666 +1,1030 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<template id="assets_frontend" inherit_id="web.assets_frontend" name="Coop">
-	 	<xpath expr="." position="inside">
-			<script type="text/javascript" src="/easy_my_coop/static/src/js/easy_my_coop.js"></script>
-			<script type="text/javascript" src="/easy_my_coop/static/src/js/jquery.inputmask.bundle.js"></script>
-		</xpath>
-	</template>
+    <template id="assets_frontend" inherit_id="web.assets_frontend" name="Coop">
+        <xpath expr="." position="inside">
+            <script type="text/javascript"
+                    src="/easy_my_coop/static/src/js/easy_my_coop.js"></script>
+            <script type="text/javascript"
+                    src="/easy_my_coop/static/src/js/jquery.inputmask.bundle.js"></script>
+        </xpath>
+    </template>
 
-	<template id="company_operational_offices" inherit_id="website.company_description" name="Company Description">
-	    <address itemscope="itemscope" position="inside">
-		    <div class="fa fa-building-o" t-field="res_company.company_registry"/><br/>
-		    <t t-if="res_company.partner_id.bank_ids">
-		    	<div class="fa fa-bank" t-field="res_company.partner_id.bank_ids[0].sanitized_acc_number"/>
-		    </t>
-	    </address>
-	</template>
+    <template id="company_operational_offices"
+              inherit_id="website.company_description"
+              name="Company Description">
+        <address itemscope="itemscope" position="inside">
+            <div class="fa fa-building-o"
+                 t-field="res_company.company_registry"/>
+            <br/>
+            <t t-if="res_company.partner_id.bank_ids">
+                <div class="fa fa-bank"
+                     t-field="res_company.partner_id.bank_ids[0].sanitized_acc_number"/>
+            </t>
+        </address>
+    </template>
 
-	<template id="cooperator_thanks" name="Cooperator contact us">
-	    <t t-call="website.layout">
-	      <div id="wrap">
-	        <div class="oe_structure"/>
-	        <div class="container">
-	            <h1>Thanks!</h1>
-	            <div class="row">
-	                <div class="col-md-8">
-	                    <div class="alert alert-success">
-	                        Your subscription has been successfully registered.
-	                        <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
-	                    </div>
-	                    <p>
-	                        We will get back to you shortly.
-	                    </p>
-	                    <ul class="list-unstyled">
-	                        <li><i class="fa fa-phone"></i> : <span t-field="res_company.phone"/></li>
-	                        <li><i class="fa fa-envelope"></i> : <span t-field="res_company.email"/></li>
-	                    </ul>
-	                </div>
-	                <div class="col-md-4">
-	                    <t t-call="website.company_description"/>
-	                </div>
-	            </div>
-	        </div>
-	        <div class="oe_structure"/>
-	      </div>
-	    </t>
-	</template>
+    <template id="cooperator_thanks" name="Cooperator contact us">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure"/>
+                <div class="container">
+                    <h1>Thanks!</h1>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="alert alert-success">
+                                Your subscription has been successfully
+                                registered.
+                                <button type="button" class="close"
+                                        data-dismiss="alert">&amp;times;
+                                </button>
+                            </div>
+                            <p>
+                                We will get back to you shortly.
+                            </p>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <i class="fa fa-phone"></i>
+                                    :
+                                    <span t-field="res_company.phone"/>
+                                </li>
+                                <li>
+                                    <i class="fa fa-envelope"></i>
+                                    :
+                                    <span t-field="res_company.email"/>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <t t-call="website.company_description"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </div>
+        </t>
+    </template>
 
-	<template id="becomecooperator" name="Become Cooperator">
-		 <t t-call="website.layout">
-	      <div id="wrap">
-	        <div class="oe_structure"/>
-	        <div class="container oe_easymy_coop">
-	            <h2 class="energie">Become Cooperator</h2><br/>
-	            <div class="row">
-	                <div class="col-md-8">
-						<form action="/subscription/subscribe_share" method="post" class="form-horizontal mt32" enctype="multipart/form-data">
-						   <p style="color:red;"><t t-esc="error_msg"/></p>
-				           <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+    <template id="becomecooperator" name="Become Cooperator">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure"/>
+                <div class="container oe_easymy_coop">
+                    <h2 class="energie">Become Cooperator</h2>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <form action="/subscription/subscribe_share"
+                                  method="post" class="form-horizontal mt32"
+                                  enctype="multipart/form-data">
+                                <p style="color:red;">
+                                    <t t-esc="error_msg"/>
+                                </p>
+                                <input type="hidden" name="csrf_token"
+                                       t-att-value="request.csrf_token()"/>
 
-				           <div t-attf-class="form-group">
-				              <a class='btn btn-primary' t-if="logged" t-attf-href="/my/account">You want to modify your personnal information ?</a>
-				              <br/>
-				           </div>
+                                <div t-attf-class="form-group">
+                                    <a class='btn btn-primary' t-if="logged"
+                                       t-attf-href="/my/account">You want to
+                                        modify your personnal information ?
+                                    </a>
+                                    <br/>
+                                </div>
 
-				           <div t-attf-class="form-group">
-				              <a class='btn btn-primary' t-if="not logged" t-attf-href="/web/login?redirect=#{ request.httprequest.url }">You have already an account?</a>
-				              <br/>
-				           </div>
+                                <div t-attf-class="form-group">
+                                    <a class='btn btn-primary' t-if="not logged"
+                                       t-attf-href="/web/login?redirect=#{ request.httprequest.url }">
+                                        You have already an account?
+                                    </a>
+                                    <br/>
+                                </div>
 
-				           <div t-attf-class="form-group" style="display: none;">
-								<label>
-									<input type="checkbox" t-att-checked="logged" name="logged"/>
-									Logged
-								</label>
-							</div>
+                                <div t-attf-class="form-group"
+                                     style="display: none;">
+                                    <label>
+                                        <input type="checkbox"
+                                               t-att-checked="logged"
+                                               name="logged"/>
+                                        Logged
+                                    </label>
+                                </div>
 
-				           <div t-attf-class="form-group" style="display: none;">
-								<label>
-									<input type="checkbox" t-att-checked="already_cooperator" name="already_cooperator" />
-									Already cooperator?
-								</label>
-							</div>
+                                <div t-attf-class="form-group"
+                                     style="display: none;">
+                                    <label>
+                                        <input type="checkbox"
+                                               t-att-checked="already_cooperator"
+                                               name="already_cooperator"/>
+                                        Already cooperator?
+                                    </label>
+                                </div>
 
-				           <div name="email_from_container" t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="email">Email</label>
-				                <div class="col-md-7 col-sm-8 bottom-line" style="padding-bottom:20px">
-				                    <input type="email" class="form-control mandatory-field" name="email"
-				                    required="True" t-att-readonly="logged"
-				                    t-attf-value="#{email or ''}" placeholder="didier.bourdon@bees-coop.be"/>
-				                </div>
-				            </div>
+                                <div name="email_from_container"
+                                     t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="email">Email
+                                    </label>
+                                    <div class="col-md-7 col-sm-8 bottom-line"
+                                         style="padding-bottom:20px">
+                                        <input type="email"
+                                               class="form-control mandatory-field"
+                                               name="email"
+                                               required="True"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{email or ''}"
+                                               placeholder="didier.bourdon@bees-coop.be"/>
+                                    </div>
+                                </div>
 
-				            <div t-if="not logged" name="confirm_email_container" t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="confirm_email">Confirm Email</label>
-				                <div class="col-md-7 col-sm-8 bottom-line" style="padding-bottom:20px">
-				                    <input type="confirm_email" class="form-control mandatory-field" name="confirm_email"
-				                    t-att-required="logged" t-att-readonly="logged"
-				                    t-attf-value="#{confirm_email or ''}" placeholder="didier.bourdon@bees-coop.be"/>
-				                </div>
-				            </div>
+                                <div t-if="not logged"
+                                     name="confirm_email_container"
+                                     t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="confirm_email">Confirm Email
+                                    </label>
+                                    <div class="col-md-7 col-sm-8 bottom-line"
+                                         style="padding-bottom:20px">
+                                        <input type="confirm_email"
+                                               class="form-control mandatory-field"
+                                               name="confirm_email"
+                                               t-att-required="logged"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{confirm_email or ''}"
+                                               placeholder="didier.bourdon@bees-coop.be"/>
+                                    </div>
+                                </div>
 
-				            <div t-attf-class="form-group #{error and 'firstname' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="firstname">First Name</label>
-				                <div class="col-md-7 col-sm-8" style="padding-top:5px">
-				                    <input type="text" class="form-control mandatory-field" name="firstname"
-				                    required="True" t-att-readonly="logged"
-				                    t-attf-value="#{firstname or ''}" placeholder="Didier"/>
-				                </div>
-				            </div>
+                                <div t-attf-class="form-group #{error and 'firstname' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="firstname">First Name
+                                    </label>
+                                    <div class="col-md-7 col-sm-8"
+                                         style="padding-top:5px">
+                                        <input type="text"
+                                               class="form-control mandatory-field"
+                                               name="firstname"
+                                               required="True"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{firstname or ''}"
+                                               placeholder="Didier"/>
+                                    </div>
+                                </div>
 
-	 			            <div t-attf-class="form-group #{error and 'lastname' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="lastname">Last Name</label>
-				                <div class="col-md-7 col-sm-8">
-				                    <input type="text" class="form-control mandatory-field" name="lastname"
-				                    required="True" t-att-readonly="logged" t-attf-value="#{lastname or ''}" placeholder="Bourdon"/>
-				                </div>
-				            </div>
+                                <div t-attf-class="form-group #{error and 'lastname' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="lastname">Last Name
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                        <input type="text"
+                                               class="form-control mandatory-field"
+                                               name="lastname"
+                                               required="True"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{lastname or ''}"
+                                               placeholder="Bourdon"/>
+                                    </div>
+                                </div>
 
-							<div t-attf-class="form-group #{error and 'gender' in error and 'has-error' or ''}">
-				               <label class="col-md-3 col-sm-4 control-label" for="gender">Gender</label>
-			                   <select name="gender" class="col-md-7 col-sm-8 form-control"
-			                   		   required="True" t-att-readonly="logged"
-			                   		   style="width:54%;margin-left:15px">
-			                       <option value=""></option>
-			                       <t t-foreach="genders or []" t-as="type">
-			                           <option t-att-value="type[0]" t-att-selected="type[0] == gender"><t t-esc="type[1]"/></option>
-			                       </t>
-			                   </select>
-			           		</div>
+                                <div t-attf-class="form-group #{error and 'gender' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="gender">Gender
+                                    </label>
+                                    <select name="gender"
+                                            class="col-md-7 col-sm-8 form-control"
+                                            required="True"
+                                            t-att-readonly="logged"
+                                            style="width:54%;margin-left:15px">
+                                        <option value=""></option>
+                                        <t t-foreach="genders or []"
+                                           t-as="type">
+                                            <option t-att-value="type[0]"
+                                                    t-att-selected="type[0] == gender">
+                                                <t t-esc="type[1]"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
 
-							<div t-attf-class="form-group #{error and 'birthdate' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="birthdate">Birthdate</label>
-				                <div class="col-md-7 col-sm-8">
-				                    <input type="text" data-inputmask="'alias': 'date'" class="form-control mandatory-field"
-				                    name="birthdate" required="True" t-att-readonly="logged"
-				                    t-attf-value="#{birthdate or ''}" placeholder="05/03/1978"/>
-				                </div>
-				            </div>
+                                <div t-attf-class="form-group #{error and 'birthdate' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="birthdate">Birthdate
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                        <input type="text"
+                                               data-inputmask="'alias': 'date'"
+                                               class="form-control mandatory-field"
+                                               name="birthdate" required="True"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{birthdate or ''}"
+                                               placeholder="05/03/1978"/>
+                                    </div>
+                                </div>
 
-				            <div t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="iban">Bank Account Number</label>
-				                <div class="col-md-7 col-sm-8">
-				                    <input type="text" class="form-control mandatory-field" name="iban"
-				                    required="True" t-att-readonly="logged" t-attf-value="#{iban or ''}" placeholder="BE48523080767127"/>
-				                </div>
-				            </div>
+                                <div t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="iban">Bank Account Number
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                        <input type="text"
+                                               class="form-control mandatory-field"
+                                               name="iban"
+                                               required="True"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{iban or ''}"
+                                               placeholder="BE48523080767127"/>
+                                    </div>
+                                </div>
 
-		                    <div t-attf-class="form-group #{error and 'lang' in error and 'has-error' or ''}" >
-		                      <label class="col-md-3 col-sm-4 control-label" style="width:25%" for="lang">Language</label>
-		                      <select name="lang" class="col-md-7 col-sm-8 form-control "
-		                      		  t-att-readonly="logged" style="width:30%;margin-left:15px">
-		                          <option value="2">Language...</option>
-		                          <t t-foreach="langs or []" t-as="langue">
-		                              <option t-att-value="langue.code" t-att-selected="langue.code == lang"><t t-esc="langue.name"/></option>
-		                          </t>
-		                      </select>
-							  <br/>
-							  <div class="bottom-line" style="margin-left:25%;margin-top:35px;width:59%"></div>
-		                    </div>
+                                <div t-attf-class="form-group #{error and 'lang' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           style="width:25%" for="lang">Language
+                                    </label>
+                                    <select name="lang"
+                                            class="col-md-7 col-sm-8 form-control "
+                                            t-att-readonly="logged"
+                                            style="width:30%;margin-left:15px">
+                                        <option value="2">Language...</option>
+                                        <t t-foreach="langs or []"
+                                           t-as="langue">
+                                            <option t-att-value="langue.code"
+                                                    t-att-selected="langue.code == lang">
+                                                <t t-esc="langue.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                    <br/>
+                                    <div class="bottom-line"
+                                         style="margin-left:25%;margin-top:35px;width:59%"></div>
+                                </div>
 
-	 			            <div t-attf-class="form-group #{error and 'address' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="address">Address</label>
-				                <div class="col-md-7 col-sm-8">
-				                    <input type="text" class="form-control mandatory-field" name="address"
-				                    required="True" t-att-readonly="logged"
-				                    t-attf-value="#{address or ''}" placeholder="rue Van Hove, 19"/>
-				                </div>
-				            </div>
+                                <div t-attf-class="form-group #{error and 'address' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="address">Address
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                        <input type="text"
+                                               class="form-control mandatory-field"
+                                               name="address"
+                                               required="True"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{address or ''}"
+                                               placeholder="rue Van Hove, 19"/>
+                                    </div>
+                                </div>
 
-	 			            <div t-attf-class="form-group #{error and 'zip_code' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="zip_code">City</label>
-				                <div class="col-md-7 col-sm-8">
-									<table>
-										<tr>
-											<td width="20%">
-												<input type="text" class="form-control mandatory-field" name="zip_code"
-												required="True" t-att-readonly="logged"
-												t-attf-value="#{zip_code or ''}" placeholder="1030"/>
-											</td>
-											<td width="3%"></td>
-											<td>
-												<input type="text" class="form-control mandatory-field" name="city"
-												required="True" t-att-readonly="logged"
-												t-attf-value="#{city or ''}" placeholder="Bruxelles"/>
-											</td>
-										</tr>
-									</table>
-				                </div>
-				            </div>
+                                <div t-attf-class="form-group #{error and 'zip_code' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="zip_code">City
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                        <table>
+                                            <tr>
+                                                <td width="20%">
+                                                    <input type="text"
+                                                           class="form-control mandatory-field"
+                                                           name="zip_code"
+                                                           required="True"
+                                                           t-att-readonly="logged"
+                                                           t-attf-value="#{zip_code or ''}"
+                                                           placeholder="1030"/>
+                                                </td>
+                                                <td width="3%"></td>
+                                                <td>
+                                                    <input type="text"
+                                                           class="form-control mandatory-field"
+                                                           name="city"
+                                                           required="True"
+                                                           t-att-readonly="logged"
+                                                           t-attf-value="#{city or ''}"
+                                                           placeholder="Bruxelles"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
 
-		                    <div t-attf-class="form-group #{error and 'country_id' in error and 'has-error' or ''}">
-		                      <label class="col-md-3 col-sm-4 control-label" style="width:25%" for="country_id">Country</label>
-		                      <select name="country_id" class="col-md-7 col-sm-8 form-control " t-att-readonly="logged" style="width:54%;margin-left:15px">
-		                          <option value="">Country...</option>
-		                          <t t-foreach="countries or []" t-as="country">
-		                              <option t-att-value="country.id" t-att-selected="country.id == int(country_id)"><t t-esc="country.name"/></option>
-		                          </t>
-		                      </select>
-		                    </div>
+                                <div t-attf-class="form-group #{error and 'country_id' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           style="width:25%" for="country_id">
+                                        Country
+                                    </label>
+                                    <select name="country_id"
+                                            class="col-md-7 col-sm-8 form-control "
+                                            t-att-readonly="logged"
+                                            style="width:54%;margin-left:15px">
+                                        <option value="">Country...</option>
+                                        <t t-foreach="countries or []"
+                                           t-as="country">
+                                            <option t-att-value="country.id"
+                                                    t-att-selected="country.id == int(country_id)">
+                                                <t t-esc="country.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
 
-		                    <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="phone">Phone</label>
-				                <div class="col-md-7 col-sm-8 bottom-line" style="padding-bottom:20px">
-				                    <input type="text" class="form-control" name="phone"
-				                    required="True" t-att-readonly="logged" t-attf-value="#{phone or ''}" placeholder="e.g. (+32).81.81.37.00"/>
-				                </div>
-				            </div>
+                                <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="phone">Phone
+                                    </label>
+                                    <div class="col-md-7 col-sm-8 bottom-line"
+                                         style="padding-bottom:20px">
+                                        <input type="text" class="form-control"
+                                               name="phone"
+                                               required="True"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{phone or ''}"
+                                               placeholder="e.g. (+32).81.81.37.00"/>
+                                    </div>
+                                </div>
 
-							<div t-attf-class="form-group #{error and 'share_product_id' in error and 'has-error' or ''}">
-		                      <label class="col-md-3 col-sm-4 control-label" style="width:25%" for="share_product_id">Parts type</label>
-		                      <select id="share_product_id" name="share_product_id" class="col-md-7 col-sm-8 form-control " style="width:54%;margin-left:15px">
-		                          <t t-foreach="products or []" t-as="product">
-		                              <option t-att-value="product.id" t-att-selected="product.id == int(share_product_id)"><t t-esc="product.short_name"/></option>
-		                          </t>
-		                      </select>
-		                    </div>
+                                <div t-attf-class="form-group #{error and 'share_product_id' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           style="width:25%"
+                                           for="share_product_id">Parts type
+                                    </label>
+                                    <select id="share_product_id"
+                                            name="share_product_id"
+                                            class="col-md-7 col-sm-8 form-control "
+                                            style="width:54%;margin-left:15px">
+                                        <t t-foreach="products or []"
+                                           t-as="product">
+                                            <option t-att-value="product.id"
+                                                    t-att-selected="product.id == int(share_product_id)">
+                                                <t t-esc="product.short_name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
 
-			                <div name="share_div" class="form-group">
-								<table style="width:80%">
-									<tr>
-										<td width="30%">
-				                			<label style="text-align:right; width:100%;padding-right:30px">Parts number</label>
-										</td>
-										<td width="15%">
-										    <div class="css_quantity input-group oe_website_spinner">
-										        <span class="input-group-addon" style="margin-left:0px">
-										            <a t-attf-href="#" class="mb8 js_add_cart_json">
-										                <i class="fa fa-minus"></i>
-										            </a>
-										        </span>
-										        <input type="text" class="js_quantity form-control" data-min="1" name="ordered_parts" t-attf-value="#{ordered_parts or 1}"/>
-										        <span class="input-group-addon">
-										            <a t-attf-href="#" class="mb8 float_left js_add_cart_json">
-										                <i class="fa fa-plus"></i>
-										            </a>
-										        </span>
-										    </div>
-										</td>
-										<td width="5%"> x </td>
-										<td id="share_price" width="5%">25</td>
-										<td width="7%" style="text-align:left;margin-right:20px"><span t-esc="company.currency_id.symbol"/></td>
-										<td width="4%">= </td>
-										<td width="20%">
-						                    <div style="margin-top:12px" t-attf-class="form-group #{error and 'total_parts' in error and 'has-error' or ''}">
-								                <div>
-								                    <input type="text" class="form-control total" name="total_parts" value="25" t-att-data-max="company.subscription_maximum_amount"
-														   t-att-readonly="'readonly'"
-								                    />
-								                </div>
-								            </div>
-										</td>
-									</tr>
-								</table>
-			                </div>
+                                <div name="share_div" class="form-group">
+                                    <table style="width:80%">
+                                        <tr>
+                                            <td width="30%">
+                                                <label style="text-align:right; width:100%;padding-right:30px">
+                                                    Parts number
+                                                </label>
+                                            </td>
+                                            <td width="15%">
+                                                <div class="css_quantity input-group oe_website_spinner">
+                                                    <span class="input-group-addon"
+                                                          style="margin-left:0px">
+                                                        <a t-attf-href="#"
+                                                           class="mb8 js_add_cart_json">
+                                                            <i class="fa fa-minus"></i>
+                                                        </a>
+                                                    </span>
+                                                    <input type="text"
+                                                           class="js_quantity form-control"
+                                                           data-min="1"
+                                                           name="ordered_parts"
+                                                           t-attf-value="#{ordered_parts or 1}"/>
+                                                    <span class="input-group-addon">
+                                                        <a t-attf-href="#"
+                                                           class="mb8 float_left js_add_cart_json">
+                                                            <i class="fa fa-plus"></i>
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td width="5%">x</td>
+                                            <td id="share_price" width="5%">25
+                                            </td>
+                                            <td width="7%"
+                                                style="text-align:left;margin-right:20px">
+                                                <span t-esc="company.currency_id.symbol"/>
+                                            </td>
+                                            <td width="4%">=</td>
+                                            <td width="20%">
+                                                <div style="margin-top:12px"
+                                                     t-attf-class="form-group #{error and 'total_parts' in error and 'has-error' or ''}">
+                                                    <div>
+                                                        <input type="text"
+                                                               class="form-control total"
+                                                               name="total_parts"
+                                                               value="25"
+                                                               t-att-data-max="company.subscription_maximum_amount"
+                                                               t-att-readonly="'readonly'"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
 
-			                <div t-if="res_company.allow_id_card_upload" t-attf-class="form-group #{error and 'file' in error and 'has-error' or ''}">
-		                      	<label class="col-md-3 col-sm-4 control-label" style="width:25%" for="file">Idendity card scan</label>
-	                        	<div class="col-md-7 col-sm-8">
-	                        		<input type="file" class="form-control" name="Resume" t-attf-value="#{file or ''}" style="width:50%"/>
-	                        	</div>
-	                        </div>
+                                <div t-if="res_company.allow_id_card_upload"
+                                     t-attf-class="form-group #{error and 'file' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           style="width:25%" for="file">Idendity
+                                        card scan
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                        <input type="file" class="form-control"
+                                               name="Resume"
+                                               t-attf-value="#{file or ''}"
+                                               style="width:50%"/>
+                                    </div>
+                                </div>
 
-			            	<div class="bottom-line" style="margin-left:178px;margin-top:0px;width:61%"></div>
+                                <div class="bottom-line"
+                                     style="margin-left:178px;margin-top:0px;width:61%"></div>
 
-	 						<br/>
+                                <br/>
 
-							<div id="data_policy_approved" t-if="display_data_policy" t-attf-class="form-group" >
-				                <label class="col-md-3 col-sm-4 control-label" for="data_policy_approved">Privacy Policy</label>
-				                <div class="col-md-9 col-sm-8">
-				                    <div class="checkbox">
-				                        <label>
-				                            <input type="checkbox"
-				                                   name="data_policy_approved"
-				                                   t-att-required="data_policy_required"
-				                                   t-att-checked="data_policy_approved"/>
-				                            <t t-raw="data_policy_text"/>
-				                        </label>
-				                    </div>
-				                </div>
-				            </div>
+                                <div id="data_policy_approved"
+                                     t-if="display_data_policy"
+                                     t-attf-class="form-group">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="data_policy_approved">Privacy
+                                        Policy
+                                    </label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"
+                                                       name="data_policy_approved"
+                                                       t-att-required="data_policy_required"
+                                                       t-att-checked="data_policy_approved"/>
+                                                <t t-raw="data_policy_text"/>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
 
-				            <div id="internal_rules_approved" t-if="display_internal_rules" t-attf-class="form-group" >
-				                <label class="col-md-3 col-sm-4 control-label" for="internal_rules_approved">Internal Rules</label>
-				                <div class="col-md-9 col-sm-8">
-				                    <div class="checkbox">
-				                        <label>
-				                            <input type="checkbox"
-				                                   name="internal_rules_approved"
-				                                   t-att-required="internal_rules_required"
-				                                   t-att-checked="internal_rules_approved"/>
-				                            <t t-raw="internal_rules_text"/>
-				                        </label>
-				                    </div>
-				                </div>
-				            </div>
-							<table style="margin-left:195px">
-								<tr>
-									<td width="80%">
-										<div class="g-recaptcha" t-att-data-sitekey="website.recaptcha_key_site" data-theme="green"/><br/>
-									</td>
-									<td>
-				 						<div class="form-group">
-							                <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
-							                    <button class="btn btn-primary btn-lg">Send</button>
-							                </div>
-							            </div>
-									</td>
-								</tr>
-							</table>
+                                <div id="internal_rules_approved"
+                                     t-if="display_internal_rules"
+                                     t-attf-class="form-group">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="internal_rules_approved">
+                                        Internal Rules
+                                    </label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"
+                                                       name="internal_rules_approved"
+                                                       t-att-required="internal_rules_required"
+                                                       t-att-checked="internal_rules_approved"/>
+                                                <t t-raw="internal_rules_text"/>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <table style="margin-left:195px">
+                                    <tr>
+                                        <td width="80%">
+                                            <div class="g-recaptcha"
+                                                 t-att-data-sitekey="website.recaptcha_key_site"
+                                                 data-theme="green"/>
+                                            <br/>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+                                                    <button class="btn btn-primary btn-lg">
+                                                        Send
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
 
-				            <br/>
-						</form>
-	                </div>
-	            </div>
-	        </div>
-	        <div class="oe_structure"/>
-	      </div>
-	    </t>
-	</template>
+                                <br/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </div>
+        </t>
+    </template>
 
-	<template id="becomecompanycooperator" name="Become Cooperator">
-		 <t t-call="website.layout">
-	      <div id="wrap">
-	        <div class="oe_structure"/>
-	        <div class="container oe_easymy_coop">
-	            <h2 class="energie">Become Cooperator</h2><br/>
-	            <div class="row">
-	                <div class="col-md-8">
-						<form action="/subscription/subscribe_share" method="post" class="form-horizontal mt32" enctype="multipart/form-data">
-						   <p style="color:red;"><t t-esc="error_msg"/></p>
-				           <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+    <template id="becomecompanycooperator" name="Become Cooperator">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure"/>
+                <div class="container oe_easymy_coop">
+                    <h2 class="energie">Become Cooperator</h2>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <form action="/subscription/subscribe_share"
+                                  method="post" class="form-horizontal mt32"
+                                  enctype="multipart/form-data">
+                                <p style="color:red;">
+                                    <t t-esc="error_msg"/>
+                                </p>
+                                <input type="hidden" name="csrf_token"
+                                       t-att-value="request.csrf_token()"/>
 
-						    <div t-attf-class="form-group"  style="display: none;">
-								<label>
-									<input type="checkbox" t-att-checked="logged" name="logged"/>
-									Logged
-								</label>
-								<label>
-									<input type="checkbox" t-att-value="is_company" checked="checked" name="is_company" />
-									Is a company?
-								</label>
-							</div>
+                                <div t-attf-class="form-group"
+                                     style="display: none;">
+                                    <label>
+                                        <input type="checkbox"
+                                               t-att-checked="logged"
+                                               name="logged"/>
+                                        Logged
+                                    </label>
+                                    <label>
+                                        <input type="checkbox"
+                                               t-att-value="is_company"
+                                               checked="checked"
+                                               name="is_company"/>
+                                        Is a company?
+                                    </label>
+                                </div>
 
-						    <div t-attf-class="form-group">
-								<label>
-									Company Info
-								</label>
-							</div>
+                                <div t-attf-class="form-group">
+                                    <label>
+                                        Company Info
+                                    </label>
+                                </div>
 
-							<div t-attf-class="form-group #{error and 'company_register_number' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="company_register_number">Company Register Number</label>
-				                <div class="col-md-7 col-sm-8">
-				                    <input type="text" class="form-control mandatory-field" name="company_register_number"
-				                    required="True" t-att-readonly="logged"
-				                    t-attf-value="#{company_register_number or ''}" placeholder="0647980091"/>
-				                </div>
-				            </div>
+                                <div t-attf-class="form-group #{error and 'company_register_number' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="company_register_number">Company
+                                        Register Number
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                        <input type="text"
+                                               class="form-control mandatory-field"
+                                               name="company_register_number"
+                                               required="True"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{company_register_number or ''}"
+                                               placeholder="0647980091"/>
+                                    </div>
+                                </div>
 
-							<div t-attf-class="form-group #{error and 'company_name' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="company_name">Company name</label>
-				                <div class="col-md-7 col-sm-8">
-				                    <input type="text" class="form-control mandatory-field" name="company_name"
-				                    required="True" t-att-readonly="logged"
-				                    t-attf-value="#{company_name or ''}" placeholder="La super coopérative"/>
-				                </div>
-				            </div>
+                                <div t-attf-class="form-group #{error and 'company_name' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="company_name">Company name
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                        <input type="text"
+                                               class="form-control mandatory-field"
+                                               name="company_name"
+                                               required="True"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{company_name or ''}"
+                                               placeholder="La super coopérative"/>
+                                    </div>
+                                </div>
 
-							<div t-attf-class="form-group #{error and 'company_type' in error and 'has-error' or ''}">
-				               <label class="col-md-3 col-sm-4 control-label" for="company_type">Company type</label>
-			                   <select name="company_type" class="col-md-7 col-sm-8 form-control"
-					                   required="True" t-att-readonly="logged"
-					                   style="width:54%;margin-left:15px">
-			                       <option value=""></option>
-			                       <t t-foreach="company_types or []" t-as="type">
-			                           <option t-att-value="type[0]" t-att-selected="type[0] == company_type"><t t-esc="type[1]"/></option>
-			                       </t>
-			                   </select>
-			           		</div>
+                                <div t-attf-class="form-group #{error and 'company_type' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="company_type">Company type
+                                    </label>
+                                    <select name="company_type"
+                                            class="col-md-7 col-sm-8 form-control"
+                                            required="True"
+                                            t-att-readonly="logged"
+                                            style="width:54%;margin-left:15px">
+                                        <option value=""></option>
+                                        <t t-foreach="company_types or []"
+                                           t-as="type">
+                                            <option t-att-value="type[0]"
+                                                    t-att-selected="type[0] == company_type">
+                                                <t t-esc="type[1]"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
 
-			           		<div t-attf-class="form-group #{error and 'company_email' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="company_email">Company email</label>
-				                <div class="col-md-7 col-sm-8">
-				                    <input type="text" class="form-control mandatory-field" name="company_email" required="True" t-attf-value="#{company_email or ''}" placeholder="administration@beescoop.be"/>
-				                </div>
-				            </div>
-				            <div t-if="not logged" t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="confirm_email">Confirm Email</label>
-				                <div class="col-md-7 col-sm-8 bottom-line" style="padding-bottom:20px">
-				                    <input type="confirm_email" class="form-control mandatory-field" name="confirm_email"
-				                    t-att-required="not logged" t-att-readonly="logged"
-				                    t-attf-value="#{confirm_email or ''}" placeholder="didier.bourdon@bees-coop.be"/>
-				                </div>
-				            </div>
-				            <div t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="iban">Bank Account Number</label>
-				                <div class="col-md-7 col-sm-8">
-				                    <input type="text" class="form-control mandatory-field" name="iban"
-				                    required="True" t-att-readonly="logged"
-				                    t-attf-value="#{iban or ''}" placeholder="BE48523080767127"/>
-				                </div>
-				            </div>
+                                <div t-attf-class="form-group #{error and 'company_email' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="company_email">Company email
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                        <input type="text"
+                                               class="form-control mandatory-field"
+                                               name="company_email"
+                                               required="True"
+                                               t-attf-value="#{company_email or ''}"
+                                               placeholder="administration@beescoop.be"/>
+                                    </div>
+                                </div>
+                                <div t-if="not logged"
+                                     t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="confirm_email">Confirm Email
+                                    </label>
+                                    <div class="col-md-7 col-sm-8 bottom-line"
+                                         style="padding-bottom:20px">
+                                        <input type="confirm_email"
+                                               class="form-control mandatory-field"
+                                               name="confirm_email"
+                                               t-att-required="not logged"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{confirm_email or ''}"
+                                               placeholder="didier.bourdon@bees-coop.be"/>
+                                    </div>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="iban">Bank Account Number
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                        <input type="text"
+                                               class="form-control mandatory-field"
+                                               name="iban"
+                                               required="True"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{iban or ''}"
+                                               placeholder="BE48523080767127"/>
+                                    </div>
+                                </div>
 
-				            <br/>
-				            <div t-attf-class="form-group">
-								<label>
-									Main Address
-								</label>
-							</div>
+                                <br/>
+                                <div t-attf-class="form-group">
+                                    <label>
+                                        Main Address
+                                    </label>
+                                </div>
 
-							<div t-attf-class="form-group #{error and 'address' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="address">Address</label>
-				                <div class="col-md-7 col-sm-8">
-				                    <input type="text" class="form-control mandatory-field" name="address"
-				                    required="True" t-att-readonly="logged"
-				                    t-attf-value="#{address or ''}" placeholder="rue Van Hove, 19"/>
-				                </div>
-				            </div>
+                                <div t-attf-class="form-group #{error and 'address' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="address">Address
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                        <input type="text"
+                                               class="form-control mandatory-field"
+                                               name="address"
+                                               required="True"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{address or ''}"
+                                               placeholder="rue Van Hove, 19"/>
+                                    </div>
+                                </div>
 
-	 			            <div t-attf-class="form-group #{error and 'zip_code' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="zip_code">City</label>
-				                <div class="col-md-7 col-sm-8">
-									<table>
-										<tr>
-											<td width="20%">
-												<input type="text" class="form-control mandatory-field" name="zip_code"
-												required="True" t-att-readonly="logged"
-												t-attf-value="#{zip_code or ''}" placeholder="1030"/>
-											</td>
-											<td width="3%"></td>
-											<td>
-												<input type="text" class="form-control mandatory-field" name="city"
-												required="True" t-att-readonly="logged"
-												t-attf-value="#{city or ''}" placeholder="Bruxelles"/>
-											</td>
-										</tr>
-									</table>
-				                </div>
-				            </div>
+                                <div t-attf-class="form-group #{error and 'zip_code' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="zip_code">City
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                        <table>
+                                            <tr>
+                                                <td width="20%">
+                                                    <input type="text"
+                                                           class="form-control mandatory-field"
+                                                           name="zip_code"
+                                                           required="True"
+                                                           t-att-readonly="logged"
+                                                           t-attf-value="#{zip_code or ''}"
+                                                           placeholder="1030"/>
+                                                </td>
+                                                <td width="3%"></td>
+                                                <td>
+                                                    <input type="text"
+                                                           class="form-control mandatory-field"
+                                                           name="city"
+                                                           required="True"
+                                                           t-att-readonly="logged"
+                                                           t-attf-value="#{city or ''}"
+                                                           placeholder="Bruxelles"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
 
-		                    <div t-attf-class="form-group #{error and 'country_id' in error and 'has-error' or ''}">
+                                <div t-attf-class="form-group #{error and 'country_id' in error and 'has-error' or ''}">
 
-		                      <label class="col-md-3 col-sm-4 control-label" style="width:25%" for="country_id">Country</label>
-		                      <select name="country_id" class="col-md-7 col-sm-8 form-control"
-		                      		  t-att-readonly="logged" style="width:54%;margin-left:15px">
-		                          <option value="">Country...</option>
-		                          <t t-foreach="countries or []" t-as="country">
-		                              <option t-att-value="country.id" t-att-selected="country.id == int(country_id)"><t t-esc="country.name"/></option>
-		                          </t>
-		                      </select>
-		                    </div>
-		                    <br/>
-				            <div t-attf-class="form-group">
-								<label>
-									Contact Person
-								</label>
-							</div>
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           style="width:25%" for="country_id">
+                                        Country
+                                    </label>
+                                    <select name="country_id"
+                                            class="col-md-7 col-sm-8 form-control"
+                                            t-att-readonly="logged"
+                                            style="width:54%;margin-left:15px">
+                                        <option value="">Country...</option>
+                                        <t t-foreach="countries or []"
+                                           t-as="country">
+                                            <option t-att-value="country.id"
+                                                    t-att-selected="country.id == int(country_id)">
+                                                <t t-esc="country.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                                <br/>
+                                <div t-attf-class="form-group">
+                                    <label>
+                                        Contact Person
+                                    </label>
+                                </div>
 
-				            <div t-attf-class="form-group #{error and 'firstname' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="firstname">First Name</label>
-				                <div class="col-md-7 col-sm-8" style="padding-top:5px">
-				                    <input type="text" class="form-control mandatory-field" name="firstname"
-				                    required="True" t-att-readonly="logged"
-				                    t-attf-value="#{firstname or ''}" placeholder="Didier"/>
-				                </div>
-				            </div>
+                                <div t-attf-class="form-group #{error and 'firstname' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="firstname">First Name
+                                    </label>
+                                    <div class="col-md-7 col-sm-8"
+                                         style="padding-top:5px">
+                                        <input type="text"
+                                               class="form-control mandatory-field"
+                                               name="firstname"
+                                               required="True"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{firstname or ''}"
+                                               placeholder="Didier"/>
+                                    </div>
+                                </div>
 
-	 			            <div t-attf-class="form-group #{error and 'lastname' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="lastname">Last Name</label>
-				                <div class="col-md-7 col-sm-8">
-				                    <input type="text" class="form-control mandatory-field" name="lastname"
-				                    required="True" t-att-readonly="logged"
-				                    t-attf-value="#{lastname or ''}" placeholder="Bourdon"/>
-				                </div>
-				            </div>
+                                <div t-attf-class="form-group #{error and 'lastname' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="lastname">Last Name
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                        <input type="text"
+                                               class="form-control mandatory-field"
+                                               name="lastname"
+                                               required="True"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{lastname or ''}"
+                                               placeholder="Bourdon"/>
+                                    </div>
+                                </div>
 
-							<div t-attf-class="form-group #{error and 'gender' in error and 'has-error' or ''}">
-				               <label class="col-md-3 col-sm-4 control-label" for="gender">Gender</label>
-			                   <select name="gender" class="col-md-7 col-sm-8 form-control"
-			                   		   required="True" t-att-readonly="logged" style="width:54%;margin-left:15px">
-			                       <option value=""></option>
-			                       <t t-foreach="genders or []" t-as="type">
-			                           <option t-att-value="type[0]" t-att-selected="type[0] == gender"><t t-esc="type[1]"/></option>
-			                       </t>
-			                   </select>
-			           		</div>
+                                <div t-attf-class="form-group #{error and 'gender' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="gender">Gender
+                                    </label>
+                                    <select name="gender"
+                                            class="col-md-7 col-sm-8 form-control"
+                                            required="True"
+                                            t-att-readonly="logged"
+                                            style="width:54%;margin-left:15px">
+                                        <option value=""></option>
+                                        <t t-foreach="genders or []"
+                                           t-as="type">
+                                            <option t-att-value="type[0]"
+                                                    t-att-selected="type[0] == gender">
+                                                <t t-esc="type[1]"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
 
-				            <div name="email_from_container" t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="email">Email</label>
-				                <div class="col-md-7 col-sm-8 bottom-line" style="padding-bottom:20px">
-				                    <input type="email" class="form-control mandatory-field" name="email"
-				                    required="True" t-att-readonly="logged"
-				                    t-attf-value="#{email or ''}" placeholder="didier.bourdon@bees-coop.be"/>
-				                </div>
-				            </div>
+                                <div name="email_from_container"
+                                     t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="email">Email
+                                    </label>
+                                    <div class="col-md-7 col-sm-8 bottom-line"
+                                         style="padding-bottom:20px">
+                                        <input type="email"
+                                               class="form-control mandatory-field"
+                                               name="email"
+                                               required="True"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{email or ''}"
+                                               placeholder="didier.bourdon@bees-coop.be"/>
+                                    </div>
+                                </div>
 
-		                    <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="phone">Phone</label>
-				                <div class="col-md-7 col-sm-8 bottom-line" style="padding-bottom:20px">
-				                    <input type="text" class="form-control" name="phone"
-				                    required="True" t-att-readonly="logged"
-				                    t-attf-value="#{phone or ''}" placeholder="e.g. (+32).81.81.37.00"/>
-				                </div>
-				            </div>
+                                <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="phone">Phone
+                                    </label>
+                                    <div class="col-md-7 col-sm-8 bottom-line"
+                                         style="padding-bottom:20px">
+                                        <input type="text" class="form-control"
+                                               name="phone"
+                                               required="True"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{phone or ''}"
+                                               placeholder="e.g. (+32).81.81.37.00"/>
+                                    </div>
+                                </div>
 
-				            <div t-attf-class="form-group #{error and 'contact_person_function' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="contact_person_function">Function</label>
-				                <div class="col-md-7 col-sm-8">
-				                    <input type="text" class="form-control mandatory-field" name="contact_person_function"
-				                    required="True" t-att-readonly="logged"
-				                    t-attf-value="#{contact_person_function or ''}"/>
-				                </div>
-				            </div>
+                                <div t-attf-class="form-group #{error and 'contact_person_function' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="contact_person_function">
+                                        Function
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                        <input type="text"
+                                               class="form-control mandatory-field"
+                                               name="contact_person_function"
+                                               required="True"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{contact_person_function or ''}"/>
+                                    </div>
+                                </div>
 
-							<div t-attf-class="form-group #{error and 'birthday' in error and 'has-error' or ''}">
-				                <label class="col-md-3 col-sm-4 control-label" for="birthdate">Birthdate</label>
-				                <div class="col-md-7 col-sm-8">
-				                    <input type="text" data-inputmask="'alias': 'date'" class="form-control mandatory-field"
-				                    name="birthdate" required="True" t-att-readonly="logged"
-				                    t-attf-value="#{birthdate or ''}" placeholder="05/03/1978"/>
-				                </div>
-				            </div>
+                                <div t-attf-class="form-group #{error and 'birthday' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="birthdate">Birthdate
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                        <input type="text"
+                                               data-inputmask="'alias': 'date'"
+                                               class="form-control mandatory-field"
+                                               name="birthdate" required="True"
+                                               t-att-readonly="logged"
+                                               t-attf-value="#{birthdate or ''}"
+                                               placeholder="05/03/1978"/>
+                                    </div>
+                                </div>
 
-		                    <div t-attf-class="form-group #{error and 'lang' in error and 'has-error' or ''}" >
+                                <div t-attf-class="form-group #{error and 'lang' in error and 'has-error' or ''}">
 
-		                      <label class="col-md-3 col-sm-4 control-label" style="width:25%" for="lang">Language</label>
-		                      <select name="lang" class="col-md-7 col-sm-8 form-control"
-		                      		  t-att-readonly="logged" style="width:30%;margin-left:15px">
-		                          <option value="2">Language...</option>
-		                          <t t-foreach="langs or []" t-as="langue">
-		                              <option t-att-value="langue.code" t-att-selected="langue.code == lang"><t t-esc="langue.name"/></option>
-		                          </t>
-		                      </select>
-							  <br/>
-							  <div class="bottom-line" style="margin-left:25%;margin-top:35px;width:59%"></div>
-		                    </div>
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           style="width:25%" for="lang">Language
+                                    </label>
+                                    <select name="lang"
+                                            class="col-md-7 col-sm-8 form-control"
+                                            t-att-readonly="logged"
+                                            style="width:30%;margin-left:15px">
+                                        <option value="2">Language...</option>
+                                        <t t-foreach="langs or []"
+                                           t-as="langue">
+                                            <option t-att-value="langue.code"
+                                                    t-att-selected="langue.code == lang">
+                                                <t t-esc="langue.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                    <br/>
+                                    <div class="bottom-line"
+                                         style="margin-left:25%;margin-top:35px;width:59%"></div>
+                                </div>
 
-							<div t-attf-class="form-group #{error and 'product_id' in error and 'has-error' or ''}">
+                                <div t-attf-class="form-group #{error and 'product_id' in error and 'has-error' or ''}">
 
-		                      <label class="col-md-3 col-sm-4 control-label" style="width:25%" for="share_product_id">Parts type</label>
-		                      <select id="share_product_id" name="share_product_id" class="col-md-7 col-sm-8 form-control " style="width:54%;margin-left:15px">
-		                          <t t-foreach="products or []" t-as="product">
-		                              <option t-att-value="product.id" t-att-selected="product.id == int(share_product_id)"><t t-esc="product.short_name"/></option>
-		                          </t>
-		                      </select>
-		                    </div>
-			                <div name="share_div" class="form-group">
-								<table style="width:80%">
-									<tr>
-										<td width="30%">
-				                			<label style="text-align:right; width:100%;padding-right:30px">Parts number</label>
-										</td>
-										<td width="15%">
-										    <div class="css_quantity input-group oe_website_spinner">
-										        <span class="input-group-addon" style="margin-left:0px">
-										            <a t-attf-href="#" class="mb8 js_add_cart_json">
-										                <i class="fa fa-minus"></i>
-										            </a>
-										        </span>
-										        <input type="text" class="js_quantity form-control" data-min="1" name="ordered_parts" t-attf-value="#{ordered_parts or 1}"/>
-										        <span class="input-group-addon">
-										            <a t-attf-href="#" class="mb8 float_left js_add_cart_json">
-										                <i class="fa fa-plus"></i>
-										            </a>
-										        </span>
-										    </div>
-										</td>
-										<td width="5%">x </td>
-										<td id="share_price" width="7%">25</td>
-										<td width="3%"> €</td>
-										<td width="5%">= </td>
-										<td width="20%">
-						                    <div style="margin-top:12px" t-attf-class="form-group #{error and 'total_parts' in error and 'has-error' or ''}">
-								                <div>
-								                    <input type="text" class="form-control total" name="total_parts" value="25" data-max="5000"
-														   t-att-readonly="'readonly'"
-								                    />
-								                </div>
-								            </div>
-										</td>
-									</tr>
-								</table>
-			                </div>
-			            	<div class="bottom-line" style="margin-left:178px;margin-top:0px;width:61%"></div>
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           style="width:25%"
+                                           for="share_product_id">Parts type
+                                    </label>
+                                    <select id="share_product_id"
+                                            name="share_product_id"
+                                            class="col-md-7 col-sm-8 form-control "
+                                            style="width:54%;margin-left:15px">
+                                        <t t-foreach="products or []"
+                                           t-as="product">
+                                            <option t-att-value="product.id"
+                                                    t-att-selected="product.id == int(share_product_id)">
+                                                <t t-esc="product.short_name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div name="share_div" class="form-group">
+                                    <table style="width:80%">
+                                        <tr>
+                                            <td width="30%">
+                                                <label style="text-align:right; width:100%;padding-right:30px">
+                                                    Parts number
+                                                </label>
+                                            </td>
+                                            <td width="15%">
+                                                <div class="css_quantity input-group oe_website_spinner">
+                                                    <span class="input-group-addon"
+                                                          style="margin-left:0px">
+                                                        <a t-attf-href="#"
+                                                           class="mb8 js_add_cart_json">
+                                                            <i class="fa fa-minus"></i>
+                                                        </a>
+                                                    </span>
+                                                    <input type="text"
+                                                           class="js_quantity form-control"
+                                                           data-min="1"
+                                                           name="ordered_parts"
+                                                           t-attf-value="#{ordered_parts or 1}"/>
+                                                    <span class="input-group-addon">
+                                                        <a t-attf-href="#"
+                                                           class="mb8 float_left js_add_cart_json">
+                                                            <i class="fa fa-plus"></i>
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td width="5%">x</td>
+                                            <td id="share_price" width="7%">25
+                                            </td>
+                                            <td width="3%">€</td>
+                                            <td width="5%">=</td>
+                                            <td width="20%">
+                                                <div style="margin-top:12px"
+                                                     t-attf-class="form-group #{error and 'total_parts' in error and 'has-error' or ''}">
+                                                    <div>
+                                                        <input type="text"
+                                                               class="form-control total"
+                                                               name="total_parts"
+                                                               value="25"
+                                                               data-max="5000"
+                                                               t-att-readonly="'readonly'"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="bottom-line"
+                                     style="margin-left:178px;margin-top:0px;width:61%"></div>
 
-	 						<br/>
+                                <br/>
 
-							<div id="data_policy_approved" t-if="display_data_policy" t-attf-class="form-group" >
-				                <label class="col-md-3 col-sm-4 control-label" for="data_policy_approved">Privacy Policy</label>
-				                <div class="col-md-9 col-sm-8">
-				                    <div class="checkbox">
-				                        <label>
-				                            <input type="checkbox"
-				                                   name="data_policy_approved"
-				                                   t-att-required="data_policy_required"
-				                                   t-att-checked="data_policy_approved"/>
-				                            <t t-raw="data_policy_text"/>
-				                        </label>
-				                    </div>
-				                </div>
-				            </div>
+                                <div id="data_policy_approved"
+                                     t-if="display_data_policy"
+                                     t-attf-class="form-group">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="data_policy_approved">Privacy
+                                        Policy
+                                    </label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"
+                                                       name="data_policy_approved"
+                                                       t-att-required="data_policy_required"
+                                                       t-att-checked="data_policy_approved"/>
+                                                <t t-raw="data_policy_text"/>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
 
-				            <div id="internal_rules_approved" t-if="display_internal_rules" t-attf-class="form-group" >
-				                <label class="col-md-3 col-sm-4 control-label" for="internal_rules_approved">Internal Rules</label>
-				                <div class="col-md-9 col-sm-8">
-				                    <div class="checkbox">
-				                        <label>
-				                            <input type="checkbox"
-				                                   name="internal_rules_approved"
-				                                   t-att-required="internal_rules_required"
-				                                   t-att-checked="internal_rules_approved"/>
-				                            <t t-raw="internal_rules_text"/>
-				                        </label>
-				                    </div>
-				                </div>
-				            </div>
+                                <div id="internal_rules_approved"
+                                     t-if="display_internal_rules"
+                                     t-attf-class="form-group">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="internal_rules_approved">
+                                        Internal Rules
+                                    </label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"
+                                                       name="internal_rules_approved"
+                                                       t-att-required="internal_rules_required"
+                                                       t-att-checked="internal_rules_approved"/>
+                                                <t t-raw="internal_rules_text"/>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
 
-							<table style="margin-left:195px">
-								<tr>
-									<td width="80%">
-										<div class="g-recaptcha" t-att-data-sitekey="website.recaptcha_key_site" data-theme="green"/><br/>
-									</td>
-									<td>
-				 						<div class="form-group">
-							                <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
-							                    <button class="btn btn-primary btn-lg">Send</button>
-							                </div>
-							            </div>
-									</td>
-								</tr>
-							</table>
+                                <table style="margin-left:195px">
+                                    <tr>
+                                        <td width="80%">
+                                            <div class="g-recaptcha"
+                                                 t-att-data-sitekey="website.recaptcha_key_site"
+                                                 data-theme="green"/>
+                                            <br/>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+                                                    <button class="btn btn-primary btn-lg">
+                                                        Send
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
 
-				            <br/>
-						</form>
-	                </div>
-	            </div>
-	        </div>
-	        <div class="oe_structure"/>
-	      </div>
-	    </t>
-	</template>
+                                <br/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </div>
+        </t>
+    </template>
 
-	<record id="menu_becomecooperator" model="website.menu">
-	    <field name="name">Become cooperator</field>
-	    <field name="url">/page/become_cooperator</field>
-	    <field name="parent_id" ref="website.main_menu"/>
-	    <field name="sequence" type="int">65</field>
-	</record>
+    <record id="menu_becomecooperator" model="website.menu">
+        <field name="name">Become cooperator</field>
+        <field name="url">/page/become_cooperator</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">65</field>
+    </record>
 
-	<!--<template id="footer_coop_email_contact" inherit_id="website.footer_default" customize_show="True" name="Coop email contact">
-		<xpath expr="//span[@t-field='res_company.email']" position="replace">
-			<span t-field="res_company.coop_email_contact"></span>
-		</xpath>
-	</template>-->
+    <!--<template id="footer_coop_email_contact" inherit_id="website.footer_default" customize_show="True" name="Coop email contact">
+        <xpath expr="//span[@t-field='res_company.email']" position="replace">
+            <span t-field="res_company.coop_email_contact"></span>
+        </xpath>
+    </template>-->
 
-	<template id="company_description_coop_email_contact" inherit_id="website.company_description" name="Company Description Email Contact">
-		<xpath expr="//div[@t-field='res_company.partner_id']" position="replace">
-			<div t-field="res_company.partner_id" t-field-options='{
-	                "widget": "contact",
-	                "fields": ["name", "address", "phone", "mobile", "fax"]}'/>
-	        <ul class="list-unstyled">
-	        	<li t-ignore="true"><i class="fa fa-envelope"></i><span t-field="res_company.coop_email_contact"></span></li>
-	        </ul>
-		</xpath>
-	</template>
+    <template id="company_description_coop_email_contact"
+              inherit_id="website.company_description"
+              name="Company Description Email Contact">
+        <xpath expr="//div[@t-field='res_company.partner_id']"
+               position="replace">
+            <div t-field="res_company.partner_id" t-field-options='{
+                    "widget": "contact",
+                    "fields": ["name", "address", "phone", "mobile", "fax"]}'/>
+            <ul class="list-unstyled">
+                <li t-ignore="true">
+                    <i class="fa fa-envelope"></i>
+                    <span t-field="res_company.coop_email_contact"></span>
+                </li>
+            </ul>
+        </xpath>
+    </template>
 </odoo>

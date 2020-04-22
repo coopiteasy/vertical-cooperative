@@ -1,58 +1,67 @@
 <odoo>
-	<data>
-		<menuitem name="Dividend" id="menu_easy_my_coop_main_dividend" parent="easy_my_coop.menu_main_easy_my_coop" groups="easy_my_coop.group_easy_my_coop_user" sequence="30" />
+    <data>
+        <menuitem name="Dividend" id="menu_easy_my_coop_main_dividend"
+                  parent="easy_my_coop.menu_main_easy_my_coop"
+                  groups="easy_my_coop.group_easy_my_coop_user" sequence="30"/>
 
-		<record id="dividend_year_form" model="ir.ui.view">
+        <record id="dividend_year_form" model="ir.ui.view">
             <field name="name">dividend.year.form</field>
             <field name="model">dividend.year</field>
             <field name="arch" type="xml">
                 <form string="Dividend year">
                     <header>
-	                   	<button name="compute_dividend" string="Compute dividend" type="object" class="oe_highlight" groups="base.group_user"/>
+                        <button name="compute_dividend"
+                                string="Compute dividend" type="object"
+                                class="oe_highlight" groups="base.group_user"/>
                     </header>
                     <sheet>
-                    	<group>
-	                    	<group>
-			                    <field name="name"/>
-			                    <field name="percentage"/>
-			                    <field name="grand_total_dividend"/>
-			                    <field name="grand_total_taxes"/>
-	                    	</group>
-		                	<group>
-	                    		<field name="date_from"/>
-	                    		<field name="date_to"/>
-	                    		<field name="withholding_tax"/>
-	        				</group>
-	        			</group>
-                   		<notebook>
-                   			<page string="Dividend line">
-		                   		<field name="dividend_ids">
-		                   			<tree>
-		                    			<field name="coop_number"/>
-		                    			<field name="partner_id"/>
-		                    			<field name="dividend_amount" sum="Total dividend"/>
-		                    			<field name="dividend_amount_net" sum="Total dividend net"/>
-		                    			<field name="dividend_taxes" sum="Total dividend taxes"/>
-		                   			</tree>
-		                   		</field>
-	                   		</page>
-	                   		<page string="Detailed dividend line">
-		                   		<field name="detailed_dividend_ids">
-		                   			<tree>
-		                    			<field name="coop_number"/>
-		                    			<field name="partner_id"/>
-		                    			<field name="share_number"/>
-		                    			<field name="share_unit_price"/>
-		                    			<field name="effective_date"/>
-		                    			<field name="days"/>
-		                    			<field name="total_amount_line"/>
-		                    			<field name="coeff"/>
-		                    			<field name="dividend_amount" string="Dividend" sum="Total dividend"/>
-		                   			</tree>
-		                   		</field>
-	                   		</page>
-                   		</notebook>
-                   	</sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="percentage"/>
+                                <field name="grand_total_dividend"/>
+                                <field name="grand_total_taxes"/>
+                            </group>
+                            <group>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                                <field name="withholding_tax"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Dividend line">
+                                <field name="dividend_ids">
+                                    <tree>
+                                        <field name="coop_number"/>
+                                        <field name="partner_id"/>
+                                        <field name="dividend_amount"
+                                               sum="Total dividend"/>
+                                        <field name="dividend_amount_net"
+                                               sum="Total dividend net"/>
+                                        <field name="dividend_taxes"
+                                               sum="Total dividend taxes"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Detailed dividend line">
+                                <field name="detailed_dividend_ids">
+                                    <tree>
+                                        <field name="coop_number"/>
+                                        <field name="partner_id"/>
+                                        <field name="share_number"/>
+                                        <field name="share_unit_price"/>
+                                        <field name="effective_date"/>
+                                        <field name="days"/>
+                                        <field name="total_amount_line"/>
+                                        <field name="coeff"/>
+                                        <field name="dividend_amount"
+                                               string="Dividend"
+                                               sum="Total dividend"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
                 </form>
             </field>
         </record>
@@ -62,7 +71,7 @@
             <field name="model">dividend.year</field>
             <field name="arch" type="xml">
                 <tree string="Dividend year">
-	                <field name="name"/>
+                    <field name="name"/>
                     <field name="percentage"/>
                 </tree>
             </field>
@@ -75,9 +84,11 @@
             <field name="view_id" ref="dividend_year_tree"/>
         </record>
 
-		<menuitem action="dividend_year_action" name="Dividend" id="menu_dividend_year"  parent="menu_easy_my_coop_main_dividend" sequence="10"/>
+        <menuitem action="dividend_year_action" name="Dividend"
+                  id="menu_dividend_year"
+                  parent="menu_easy_my_coop_main_dividend" sequence="10"/>
 
-		<record id="view_detailed_dividend_line_filter" model="ir.ui.view">
+        <record id="view_detailed_dividend_line_filter" model="ir.ui.view">
             <field name="name">detailed.dividend.line.select</field>
             <field name="model">detailed.dividend.line</field>
             <field name="arch" type="xml">
@@ -86,40 +97,46 @@
                     <field name="coop_number"/>
                     <filter name="dividend_year_id" string="Dividend Year"/>
                     <separator/>
-                    <filter string="Partner" domain="[]" context="{'group_by':'partner_id'}"/>
-                    <filter string="Dividend Year" domain="[]"  context="{'group_by':'dividend_year_id'}"/>
-               </search>
+                    <filter string="Partner" domain="[]"
+                            context="{'group_by':'partner_id'}"/>
+                    <filter string="Dividend Year" domain="[]"
+                            context="{'group_by':'dividend_year_id'}"/>
+                </search>
             </field>
         </record>
-		<record id="detailed_dividend_line_tree" model="ir.ui.view">
+        <record id="detailed_dividend_line_tree" model="ir.ui.view">
             <field name="name">detailed.dividend.line.tree</field>
             <field name="model">detailed.dividend.line</field>
             <field name="arch" type="xml">
                 <tree string="Detailed dividend lines">
-                	<field name="dividend_year_id"/>
-	                <field name="coop_number"/>
-	                <field name="partner_id"/>
-           			<field name="share_number"/>
-           			<field name="share_unit_price"/>
-           			<field name="effective_date"/>
-           			<field name="days"/>
-           			<field name="total_amount_line"/>
-           			<field name="coeff"/>
-           			<field name="dividend_amount" string="Dividend" sum="Total dividend"/>
+                    <field name="dividend_year_id"/>
+                    <field name="coop_number"/>
+                    <field name="partner_id"/>
+                    <field name="share_number"/>
+                    <field name="share_unit_price"/>
+                    <field name="effective_date"/>
+                    <field name="days"/>
+                    <field name="total_amount_line"/>
+                    <field name="coeff"/>
+                    <field name="dividend_amount" string="Dividend"
+                           sum="Total dividend"/>
                 </tree>
             </field>
         </record>
 
-        <record id="detailed_dividend_line_action" model="ir.actions.act_window">
+        <record id="detailed_dividend_line_action"
+                model="ir.actions.act_window">
             <field name="name">Detailed dividend lines</field>
             <field name="res_model">detailed.dividend.line</field>
             <field name="view_type">form</field>
             <field name="view_id" ref="detailed_dividend_line_tree"/>
         </record>
 
-		<menuitem action="detailed_dividend_line_action" name="Detailed dividend lines" id="menu_det_dividend_line"  parent="menu_easy_my_coop_main_dividend" sequence="20"/>
+        <menuitem action="detailed_dividend_line_action"
+                  name="Detailed dividend lines" id="menu_det_dividend_line"
+                  parent="menu_easy_my_coop_main_dividend" sequence="20"/>
 
-		<record id="view_dividend_line_filter" model="ir.ui.view">
+        <record id="view_dividend_line_filter" model="ir.ui.view">
             <field name="name">dividend.line.select</field>
             <field name="model">dividend.line</field>
             <field name="arch" type="xml">
@@ -129,25 +146,27 @@
                     <filter name="dividend_year_id" string="Dividend Year"/>
                     <separator/>
                     <group expand="0" string="Group By...">
-                        <filter string="Partner" domain="[]" context="{'group_by':'partner_id'}"/>
-                        <filter string="Dividend Year" domain="[]"  context="{'group_by':'dividend_year_id'}"/>
+                        <filter string="Partner" domain="[]"
+                                context="{'group_by':'partner_id'}"/>
+                        <filter string="Dividend Year" domain="[]"
+                                context="{'group_by':'dividend_year_id'}"/>
                     </group>
-               </search>
+                </search>
             </field>
         </record>
 
-		<record id="dividend_line_tree" model="ir.ui.view">
+        <record id="dividend_line_tree" model="ir.ui.view">
             <field name="name">dividend.line.tree</field>
             <field name="model">dividend.line</field>
             <field name="arch" type="xml">
                 <tree string="dividend lines">
-               		<field name="dividend_year_id"/>
-	                <field name="coop_number"/>
-	                <field name="partner_id"/>
-	                <field name="account_number"/>
-          			<field name="dividend_amount" sum="Total dividend"/>
-          			<field name="dividend_amount_net" sum="Total dividend net"/>
-          			<field name="dividend_taxes" sum="Total dividend taxes"/>
+                    <field name="dividend_year_id"/>
+                    <field name="coop_number"/>
+                    <field name="partner_id"/>
+                    <field name="account_number"/>
+                    <field name="dividend_amount" sum="Total dividend"/>
+                    <field name="dividend_amount_net" sum="Total dividend net"/>
+                    <field name="dividend_taxes" sum="Total dividend taxes"/>
                 </tree>
             </field>
         </record>
@@ -159,6 +178,8 @@
             <field name="view_id" ref="dividend_line_tree"/>
         </record>
 
-		<menuitem action="dividend_line_action" name="Dividend lines" id="menu_dividend_line" parent="menu_easy_my_coop_main_dividend" sequence="30"/>
-	</data>
+        <menuitem action="dividend_line_action" name="Dividend lines"
+                  id="menu_dividend_line"
+                  parent="menu_easy_my_coop_main_dividend" sequence="30"/>
+    </data>
 </odoo>

@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<data>
-		<template id="subscription_i18n_fr" inherit_id="easy_my_coop_website.becomecooperator" name="Removing fields">
-			<xpath expr="//label[@for='iban']/.." position="replace">
-			</xpath>
-		</template>
+    <data>
+        <template id="subscription_i18n_fr"
+                  inherit_id="easy_my_coop_website.becomecooperator"
+                  name="Removing fields">
+            <xpath expr="//label[@for='iban']/.." position="replace">
+            </xpath>
+        </template>
 
-		<template id="company_subscription_i18n_fr" inherit_id="easy_my_coop_website.becomecompanycooperator" name="Company Removing fields">
- 			<xpath expr="//label[@for='iban']/.." position="replace">
- 			</xpath>
-		</template>
-	</data>
+        <template id="company_subscription_i18n_fr"
+                  inherit_id="easy_my_coop_website.becomecompanycooperator"
+                  name="Company Removing fields">
+            <xpath expr="//label[@for='iban']/.." position="replace">
+            </xpath>
+        </template>
+    </data>
 </odoo>

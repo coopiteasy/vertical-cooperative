@@ -6,18 +6,22 @@
             <field name="name">export.global.report.wizard.form</field>
             <field name="model">export.global.report</field>
             <field name="arch" type="xml">
-            <form string="Reporting" version="7.0">
-				<separator string="Global report export"/>
-                <footer>
-                    <button name="export_global_report_xlsx" string="Export" type="object" default_focus="1" class="oe_highlight"/>
-                   or
-                    <button string="Cancel" class="oe_link" special="cancel" />
-                </footer>
-            </form>
+                <form string="Reporting" version="7.0">
+                    <separator string="Global report export"/>
+                    <footer>
+                        <button name="export_global_report_xlsx" string="Export"
+                                type="object" default_focus="1"
+                                class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link"
+                                special="cancel"/>
+                    </footer>
+                </form>
             </field>
         </record>
 
-        <record id="action_export_global_report_wizard" model="ir.actions.act_window">
+        <record id="action_export_global_report_wizard"
+                model="ir.actions.act_window">
             <field name="name">Export gloabal report</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">export.global.report</field>
@@ -28,6 +32,9 @@
             <field name="multi">True</field>
         </record>
 
-		<menuitem id="menu_export_global_report_wizard" name="Global report export" parent="easy_my_coop.menu_easy_my_coop_main_reporting" action="action_export_global_report_wizard" sequence="10"/>
+        <menuitem id="menu_export_global_report_wizard"
+                  name="Global report export"
+                  parent="easy_my_coop.menu_easy_my_coop_main_reporting"
+                  action="action_export_global_report_wizard" sequence="10"/>
     </data>
 </openerp>

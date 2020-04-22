@@ -1,205 +1,244 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-<!--  ****************** POUR IMPRESSION FACTURE **************** -->
-<template id="theme_light.layout" inherit_id="web.layout" primary="True">
-    <!-- Add report attributes -->
-    <xpath expr="//html" position="attributes">
-        <attribute name="t-att-data-report-margin-top">data_report_margin_top if data_report_margin_top else None</attribute>
-        <attribute name="t-att-data-report-header-spacing">data_report_header_spacing if data_report_header_spacing else None</attribute>
-        <attribute name="t-att-data-report-dpi">data_report_dpi if data_report_dpi else None</attribute>
-    </xpath>
-    <!-- Add report style -->
-    <xpath expr="//head" position="inside">
-        <link href="/web/static/lib/bootstrap/css/bootstrap.css" rel="stylesheet"/>
-        <link href="/website/static/src/css/website.css" rel="stylesheet"/>
-        <link href="/web/static/lib/fontawesome/css/font-awesome.css" rel="stylesheet"/>
-		<link href="/theme_light/static/css/invoice_orange.css" rel="stylesheet"/>
-        <style type="text/css">
-            <t t-call="theme_light.style"/>
-        </style>
-    </xpath>
-</template>
+    <!--  ****************** POUR IMPRESSION FACTURE **************** -->
+    <template id="theme_light.layout" inherit_id="web.layout" primary="True">
+        <!-- Add report attributes -->
+        <xpath expr="//html" position="attributes">
+            <attribute name="t-att-data-report-margin-top">
+                data_report_margin_top if data_report_margin_top else None
+            </attribute>
+            <attribute name="t-att-data-report-header-spacing">
+                data_report_header_spacing if data_report_header_spacing else
+                None
+            </attribute>
+            <attribute name="t-att-data-report-dpi">data_report_dpi if
+                data_report_dpi else None
+            </attribute>
+        </xpath>
+        <!-- Add report style -->
+        <xpath expr="//head" position="inside">
+            <link href="/web/static/lib/bootstrap/css/bootstrap.css"
+                  rel="stylesheet"/>
+            <link href="/website/static/src/css/website.css" rel="stylesheet"/>
+            <link href="/web/static/lib/fontawesome/css/font-awesome.css"
+                  rel="stylesheet"/>
+            <link href="/theme_light/static/css/invoice_orange.css"
+                  rel="stylesheet"/>
+            <style type="text/css">
+                <t t-call="theme_light.style"/>
+            </style>
+        </xpath>
+    </template>
 
-<!-- CSS -->
-<template id="style">
-	/* Montserrat */
-	  @font-face {
-	  font-family: 'Montserrat-Regular';
-	  font-style: normal;
-	  src: local('Montserrat Regular'), url('/theme_light/static/font/Montserrat-Regular.ttf') format('truetype');
-	}
-	/* Roboto Regular */
-	  @font-face {
-	  font-family: 'Roboto-Regular';
-	  font-style: normal;
-	  src: local('Roboto Regular'), url('/theme_light/static/font/Roboto-Regular.ttf') format('truetype');
-	}
-	/* Roboto Bold */
-	  @font-face {
-	  font-family: 'Roboto-Bold';
-	  font-style: normal;
-	  src: local('Roboto Bold'), url('/theme_light/static/font/Roboto-Bold.ttf') format('truetype');
-	}
-	/* BEBASNEUE Bold */
-	  @font-face {
-	  font-family: 'Bebasneue-Bold';
-	  font-style: normal;
-	  src: local('Bebasneue-Bold'), url('/theme_light/static/font/BEBASNEUE_BOLD.ttf') format('truetype');
-	}
-</template>
+    <!-- CSS -->
+    <template id="style">
+        /* Montserrat */
+        @font-face {
+        font-family: 'Montserrat-Regular';
+        font-style: normal;
+        src: local('Montserrat Regular'),
+        url('/theme_light/static/font/Montserrat-Regular.ttf')
+        format('truetype');
+        }
+        /* Roboto Regular */
+        @font-face {
+        font-family: 'Roboto-Regular';
+        font-style: normal;
+        src: local('Roboto Regular'),
+        url('/theme_light/static/font/Roboto-Regular.ttf') format('truetype');
+        }
+        /* Roboto Bold */
+        @font-face {
+        font-family: 'Roboto-Bold';
+        font-style: normal;
+        src: local('Roboto Bold'),
+        url('/theme_light/static/font/Roboto-Bold.ttf') format('truetype');
+        }
+        /* BEBASNEUE Bold */
+        @font-face {
+        font-family: 'Bebasneue-Bold';
+        font-style: normal;
+        src: local('Bebasneue-Bold'),
+        url('/theme_light/static/font/BEBASNEUE_BOLD.ttf') format('truetype');
+        }
+    </template>
 
-<template id="theme_light.html_container">
-    <t t-set="body_classname" t-value="'container'"/>
-    <t t-call="theme_light.layout">
-        <t t-raw="0"/>
-    </t>
-</template>
+    <template id="theme_light.html_container">
+        <t t-set="body_classname" t-value="'container'"/>
+        <t t-call="theme_light.layout">
+            <t t-raw="0"/>
+        </t>
+    </template>
 
-<template id="theme_light.invoice_footer">
-	<div class="footer">
-        <table style="width: 100%;font-size:13;color:black;font-family:Roboto-Regular;text-align:center">
-            <tr style="height:20px;">
-                <td/>
-                <td/>
-                <t t-if="company.display_logo1">
-                	<td rowspan="5" style="padding-left:15px;text-align:center;width:135px;border-left:1px solid #adadad" >
-	                	<img t-if="company.bottom_logo1" t-att-src="'data:image/png;base64,%s' % company.bottom_logo1" style="width:98px;height:auto;padding-bottom:5px;"/>
-	                	<img t-if="not company.bottom_logo1" src="/theme_light/static/img/gallery/label_fin.jpg" style="width:98px;height:auto;padding-bottom:5px;"/>
-	            	</td>
-                </t>
-                <t t-if="company.display_logo2">
-                	<td rowspan="5" style="padding-left:15px;text-align:center;width:135px;border-left:1px solid #adadad" >
-	                	<img t-if="company.bottom_logo2" t-att-src="'data:image/png;base64,%s' % company.bottom_logo2" style="width:162px;height:auto;padding-bottom:5px;"/>
-	                	<img t-if="not company.bottom_logo2" src="/theme_light/static/img/gallery/cnc_agree.jpg" style="width:162px;height:auto;padding-bottom:5px;"/>
-	            	</td>
-                </t>
-            </tr>
-            <tr style="height:20px;">
-            	<td style="align: left;">
-            		<t t-if="company.rml_header1">
-            			<span t-field="company.rml_header1"/> -
-            		</t>
-            		<b><span t-field="company.name"/></b>
-            	</td>
-            	<td/>
-            	<td/>
-            	<td/>
-            </tr>
-            <tr style="height:20px">
-            	<td style="align: left;">
-            		<span t-field="company.partner_id.street"/>  -
-            		<t t-if="company.partner_id.street2">
-            			<span t-field="company.partner_id.street2"/>  -
-            		</t>
-            		<span t-field="company.partner_id.zip"/>
-            		<span t-field="company.partner_id.city"/>
-            	</td>
-            	<td/>
-            	<td/>
-            	<td/>
-            </tr>
-            <tr style="height:20px">
-            	<td style="align: left;">
-            		<t t-if="company.company_registry">
-	            		<span>N.Entr.</span> :
-	            		<span t-field="company.company_registry"/>
-            		</t>
-            		<t t-if="company.vat">
-	            		 -
-	            		<span>VAT Number</span> :
-	            		<span t-field="company.vat"/>
-            		</t>
-            		<t t-foreach="o.company_id.bank_journal_ids" t-as="journal">
-            		<t t-set="b" t-value="journal.bank_account_id"/>
-    					<t t-if="journal.display_on_footer">
-		          			 -
-		          			<span t-field="b.bank_name"/>
-		            		<span t-field="b.acc_number"/>
-		            		<span t-field="b.bank_bic"/>
-						</t>
-					</t>
-            	</td>
-            	<td/>
-            	<td/>
-            	<td/>
-            </tr>
-        </table>
-    </div>
-</template>
+    <template id="theme_light.invoice_footer">
+        <div class="footer">
+            <table style="width: 100%;font-size:13;color:black;font-family:Roboto-Regular;text-align:center">
+                <tr style="height:20px;">
+                    <td/>
+                    <td/>
+                    <t t-if="company.display_logo1">
+                        <td rowspan="5"
+                            style="padding-left:15px;text-align:center;width:135px;border-left:1px solid #adadad">
+                            <img t-if="company.bottom_logo1"
+                                 t-att-src="'data:image/png;base64,%s' % company.bottom_logo1"
+                                 style="width:98px;height:auto;padding-bottom:5px;"/>
+                            <img t-if="not company.bottom_logo1"
+                                 src="/theme_light/static/img/gallery/label_fin.jpg"
+                                 style="width:98px;height:auto;padding-bottom:5px;"/>
+                        </td>
+                    </t>
+                    <t t-if="company.display_logo2">
+                        <td rowspan="5"
+                            style="padding-left:15px;text-align:center;width:135px;border-left:1px solid #adadad">
+                            <img t-if="company.bottom_logo2"
+                                 t-att-src="'data:image/png;base64,%s' % company.bottom_logo2"
+                                 style="width:162px;height:auto;padding-bottom:5px;"/>
+                            <img t-if="not company.bottom_logo2"
+                                 src="/theme_light/static/img/gallery/cnc_agree.jpg"
+                                 style="width:162px;height:auto;padding-bottom:5px;"/>
+                        </td>
+                    </t>
+                </tr>
+                <tr style="height:20px;">
+                    <td style="align: left;">
+                        <t t-if="company.rml_header1">
+                            <span t-field="company.rml_header1"/>
+                            -
+                        </t>
+                        <b>
+                            <span t-field="company.name"/>
+                        </b>
+                    </td>
+                    <td/>
+                    <td/>
+                    <td/>
+                </tr>
+                <tr style="height:20px">
+                    <td style="align: left;">
+                        <span t-field="company.partner_id.street"/>
+                        -
+                        <t t-if="company.partner_id.street2">
+                            <span t-field="company.partner_id.street2"/>
+                            -
+                        </t>
+                        <span t-field="company.partner_id.zip"/>
+                        <span t-field="company.partner_id.city"/>
+                    </td>
+                    <td/>
+                    <td/>
+                    <td/>
+                </tr>
+                <tr style="height:20px">
+                    <td style="align: left;">
+                        <t t-if="company.company_registry">
+                            <span>N.Entr.</span>
+                            :
+                            <span t-field="company.company_registry"/>
+                        </t>
+                        <t t-if="company.vat">
+                            -
+                            <span>VAT Number</span>
+                            :
+                            <span t-field="company.vat"/>
+                        </t>
+                        <t t-foreach="o.company_id.bank_journal_ids"
+                           t-as="journal">
+                            <t t-set="b" t-value="journal.bank_account_id"/>
+                            <t t-if="journal.display_on_footer">
+                                -
+                                <span t-field="b.bank_name"/>
+                                <span t-field="b.acc_number"/>
+                                <span t-field="b.bank_bic"/>
+                            </t>
+                        </t>
+                    </td>
+                    <td/>
+                    <td/>
+                    <td/>
+                </tr>
+            </table>
+        </div>
+    </template>
 
-<template id="theme_light.invoice_footer_002">
-	<div class="footer">
-        <table style="width: 100%;font-size:13;color :black;font-family:Montserrat-Regular;text-align:center">
-            <tr style="height:20px;">
-                <td width="85%"></td>
-                <td rowspan="5" style="padding-left:15px;text-align:center;width:260px;border-left:1px solid #adadad" >
-                	<img src="/theme_light/static/img/gallery/cnc_agree.png" style="max-height: 80px;padding-bottom:5px;"/>
-               		<div style="color :#adadad;" t-field="company.company_registry"/>
-	            </td>
-            </tr>
-        </table>
-    </div>
-</template>
+    <template id="theme_light.invoice_footer_002">
+        <div class="footer">
+            <table style="width: 100%;font-size:13;color :black;font-family:Montserrat-Regular;text-align:center">
+                <tr style="height:20px;">
+                    <td width="85%"></td>
+                    <td rowspan="5"
+                        style="padding-left:15px;text-align:center;width:260px;border-left:1px solid #adadad">
+                        <img src="/theme_light/static/img/gallery/cnc_agree.png"
+                             style="max-height: 80px;padding-bottom:5px;"/>
+                        <div style="color :#adadad;"
+                             t-field="company.company_registry"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </template>
 
-<template id="theme_light.invoice_header">
-	<div>
-        <div class="row">
-            <div class="col-xs-3">
-                <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.company_id.logo" style="height: 113px;"/>
+    <template id="theme_light.invoice_header">
+        <div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <img t-if="o.company_id.logo"
+                         t-att-src="'data:image/png;base64,%s' % o.company_id.logo"
+                         style="height: 113px;"/>
+                </div>
             </div>
         </div>
-    </div>
-</template>
+    </template>
 
-<template id="theme_light.invoice_layout">
-    <!-- Multicompany -->
-    <t t-if="o and 'company_id' in o">
-        <t t-set="company" t-value="o.company_id"></t>
-    </t>
-    <t t-if="not o or not 'company_id' in o">
-        <t t-set="company" t-value="res_company"></t>
-    </t>
-    <t t-raw="0" />
-    <t t-call="theme_light.invoice_footer" />
-</template>
+    <template id="theme_light.invoice_layout">
+        <!-- Multicompany -->
+        <t t-if="o and 'company_id' in o">
+            <t t-set="company" t-value="o.company_id"></t>
+        </t>
+        <t t-if="not o or not 'company_id' in o">
+            <t t-set="company" t-value="res_company"></t>
+        </t>
+        <t t-raw="0"/>
+        <t t-call="theme_light.invoice_footer"/>
+    </template>
 
-<template id="theme_light.invoice_layout_002">
-    <!-- Multicompany -->
-    <t t-if="o and 'company_id' in o">
-        <t t-set="company" t-value="o.company_id"></t>
-    </t>
-    <t t-if="not o or not 'company_id' in o">
-        <t t-set="company" t-value="res_company"></t>
-    </t>
-    <t t-raw="0" />
-    <t t-call="theme_light.invoice_footer_002" />
-</template>
+    <template id="theme_light.invoice_layout_002">
+        <!-- Multicompany -->
+        <t t-if="o and 'company_id' in o">
+            <t t-set="company" t-value="o.company_id"></t>
+        </t>
+        <t t-if="not o or not 'company_id' in o">
+            <t t-set="company" t-value="res_company"></t>
+        </t>
+        <t t-raw="0"/>
+        <t t-call="theme_light.invoice_footer_002"/>
+    </template>
 
 
-<template id="theme_light.report_footer_002">
-	<div class="footer">
-        <table style="width: 100%;font-size:13;color :black;font-family:Montserrat-Regular;text-align:center">
-            <tr style="height:20px;">
-                <td width="90%"></td>
-                <td rowspan="5" style="padding-left:15px;text-align:center;width:260px;border-left:1px solid #adadad" >
-                	Page :
-					<span class="page"/>
-	            </td>
-            </tr>
-        </table>
-    </div>
-</template>
+    <template id="theme_light.report_footer_002">
+        <div class="footer">
+            <table style="width: 100%;font-size:13;color :black;font-family:Montserrat-Regular;text-align:center">
+                <tr style="height:20px;">
+                    <td width="90%"></td>
+                    <td rowspan="5"
+                        style="padding-left:15px;text-align:center;width:260px;border-left:1px solid #adadad">
+                        Page :
+                        <span class="page"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </template>
 
-<template id="theme_light.report_layout_002">
-    <!-- Multicompany -->
-    <t t-if="o and 'company_id' in o">
-        <t t-set="company" t-value="o.company_id"></t>
-    </t>
-    <t t-if="not o or not 'company_id' in o">
-        <t t-set="company" t-value="res_company"></t>
-    </t>
+    <template id="theme_light.report_layout_002">
+        <!-- Multicompany -->
+        <t t-if="o and 'company_id' in o">
+            <t t-set="company" t-value="o.company_id"></t>
+        </t>
+        <t t-if="not o or not 'company_id' in o">
+            <t t-set="company" t-value="res_company"></t>
+        </t>
 
-    <t t-raw="0" />
-    <t t-call="theme_light.report_footer_002" />
-</template>
+        <t t-raw="0"/>
+        <t t-call="theme_light.report_footer_002"/>
+    </template>
 </odoo>

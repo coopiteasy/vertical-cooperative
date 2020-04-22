@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<data>
-		<template id="subscription_i18n_ch" inherit_id="easy_my_coop_website.becomecooperator" name="Removing fields">
- 			<xpath expr="//label[@for='iban']/.." position="replace">
- 				<div t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}">
-	                <label class="col-md-3 col-sm-4 control-label" for="iban">Bank Account Number</label>
-	                <div class="col-md-7 col-sm-8">
-	                    <input type="text" class="form-control mandatory-field" name="iban" t-attf-value="#{iban or ''}" placeholder="BE48523080767127"/>
-	                </div>
-	            </div>
- 			</xpath>
-		</template>
+    <data>
+        <template id="subscription_i18n_ch"
+                  inherit_id="easy_my_coop_website.becomecooperator"
+                  name="Removing fields">
+            <xpath expr="//label[@for='iban']/.." position="replace">
+                <div t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}">
+                    <label class="col-md-3 col-sm-4 control-label" for="iban">
+                        Bank Account Number
+                    </label>
+                    <div class="col-md-7 col-sm-8">
+                        <input type="text" class="form-control mandatory-field"
+                               name="iban" t-attf-value="#{iban or ''}"
+                               placeholder="BE48523080767127"/>
+                    </div>
+                </div>
+            </xpath>
+        </template>
 
-		<template id="company_subscription_i18n_ch" inherit_id="easy_my_coop_website.becomecompanycooperator" name="Company Removing fields">
- 			<xpath expr="//label[@for='iban']/.." position="replace">
- 				<div t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}">
-	                <label class="col-md-3 col-sm-4 control-label" for="iban">Bank Account Number</label>
-	                <div class="col-md-7 col-sm-8">
-	                    <input type="text" class="form-control mandatory-field" name="iban" t-attf-value="#{iban or ''}" placeholder="BE48523080767127"/>
-	                </div>
-	            </div>
- 			</xpath>
-		</template>
-	</data>
+        <template id="company_subscription_i18n_ch"
+                  inherit_id="easy_my_coop_website.becomecompanycooperator"
+                  name="Company Removing fields">
+            <xpath expr="//label[@for='iban']/.." position="replace">
+                <div t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}">
+                    <label class="col-md-3 col-sm-4 control-label" for="iban">
+                        Bank Account Number
+                    </label>
+                    <div class="col-md-7 col-sm-8">
+                        <input type="text" class="form-control mandatory-field"
+                               name="iban" t-attf-value="#{iban or ''}"
+                               placeholder="BE48523080767127"/>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
 </odoo>

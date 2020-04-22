@@ -1,54 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<template id="assets_frontend" inherit_id="web.assets_frontend" name="Coop">
-	 	<xpath expr="." position="inside">
-			<script type="text/javascript" src="/easy_my_coop_loan_website/static/src/js/loan_issue.js"></script>
-		</xpath>
-	</template>
+    <template id="assets_frontend" inherit_id="web.assets_frontend" name="Coop">
+        <xpath expr="." position="inside">
+            <script type="text/javascript"
+                    src="/easy_my_coop_loan_website/static/src/js/loan_issue.js"></script>
+        </xpath>
+    </template>
 
-	<template id="loanissuesubscription" name="Loan Issue Subscription">
-		<t t-call="website.layout">
-	    	<div id="wrap">
-	        	<div class="oe_structure"/>
-		        <div class="container oe_easymy_coop_loan">
-		            <h2 class="energie">Subscribe to Loan Issue</h2><br/>
-		            <div class="row">
-		                <div class="col-md-8">
-							<form action="/subscription/subscribe_loan_issue" method="post" class="form-horizontal mt32" enctype="multipart/form-data">
-								<p style="color:red;"><t t-esc="error_msg"/></p>
-					        	<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+    <template id="loanissuesubscription" name="Loan Issue Subscription">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure"/>
+                <div class="container oe_easymy_coop_loan">
+                    <h2 class="energie">Subscribe to Loan Issue</h2>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <form action="/subscription/subscribe_loan_issue"
+                                  method="post" class="form-horizontal mt32"
+                                  enctype="multipart/form-data">
+                                <p style="color:red;">
+                                    <t t-esc="error_msg"/>
+                                </p>
+                                <input type="hidden" name="csrf_token"
+                                       t-att-value="request.csrf_token()"/>
 
-								<div t-attf-class="form-group #{error and 'loan_issue_id' in error and 'has-error' or ''}">
-		                        	<label class="col-md-3 col-sm-4 control-label" style="width:25%" for="share_product_id">Loan issue</label>
-			                        <select id="loan_issue" name="loan_issue_id" class="col-md-7 col-sm-8 form-control" style="width:54%;margin-left:15px">
-			                        	<t t-foreach="loan_issues or []" t-as="loan_issue">
-			                            	<option t-att-value="loan_issue.id" t-att-selected="loan_issue.id == int(loan_issue_id)"><t t-esc="loan_issue.name"/></option>
-			                        	</t>
-			                        </select>
-		                    	</div>
-		                        <div t-attf-class="form-group #{error and 'subscription_amount' in error and 'has-error' or ''}">
-		                        	<label class="col-md-3 col-sm-4 control-label" style="width:25%" for="subscription_amount">Amount</label>
-				                    <input id="subscription_amount" type="number" class="col-md-7 col-sm-8 form-control total" name="subscription_amount" min="0" step="100" max="5000"/>
-				                </div>
-				                <table style="margin-left:195px">
-								<tr>
-									<!--<td width="80%">
-										<div class="g-recaptcha" t-att-data-sitekey="website.recaptcha_key_site" data-theme="green"/><br/>
-									</td>-->
-									<td>
-				 						<div class="form-group">
-							                <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
-							                    <button class="btn btn-primary btn-lg">Send</button>
-							                </div>
-							            </div>
-									</td>
-								</tr>
-							</table>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</t>
-	</template>
+                                <div t-attf-class="form-group #{error and 'loan_issue_id' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           style="width:25%"
+                                           for="share_product_id">Loan issue
+                                    </label>
+                                    <select id="loan_issue" name="loan_issue_id"
+                                            class="col-md-7 col-sm-8 form-control"
+                                            style="width:54%;margin-left:15px">
+                                        <t t-foreach="loan_issues or []"
+                                           t-as="loan_issue">
+                                            <option t-att-value="loan_issue.id"
+                                                    t-att-selected="loan_issue.id == int(loan_issue_id)">
+                                                <t t-esc="loan_issue.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div t-attf-class="form-group #{error and 'subscription_amount' in error and 'has-error' or ''}">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           style="width:25%"
+                                           for="subscription_amount">Amount
+                                    </label>
+                                    <input id="subscription_amount"
+                                           type="number"
+                                           class="col-md-7 col-sm-8 form-control total"
+                                           name="subscription_amount" min="0"
+                                           step="100" max="5000"/>
+                                </div>
+                                <table style="margin-left:195px">
+                                    <tr>
+                                        <!--<td width="80%">
+                                            <div class="g-recaptcha" t-att-data-sitekey="website.recaptcha_key_site" data-theme="green"/><br/>
+                                        </td>-->
+                                        <td>
+                                            <div class="form-group">
+                                                <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+                                                    <button class="btn btn-primary btn-lg">
+                                                        Send
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
 </odoo>

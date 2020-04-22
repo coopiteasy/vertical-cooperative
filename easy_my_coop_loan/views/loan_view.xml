@@ -1,56 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<record id="view_loan_issue_tree" model="ir.ui.view">
-		<field name="name">loan.issue.tree</field>
-		<field name="model">loan.issue</field>
-		<field name="arch" type="xml">
-			<tree string="Loan issues">
-				<field name="name" />
-				<field name="subscription_start_date" />
-				<field name="subscription_end_date" />
-				<field name="loan_start_date" />
-				<field name="term_date" />
-				<field name="loan_term" />
-				<field name="rate" />
-				<field name="minimum_amount" />
-				<field name="maximum_amount" />
-				<field name="subscribed_amount" />
-				<field name="user_id" />
-				<field name="state" />
-			</tree>
-		</field>
-	</record>
+    <record id="view_loan_issue_tree" model="ir.ui.view">
+        <field name="name">loan.issue.tree</field>
+        <field name="model">loan.issue</field>
+        <field name="arch" type="xml">
+            <tree string="Loan issues">
+                <field name="name"/>
+                <field name="subscription_start_date"/>
+                <field name="subscription_end_date"/>
+                <field name="loan_start_date"/>
+                <field name="term_date"/>
+                <field name="loan_term"/>
+                <field name="rate"/>
+                <field name="minimum_amount"/>
+                <field name="maximum_amount"/>
+                <field name="subscribed_amount"/>
+                <field name="user_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
 
-	<record id="view_loan_issue_form" model="ir.ui.view">
-		<field name="name">loan.issue.form</field>
-		<field name="model">loan.issue</field>
-		<field name="arch" type="xml">
-			<form string="Loan issue">
-				<header>
-<!--					todo check access rights  -->
-					<button name="action_confirm" string="Confirm" type="object" states="draft"
-						groups="easy_my_coop.group_easy_my_coop_manager"/>
-					<button name="action_cancel" string="Cancel" type="object" states="draft,ongoing"
-						confirm="Are you sure you want to cancel this loan issue?"
-						groups="easy_my_coop.group_easy_my_coop_manager"/>
-					<button name="action_open" string="Open" type="object"
-						states="confirmed" groups="easy_my_coop.group_easy_my_coop_manager"/>
-					<button name="action_close" string="Close" type="object" states="ongoing"
-						confirm="Are you sure you want to close this loan issue?"
-						groups="easy_my_coop.group_easy_my_coop_manager"/>
-					<button name="action_draft" string="Set to draft"
-						type="object" states="confirmed,cancelled"
-						groups="easy_my_coop.group_easy_my_coop_manager"/>
-					<button name="compute_loan_interest" string="Compute interest"
-						type="object" states="closed,ongoing"
-						groups="easy_my_coop.group_easy_my_coop_manager"/>
+    <record id="view_loan_issue_form" model="ir.ui.view">
+        <field name="name">loan.issue.form</field>
+        <field name="model">loan.issue</field>
+        <field name="arch" type="xml">
+            <form string="Loan issue">
+                <header>
+                    <!-- todo check access rights  -->
+                    <button name="action_confirm" string="Confirm" type="object"
+                            states="draft"
+                            groups="easy_my_coop.group_easy_my_coop_manager"/>
+                    <button name="action_cancel" string="Cancel" type="object"
+                            states="draft,ongoing"
+                            confirm="Are you sure you want to cancel this loan issue?"
+                            groups="easy_my_coop.group_easy_my_coop_manager"/>
+                    <button name="action_open" string="Open" type="object"
+                            states="confirmed"
+                            groups="easy_my_coop.group_easy_my_coop_manager"/>
+                    <button name="action_close" string="Close" type="object"
+                            states="ongoing"
+                            confirm="Are you sure you want to close this loan issue?"
+                            groups="easy_my_coop.group_easy_my_coop_manager"/>
+                    <button name="action_draft" string="Set to draft"
+                            type="object" states="confirmed,cancelled"
+                            groups="easy_my_coop.group_easy_my_coop_manager"/>
+                    <button name="compute_loan_interest"
+                            string="Compute interest"
+                            type="object" states="closed,ongoing"
+                            groups="easy_my_coop.group_easy_my_coop_manager"/>
 
-					<field name="state" widget="statusbar" statusbar_visible="draft,confirmed,ongoing,closed"/>
-				</header>
-				<sheet>
-					<div class="oe_title">
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,confirmed,ongoing,closed"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
                         <label class="oe_edit_only" for="name" string="Name"/>
-                        <h1><field name="name" placeholder="Loan issue Name"/></h1>
+                        <h1>
+                            <field name="name" placeholder="Loan issue Name"/>
+                        </h1>
                         <div name="options">
                             <div>
                                 <field name="display_on_website"/>
@@ -58,177 +66,190 @@
                             </div>
                         </div>
                     </div>
-					<group>
-						<group>
-							<field name="default_issue" />
-							<field name="face_value" />
-							<field name="minimum_amount" />
-							<field name="maximum_amount" />
-							<field name="subscribed_amount" />
-							<field name="by_individual" />
-							<field name="min_amount_person" attrs="{'invisible':[('by_individual','=',False)]}" />
-							<field name="max_amount_person" attrs="{'invisible':[('by_individual','=',False)]}" />
-							<field name="by_company" />
-							<field name="min_amount_company" attrs="{'invisible':[('by_company','=',False)]}" />
-							<field name="max_amount_company" attrs="{'invisible':[('by_company','=',False)]}" />
-							<field name="company_currency_id" invisible="True" />
-						</group>
-						<group>
-							<field name="user_id" widget="selection" />
-							<label for="rate" string="Interest rate"/>
-							<div>
-								<field name="rate" class="oe_inline"/>
-								<span class="o_form_label oe_inline">%</span>
-							</div>
-							<label for="taxes_rate" string="Taxes on interest"/>
-							<div>
-								<field name="taxes_rate" class="oe_inline"/>
-								<span class="o_form_label oe_inline">%</span>
-							</div>
-							<field name="subscription_start_date" />
-							<field name="subscription_end_date" />
-							<field name="loan_start_date" />
-							<field name="term_date" />
-							<field name="loan_term" />
-							<field name="interest_payment" widget="selection" />
-							<field name="interest_payment_info" attrs="{'invisible':[('interest_payment','not in',['end','yearly'])]}" />
-						</group>
-					</group>
-					<notebook>
-						<page name="lines" string="Lines">
-							<field name="loan_issue_lines">
-								<tree delete="false">
-									<field name="name" />
-									<field name="partner_id" />
-									<field name="date" />
-									<field name="quantity" />
-									<field name="face_value" />
-									<field name="amount" />
-									<field name="state" />
-									<field name="company_currency_id" invisible="True"/>
-								</tree>
-							</field>
-						</page>
-					</notebook>
-				</sheet>
-			</form>
-		</field>
-	</record>
+                    <group>
+                        <group>
+                            <field name="default_issue"/>
+                            <field name="face_value"/>
+                            <field name="minimum_amount"/>
+                            <field name="maximum_amount"/>
+                            <field name="subscribed_amount"/>
+                            <field name="by_individual"/>
+                            <field name="min_amount_person"
+                                   attrs="{'invisible':[('by_individual','=',False)]}"/>
+                            <field name="max_amount_person"
+                                   attrs="{'invisible':[('by_individual','=',False)]}"/>
+                            <field name="by_company"/>
+                            <field name="min_amount_company"
+                                   attrs="{'invisible':[('by_company','=',False)]}"/>
+                            <field name="max_amount_company"
+                                   attrs="{'invisible':[('by_company','=',False)]}"/>
+                            <field name="company_currency_id" invisible="True"/>
+                        </group>
+                        <group>
+                            <field name="user_id" widget="selection"/>
+                            <label for="rate" string="Interest rate"/>
+                            <div>
+                                <field name="rate" class="oe_inline"/>
+                                <span class="o_form_label oe_inline">%</span>
+                            </div>
+                            <label for="taxes_rate" string="Taxes on interest"/>
+                            <div>
+                                <field name="taxes_rate" class="oe_inline"/>
+                                <span class="o_form_label oe_inline">%</span>
+                            </div>
+                            <field name="subscription_start_date"/>
+                            <field name="subscription_end_date"/>
+                            <field name="loan_start_date"/>
+                            <field name="term_date"/>
+                            <field name="loan_term"/>
+                            <field name="interest_payment" widget="selection"/>
+                            <field name="interest_payment_info"
+                                   attrs="{'invisible':[('interest_payment','not in',['end','yearly'])]}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="lines" string="Lines">
+                            <field name="loan_issue_lines">
+                                <tree delete="false">
+                                    <field name="name"/>
+                                    <field name="partner_id"/>
+                                    <field name="date"/>
+                                    <field name="quantity"/>
+                                    <field name="face_value"/>
+                                    <field name="amount"/>
+                                    <field name="state"/>
+                                    <field name="company_currency_id"
+                                           invisible="True"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
-	<record id="view_loan_issue_filter" model="ir.ui.view">
-		<field name="name">Loans Issue Search</field>
-		<field name="model">loan.issue</field>
-		<field name="arch" type="xml">
-			<search string="Search Loan Issue">
-				<field name="name"/>
-			</search>
-		</field>
-	</record>
+    <record id="view_loan_issue_filter" model="ir.ui.view">
+        <field name="name">Loans Issue Search</field>
+        <field name="model">loan.issue</field>
+        <field name="arch" type="xml">
+            <search string="Search Loan Issue">
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
 
-	<record id="action_loan_issue" model="ir.actions.act_window">
-		<field name="name">Loan Issues</field>
-		<field name="res_model">loan.issue</field>
-		<field name="view_type">form</field>
-		<field name="view_mode">tree,form</field>
-	</record>
+    <record id="action_loan_issue" model="ir.actions.act_window">
+        <field name="name">Loan Issues</field>
+        <field name="res_model">loan.issue</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
-	<record id="action_loan_issue_lines" model="ir.actions.act_window">
-		<field name="name">Loans</field>
-		<field name="res_model">loan.issue.line</field>
-		<field name="view_type">form</field>
-		<field name="view_mode">tree,form</field>
-	</record>
+    <record id="action_loan_issue_lines" model="ir.actions.act_window">
+        <field name="name">Loans</field>
+        <field name="res_model">loan.issue.line</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
-	<record id="loan_issue_line_view_tree" model="ir.ui.view">
-	    <field name="name">loan_issue_line_view_tree</field>
-	    <field name="model">loan.issue.line</field>
-	    <field name="arch" type="xml">
-	        <tree string="Loans">
-	            <field name="name"/>
-				<field name="loan_issue_id"/>
-				<field name="partner_id"/>
-				<field name="loan_issue_id"/>
-				<field name="quantity"/>
-				<field name="face_value"/>
-				<field name="amount"/>
-				<field name="date"/>
-				<field name="state"/>
-	        </tree>
-	    </field>
-	</record>
+    <record id="loan_issue_line_view_tree" model="ir.ui.view">
+        <field name="name">loan_issue_line_view_tree</field>
+        <field name="model">loan.issue.line</field>
+        <field name="arch" type="xml">
+            <tree string="Loans">
+                <field name="name"/>
+                <field name="loan_issue_id"/>
+                <field name="partner_id"/>
+                <field name="loan_issue_id"/>
+                <field name="quantity"/>
+                <field name="face_value"/>
+                <field name="amount"/>
+                <field name="date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
 
-	<record id="view_loan_issue_line_form" model="ir.ui.view">
-		<field name="name">loan.issue.line.form</field>
-		<field name="model">loan.issue.line</field>
-		<field name="arch" type="xml">
-			<form string="Loan issue">
-				<header>
-					<button name="action_validate" string="Validate"
-						type="object" states="draft" />
-					<button name="action_request_payment" string="Request Payment"
-						type="object" states="subscribed" />
-					<button name="action_cancel" string="Cancel" type="object"
-						states="draft,subscribed,waiting"
-						confirm="Are you sure you want to cancel this loan subscription ?" />
-					<button name="action_draft" string="Set to draft"
-						type="object" states="cancelled" />
-					<button name="action_paid" string="Paid"
-						type="object" states="waiting" />
-					<field name="state" widget="statusbar" />
-				</header>
-				<sheet>
-					<group>
-						<group>
-							<field name="loan_issue_id"/>
-							<field name="name" />
-							<field name="quantity" />
-							<field name="face_value" />
-						</group>
-						<group>
-							<field name="date" />
-							<field name="partner_id" />
-							<field name="amount" />
-						</group>
-					</group>
-					<notebook>
-						<page string="Interest lines">
-							<field name="interest_lines">
-								<tree delete="false" create="false">
-									<field name="name" />
-									<field name="amount" />
-									<field name="accrued_amount" />
-									<field name="interest" />
-									<field name="net_interest" />
-									<field name="taxes_amount" />
-									<field name="due_date" />
-									<field name="state" />
-								</tree>
-							</field>
-						</page>
-					</notebook>
-				</sheet>
-			</form>
-		</field>
-	</record>
+    <record id="view_loan_issue_line_form" model="ir.ui.view">
+        <field name="name">loan.issue.line.form</field>
+        <field name="model">loan.issue.line</field>
+        <field name="arch" type="xml">
+            <form string="Loan issue">
+                <header>
+                    <button name="action_validate" string="Validate"
+                            type="object" states="draft"/>
+                    <button name="action_request_payment"
+                            string="Request Payment"
+                            type="object" states="subscribed"/>
+                    <button name="action_cancel" string="Cancel" type="object"
+                            states="draft,subscribed,waiting"
+                            confirm="Are you sure you want to cancel this loan subscription ?"/>
+                    <button name="action_draft" string="Set to draft"
+                            type="object" states="cancelled"/>
+                    <button name="action_paid" string="Paid"
+                            type="object" states="waiting"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="loan_issue_id"/>
+                            <field name="name"/>
+                            <field name="quantity"/>
+                            <field name="face_value"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                            <field name="partner_id"/>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Interest lines">
+                            <field name="interest_lines">
+                                <tree delete="false" create="false">
+                                    <field name="name"/>
+                                    <field name="amount"/>
+                                    <field name="accrued_amount"/>
+                                    <field name="interest"/>
+                                    <field name="net_interest"/>
+                                    <field name="taxes_amount"/>
+                                    <field name="due_date"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
-	<record id="view_loan_issue_line_filter" model="ir.ui.view">
-		<field name="name">Loans Search</field>
-		<field name="model">loan.issue.line</field>
-		<field name="arch" type="xml">
-			<search string="Search Loans">
-				<field name="name"/>
-				<field name="partner_id"/>
-				<field name="loan_issue_id"/>
-				<separator/>
-				<filter string="Draft" name="state_draft" domain="[('state','=','draft')]"/>
-				<filter string="Paid" name="state_paid" domain="[('state','=','paid')]"/>
-				<filter string="Done" name="state_done" domain="[('state','=','done')]"/>
-				<filter string="Subscribed" name="state_subscribed" domain="[('state','=','subscribed')]"/>
-				<group expand="0" name="group_by" string="Group By">
-					<filter name="loan_issue_id" string="Loan Issue" context="{'group_by' : 'loan_issue_id'}" />
-					<filter name="date" string="Subscription Date" context="{'group_by': 'date'}"/>
-				</group>
-			</search>
-		</field>
-	</record>
+    <record id="view_loan_issue_line_filter" model="ir.ui.view">
+        <field name="name">Loans Search</field>
+        <field name="model">loan.issue.line</field>
+        <field name="arch" type="xml">
+            <search string="Search Loans">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="loan_issue_id"/>
+                <separator/>
+                <filter string="Draft" name="state_draft"
+                        domain="[('state','=','draft')]"/>
+                <filter string="Paid" name="state_paid"
+                        domain="[('state','=','paid')]"/>
+                <filter string="Done" name="state_done"
+                        domain="[('state','=','done')]"/>
+                <filter string="Subscribed" name="state_subscribed"
+                        domain="[('state','=','subscribed')]"/>
+                <group expand="0" name="group_by" string="Group By">
+                    <filter name="loan_issue_id" string="Loan Issue"
+                            context="{'group_by' : 'loan_issue_id'}"/>
+                    <filter name="date" string="Subscription Date"
+                            context="{'group_by': 'date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
 </odoo>

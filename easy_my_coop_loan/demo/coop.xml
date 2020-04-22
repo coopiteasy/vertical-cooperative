@@ -8,7 +8,8 @@
         <field name="name">test loan issue</field>
         <field name="default_issue" eval="True"/>
         <field name="subscription_start_date" eval="datetime.today()"/>
-        <field name="subscription_end_date" eval="datetime.today() + timedelta(days=60)"/>
+        <field name="subscription_end_date"
+               eval="datetime.today() + timedelta(days=60)"/>
         <field name="term_date" eval="datetime.today() + timedelta(days=600)"/>
         <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo"/>
         <field name="rate">0.03</field>
@@ -26,6 +27,7 @@
     <record id="loan_issue_line_1_demo" model="loan.issue.line">
         <field name="loan_issue_id" ref="loan_issue_1_demo"/>
         <field name="quantity">3</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_4_demo"/>
+        <field name="partner_id"
+               ref="easy_my_coop.res_partner_cooperator_4_demo"/>
     </record>
 </odoo>
