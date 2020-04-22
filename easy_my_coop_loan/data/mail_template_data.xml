@@ -5,11 +5,18 @@
     <data noupdate="1">
         <record id="loan_subscription_confirmation" model="mail.template">
             <field name="name">Loan Subscription Confirmation Email</field>
-            <field name="email_from">${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}</field>
-            <field name="subject">${object.company_id.name} Loan subscription confirmation (Ref ${object.loan_issue_id.name or 'n/a'})</field>
+            <field name="email_from">
+                ${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}
+            </field>
+            <field name="subject">${object.company_id.name} Loan subscription
+                confirmation (Ref ${object.loan_issue_id.name or 'n/a'})
+            </field>
             <field name="email_to">${object.partner_id.email}</field>
-            <field name="reply_to">${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}</field>
-            <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line"/>
+            <field name="reply_to">
+                ${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}
+            </field>
+            <field name="model_id"
+                   ref="easy_my_coop_loan.model_loan_issue_line"/>
             <field name="auto_delete" eval="True"/>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="easy_my_coop" eval="True"/>
@@ -57,12 +64,20 @@
         </record>
         <!--Request the payment of the subscribed loan issue -->
         <record id="loan_issue_payment_request" model="mail.template">
-            <field name="name">Loan Issue Payment Request - Send by Email</field>
-            <field name="email_from">${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}</field>
-            <field name="subject">${object.company_id.name} Payment request (Ref ${object.loan_issue_id.name or 'n/a'})</field>
+            <field name="name">Loan Issue Payment Request - Send by Email
+            </field>
+            <field name="email_from">
+                ${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}
+            </field>
+            <field name="subject">${object.company_id.name} Payment request (Ref
+                ${object.loan_issue_id.name or 'n/a'})
+            </field>
             <field name="partner_to">${object.partner_id.id}</field>
-            <field name="reply_to">${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}</field>
-            <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line"/>
+            <field name="reply_to">
+                ${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}
+            </field>
+            <field name="model_id"
+                   ref="easy_my_coop_loan.model_loan_issue_line"/>
             <field name="auto_delete" eval="True"/>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="easy_my_coop" eval="True"/>

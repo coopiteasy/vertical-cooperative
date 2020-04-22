@@ -19,22 +19,27 @@
 
     <record id="tax_shelter_certificate_1_demo" model="tax.shelter.certificate">
         <field name="cooperator_number">1</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_1_demo"/>
-        <field name="declaration_id" ref="easy_my_coop_taxshelter_report.tax_shelter_declaration_1_demo"/>
+        <field name="partner_id"
+               ref="easy_my_coop.res_partner_cooperator_1_demo"/>
+        <field name="declaration_id"
+               ref="easy_my_coop_taxshelter_report.tax_shelter_declaration_1_demo"/>
         <field name="state">sent</field>
     </record>
 
     <record id="certificate_line_1_demo" model="certificate.line">
-        <field name="tax_shelter_certificate" ref="easy_my_coop_taxshelter_report.tax_shelter_certificate_1_demo"/>
-        <field name="share_type" model="product.template" eval="obj(ref('easy_my_coop.product_template_share_type_1_demo')).product_variant_id.id"/>
+        <field name="tax_shelter_certificate"
+               ref="easy_my_coop_taxshelter_report.tax_shelter_certificate_1_demo"/>
+        <field name="share_type" model="product.template"
+               eval="obj(ref('easy_my_coop.product_template_share_type_1_demo')).product_variant_id.id"/>
         <field name="share_unit_price">25</field>
         <field name="quantity">12</field>
-        <field name="transaction_date" eval="datetime.now() - timedelta(days=45)"/>
-        <field name="tax_shelter" eval="True" />
+        <field name="transaction_date"
+               eval="datetime.now() - timedelta(days=45)"/>
+        <field name="tax_shelter" eval="True"/>
         <field name="type">subscribed</field>
     </record>
 
-    <record id="tax_shelter_certificate_1_demo"  model="tax.shelter.certificate">
+    <record id="tax_shelter_certificate_1_demo" model="tax.shelter.certificate">
         <field name="lines" eval="[(4, ref('certificate_line_1_demo'))]"/>
     </record>
 </odoo>

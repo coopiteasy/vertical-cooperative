@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<record id="view_account_journal_form_coop" model="ir.ui.view">
+    <record id="view_account_journal_form_coop" model="ir.ui.view">
         <field name="name">account.journal.form</field>
         <field name="model">account.journal</field>
         <field name="inherit_id" ref="account.view_account_journal_form"/>
         <field name="arch" type="xml">
-        	<field name="bank_id" position="after">
-        		<field name="get_cooperator_payment" groups="easy_my_coop.group_easy_my_coop_manager"/>
-        		<field name="get_general_payment"/>
-        	</field>
+            <field name="bank_id" position="after">
+                <field name="get_cooperator_payment"
+                       groups="easy_my_coop.group_easy_my_coop_manager"/>
+                <field name="get_general_payment"/>
+            </field>
         </field>
-	</record>
+    </record>
 
-	<record id="view_account_bank_journal_form_coop" model="ir.ui.view">
+    <record id="view_account_bank_journal_form_coop" model="ir.ui.view">
         <field name="name">account.bank.journal.form</field>
         <field name="model">account.journal</field>
         <field name="inherit_id" ref="account.view_account_bank_journal_form"/>
         <field name="arch" type="xml">
-        	<field name="currency_id" position="after">
-        		<field name="get_cooperator_payment" groups="easy_my_coop.group_easy_my_coop_manager"/>
-        		<field name="get_general_payment"/>
-        	</field>
+            <field name="currency_id" position="after">
+                <field name="get_cooperator_payment"
+                       groups="easy_my_coop.group_easy_my_coop_manager"/>
+                <field name="get_general_payment"/>
+            </field>
         </field>
     </record>
 </odoo>

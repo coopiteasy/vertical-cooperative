@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<record id="view_partner_from_age" model="ir.ui.view">
+    <record id="view_partner_from_age" model="ir.ui.view">
         <field name="name">res.partner.form.age</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="easy_my_coop.view_partner_form_easy_my_coop"/>
+        <field name="inherit_id"
+               ref="easy_my_coop.view_partner_form_easy_my_coop"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='birthdate_date']" position='after'>
-            	<field name="age" attrs="{'invisible':[('is_company','=',True)]}"/>
+                <field name="age"
+                       attrs="{'invisible':[('is_company','=',True)]}"/>
             </xpath>
         </field>
     </record>
 
     <record id="view_partner_tree_age" model="ir.ui.view">
-       <field name="name">res.partner.tree.easy_my_coop</field>
-       <field name="model">res.partner</field>
-       <field name="inherit_id" ref="easy_my_coop.view_partner_tree_easy_my_coop"/>
-       <field name="arch" type="xml">
-           <xpath expr="//field[@name='cooperator_type']" position='after'>
-           		<field name="age"/>
-           </xpath>
-       </field>
-   </record>
+        <field name="name">res.partner.tree.easy_my_coop</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id"
+               ref="easy_my_coop.view_partner_tree_easy_my_coop"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='cooperator_type']" position='after'>
+                <field name="age"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<data>
-		<template id="layout_i18n_fr" inherit_id="theme_light.invoice_footer" name="French Layout Customization">
-			<xpath expr="//t[@t-if='company.company_registry']" position="before">
-				<t t-if="company.siret">
-            		<span>Siret</span> :
-            		<span t-field="company.siret"/>
-           		</t>
-			</xpath>
-		</template>
-	</data>
+    <data>
+        <template id="layout_i18n_fr" inherit_id="theme_light.invoice_footer"
+                  name="French Layout Customization">
+            <xpath expr="//t[@t-if='company.company_registry']"
+                   position="before">
+                <t t-if="company.siret">
+                    <span>Siret</span>
+                    :
+                    <span t-field="company.siret"/>
+                </t>
+            </xpath>
+        </template>
+    </data>
 </odoo>

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-	<data noupdate="1">
-        <record model="ir.module.category" id="module_category_cooperator_management">
+    <data noupdate="1">
+        <record model="ir.module.category"
+                id="module_category_cooperator_management">
             <field name="name">Cooperative Management</field>
             <field name="description">Manage your cooperative.</field>
             <field name="sequence">3</field>
         </record>
 
-		<!-- Product -->
-		<record id="product_category_company_share" model="product.category">
+        <!-- Product -->
+        <record id="product_category_company_share" model="product.category">
             <field name="name">Company Share</field>
         </record>
 
@@ -19,7 +20,7 @@
             <field name="use_date_range">True</field>
         </record>
 
- 		<record id="subscription_journal" model="account.journal">
+        <record id="subscription_journal" model="account.journal">
             <field name="name">Subscription Journal</field>
             <field name="code">SUBJ</field>
             <field name="type">sale</field>
@@ -39,5 +40,5 @@
             <field eval="1" name="number_next"/>
             <field eval="1" name="number_increment"/>
         </record>
-	</data>
+    </data>
 </openerp>
