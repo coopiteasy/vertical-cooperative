@@ -29,6 +29,7 @@
         "security/res_groups.xml",
         "security/ir.model.access.csv",
         "wizard/create_subscription_from_partner.xml",
+        "wizard/cooperative_history_wizard.xml",  # todo remove?
         "wizard/update_partner_info.xml",
         "wizard/validate_subscription_request.xml",
         "wizard/update_share_line.xml",
