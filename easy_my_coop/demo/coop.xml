@@ -18,9 +18,9 @@
     </record>
 
     <record id="bank_account_virginie_demo" model="res.partner.bank">
-            <field name="acc_number">FR7611808009101234567890147</field>
-            <field name="bank_name">Bank</field>
-            <field name="partner_id" ref="res_partner_cooperator_1_demo"/>
+        <field name="acc_number">FR7611808009101234567890147</field>
+        <field name="bank_name">Bank</field>
+        <field name="partner_id" ref="res_partner_cooperator_1_demo"/>
     </record>
 
     <record id="res_partner_cooperator_2_demo" model="res.partner">
@@ -53,9 +53,9 @@
     </record>
 
     <record id="bank_account_vincent_demo" model="res.partner.bank">
-            <field name="acc_number">BE71096123456769</field>
-            <field name="bank_name">Bank</field>
-            <field name="partner_id" ref="res_partner_cooperator_3_demo"/>
+        <field name="acc_number">BE71096123456769</field>
+        <field name="bank_name">Bank</field>
+        <field name="partner_id" ref="res_partner_cooperator_3_demo"/>
     </record>
 
     <record id="res_partner_cooperator_4_demo" model="res.partner">
@@ -77,7 +77,8 @@
     </record>
 
     <record id="base.main_company" model="res.company">
-        <field name="property_cooperator_account" ref="easy_my_coop.account_cooperator_demo"/>
+        <field name="property_cooperator_account"
+               ref="easy_my_coop.account_cooperator_demo"/>
     </record>
 
     <record id="product_template_share_type_1_demo" model="product.template">
@@ -116,24 +117,29 @@
         <field name="date" eval="datetime.now() - timedelta(days=12)"/>
         <field name="source">manual</field>
         <field name="ordered_parts">3</field>
-        <field name="share_product_id" model="product.template" eval="obj(ref('product_template_share_type_2_demo')).product_variant_id.id"/>
+        <field name="share_product_id" model="product.template"
+               eval="obj(ref('product_template_share_type_2_demo')).product_variant_id.id"/>
         <field name="lang">en_US</field>
         <field name="skip_control_ng" eval="True"/>
     </record>
 
     <record id="share_line_1_demo" model="share.line">
-        <field name="share_product_id" model="product.template" eval="obj(ref('product_template_share_type_1_demo')).product_variant_id.id"/>
+        <field name="share_product_id" model="product.template"
+               eval="obj(ref('product_template_share_type_1_demo')).product_variant_id.id"/>
         <field name="share_number">2</field>
         <field name="share_unit_price">50</field>
         <field name="partner_id" ref="res_partner_cooperator_1_demo"/>
-        <field name="effective_date" eval="datetime.now() - timedelta(days=120)"/>
+        <field name="effective_date"
+               eval="datetime.now() - timedelta(days=120)"/>
     </record>
 
     <record id="share_line_2_demo" model="share.line">
-        <field name="share_product_id" model="product.template" eval="obj(ref('product_template_share_type_1_demo')).product_variant_id.id"/>
+        <field name="share_product_id" model="product.template"
+               eval="obj(ref('product_template_share_type_1_demo')).product_variant_id.id"/>
         <field name="share_number">4</field>
         <field name="share_unit_price">50</field>
         <field name="partner_id" ref="res_partner_cooperator_2_demo"/>
-        <field name="effective_date" eval="datetime.now() - timedelta(days=120)"/>
+        <field name="effective_date"
+               eval="datetime.now() - timedelta(days=120)"/>
     </record>
 </odoo>
