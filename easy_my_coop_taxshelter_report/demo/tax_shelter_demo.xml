@@ -39,7 +39,4 @@
         <field name="type">subscribed</field>
     </record>
 
-    <record id="tax_shelter_certificate_1_demo" model="tax.shelter.certificate">
-        <field name="lines" eval="[(4, ref('certificate_line_1_demo'))]"/>
-    </record>
 </odoo>
