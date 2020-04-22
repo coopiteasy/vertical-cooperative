@@ -10,30 +10,35 @@
                         Update Cooperator Info.
                     </p>
                     <group>
-                    	<field name="is_company" invisible="True"/>
-                    	<field name="all"/>
-                    	<field name="birthdate"/>
-                    	<field name="legal_form"/>
-                    	<field name="representative_function"/>
-                    	<field name="cooperator" readonly="True"/>
-                    	<field name="register_number" attrs="{'required':['|', ('is_company', '=', True), ('all', '=', False)], 'invisible':[('is_company', '=', False)]}"/>
+                        <field name="is_company" invisible="True"/>
+                        <field name="all"/>
+                        <field name="birthdate"/>
+                        <field name="legal_form"/>
+                        <field name="representative_function"/>
+                        <field name="cooperator" readonly="True"/>
+                        <field name="register_number"
+                               attrs="{'required':['|', ('is_company', '=', True), ('all', '=', False)], 'invisible':[('is_company', '=', False)]}"/>
                     </group>
                     <footer>
-                        <button name="update" string="Update Info" type="object" class="btn-primary"/>
-                        <button string="Cancel" class="btn-default" special="cancel"/>
+                        <button name="update" string="Update Info" type="object"
+                                class="btn-primary"/>
+                        <button string="Cancel" class="btn-default"
+                                special="cancel"/>
                     </footer>
                 </form>
             </field>
         </record>
 
-        <record id="action_view_update_partner_info" model="ir.actions.act_window">
+        <record id="action_view_update_partner_info"
+                model="ir.actions.act_window">
             <field name="name">Update Cooperator Info</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">partner.update.info</field>
             <field name="view_type">form</field>
             <field name="view_mode">form</field>
             <field name="target">new</field>
-            <field name="groups_id" eval="[(4,ref('easy_my_coop.group_easy_my_coop_user'))]"/>
+            <field name="groups_id"
+                   eval="[(4,ref('easy_my_coop.group_easy_my_coop_user'))]"/>
         </record>
 
     </data>
