@@ -1,48 +1,48 @@
 <?xml version="1.0" ?>
-<openerp>
-    <data>
-        <record id="view_cooperative_history_wizard" model="ir.ui.view">
-            <field name="name">cooperative.history.wizard.form</field>
-            <field name="model">cooperative.history.report</field>
-            <field name="arch" type="xml">
-                <form string="Reporting" version="7.0">
-                    <separator string="Cooperative History"/>
-                    <group>
-                        <field name="report"/>
-                    </group>
-                    <label string="This report allows you to print a pdf of history and number of share for each cooperator"/>
-                    <group>
-                        <field name="display_cooperator"/>
-                    </group>
+<odoo>
+<!--    <data>-->
+<!--        <record id="view_cooperative_history_wizard" model="ir.ui.view">-->
+<!--            <field name="name">cooperative.history.wizard.form</field>-->
+<!--            <field name="model">cooperative.history.report</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form string="Reporting" version="7.0">-->
+<!--                    <separator string="Cooperative History"/>-->
+<!--                    <group>-->
+<!--                        <field name="report"/>-->
+<!--                    </group>-->
+<!--                    <label string="This report allows you to print a pdf of history and number of share for each cooperator"/>-->
+<!--                    <group>-->
+<!--                        <field name="display_cooperator"/>-->
+<!--                    </group>-->
 
-                    <footer>
-                        <button name="check_report" string="Print" type="object"
-                                default_focus="1" class="oe_highlight"/>
-                        or
-                        <button string="Cancel" class="oe_link"
-                                special="cancel"/>
-                    </footer>
-                </form>
-            </field>
-        </record>
+<!--                    <footer>-->
+<!--                        <button name="check_report" string="Print" type="object"-->
+<!--                                default_focus="1" class="oe_highlight"/>-->
+<!--                        or-->
+<!--                        <button string="Cancel" class="oe_link"-->
+<!--                                special="cancel"/>-->
+<!--                    </footer>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
 
-        <record id="action_cooperative_history_wizard"
-                model="ir.actions.act_window">
-            <field name="name">Cooperative history</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">cooperative.history.report</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">form</field>
-            <field name="view_id" ref="view_cooperative_history_wizard"/>
-            <field name="target">new</field>
-            <field name="multi">True</field>
-        </record>
+<!--        <record id="action_cooperative_history_wizard"-->
+<!--                model="ir.actions.act_window">-->
+<!--            <field name="name">Cooperative history</field>-->
+<!--            <field name="type">ir.actions.act_window</field>-->
+<!--            <field name="res_model">cooperative.history.report</field>-->
+<!--            <field name="view_type">form</field>-->
+<!--            <field name="view_mode">form</field>-->
+<!--            <field name="view_id" ref="view_cooperative_history_wizard"/>-->
+<!--            <field name="target">new</field>-->
+<!--            <field name="multi">True</field>-->
+<!--        </record>-->
 
-        <menuitem id="menu_easy_my_coop_reporting" name="Reporting"
-                  parent="menu_main_easy_my_coop" sequence="20"/>
-        <menuitem id="menu_coop_history_wizard_report"
-                  name="Cooperative history report"
-                  parent="menu_easy_my_coop_reporting"
-                  action="action_cooperative_history_wizard" sequence="10"/>
-    </data>
-</openerp>
+<!--        <menuitem id="menu_easy_my_coop_reporting" name="Reporting"-->
+<!--                  parent="menu_main_easy_my_coop" sequence="20"/>-->
+<!--        <menuitem id="menu_coop_history_wizard_report"-->
+<!--                  name="Cooperative history report"-->
+<!--                  parent="menu_easy_my_coop_reporting"-->
+<!--                  action="action_cooperative_history_wizard" sequence="10"/>-->
+<!--    </data>-->
+</odoo>
