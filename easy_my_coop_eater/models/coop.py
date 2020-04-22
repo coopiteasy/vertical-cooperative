@@ -15,9 +15,9 @@ class SubscriptionRequest(models.Model):
 
         return vals
 
-    @api.one
+    @api.multi
     def validate_subscription_request(self):
-
+        self.ensure_one()
         invoice = super(
             SubscriptionRequest, self
         ).validate_subscription_request()[0]
