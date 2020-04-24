@@ -322,6 +322,15 @@ class subscription_request(models.Model):
     )
     _order = "id desc"
 
+    @api.multi
+    @api.constrains("company_email", "email")
+    def _check_company_email(self):
+        """Ensure that company_email and email are different"""
+        for sub_req in self:
+            if sub_req.company_email == sub_req.email:
+                raise UserError(_("Company email and email can't "
+                                  "be the same."))
+
     def get_person_info(self, partner):
         self.firstname = partner.firstname
         self.name = partner.name
