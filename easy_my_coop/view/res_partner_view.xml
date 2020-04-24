@@ -18,6 +18,7 @@
             	<xpath expr="/form/sheet/group" position='before'>
 					<group>
 						<field name="representative" attrs="{'invisible':['|',('parent_id','=',False),('is_company','=',True)]}"/>
+						<field name="cooperator" groups="base.group_system"/>
 						<field name="cooperator_register_number" readonly="True" attrs="{'invisible':[('member','=',False)]}"/>
 						<field name="legal_form" attrs="{'invisible':[('is_company','=',False)]}"/>
 						<field name="company_register_number" readonly="True" attrs="{'invisible':[('is_company','=',False)]}"/>
