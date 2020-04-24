@@ -482,8 +482,6 @@ class subscription_request(models.Model):
         if self.ordered_parts <= 0:
             raise UserError(_('Number of share must be greater than 0.'))
         if self.partner_id:
-            if not self.partner_id.cooperator:
-                self.partner_id.cooperator = True
             partner = self.partner_id
         else:
             partner = None
@@ -503,6 +501,11 @@ class subscription_request(models.Model):
             partner = self.create_coop_partner()
         else:
             partner = partner[0]
+
+        partner.write({
+            "cooperator": True,
+            "customer": self.share_product_id.customer
+            })
 
         if self.is_company and not partner.has_representative():
             contact = False
