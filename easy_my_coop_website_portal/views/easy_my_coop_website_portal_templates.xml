@@ -49,7 +49,7 @@
             id="website_portal_details_form"
             name="Website Portal Details Form"
             inherit_id="portal.portal_layout">
-        <xpath expr="//div[@class='o_portal_my_details']" position="after">
+        <xpath expr="//div[hasclass('o_portal_my_details')]" position="after">
             <div class="o_my_details_coop" t-if="coop.member">
                 <h3 class="page-header">Your Cooperator Details</h3>
                 <p class="text-center">
