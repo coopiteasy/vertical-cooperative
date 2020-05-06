@@ -6,7 +6,7 @@
     "name": "Partner Age",
     "version": "12.0.1.0.0",
     "depends": ["easy_my_coop", "partner_contact_birthdate"],
-    "author": "Houssine BAKKALI <houssine.bakkali@gmail.com>",
+    "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
     "website": "www.coopiteasy.be",
     "license": "AGPL-3",

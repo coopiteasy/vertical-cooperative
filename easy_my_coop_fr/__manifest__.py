@@ -6,7 +6,7 @@
     "name": "Easy My Coop Fr",
     "version": "12.0.1.0.1",
     "depends": ["easy_my_coop", "easy_my_coop_website", "l10n_fr"],
-    "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
+    "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
     "webstite": "www.coopiteasy.be",
     "license": "AGPL-3",
