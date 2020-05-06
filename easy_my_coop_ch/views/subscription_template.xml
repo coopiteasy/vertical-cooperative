@@ -4,6 +4,7 @@
         <template id="subscription_i18n_ch"
                   inherit_id="easy_my_coop_website.becomecooperator"
                   name="Removing fields">
+            <!-- fixme instead of removing here, it should be added in easy_my_coop_be -->
             <xpath expr="//label[@for='iban']/.." position="replace">
                 <div t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}">
                     <label class="col-md-3 col-sm-4 control-label" for="iban">

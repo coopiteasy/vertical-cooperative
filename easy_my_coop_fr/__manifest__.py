@@ -5,7 +5,7 @@
 {
     "name": "Easy My Coop Fr",
     "version": "12.0.1.0.1",
-    "depends": ["easy_my_coop", "l10n_fr"],
+    "depends": ["easy_my_coop", "easy_my_coop_website", "l10n_fr"],
     "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
     "category": "Cooperative management",
     "webstite": "www.coopiteasy.be",
