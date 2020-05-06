@@ -5,6 +5,7 @@
 
 from datetime import datetime
 
+# pylint: disable=missing-manifest-dependency
 from addons.base_iban.models.res_partner_bank import validate_iban
 
 from odoo import _, api, fields, models
