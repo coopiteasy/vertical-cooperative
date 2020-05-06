@@ -42,8 +42,8 @@
 		       					<field name="already_cooperator"/>
 		       					<field name="is_company" groups="easy_my_coop.group_energiris_super_manager"/>
 		       					<field name="is_operation" invisible="True"/>
-		       					<field name="company_name" attrs="{'invisible':[('is_company','=',False)]}"/>
-		       					<field name="company_email" attrs="{'invisible':[('is_company','=',False)]}"/>
+		       					<field name="company_name" attrs="{'invisible':[('is_company','=',False)],'required':[('is_company','=',True)]}"/>
+		       					<field name="company_email" attrs="{'invisible':[('is_company','=',False)],'required':[('is_company','=',True)]}"/>
 		       					<field name="company_type" attrs="{'invisible':[('is_company','=',False)]}"/>
 		       					<field name="company_register_number" attrs="{'invisible':[('is_company','=',False)]}"/>
 		       					<field name="name"/>

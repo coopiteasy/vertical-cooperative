@@ -102,7 +102,7 @@ class ResPartner(models.Model):
             partner.number_of_share = number_of_share
             partner.total_value = total_value
 
-    cooperator = fields.Boolean(string='Cooperator',
+    cooperator = fields.Boolean(string='Easy My Coop',
                                 help="Check this box if this contact is a"
                                 " cooperator(effective or not).")
     member = fields.Boolean(string='Effective cooperator',

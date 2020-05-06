@@ -322,6 +322,15 @@ class subscription_request(models.Model):
     )
     _order = "id desc"
 
+    @api.multi
+    @api.constrains("company_email", "email")
+    def _check_company_email(self):
+        """Ensure that company_email and email are different"""
+        for sub_req in self:
+            if sub_req.company_email == sub_req.email:
+                raise UserError(_("Company email and email can't "
+                                  "be the same."))
+
     def get_person_info(self, partner):
         self.firstname = partner.firstname
         self.name = partner.name
@@ -482,8 +491,6 @@ class subscription_request(models.Model):
         if self.ordered_parts <= 0:
             raise UserError(_('Number of share must be greater than 0.'))
         if self.partner_id:
-            if not self.partner_id.cooperator:
-                self.partner_id.cooperator = True
             partner = self.partner_id
         else:
             partner = None
@@ -503,6 +510,11 @@ class subscription_request(models.Model):
             partner = self.create_coop_partner()
         else:
             partner = partner[0]
+
+        partner.write({
+            "cooperator": True,
+            "customer": self.share_product_id.customer
+            })
 
         if self.is_company and not partner.has_representative():
             contact = False
