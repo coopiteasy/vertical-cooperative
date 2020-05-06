@@ -11,7 +11,7 @@
     "name": "Easy My Coop tax shelter report",
     "version": "12.0.1.0.1",
     "depends": ["easy_my_coop"],
-    "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
+    "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
     "website": "https://coopiteasy.be",
     "license": "AGPL-3",
