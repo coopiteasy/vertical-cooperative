@@ -6,23 +6,19 @@
 {
     "name": "Easy My Coop Website",
     "version": "12.0.1.0.0",
-    "depends": [
-        "easy_my_coop",
-        "website",
-        "website_recaptcha_reloaded",
-    ],
+    "depends": ["easy_my_coop", "website", "website_recaptcha_reloaded"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
     "website": "www.coopiteasy.be",
     "license": "AGPL-3",
-    "description": """
-    This module adds the cooperator subscription form allowing to subscribe for
-     shares online.
+    "summary": """
+    This module adds the cooperator subscription form
+    allowing to subscribe for shares online.
     """,
-    'data': [
-        'views/subscription_template.xml',
-        'data/website_cooperator_data.xml',
+    "data": [
+        "views/subscription_template.xml",
+        "data/website_cooperator_data.xml",
     ],
-    'installable': True,
-    'application': True,
+    "installable": True,
+    "application": True,
 }

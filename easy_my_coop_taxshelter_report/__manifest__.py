@@ -11,17 +11,18 @@
     "name": "Easy My Coop tax shelter report",
     "version": "12.0.1.0.1",
     "depends": ["easy_my_coop"],
-    "author": "Houssine BAKKALI <houssine@coopiteasy.be>",
+    "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
     "website": "www.coopiteasy.be",
     "license": "AGPL-3",
-    "description": """
+    "summary": """
     This module allows you to create a fiscal declaration year and to print
     tax shelter declaration for each cooperator.
     """,
     "data": [
         "security/ir.model.access.csv",
         "reports/tax_shelter_report.xml",
+        "reports/tax_shelter_resold_report.xml",  # todo remove?
         "reports/tax_shelter_subscription_report.xml",
         "reports/tax_shelter_shares_report.xml",
         "views/tax_shelter_declaration_view.xml",

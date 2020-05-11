@@ -16,20 +16,20 @@
 
 hr {
      color: #4a94a6;
-     background: #4a94a6; 
-     width: 100%; 
+     background: #4a94a6;
+     width: 100%;
      height: 2px;
 }
 
 .box_title {
-      width: 375px; 
+      width: 375px;
       margin: 0px;
       margin-top:15px;
-      padding: 0px; 
+      padding: 0px;
       height:25px;
-      background-color: #4a94a6; 
-      border-top-left-radius: 5px 5px; 
-      border-top-right-radius: 5px 5px; 
+      background-color: #4a94a6;
+      border-top-left-radius: 5px 5px;
+      border-top-right-radius: 5px 5px;
       background-repeat: repeat no-repeat;
       color: white;
       font-family:Calibri;
@@ -37,7 +37,7 @@ hr {
 }
 
 .box-body {
-       width: 375px; 
+       width: 375px;
        border-left: 1px solid #4a94a6;
        border-right: 1px solid #4a94a6;
        font-family:Calibri;
@@ -45,20 +45,18 @@ hr {
      }
 
 .box_bottom {
-      width: 375px; 
+      width: 375px;
       margin: 0px;
-      padding: 0px; 
+      padding: 0px;
       height:25px;
-      background-color: #4a94a6; 
-      border-bottom-left-radius: 5px 5px; 
-      border-bottom-right-radius: 5px 5px; 
+      background-color: #4a94a6;
+      border-bottom-left-radius: 5px 5px;
+      border-bottom-right-radius: 5px 5px;
       background-repeat: repeat no-repeat;
 }
 
 .company_text {
        font-family:Calibri;
        font-size: 12px;
-       color: #4a94a6; 
+       color: #4a94a6;
     }
-
-

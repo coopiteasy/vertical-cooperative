@@ -1,53 +1,50 @@
-# -*- encoding: utf-8 -*-
-
-from openerp import fields, models, api
-
-import time
-from cStringIO import StringIO
 import base64
+import time
 
 import xlsxwriter
+from cStringIO import StringIO
+from openerp import api, fields, models
 
 HEADER = [
-        'Num. Coop',
-        'Nom',
-        'Email',
-        'Banque',
-        'Mobile',
-        'Adresse',
-        'Rue',
-        'Code Postal',
-        'Ville',
-        'Pays',
-        'Nombre de part total',
-        'Montant total des parts',
-        'Demande de liberation de capital',
-        'Communication',
-        'Nombre de part',
-        'Montant',
-        'Reception du paiement',
-        'Date de la souscription'
-        ]
+    "Num. Coop",
+    "Nom",
+    "Email",
+    "Banque",
+    "Mobile",
+    "Adresse",
+    "Rue",
+    "Code Postal",
+    "Ville",
+    "Pays",
+    "Nombre de part total",
+    "Montant total des parts",
+    "Demande de liberation de capital",
+    "Communication",
+    "Nombre de part",
+    "Montant",
+    "Reception du paiement",
+    "Date de la souscription",
+]
 HEADER2 = [
-        'Date de la souscription',
-        'Nom',
-        'Type',
-        'Nombre de part',
-        'Montant',
-        'Statut',
-        'Email',
-        'Mobile',
-        'Adresse',
-        'Code Postal',
-        'Ville',
-        'Pays',
-        ]
+    "Date de la souscription",
+    "Nom",
+    "Type",
+    "Nombre de part",
+    "Montant",
+    "Statut",
+    "Email",
+    "Mobile",
+    "Adresse",
+    "Code Postal",
+    "Ville",
+    "Pays",
+]
 
 
-class export_global_report(models.TransientModel):
-    _name = 'export.global.report'
+class ExportGlobalReport(models.TransientModel):
+    _name = "export.global.report"
 
-    name = fields.Char('Name')
+    name = fields.Char("Name")
 
     def write_header(self, worksheet, headers):
         i = 0
@@ -58,17 +55,18 @@ class export_global_report(models.TransientModel):
 
     @api.multi
     def export_global_report_xlsx(self):
-        partner_obj = self.env['res.partner']
-        invoice_obj = self.env['account.invoice']
-        subscription_obj = self.env['subscription.request']
+        partner_obj = self.env["res.partner"]
+        invoice_obj = self.env["account.invoice"]
+        subscription_obj = self.env["subscription.request"]
 
         file_data = StringIO()
         workbook = xlsxwriter.Workbook(file_data)
         worksheet1 = workbook.add_worksheet()
 
         self.write_header(worksheet1, HEADER)
-        cooperators = partner_obj.search([('cooperator', '=', True),
-                                          ('member', '=', True)])
+        cooperators = partner_obj.search(
+            [("cooperator", "=", True), ("member", "=", True)]
+        )
 
         j = 1
         for coop in cooperators:
@@ -86,8 +84,15 @@ class export_global_report(models.TransientModel):
             i += 1
             worksheet1.write(j, i, coop.phone)
             i += 1
-            address = coop.street + ' ' + coop.zip + ' ' \
-                + coop.city + ' ' + coop.country_id.name
+            address = (
+                coop.street
+                + " "
+                + coop.zip
+                + " "
+                + coop.city
+                + " "
+                + coop.country_id.name
+            )
             worksheet1.write(j, i, address)
             i += 1
             worksheet1.write(j, i, coop.street)
@@ -102,8 +107,12 @@ class export_global_report(models.TransientModel):
             i += 1
             worksheet1.write(j, i, coop.total_value)
 
-            invoice_ids = invoice_obj.search([('release_capital_request', '=', True),
-                                              ('partner_id', '=', coop.id)])
+            invoice_ids = invoice_obj.search(
+                [
+                    ("release_capital_request", "=", True),
+                    ("partner_id", "=", coop.id),
+                ]
+            )
             j += 1
             for invoice in invoice_ids:
                 i = 11
@@ -124,17 +133,27 @@ class export_global_report(models.TransientModel):
                     worksheet1.write(j, i, invoice.payment_ids[0].payment_date)
                 i += 1
                 if invoice.subscription_request:
-                    ind = len(invoice.subscription_request)-1
-                    worksheet1.write(j, i, invoice.subscription_request[ind].date)
+                    ind = len(invoice.subscription_request) - 1
+                    worksheet1.write(
+                        j, i, invoice.subscription_request[ind].date
+                    )
                 j += 1
 
-            sub_requests = subscription_obj.search([('state', 'in',
-                                                    ['draft', 'waiting']),
-                                                    ('partner_id', '=', coop.id)
-                                                    ])
+            sub_requests = subscription_obj.search(
+                [
+                    ("state", "in", ["draft", "waiting"]),
+                    ("partner_id", "=", coop.id),
+                ]
+            )
             for sub_request in sub_requests:
                 i = 11
-                worksheet1.write(j, i, dict(subscription_obj._columns['type'].selection).get(sub_request.type,False))
+                worksheet1.write(
+                    j,
+                    i,
+                    dict(subscription_obj._columns["type"].selection).get(
+                        sub_request.type, False
+                    ),
+                )
                 i += 1
                 worksheet1.write(j, i, sub_request.state)
                 i += 3
@@ -149,8 +168,9 @@ class export_global_report(models.TransientModel):
 
         worksheet1bis = workbook.add_worksheet()
         self.write_header(worksheet1bis, HEADER)
-        cooperators = partner_obj.search([('cooperator', '=', True),
-                                          ('member', '=', False)])
+        cooperators = partner_obj.search(
+            [("cooperator", "=", True), ("member", "=", False)]
+        )
 
         j = 1
         for coop in cooperators:
@@ -175,8 +195,12 @@ class export_global_report(models.TransientModel):
             i += 1
             worksheet1bis.write(j, i, coop.total_value)
 
-            invoice_ids = invoice_obj.search([('release_capital_request', '=', True),
-                                              ('partner_id', '=', coop.id)])
+            invoice_ids = invoice_obj.search(
+                [
+                    ("release_capital_request", "=", True),
+                    ("partner_id", "=", coop.id),
+                ]
+            )
             j += 1
             for invoice in invoice_ids:
                 i = 11
@@ -197,17 +221,27 @@ class export_global_report(models.TransientModel):
                     worksheet1bis.write(j, i, invoice.payment_ids[0].date)
                 i += 1
                 if invoice.subscription_request:
-                    ind = len(invoice.subscription_request)-1
-                    worksheet1bis.write(j, i, invoice.subscription_request[ind].date)
+                    ind = len(invoice.subscription_request) - 1
+                    worksheet1bis.write(
+                        j, i, invoice.subscription_request[ind].date
+                    )
                 j += 1
 
-            sub_requests = subscription_obj.search([('state', 'in',
-                                                    ['draft', 'waiting']),
-                                                    ('partner_id', '=', coop.id)
-                                                    ])
+            sub_requests = subscription_obj.search(
+                [
+                    ("state", "in", ["draft", "waiting"]),
+                    ("partner_id", "=", coop.id),
+                ]
+            )
             for sub_request in sub_requests:
                 i = 11
-                worksheet1bis.write(j, i, dict(subscription_obj._columns['type'].selection).get(sub_request.type,False))
+                worksheet1bis.write(
+                    j,
+                    i,
+                    dict(subscription_obj._columns["type"].selection).get(
+                        sub_request.type, False
+                    ),
+                )
                 i += 1
                 worksheet1bis.write(j, i, sub_request.state)
                 i += 3
@@ -222,9 +256,9 @@ class export_global_report(models.TransientModel):
 
         worksheet2 = workbook.add_worksheet()
         self.write_header(worksheet2, HEADER2)
-        sub_requests = subscription_obj.search([('state', 'in',
-                                                ['draft', 'waiting']),
-                                                ])
+        sub_requests = subscription_obj.search(
+            [("state", "in", ["draft", "waiting"])]
+        )
 
         j = 1
         for sub_request in sub_requests:
@@ -233,8 +267,10 @@ class export_global_report(models.TransientModel):
             i += 1
             worksheet2.write(j, i, sub_request.name)
             i += 1
-            sub_type_sel = subscription_obj._columns['type'].selection
-            worksheet2.write(j, i, dict(sub_type_sel).get(sub_request.type, False))
+            sub_type_sel = subscription_obj._columns["type"].selection
+            worksheet2.write(
+                j, i, dict(sub_type_sel).get(sub_request.type, False)
+            )
             i += 1
             quantity = int(sub_request.ordered_parts)
             worksheet2.write(j, i, quantity)
@@ -262,20 +298,25 @@ class export_global_report(models.TransientModel):
 
         data = base64.encodestring(file_data.read())
 
-        attachment_id = self.env['ir.attachment'].create({
-                'name': "Global export" + time.strftime('%Y-%m-%d %H:%M')
-                        + ".xlsx",
-                'datas': data,
-                'datas_fname': 'Global_export.xlsx',
-                'res_model': 'export.global.report',
-                },)
+        attachment_id = self.env["ir.attachment"].create(
+            {
+                "name": "Global export"
+                + time.strftime("%Y-%m-%d %H:%M")
+                + ".xlsx",
+                "datas": data,
+                "datas_fname": "Global_export.xlsx",
+                "res_model": "export.global.report",
+            }
+        )
 
         # Prepare your download URL
-        download_url = '/web/content/' + str(attachment_id.id) + '?download=True'
-        base_url = self.env['ir.config_parameter'].get_param('web.base.url')
+        download_url = (
+            "/web/content/" + str(attachment_id.id) + "?download=True"
+        )
+        base_url = self.env["ir.config_parameter"].get_param("web.base.url")
 
         return {
-             "type": "ir.actions.act_url",
-             "url": str(base_url) + str(download_url),
-             "target": "new",
+            "type": "ir.actions.act_url",
+            "url": str(base_url) + str(download_url),
+            "target": "new",
         }

@@ -6,7 +6,11 @@ class MailTemplate(models.Model):
 
     @api.multi
     def send_mail_with_multiple_attachments(
-        self, res_id, additional_attachments, force_send=False, raise_exception=False
+        self,
+        res_id,
+        additional_attachments,
+        force_send=False,
+        raise_exception=False,
     ):
         """Generates a new mail message for the given template and record,
            and schedules it for delivery through the ``mail``

@@ -5,15 +5,24 @@
     <data noupdate="1">
         <!--Request to release capital Email template -->
         <record id="email_template_release_capital" model="mail.template">
-            <field name="name">Request to Release Capital - Send by Email</field>
-            <field name="email_from">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
-            <field name="subject">${object.company_id.name} Request to Release Capital (Ref ${object.number or 'n/a'})</field>
+            <field name="name">Request to Release Capital - Send by Email
+            </field>
+            <field name="email_from">
+                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+            </field>
+            <field name="subject">${object.company_id.name} Request to Release
+                Capital (Ref ${object.number or 'n/a'})
+            </field>
             <field name="partner_to">${object.partner_id.id}</field>
-            <field name="reply_to">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="reply_to">
+                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+            </field>
             <field name="model_id" ref="account.model_account_invoice"/>
             <field name="auto_delete" eval="True"/>
             <field name="report_template" ref="action_cooperator_invoices"/>
-            <field name="report_name">${(object.number or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}</field>
+            <field name="report_name">
+                ${(object.number or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}
+            </field>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="easy_my_coop" eval="True"/>
             <field name="body_html"><![CDATA[
@@ -59,10 +68,14 @@
 
         <record id="email_template_confirmation" model="mail.template">
             <field name="name">Confirmation Email</field>
-            <field name="email_from">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="email_from">
+                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+            </field>
             <field name="subject">Subscription request confirmation</field>
             <field name="email_to">${object.email}</field>
-            <field name="reply_to">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="reply_to">
+                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+            </field>
             <field name="model_id" ref="model_subscription_request"/>
             <field name="auto_delete" eval="True"/>
             <field name="lang">${object.lang}</field>
@@ -112,10 +125,15 @@
 
         <record id="email_template_waiting_list" model="mail.template">
             <field name="name">Waiting List Email</field>
-            <field name="email_from">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
-            <field name="subject">Subscription request added on waiting list. </field>
+            <field name="email_from">
+                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+            </field>
+            <field name="subject">Subscription request added on waiting list.
+            </field>
             <field name="email_to">${object.email}</field>
-            <field name="reply_to">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="reply_to">
+                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+            </field>
             <field name="model_id" ref="model_subscription_request"/>
             <field name="auto_delete" eval="True"/>
             <field name="lang">${object.lang}</field>
@@ -167,10 +185,15 @@
 
         <record id="email_template_confirmation_company" model="mail.template">
             <field name="name">Company Confirmation Email</field>
-            <field name="email_from">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="email_from">
+                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+            </field>
             <field name="subject">Subscription request confirmation</field>
-            <field name="email_to">${object.email},${object.company_email}</field>
-            <field name="reply_to">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="email_to">${object.email},${object.company_email}
+            </field>
+            <field name="reply_to">
+                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+            </field>
             <field name="model_id" ref="model_subscription_request"/>
             <field name="auto_delete" eval="True"/>
             <field name="lang">${object.lang}</field>
@@ -221,15 +244,23 @@
         </record>
 
         <record id="email_template_certificat" model="mail.template">
-            <field name="name">Payment Received Confirmation - Send By Email</field>
-            <field name="email_from">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="name">Payment Received Confirmation - Send By Email
+            </field>
+            <field name="email_from">
+                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+            </field>
             <field name="subject">Payment Received Confirmation</field>
             <field name="partner_to">${object.id}</field>
-            <field name="reply_to">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="reply_to">
+                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+            </field>
             <field name="model_id" ref="model_res_partner"/>
             <field name="auto_delete" eval="True"/>
-            <field name="report_template" ref="action_cooperator_report_certificat"/>
-            <field name="report_name">Certificat ${(object.cooperator_register_number or '')}</field>
+            <field name="report_template"
+                   ref="action_cooperator_report_certificat"/>
+            <field name="report_name">Certificat
+                ${(object.cooperator_register_number or '')}
+            </field>
             <field name="lang">${object.lang}</field>
             <field name="easy_my_coop" eval="True"/>
             <field name="body_html"><![CDATA[
@@ -276,15 +307,24 @@
         </record>
 
         <record id="email_template_certificat_increase" model="mail.template">
-            <field name="name">Share Increase - Payment Received Confirmation - Send By Email</field>
-            <field name="email_from">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="name">Share Increase - Payment Received Confirmation -
+                Send By Email
+            </field>
+            <field name="email_from">
+                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+            </field>
             <field name="subject">Payment Received Confirmation</field>
             <field name="partner_to">${object.id}</field>
-            <field name="reply_to">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="reply_to">
+                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+            </field>
             <field name="model_id" ref="model_res_partner"/>
             <field name="auto_delete" eval="True"/>
-            <field name="report_template" ref="action_cooperator_report_certificat"/>
-            <field name="report_name">Certificat ${(object.cooperator_register_number or '')}</field>
+            <field name="report_template"
+                   ref="action_cooperator_report_certificat"/>
+            <field name="report_name">Certificat
+                ${(object.cooperator_register_number or '')}
+            </field>
             <field name="lang">${object.lang}</field>
             <field name="easy_my_coop" eval="True"/>
             <field name="body_html"><![CDATA[
@@ -332,14 +372,21 @@
 
         <record id="email_template_share_transfer" model="mail.template">
             <field name="name">Share transfer - Send By Email</field>
-            <field name="email_from">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="email_from">
+                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+            </field>
             <field name="subject">Share transfert</field>
             <field name="partner_to">${object.id}</field>
-            <field name="reply_to">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="reply_to">
+                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+            </field>
             <field name="model_id" ref="model_res_partner"/>
             <field name="auto_delete" eval="True"/>
-            <field name="report_template" ref="action_cooperator_report_certificat"/>
-            <field name="report_name">Certificat ${(object.cooperator_register_number or '')}</field>
+            <field name="report_template"
+                   ref="action_cooperator_report_certificat"/>
+            <field name="report_name">Certificat
+                ${(object.cooperator_register_number or '')}
+            </field>
             <field name="lang">${object.lang}</field>
             <field name="easy_my_coop" eval="True"/>
             <field name="body_html"><![CDATA[
@@ -387,14 +434,21 @@
 
         <record id="email_template_share_update" model="mail.template">
             <field name="name">Share update - Send By Email</field>
-            <field name="email_from">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="email_from">
+                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+            </field>
             <field name="subject">Share update</field>
             <field name="partner_to">${object.id}</field>
-            <field name="reply_to">${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="reply_to">
+                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+            </field>
             <field name="model_id" ref="model_res_partner"/>
             <field name="auto_delete" eval="True"/>
-            <field name="report_template" ref="action_cooperator_report_certificat"/>
-            <field name="report_name">Certificat ${(object.cooperator_register_number or '')}</field>
+            <field name="report_template"
+                   ref="action_cooperator_report_certificat"/>
+            <field name="report_name">Certificat
+                ${(object.cooperator_register_number or '')}
+            </field>
             <field name="lang">${object.lang}</field>
             <field name="easy_my_coop" eval="True"/>
             <field name="body_html"><![CDATA[

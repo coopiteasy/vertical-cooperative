@@ -9,17 +9,20 @@
                     Validate the subscription request.
                 </p>
                 <footer>
-                    <button name="validate" string="Validate" type="object" class="btn-primary"/>
-                    <button string="Cancel" class="btn-default" special="cancel"/>
+                    <button name="validate" string="Validate" type="object"
+                            class="btn-primary"/>
+                    <button string="Cancel" class="btn-default"
+                            special="cancel"/>
                 </footer>
             </form>
         </field>
     </record>
 
-	<act_window id="action_account_invoice_confirm"
-            multi="True"
-            key2="client_action_multi" name="Validate subscription request"
-            res_model="validate.subscription.request" src_model="subscription.request"
-            view_mode="form" target="new" view_type="form" />
+    <act_window id="action_account_invoice_confirm"
+                multi="True"
+                key2="client_action_multi" name="Validate subscription request"
+                res_model="validate.subscription.request"
+                src_model="subscription.request"
+                view_mode="form" target="new" view_type="form"/>
 
 </odoo>
