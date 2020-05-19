@@ -23,7 +23,7 @@ class operation_request(models.Model):
 
     request_date = fields.Date(string='Request date',
                                default=lambda self: self.get_date_now())
-    effective_date = fields.Date(string='Effective date', required=False)
+    effective_date = fields.Date(string='Effective date')
     partner_id = fields.Many2one('res.partner',
                                  string='Cooperator',
                                  domain=[('member', '=', True)],
