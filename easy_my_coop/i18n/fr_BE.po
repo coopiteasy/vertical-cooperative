@@ -1667,6 +1667,11 @@ msgid "Request date"
 msgstr "Date de la demande"
 
 #. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__effective_date
+msgid "Effective date"
+msgstr "Date effective"
+
+#. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
 msgid "Request to Release Capital"
 msgstr ""
