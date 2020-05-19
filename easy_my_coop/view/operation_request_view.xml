@@ -33,6 +33,7 @@
 	       				<group>
 		       				<group>
 		       					<field name="request_date" attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name="effective_date" attrs="{'readonly':[('state','!=','draft')]}"/>
 			          			<field name="operation_type" attrs="{'readonly':[('state','!=','draft')]}"/>
 			          			<field name="receiver_not_member" attrs="{'invisible':[('operation_type','!=','transfer')]}"/>
 			          			<field name="partner_id" options="{'no_create':True}" attrs="{'readonly':[('state','!=','draft')]}"/>
