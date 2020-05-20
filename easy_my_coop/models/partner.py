@@ -151,6 +151,14 @@ class ResPartner(models.Model):
     financial_risk_approved = fields.Boolean(string="Financial Risk Approved ")
 
     @api.multi
+    def touch_cooperator_type(self):
+        self.ensure_one()
+        for line in self.share_ids:
+            line.share_product_id = line.share_product_id.id
+            break
+        return True
+
+    @api.multi
     @api.depends('subscription_request_ids.state')
     def _compute_coop_candidate(self):
         for partner in self:
