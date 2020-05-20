@@ -12,6 +12,7 @@
                                 type="action" context="{'default_active_id': active_id}" groups="easy_my_coop.group_energiris_manager"/>
                         <button string="Update info" name="%(action_view_update_partner_info)d"
                                 type="action" context="{'default_active_id': active_id}" groups="easy_my_coop.group_energiris_manager"/>
+                        <button string="Touch" name="touch_cooperator_type" type="object"  groups="base.group_system"/>
             		</header>
             	</sheet>
             	
