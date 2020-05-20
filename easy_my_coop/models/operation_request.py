@@ -123,7 +123,7 @@ class OperationRequest(models.Model):
     @api.constrains("effective_date")
     def _constrain_effective_date(self):
         for obj in self:
-            if obj.effective_date > fields.Date.today():
+            if obj.effective_date and obj.effective_date > fields.Date.today():
                 raise ValidationError("The effective date can not be in the future.")\
 
     @api.multi
