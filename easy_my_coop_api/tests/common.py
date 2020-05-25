@@ -73,8 +73,8 @@ class BaseEMCRestCase(BaseRestCase):
     def http_get_content(self, route, headers=None):
         response = self.http_get(route, headers=headers)
         self.assertEquals(response.status_code, 200)
-
-        return json.loads(response.content)
+        content = response.content.decode("utf-8")
+        return json.loads(content)
 
     def http_post(self, url, data, headers=None):
         headers = _add_api_key(headers)

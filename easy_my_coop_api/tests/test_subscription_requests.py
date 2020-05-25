@@ -113,7 +113,7 @@ class TestSRController(BaseEMCRestCase):
 
         response = self.http_post(url, data=data)
         self.assertEquals(response.status_code, 200)
-        content = json.loads(response.content)
+        content = json.loads(response.content.decode("utf-8"))
 
         content.pop("id")  # can't know id in advance
         expected = {
@@ -135,7 +135,7 @@ class TestSRController(BaseEMCRestCase):
 
         response = self.http_post(url, data=data)
         self.assertEquals(response.status_code, 200)
-        content = json.loads(response.content)
+        content = json.loads(response.content.decode("utf-8"))
 
         expected = self.demo_request_1_dict
         expected["state"] = "done"

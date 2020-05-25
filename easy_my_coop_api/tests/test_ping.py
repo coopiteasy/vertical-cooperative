@@ -30,12 +30,12 @@ class TestPing(BaseEMCRestCase):
         url = "http://%s:%s%s" % (HOST, PORT, path)
         response = requests.get(url)
         self.assertEquals(response.status_code, 200)
-        content = json.loads(response.content)
+        content = json.loads(response.content.decode("utf-8"))
         self.assertTrue("message" in content)
 
     def test_search_route(self):
         response = self.http_get("/api/ping")
         self.assertEquals(response.status_code, 200)
 
-        content = json.loads(response.content)
+        content = json.loads(response.content.decode("utf-8"))
         self.assertTrue("message" in content)

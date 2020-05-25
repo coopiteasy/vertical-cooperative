@@ -51,7 +51,8 @@ class SubscriptionRequestService(Component):
         }
         return response
 
-    def create(self, **params):
+    def create(self, **params):  # pylint: disable=method-required-super
+
         params = self._prepare_create(params)
         sr = self.env["subscription.request"].create(params)
         return self._to_dict(sr)
@@ -69,7 +70,7 @@ class SubscriptionRequestService(Component):
     def _to_dict(self, sr):
         sr.ensure_one()
         return {
-            "id": sr.id,
+        "id": sr.id,
             "name": sr.name,
             "email": sr.email,
             "state": sr.state,
