@@ -19,14 +19,14 @@ class ResPartner(models.Model):
         if operator not in ("=", "!=", "<", "<=", ">", ">=", "in", "not in"):
             return []
         # pylint: disable=sql-injection
-        # fixme while you're here, please fix the query to pass
-        #  pylint sql-injection
-        query = """SELECT id
-                   FROM "%s"
-                   WHERE extract(year from age(CURRENT_DATE,
-                                               birthdate_date)) %s %%s""" % (
-            self._table,
-            operator,
+        # the value of operator is checked, no risk of injection
+        query = """
+            SELECT id
+            FROM res_partner
+            WHERE extract(year from age(CURRENT_DATE, birthdate_date))
+              {operator} %s
+            """.format(
+            operator=operator
         )
         self.env.cr.execute(query, (value,))
         ids = [t[0] for t in self.env.cr.fetchall()]
