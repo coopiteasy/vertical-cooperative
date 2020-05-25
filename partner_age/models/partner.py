@@ -1,11 +1,19 @@
+# Copyright 2020 Coop IT Easy SCRL fs
+#   Robin Keunen <robin@coopiteasy.be>
+#   Houssine Bakkali <houssine@coopiteasy.be>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+
 from datetime import datetime
 
-from openerp import api, fields, models
-from openerp.tools import DEFAULT_SERVER_DATE_FORMAT as OE_DFORMAT
+from odoo import api, fields, models
 
 
 class ResPartner(models.Model):
     _inherit = "res.partner"
+
+    age = fields.Integer(
+        string="Age", compute="_compute_age", search="_search_age"
+    )
 
     def _search_age(self, operator, value):
         if operator not in ("=", "!=", "<", "<=", ">", ">=", "in", "not in"):
@@ -27,18 +35,15 @@ class ResPartner(models.Model):
     @api.multi
     @api.depends("birthdate_date")
     def _compute_age(self):
-        self.ensure_one()
-        if self.birthdate_date:
-            dBday = datetime.strptime(
-                str(self.birthdate_date), OE_DFORMAT
-            ).date()
-            dToday = datetime.now().date()
-            self.age = (
-                dToday.year
-                - dBday.year
-                - ((dToday.month, dToday.day) < (dBday.month, dBday.day))
-            )
-
-    age = fields.Integer(
-        string="Age", compute="_compute_age", search="_search_age"
-    )
+        for partner in self:
+            if partner.birthdate_date:
+                birthday = partner.birthdate_date
+                today = datetime.now().date()
+                partner.age = (
+                    today.year
+                    - birthday.year
+                    - (
+                        (today.month, today.day)
+                        < (birthday.month, birthday.day)
+                    )
+                )
