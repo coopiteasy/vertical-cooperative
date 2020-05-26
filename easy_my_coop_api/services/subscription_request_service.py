@@ -1,13 +1,18 @@
 # Copyright 2019 Coop IT Easy SCRL fs
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+# pylint: disable=consider-merging-classes-inherited
 
 import logging
-from odoo.addons.component.core import Component
-from odoo.addons.base_rest.http import wrapJsonException
-from werkzeug.exceptions import NotFound, BadRequest
-from odoo.fields import Date
+
+from werkzeug.exceptions import BadRequest, NotFound
+
 from odoo import _
+from odoo.fields import Date
+
+from odoo.addons.base_rest.http import wrapJsonException
+from odoo.addons.component.core import Component
+
 from . import schemas
 
 _logger = logging.getLogger(__name__)
@@ -20,7 +25,7 @@ class SubscriptionRequestService(Component):
     _usage = "subscription_request"
     _collection = "emc.services"
     _description = """
-    Subscription requests
+        Subscription requests
     """
 
     def get(self, _id):
@@ -33,7 +38,7 @@ class SubscriptionRequestService(Component):
             )
 
     def search(self, date_from=None, date_to=None):
-        _logger.info("search from %s to %s" % (date_from, date_to))
+        _logger.info("search from {} to {}".format(date_from, date_to))
 
         domain = []
         if date_from:
@@ -70,7 +75,7 @@ class SubscriptionRequestService(Component):
     def _to_dict(self, sr):
         sr.ensure_one()
         return {
-        "id": sr.id,
+            "id": sr.id,
             "name": sr.name,
             "email": sr.email,
             "state": sr.state,

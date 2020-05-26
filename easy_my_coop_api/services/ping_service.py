@@ -1,10 +1,12 @@
 # Copyright 2020 Coop IT Easy SCRL fs
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+# pylint: disable=consider-merging-classes-inherited
 
+
+from odoo import _
 
 from odoo.addons.component.core import Component
-from odoo import _
 
 
 class PingService(Component):
