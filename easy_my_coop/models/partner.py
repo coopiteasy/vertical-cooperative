@@ -211,9 +211,14 @@ class ResPartner(models.Model):
         )
 
     def get_cooperator_from_crn(self, company_register_number):
-        return self.env["res.partner"].search(
-            [
-                ("cooperator", "=", True),
-                ("company_register_number", "=", company_register_number),
-            ]
-        )
+        company_register_number = company_register_number.strip()
+        if company_register_number:
+            partner = self.env["res.partner"].search(
+                [
+                    ("cooperator", "=", True),
+                    ("company_register_number", "=", company_register_number),
+                ]
+            )
+        else:
+            partner = None
+        return partner
