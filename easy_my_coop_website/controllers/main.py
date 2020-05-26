@@ -329,12 +329,13 @@ class WebsiteSubscription(http.Controller):
                 return request.render(redirect, values)
 
         iban = kwargs.get("iban")
-        valid = sub_req_obj.check_iban(iban)
+        if iban.strip():
+            valid = sub_req_obj.check_iban(iban)
 
-        if not valid:
-            values = self.fill_values(values, is_company, logged)
-            values["error_msg"] = _("You iban account number is not valid")
-            return request.render(redirect, values)
+            if not valid:
+                values = self.fill_values(values, is_company, logged)
+                values["error_msg"] = _("You iban account number is not valid")
+                return request.render(redirect, values)
 
         # check the subscription's amount
         max_amount = company.subscription_maximum_amount
