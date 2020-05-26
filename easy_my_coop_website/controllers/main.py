@@ -333,7 +333,7 @@ class WebsiteSubscription(http.Controller):
 
         if not valid:
             values = self.fill_values(values, is_company, logged)
-            values["error_msg"] = _("You iban account number" "is not valid")
+            values["error_msg"] = _("You iban account number is not valid")
             return request.render(redirect, values)
 
         # check the subscription's amount
