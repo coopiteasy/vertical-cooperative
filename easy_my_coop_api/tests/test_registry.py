@@ -4,8 +4,8 @@
 
 
 import odoo
-
 from odoo.http import controllers_per_module
+
 from odoo.addons.base_rest.tests.common import BaseRestCase
 
 from ..controllers.controllers import UserController

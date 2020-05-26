@@ -4,12 +4,13 @@
 
 
 import json
+
 import requests
 
 from odoo.addons.base_rest.controllers.main import _PseudoCollection
 from odoo.addons.component.core import WorkContext
 
-from .common import BaseEMCRestCase, HOST, PORT
+from .common import HOST, PORT, BaseEMCRestCase
 
 
 class TestPing(BaseEMCRestCase):
@@ -27,7 +28,7 @@ class TestPing(BaseEMCRestCase):
     def test_ping_route(self):
         # public route
         path = "/api/ping/test"
-        url = "http://%s:%s%s" % (HOST, PORT, path)
+        url = "http://{}:{}{}".format(HOST, PORT, path)
         response = requests.get(url)
         self.assertEquals(response.status_code, 200)
         content = json.loads(response.content.decode("utf-8"))

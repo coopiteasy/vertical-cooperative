@@ -3,8 +3,9 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 
-from odoo.addons.base_rest.controllers import main
 from odoo.http import route
+
+from odoo.addons.base_rest.controllers import main
 
 
 class UserController(main.RestController):
@@ -20,5 +21,5 @@ class UserController(main.RestController):
     )
     def test(self, _service_name):
         return self._process_method(
-            _service_name, "test", _id=None, params=None,
+            _service_name, "test", _id=None, params=None
         )
