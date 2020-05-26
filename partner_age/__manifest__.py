@@ -4,11 +4,11 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).#
 {
     "name": "Partner Age",
-    "version": "12.0.1.0.0",
-    "depends": ["easy_my_coop", "partner_contact_birthdate"],
+    "version": "12.0.2.0.0",
+    "depends": ["partner_contact_birthdate"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
-    "website": "www.coopiteasy.be",
+    "website": "https://www.coopiteasy.be",
     "license": "AGPL-3",
     "summary": "This module computes the age of the partner.",
     "data": ["view/partner_view.xml"],
