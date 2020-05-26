@@ -4,8 +4,10 @@
 
 import json
 from datetime import timedelta
+
 import odoo
 from odoo.fields import Date
+
 from odoo.addons.base_rest.controllers.main import _PseudoCollection
 from odoo.addons.component.core import WorkContext
 
@@ -20,7 +22,7 @@ class TestSRController(BaseEMCRestCase):
             model_name="rest.service.registration", collection=collection
         )
 
-        self.service = emc_services_env.component(usage="subscription_request")
+        self.service = emc_services_env.component(usage="subscription-request")
 
     def test_service(self):
         # kept as example
@@ -41,23 +43,23 @@ class TestSRController(BaseEMCRestCase):
 
     def test_route_get(self):
         id_ = self.demo_request_1.id
-        route = "/api/subscription_request/%s" % id_
+        route = "/api/subscription-request/%s" % id_
         content = self.http_get_content(route)
         self.assertEquals(self.demo_request_1_dict, content)
 
     @odoo.tools.mute_logger("odoo.addons.base_rest.http")
     def test_route_get_returns_not_found(self):
-        route = "/api/subscription_request/%s" % "99999"
+        route = "/api/subscription-request/%s" % "99999"
         response = self.http_get(route)
         self.assertEquals(response.status_code, 404)
 
     def test_route_get_string_returns_method_not_allowed(self):
-        route = "/api/subscription_request/%s" % "abc"
+        route = "/api/subscription-request/%s" % "abc"
         response = self.http_get(route)
         self.assertEquals(response.status_code, 405)
 
     def test_route_search_all(self):
-        route = "/api/subscription_request"
+        route = "/api/subscription-request"
         content = self.http_get_content(route)
         self.assertIn(self.demo_request_1_dict, content["rows"])
 
@@ -66,37 +68,36 @@ class TestSRController(BaseEMCRestCase):
         date_from = Date.to_string(sr_date - timedelta(days=1))
         date_to = Date.to_string(sr_date + timedelta(days=1))
 
-        route = "/api/subscription_request?date_from=%s" % date_from
+        route = "/api/subscription-request?date_from=%s" % date_from
         content = self.http_get_content(route)
         self.assertIn(self.demo_request_1_dict, content["rows"])
 
-        route = "/api/subscription_request?date_to=%s" % date_to
+        route = "/api/subscription-request?date_to=%s" % date_to
         content = self.http_get_content(route)
         self.assertIn(self.demo_request_1_dict, content["rows"])
 
-        route = "/api/subscription_request?date_from=%s&date_to=%s" % (
-            date_from,
-            date_to,
+        route = "/api/subscription-request?date_from={}&date_to={}".format(
+            date_from, date_to
         )
         content = self.http_get_content(route)
         self.assertIn(self.demo_request_1_dict, content["rows"])
 
-        route = "/api/subscription_request?date_from=%s" % "2300-01-01"
+        route = "/api/subscription-request?date_from=%s" % "2300-01-01"
         content = self.http_get_content(route)
         self.assertEquals(content["count"], 0)
 
-        route = "/api/subscription_request?date_to=%s" % "1900-01-01"
+        route = "/api/subscription-request?date_to=%s" % "1900-01-01"
         content = self.http_get_content(route)
         self.assertEquals(content["count"], 0)
 
     @odoo.tools.mute_logger("odoo.addons.base_rest.http")
     def test_route_search_acd_date_returns_bad_request(self):
-        route = "/api/subscription_request?date_from=%s" % "20200101"
+        route = "/api/subscription-request?date_from=%s" % "20200101"
         response = self.http_get(route)
         self.assertEquals(response.status_code, 400)
 
     def test_route_create(self):
-        url = "/api/subscription_request"
+        url = "/api/subscription-request"
         data = {
             "name": "Lisa des Danses",
             "email": "lisa@desdanses.be",
@@ -130,7 +131,7 @@ class TestSRController(BaseEMCRestCase):
         self.assertEquals(expected, content)
 
     def test_route_update(self):
-        url = "/api/subscription_request/%s" % self.demo_request_1.id
+        url = "/api/subscription-request/%s" % self.demo_request_1.id
         data = {"state": "done"}
 
         response = self.http_post(url, data=data)

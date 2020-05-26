@@ -21,8 +21,7 @@ _logger = logging.getLogger(__name__)
 class SubscriptionRequestService(Component):
     _inherit = "base.rest.service"
     _name = "subscription.request.services"
-    # service_name todo subscription-request
-    _usage = "subscription_request"
+    _usage = "subscription-request"
     _collection = "emc.services"
     _description = """
         Subscription requests

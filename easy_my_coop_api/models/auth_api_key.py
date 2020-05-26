@@ -27,8 +27,7 @@ class AuthApiKey(models.Model):
                 now = fields.Datetime.now()
 
                 key.name = "{login}-{now}".format(
-                    now=fields.Datetime.to_string(now),
-                    login=key.user_id.login,
+                    now=fields.Datetime.to_string(now), login=key.user_id.login
                 )
             else:
                 key.name = "no-user"

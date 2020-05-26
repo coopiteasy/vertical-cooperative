@@ -3,12 +3,14 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 
-import requests
 import json
-import odoo
+
+import requests
 from lxml import html
 
+import odoo
 from odoo.fields import Date
+
 from odoo.addons.base_rest.tests.common import BaseRestCase
 
 HOST = "127.0.0.1"
@@ -66,7 +68,7 @@ class BaseEMCRestCase(BaseRestCase):
     def http_get(self, url, headers=None):
         headers = _add_api_key(headers)
         if url.startswith("/"):
-            url = "http://%s:%s%s" % (HOST, PORT, url)
+            url = "http://{}:{}{}".format(HOST, PORT, url)
 
         return self.session.get(url, headers=headers)
 
@@ -79,7 +81,7 @@ class BaseEMCRestCase(BaseRestCase):
     def http_post(self, url, data, headers=None):
         headers = _add_api_key(headers)
         if url.startswith("/"):
-            url = "http://%s:%s%s" % (HOST, PORT, url)
+            url = "http://{}:{}{}".format(HOST, PORT, url)
 
         return self.session.post(url, json=data, headers=headers)
 
