@@ -124,7 +124,9 @@ class OperationRequest(models.Model):
     def _constrain_effective_date(self):
         for obj in self:
             if obj.effective_date and obj.effective_date > fields.Date.today():
-                raise ValidationError("The effective date can not be in the future.")\
+                raise ValidationError(
+                    _("The effective date can not be in the future.")
+                )
 
     @api.multi
     def approve_operation(self):
