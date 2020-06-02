@@ -2,12 +2,22 @@
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+from psycopg2 import IntegrityError
+
 from odoo import api, fields, models
 
 
 class ExternalIdMixin(models.AbstractModel):
     _name = "external.id.mixin"
     _description = "External ID Mixin"
+
+    _sql_constraints = [
+        (
+            "_api_external_id_uniq",
+            "unique(_api_external_id)",
+            "API External ID must be unique!",
+        )
+    ]
 
     # do not access directly, always use get_api_external_id method
     _api_external_id = fields.Integer(
@@ -28,7 +38,7 @@ class ExternalIdMixin(models.AbstractModel):
         sequence = Sequence.search([("code", "=", code)])
         if not sequence:
             sequence = Sequence.sudo().create(
-                {"name": code, "code": code, "number_next": 1}
+                {"name": code, "code": code, "number_next": 100}
             )
 
         self.sudo().write({"external_id_sequence_id": sequence.id})
@@ -40,9 +50,21 @@ class ExternalIdMixin(models.AbstractModel):
         if not self.external_id_sequence_id:
             self.set_external_sequence()
         if not self._api_external_id:
-            self.sudo().write(
-                {"_api_external_id": self.external_id_sequence_id._next()}
-            )
+            # pass already allocated ids
+            n = 100
+            while True:
+                try:
+                    self.sudo().write(
+                        {
+                            "_api_external_id": self.external_id_sequence_id._next()
+                        }
+                    )
+                    break
+                except IntegrityError as e:
+                    if n > 0:
+                        continue
+                    else:
+                        raise e
         return self._api_external_id
 
 

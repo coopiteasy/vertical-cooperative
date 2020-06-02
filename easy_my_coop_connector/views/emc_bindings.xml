@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2020 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="emc_binding_subscription_request_view_form" model="ir.ui.view">
+        <field name="name">emc_binding_subscription_request_view_form</field>
+        <field name="model">emc.binding.subscription.request</field>
+        <field name="arch" type="xml">
+            <form string="emc_binding_subscription_request_form">
+                <sheet>
+                    <group>
+                        <field name="backend_id"/>
+                        <field name="internal_id"/>
+                        <field name="external_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="emc_binding_subscription_request_view_tree" model="ir.ui.view">
+        <field name="name">emc_binding_subscription_request_view_tree</field>
+        <field name="model">emc.binding.subscription.request</field>
+        <field name="arch" type="xml">
+            <tree string="emc_binding_subscription_request_tree">
+                <field name="backend_id"/>
+                <field name="internal_id"/>
+                <field name="external_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="emc_binding_product_template_view_form" model="ir.ui.view">
+        <field name="name">emc_binding_product_template_view_form</field>
+        <field name="model">emc.binding.product.template</field>
+        <field name="arch" type="xml">
+            <form string="emc_binding_product_template_form">
+                <sheet>
+                    <group>
+                        <field name="backend_id"/>
+                        <field name="internal_id"/>
+                        <field name="external_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="emc_binding_product_template_view_tree" model="ir.ui.view">
+        <field name="name">emc_binding_product_template_view_tree</field>
+        <field name="model">emc.binding.product.template</field>
+        <field name="arch" type="xml">
+            <tree string="emc_binding_product_template_tree">
+                <field name="backend_id"/>
+                <field name="internal_id"/>
+                <field name="external_id"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

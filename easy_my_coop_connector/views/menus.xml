@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2020 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+
+    <menuitem id="emc_connector_menu_menu"
+              name="EMC Connector Configuration"
+              parent="easy_my_coop.menu_easy_my_coop_config"
+              groups="base.group_user"
+              sequence="1000"/>
+
+    <menuitem id="emc_backend_action_menu"
+              name="EMC Backend"
+              parent="emc_connector_menu_menu"
+              action="emc_backend_action"
+              groups="base.group_user"
+              sequence="1000"/>
+
+    <menuitem id="emc_binding_subscription_request_action_menu"
+              name="Subscription Request Bindings"
+              parent="emc_connector_menu_menu"
+              action="emc_binding_subscription_request_action"
+              groups="base.group_user"
+              sequence="1000"/>
+
+    <menuitem id="emc_binding_product_template_action_menu"
+              name="Share Product Bindings"
+              parent="emc_connector_menu_menu"
+              action="emc_binding_product_template_action"
+              groups="base.group_user"
+              sequence="1000"/>
+</odoo>
