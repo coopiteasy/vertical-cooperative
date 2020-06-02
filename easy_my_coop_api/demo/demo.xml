@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2020 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="easy_my_coop.subscription_request_1_demo" model="subscription.request">
+        <field name="external_id">1</field>
+    </record>
+</odoo>

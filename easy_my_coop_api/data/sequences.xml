@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2020 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <data noupdate="1">
+        <record id="seq_subscription_request_external_id" model="ir.sequence">
+            <field name="name">Subscritpion Request External ID sequence</field>
+            <field name="code">subscription.request.external.id</field>
+            <field name="number_next">3</field>
+        </record>
+        <record id="seq_account_invoice_external_id" model="ir.sequence">
+            <field name="name">Subscritpion Request External ID sequence</field>
+            <field name="code">account.invoice.external.id</field>
+            <field name="number_next">3</field>
+        </record>
+    </data>
+</odoo>
