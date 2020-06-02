@@ -31,7 +31,7 @@ SEARCH_RESULT = {
             "lang": "en_US",
             "ordered_parts": 3,
             "name": "Manuel Dublues",
-            "share_product": {"name": "Part B - Worker", "id": 38},
+            "share_product": {"name": "Part B - Worker", "id": 31},
             "state": "draft",
         }
     ],
@@ -49,7 +49,7 @@ GET_RESULT = {
     },
     "lang": "en_US",
     "ordered_parts": 3,
-    "share_product": {"name": "Part B - Worker", "id": 38},
+    "share_product": {"name": "Part B - Worker", "id": 31},
     "state": "draft",
 }
 

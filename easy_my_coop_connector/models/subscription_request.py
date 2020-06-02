@@ -54,13 +54,13 @@ class SubscriptionRequest(models.Model):
 
         adapter = SubscriptionRequestAdapter(backend)
         sr_data = adapter.read(external_id)
-        # todo 404
 
         request_values = adapter.to_write_values(sr_data)
         sr_binding = SRBinding.search_binding(backend, external_id)
 
         if sr_binding:  # update request
-            srequest = sr_binding.internal_id.write(request_values)
+            srequest = sr_binding.internal_id
+            srequest.write(request_values)
         else:
             srequest = self.env["subscription.request"].create(request_values)
             SRBinding.create(
