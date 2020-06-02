@@ -81,8 +81,8 @@ class SubscriptionRequestService(Component):
             "date": Date.to_string(sr.date),
             "ordered_parts": sr.ordered_parts,
             "share_product": {
-                "id": sr.share_product_id.id,
-                "name": sr.share_product_id.name,
+                "id": sr.share_product_id.product_tmpl_id.id,
+                "name": sr.share_product_id.product_tmpl_id.name,
             },
             "address": {
                 "street": sr.address,
@@ -102,15 +102,29 @@ class SubscriptionRequestService(Component):
                 BadRequest(_("No country for isocode %s") % code)
             )
 
+    def _get_share_product(self, template_id):
+        product = self.env["product.product"].search(
+            [("product_tmpl_id", "=", template_id)]
+        )
+        if product:
+            return product
+        else:
+            raise wrapJsonException(
+                BadRequest(_("No share for id %s") % template_id)
+            )
+
     def _prepare_create(self, params):
+        """Prepare a writable dictionary of values"""
         address = params["address"]
         country = self._get_country(address["country"])
+
+        share_product_id = self._get_share_product(params["share_product"])
 
         return {
             "name": params["name"],
             "email": params["email"],
             "ordered_parts": params["ordered_parts"],
-            "share_product_id": params["share_product"],
+            "share_product_id": share_product_id.id,
             "address": address["street"],
             "zip_code": address["zip_code"],
             "city": address["city"],
@@ -123,16 +137,23 @@ class SubscriptionRequestService(Component):
             address = params["address"]
             if "country" in address:
                 country = self._get_country(address["country"]).id
-                address["country"] = country
+                address["country"] = country.id
         else:
             address = {}
+
+        if "share_product" in params:
+            share_product_id = self._get_share_product(
+                params["share_product"]
+            ).id
+        else:
+            share_product_id = None
 
         params = {
             "name": params.get("name"),
             "email": params.get("email"),
             "state": params.get("state"),
             "ordered_parts": params.get("ordered_parts"),
-            "share_product_id": params.get("share_product"),
+            "share_product_id": share_product_id,
             "address": address.get("street"),
             "zip_code": address.get("zip_code"),
             "city": address.get("city"),

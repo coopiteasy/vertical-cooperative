@@ -42,7 +42,9 @@ class BaseEMCRestCase(BaseRestCase):
         self.demo_request_1 = self.browse_ref(
             "easy_my_coop.subscription_request_1_demo"
         )
-        self.demo_share_product = self.demo_request_1.share_product_id
+        self.demo_share_product = (
+            self.demo_request_1.share_product_id.product_tmpl_id
+        )
 
         date = Date.to_string(self.demo_request_1.date)
         self.demo_request_1_dict = {
