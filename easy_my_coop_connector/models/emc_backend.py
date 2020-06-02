@@ -6,9 +6,15 @@ import json
 import logging
 
 import requests
-from werkzeug.exceptions import NotFound
+from werkzeug.exceptions import (
+    InternalServerError,
+    NotFound,
+)
 
 from odoo import _, api, fields, models
+from odoo.exceptions import (
+    AccessDenied,
+)
 
 _logger = logging.getLogger(__name__)
 
@@ -40,10 +46,17 @@ class EMCBackend(models.Model):
         if response.status_code == 200:
             content = response.content.decode("utf-8")
             return json.loads(content)
-        else:
-            # todo handle different codes (at least 404, 403, 500)
+        elif response.status_code == 403:
+            raise AccessDenied(_("You are not allowed to access this resource"))
+        elif response.status_code == 404:
             raise NotFound(
-                _("request returned status code %s" % response.status_code)
+                _("Resource not found %s on server" % response.status_code)
+            )
+        else:  # 500 et al.
+            content = response.content.decode("utf-8")
+            raise InternalServerError(
+                _("request returned status code %s with message %s" % (
+                response.status_code, content))
             )
 
     @api.multi

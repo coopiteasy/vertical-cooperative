@@ -19,6 +19,6 @@
     <record id="emc_binding_product_template_B_demo" model="emc.binding.product.template">
         <field name="backend_id" ref="emc_backend_demo"/>
         <field name="internal_id" ref="easy_my_coop.product_template_share_type_2_demo"/>
-        <field name="external_id">38</field>
+        <field name="external_id">31</field>
     </record>
 </odoo>
