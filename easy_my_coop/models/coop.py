@@ -512,7 +512,7 @@ class SubscriptionRequest(models.Model):
         invoice.sent = True
 
     def get_journal(self):
-        return self.env["account.journal"].search([("code", "=", "SUBJ")])[0]
+        return self.env.ref("easy_my_coop.subscription_journal")
 
     def get_accounting_account(self):
         account_obj = self.env["account.account"]
