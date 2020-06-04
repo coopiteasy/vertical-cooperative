@@ -76,8 +76,16 @@
         <field name="reconcile" eval="True"/>
     </record>
 
+    <record id="account_equity_demo" model="account.account">
+        <field name="code">100910</field>
+        <field name="name">Variable Capital</field>
+        <field eval="True" name="reconcile"/>
+        <field name="user_type_id" ref="account.data_account_type_equity"/>
+    </record>
+
     <record id="base.main_company" model="res.company">
-        <field name="property_cooperator_account" ref="account_cooperator_demo"/>
+        <field name="property_cooperator_account"
+               ref="account_cooperator_demo"/>
     </record>
 
     <record id="base.main_company" model="res.company">
@@ -125,6 +133,38 @@
                eval="obj(ref('product_template_share_type_2_demo')).product_variant_id.id"/>
         <field name="lang">en_US</field>
         <field name="skip_control_ng" eval="True"/>
+    </record>
+
+
+    <record id="subscription_request_waiting_demo" model="subscription.request">
+        <field name="name">Catherine des Champs</field>
+        <field name="email">catherine@demo.net</field>
+        <field name="address">Chemin des bois fleuris</field>
+        <field name="zip_code">1000</field>
+        <field name="city">Brussels</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="date" eval="datetime.now() - timedelta(days=60)"/>
+        <field name="source">manual</field>
+        <field name="ordered_parts">4</field>
+        <field name="share_product_id" model="product.template"
+               eval="obj(ref('product_template_share_type_1_demo')).product_variant_id.id"/>
+        <field name="lang">en_US</field>
+        <field name="skip_control_ng" eval="True"/>
+        <field name="state">waiting</field>
+    </record>
+
+    <record id="res_partner_cooperator_candidate_1_demo" model="res.partner">
+        <field name="name">Catherine des Champs</field>
+        <field name="customer" eval="True"/>
+        <field name="is_company" eval="False"/>
+        <field name="email">catherine@demo.net</field>
+        <field name="street">Chemin des bois fleuris, 2</field>
+        <field name="city">Brussels</field>
+        <field name="zip">1000</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="member" eval="False"/>
+        <field name="data_policy_approved" eval="True"/>
+        <field name="internal_rules_approved" eval="True"/>
     </record>
 
     <record id="share_line_1_demo" model="share.line">
