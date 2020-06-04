@@ -41,6 +41,12 @@ S_SUBSCRIPTION_REQUEST_RETURN_GET = {
         },
     },
     "lang": {"type": "string", "required": True, "empty": False},
+    "capital_release_request": {
+        "type": "list",
+        "schema": {"type": "integer"},
+        "required": True,
+        "empty": True,
+    },
 }
 
 S_SUBSCRIPTION_REQUEST_SEARCH = {
@@ -93,3 +99,5 @@ S_SUBSCRIPTION_REQUEST_UPDATE = {
     "lang": {"type": "string"},
     "share_product": {"type": "integer"},
 }
+
+S_SUBSCRIPTION_REQUEST_VALIDATE = {"_id": {"type": "integer"}}

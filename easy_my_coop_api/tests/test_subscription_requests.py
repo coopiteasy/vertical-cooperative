@@ -5,6 +5,8 @@
 import json
 from datetime import timedelta
 
+from werkzeug.exceptions import BadRequest
+
 import odoo
 from odoo.fields import Date
 
@@ -22,27 +24,29 @@ class TestSRController(BaseEMCRestCase):
             model_name="rest.service.registration", collection=collection
         )
 
-        self.service = emc_services_env.component(usage="subscription-request")
+        self.sr_service = emc_services_env.component(
+            usage="subscription-request"
+        )
 
     def test_service(self):
         # kept as example
         # useful if you need to change data in database and check db type
 
-        result = self.service.get(self.demo_request_1.id)
+        result = self.sr_service.get(self.demo_request_1.external_id)
         self.assertEquals(self.demo_request_1_dict, result)
 
-        all_sr = self.service.search()
+        all_sr = self.sr_service.search()
         self.assertTrue(all_sr)
 
         sr_date = self.demo_request_1.date
         date_from = Date.to_string(sr_date - timedelta(days=1))
         date_to = Date.to_string(sr_date + timedelta(days=1))
 
-        date_sr = self.service.search(date_from=date_from, date_to=date_to)
+        date_sr = self.sr_service.search(date_from=date_from, date_to=date_to)
         self.assertTrue(date_sr)
 
     def test_route_get(self):
-        id_ = self.demo_request_1.id
+        id_ = self.demo_request_1.external_id
         route = "/api/subscription-request/%s" % id_
         content = self.http_get_content(route)
         self.assertEquals(self.demo_request_1_dict, content)
@@ -126,12 +130,13 @@ class TestSRController(BaseEMCRestCase):
                     "id": self.demo_share_product.id,
                     "name": self.demo_share_product.name,
                 },
+                "capital_release_request": [],
             },
         }
         self.assertEquals(expected, content)
 
     def test_route_update(self):
-        url = "/api/subscription-request/%s" % self.demo_request_1.id
+        url = "/api/subscription-request/%s" % self.demo_request_1.external_id
         data = {"state": "done"}
 
         response = self.http_post(url, data=data)
@@ -141,3 +146,24 @@ class TestSRController(BaseEMCRestCase):
         expected = self.demo_request_1_dict
         expected["state"] = "done"
         self.assertEquals(expected, content)
+
+    def test_route_validate(self):
+        url = (
+            "/api/subscription-request/%s/validate"
+            % self.demo_request_1.external_id
+        )
+        response = self.http_post(url, data={})
+        self.assertEquals(response.status_code, 200)
+        content = json.loads(response.content.decode("utf-8"))
+
+        state = content.get("state")
+        self.assertEquals(state, "done")
+
+    def test_service_validate_draft_request(self):
+        self.sr_service.validate(self.demo_request_1.external_id)
+        self.assertEquals(self.demo_request_1.state, "done")
+        self.assertTrue(len(self.demo_request_1.capital_release_request) > 0)
+
+    def test_service_validate_done_request(self):
+        with self.assertRaises(BadRequest):
+            self.sr_service.validate(self.demo_request_2.external_id)
