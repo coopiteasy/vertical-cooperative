@@ -17,30 +17,31 @@ HOST = "127.0.0.1"
 PORT = odoo.tools.config["http_port"]
 
 
-def _add_api_key(headers):
-    key_dict = {"API-KEY": "api-key"}
-    if headers:
-        headers.update(key_dict)
-    else:
-        headers = key_dict
-    return headers
-
-
 class BaseEMCRestCase(BaseRestCase):
     @classmethod
     def setUpClass(cls, *args, **kwargs):
         super().setUpClass(*args, **kwargs)
         cls.AuthApiKey = cls.env["auth.api.key"]
-        emc_manager = cls.env.ref("easy_my_coop.res_users_manager_emc_demo")
-        cls.api_key_test = cls.AuthApiKey.create(
-            {"name": "test-key", "key": "api-key", "user_id": emc_manager.id}
+        cls.api_key_test = cls.env.ref(
+            "easy_my_coop_api.auth_api_key_manager_emc_demo"
         )
+
+    def _add_api_key(self, headers):
+        key_dict = {"API-KEY": self.api_key_test.key}
+        if headers:
+            headers.update(key_dict)
+        else:
+            headers = key_dict
+        return headers
 
     def setUp(self):
         super().setUp()
         self.session = requests.Session()
         self.demo_request_1 = self.browse_ref(
             "easy_my_coop.subscription_request_1_demo"
+        )
+        self.demo_request_2 = self.browse_ref(
+            "easy_my_coop.subscription_request_2_demo"
         )
         self.demo_share_product = (
             self.demo_request_1.share_product_id.product_tmpl_id
@@ -65,10 +66,11 @@ class BaseEMCRestCase(BaseRestCase):
                 "country": "BE",
             },
             "lang": "en_US",
+            "capital_release_request": [],
         }
 
     def http_get(self, url, headers=None):
-        headers = _add_api_key(headers)
+        headers = self._add_api_key(headers)
         if url.startswith("/"):
             url = "http://{}:{}{}".format(HOST, PORT, url)
 
@@ -81,7 +83,7 @@ class BaseEMCRestCase(BaseRestCase):
         return json.loads(content)
 
     def http_post(self, url, data, headers=None):
-        headers = _add_api_key(headers)
+        headers = self._add_api_key(headers)
         if url.startswith("/"):
             url = "http://{}:{}{}".format(HOST, PORT, url)
 

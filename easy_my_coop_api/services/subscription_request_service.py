@@ -75,8 +75,33 @@ class SubscriptionRequestService(Component):
         sr.write(params)
         return self._to_dict(sr)
 
+    def validate(self, _id, **params):
+        sr = self.env["subscription.request"].search(
+            [("external_id", "=", _id)]
+        )
+        if not sr:
+            raise wrapJsonException(
+                NotFound(_("No subscription request for id %s") % _id)
+            )
+        if sr.state != "draft":
+            raise wrapJsonException(
+                BadRequest(
+                    _("Subscription request %s is not in draft state") % _id
+                )
+            )
+        sr.validate_subscription_request()
+        return self._to_dict(sr)
+
     def _to_dict(self, sr):
         sr.ensure_one()
+
+        if sr.capital_release_request:
+            invoice_ids = [
+                invoice.get_external_id()
+                for invoice in sr.capital_release_request
+            ]
+        else:
+            invoice_ids = []
 
         return {
             "id": sr.get_external_id(),
@@ -96,6 +121,7 @@ class SubscriptionRequestService(Component):
                 "country": sr.country_id.code,
             },
             "lang": sr.lang,
+            "capital_release_request": invoice_ids,
         }
 
     def _get_country(self, code):
@@ -190,4 +216,10 @@ class SubscriptionRequestService(Component):
         return schemas.S_SUBSCRIPTION_REQUEST_UPDATE
 
     def _validator_return_update(self):
+        return schemas.S_SUBSCRIPTION_REQUEST_RETURN_GET
+
+    def _validator_validate(self):
+        return schemas.S_SUBSCRIPTION_REQUEST_VALIDATE
+
+    def _validator_return_validate(self):
         return schemas.S_SUBSCRIPTION_REQUEST_RETURN_GET
