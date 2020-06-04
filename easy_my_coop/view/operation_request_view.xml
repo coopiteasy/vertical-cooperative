@@ -41,7 +41,7 @@
 			          			<field name="partner_id_to" options="{'no_create':True}" attrs="{'invisible':['|',('operation_type','!=','transfer'), ('receiver_not_member','=',True)],'readonly':[('state','!=','draft')]}"/>
 		       				</group>
 		       				<group>
-			          			<field name="user_id"/>,
+			          			<field name="user_id"/>
 			          			<field name="share_product_id" attrs="{'readonly':[('state','!=','draft')]}" widget="selection"/>
 			          			<field name="share_short_name" readonly="True"/>
 			          			<field name="share_to_product_id" attrs="{'invisible':[('operation_type','!=','convert')],'required':[('operation_type','=','convert')],'readonly':[('state','!=','draft')]}" widget="selection"/>
