@@ -2,9 +2,14 @@
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+import logging
+from datetime import date, timedelta
+
 from odoo import api, fields, models
 
 from .subscription_request_adapter import SubscriptionRequestAdapter
+
+_logger = logging.getLogger(__name__)
 
 
 class SubscriptionRequest(models.Model):
@@ -79,3 +84,26 @@ class SubscriptionRequest(models.Model):
                 }
             )
         return srequest
+
+    @api.model
+    def fetch_subscription_requests_cron(self):
+        backend = self.env["emc.backend"].search([("active", "=", True)])
+        try:
+            backend.ensure_one()
+        except ValueError as e:
+            _logger.error(
+                "One and only one backend is allowed for the Easy My Coop "
+                "connector "
+            )
+            raise e
+
+        date_to = date.today()
+        date_from = date_to - timedelta(days=1)
+        _logger.info(
+            "fetching subscription requests at {backend} from {date_from} to "
+            "{date_to}.".format(
+                backend=backend.name, date_from=date_from, date_to=date_to
+            )
+        )
+        self.fetch_subscription_requests(date_from=date_from, date_to=date_to)
+        _logger.info("fetch done.")

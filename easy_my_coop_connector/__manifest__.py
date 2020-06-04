@@ -20,6 +20,7 @@
         "wizards/emc_history_import_sr.xml",
         "views/actions.xml",
         "views/menus.xml",
+        "data/cron.xml",
     ],
     "demo": ["demo/demo.xml"],
     "installable": True,

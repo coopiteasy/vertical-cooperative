@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2020 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="fetch_subscription_requests_cron" model="ir.cron">
+        <field name="name">Fetch Subscription Requests</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="nextcall" eval="(DateTime.today() + timedelta(days=1)).strftime('%Y-%m-%d 01:00:00')"/>
+        <field name="doall" eval="True"/>
+        <field name="model_id" ref="easy_my_coop.model_subscription_request"/>
+        <field name="state">code</field>
+        <field name="code">model.fetch_subscription_requests_cron()</field>
+        <field name="sequence">50</field>
+    </record>
+</odoo>
