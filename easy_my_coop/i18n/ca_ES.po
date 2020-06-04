@@ -1472,7 +1472,7 @@ msgstr ""
 #: selection:subscription.request,gender:0
 #, python-format
 msgid "Female"
-msgstr ""
+msgstr "Dona"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
@@ -1760,7 +1760,7 @@ msgstr "Adreça principal"
 #: selection:subscription.request,gender:0
 #, python-format
 msgid "Male"
-msgstr ""
+msgstr "Home"
 
 #. module: easy_my_coop
 #: model:ir.module.category,description:easy_my_coop.module_category_cooperator_management
