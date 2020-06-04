@@ -77,6 +77,10 @@
     </record>
 
     <record id="base.main_company" model="res.company">
+        <field name="property_cooperator_account" ref="account_cooperator_demo"/>
+    </record>
+
+    <record id="base.main_company" model="res.company">
         <field name="property_cooperator_account"
                ref="account_cooperator_demo"/>
     </record>
