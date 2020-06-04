@@ -44,6 +44,14 @@ class SubscriptionRequest(models.Model):
                         "internal_id": srequest.id,
                     }
                 )
+        external_ids = [row["id"] for row in requests_dict["rows"]]
+        srequests = SRBinding.search(
+            [
+                ("backend_id", "=", backend.id),
+                ("external_id", "in", external_ids),
+            ]
+        ).mapped("internal_id")
+        return srequests
 
     @api.model
     def backend_read(self, external_id):

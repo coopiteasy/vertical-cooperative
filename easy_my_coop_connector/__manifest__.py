@@ -17,6 +17,7 @@
         "security/ir.model.access.csv",
         "views/emc_backend.xml",
         "views/emc_bindings.xml",
+        "wizards/emc_history_import_sr.xml",
         "views/actions.xml",
         "views/menus.xml",
     ],
