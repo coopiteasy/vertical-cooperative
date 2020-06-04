@@ -336,6 +336,7 @@ class OperationRequest(models.Model):
             effective_date = self.effective_date
         else:
             effective_date = self.get_date_now()
+            self.effective_date = effective_date
         sub_request = self.env["subscription.request"]
 
         self.validate()
