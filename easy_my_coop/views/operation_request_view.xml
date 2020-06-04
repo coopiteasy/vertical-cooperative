@@ -7,6 +7,7 @@
             <tree string="Operation requests"
                   colors="green:state in ('approved'); blue:state in ('draft');grey: state in ('done')">
                 <field name="request_date"/>
+                <field name="effective_date"/>
                 <field name="partner_id"/>
                 <field name="operation_type"/>
                 <field name="quantity"/>
@@ -49,13 +50,13 @@
                             <field name="operation_type"
                                    attrs="{'readonly':[('state','!=','draft')]}"/>
                             <field name="receiver_not_member"
-                                   attrs="{'invisible':[('operation_type','!=','transfer')]}"/>
+                                   attrs="{'invisible':[('operation_type','!=','transfer')], 'readonly':[('state','!=','draft')]}"/>
                             <field name="partner_id"
                                    options="{'no_create':True}"
                                    attrs="{'readonly':[('state','!=','draft')]}"/>
                             <field name="partner_id_to"
                                    options="{'no_create':True}"
-                                   attrs="{'invisible':['|',('operation_type','!=','transfer'), ('receiver_not_member','=',True)]}"/>
+                                   attrs="{'invisible':['|',('operation_type','!=','transfer'), ('receiver_not_member','=',True)], 'readonly':[('state','!=','draft')]}"/>
                         </group>
                         <group>
                             <field name="user_id"/>
