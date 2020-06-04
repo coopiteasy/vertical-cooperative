@@ -55,14 +55,14 @@ class SubscriptionRequestAdapter:
         :return a writable dictionary of values from the dictionary
         received from the api
         """
-        address = request["address"]
-
         Country = self.backend.env["res.country"]
-        country = Country.search([("code", "=", address["country"])])
-
         ProductTemplateBinding = self.backend.env[
             "emc.binding.product.template"
         ]
+        address = request["address"]
+
+        country = Country.search([("code", "=", address["country"])])
+
         external_product_id = request["share_product"]["id"]
         share_product_binding = ProductTemplateBinding.search_binding(
             self.backend, external_product_id
@@ -75,6 +75,7 @@ class SubscriptionRequestAdapter:
                 )
                 % request["share_product"]["name"]
             )
+        product_product = share_product_binding.internal_id.product_variant_id
 
         return {
             "email": request["email"],
@@ -87,6 +88,6 @@ class SubscriptionRequestAdapter:
             "zip_code": address["zip_code"],
             "city": address["city"],
             "country_id": country.id,
-            "share_product_id": share_product_binding.internal_id.id,
+            "share_product_id": product_product.id,
             "source": "emc_api",
         }

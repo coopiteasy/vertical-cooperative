@@ -64,6 +64,10 @@ class TestCase(TransactionCase):
         self.backend = self.browse_ref(
             "easy_my_coop_connector.emc_backend_demo"
         )
+        self.share_type_B_pt = self.browse_ref(
+            "easy_my_coop.product_template_share_type_2_demo"
+        )
+        self.share_type_B_pp = self.share_type_B_pt.product_variant_id
 
     def test_search_requests(self):
         SubscriptionRequest = self.env["subscription.request"]
@@ -90,6 +94,12 @@ class TestCase(TransactionCase):
 
         srequest = binding.internal_id
         self.assertEquals(srequest.name, "Manuel Dublues")
+        self.assertEquals(
+            srequest.share_product_id.id, self.share_type_B_pp.id
+        )
+        self.assertEquals(
+            srequest.subscription_amount, self.share_type_B_pt.list_price * 3
+        )
 
         with patch.object(requests, "get") as mock_get:
             mock_get.return_value = mock_response = Mock()

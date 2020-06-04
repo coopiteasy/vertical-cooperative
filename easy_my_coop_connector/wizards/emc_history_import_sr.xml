@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="emc_history_import_sr_view_form" model="ir.ui.view">
+            <field name="name">emc_history_import_sr_view_form</field>
+            <field name="model">emc.history.import.sr</field>
+            <field name="arch" type="xml">
+                <form string="emc_history_import_sr_form">
+                    <sheet>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+                        <footer>
+                            <button name="import_subscription_button"
+                                    string="Import Subscription History"
+                                    type="object"
+                                    class="btn-primary"/>
+                            <button string="Cancel" class="btn-default"
+                                    special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="emc_history_import_action" model="ir.actions.act_window">
+            <field name="name">Import Subscription Request History</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">emc.history.import.sr</field>
+            <field name="view_mode">form</field>
+        </record>
+
+<!--        <act_window id="action_aged_partner_balance_wizard"-->
+<!--                    name="Aged Partner Balance"-->
+<!--                    res_model="aged.partner.balance.wizard"-->
+<!--                    view_type="form"-->
+<!--                    view_mode="form"-->
+<!--                    view_id="aged_partner_balance_wizard"-->
+<!--                    target="new"/>-->
+    </data>
+</openerp>
