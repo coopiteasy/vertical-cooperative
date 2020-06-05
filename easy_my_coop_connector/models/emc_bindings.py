@@ -13,7 +13,7 @@ class EMCBinding(models.AbstractModel):
         comodel_name="emc.backend", string="EMC Backend", ondelete="restrict"
     )
     external_id = fields.Integer(string="ID in Platform", index=True)
-    # odoo_id = fields.Many2one  # implement in concrete class
+    # internal_id = fields.Many2one  # implement in concrete class
 
     @api.model
     def search_binding(self, backend, external_id):
@@ -45,4 +45,13 @@ class ProductTemplateBinding(models.Model):
         string="Internal ID",
         domain="[('is_share', '=', True)]",
         required=True,
+    )
+
+
+class AccountInvoiceBinding(models.Model):
+    _name = "emc.binding.account.invoice"
+    _inherit = "emc.binding"
+
+    internal_id = fields.Many2one(
+        comodel_name="account.invoice", string="Internal ID", required=True
     )

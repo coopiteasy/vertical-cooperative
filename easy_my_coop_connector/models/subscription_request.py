@@ -24,12 +24,23 @@ class SubscriptionRequest(models.Model):
     )
 
     @api.model
+    def _get_backend(self):
+        backend = self.env["emc.backend"].search([("active", "=", True)])
+        try:
+            backend.ensure_one()
+        except ValueError as e:
+            _logger.error(
+                "One and only one backend is allowed for the Easy My Coop "
+                "connector."
+            )
+            raise e
+        return backend
+
+    @api.model
     def fetch_subscription_requests(self, date_from=None, date_to=None):
         SRBinding = self.env["emc.binding.subscription.request"]
 
-        backend = self.env["emc.backend"].search([("active", "=", True)])
-        backend.ensure_one()
-
+        backend = self._get_backend()
         adapter = SubscriptionRequestAdapter(backend=backend)
         requests_dict = adapter.search(date_from=date_from, date_to=date_to)
         for request_dict in requests_dict["rows"]:
@@ -62,8 +73,7 @@ class SubscriptionRequest(models.Model):
     def backend_read(self, external_id):
         SRBinding = self.env["emc.binding.subscription.request"]
 
-        backend = self.env["emc.backend"].search([("active", "=", True)])
-        backend.ensure_one()
+        backend = self._get_backend()
 
         adapter = SubscriptionRequestAdapter(backend)
         sr_data = adapter.read(external_id)
@@ -87,15 +97,7 @@ class SubscriptionRequest(models.Model):
 
     @api.model
     def fetch_subscription_requests_cron(self):
-        backend = self.env["emc.backend"].search([("active", "=", True)])
-        try:
-            backend.ensure_one()
-        except ValueError as e:
-            _logger.error(
-                "One and only one backend is allowed for the Easy My Coop "
-                "connector "
-            )
-            raise e
+        backend = self._get_backend()
 
         date_to = date.today()
         date_from = date_to - timedelta(days=1)
@@ -107,3 +109,26 @@ class SubscriptionRequest(models.Model):
         )
         self.fetch_subscription_requests(date_from=date_from, date_to=date_to)
         _logger.info("fetch done.")
+
+    @api.multi
+    def validate_subscription_request(self):
+        self.ensure_one()
+        invoice = super(
+            SubscriptionRequest, self
+        ).validate_subscription_request()
+
+        if self.source == "emc_api":
+            backend = self._get_backend()
+            sr_adapter = SubscriptionRequestAdapter(backend=backend)
+            invoice_dict = sr_adapter.validate(self.binding_id.external_id)
+
+            InvoiceBinding = self.env["emc.binding.account.invoice"]
+            InvoiceBinding.create(
+                {
+                    "backend_id": backend.id,
+                    "external_id": invoice_dict["id"],
+                    "internal_id": invoice.id,
+                }
+            )
+
+        return invoice

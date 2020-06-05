@@ -4,8 +4,10 @@
 
 from os.path import join
 
+from werkzeug.exceptions import BadRequest
+
 from odoo import _
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 from odoo.fields import Date
 
 
@@ -49,6 +51,21 @@ class SubscriptionRequestAdapter:
 
     def delete(self):
         raise NotImplementedError
+
+    def validate(self, id_):
+        url = self.get_url([str(id_), "validate"])
+        data = {}
+        try:
+            invoice_dict = self.backend.http_post_content(url, data)
+        except BadRequest:
+            raise ValidationError(
+                _(
+                    "The request was already validated on the "
+                    "platform. Please check data consistency "
+                    "with your system administrator."
+                )
+            )
+        return invoice_dict
 
     def to_write_values(self, request):
         """
