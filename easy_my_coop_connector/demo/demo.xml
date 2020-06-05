@@ -21,4 +21,10 @@
         <field name="internal_id" ref="easy_my_coop.product_template_share_type_2_demo"/>
         <field name="external_id">31</field>
     </record>
+
+    <record id="easy_my_coop.subscription_request_1_demo" model="subscription.request">
+        <field name="source">emc_api</field>
+    </record>
+
+
 </odoo>

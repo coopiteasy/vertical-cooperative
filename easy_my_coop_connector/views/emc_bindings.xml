@@ -59,4 +59,32 @@
             </tree>
         </field>
     </record>
+
+    <record id="emc_binding_account_invoice_view_form" model="ir.ui.view">
+        <field name="name">emc_binding_account_invoice_view_form</field>
+        <field name="model">emc.binding.account.invoice</field>
+        <field name="arch" type="xml">
+            <form string="emc_binding_account_invoice_form">
+                <sheet>
+                    <group>
+                        <field name="backend_id"/>
+                        <field name="internal_id"/>
+                        <field name="external_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="emc_binding_account_invoice_view_tree" model="ir.ui.view">
+        <field name="name">emc_binding_account_invoice_view_tree</field>
+        <field name="model">emc.binding.account.invoice</field>
+        <field name="arch" type="xml">
+            <tree string="emc_binding_account_invoice_tree">
+                <field name="backend_id"/>
+                <field name="internal_id"/>
+                <field name="external_id"/>
+            </tree>
+        </field>
+    </record>
 </odoo>

@@ -6,15 +6,10 @@ import json
 import logging
 
 import requests
-from werkzeug.exceptions import (
-    InternalServerError,
-    NotFound,
-)
+from werkzeug.exceptions import BadRequest, InternalServerError, NotFound
 
 from odoo import _, api, fields, models
-from odoo.exceptions import (
-    AccessDenied,
-)
+from odoo.exceptions import AccessDenied
 
 _logger = logging.getLogger(__name__)
 
@@ -38,16 +33,22 @@ class EMCBackend(models.Model):
 
         return requests.get(url, params=params, headers=headers)
 
-    @api.multi
-    def http_get_content(self, url, params=None, headers=None):
-        self.ensure_one()
-        response = self.http_get(url, params=params, headers=headers)
-
+    def _process_response(self, response):
         if response.status_code == 200:
             content = response.content.decode("utf-8")
             return json.loads(content)
+        elif response.status_code == 400:
+            content = response.content.decode("utf-8")
+            raise BadRequest(
+                _(
+                    "request returned status code %s with message %s"
+                    % (response.status_code, content)
+                )
+            )
         elif response.status_code == 403:
-            raise AccessDenied(_("You are not allowed to access this resource"))
+            raise AccessDenied(
+                _("You are not allowed to access this resource")
+            )
         elif response.status_code == 404:
             raise NotFound(
                 _("Resource not found %s on server" % response.status_code)
@@ -55,9 +56,17 @@ class EMCBackend(models.Model):
         else:  # 500 et al.
             content = response.content.decode("utf-8")
             raise InternalServerError(
-                _("request returned status code %s with message %s" % (
-                response.status_code, content))
+                _(
+                    "request returned status code %s with message %s"
+                    % (response.status_code, content)
+                )
             )
+
+    @api.multi
+    def http_get_content(self, url, params=None, headers=None):
+        self.ensure_one()
+        response = self.http_get(url, params=params, headers=headers)
+        return self._process_response(response)
 
     @api.multi
     def http_post(self, url, data, headers=None):
@@ -67,6 +76,11 @@ class EMCBackend(models.Model):
             url = self.location + url
 
         return requests.post(url, json=data, headers=headers)
+
+    def http_post_content(self, url, data, headers=None):
+        self.ensure_one()
+        response = self.http_post(url, data, headers=headers)
+        return self._process_response(response)
 
     @api.multi
     def _add_api_key(self, headers):

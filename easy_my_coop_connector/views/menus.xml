@@ -33,10 +33,17 @@
               groups="base.group_user"
               sequence="1030"/>
 
+    <menuitem id="emc_binding_account_invoice_action_menu"
+              name="Invoice Bindings"
+              parent="emc_connector_menu_menu"
+              action="emc_binding_account_invoice_action"
+              groups="base.group_user"
+              sequence="1040"/>
+
     <menuitem id="emc_history_import_action_menu"
               name="Import Subscription Request History"
               parent="emc_connector_menu_menu"
               action="emc_history_import_action"
               groups="base.group_user"
-              sequence="1050"/>
+              sequence="1100"/>
 </odoo>
