@@ -9,10 +9,11 @@
         <field name="key">cbd07f57-c903-43b4-b668-436b3bec5f15</field>
     </record>
 
-<!--    <record id="easy_my_coop.subscription_request_1_demo" model="subscription.request">-->
-<!--        <field name="_external_id">1</field>-->
-<!--    </record>-->
-<!--    <record id="easy_my_coop.subscription_request_2_demo" model="subscription.request">-->
-<!--        <field name="_external_id">2</field>-->
-<!--    </record>-->
+    <record id="easy_my_coop.subscription_request_1_demo" model="subscription.request">
+        <field name="_api_external_id">1</field>
+    </record>
+
+    <record id="easy_my_coop.subscription_request_waiting_demo" model="subscription.request">
+        <field name="_api_external_id">2</field>
+    </record>
 </odoo>

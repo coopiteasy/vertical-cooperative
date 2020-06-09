@@ -9,7 +9,6 @@ import requests
 from lxml import html
 
 import odoo
-from odoo.fields import Date
 
 from odoo.addons.base_rest.tests.common import BaseRestCase
 
@@ -37,37 +36,6 @@ class BaseEMCRestCase(BaseRestCase):
     def setUp(self):
         super().setUp()
         self.session = requests.Session()
-        self.demo_request_1 = self.browse_ref(
-            "easy_my_coop.subscription_request_1_demo"
-        )
-        self.demo_request_2 = self.browse_ref(
-            "easy_my_coop.subscription_request_2_demo"
-        )
-        self.demo_share_product = (
-            self.demo_request_1.share_product_id.product_tmpl_id
-        )
-
-        date = Date.to_string(self.demo_request_1.date)
-        self.demo_request_1_dict = {
-            "id": self.demo_request_1.id,
-            "name": "Manuel Dublues",
-            "email": "manuel@demo.net",
-            "date": date,
-            "state": "draft",
-            "ordered_parts": 3,
-            "share_product": {
-                "id": self.demo_share_product.id,
-                "name": self.demo_share_product.name,
-            },
-            "address": {
-                "street": "schaerbeekstraat",
-                "zip_code": "1111",
-                "city": "Brussels",
-                "country": "BE",
-            },
-            "lang": "en_US",
-            "capital_release_request": [],
-        }
 
     def http_get(self, url, headers=None):
         headers = self._add_api_key(headers)
