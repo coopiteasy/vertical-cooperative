@@ -4,10 +4,16 @@
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
 <odoo>
-	<menuitem name="Loan Management" id="menu_easy_my_coop_main_loan_issue" parent="easy_my_coop.menu_main_easy_my_coop" groups="easy_my_coop.group_easy_my_coop_user" sequence="15"/>
-	<menuitem name="Loan Issues" id="loan_issue_menu" action="action_loan_issue" parent="menu_easy_my_coop_main_loan_issue" sequence="110"/>
-	<menuitem name="Loans" id="loan_issue_line_menu" action="action_loan_issue_lines" parent="menu_easy_my_coop_main_loan_issue" sequence="120"/>
+    <menuitem name="Loan Management" id="menu_easy_my_coop_main_loan_issue"
+              parent="easy_my_coop.menu_main_easy_my_coop"
+              groups="easy_my_coop.group_easy_my_coop_user" sequence="15"/>
+    <menuitem name="Loan Issues" id="loan_issue_menu" action="action_loan_issue"
+              parent="menu_easy_my_coop_main_loan_issue" sequence="110"/>
+    <menuitem name="Loans" id="loan_issue_line_menu"
+              action="action_loan_issue_lines"
+              parent="menu_easy_my_coop_main_loan_issue" sequence="120"/>
 
-	<menuitem name="Loaners" id="loaners_menu" action="action_loaners" parent="easy_my_coop.menu_easy_my_coop_main_coop" sequence="215" />
+    <menuitem name="Loaners" id="loaners_menu" action="action_loaners"
+              parent="easy_my_coop.menu_easy_my_coop_main_coop" sequence="215"/>
 
 </odoo>

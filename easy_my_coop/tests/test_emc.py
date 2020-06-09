@@ -2,8 +2,9 @@
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo.fields import Date
 from odoo.exceptions import AccessError
+from odoo.fields import Date
+
 from .test_base import EMCBaseCase
 
 
@@ -174,7 +175,7 @@ class EMCCase(EMCBaseCase):
         share_type.list_price = 30
         share_type.unlink()
 
-    def test_validated_lines_on_subscription_request(self):
+    def test_compute_validated_lines_on_subscription_request(self):
         request = self.request
         request.skip_control_ng = False
 

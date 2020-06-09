@@ -4,48 +4,51 @@
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
 <odoo>
-	<record id="view_partner_form_loan_issue" model="ir.ui.view">
-	    <field name="name">res.partner.form.loan.issue</field>
-	    <field name="model">res.partner</field>
-	    <field name="inherit_id" ref="easy_my_coop.view_partner_form_easy_my_coop"/>
-	    <field name="arch" type="xml">
-		    <page name="share_subscription" position="after">
-		    	<page string="Loan issue lines" name="loan_issue_lines" groups="easy_my_coop.group_easy_my_coop_user">
-					<group>
-						<field name="is_loaner"/>
-					</group>
-	         		<field name="loan_line_ids">
-	         			<tree>
-<!--	         			<tree create="false" delete="false" edit="false">-->
-	         				<field name="loan_issue_id"/>
-	         				<field name="date"/>
-	         				<field name="quantity"/>
-	         				<field name="face_value"/>
-	         				<field name="amount"/>
-	         				<field name="state"/>
-	         			</tree>
-	         		</field>
-	         	</page>
-	         </page>
-	    </field>
+    <record id="view_partner_form_loan_issue" model="ir.ui.view">
+        <field name="name">res.partner.form.loan.issue</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id"
+               ref="easy_my_coop.view_partner_form_easy_my_coop"/>
+        <field name="arch" type="xml">
+            <page name="share_subscription" position="after">
+                <page string="Loan issue lines" name="loan_issue_lines"
+                      groups="easy_my_coop.group_easy_my_coop_user">
+                    <group>
+                        <field name="is_loaner"/>
+                    </group>
+                    <field name="loan_line_ids">
+                        <tree>
+                            <!--                         <tree create="false" delete="false" edit="false">-->
+                            <field name="loan_issue_id"/>
+                            <field name="date"/>
+                            <field name="quantity"/>
+                            <field name="face_value"/>
+                            <field name="amount"/>
+                            <field name="state"/>
+                        </tree>
+                    </field>
+                </page>
+            </page>
+        </field>
     </record>
 
-		<record id="view_res_partner_loaner_filter" model="ir.ui.view">
-            <field name="name">res.partner.select</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_res_partner_filter"/>
-            <field name="arch" type="xml">
-            	<xpath expr="//filter[@name='supplier']" position='after'>
-                   <filter string="Loaners" name="loaners" domain="[('is_loaner','=',1)]" help="Loaning Partners"/>
-                </xpath>
-            </field>
-        </record>
+    <record id="view_res_partner_loaner_filter" model="ir.ui.view">
+        <field name="name">res.partner.select</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='supplier']" position='after'>
+                <filter string="Loaners" name="loaners"
+                        domain="[('is_loaner','=',1)]" help="Loaning Partners"/>
+            </xpath>
+        </field>
+    </record>
 
-	<record id="action_loaners" model="ir.actions.act_window">
-		<field name="name">Loaners</field>
-		<field name="res_model">res.partner</field>
-		<field name="view_type">form</field>
-		<field name="view_mode">kanban,tree,form</field>
-		<field name="context">{'search_default_loaners':1}</field>
-	</record>
+    <record id="action_loaners" model="ir.actions.act_window">
+        <field name="name">Loaners</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{'search_default_loaners':1}</field>
+    </record>
 </odoo>

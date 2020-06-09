@@ -7,17 +7,17 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body {
-  font-family:Montserrat-Regular;	
+  font-family:Montserrat-Regular;
   margin: 0;
   color: #000
  }
 
 address {
-	font-family:Lato-Regular;	
+	font-family:Lato-Regular;
 	font-size: 18px;
 		}
 
-address::first-line { 	
+address::first-line {
 						font-weight:bold;
 					  	color: #000;
 					 }
@@ -34,7 +34,7 @@ address::first-line {
 	padding-bottom: 10px;
 	width: 150px;
 		}
-		
+
 .doc_num {
 	font-family:Montserrat-Regular;
   	font-size: 18px;
@@ -49,7 +49,7 @@ address::first-line {
     	border-spacing: 3px;
 				}
 
-	
+
 .info_table th {
     color: white;
     text-align: center;
@@ -59,7 +59,7 @@ address::first-line {
 	vertical-align:middle;
 	font-size: 12px;
     }
-    
+
 .info_table td {
 	font-family:Lato-Regular;
     text-align: center;
@@ -91,9 +91,9 @@ div h4 {
 	font-family:Lato-Regular;
 	vertical-align : middle;
 
-    
+
     }
-    
+
 .tva_table {
     	margin-top:20px;
     	border: 2px ridge #ff7f00;
@@ -104,8 +104,8 @@ div h4 {
 .tva_table th {
 		color : #ff7f00;
 		text-align: center ;
-   		border-bottom: #ff7f00 1px solid;	
-    }		
+   		border-bottom: #ff7f00 1px solid;
+    }
 
 
 .orange_line {
@@ -130,9 +130,9 @@ div h4 {
 }
 
 .lgn_pair{
- 
+
     background-color:#ffe0b0;
-		
+
 }
 
 

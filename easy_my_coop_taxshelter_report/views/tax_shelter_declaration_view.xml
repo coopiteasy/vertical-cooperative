@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem name="Declaration" id="menu_easy_my_coop_main_declaration" parent="easy_my_coop.menu_main_easy_my_coop" sequence="10"/>
+    <menuitem name="Declaration" id="menu_easy_my_coop_main_declaration"
+              parent="easy_my_coop.menu_main_easy_my_coop" sequence="10"/>
 
     <record id="tax_shelter_declaration_form" model="ir.ui.view">
         <field name="name">tax.shelter.declaration.form</field>
@@ -8,9 +9,17 @@
         <field name="arch" type="xml">
             <form string="Tax shelter declaration">
                 <header>
-                    <button name="compute_declaration" string="Process Declaration" type="object" states="draft" class="oe_highlight" groups="easy_my_coop.group_easy_my_coop_user"/>
-                    <button name="validate_declaration" string="Validate Declaration" type="object" states="computed" groups="easy_my_coop.group_easy_my_coop_user"/>
-                    <button name="reset_declaration" string="Reset Declaration" type="object" states="computed" groups="easy_my_coop.group_easy_my_coop_user"/>
+                    <button name="compute_declaration"
+                            string="Process Declaration" type="object"
+                            states="draft" class="oe_highlight"
+                            groups="easy_my_coop.group_easy_my_coop_user"/>
+                    <button name="validate_declaration"
+                            string="Validate Declaration" type="object"
+                            states="computed"
+                            groups="easy_my_coop.group_easy_my_coop_user"/>
+                    <button name="reset_declaration" string="Reset Declaration"
+                            type="object" states="computed"
+                            groups="easy_my_coop.group_easy_my_coop_user"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
@@ -35,9 +44,13 @@
                                 <tree>
                                     <field name="partner_id"/>
                                     <field name="cooperator_number"/>
-                                    <field name="total_amount" sum="Total amount"/>
+                                    <field name="total_amount"
+                                           sum="Total amount"/>
                                     <field name="state"/>
-                                    <button type="object" name="send_certificates" icon="STOCK_MEDIA_PLAY" string="Send Certificates"/>
+                                    <button type="object"
+                                            name="send_certificates"
+                                            icon="STOCK_MEDIA_PLAY"
+                                            string="Send Certificates"/>
                                 </tree>
                             </field>
                         </page>
@@ -72,7 +85,10 @@
         <field name="view_id" ref="tax_shelter_declaration_tree"/>
     </record>
 
-    <menuitem action="tax_shelter_declaration_action" name="Tax Shelter Declaration" id="menu_tax_shelter_declaration"  parent="menu_easy_my_coop_main_declaration" sequence="10" groups="easy_my_coop.group_easy_my_coop_user"/>
+    <menuitem action="tax_shelter_declaration_action"
+              name="Tax Shelter Declaration" id="menu_tax_shelter_declaration"
+              parent="menu_easy_my_coop_main_declaration" sequence="10"
+              groups="easy_my_coop.group_easy_my_coop_user"/>
 
     <record id="tax_shelter_certificate_form" model="ir.ui.view">
         <field name="name">tax.shelter.certificate.form</field>
@@ -80,9 +96,12 @@
         <field name="arch" type="xml">
             <form string="Tax shelter certificate">
                 <header>
-                    <button type="object" name="print_subscription_certificate" string="Print Subscription Certificate" />
-                    <button type="object" name="print_shares_certificate" string="Print Shares Certificate" />
-                    <button type="object" name="send_certificates" string="Send Certificates"/>
+                    <button type="object" name="print_subscription_certificate"
+                            string="Print Subscription Certificate"/>
+                    <button type="object" name="print_shares_certificate"
+                            string="Print Shares Certificate"/>
+                    <button type="object" name="send_certificates"
+                            string="Send Certificates"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
@@ -195,5 +214,8 @@
         <field name="view_id" ref="tax_shelter_certificate_tree"/>
     </record>
 
-    <menuitem action="tax_shelter_certificate_action" name="Tax Shelter Certificates" id="menu_tax_shelter_certificate"  parent="menu_easy_my_coop_main_declaration" sequence="20" groups="easy_my_coop.group_easy_my_coop_user"/>
+    <menuitem action="tax_shelter_certificate_action"
+              name="Tax Shelter Certificates" id="menu_tax_shelter_certificate"
+              parent="menu_easy_my_coop_main_declaration" sequence="20"
+              groups="easy_my_coop.group_easy_my_coop_user"/>
 </odoo>

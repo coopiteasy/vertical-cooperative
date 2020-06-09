@@ -5938,7 +5938,7 @@ h4 {
 	background-attachment: relative;
 	background-position: center center;
 	width: 100%;
-	
+
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
     -o-background-size: 100%;
@@ -6138,7 +6138,7 @@ h4 {
 /*#footer_container {
     background-color: @brand-primary-darker;
     background-size: cover;
-    
+
     }*/
 #footer h4 {
   padding-left: 50px;
@@ -6454,9 +6454,9 @@ h4 {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=99)";
   /*IE8*/
 }
-/* 
-	100% Height for Opera as the max-height seems to be ignored, not optimal for large screens 
-	http://bricss.net/post/11230266445/css-hack-to-target-opera 
+/*
+	100% Height for Opera as the max-height seems to be ignored, not optimal for large screens
+	http://bricss.net/post/11230266445/css-hack-to-target-opera
 */
 x:-o-prefocus,
 .lb-overlay img {
@@ -9439,7 +9439,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 /* Global textual link color.*/
 /* Link hover color set via `darken()` function.*/
 /* == Typography*/
-/* 
+/*
 /* ## Font, line-height, and color for body text, headings, and more.*/
 /* Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.*/
 /* Unit-less `line-height` for use in components like buttons.*/

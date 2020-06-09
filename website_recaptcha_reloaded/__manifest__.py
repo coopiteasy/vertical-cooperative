@@ -1,14 +1,15 @@
 # Copyright 2004 Tech-Receptives Solutions Pvt. Ltd.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
-    'name': 'Website reCAPTCHA Reloaded',
-    'version': '12.0.0.1.0',
-    'category': 'Website',
-    'depends': ['website'],
-    'author': 'Tech Receptives',
-    'license': 'AGPL-3',
-    'website': 'https://www.techreceptives.com',
-    'description': """
+    "name": "Website reCAPTCHA Reloaded",
+    "version": "12.0.0.0.1",
+    "category": "Website",
+    "depends": ["website"],
+    "author": "Tech Receptives, Coop IT Easy SCRLfs",
+    "license": "AGPL-3",
+    "website": "https://www.techreceptives.com",
+    "summary": "Add google recaptcha to forms.",
+    "description": """
     Odoo Website reCAPTCHA Reloaded
     ================================
     This modules allows you to integrate Google reCAPTCHA v2.0 to your website
@@ -18,9 +19,6 @@
     You will need to install various website_<module>_recaptcha modules
     to use it in your various pages.
     """,
-    'data': [
-      'views/website_view.xml',
-      'views/res_config.xml',
-     ],
-    'installable': True,
+    "data": ["views/website_view.xml", "views/res_config.xml"],
+    "installable": True,
 }

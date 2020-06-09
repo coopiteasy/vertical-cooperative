@@ -2,10 +2,12 @@
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo.addons.easy_my_coop.tests.test_base import EMCBaseCase
-from odoo.fields import Date
 from datetime import timedelta
+
 from odoo.exceptions import AccessError
+from odoo.fields import Date
+
+from odoo.addons.easy_my_coop.tests.test_base import EMCBaseCase
 
 
 class EMCLoanCase(EMCBaseCase):
@@ -101,4 +103,3 @@ class EMCLoanCase(EMCBaseCase):
         line.action_paid()
 
         loan_issue.compute_loan_interest()
-
