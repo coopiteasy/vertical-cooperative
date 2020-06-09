@@ -28,11 +28,43 @@ class TestSRController(BaseEMCRestCase):
             usage="subscription-request"
         )
 
+        self.demo_request_1 = self.browse_ref(
+            "easy_my_coop.subscription_request_1_demo"
+        )
+        self.demo_request_2 = self.browse_ref(
+            "easy_my_coop.subscription_request_waiting_demo"
+        )
+        self.demo_share_product = (
+            self.demo_request_1.share_product_id.product_tmpl_id
+        )
+
+        date = Date.to_string(self.demo_request_1.date)
+        self.demo_request_1_dict = {
+            "id": self.demo_request_1.get_api_external_id(),
+            "name": "Manuel Dublues",
+            "email": "manuel@demo.net",
+            "date": date,
+            "state": "draft",
+            "ordered_parts": 3,
+            "share_product": {
+                "id": self.demo_share_product.get_api_external_id(),
+                "name": self.demo_share_product.name,
+            },
+            "address": {
+                "street": "schaerbeekstraat",
+                "zip_code": "1111",
+                "city": "Brussels",
+                "country": "BE",
+            },
+            "lang": "en_US",
+            "capital_release_request": [],
+        }
+
     def test_service(self):
         # kept as example
         # useful if you need to change data in database and check db type
 
-        result = self.sr_service.get(self.demo_request_1.external_id)
+        result = self.sr_service.get(self.demo_request_1.get_api_external_id())
         self.assertEquals(self.demo_request_1_dict, result)
 
         all_sr = self.sr_service.search()
@@ -46,8 +78,8 @@ class TestSRController(BaseEMCRestCase):
         self.assertTrue(date_sr)
 
     def test_route_get(self):
-        id_ = self.demo_request_1.external_id
-        route = "/api/subscription-request/%s" % id_
+        external_id = self.demo_request_1.get_api_external_id()
+        route = "/api/subscription-request/%s" % external_id
         content = self.http_get_content(route)
         self.assertEquals(self.demo_request_1_dict, content)
 
@@ -127,7 +159,7 @@ class TestSRController(BaseEMCRestCase):
                 "date": Date.to_string(Date.today()),
                 "state": "draft",
                 "share_product": {
-                    "id": self.demo_share_product.id,
+                    "id": self.demo_share_product.get_api_external_id(),
                     "name": self.demo_share_product.name,
                 },
                 "capital_release_request": [],
@@ -136,7 +168,10 @@ class TestSRController(BaseEMCRestCase):
         self.assertEquals(expected, content)
 
     def test_route_update(self):
-        url = "/api/subscription-request/%s" % self.demo_request_1.external_id
+        url = (
+            "/api/subscription-request/%s"
+            % self.demo_request_1.get_api_external_id()
+        )
         data = {"state": "done"}
 
         response = self.http_post(url, data=data)
@@ -150,7 +185,7 @@ class TestSRController(BaseEMCRestCase):
     def test_route_validate(self):
         url = (
             "/api/subscription-request/%s/validate"
-            % self.demo_request_1.external_id
+            % self.demo_request_1.get_api_external_id()
         )
         response = self.http_post(url, data={})
         self.assertEquals(response.status_code, 200)
@@ -160,10 +195,10 @@ class TestSRController(BaseEMCRestCase):
         self.assertEquals(state, "done")
 
     def test_service_validate_draft_request(self):
-        self.sr_service.validate(self.demo_request_1.external_id)
+        self.sr_service.validate(self.demo_request_1.get_api_external_id())
         self.assertEquals(self.demo_request_1.state, "done")
         self.assertTrue(len(self.demo_request_1.capital_release_request) > 0)
 
     def test_service_validate_done_request(self):
         with self.assertRaises(BadRequest):
-            self.sr_service.validate(self.demo_request_2.external_id)
+            self.sr_service.validate(self.demo_request_2.get_api_external_id())

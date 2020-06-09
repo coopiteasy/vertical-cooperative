@@ -135,7 +135,6 @@
         <field name="skip_control_ng" eval="True"/>
     </record>
 
-
     <record id="subscription_request_waiting_demo" model="subscription.request">
         <field name="name">Catherine des Champs</field>
         <field name="email">catherine@demo.net</field>
@@ -151,20 +150,6 @@
         <field name="lang">en_US</field>
         <field name="skip_control_ng" eval="True"/>
         <field name="state">waiting</field>
-    </record>
-
-    <record id="res_partner_cooperator_candidate_1_demo" model="res.partner">
-        <field name="name">Catherine des Champs</field>
-        <field name="customer" eval="True"/>
-        <field name="is_company" eval="False"/>
-        <field name="email">catherine@demo.net</field>
-        <field name="street">Chemin des bois fleuris, 2</field>
-        <field name="city">Brussels</field>
-        <field name="zip">1000</field>
-        <field name="country_id" ref="base.be"/>
-        <field name="member" eval="False"/>
-        <field name="data_policy_approved" eval="True"/>
-        <field name="internal_rules_approved" eval="True"/>
     </record>
 
     <record id="share_line_1_demo" model="share.line">
@@ -186,4 +171,5 @@
         <field name="effective_date"
                eval="datetime.now() - timedelta(days=120)"/>
     </record>
+
 </odoo>

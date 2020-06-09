@@ -24,12 +24,12 @@ class SubscriptionRequestService(Component):
     _usage = "subscription-request"
     _collection = "emc.services"
     _description = """
-        Subscription requests
+        Subscription Request Services
     """
 
     def get(self, _id):
         sr = self.env["subscription.request"].search(
-            [("external_id", "=", _id)]
+            [("_api_external_id", "=", _id)]
         )
         if sr:
             return self._to_dict(sr)
@@ -66,7 +66,7 @@ class SubscriptionRequestService(Component):
     def update(self, _id, **params):
         params = self._prepare_update(params)
         sr = self.env["subscription.request"].search(
-            [("external_id", "=", _id)]
+            [("_api_external_id", "=", _id)]
         )
         if not sr:
             raise wrapJsonException(
@@ -77,7 +77,7 @@ class SubscriptionRequestService(Component):
 
     def validate(self, _id, **params):
         sr = self.env["subscription.request"].search(
-            [("external_id", "=", _id)]
+            [("_api_external_id", "=", _id)]
         )
         if not sr:
             raise wrapJsonException(
@@ -97,22 +97,23 @@ class SubscriptionRequestService(Component):
 
         if sr.capital_release_request:
             invoice_ids = [
-                invoice.get_external_id()
+                invoice.get_api_external_id()
                 for invoice in sr.capital_release_request
             ]
         else:
             invoice_ids = []
 
+        share_product = sr.share_product_id.product_tmpl_id
         return {
-            "id": sr.get_external_id(),
+            "id": sr.get_api_external_id(),
             "name": sr.name,
             "email": sr.email,
             "state": sr.state,
             "date": Date.to_string(sr.date),
             "ordered_parts": sr.ordered_parts,
             "share_product": {
-                "id": sr.share_product_id.product_tmpl_id.id,
-                "name": sr.share_product_id.product_tmpl_id.name,
+                "id": share_product.get_api_external_id(),
+                "name": share_product.name,
             },
             "address": {
                 "street": sr.address,

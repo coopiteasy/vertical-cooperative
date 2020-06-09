@@ -10,9 +10,6 @@ from odoo.addons.base_rest.tests.common import BaseRestCase
 
 from ..controllers.controllers import UserController
 
-HOST = "127.0.0.1"
-PORT = odoo.tools.config["http_port"]
-
 
 class TestControllerRegistry(BaseRestCase):
     def test_controller_registry(self):
