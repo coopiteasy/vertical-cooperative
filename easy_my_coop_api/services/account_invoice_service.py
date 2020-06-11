@@ -41,12 +41,6 @@ class AccountInvoiceService(Component):
     def _to_dict(self, invoice):
         invoice.ensure_one()
 
-        if invoice.subscription_request:
-            sr_external_id = invoice.subscription_request.get_api_external_id()
-        else:
-            sr_external_id = None
-
-        # todo return dictionaries for Many2one fields
         data = {
             "id": invoice.get_api_external_id(),
             "name": invoice.name,
@@ -55,10 +49,12 @@ class AccountInvoiceService(Component):
             "date": Date.to_string(invoice.date),
             "date_due": Date.to_string(invoice.date_due),
             "date_invoice": Date.to_string(invoice.date_invoice),
-            "partner": invoice.partner_id.get_api_external_id(),
-            "journal": invoice.journal_id.get_api_external_id(),
-            "account": invoice.account_id.get_api_external_id(),
-            "subscription_request": sr_external_id,
+            "partner": self._one_to_many_to_dict(invoice.partner_id),
+            "journal": self._one_to_many_to_dict(invoice.journal_id),
+            "account": self._one_to_many_to_dict(invoice.account_id),
+            "subscription_request": self._one_to_many_to_dict(
+                invoice.subscription_request
+            ),
             "invoice_lines": [
                 self._line_to_dict(line) for line in invoice.invoice_line_ids
             ],
@@ -68,8 +64,10 @@ class AccountInvoiceService(Component):
     def _line_to_dict(self, line):
         return {
             "name": line.name,
-            "account": line.account_id.get_api_external_id(),
-            "product": line.product_id.product_tmpl_id.get_api_external_id(),
+            "account": self._one_to_many_to_dict(line.account_id),
+            "product": self._one_to_many_to_dict(
+                line.product_id.product_tmpl_id
+            ),
             "quantity": line.quantity,
             "price_unit": line.price_unit,
         }

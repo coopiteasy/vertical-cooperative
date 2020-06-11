@@ -15,6 +15,14 @@ def date_validator(field, value, error):
         )
 
 
+S_MANY_2_ONE = {
+    "type": "dict",
+    "schema": {
+        "id": {"type": "integer", "required": True},
+        "name": {"type": "string", "required": True, "empty": False},
+    },
+}
+
 S_SUBSCRIPTION_REQUEST_GET = {"_id": {"type": "integer"}}
 
 S_SUBSCRIPTION_REQUEST_RETURN_GET = {
@@ -24,13 +32,7 @@ S_SUBSCRIPTION_REQUEST_RETURN_GET = {
     "date": {"type": "string", "required": True, "empty": False},
     "state": {"type": "string", "required": True, "empty": False},
     "ordered_parts": {"type": "integer", "required": True},
-    "share_product": {
-        "type": "dict",
-        "schema": {
-            "id": {"type": "integer", "required": True},
-            "name": {"type": "string", "required": True, "empty": False},
-        },
-    },
+    "share_product": S_MANY_2_ONE,
     "address": {
         "type": "dict",
         "schema": {
@@ -110,8 +112,8 @@ S_INVOICE_LINE_RETURN_GET = {
         "type": "dict",
         "schema": {
             "name": {"type": "string", "required": True},
-            "account": {"type": "integer", "required": True},
-            "product": {"type": "integer", "required": True},
+            "account": S_MANY_2_ONE,
+            "product": S_MANY_2_ONE,
             "quantity": {"type": "float", "required": True},
             "price_unit": {"type": "float", "required": True},
         },
@@ -128,9 +130,12 @@ S_INVOICE_RETURN_GET = {
     "date": {"type": "string", "required": True, "empty": False},
     "date_due": {"type": "string", "required": True, "empty": False},
     "date_invoice": {"type": "string", "required": True, "empty": False},
-    "partner": {"type": "integer", "required": True},
-    "journal": {"type": "integer", "required": True},
-    "account": {"type": "integer", "required": True},
-    "subscription_request": {"type": "integer", "nullable": True},
+    "partner": S_MANY_2_ONE,
+    "journal": S_MANY_2_ONE,
+    "account": S_MANY_2_ONE,
+    "subscription_request": {
+        "type": "dict",
+        "schema": {"id": {"type": "integer"}, "name": {"type": "string"}},
+    },
     "invoice_lines": S_INVOICE_LINE_RETURN_GET,
 }
