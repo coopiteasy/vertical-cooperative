@@ -24,6 +24,163 @@ class BaseEMCRestCase(BaseRestCase):
         cls.api_key_test = cls.env.ref(
             "easy_my_coop_api.auth_api_key_manager_emc_demo"
         )
+        cls._chart_template_create()
+        cls._add_chart_of_accounts()
+        cls._journals_setup()
+
+    def setUp(self):
+        super().setUp()
+        self.session = requests.Session()
+
+    @classmethod
+    def _chart_template_create(cls):
+        transfer_account_id = cls.env["account.account.template"].create(
+            {
+                "code": "000",
+                "name": "Liquidity Transfers",
+                "reconcile": True,
+                "user_type_id": cls.env.ref(
+                    "account.data_account_type_current_assets"
+                ).id,
+            }
+        )
+        cls.chart = cls.env["account.chart.template"].create(
+            {
+                "name": "Test COA",
+                "code_digits": 4,
+                "bank_account_code_prefix": 1014,
+                "cash_account_code_prefix": 1014,
+                "currency_id": cls.env.ref("base.USD").id,
+                "transfer_account_code_prefix": "000",
+            }
+        )
+        transfer_account_id.update({"chart_template_id": cls.chart.id})
+        cls.env["ir.model.data"].create(
+            {
+                "res_id": transfer_account_id.id,
+                "model": transfer_account_id._name,
+                "name": "Liquidity Transfers",
+            }
+        )
+        act = cls.env["account.account.template"].create(
+            {
+                "code": "001",
+                "name": "Expenses",
+                "user_type_id": cls.env.ref(
+                    "account.data_account_type_expenses"
+                ).id,
+                "chart_template_id": cls.chart.id,
+                "reconcile": True,
+            }
+        )
+        cls.env["ir.model.data"].create(
+            {"res_id": act.id, "model": act._name, "name": "expenses"}
+        )
+        act = cls.env["account.account.template"].create(
+            {
+                "code": "002",
+                "name": "Product Sales",
+                "user_type_id": cls.env.ref(
+                    "account.data_account_type_revenue"
+                ).id,
+                "chart_template_id": cls.chart.id,
+                "reconcile": True,
+            }
+        )
+        cls.env["ir.model.data"].create(
+            {"res_id": act.id, "model": act._name, "name": "sales"}
+        )
+        act = cls.env["account.account.template"].create(
+            {
+                "code": "003",
+                "name": "Account Receivable",
+                "user_type_id": cls.env.ref(
+                    "account.data_account_type_receivable"
+                ).id,
+                "chart_template_id": cls.chart.id,
+                "reconcile": True,
+            }
+        )
+        cls.env["ir.model.data"].create(
+            {"res_id": act.id, "model": act._name, "name": "receivable"}
+        )
+        act = cls.env["account.account.template"].create(
+            {
+                "code": "004",
+                "name": "Account Payable",
+                "user_type_id": cls.env.ref(
+                    "account.data_account_type_payable"
+                ).id,
+                "chart_template_id": cls.chart.id,
+                "reconcile": True,
+            }
+        )
+        cls.env["ir.model.data"].create(
+            {"res_id": act.id, "model": act._name, "name": "payable"}
+        )
+
+    @classmethod
+    def _add_chart_of_accounts(cls):
+        cls.company = cls.env.user.company_id
+        cls.chart.try_loading_for_current_company()
+        cls.revenue = cls.env["account.account"].search(
+            [
+                (
+                    "user_type_id",
+                    "=",
+                    cls.env.ref("account.data_account_type_revenue").id,
+                )
+            ],
+            limit=1,
+        )
+        cls.expense = cls.env["account.account"].search(
+            [
+                (
+                    "user_type_id",
+                    "=",
+                    cls.env.ref("account.data_account_type_expenses").id,
+                )
+            ],
+            limit=1,
+        )
+        cls.receivable = cls.env["account.account"].search(
+            [
+                (
+                    "user_type_id",
+                    "=",
+                    cls.env.ref("account.data_account_type_receivable").id,
+                )
+            ],
+            limit=1,
+        )
+        cls.payable = cls.env["account.account"].search(
+            [
+                (
+                    "user_type_id",
+                    "=",
+                    cls.env.ref("account.data_account_type_payable").id,
+                )
+            ],
+            limit=1,
+        )
+        cls.equity_account = cls.env.ref("easy_my_coop.account_equity_demo")
+        cls.cooperator_account = cls.env.ref(
+            "easy_my_coop.account_cooperator_demo"
+        )
+        return True
+
+    @classmethod
+    def _journals_setup(cls):
+        cls.subscription_journal = cls.env.ref(
+            "easy_my_coop.subscription_journal"
+        )
+        cls.subscription_journal.write(
+            {
+                "default_debit_account_id": cls.equity_account.id,
+                "default_credit_account_id": cls.equity_account.id,
+            }
+        )
+        return True
 
     def _add_api_key(self, headers):
         key_dict = {"API-KEY": self.api_key_test.key}
@@ -32,10 +189,6 @@ class BaseEMCRestCase(BaseRestCase):
         else:
             headers = key_dict
         return headers
-
-    def setUp(self):
-        super().setUp()
-        self.session = requests.Session()
 
     def http_get(self, url, headers=None):
         headers = self._add_api_key(headers)
