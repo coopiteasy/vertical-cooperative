@@ -2,7 +2,6 @@
 #   Houssine Bakkali <houssine@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-
 from datetime import datetime
 
 # pylint: disable=missing-manifest-dependency
@@ -44,6 +43,8 @@ class SubscriptionRequest(models.Model):
             required_fields.append("data_policy_approved")
         if company.internal_rules_approval_required:
             required_fields.append("internal_rules_approved")
+        if company.financial_risk_approval_required:
+            required_fields.append('financial_risk_approved')
         return required_fields
 
     def get_mail_template_notif(self, is_company=False):
@@ -430,6 +431,11 @@ class SubscriptionRequest(models.Model):
     internal_rules_approved = fields.Boolean(
         string="Approved Internal Rules", default=False
     )
+    financial_risk_approved = fields.Boolean(
+        string='Financial Risk Approved',
+        default=False,
+    )
+
     _order = "id desc"
 
     def get_person_info(self, partner):
@@ -574,6 +580,7 @@ class SubscriptionRequest(models.Model):
             "lang": self.lang,
             "data_policy_approved": self.data_policy_approved,
             "internal_rules_approved": self.internal_rules_approved,
+            'financial_risk_approved': self.financial_risk_approved
         }
         return partner_vals
 
@@ -595,6 +602,7 @@ class SubscriptionRequest(models.Model):
             "customer": self.share_product_id.customer,
             "data_policy_approved": self.data_policy_approved,
             "internal_rules_approved": self.internal_rules_approved,
+            "financial_risk_approved": self.financial_risk_approved
         }
         return partner_vals
 
@@ -623,6 +631,7 @@ class SubscriptionRequest(models.Model):
             "type": "representative",
             "data_policy_approved": self.data_policy_approved,
             "internal_rules_approved": self.internal_rules_approved,
+            "financial_risk_approved": self.financial_risk_approved,
         }
         return contact_vals
 
