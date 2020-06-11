@@ -10,10 +10,9 @@ from odoo.addons.component.core import Component
 
 
 class PingService(Component):
-    _inherit = "base.rest.service"
+    _inherit = "emc.rest.service"
     _name = "emc.services"
     _usage = "ping"  # service_name
-    _collection = "emc.services"
     _description = """
         Ping services (test the api)
     """

@@ -19,10 +19,9 @@ _logger = logging.getLogger(__name__)
 
 
 class SubscriptionRequestService(Component):
-    _inherit = "base.rest.service"
+    _inherit = "emc.rest.service"
     _name = "subscription.request.services"
     _usage = "subscription-request"
-    _collection = "emc.services"
     _description = """
         Subscription Request Services
     """
@@ -121,12 +120,6 @@ class SubscriptionRequestService(Component):
             "lang": sr.lang,
             "capital_release_request": invoice_ids,
         }
-
-    def _one_to_many_to_dict(self, record):
-        if record:
-            return {"id": record.get_api_external_id(), "name": record.name}
-        else:
-            return {}
 
     def _get_country(self, code):
         country = self.env["res.country"].search([("code", "=", code)])
