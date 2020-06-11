@@ -28,6 +28,9 @@
                     <field name="display_internal_rules_approval"/>
                     <field name="internal_rules_approval_required"/>
                     <field name="internal_rules_approval_text"/>
+                    <field name="display_financial_risk_approval"/>
+                    <field name="financial_risk_approval_required"/>
+                    <field name="financial_risk_approval_text"/>
                 </group>
             </group>
         </field>
