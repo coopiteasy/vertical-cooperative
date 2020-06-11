@@ -32,10 +32,10 @@ class TestAccountInvoiceController(BaseEMCRestCase):
         self.demo_invoice_dict = {
             "id": 1,
             "name": "Capital Release Example",
-            "partner": 1,
-            "account": 1,
-            "journal": 1,
-            "subscription_request": None,
+            "partner": {"id": 1, "name": "Catherine des Champs"},
+            "account": {"id": 1, "name": "Cooperators"},
+            "journal": {"id": 1, "name": "Subscription Journal"},
+            "subscription_request": {},
             "state": "open",
             "date": today,
             "date_invoice": today,
@@ -43,11 +43,11 @@ class TestAccountInvoiceController(BaseEMCRestCase):
             "type": "out_invoice",
             "invoice_lines": [
                 {
-                    "account": 2,
                     "name": "Share Type A",
+                    "product": {"id": 1, "name": "Part A - Founder"},
                     "price_unit": 100.0,
-                    "product": 1,
                     "quantity": 2.0,
+                    "account": {"id": 2, "name": "Equity"},
                 }
             ],
         }

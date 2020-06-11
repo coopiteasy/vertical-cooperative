@@ -111,10 +111,7 @@ class SubscriptionRequestService(Component):
             "state": sr.state,
             "date": Date.to_string(sr.date),
             "ordered_parts": sr.ordered_parts,
-            "share_product": {
-                "id": share_product.get_api_external_id(),
-                "name": share_product.name,
-            },
+            "share_product": self._one_to_many_to_dict(share_product),
             "address": {
                 "street": sr.address,
                 "zip_code": sr.zip_code,
@@ -124,6 +121,12 @@ class SubscriptionRequestService(Component):
             "lang": sr.lang,
             "capital_release_request": invoice_ids,
         }
+
+    def _one_to_many_to_dict(self, record):
+        if record:
+            return {"id": record.get_api_external_id(), "name": record.name}
+        else:
+            return {}
 
     def _get_country(self, code):
         country = self.env["res.country"].search([("code", "=", code)])
