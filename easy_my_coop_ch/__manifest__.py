@@ -10,7 +10,10 @@
     "depends": ["easy_my_coop", "easy_my_coop_website", "l10n_ch"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
-    "webstite": "www.coopiteasy.be",
+    "website": "https://www.coopiteasy.be",
+    "description": """
+    This is the swiss localization for the easy my coop module
+    """,
     "data": [
         "views/subscription_template.xml",
         # "views/subscription_request_view.xml",

@@ -9,7 +9,7 @@
     "depends": ["easy_my_coop", "website", "website_recaptcha_reloaded"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
-    "website": "www.coopiteasy.be",
+    "website": "https://coopiteasy.be",
     "license": "AGPL-3",
     "summary": """
     This module adds the cooperator subscription form

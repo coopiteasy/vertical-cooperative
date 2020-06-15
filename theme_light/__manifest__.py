@@ -8,7 +8,7 @@
     "category": "Website",
     "version": "12.0.1.0.0",
     "author": "Benjamin Dugardin," "Houssine BAKKALI," "Coop IT Easy SCRLfs",
-    "website": "www.coopiteasy.be",
+    "website": "https://www.coopiteasy.be",
     "depends": ["base", "web", "website_theme_install"],
     "data": ["views/layout_template.xml", "report/header_report_G002.xml"],
     "installable": True,
