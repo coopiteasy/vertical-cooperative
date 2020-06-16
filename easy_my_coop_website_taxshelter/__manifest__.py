@@ -7,9 +7,8 @@
     "version": "12.0.1.0.0",
     "depends": [
         "website",
-        "website_portal_v10",
+        "portal",
         "easy_my_coop_taxshelter_report",
-        "report",
     ],
     "summary": "Give access to Tax Shelter Report in the website portal.",
     "author": "Coop IT Easy SCRLfs",
@@ -17,6 +16,5 @@
     "category": "Cooperative Management",
     "website": "https://coopiteasy.be",
     "data": ["views/easy_my_coop_website_taxshelter_templates.xml"],
-    "installable": False,
-    "application": False,
+    "installable": True,
 }
