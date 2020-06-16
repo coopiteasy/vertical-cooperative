@@ -17,7 +17,9 @@
     """,
     "data": [
         "views/subscription_template.xml",
+        "views/res_config_settings.xml",
         "data/website_cooperator_data.xml",
+        "data/emc_website_recaptcha.xml"
     ],
     "installable": True,
     "application": True,
