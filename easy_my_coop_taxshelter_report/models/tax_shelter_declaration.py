@@ -187,7 +187,7 @@ class TaxShelterDeclaration(models.Model):
 
 class TaxShelterCertificate(models.Model):
     _name = "tax.shelter.certificate"
-    _inherit = ['portal.mixin']
+    _inherit = ["portal.mixin"]
     _description = "Tax Shelter Certificate"
     _order = "cooperator_number asc"
 
@@ -281,7 +281,9 @@ class TaxShelterCertificate(models.Model):
     def _compute_access_url(self):
         super()._compute_access_url()
         for certificate in self:
-            certificate.access_url = '/my/tax_shelter_certificates/%s' % (certificate.id)
+            certificate.access_url = "/my/tax_shelter_certificates/%s" % (
+                certificate.id
+            )
 
     def generate_pdf_report(self, report_type):
         report, name = REPORT_DIC[report_type]
