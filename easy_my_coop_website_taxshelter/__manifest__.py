@@ -5,7 +5,7 @@
 {
     "name": "Easy My Coop Tax Shelter Website",
     "version": "12.0.1.0.0",
-    "depends": ["website", "portal", "easy_my_coop_taxshelter_report",],
+    "depends": ["website", "portal", "easy_my_coop_taxshelter_report"],
     "summary": "Give access to Tax Shelter Report in the website portal.",
     "author": "Coop IT Easy SCRLfs",
     "license": "AGPL-3",

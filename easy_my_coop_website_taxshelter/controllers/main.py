@@ -2,14 +2,16 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 
+from werkzeug.exceptions import Forbidden
+
 from odoo import http
+from odoo.exceptions import AccessError, MissingError
+from odoo.http import request
+
 from odoo.addons.portal.controllers.portal import (
     CustomerPortal,
     pager as portal_pager,
 )
-from odoo.exceptions import AccessError, MissingError
-from odoo.http import request
-from werkzeug.exceptions import Forbidden, NotFound
 
 
 class PortalTaxShelter(CustomerPortal):
@@ -116,7 +118,7 @@ class PortalTaxShelter(CustomerPortal):
         report_type=None,
         download=False,
         query_string=None,
-        **kw,
+        **kw
     ):
         partner = request.env.user.partner_id
         try:
