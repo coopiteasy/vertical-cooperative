@@ -1,108 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-     Copyright 2015-2016 Odoo S.A.
-     Copyright 2016 Jairo Llopis <jairo.llopis@tecnativa.com>
-     Copyright 2018 Rémy Taymans <remytaymans@gmail.com>
-     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
--->
-<openerp>
+<odoo>
 
     <!-- Tax Shelter Certificate in the menu -->
-    <template
-            id="portal_my_home_menu_tax_shelter"
-            name="Portal Menu: Easy My Coop Tax Shelter Certificate"
-            inherit_id="website_portal_v10.portal_layout"
-            priority="25">
-        <xpath expr="//ul[contains(@class,'o_portal_submenu')]"
-               position="inside">
-            <li>
-                <a href="/my/tax_shelter_certificate">
-                    Tax Shelter Certificate
-                </a>
+    <template id="portal_my_home_menu_tax_shelter"
+              name="Portal layout: Easy My Coop Tax Shelter Certificate Menu Entries"
+              inherit_id="portal.portal_breadcrumbs"
+              priority="25">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'taxshelter' or taxshelter and taxshelter.state in ('validated', 'sent')"
+                t-attf-class="breadcrumb-item #{'active ' if not taxshelter else ''}">
+                <a t-if="taxshelter" t-attf-href="/my/tax_shelter_certificates?{{ keep_query() }}">Tax Shelter Certificates</a>
+                <t t-else="">Tax Shelter Certificates</t>
+            </li>
+            <li t-if="taxshelter" class="breadcrumb-item active">
+                <t t-esc="taxshelter.declaration_id.name" t-if="taxshelter.declaration_id.name"/>
             </li>
         </xpath>
     </template>
 
     <!-- Tax Shelter Certificate on the main page -->
-    <template
-            id="portal_my_home_tax_shelter"
-            name="Portal My Home : Easy My Coop Tax Shelter Certificate"
-            inherit_id="website_portal_v10.portal_my_home"
-            priority="25">
-        <xpath expr="//div[contains(@class,'o_my_home_content')]"
-               position="inside">
-            <h3 class="page-header">
-                <a href="/my/tax_shelter_certificate">
-                    Your Tax Shelter Certificate
-                    <small class="ml8">
-                        <t t-if="tax_shelter_count">
-                            <span class='badge'>
-                                <t t-esc="tax_shelter_count"/>
-                            </span>
-                        </t>
-                        <t t-if="not tax_shelter_count">
-                            There are currently no tax shelter certificate for
-                            your
-                            account.
-                        </t>
-                    </small>
-                </a>
-            </h3>
+    <template id="portal_my_home_tax_shelter"
+              name="Portal My Home : Easy My Coop Tax Shelter Certificate Entries"
+              inherit_id="portal.portal_my_home"
+              priority="25">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-if="tax_shelter_count" t-call="portal.portal_docs_entry">
+                <t t-set="title">Tax Shelter Certificates</t>
+                <t t-set="url" t-value="'/my/tax_shelter_certificates'"/>
+                <t t-set="count" t-value="tax_shelter_count"/>
+            </t>
         </xpath>
     </template>
 
+
     <!-- Tax Shelter Certificate page -->
     <template id="portal_my_tax_shelter" name="My Tax Shelter">
-        <t t-call="website_portal_v10.portal_layout">
-            <h3 class="page-header">Your Tax Shelter Certificate</h3>
-            <t t-if="not tax_shelters">
-                <p>
-                    There are currently no tax shelter certificate for your
-                    account.
-                </p>
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Tax Shelter Certificates</t>
             </t>
-            <t t-if="tax_shelters">
-                <table class="table table-hover o_my_status_table">
-                    <thead>
-                        <tr class="active">
-                            <th>Declaration Year</th>
-                            <th>Tax Shelter Certificate</th>
-                            <th>Share Certificate</th>
-                            <th>Total Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr t-foreach="tax_shelters" t-as="tax_shelter">
-                            <td>
-                                <t t-esc="tax_shelter.declaration_id.name"/>
-                            </td>
-                            <td>
-                                <a t-att-href="'/my/taxshelter_certificate/pdf/%s'
-                  % tax_shelter.id">
-                                    Tax Shelter Certificate
-                                </a>
-                            </td>
-                            <td>
-                                <a t-att-href="'/my/share_certificate/pdf/%s'
-                  % tax_shelter.id">
-                                    Share Certificate
-                                </a>
-                            </td>
-                            <td>
-                                <span t-field="tax_shelter.total_amount"
-                                      t-field-options='{
-                    "widget": "monetary",
-                    "display_currency": "tax_shelter.partner_id.company_id.currency_id"
-                  }'/>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div t-if="pager" class="o_portal_pager text-center">
-                    <t t-call="website.pager"/>
-                </div>
+            <t t-if="not tax_shelters">
+                <p>There are currently no tax shelter certificates for your account.</p>
+            </t>
+            <t t-if="tax_shelters" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Declaration Year</th>
+
+                        <th class="text-right">Total Amount</th>
+                    </tr>
+                </thead>
+                <t t-foreach="tax_shelters" t-as="tax_shelter">
+                    <tr>
+                        <td>
+                            <a t-att-href="tax_shelter.get_portal_url()" t-att-title="tax_shelter.declaration_id.name">
+                                <t t-esc="tax_shelter.declaration_id.name" t-if="tax_shelter.declaration_id.name"/>
+                                <em t-else="">Draft Tax Shelter Certificate</em>
+                            </a>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="tax_shelter.total_amount" t-options='{"widget": "monetary", "display_currency":tax_shelter.partner_id.company_id.currency_id}'/>
+                        </td>
+                    </tr>
+                </t>
             </t>
         </t>
     </template>
 
-</openerp>
+    <!-- Tax Shelter Certificate Content -->
+    <template id="portal_taxshelter_page" name="Tax Shelter Portal Template" inherit_id="portal.portal_sidebar" primary="True">
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+            <div class="row mt16">
+                <!-- Sidebar -->
+                <t t-call="portal.portal_record_sidebar">
+                    <t t-set="classes" t-value="'col-lg-auto d-print-none'"/>
+                    <t t-set="title">
+                        <h2 class="mb-0"><b t-field="taxshelter.total_amount" data-id="total_amount" t-options='{"widget": "monetary", "display_currency":tax.partner_id.company_id.currency_id}'/> </h2>
+                    </t>
+
+                    <t t-set="entries">
+                        <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column">
+                            <li class="list-group-item flex-grow-1">
+                                <div class="o_download_pdf btn-toolbar flex-sm-nowrap">
+                                    <div class="btn-group flex-grow-1 mb-1">
+                                        <a id="print_taxshelter_subscription" class="btn btn-secondary btn-block o_print_btn" t-att-href="taxshelter.get_portal_url(report_type='pdf', query_string='&amp;query_string=subscription')" title="Print Subscription" target="_blank"><i class="fa fa-print"/> Subscription Certificate</a>
+                                    </div>
+                                </div>
+                                <div class="o_download_pdf btn-toolbar flex-sm-nowrap">
+                                    <div class="btn-group flex-grow-1 mb-1">
+                                        <a id="print_taxshelter_shares" class="btn btn-secondary btn-block o_print_btn" t-att-href="taxshelter.get_portal_url(report_type='pdf', query_string='&amp;query_string=shares')" title="Print Shares" target="_blank"><i class="fa fa-print"/> Shares Certificate</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </t>
+                </t>
+
+                <!-- Page Content -->
+                <!-- Room for improvement: html display
+                <div id="taxshelter_certificate_content" class="o_portal_page_content col-12 col-lg d-flex flex-column align-items-end">
+                    <div class="o_portal_page_size">
+                        <t t-if="error or warning" t-call="easy_my_coop_website_taxshelter.portal_taxshelter_error"/>
+                        <t t-if="success and (not error and not warning)" t-call="account.portal_taxshelter_success"/>
+
+                        <div class="o_portal_html_view shadow">
+                            <div class="o_portal_html_loader text-center">
+                                <i class="fa fa-circle-o-notch fa-spin fa-2x fa-fw text-black-50"></i>
+                            </div>
+                            <iframe id="taxshelter_certificate_html" class="mt8 mb8" width="100%" height="100%" frameborder="0" scrolling="no" t-att-src="taxshelter.get_portal_url(report_type='html')"/>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </div>
+        </xpath>
+    </template>
+
+    <!-- Room for improvement: those templates should be called if html display is implemented -->
+    <!--
+    <template id="portal_taxshelter_error" name="Taxshelter error/warning display">
+        <div class="row mr16">
+            <div t-attf-class="'col-lg-12 mr16 ml16 alert alert-dismissable' #{'alert-danger' if error else 'alert-warning'}" role="alert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                <t t-if="error == 'generic'" name="generic">
+                    There was an error processing this page.
+                </t>
+            </div>
+        </div>
+    </template>
+
+    <template id="portal_taxshelter_success" name="Taxshelter success display">
+        <div class="row mr16">
+            <div class="col-lg-12 mr16 ml16 alert alert-dismissable alert-success" role="status">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+            </div>
+        </div>
+    </template>
+    -->
+</odoo>
