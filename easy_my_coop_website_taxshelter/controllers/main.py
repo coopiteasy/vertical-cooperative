@@ -3,29 +3,44 @@
 
 
 from odoo import http
-from odoo.addons.portal.controllers.portal import CustomerPortal, pager as portal_pager
+from odoo.addons.portal.controllers.portal import (
+    CustomerPortal,
+    pager as portal_pager,
+)
 from odoo.exceptions import AccessError, MissingError
 from odoo.http import request
 from werkzeug.exceptions import Forbidden, NotFound
 
 
 class PortalTaxShelter(CustomerPortal):
-
     def _prepare_portal_layout_values(self):
         values = super()._prepare_portal_layout_values()
         partner = request.env.user.partner_id
-        tax_shelter_count = request.env["tax.shelter.certificate"].sudo().search_count(
-            [("partner_id", "in", [partner.commercial_partner_id.id])]
+        tax_shelter_count = (
+            request.env["tax.shelter.certificate"]
+            .sudo()
+            .search_count(
+                [("partner_id", "in", [partner.commercial_partner_id.id])]
+            )
         )
-        values['tax_shelter_count'] = tax_shelter_count
+        values["tax_shelter_count"] = tax_shelter_count
         return values
 
-    def _taxshelter_certificate_get_page_view_values(self, taxshelter_certificate, access_token, **kwargs):
+    def _taxshelter_certificate_get_page_view_values(
+        self, taxshelter_certificate, access_token, **kwargs
+    ):
         values = {
-            'page_name': 'taxshelter',
-            'taxshelter': taxshelter_certificate,
+            "page_name": "taxshelter",
+            "taxshelter": taxshelter_certificate,
         }
-        return self._get_page_view_values(taxshelter_certificate, access_token, values, 'my_taxshelter_certificates_history', False, **kwargs)
+        return self._get_page_view_values(
+            taxshelter_certificate,
+            access_token,
+            values,
+            "my_taxshelter_certificates_history",
+            False,
+            **kwargs,
+        )
 
     @http.route(
         [
@@ -71,7 +86,9 @@ class PortalTaxShelter(CustomerPortal):
         tax_shelters = tax_shelters.sorted(
             key=lambda r: r.declaration_id.fiscal_year, reverse=True
         )
-        request.session['my_taxshelter_certificates_history'] = tax_shelters.ids[:100]
+        request.session[
+            "my_taxshelter_certificates_history"
+        ] = tax_shelters.ids[:100]
 
         values.update(
             {
@@ -86,23 +103,49 @@ class PortalTaxShelter(CustomerPortal):
             "easy_my_coop_website_taxshelter.portal_my_tax_shelter", values
         )
 
-    @http.route(['/my/tax_shelter_certificates/<int:certificate_id>'], type='http', auth="public", website=True)
-    def portal_taxshelter_certificate(self, certificate_id, access_token=None, report_type=None, download=False, query_string=None, **kw):
+    @http.route(
+        ["/my/tax_shelter_certificates/<int:certificate_id>"],
+        type="http",
+        auth="public",
+        website=True,
+    )
+    def portal_taxshelter_certificate(
+        self,
+        certificate_id,
+        access_token=None,
+        report_type=None,
+        download=False,
+        query_string=None,
+        **kw,
+    ):
         partner = request.env.user.partner_id
         try:
-            taxshelter_certificate_sudo = self._document_check_access('tax.shelter.certificate', certificate_id, access_token)
+            taxshelter_certificate_sudo = self._document_check_access(
+                "tax.shelter.certificate", certificate_id, access_token
+            )
             if taxshelter_certificate_sudo.partner_id != partner:
                 raise Forbidden()
         except (AccessError, MissingError):
-            return request.redirect('/my')
+            return request.redirect("/my")
 
-        if report_type in ('html', 'pdf', 'text') and query_string in ('subscription', 'shares'):
-            report_ref = "easy_my_coop_taxshelter_report.action_tax_shelter_%s_report" % (query_string)
+        if report_type in ("html", "pdf", "text") and query_string in (
+            "subscription",
+            "shares",
+        ):
+            report_ref = (
+                "easy_my_coop_taxshelter_report.action_tax_shelter_%s_report"
+                % (query_string)
+            )
             return self._show_report(
                 model=taxshelter_certificate_sudo,
                 report_type=report_type,
                 report_ref=report_ref,
-                download=download)
+                download=download,
+            )
 
-        values = self._taxshelter_certificate_get_page_view_values(taxshelter_certificate_sudo, access_token, **kw)
-        return request.render("easy_my_coop_website_taxshelter.portal_taxshelter_page", values)
+        values = self._taxshelter_certificate_get_page_view_values(
+            taxshelter_certificate_sudo, access_token, **kw
+        )
+        return request.render(
+            "easy_my_coop_website_taxshelter.portal_taxshelter_page", values
+        )
