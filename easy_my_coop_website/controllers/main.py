@@ -173,7 +173,6 @@ class WebsiteSubscription(http.Controller):
         sub_req_obj = request.env["subscription.request"]
         company = request.website.company_id
         products = self.get_products_share(is_company)
-
         if load_from_user:
             values = self.get_values_from_user(values, is_company)
         if is_company:
@@ -245,7 +244,6 @@ class WebsiteSubscription(http.Controller):
     def validation(self, kwargs, logged, values, post_file):
         user_obj = request.env["res.users"]
         sub_req_obj = request.env["subscription.request"]
-
         redirect = "easy_my_coop_website.becomecooperator"
 
         email = kwargs.get("email")
