@@ -173,10 +173,6 @@ class WebsiteSubscription(http.Controller):
         sub_req_obj = request.env["subscription.request"]
         company = request.website.company_id
         products = self.get_products_share(is_company)
-        icp_obj = request.env["ir.config_parameter"].sudo()
-        values["recaptcha_enabled"] = icp_obj.get_param(
-            "emc_website.captcha_enabled", default="True"
-        )
         if load_from_user:
             values = self.get_values_from_user(values, is_company)
         if is_company:
@@ -248,7 +244,6 @@ class WebsiteSubscription(http.Controller):
     def validation(self, kwargs, logged, values, post_file):
         user_obj = request.env["res.users"]
         sub_req_obj = request.env["subscription.request"]
-        icp_obj = request.env["ir.config_parameter"].sudo()
         redirect = "easy_my_coop_website.becomecooperator"
 
         email = kwargs.get("email")
@@ -259,7 +254,7 @@ class WebsiteSubscription(http.Controller):
             redirect = "easy_my_coop_website.becomecompanycooperator"
             email = kwargs.get("company_email")
 
-        if icp_obj.get_param('emc_website.captcha_enabled')=="True":
+        if request.website.recaptcha_key_site:
             if (
                 "g-recaptcha-response" not in kwargs
                 or kwargs["g-recaptcha-response"] == ""
