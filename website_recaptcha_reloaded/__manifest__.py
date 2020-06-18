@@ -9,6 +9,16 @@
     "license": "AGPL-3",
     "website": "https://www.techreceptives.com",
     "summary": "Add google recaptcha to forms.",
+    "description": """
+    Odoo Website reCAPTCHA Reloaded
+    ================================
+    This modules allows you to integrate Google reCAPTCHA v2.0 to your website
+    forms. You can configure your Google reCAPTCHA site and public keys
+    in "Settings" -> "Website Settings"
+
+    You will need to install various website_<module>_recaptcha modules
+    to use it in your various pages.
+    """,
     "data": ["views/website_view.xml", "views/res_config.xml"],
     "installable": True,
 }
