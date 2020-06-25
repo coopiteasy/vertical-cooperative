@@ -470,6 +470,27 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div id="financial_risk_approved"
+                                     t-if="display_financial_risk"
+                                     t-attf-class="form-group">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="financial_risk_approved">
+                                        Financial Risk
+                                    </label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"
+                                                       name="financial_risk_approved"
+                                                       t-att-required="financial_risk_required"
+                                                       t-att-checked="financial_risk_approved"/>
+                                                <t t-raw="financial_risk_text"/>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <table style="margin-left:195px">
                                     <tr>
                                         <td width="80%">
