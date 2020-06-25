@@ -217,7 +217,10 @@ class WebsiteSubscription(http.Controller):
                 "data_policy_text": comp.data_policy_approval_text,
                 "display_internal_rules": comp.display_internal_rules_approval,
                 "internal_rules_required": comp.internal_rules_approval_required,
-                "internal_rules_text": comp.internal_rules_approval_text,
+                "internal_rules_text": comp.financial_risk_approval_text,
+                "display_financial_risk": comp.display_financial_risk_approval,
+                "financial_risk_required": comp.financial_risk_approval_required,
+                "financial_risk_text": comp.financial_risk_approval_text,
             }
         )
         return values
@@ -436,6 +439,9 @@ class WebsiteSubscription(http.Controller):
 
         if kwargs.get("internal_rules_approved", "off") == "on":
             values["internal_rules_approved"] = True
+
+        if kwargs.get("financial_risk_approved", "off") == "on":
+            values["financial_risk_approved"] = True
 
         lastname = kwargs.get("lastname").upper()
         firstname = kwargs.get("firstname").title()
