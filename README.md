@@ -1,44 +1,36 @@
+[![Build Status](https://travis-ci.com/coopiteasy/vertical-cooperative.svg?branch=12.0)](https://travis-ci.com/coopiteasy/vertical-cooperative?branch=12.0)
+
 # vertical-cooperative
 This repository gather odoo modules for cooperatives
 
-# MAKE TRAVIS GREEN AGAIN
+<!-- prettier-ignore-start -->
+[//]: # (addons)
 
-pre-commit still issues these messages. They need to be fixed.
+Available addons
+----------------
+addon | version | summary
+--- | --- | ---
+[easy_my_coop](easy_my_coop/) | 12.0.3.0.1 | Manage your cooperative shares
+[easy_my_coop_be](easy_my_coop_be/) | 12.0.1.2.0 | Easy My Coop Belgium Localization
+[easy_my_coop_ch](easy_my_coop_ch/) | 12.0.1.0.2 | Easy My Coop Switzerland localization
+[easy_my_coop_fr](easy_my_coop_fr/) | 12.0.1.0.1 | This is the french localization for the easy my coop module
+[easy_my_coop_loan](easy_my_coop_loan/) | 12.0.1.0.1 | This module allows to manage the bonds and subordinated loans subscription life cycle.
+[easy_my_coop_loan_website](easy_my_coop_loan_website/) | 12.0.1.0.1 | This module implements the subscription page for bonds and subordinated loans.
+[easy_my_coop_taxshelter_report](easy_my_coop_taxshelter_report/) | 12.0.1.0.1 | This module allows you to create a fiscal declaration year and to print tax shelter declaration for each cooperator.
+[easy_my_coop_website](easy_my_coop_website/) | 12.0.1.0.0 | This module adds the cooperator subscription form allowing to subscribe for shares online.
+[easy_my_coop_website_portal](easy_my_coop_website_portal/) | 12.0.1.0.0 | Show cooperator information in the website portal.
+[partner_age](partner_age/) | 12.0.2.0.0 | This module computes the age of the partner.
+[theme_light](theme_light/) | 12.0.1.0.0 | extract of the theme zen
+[website_recaptcha_reloaded](website_recaptcha_reloaded/) | 12.0.0.0.1 | Add google recaptcha to forms.
 
-```
-************* Module easy_my_coop.models.partner
-easy_my_coop/models/partner.py:56: [E8103(sql-injection), ResPartner._invoice_total] SQL injection risk. Use parameters if you can. - More info https://github.com/OCA/odoo-community.org/blob/master/website/Contribution/CONTRIBUTING.rst#no-sql-injection
-************* Module partner_age.models.partner
-partner_age/models/partner.py:13: [E8103(sql-injection), ResPartner._search_age] SQL injection risk. Use parameters if you can. - More info https://github.com/OCA/odoo-community.org/blob/master/website/Contribution/CONTRIBUTING.rst#no-sql-injection
-************* Module easy_my_coop_taxshelter_report.models.tax_shelter_declaration
-easy_my_coop_taxshelter_report/models/tax_shelter_declaration.py:325: [E8102(invalid-commit), TaxShelterCertificate.send_certificates] Use of cr.commit() directly - More info https://github.com/OCA/odoo-community.org/blob/master/website/Contribution/CONTRIBUTING.rst#never-commit-the-transaction
-************* Module easy_my_coop.models.account_invoice
-easy_my_coop/models/account_invoice.py:11: [C8104(class-camelcase), account_invoice] Use `CamelCase` "AccountInvoice" in class name "account_invoice". You can use oca-autopep8 of https://github.com/OCA/maintainer-tools to auto fix it.
-************* Module easy_my_coop.models.operation_request
-easy_my_coop/models/operation_request.py:12: [C8104(class-camelcase), operation_request] Use `CamelCase` "OperationRequest" in class name "operation_request". You can use oca-autopep8 of https://github.com/OCA/maintainer-tools to auto fix it.
-************* Module easy_my_coop.models.coop
-easy_my_coop/models/coop.py:287: [C8108(method-compute), SubscriptionRequest] Name of compute method should start with "_compute_"
-************* Module website_recaptcha_reloaded.models.res_config
-website_recaptcha_reloaded/models/res_config.py:7: [C8104(class-camelcase), website_config_settings] Use `CamelCase` "WebsiteConfigSettings" in class name "website_config_settings". You can use oca-autopep8 of https://github.com/OCA/maintainer-tools to auto fix it.
-************* Module easy_my_coop.models.company
-easy_my_coop/models/company.py:61: [C8108(method-compute), ResCompany] Name of compute method should start with "_compute_"
 
-pylint with mandatory checks.............................................Failed
-- hook id: pylint
-- exit code: 18
+Unported addons
+---------------
+addon | version | summary
+--- | --- | ---
+[easy_my_coop_dividend](easy_my_coop_dividend/) | 12.0.0.0.1 (unported) | Manage the dividend computation for a fiscal year.
+[easy_my_coop_export_xlsx](easy_my_coop_export_xlsx/) | 12.0.0.0.1 (unported) | Generate a xlsx file with information on current state of subscription request, cooperators and capital release request.
+[easy_my_coop_website_taxshelter](easy_my_coop_website_taxshelter/) | 12.0.1.0.0 (unported) | Give access to Tax Shelter Report in the website portal.
 
-************* Module easy_my_coop.models.partner
-easy_my_coop/models/partner.py:56: [E8103(sql-injection), ResPartner._invoice_total] SQL injection risk. Use parameters if you can. - More info https://github.com/OCA/odoo-community.org/blob/master/website/Contribution/CONTRIBUTING.rst#no-sql-injection
-************* Module partner_age.models.partner
-partner_age/models/partner.py:13: [E8103(sql-injection), ResPartner._search_age] SQL injection risk. Use parameters if you can. - More info https://github.com/OCA/odoo-community.org/blob/master/website/Contribution/CONTRIBUTING.rst#no-sql-injection
-************* Module easy_my_coop.models.account_invoice
-easy_my_coop/models/account_invoice.py:11: [C8104(class-camelcase), account_invoice] Use `CamelCase` "AccountInvoice" in class name "account_invoice". You can use oca-autopep8 of https://github.com/OCA/maintainer-tools to auto fix it.
-************* Module easy_my_coop.models.operation_request
-easy_my_coop/models/operation_request.py:12: [C8104(class-camelcase), operation_request] Use `CamelCase` "OperationRequest" in class name "operation_request". You can use oca-autopep8 of https://github.com/OCA/maintainer-tools to auto fix it.
-************* Module easy_my_coop.models.coop
-easy_my_coop/models/coop.py:287: [C8108(method-compute), SubscriptionRequest] Name of compute method should start with "_compute_"
-************* Module website_recaptcha_reloaded.models.res_config
-website_recaptcha_reloaded/models/res_config.py:7: [C8104(class-camelcase), website_config_settings] Use `CamelCase` "WebsiteConfigSettings" in class name "website_config_settings". You can use oca-autopep8 of https://github.com/OCA/maintainer-tools to auto fix it.
-************* Module easy_my_coop.models.company
-easy_my_coop/models/company.py:61: [C8108(method-compute), ResCompany] Name of compute method should start with "_compute_"
-```
+[//]: # (end addons)
+<!-- prettier-ignore-end -->
