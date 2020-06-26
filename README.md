@@ -1,3 +1,4 @@
+![Licence](https://img.shields.io/badge/licence-AGPL--3-blue.svg)
 [![Build Status](https://travis-ci.com/coopiteasy/vertical-cooperative.svg?branch=12.0)](https://travis-ci.com/coopiteasy/vertical-cooperative?branch=12.0)
 
 # vertical-cooperative
