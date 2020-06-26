@@ -76,7 +76,7 @@
                 <t t-call="portal.portal_record_sidebar">
                     <t t-set="classes" t-value="'col-lg-auto d-print-none'"/>
                     <t t-set="title">
-                        <h2 class="mb-0"><b t-field="taxshelter.total_amount" data-id="total_amount" t-options='{"widget": "monetary", "display_currency":tax.partner_id.company_id.currency_id}'/> </h2>
+                        <h2 class="mb-0"><b t-field="taxshelter.total_amount" data-id="total_amount" t-options='{"widget": "monetary", "display_currency":taxshelter.partner_id.company_id.currency_id}'/> </h2>
                     </t>
 
                     <t t-set="entries">
