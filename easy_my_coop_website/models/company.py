@@ -6,4 +6,4 @@ class ResCompany(models.Model):
     captcha_type = fields.Selection([
         ('none', 'Disabled'),
         ('google', 'Google Recaptcha'),
-    ], 'Captcha type or disabled',required=True, default='google')
+    ], 'Captcha type or disabled', required=True, default='google')
