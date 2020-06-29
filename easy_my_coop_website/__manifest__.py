@@ -17,6 +17,7 @@
     """,
     "data": [
         "views/subscription_template.xml",
+        "views/res_company_view.xml",
         "data/website_cooperator_data.xml",
     ],
     "installable": True,
