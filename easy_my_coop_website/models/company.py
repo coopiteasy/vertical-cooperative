@@ -1,10 +1,9 @@
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class ResCompany(models.Model):
     _inherit = 'res.company'
     captcha_type = fields.Selection([
-        ('none','Disabled'),
+        ('none', 'Disabled'),
         ('google', 'Google Recaptcha'),
-    ],'Captcha type or disabled',required=True,default='google')
-
+    ], 'Captcha type or disabled',required=True, default='google')
