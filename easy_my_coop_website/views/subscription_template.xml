@@ -474,7 +474,7 @@
                                     <tr>
                                         <td width="80%">
                                             <div class="g-recaptcha"
-                                                 t-if="website.recaptcha_key_site"
+                                                 t-if="website.company_id.captcha_type == 'google'"
                                                  t-att-data-sitekey="website.recaptcha_key_site"
                                                  data-theme="green"/>
                                             <br/>
@@ -973,6 +973,7 @@
                                     <tr>
                                         <td width="80%">
                                             <div class="g-recaptcha"
+                                                 t-if="website.company_id.captcha_type == 'google'"
                                                  t-att-data-sitekey="website.recaptcha_key_site"
                                                  data-theme="green"/>
                                             <br/>
