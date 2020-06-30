@@ -7,4 +7,3 @@ class ResCompany(models.Model):
         ('none', 'Disabled'),
         ('google', 'Google Recaptcha'),
     ], 'Captcha type or disabled', required=True, default='google')
-
