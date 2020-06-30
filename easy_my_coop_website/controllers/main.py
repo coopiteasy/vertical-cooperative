@@ -255,30 +255,31 @@ class WebsiteSubscription(http.Controller):
             is_company = True
             redirect = "easy_my_coop_website.becomecompanycooperator"
             email = kwargs.get("company_email")
+        # TODO: Use a overloaded function with the captcha implementation
+        if request.website.company_id.captcha_type == 'google':
+            if (
+                "g-recaptcha-response" not in kwargs
+                or kwargs["g-recaptcha-response"] == ""
+            ):
+                values = self.fill_values(values, is_company, logged)
+                values.update(kwargs)
+                values["error_msg"] = _(
+                    "the captcha has not been validated,"
+                    " please fill in the captcha"
+                )
 
-        if (
-            "g-recaptcha-response" not in kwargs
-            or kwargs["g-recaptcha-response"] == ""
-        ):
-            values = self.fill_values(values, is_company, logged)
-            values.update(kwargs)
-            values["error_msg"] = _(
-                "the captcha has not been validated,"
-                " please fill in the captcha"
-            )
+                return request.render(redirect, values)
+            elif not request.website.is_captcha_valid(
+                kwargs["g-recaptcha-response"]
+            ):
+                values = self.fill_values(values, is_company, logged)
+                values.update(kwargs)
+                values["error_msg"] = _(
+                    "the captcha has not been validated,"
+                    " please fill in the captcha"
+                )
 
-            return request.render(redirect, values)
-        elif not request.website.is_captcha_valid(
-            kwargs["g-recaptcha-response"]
-        ):
-            values = self.fill_values(values, is_company, logged)
-            values.update(kwargs)
-            values["error_msg"] = _(
-                "the captcha has not been validated,"
-                " please fill in the captcha"
-            )
-
-            return request.render(redirect, values)
+                return request.render(redirect, values)
 
         # Check that required field from model subscription_request exists
         required_fields = sub_req_obj.sudo().get_required_field()
