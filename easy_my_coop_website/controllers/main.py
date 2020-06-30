@@ -255,7 +255,7 @@ class WebsiteSubscription(http.Controller):
             is_company = True
             redirect = "easy_my_coop_website.becomecompanycooperator"
             email = kwargs.get("company_email")
-
+        # TODO: Use a overloaded function with the captcha implementation
         if request.website.company_id.captcha_type == 'google':
             if (
                 "g-recaptcha-response" not in kwargs
