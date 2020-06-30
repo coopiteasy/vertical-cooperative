@@ -2,7 +2,14 @@
 [![Build Status](https://travis-ci.com/coopiteasy/vertical-cooperative.svg?branch=12.0)](https://travis-ci.com/coopiteasy/vertical-cooperative?branch=12.0)
 
 # vertical-cooperative
-This repository gather odoo modules for cooperatives
+
+This project aim to deal with modules related to cooperatives management. You'll find modules that:
+
+ - Allow people to sign up as a member of the cooperative from website
+ - Manage member's shares, loans and dividends
+ - Manage cooperative membership
+
+Please don't hesitate to suggest one of your modules to this project.
 
 <!-- prettier-ignore-start -->
 [//]: # (addons)
