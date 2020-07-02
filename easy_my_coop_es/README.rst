@@ -42,6 +42,7 @@ Credits
 Authors
 ~~~~~~~
 
+* Coop IT Easy SCRLfs
 * Coopdevs Treball SCCL
 
 Maintainers
