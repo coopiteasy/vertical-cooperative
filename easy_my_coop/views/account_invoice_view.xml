@@ -16,12 +16,8 @@
         <field name="view_type">form</field>
         <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
         <field eval="False" name="view_id"/>
-        <field name="domain">[('type','in',('out_invoice',
-            'out_refund')),('release_capital_request','=',True)]
-        </field>
-        <field name="context">{'default_type':'out_invoice',
-            'type':'out_invoice', 'journal_type': 'sale'}
-        </field>
+        <field name="domain">[('type','in',('out_invoice', 'out_refund')),('release_capital_request','=',True)]</field>
+        <field name="context">{'default_type':'out_invoice', 'type':'out_invoice', 'journal_type': 'sale'}</field>
         <field name="search_view_id" ref="account.view_account_invoice_filter"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -54,12 +50,8 @@
         <field name="view_type">form</field>
         <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
         <field eval="False" name="view_id"/>
-        <field name="domain">[('type','in',('out_invoice',
-            'out_refund')),('release_capital_request','=',False)]
-        </field>
-        <field name="context">{'default_type':'out_invoice',
-            'type':'out_invoice', 'journal_type': 'sale'}
-        </field>
+        <field name="domain">[('type','in',('out_invoice','out_refund')),('release_capital_request','=',False)]</field>
+        <field name="context">{'default_type':'out_invoice', 'type':'out_invoice', 'journal_type': 'sale'}</field>
         <field name="search_view_id" ref="account.view_account_invoice_filter"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -79,13 +71,8 @@
         <field name="view_type">form</field>
         <field name="view_mode">tree,form,kanban,calendar,graph,pivot</field>
         <field name="view_id" ref="account.invoice_tree"/>
-        <field name="domain">[('type','in', ['out_invoice', 'out_refund']),
-            ('state', 'not in', ['draft',
-            'cancel']),('release_capital_request','=',False)]
-        </field>
-        <field name="context">{'default_type':'out_invoice',
-            'type':'out_invoice', 'journal_type': 'sale'}
-        </field>
+        <field name="domain">[('type','in', ['out_invoice', 'out_refund']), ('state', 'not in', ['draft', 'cancel']), ('release_capital_request','=',False)]</field>
+        <field name="context">{'default_type':'out_invoice', 'type':'out_invoice', 'journal_type': 'sale'}</field>
         <field name="search_view_id" ref="account.view_account_invoice_filter"/>
     </record>
 </odoo>
