@@ -1,0 +1,369 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* easy_my_coop_website
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-29 15:46+0000\n"
+"PO-Revision-Date: 2020-06-29 15:46+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.cooperator_thanks
+msgid "&amp;times;"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "05/03/1978"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+msgid "0647980091"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "1030"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "25"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Address"
+msgstr "Adresse"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Already cooperator?"
+msgstr "Déjà coopérateur ?"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "BE48523080767127"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Bank Account Number"
+msgstr "Numéro de Compte Bancaire"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Become Cooperator"
+msgstr "Devenir coopérateur (personne physique)"
+
+#. module: easy_my_coop_website
+#: model:website.menu,name:easy_my_coop_website.menu_becomecooperator
+msgid "Become cooperator"
+msgstr "Devenir coopérateur (personne physique)"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Birthdate"
+msgstr "Date de naissance"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Bourdon"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Bruxelles"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "City"
+msgstr "Ville"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+msgid "Company\n"
+"                                        Register Number"
+msgstr "Numéro\n"
+"                                        d'entreprise"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+msgid "Company Info"
+msgstr "Informations de la société"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+msgid "Company email"
+msgstr "Email de la société"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+msgid "Company name"
+msgstr "Nom de la société"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+msgid "Company type"
+msgstr "Type de société"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Confirm Email"
+msgstr "Courriel (pour confirmation)"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+msgid "Contact Person"
+msgstr "Personne de contact"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Country"
+msgstr "Pays"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Country..."
+msgstr "Pays..."
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Didier"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Email"
+msgstr "Courriel"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "First Name"
+msgstr "Prénom"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+msgid "Function"
+msgstr "Fonction"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Gender"
+msgstr "Genre"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Idendity\n"
+"                                        card scan"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Internal Rules"
+msgstr "Règlement intérieur"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+msgid "Is a company?"
+msgstr "C'est une entreprise ?"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+msgid "La super coopérative"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Language"
+msgstr "Langue"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Language..."
+msgstr "Langue..."
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Last Name"
+msgstr "Nom de famille"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Logged"
+msgstr "Connecté"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+msgid "Main Address"
+msgstr "Adresse"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Parts number"
+msgstr "Nombre de part(s)"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Parts type"
+msgstr "Type de part"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Phone"
+msgstr "Téléphone"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Privacy\n"
+"                                        Policy"
+msgstr "Politique de gestion \n"
+"                                        des données personnelles"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Send"
+msgstr "Envoyer"
+
+#. module: easy_my_coop_website
+#: code:addons/easy_my_coop_website/controllers/main.py:291
+#, python-format
+msgid "Some mandatory fields have not been filled"
+msgstr "Certains champs obligatoires sont vides."
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.cooperator_thanks
+msgid "Thanks!"
+msgstr "Merci !"
+
+#. module: easy_my_coop_website
+#: code:addons/easy_my_coop_website/controllers/main.py:314
+#, python-format
+msgid "The email and the confirmation email doesn't match.Please check the given mail addresses"
+msgstr "Le courriel ne correspond pas dans les deux champs de courriel."
+
+#. module: easy_my_coop_website
+#: code:addons/easy_my_coop_website/controllers/main.py:302
+#, python-format
+msgid "There is an existing account for this mail address. Please login before fill in the form"
+msgstr "Un login existe déjà pour ce courriel. Connectez-vous en cliquant sur \"Se Connecter\" en haut à droite avant de remplir le formulaire pour prendre de nouvelles parts."
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.cooperator_thanks
+msgid "We will get back to you shortly."
+msgstr "Nous reviendrons vers vous rapidement."
+
+#. module: easy_my_coop_website
+#: model:ir.actions.act_url,name:easy_my_coop_website.action_open_website
+msgid "Website Cooperator contact Form"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: code:addons/easy_my_coop_website/controllers/main.py:360
+#, python-format
+msgid "You can't subscribe for an amount that exceed "
+msgstr "Vous ne pouvez souscrire pour un montant supérieur à"
+
+#. module: easy_my_coop_website
+#: code:addons/easy_my_coop_website/controllers/main.py:350
+#, python-format
+msgid "You can't subscribe two different types of share"
+msgstr "Vous ne pouvez souscrire à des types de parts différents"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "You have already an account?"
+msgstr "Vous avez déjà un compte ? Cliquer ici pour vous connecter avant de remplir le formulaire de prises de parts."
+
+#. module: easy_my_coop_website
+#: code:addons/easy_my_coop_website/controllers/main.py:337
+#, python-format
+msgid "You iban account number is not valid"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: code:addons/easy_my_coop_website/controllers/main.py:326
+#, python-format
+msgid "You need to upload a scan of your id card"
+msgstr "Vous devez charger une copie de votre carte d'identité."
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "You want to\n"
+"                                        modify your personnal information ?"
+msgstr "Vous voulez \n modifier vos informations personnelles ?"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.cooperator_thanks
+msgid "Your subscription has been successfully\n"
+"                                registered."
+msgstr "Votre souscription à bien été enregistrée."
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+msgid "administration@beescoop.be"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "didier.bourdon@bees-coop.be"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "e.g. (+32).81.81.37.00"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "rue Van Hove, 19"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: code:addons/easy_my_coop_website/controllers/main.py:265
+#: code:addons/easy_my_coop_website/controllers/main.py:276
+#, python-format
+msgid "the captcha has not been validated, please fill in the captcha"
+msgstr "Le captcha n'a pas été validé. Veuillez le remplir svp."
+
