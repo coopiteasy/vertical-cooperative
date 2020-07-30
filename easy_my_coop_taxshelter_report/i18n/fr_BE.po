@@ -56,7 +56,45 @@ msgid "\n"
 "    </div>\n"
 "</div>\n"
 "            "
-msgstr ""
+msgstr "\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"    <p style=\"font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;margin-inline-end:0px;margin-inline-start:0px;margin-block-end:1em;margin-block-start:0px;\">Hello ${object.partner_id.name},</p>\n"
+"\n"
+"<p style=\"font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;margin-inline-end:0px;margin-inline-start:0px;margin-block-end:1em;margin-block-start:0px;\">Vous avez souscrit à des parts de ${object.company_id.name} durant l’année ${object.declaration_id.fiscal_year}. \n"
+"Vous pouvez bénéficier du tax shelter, c’est-à-dire d’une réduction d'impôts de ${object.declaration_id.tax_shelter_percentage} pourcent sur la somme investie.\n"
+"Pour cela, vous trouverez en pièce jointe le certificat attestant que vous avez souscrit à des parts de ${object.company_id.name} </p>\n"
+"    <p style=\"font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;margin-inline-end:0px;margin-inline-start:0px;margin-block-end:1em;margin-block-start:0px;\">Une Foire aux questions spéciale Tax shelter arrive prochainement sur ${object.company_id.website}.</p>\n"
+"    <p style=\"font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;margin-inline-end:0px;margin-inline-start:0px;margin-block-end:1em;margin-block-start:0px;\">Pour toutes questions supplémentaires, merci de vous adresser à ${object.company_id.coop_email_contact}</p>\n"
+"<p style=\"font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;margin-inline-end:0px;margin-inline-start:0px;margin-block-end:1em;margin-block-start:0px;\">Amicalement,</p>\n"
+"<p style=\"font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;margin-inline-end:0px;margin-inline-start:0px;margin-block-end:1em;margin-block-start:0px;\">${object.company_id.name}.</p>\n"
+"\n"
+"% if object.company_id.street:\n"
+"            ${object.company_id.street}\n"
+"        % endif\n"
+"        % if object.company_id.street2:\n"
+"            ${object.company_id.street2}<br>\n"
+"        % endif\n"
+"        % if object.company_id.city or object.company_id.zip:\n"
+"            ${object.company_id.zip} ${object.company_id.city}<br>\n"
+"        % endif\n"
+"        % if object.company_id.country_id:\n"
+"            ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br>\n"
+"        % endif\n"
+"        % if object.company_id.phone:\n"
+"                Phone:&nbsp; ${object.company_id.phone}\n"
+"        % endif\n"
+"\n"
+"      % if object.company_id.website:\n"
+"            <div>\n"
+"                Web :&nbsp;<a href=\"${object.company_id.website}\" style=\"cursor:pointer;text-decoration-color:initial;text-decoration-style:initial;text-decoration-line:none;color:rgb(51, 122, 183);background-color:transparent;\">${object.company_id.website}</a>\n"
+"            </div>\n"
+"       %endif\n"
+"\n"
+"       <div>\n"
+"          \n"
+"       </div>\n"
+"</div>\n"
+"            "
 
 #. module: easy_my_coop_taxshelter_report
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
@@ -123,12 +161,12 @@ msgstr "Montant"
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
 msgid "Amount ligible"
-msgstr ""
+msgstr "Montant éligible"
 
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__amount_resold
 msgid "Amount resold"
-msgstr ""
+msgstr "Montant des parts revendues"
 
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__amount_subscribed
@@ -149,12 +187,12 @@ msgstr "Montant transféré"
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
 msgid "Capital after"
-msgstr ""
+msgstr "Capital après"
 
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__capital_after_sub
 msgid "Capital after subscription"
-msgstr ""
+msgstr "Capital après souscription"
 
 #. module: easy_my_coop_taxshelter_report
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
@@ -170,7 +208,7 @@ msgstr "Capital avant souscription"
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__capital_limit
 msgid "Capital limit"
-msgstr ""
+msgstr "Limite de capital"
 
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__lines
@@ -434,17 +472,17 @@ msgstr ""
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__previously_subscribed_lines
 msgid "Previously Subscribed lines"
-msgstr ""
+msgstr "Précédement souscrites"
 
 #. module: easy_my_coop_taxshelter_report
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_certificate_form
 msgid "Previously subscribed"
-msgstr ""
+msgstr "Précédement souscrites"
 
 #. module: easy_my_coop_taxshelter_report
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_certificate_form
 msgid "Print Shares Certificate"
-msgstr ""
+msgstr "Imprimer attestation de part"
 
 #. module: easy_my_coop_taxshelter_report
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_certificate_form
@@ -459,7 +497,7 @@ msgstr "Lancer la déclaration"
 #. module: easy_my_coop_taxshelter_report
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_declaration_form
 msgid "Reset Declaration"
-msgstr ""
+msgstr "Réinitialiser la déclaration"
 
 #. module: easy_my_coop_taxshelter_report
 #: selection:certificate.line,type:0
@@ -475,7 +513,7 @@ msgstr "Revente"
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_certificate_form
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_declaration_form
 msgid "Send Certificates"
-msgstr ""
+msgstr "Envoyer l'attestation"
 
 #. module: easy_my_coop_taxshelter_report
 #: selection:tax.shelter.certificate,state:0
@@ -500,17 +538,17 @@ msgstr "Nom du type de part"
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__resold_lines
 msgid "Shares resold"
-msgstr ""
+msgstr "Parts revendues"
 
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__subscribed_lines
 msgid "Shares subscribed"
-msgstr ""
+msgstr "Parts souscrites"
 
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__transfered_lines
 msgid "Shares transfered"
-msgstr ""
+msgstr "Parts transférées"
 
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__state
@@ -622,7 +660,7 @@ msgstr "Montant total"
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__total_amount_eligible
 msgid "Total amount eligible To Tax shelter"
-msgstr ""
+msgstr "Montant total éligible au Tax Shelter"
 
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__total_amount_eligible_previously_subscribed
@@ -632,7 +670,7 @@ msgstr ""
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__total_amount_previously_subscribed
 msgid "Total previously subscribed"
-msgstr ""
+msgstr "Total précédemment souscrit"
 
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__total_amount_resold
@@ -652,7 +690,7 @@ msgstr "Total transféré"
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__transaction_date
 msgid "Transaction date"
-msgstr ""
+msgstr "Date de la transaction"
 
 #. module: easy_my_coop_taxshelter_report
 #: selection:certificate.line,type:0
@@ -670,7 +708,7 @@ msgstr ""
 #. module: easy_my_coop_taxshelter_report
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_declaration_form
 msgid "Validate Declaration"
-msgstr ""
+msgstr "Valider Déclaration"
 
 #. module: easy_my_coop_taxshelter_report
 #: selection:tax.shelter.certificate,state:0

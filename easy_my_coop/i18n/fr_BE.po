@@ -716,7 +716,8 @@ msgid "<span groups=\"account.group_show_line_subtotals_tax_excluded\">\n"
 "                                <span groups=\"account.group_show_line_subtotals_tax_included\">\n"
 "                                    Total Price\n"
 "                                </span>"
-msgstr ""
+msgstr "<span groups=\"account.group_show_line_subtotals_tax_excluded\">Montant</span>\n"
+"                                <span groups=\"account.group_show_line_subtotals_tax_included\">Prix total</span>"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_register_G001
@@ -780,7 +781,7 @@ msgid "<strong class=\"text-center\">Scan me with your banking\n"
 "                        </strong>\n"
 "                        <br/>\n"
 "                        <br/>"
-msgstr ""
+msgstr "<strong class=\"text-center\">Scannez-moi avec votre application bancaire.</strong><br/><br/>"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
@@ -788,7 +789,7 @@ msgid "<strong class=\"text-center\">The SEPA QR Code\n"
 "                            informations are not set correctly.\n"
 "                        </strong>\n"
 "                        <br/>"
-msgstr ""
+msgstr "<strong class=\"text-center\">Les informations du QR Code SEPA ne sont pas correctement définies.</strong><br/>"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
@@ -825,7 +826,7 @@ msgstr "<strong>Votre contact:</strong>"
 #: code:addons/easy_my_coop/wizard/create_subscription_from_partner.py:190
 #, python-format
 msgid "A person can't be representative of two different companies."
-msgstr ""
+msgstr "Une personne ne peut pas être représentative de deux entreprises différentes."
 
 #. module: easy_my_coop
 #: selection:res.partner,legal_form:0
@@ -1149,7 +1150,7 @@ msgstr "Conversion vers ce type de part"
 #: code:addons/easy_my_coop/models/operation_request.py:365
 #, python-format
 msgid "Converting just part of the shares is not yet implemented"
-msgstr ""
+msgstr "La conversion partielle des parts n'est pas implémentée à ce jour"
 
 #. module: easy_my_coop
 #: model:ir.module.category,name:easy_my_coop.module_category_cooperator_management
@@ -2321,7 +2322,7 @@ msgstr "Confirmation de la demande de souscription"
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_create_subscription
 msgid "Subscription request will be created with data from the\n"
 "                        partner."
-msgstr ""
+msgstr "La demande de souscription sera créée sur base des données du partenaire."
 
 #. module: easy_my_coop
 #: model:ir.actions.act_window,name:easy_my_coop.subscription_request_action
@@ -2348,19 +2349,19 @@ msgstr "Texte à afficher à côté de la boite à cocher pour approuver le règ
 #: code:addons/easy_my_coop/models/coop.py:663
 #, python-format
 msgid "The checkbox already cooperator is checked please select a cooperator."
-msgstr ""
+msgstr "La case \"déjà coopérateur\" est cochée. Sélectionnez un coopérateur existant pour y lier sa nouvelle demande de prise de parts."
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/operation_request.py:217
 #, python-format
 msgid "The cooperator can't hand over more shares that he/she owns."
-msgstr ""
+msgstr "Le coopérateur ne peut pas vendre plus de parts qu'il n'en a."
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/operation_request.py:205
 #, python-format
 msgid "The cooperator doesn't own this share type. Please choose the appropriate share type."
-msgstr ""
+msgstr "Le coopérateur n'a pas ce type de parts. Sélectionnez un type de parts qu'il détient."
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/operation_request.py:283
@@ -2373,7 +2374,7 @@ msgstr ""
 #: code:addons/easy_my_coop/wizard/create_subscription_from_partner.py:181
 #, python-format
 msgid "There is two different persons with the same national register number. Please proceed to a merge before to continue"
-msgstr ""
+msgstr "Il y a deux personnes différentes avec le même numéro de registre national. Faites une fusion des deux pour continuer"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_res_company__property_cooperator_account
@@ -2384,25 +2385,25 @@ msgstr ""
 #: code:addons/easy_my_coop/models/coop.py:711
 #, python-format
 msgid "This contact person is already defined for another company. Please select another contact"
-msgstr ""
+msgstr "Cette personne de contact est déjà définie pour une autre société. Sélectionnez un autre contact"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/operation_request.py:166
 #, python-format
 msgid "This operation can't be executed if the cooperator is not an effective member"
-msgstr ""
+msgstr "Cette opération ne peut être exécutée si le coopérateur n'est pas un membre effectif"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/operation_request.py:417
 #, python-format
 msgid "This operation is not yet implemented."
-msgstr ""
+msgstr "Cette opération n'est pas encore implémentée dans le système."
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/operation_request.py:332
 #, python-format
 msgid "This operation must be approved before to be executed"
-msgstr ""
+msgstr "Cette opération doit être approuvée avant d'être exécutée"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/operation_request.py:275
@@ -2420,7 +2421,7 @@ msgstr "Cette part ne peut être souscrite par une société"
 #: code:addons/easy_my_coop/models/operation_request.py:258
 #, python-format
 msgid "This share type could not be transfered to "
-msgstr ""
+msgstr "Ce type de part de peut pas être transféré à "
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
