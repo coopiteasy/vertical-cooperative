@@ -199,12 +199,12 @@ class WebsiteSubscription(http.Controller):
             if company.default_country_id:
                 values["country_id"] = company.default_country_id.id
             else:
-                values["country_id"] = "21"
+                values["country_id"] = "20"
         if not values.get("activities_country_id"):
             if company.default_country_id:
                 values["activities_country_id"] = company.default_country_id.id
             else:
-                values["activities_country_id"] = "21"
+                values["activities_country_id"] = "20"
         if not values.get("lang"):
             if company.default_lang_id:
                 values["lang"] = company.default_lang_id.code
