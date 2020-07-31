@@ -309,6 +309,7 @@
                                     </label>
                                     <select name="country_id"
                                             class="col-md-7 col-sm-8 form-control "
+                                            required="True"
                                             t-att-readonly="logged"
                                             style="width:54%;margin-left:15px">
                                         <option value="">Country...</option>
@@ -720,6 +721,7 @@
                                     </label>
                                     <select name="country_id"
                                             class="col-md-7 col-sm-8 form-control"
+                                            required="True"
                                             t-att-readonly="logged"
                                             style="width:54%;margin-left:15px">
                                         <option value="">Country...</option>
