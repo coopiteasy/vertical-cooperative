@@ -53,9 +53,9 @@
                                    attrs="{'invisible':[('is_company','=',True)]}"/>
                         </group>
                         <group name="approvals">
-                            <field name="data_policy_approved"
-                            	   attrs="{'invisible':[('member','=',False)]}"/>
                             <field name="internal_rules_approved"
+                            	   attrs="{'invisible':[('member','=',False)]}"/>
+                            <field name="data_policy_approved"
                             	   attrs="{'invisible':[('member','=',False)]}"/>
                             <field name="financial_risk_approved"
                             	   attrs="{'invisible':[('member','=',False)]}"/>

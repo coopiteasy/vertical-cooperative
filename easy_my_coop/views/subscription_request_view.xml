@@ -101,8 +101,8 @@
                             <field name="type"/>
                             <field name="lang"/>
                             <field name="skip_control_ng"/>
-                            <field name="data_policy_approved"/>
                             <field name="internal_rules_approved"/>
+                            <field name="data_policy_approved"/>
                             <field name="financial_risk_approved"/>
                         </group>
                     </group>
