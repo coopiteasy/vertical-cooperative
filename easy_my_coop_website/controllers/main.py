@@ -217,7 +217,7 @@ class WebsiteSubscription(http.Controller):
                 "data_policy_text": comp.data_policy_approval_text,
                 "display_internal_rules": comp.display_internal_rules_approval,
                 "internal_rules_required": comp.internal_rules_approval_required,
-                "internal_rules_text": comp.financial_risk_approval_text,
+                "internal_rules_text": comp.internal_rules_approval_text,
                 "display_financial_risk": comp.display_financial_risk_approval,
                 "financial_risk_required": comp.financial_risk_approval_required,
                 "financial_risk_text": comp.financial_risk_approval_text,
@@ -259,7 +259,7 @@ class WebsiteSubscription(http.Controller):
             redirect = "easy_my_coop_website.becomecompanycooperator"
             email = kwargs.get("company_email")
         # TODO: Use a overloaded function with the captcha implementation
-        if request.website.company_id.captcha_type == 'google':
+        if request.website.company_id.captcha_type == "google":
             if (
                 "g-recaptcha-response" not in kwargs
                 or kwargs["g-recaptcha-response"] == ""
