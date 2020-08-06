@@ -245,8 +245,9 @@ class WebsiteSubscription(http.Controller):
         # Check that required field from model subscription_request exists
         required_fields = sub_req_obj.sudo().get_required_field()
         if logged:
-            # these fields are readonly when logged
-            # we want to ease the process if user was a subscriber
+            # these fields are read only when logged
+            # we want to ease the process if user was already registered in the
+            # database from another module
             self.remove_field_from_list(required_fields, 'iban')
             self.remove_field_from_list(required_fields, 'birthdate')
 
