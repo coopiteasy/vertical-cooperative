@@ -7,7 +7,11 @@ from odoo.http import request
 from odoo.tools.translate import _
 
 # Only use for behavior, don't stock it
-_TECHNICAL = ["view_from", "view_callback"]
+_TECHNICAL = [
+    "view_from",
+    "view_callback"
+]
+
 # Allow in description
 _BLACKLIST = [
     "id",
@@ -19,6 +23,7 @@ _BLACKLIST = [
     "active",
 ]
 
+# The fields to be shown when someone wants to become a cooperator
 _COOP_FORM_FIELD = [
     "email",
     "confirm_email",
@@ -27,7 +32,8 @@ _COOP_FORM_FIELD = [
     "birthdate",
     "iban",
     "share_product_id",
-    "address",
+    "street_name",
+    "street_number",
     "city",
     "zip_code",
     "country_id",
@@ -38,6 +44,7 @@ _COOP_FORM_FIELD = [
     "error_msg",
 ]
 
+# The fields to be shown when a company wants to become a cooperator
 _COMPANY_FORM_FIELD = [
     "is_company",
     "company_register_number",
@@ -50,7 +57,8 @@ _COMPANY_FORM_FIELD = [
     "birthdate",
     "iban",
     "share_product_id",
-    "address",
+    "street_name",
+    "street_number",
     "city",
     "zip_code",
     "country_id",
@@ -133,6 +141,8 @@ class WebsiteSubscription(http.Controller):
             if partner.bank_ids:
                 values["iban"] = partner.bank_ids[0].acc_number
             values["address"] = partner.street
+            values["street_name"] = partner.street_name
+            values["street_number"] = partner.street_number
             values["zip_code"] = partner.zip
             values["city"] = partner.city
             values["country_id"] = partner.country_id.id
@@ -255,6 +265,7 @@ class WebsiteSubscription(http.Controller):
             is_company = True
             redirect = "easy_my_coop_website.becomecompanycooperator"
             email = kwargs.get("company_email")
+
         # TODO: Use a overloaded function with the captcha implementation
         if request.website.company_id.captcha_type == 'google':
             if (
@@ -395,6 +406,7 @@ class WebsiteSubscription(http.Controller):
 
         # List of file to add to ir_attachment once we have the ID
         post_file = []
+
         # Info to add after the message
         post_description = []
         values = {}
@@ -416,6 +428,7 @@ class WebsiteSubscription(http.Controller):
         logged = kwargs.get("logged") == "on"
         is_company = kwargs.get("is_company") == "on"
 
+	# Make sure all required info is present
         response = self.validation(kwargs, logged, values, post_file)
         if response is not True:
             return response

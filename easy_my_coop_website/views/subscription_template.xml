@@ -261,13 +261,29 @@
                                            for="address">Address
                                     </label>
                                     <div class="col-md-7 col-sm-8">
-                                        <input type="text"
-                                               class="form-control mandatory-field"
-                                               name="address"
-                                               required="True"
-                                               t-att-readonly="logged"
-                                               t-attf-value="#{address or ''}"
-                                               placeholder="rue Van Hove, 19"/>
+                                        <table>
+                                            <tr>
+                                                <td width="15%">
+                                                    <input type="text"
+                                                        class="form-control mandatory-field"
+                                                        name="street_number"
+                                                        required="True"
+                                                        t-att-readonly="logged"
+                                                        t-attf-value="#{street_number or ''}"
+                                                        placeholder="19"/>
+                                                </td>
+                                                <td width="3%"></td>
+                                                <td>
+                                                    <input type="text"
+                                                        class="form-control mandatory-field"
+                                                        name="street_name"
+                                                        required="True"
+                                                        t-att-readonly="logged"
+                                                        t-attf-value="#{street_name or ''}"
+                                                        placeholder="rue Van Hove"/>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </div>
 
@@ -650,13 +666,29 @@
                                            for="address">Address
                                     </label>
                                     <div class="col-md-7 col-sm-8">
-                                        <input type="text"
-                                               class="form-control mandatory-field"
-                                               name="address"
-                                               required="True"
-                                               t-att-readonly="logged"
-                                               t-attf-value="#{address or ''}"
-                                               placeholder="rue Van Hove, 19"/>
+                                        <table>
+                                            <tr>
+                                                <td width="15%">
+                                                    <input type="text"
+                                                        class="form-control mandatory-field"
+                                                        name="street_number"
+                                                        required="True"
+                                                        t-att-readonly="logged"
+                                                        t-attf-value="#{street_number or ''}"
+                                                        placeholder="19"/>
+                                                </td>
+                                                <td width="3%"></td>
+                                                <td>
+                                                    <input type="text"
+                                                        class="form-control mandatory-field"
+                                                        name="street_name"
+                                                        required="True"
+                                                        t-att-readonly="logged"
+                                                        t-attf-value="#{street_name or ''}"
+                                                        placeholder="rue Van Hove"/>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </div>
 

@@ -1478,7 +1478,7 @@ msgstr ""
 #: model_terms:ir.actions.act_window,help:easy_my_coop.action_company_representative_form
 #: model_terms:ir.actions.act_window,help:easy_my_coop.action_partner_cooperator_candidate_form
 #: model_terms:ir.actions.act_window,help:easy_my_coop.action_partner_cooperator_form
-msgid "OpenERP helps you easily track all activities related to\n"
+msgid "Odoo helps you easily track all activities related to\n"
 "                a cooperator: discussions, history of business opportunities,\n"
 "                documents, etc."
 msgstr ""
@@ -2262,7 +2262,7 @@ msgstr ""
 #: code:addons/coopiteasy/vertical-cooperative/easy_my_coop/models/coop.py:427
 #: code:addons/easy_my_coop/models/coop.py:427
 #, python-format
-msgid "You must set a cooperator account on you company."
+msgid "You must set a cooperator account on your company."
 msgstr ""
 
 #. module: easy_my_coop

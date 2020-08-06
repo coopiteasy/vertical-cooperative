@@ -6,7 +6,12 @@
 {
     "name": "Easy My Coop Website",
     "version": "12.0.1.0.3",
-    "depends": ["easy_my_coop", "website", "website_recaptcha_reloaded"],
+    "depends": [
+        "easy_my_coop",
+        "website",
+        "website_recaptcha_reloaded",
+        "base_address_extended",
+    ],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
     "website": "https://coopiteasy.be",

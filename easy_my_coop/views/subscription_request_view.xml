@@ -80,7 +80,8 @@
                                    attrs="{'invisible':[('is_company','=',False)]}"/>
                             <!-- todo highlight iban if not valid -->
                             <field name="iban"/>
-                            <field name="address"/>
+                            <field name="street_name"/>
+                            <field name="street_number"/>
                             <field name="zip_code"/>
                             <field name="city"/>
                             <field name="country_id"

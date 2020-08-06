@@ -11,12 +11,15 @@ from addons.base_iban.models.res_partner_bank import validate_iban
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError, ValidationError
 
+
+# Required fields when creating a subscription request
 _REQUIRED = [
     "email",
     "firstname",
     "lastname",
     "birthdate",
-    "address",
+    "street_number",
+    "street_name",
     "share_product_id",
     "ordered_parts",
     "zip_code",
@@ -255,7 +258,16 @@ class SubscriptionRequest(models.Model):
     )
     address = fields.Char(
         string="Address",
-        required=True,
+        readonly=True,
+        states={"draft": [("readonly", False)]},
+    )
+    street_name = fields.Char(
+        string="Street name",
+        readonly=True,
+        states={"draft": [("readonly", False)]},
+    )
+    street_number = fields.Char(
+        string="House number",
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
@@ -440,6 +452,8 @@ class SubscriptionRequest(models.Model):
         self.birthdate = partner.birthdate_date
         self.gender = partner.gender
         self.address = partner.street
+        self.street_name = partner.street_name
+        self.street_number = partner.street_number
         self.city = partner.city
         self.zip_code = partner.zip
         self.country_id = partner.country_id
@@ -524,7 +538,7 @@ class SubscriptionRequest(models.Model):
                 account = accounts[0]
             else:
                 raise UserError(
-                    _("You must set a cooperator account on you company.")
+                    _("You must set a cooperator account on your company.")
                 )
         return account
 
@@ -565,6 +579,8 @@ class SubscriptionRequest(models.Model):
             "company_register_number": self.company_register_number,  # noqa
             "cooperator": True,
             "street": self.address,
+            "street_name": self.street_name,
+            "street_number": self.street_number,
             "zip": self.zip_code,
             "city": self.city,
             "email": self.company_email,
@@ -583,6 +599,8 @@ class SubscriptionRequest(models.Model):
             "firstname": self.firstname,
             "lastname": self.lastname,
             "street": self.address,
+            "street_name": self.street_name,
+            "street_number": self.street_number,
             "zip": self.zip_code,
             "email": self.email,
             "gender": self.gender,
@@ -607,6 +625,8 @@ class SubscriptionRequest(models.Model):
             "is_company": False,
             "cooperator": True,
             "street": self.address,
+            "street_name": self.street_name,
+            "street_number": self.street_number,
             "gender": self.gender,
             "zip": self.zip_code,
             "city": self.city,

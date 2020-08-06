@@ -436,8 +436,8 @@ msgstr "25"
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/mail_mail.py:48
 #, python-format
-msgid "<p>Access this document <a href=\"%s\">directly in OpenERP</a></p>"
-msgstr "<p>Access this document <a href=\"%s\">directly in OpenERP</a></p>"
+msgid "<p>Access this document <a href=\"%s\">directly in Odoo</a></p>"
+msgstr "<p>Access this document <a href=\"%s\">directly in Odoo</a></p>"
 
 #. module: easy_my_coop
 #: model:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
@@ -980,12 +980,12 @@ msgstr "Number of share"
 #: model:ir.actions.act_window,help:easy_my_coop.action_partner_cooperator_candidate_form
 #: model:ir.actions.act_window,help:easy_my_coop.action_partner_cooperator_form
 msgid ""
-"OpenERP helps you easily track all activities related to\n"
+"Odoo helps you easily track all activities related to\n"
 "                a cooperator: discussions, history of business "
 "opportunities,\n"
 "                documents, etc."
 msgstr ""
-"OpenERP helps you easily track all activities related to\n"
+"Odoo helps you easily track all activities related to\n"
 "                a cooperator: discussions, history of business "
 "opportunities,\n"
 "                documents, etc."
@@ -993,13 +993,13 @@ msgstr ""
 #. module: easy_my_coop
 #: model:ir.actions.act_window,help:easy_my_coop.action_invoice_tree_coop
 msgid ""
-"OpenERP's electronic invoicing allows to ease and fasten the\n"
+"Odoo's electronic invoicing allows to ease and fasten the\n"
 "                collection of cooperator payments. The cooperator customer "
 "receives the\n"
 "                invoice by email and he can pay online and/or import it\n"
 "                in his own system."
 msgstr ""
-"OpenERP's electronic invoicing allows to ease and fasten the\n"
+"Odoo's electronic invoicing allows to ease and fasten the\n"
 "                collection of cooperator payments. The cooperator customer "
 "receives the\n"
 "                invoice by email and he can pay online and/or import it\n"
