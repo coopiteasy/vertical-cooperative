@@ -10,12 +10,14 @@ from addons.base_iban.models.res_partner_bank import validate_iban
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError, ValidationError
 
+# This structure is only used in easy_my_coop_webstite's controller
 _REQUIRED = [
     "email",
     "firstname",
     "lastname",
     "birthdate",
-    "address",
+    "street_name",
+    "house_number",
     "share_product_id",
     "ordered_parts",
     "zip_code",
@@ -36,6 +38,7 @@ class SubscriptionRequest(models.Model):
     _name = "subscription.request"
     _description = "Subscription Request"
 
+    # This function is only used in easy_my_coop_webstite's controller
     def get_required_field(self):
         required_fields = _REQUIRED
         company = self.env["res.company"]._company_default_get()
