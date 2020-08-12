@@ -124,7 +124,7 @@ S_INVOICE_LINE_RETURN_GET = {
 
 S_INVOICE_RETURN_GET = {
     "id": {"type": "integer", "required": True},
-    "name": {"type": "string", "required": True, "empty": False},
+    "number": {"type": "string", "required": True, "empty": False},
     "state": {"type": "string", "required": True, "empty": False},
     "type": {"type": "string", "required": True, "empty": False},
     "date": {"type": "string", "required": True, "empty": False},

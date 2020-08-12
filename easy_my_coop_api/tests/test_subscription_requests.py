@@ -193,7 +193,7 @@ class TestSRController(BaseEMCRestCase):
         content = json.loads(response.content.decode("utf-8"))
 
         state = content.get("state")
-        self.assertEquals(state, "done")
+        self.assertEquals(state, "open")
 
     def test_service_validate_draft_request(self):
         self.sr_service.validate(self.demo_request_1.get_api_external_id())

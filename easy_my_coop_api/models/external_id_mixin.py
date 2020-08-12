@@ -54,9 +54,10 @@ class ExternalIdMixin(models.AbstractModel):
             n = 100
             while True:
                 try:
+                    next_id = self.external_id_sequence_id._next()
                     self.sudo().write(
                         {
-                            "_api_external_id": self.external_id_sequence_id._next()
+                            "_api_external_id": next_id
                         }
                     )
                     break
