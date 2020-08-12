@@ -76,13 +76,21 @@
         <field name="reconcile" eval="True"/>
     </record>
 
-    <record id="base.main_company" model="res.company">
-        <field name="property_cooperator_account" ref="account_cooperator_demo"/>
+    <record id="account_equity_demo" model="account.account">
+        <field name="name">Equity</field>
+        <field name="code">100910</field>
+        <field eval="True" name="reconcile"/>
+        <field name="user_type_id" ref="account.data_account_type_equity"/>
     </record>
 
     <record id="base.main_company" model="res.company">
         <field name="property_cooperator_account"
                ref="account_cooperator_demo"/>
+    </record>
+
+    <record id="subscription_journal" model="account.journal">
+        <field name="default_credit_account_id" ref="account_equity_demo"/>
+        <field name="default_debit_account_id" ref="account_equity_demo"/>
     </record>
 
     <record id="product_template_share_type_1_demo" model="product.template">
@@ -127,6 +135,23 @@
         <field name="skip_control_ng" eval="True"/>
     </record>
 
+    <record id="subscription_request_waiting_demo" model="subscription.request">
+        <field name="name">Catherine des Champs</field>
+        <field name="email">catherine@demo.net</field>
+        <field name="address">Chemin des bois fleuris</field>
+        <field name="zip_code">1000</field>
+        <field name="city">Brussels</field>
+        <field name="country_id" ref="base.be"/>
+        <field name="date" eval="datetime.now() - timedelta(days=60)"/>
+        <field name="source">manual</field>
+        <field name="ordered_parts">4</field>
+        <field name="share_product_id" model="product.template"
+               eval="obj(ref('product_template_share_type_1_demo')).product_variant_id.id"/>
+        <field name="lang">en_US</field>
+        <field name="skip_control_ng" eval="True"/>
+        <field name="state">waiting</field>
+    </record>
+
     <record id="share_line_1_demo" model="share.line">
         <field name="share_product_id" model="product.template"
                eval="obj(ref('product_template_share_type_1_demo')).product_variant_id.id"/>
@@ -146,4 +171,5 @@
         <field name="effective_date"
                eval="datetime.now() - timedelta(days=120)"/>
     </record>
+
 </odoo>

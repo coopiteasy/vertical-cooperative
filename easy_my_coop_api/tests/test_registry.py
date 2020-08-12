@@ -3,15 +3,11 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 
-import odoo
 from odoo.http import controllers_per_module
 
 from odoo.addons.base_rest.tests.common import BaseRestCase
 
 from ..controllers.controllers import UserController
-
-HOST = "127.0.0.1"
-PORT = odoo.tools.config["http_port"]
 
 
 class TestControllerRegistry(BaseRestCase):

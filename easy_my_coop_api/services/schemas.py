@@ -9,11 +9,19 @@ from odoo.fields import Date
 def date_validator(field, value, error):
     try:
         Date.from_string(value)
-    except ValueError as e:
+    except ValueError:
         return error(
             field, _("{} does not match format '%Y-%m-%d'".format(value))
         )
 
+
+S_MANY_2_ONE = {
+    "type": "dict",
+    "schema": {
+        "id": {"type": "integer", "required": True},
+        "name": {"type": "string", "required": True, "empty": False},
+    },
+}
 
 S_SUBSCRIPTION_REQUEST_GET = {"_id": {"type": "integer"}}
 
@@ -24,13 +32,7 @@ S_SUBSCRIPTION_REQUEST_RETURN_GET = {
     "date": {"type": "string", "required": True, "empty": False},
     "state": {"type": "string", "required": True, "empty": False},
     "ordered_parts": {"type": "integer", "required": True},
-    "share_product": {
-        "type": "dict",
-        "schema": {
-            "id": {"type": "integer", "required": True},
-            "name": {"type": "string", "required": True, "empty": False},
-        },
-    },
+    "share_product": S_MANY_2_ONE,
     "address": {
         "type": "dict",
         "schema": {
@@ -41,6 +43,12 @@ S_SUBSCRIPTION_REQUEST_RETURN_GET = {
         },
     },
     "lang": {"type": "string", "required": True, "empty": False},
+    "capital_release_request": {
+        "type": "list",
+        "schema": {"type": "integer"},
+        "required": True,
+        "empty": True,
+    },
 }
 
 S_SUBSCRIPTION_REQUEST_SEARCH = {
@@ -92,4 +100,61 @@ S_SUBSCRIPTION_REQUEST_UPDATE = {
     },
     "lang": {"type": "string"},
     "share_product": {"type": "integer"},
+}
+
+S_SUBSCRIPTION_REQUEST_VALIDATE = {"_id": {"type": "integer"}}
+
+S_INVOICE_GET = {"_id": {"type": "integer"}}
+
+S_INVOICE_LINE_RETURN_GET = {
+    "type": "list",
+    "schema": {
+        "type": "dict",
+        "schema": {
+            "name": {"type": "string", "required": True},
+            "account": S_MANY_2_ONE,
+            "product": S_MANY_2_ONE,
+            "quantity": {"type": "float", "required": True},
+            "price_unit": {"type": "float", "required": True},
+        },
+    },
+    "required": True,
+    "empty": True,
+}
+
+S_INVOICE_RETURN_GET = {
+    "id": {"type": "integer", "required": True},
+    "name": {"type": "string", "required": True, "empty": False},
+    "state": {"type": "string", "required": True, "empty": False},
+    "type": {"type": "string", "required": True, "empty": False},
+    "date": {"type": "string", "required": True, "empty": False},
+    "date_due": {"type": "string", "required": True, "empty": False},
+    "date_invoice": {"type": "string", "required": True, "empty": False},
+    "partner": S_MANY_2_ONE,
+    "journal": S_MANY_2_ONE,
+    "account": S_MANY_2_ONE,
+    "subscription_request": {
+        "type": "dict",
+        "schema": {"id": {"type": "integer"}, "name": {"type": "string"}},
+    },
+    "invoice_lines": S_INVOICE_LINE_RETURN_GET,
+}
+
+S_PAYMENT_RETURN_GET = {
+    "id": {"type": "integer", "required": True},
+    "journal": S_MANY_2_ONE,
+    "invoice": S_MANY_2_ONE,
+    "payment_date": {"type": "string", "check_with": date_validator},
+    "amount": {"type": "float", "required": True},
+    "communication": {"type": "string", "required": True},
+}
+
+S_PAYMENT_CREATE = {
+    "journal": {"type": "integer", "required": True},
+    "invoice": {"type": "integer", "required": True},
+    "payment_date": {"type": "string", "check_with": date_validator},
+    "amount": {"type": "float", "required": True},
+    "communication": {"type": "string", "required": True},
+    "payment_type": {"type": "string", "required": True},
+    "payment_method": {"type": "string", "required": True},
 }

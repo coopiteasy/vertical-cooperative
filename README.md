@@ -19,13 +19,15 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [easy_my_coop](easy_my_coop/) | 12.0.3.0.1 | Manage your cooperative shares
+[easy_my_coop_api](easy_my_coop_api/) | 12.0.0.0.1 | Open Easy My Coop to the world: RESTful API.
 [easy_my_coop_be](easy_my_coop_be/) | 12.0.1.2.0 | Easy My Coop Belgium Localization
 [easy_my_coop_ch](easy_my_coop_ch/) | 12.0.1.0.2 | Easy My Coop Switzerland localization
+[easy_my_coop_es](easy_my_coop_es/) | 12.0.0.0.13 | Easy My Coop Spain
 [easy_my_coop_fr](easy_my_coop_fr/) | 12.0.1.0.1 | This is the french localization for the easy my coop module
 [easy_my_coop_loan](easy_my_coop_loan/) | 12.0.1.0.1 | This module allows to manage the bonds and subordinated loans subscription life cycle.
 [easy_my_coop_loan_website](easy_my_coop_loan_website/) | 12.0.1.0.1 | This module implements the subscription page for bonds and subordinated loans.
 [easy_my_coop_taxshelter_report](easy_my_coop_taxshelter_report/) | 12.0.1.0.1 | This module allows you to create a fiscal declaration year and to print tax shelter declaration for each cooperator.
-[easy_my_coop_website](easy_my_coop_website/) | 12.0.1.0.0 | This module adds the cooperator subscription form allowing to subscribe for shares online.
+[easy_my_coop_website](easy_my_coop_website/) | 12.0.1.0.3 | This module adds the cooperator subscription form allowing to subscribe for shares online.
 [easy_my_coop_website_portal](easy_my_coop_website_portal/) | 12.0.1.0.0 | Show cooperator information in the website portal.
 [partner_age](partner_age/) | 12.0.2.0.0 | This module computes the age of the partner.
 [theme_light](theme_light/) | 12.0.1.0.0 | extract of the theme zen

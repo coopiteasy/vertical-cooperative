@@ -10,11 +10,14 @@ Easy My Coop Switzerland
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/github-coopiteasy%2Fvertical--cooperative-lightgray.png?logo=github
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
+    :alt: License: AGPL-3
+.. |badge3| image:: https://img.shields.io/badge/github-coopiteasy%2Fvertical--cooperative-lightgray.png?logo=github
     :target: https://github.com/coopiteasy/vertical-cooperative/tree/12.0/easy_my_coop_ch
     :alt: coopiteasy/vertical-cooperative
 
-|badge1| |badge2| 
+|badge1| |badge2| |badge3| 
 
 This is the swiss localization for the easy my coop module
 
@@ -39,13 +42,13 @@ Credits
 Authors
 ~~~~~~~
 
-* Houssine BAKKALI <houssine@coopiteasy.be>
+* Coop IT Easy SCRLfs
 
 Contributors
 ~~~~~~~~~~~~
 
 * Coop IT Easy SCRLfs
-
+* Houssine BAKKALI <houssine@coopiteasy.be>
 
 Maintainers
 ~~~~~~~~~~~

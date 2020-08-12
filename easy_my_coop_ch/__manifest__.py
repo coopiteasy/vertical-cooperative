@@ -11,9 +11,6 @@
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
     "website": "https://www.coopiteasy.be",
-    "description": """
-    This is the swiss localization for the easy my coop module
-    """,
     "data": [
         "views/subscription_template.xml",
         # "views/subscription_request_view.xml",

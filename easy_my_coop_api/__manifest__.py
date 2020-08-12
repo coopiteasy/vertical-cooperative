@@ -18,7 +18,7 @@
         Open Easy My Coop to the world: RESTful API.
     """,
     "data": [],
-    "demo": [],
+    "demo": ["demo/demo.xml"],
     "installable": True,
     "application": False,
 }

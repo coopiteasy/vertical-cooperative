@@ -242,7 +242,9 @@ class WebsiteSubscription(http.Controller):
         product_id = kwargs.get("share_product_id")
         return prod_obj.sudo().browse(int(product_id)).product_variant_ids[0]
 
-    def validation(self, kwargs, logged, values, post_file):
+    def validation(  # noqa: C901 (method too complex)
+        self, kwargs, logged, values, post_file
+    ):
         user_obj = request.env["res.users"]
         sub_req_obj = request.env["subscription.request"]
 
@@ -256,7 +258,7 @@ class WebsiteSubscription(http.Controller):
             redirect = "easy_my_coop_website.becomecompanycooperator"
             email = kwargs.get("company_email")
         # TODO: Use a overloaded function with the captcha implementation
-        if request.website.company_id.captcha_type == 'google':
+        if request.website.company_id.captcha_type == "google":
             if (
                 "g-recaptcha-response" not in kwargs
                 or kwargs["g-recaptcha-response"] == ""

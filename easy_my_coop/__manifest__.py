@@ -25,10 +25,6 @@
     "category": "Cooperative management",
     "website": "https://www.coopiteasy.be",
     "license": "AGPL-3",
-    "description": """
-    This module allows to manage the cooperator subscription and all the
-     cooperative business processes.
-    """,
     "data": [
         "data/easy_my_coop_data.xml",
         "data/paperformat.xml",

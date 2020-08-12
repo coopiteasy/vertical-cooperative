@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2020 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="auth_api_key_manager_emc_demo" model="auth.api.key">
+        <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo"/>
+        <field name="key">cbd07f57-c903-43b4-b668-436b3bec5f15</field>
+    </record>
+
+    <record id="easy_my_coop.subscription_request_1_demo" model="subscription.request">
+        <field name="_api_external_id">1</field>
+    </record>
+
+    <record id="easy_my_coop.subscription_request_waiting_demo" model="subscription.request">
+        <field name="_api_external_id">2</field>
+    </record>
+</odoo>
