@@ -245,7 +245,9 @@ class WebsiteSubscription(http.Controller):
         product_id = kwargs.get("share_product_id")
         return prod_obj.sudo().browse(int(product_id)).product_variant_ids[0]
 
-    def validation(self, kwargs, logged, values, post_file):
+    def validation(  # noqa: C901 (method too complex)
+        self, kwargs, logged, values, post_file
+    ):
         user_obj = request.env["res.users"]
         sub_req_obj = request.env["subscription.request"]
 
