@@ -139,3 +139,22 @@ S_INVOICE_RETURN_GET = {
     },
     "invoice_lines": S_INVOICE_LINE_RETURN_GET,
 }
+
+S_PAYMENT_RETURN_GET = {
+    "id": {"type": "integer", "required": True},
+    "journal": S_MANY_2_ONE,
+    "invoice": S_MANY_2_ONE,
+    "payment_date": {"type": "string", "check_with": date_validator},
+    "amount": {"type": "float", "required": True},
+    "communication": {"type": "string", "required": True},
+}
+
+S_PAYMENT_CREATE = {
+    "journal": {"type": "integer", "required": True},
+    "invoice": {"type": "integer", "required": True},
+    "payment_date": {"type": "string", "check_with": date_validator},
+    "amount": {"type": "float", "required": True},
+    "communication": {"type": "string", "required": True},
+    "payment_type": {"type": "string", "required": True},
+    "payment_method": {"type": "string", "required": True},
+}

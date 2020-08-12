@@ -180,6 +180,9 @@ class BaseEMCRestCase(BaseRestCase):
                 "default_credit_account_id": cls.equity_account.id,
             }
         )
+        cls.bank_journal = cls.env["account.journal"].search(
+            [("type", "=", "bank")], limit=1
+        )
         return True
 
     def _add_api_key(self, headers):
