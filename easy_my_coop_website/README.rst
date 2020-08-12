@@ -50,7 +50,6 @@ Contributors
 
 * Coop IT Easy SCRLfs
 
-
 Maintainers
 ~~~~~~~~~~~
 

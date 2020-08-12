@@ -192,6 +192,7 @@ class CooperatorPortalAccount(CustomerPortal):
         auth="public",
         website=True,
     )
+    # fmt: off
     def portal_my_invoice_detail(
         self,
         invoice_id,
@@ -200,6 +201,7 @@ class CooperatorPortalAccount(CustomerPortal):
         download=False,
         **kw
     ):
+        # fmt: on
         # override in order to not retrieve release capital request as invoices
         try:
             invoice_sudo = self._document_check_access(

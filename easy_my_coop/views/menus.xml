@@ -5,8 +5,8 @@
 -->
 <odoo>
     <menuitem name="Easy-My Coop" id="menu_main_easy_my_coop"
-	      groups="easy_my_coop.group_easy_my_coop_user" sequence="40"
-	      web_icon="easy_my_coop,static/description/icon.png" />
+              groups="easy_my_coop.group_easy_my_coop_user" sequence="40"
+              web_icon="easy_my_coop,static/description/icon.png" />
 
     <menuitem name="Share Management" id="menu_easy_my_coop_main_subscription"
               parent="menu_main_easy_my_coop"
