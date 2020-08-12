@@ -71,6 +71,11 @@ class AccountInvoice(models.Model):
     _inherit = ["account.invoice", "external.id.mixin"]
 
 
+class AccountPayment(models.Model):
+    _name = "account.payment"
+    _inherit = ["account.payment", "external.id.mixin"]
+
+
 class ProductTemplate(models.Model):
     _name = "product.template"
     _inherit = ["product.template", "external.id.mixin"]
