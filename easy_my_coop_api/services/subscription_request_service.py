@@ -80,8 +80,9 @@ class SubscriptionRequestService(Component):
             raise wrapJsonException(
                 BadRequest(_("Subscription request %s is not in draft state") % _id)
             )
-        sr.validate_subscription_request()
-        return self._to_dict(sr)
+        invoice = sr.validate_subscription_request()
+        invoice_service = self.work.component(usage="invoice")
+        return invoice_service.get(invoice.get_api_external_id())
 
     def _to_dict(self, sr):
         sr.ensure_one()
@@ -204,4 +205,4 @@ class SubscriptionRequestService(Component):
         return schemas.S_SUBSCRIPTION_REQUEST_VALIDATE
 
     def _validator_return_validate(self):
-        return schemas.S_SUBSCRIPTION_REQUEST_RETURN_GET
+        return schemas.S_INVOICE_RETURN_GET
