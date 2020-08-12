@@ -33,7 +33,6 @@ Development
 Do not implement tests before fixing the direct use of self.env.cr.commit()
 in models.tax_shelter_declaration
 
-
 Bug Tracker
 ===========
 
@@ -50,13 +49,12 @@ Credits
 Authors
 ~~~~~~~
 
-* Houssine BAKKALI <houssine@coopiteasy.be>
+* Coop IT Easy SCRLfs
 
 Contributors
 ~~~~~~~~~~~~
 
 * Coop IT Easy SCRLfs
-
 
 Maintainers
 ~~~~~~~~~~~
