@@ -14,4 +14,3 @@ For instance, for the addon `easy_my_coop_website_portal`
 pip install odoo12-addon-easy-my-coop-website-portal==12.0.1.0.0.99.dev9
 ```
 Beware that for word separation, pypi uses dashes `-` and odoo underscores `_`.
-

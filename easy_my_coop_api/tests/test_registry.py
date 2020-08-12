@@ -3,7 +3,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 
-import odoo
 from odoo.http import controllers_per_module
 
 from odoo.addons.base_rest.tests.common import BaseRestCase
