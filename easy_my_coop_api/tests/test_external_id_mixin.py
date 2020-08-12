@@ -2,6 +2,9 @@
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+from psycopg2 import IntegrityError
+
+import odoo
 from odoo.fields import Date
 from odoo.tests import TransactionCase
 
@@ -81,3 +84,17 @@ class TestExternalIdMixin(TransactionCase):
         self.assertTrue(bool(invoice.external_id_sequence_id))
 
         self.assertEquals(external_id, invoice.get_api_external_id())
+
+    @odoo.tools.mute_logger("odoo.sql_db")
+    def test_duplicate_api_external_id_raises(self):
+        invoice_1 = self.env["account.invoice"].create(
+            {"name": "create passes"}
+        )
+        external_id = invoice_1.get_api_external_id()
+        self.assertTrue(bool(invoice_1._api_external_id))
+
+        invoice_2 = self.env["account.invoice"].create(
+            {"name": "create passes"}
+        )
+        with self.assertRaises(IntegrityError):
+            invoice_2._api_external_id = external_id
