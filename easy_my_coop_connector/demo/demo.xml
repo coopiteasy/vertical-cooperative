@@ -4,6 +4,11 @@
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
 <odoo>
+
+    <record id="easy_my_coop.subscription_request_1_demo" model="subscription.request">
+        <field name="source">emc_api</field>
+    </record>
+
     <record id="emc_backend_demo" model="emc.backend">
         <field name="name">IWP backend</field>
         <field name="location">http://localhost:9876</field>
@@ -21,10 +26,5 @@
         <field name="internal_id" ref="easy_my_coop.product_template_share_type_2_demo"/>
         <field name="external_id">31</field>
     </record>
-
-    <record id="easy_my_coop.subscription_request_1_demo" model="subscription.request">
-        <field name="source">emc_api</field>
-    </record>
-
 
 </odoo>
