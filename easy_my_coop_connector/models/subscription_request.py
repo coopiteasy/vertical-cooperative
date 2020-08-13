@@ -24,23 +24,10 @@ class SubscriptionRequest(models.Model):
     )
 
     @api.model
-    def _get_backend(self):
-        backend = self.env["emc.backend"].search([("active", "=", True)])
-        try:
-            backend.ensure_one()
-        except ValueError as e:
-            _logger.error(
-                "One and only one backend is allowed for the Easy My Coop "
-                "connector."
-            )
-            raise e
-        return backend
-
-    @api.model
     def fetch_subscription_requests(self, date_from=None, date_to=None):
         SRBinding = self.env["emc.binding.subscription.request"]
 
-        backend = self._get_backend()
+        backend = self.env["emc.backend"].get_backend()
         adapter = SubscriptionRequestAdapter(backend=backend)
         requests_dict = adapter.search(date_from=date_from, date_to=date_to)
         for external_id, request_dict in requests_dict["rows"]:
@@ -73,7 +60,7 @@ class SubscriptionRequest(models.Model):
     def backend_read(self, external_id):
         SRBinding = self.env["emc.binding.subscription.request"]
 
-        backend = self._get_backend()
+        backend = self.env["emc.backend"].get_backend()
 
         adapter = SubscriptionRequestAdapter(backend)
         _, request_values = adapter.read(external_id)
@@ -95,7 +82,7 @@ class SubscriptionRequest(models.Model):
 
     @api.model
     def fetch_subscription_requests_cron(self):
-        backend = self._get_backend()
+        backend = self.env["emc.backend"].get_backend()
 
         date_to = date.today()
         date_from = date_to - timedelta(days=1)
@@ -116,7 +103,7 @@ class SubscriptionRequest(models.Model):
         ).validate_subscription_request()
 
         if self.source == "emc_api":
-            backend = self._get_backend()
+            backend = self.env["emc.backend"].get_backend()
             sr_adapter = SubscriptionRequestAdapter(backend=backend)
             external_id, invoice_dict = sr_adapter.validate(
                 self.binding_id.external_id

@@ -28,4 +28,16 @@
         <field name="res_model">emc.binding.account.invoice</field>
         <field name="view_mode">tree,form</field>
     </record>
+
+    <record id="emc_binding_account_payment_action" model="ir.actions.act_window">
+        <field name="name">payment Bindings</field>
+        <field name="res_model">emc.binding.account.payment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="emc_binding_account_journal_action" model="ir.actions.act_window">
+        <field name="name">Journal Bindings</field>
+        <field name="res_model">emc.binding.account.journal</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 </odoo>

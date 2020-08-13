@@ -24,6 +24,19 @@ class EMCBackend(models.Model):
     description = fields.Text(string="Description", required=False)
     active = fields.Boolean(string="active", default=True)
 
+    @api.model
+    def get_backend(self):
+        backend = self.env["emc.backend"].search([("active", "=", True)])
+        try:
+            backend.ensure_one()
+        except ValueError as e:
+            _logger.error(
+                "One and only one backend is allowed for the Easy My Coop "
+                "connector."
+            )
+            raise e
+        return backend
+
     @api.multi
     def http_get(self, url, params=None, headers=None):
         self.ensure_one()
