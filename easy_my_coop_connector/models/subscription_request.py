@@ -7,7 +7,7 @@ from datetime import date, timedelta
 
 from odoo import api, fields, models
 
-from .subscription_request_adapter import SubscriptionRequestAdapter
+from .emc_adapters import SubscriptionRequestAdapter
 
 _logger = logging.getLogger(__name__)
 
@@ -43,15 +43,13 @@ class SubscriptionRequest(models.Model):
         backend = self._get_backend()
         adapter = SubscriptionRequestAdapter(backend=backend)
         requests_dict = adapter.search(date_from=date_from, date_to=date_to)
-        for request_dict in requests_dict["rows"]:
-            external_id = request_dict["id"]
-            request_values = adapter.to_write_values(request_dict)
+        for external_id, request_dict in requests_dict["rows"]:
             sr_binding = SRBinding.search_binding(backend, external_id)
             if sr_binding:  # update request
-                sr_binding.internal_id.write(request_values)
+                sr_binding.internal_id.write(request_dict)
             else:
                 srequest = self.env["subscription.request"].create(
-                    request_values
+                    request_dict
                 )
                 SRBinding.create(
                     {
@@ -60,7 +58,9 @@ class SubscriptionRequest(models.Model):
                         "internal_id": srequest.id,
                     }
                 )
-        external_ids = [row["id"] for row in requests_dict["rows"]]
+        external_ids = [
+            external_id for external_id, _ in requests_dict["rows"]
+        ]
         srequests = SRBinding.search(
             [
                 ("backend_id", "=", backend.id),
@@ -76,9 +76,7 @@ class SubscriptionRequest(models.Model):
         backend = self._get_backend()
 
         adapter = SubscriptionRequestAdapter(backend)
-        sr_data = adapter.read(external_id)
-
-        request_values = adapter.to_write_values(sr_data)
+        _, request_values = adapter.read(external_id)
         sr_binding = SRBinding.search_binding(backend, external_id)
 
         if sr_binding:  # update request
@@ -120,13 +118,15 @@ class SubscriptionRequest(models.Model):
         if self.source == "emc_api":
             backend = self._get_backend()
             sr_adapter = SubscriptionRequestAdapter(backend=backend)
-            invoice_dict = sr_adapter.validate(self.binding_id.external_id)
+            external_id, invoice_dict = sr_adapter.validate(
+                self.binding_id.external_id
+            )
 
             InvoiceBinding = self.env["emc.binding.account.invoice"]
             InvoiceBinding.create(
                 {
                     "backend_id": backend.id,
-                    "external_id": invoice_dict["id"],
+                    "external_id": external_id,
                     "internal_id": invoice.id,
                 }
             )
