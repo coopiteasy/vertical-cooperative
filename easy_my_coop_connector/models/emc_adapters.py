@@ -19,10 +19,12 @@ class AbstractEMCAdapter:
     def __init__(self, backend):
         self.backend = backend
 
-    def _get_url(self, args):
+    def _get_url(self, args=None):
         """args is a list of path elements
         :return the complete route to the service
         """
+        if args is None:
+            args = []
         return join("/", self._root, self._service, *args)
 
     def search(self, **params):
@@ -34,9 +36,13 @@ class AbstractEMCAdapter:
         api_dict = self.backend.http_get_content(url)
         return self.to_write_values(api_dict)
 
-    def create(self):
+    def create(self, record):
         # pylint: disable=method-required-super
-        raise NotImplementedError
+        url = self._get_url()
+        api_dict = self.to_api_dict(record)
+        external_record = self.backend.http_post_content(url, api_dict)
+        external_id, writeable_dict = self.to_write_values(external_record)
+        return external_id, writeable_dict
 
     def update(self):
         raise NotImplementedError
@@ -53,13 +59,16 @@ class AbstractEMCAdapter:
         """
         raise NotImplementedError
 
+    def to_api_dict(self, record):
+        raise NotImplementedError
+
 
 class SubscriptionRequestAdapter(AbstractEMCAdapter):
     _model = "subscription.request"
     _service = "subscription-request"
 
     def search(self, date_from=None, date_to=None):
-        url = self._get_url([])
+        url = self._get_url()
         params = {}
         if date_from:
             params.update({"date_from": Date.to_string(date_from)})
@@ -137,3 +146,44 @@ class AccountInvoiceAdapter(AbstractEMCAdapter):
         external_id = api_dict.pop("id")
         writable_dict = api_dict
         return external_id, writable_dict
+
+
+class AccountPaymentAdapter(AbstractEMCAdapter):
+    _model = "account.payment"
+    _service = "payment"
+
+    def to_write_values(self, api_dict):
+        api_dict = api_dict.copy()
+        external_id = api_dict.pop("id")
+        writable_dict = api_dict
+        return external_id, writable_dict
+
+    def to_api_dict(self, record):
+
+        if not record.journal_id.binding_id:
+            raise ValidationError(
+                _(
+                    "Journal %s is not bound to a journal on the platform. "
+                    "Please contact system administrator."
+                )
+                % record.journal_id.name
+            )
+
+        if not record.invoice_ids.binding_id:
+            raise ValidationError(
+                _(
+                    "Invoice %s is not bound to a journal on the platform. "
+                    "Please contact system administrator."
+                )
+                % record.invoice_ids.name
+            )
+
+        return {
+            "journal": record.journal_id.binding_id.external_id,
+            "invoice": record.invoice_ids.binding_id.external_id,
+            "payment_date": Date.to_string(record.payment_date),
+            "amount": record.amount,
+            "communication": record.communication,
+            "payment_type": record.payment_type,
+            "payment_method": record.payment_method_id.code,
+        }

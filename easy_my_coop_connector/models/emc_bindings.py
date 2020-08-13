@@ -55,3 +55,21 @@ class AccountInvoiceBinding(models.Model):
     internal_id = fields.Many2one(
         comodel_name="account.invoice", string="Internal ID", required=True
     )
+
+
+class AccountPaymentBinding(models.Model):
+    _name = "emc.binding.account.payment"
+    _inherit = "emc.binding"
+
+    internal_id = fields.Many2one(
+        comodel_name="account.payment", string="Internal ID", required=True
+    )
+
+
+class AccountJournalBinding(models.Model):
+    _name = "emc.binding.account.journal"
+    _inherit = "emc.binding"
+
+    internal_id = fields.Many2one(
+        comodel_name="account.journal", string="Internal ID", required=True
+    )
