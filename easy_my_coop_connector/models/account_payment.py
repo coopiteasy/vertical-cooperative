@@ -5,7 +5,7 @@
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
-from .emc_adapters import AccountPaymentAdapter
+from ..components.emc_adapters import AccountPaymentAdapter
 
 
 class AccountPayment(models.Model):
@@ -39,7 +39,7 @@ class AccountPayment(models.Model):
                 external_id, external_record = adapter.create(payment)
                 self.env["emc.binding.account.payment"].create(
                     {
-                        "backend": backend.id,
+                        "backend_id": backend.id,
                         "internal_id": payment.id,
                         "external_id": external_id,
                     }
