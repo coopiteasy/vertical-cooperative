@@ -40,6 +40,20 @@
               groups="base.group_user"
               sequence="1040"/>
 
+    <menuitem id="emc_binding_account_payment_action_menu"
+              name="Payment Bindings"
+              parent="emc_connector_menu_menu"
+              action="emc_binding_account_payment_action"
+              groups="base.group_user"
+              sequence="1050"/>
+
+    <menuitem id="emc_binding_account_journal_action_menu"
+              name="Journal Bindings"
+              parent="emc_connector_menu_menu"
+              action="emc_binding_account_journal_action"
+              groups="base.group_user"
+              sequence="1060"/>
+
     <menuitem id="emc_history_import_action_menu"
               name="Import Subscription Request History"
               parent="emc_connector_menu_menu"
