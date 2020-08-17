@@ -37,7 +37,7 @@ Installation
 
 ## Deploying with pip
 
-We used [odoo setup tools](https://pypi.org/project/setuptools-odoo/#packaging-a-single-addon) to generate the pypi files from the odoo manifests. To deploy any packaged module, so that odoo can later install them,
+We used [odoo setup tools](https://pypi.org/project/setuptools-odoo/#packaging-a-single-addon "Package a single addon") to generate the pypi files from the odoo manifests. To deploy any packaged module, so that odoo can later install them,
 you can create a venv with this name (it's git-ignored)
 ```shell
 python -m venv venv
