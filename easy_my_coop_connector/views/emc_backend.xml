@@ -18,6 +18,7 @@
                         </button>
                     </div>
                     <group>
+                        <field name="name"/>
                         <field name="location"/>
                         <field name="api_key"/>
                         <field name="description"/>

@@ -19,7 +19,7 @@ class EMCBackend(models.Model):
     _description = "EMC Backend"
 
     name = fields.Char(string="Name", required=True)
-    location = fields.Char(string="Location")
+    location = fields.Char(string="URL")
     api_key = fields.Char(string="API Key")
     description = fields.Text(string="Description", required=False)
     active = fields.Boolean(string="active", default=True)
