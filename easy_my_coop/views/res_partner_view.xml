@@ -31,6 +31,8 @@
                         <group>
                             <field name="representative"
                                    attrs="{'invisible':['|',('parent_id','=',False),('is_company','=',True)]}"/>
+                            <field name="representative_of_member_company"
+                                   attrs="{'invisible':['|',('parent_id','=',False),('is_company','=',True)]}"/>
                             <field name="cooperator_register_number"
                                    readonly="True"
                                    attrs="{'invisible':[('member','=',False)]}"/>
@@ -195,7 +197,7 @@
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
-            <field name="domain">[('cooperator','=',True),('representative','=',True)]</field>
+            <field name="domain">[('representative_of_member_company','=',True)]</field>
             <field name="filter" eval="True"/>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
