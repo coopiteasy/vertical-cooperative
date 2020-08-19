@@ -195,7 +195,7 @@
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
-            <field name="domain">[('cooperator','=',True),('representative','=',True)]</field>
+            <field name="domain">[('representative_of_member_company','=',True)]</field>
             <field name="filter" eval="True"/>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
