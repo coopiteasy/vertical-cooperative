@@ -2147,7 +2147,7 @@ msgstr "Souscriptions de part"
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__share_to_unit_price
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register__share_to_unit_price
 msgid "Share to price"
-msgstr ""
+msgstr "Prix du type de part après conversion"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register__share_to_product_id
@@ -2590,7 +2590,7 @@ msgstr "En attente"
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.subscription_request_form
 msgid "Waiting list"
-msgstr ""
+msgstr "Liste d'attente"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.emc_external_layout_standard
