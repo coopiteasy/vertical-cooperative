@@ -343,7 +343,7 @@ msgstr ""
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,help:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__excluded_cooperator
 msgid "If these cooperator have subscribed share during the time frame of this Tax Shelter Declaration. They will be marked as non eligible"
-msgstr ""
+msgstr "Si ces cooperateurs ont souscrit a des parts durant la période de cette déclaration Tax Shelter, ils seront marqué comme non éligible"
 
 #. module: easy_my_coop_taxshelter_report
 #: selection:certificate.line,type:0
@@ -413,7 +413,7 @@ msgstr "Mois de fin"
 #. module: easy_my_coop_taxshelter_report
 #: selection:tax.shelter.certificate,state:0
 msgid "No eligible"
-msgstr ""
+msgstr "Pas éligible"
 
 #. module: easy_my_coop_taxshelter_report
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
@@ -482,12 +482,12 @@ msgstr "Précédement souscrites"
 #. module: easy_my_coop_taxshelter_report
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_certificate_form
 msgid "Print Shares Certificate"
-msgstr "Imprimer attestation de part"
+msgstr "Imprimer Attestation de Part"
 
 #. module: easy_my_coop_taxshelter_report
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_certificate_form
 msgid "Print Subscription Certificate"
-msgstr ""
+msgstr "Imprimer Certificat de Souscription"
 
 #. module: easy_my_coop_taxshelter_report
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_declaration_form
@@ -665,7 +665,7 @@ msgstr "Montant total éligible au Tax Shelter"
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__total_amount_eligible_previously_subscribed
 msgid "Total eligible previously subscribed"
-msgstr ""
+msgstr "Total éligible précédemment souscrit"
 
 #. module: easy_my_coop_taxshelter_report
 #: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__total_amount_previously_subscribed
