@@ -172,6 +172,11 @@ class ResPartner(models.Model):
         sting="Effective Date", compute=_compute_effective_date, store=True
     )
     representative = fields.Boolean(string="Legal Representative")
+    representative_of_member_company = fields.Boolean(
+        string="Legal Representative of Member Company",
+        store=True,
+        compute="_compute_representative_of_member_company",
+    )
     subscription_request_ids = fields.One2many(
         "subscription.request", "partner_id", string="Subscription request"
     )
@@ -193,6 +198,19 @@ class ResPartner(models.Model):
                 is_candidate = bool(sub_requests)
 
             partner.coop_candidate = is_candidate
+
+    @api.multi
+    @api.depends("parent_id", "representative")
+    def _compute_representative_of_member_company(self):
+        for partner in self:
+            member_companies = self.env["res.partner"].search(
+                [("is_company", "=", True), ("member", "=", True)]
+            )
+            partner.representative_of_member_company = partner in member_companies.mapped(
+                "child_ids"
+            ).filtered(
+                "representative"
+            )
 
     @api.multi
     def has_representative(self):
