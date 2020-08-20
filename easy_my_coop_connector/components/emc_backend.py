@@ -9,7 +9,7 @@ import requests
 from werkzeug.exceptions import BadRequest, InternalServerError, NotFound
 
 from odoo import _, api, fields, models
-from odoo.exceptions import AccessDenied
+from odoo.exceptions import AccessDenied, Warning as UserError
 
 _logger = logging.getLogger(__name__)
 
@@ -113,12 +113,12 @@ class EMCBackend(models.Model):
             response = requests.get(url)
         except Exception as e:
             _logger.error(e)
-            raise Warning(_("Failed to connect to backend: %s" % str(e)))
+            raise UserError(_("Failed to connect to backend: %s" % str(e)))
 
         if response.status_code == 200:
             content = json.loads(response.content.decode("utf-8"))
-            raise Warning(_("Success: %s") % content["message"])
+            raise UserError(_("Success: %s") % content["message"])
         else:
-            raise Warning(
+            raise UserError(
                 _("Failed to connect to backend: %s" % str(response.content))
             )
