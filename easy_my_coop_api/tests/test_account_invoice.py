@@ -30,11 +30,20 @@ class TestAccountInvoiceController(BaseEMCRestCase):
 
         today = Date.to_string(Date.today())
         self.demo_invoice_dict = {
-            "id": 1,
+            "id": self.capital_release.get_api_external_id(),
             "number": "xxx",  # can't guess it
-            "partner": {"id": 1, "name": "Catherine des Champs"},
-            "account": {"id": 1, "name": "Cooperators"},
-            "journal": {"id": 1, "name": "Subscription Journal"},
+            "partner": {
+                "id": self.coop_candidate.get_api_external_id(),
+                "name": self.coop_candidate.name,
+            },
+            "account": {
+                "id": self.cooperator_account.get_api_external_id(),
+                "name": self.cooperator_account.name,
+            },
+            "journal": {
+                "id": self.subscription_journal.get_api_external_id(),
+                "name": self.subscription_journal.name,
+            },
             "subscription_request": {},
             "state": "open",
             "date": today,
@@ -47,7 +56,10 @@ class TestAccountInvoiceController(BaseEMCRestCase):
                     "product": {"id": 1, "name": "Part A - Founder"},
                     "price_unit": 100.0,
                     "quantity": 2.0,
-                    "account": {"id": 2, "name": "Equity"},
+                    "account": {
+                        "id": self.equity_account.get_api_external_id(),
+                        "name": self.equity_account.name,
+                    },
                 }
             ],
         }

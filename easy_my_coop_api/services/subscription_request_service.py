@@ -31,6 +31,7 @@ class SubscriptionRequestService(Component):
             [("_api_external_id", "=", _id)]
         )
         if sr:
+            sr._timestamp_export()
             return self._to_dict(sr)
         else:
             raise wrapJsonException(
@@ -49,6 +50,7 @@ class SubscriptionRequestService(Component):
             domain.append(("date", "<=", date_to))
 
         requests = self.env["subscription.request"].search(domain)
+        requests._timestamp_export()
 
         response = {
             "count": len(requests),

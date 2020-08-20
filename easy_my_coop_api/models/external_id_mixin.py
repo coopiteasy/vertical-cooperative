@@ -28,6 +28,12 @@ class ExternalIdMixin(models.AbstractModel):
         string="External ID Sequence",
         required=False,
     )
+    first_api_export_date = fields.Datetime(
+        string="First API Export Date", required=False
+    )
+    last_api_export_date = fields.Datetime(
+        string="Last API Export Date", required=False
+    )
 
     @api.multi
     def set_external_sequence(self):
@@ -55,11 +61,7 @@ class ExternalIdMixin(models.AbstractModel):
             while True:
                 try:
                     next_id = self.external_id_sequence_id._next()
-                    self.sudo().write(
-                        {
-                            "_api_external_id": next_id
-                        }
-                    )
+                    self.sudo().write({"_api_external_id": next_id})
                     break
                 except IntegrityError as e:
                     if n > 0:
@@ -72,11 +74,6 @@ class ExternalIdMixin(models.AbstractModel):
 class ResPartner(models.Model):
     _name = "res.partner"
     _inherit = ["res.partner", "external.id.mixin"]
-
-
-class SubscriptionRequest(models.Model):
-    _name = "subscription.request"
-    _inherit = ["subscription.request", "external.id.mixin"]
 
 
 class AccountAccount(models.Model):
