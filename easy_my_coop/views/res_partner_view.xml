@@ -29,6 +29,7 @@
                 <xpath expr="/form/sheet/group" position='before'>
                     <group>
                         <group>
+                            <field name="member" invisible="1"/>
                             <field name="representative"
                                    attrs="{'invisible':['|',('parent_id','=',False),('is_company','=',True)]}"/>
                             <field name="cooperator_register_number"
@@ -64,6 +65,7 @@
                 </xpath>
 
                 <page name='sales_purchases' position="after">
+                    <field name="member" invisible="1"/>
                     <page string="Shares" name="share"
                           attrs="{'invisible':[('member','=',False)]}"
                           groups="easy_my_coop.group_easy_my_coop_user">
