@@ -31,8 +31,6 @@
                         <group>
                             <field name="representative"
                                    attrs="{'invisible':['|',('parent_id','=',False),('is_company','=',True)]}"/>
-                            <field name="representative_of_member_company"
-                                   attrs="{'invisible':['|',('parent_id','=',False),('is_company','=',True)]}"/>
                             <field name="cooperator_register_number"
                                    readonly="True"
                                    attrs="{'invisible':[('member','=',False)]}"/>
