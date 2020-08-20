@@ -216,7 +216,9 @@
             <field name="inherit_id"
                    ref="mail.res_partner_view_form_inherit_mail"/>
             <field name="arch" type="xml">
-                <field name="message_follower_ids" position="replace"/>
+                <field name="message_follower_ids" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
             </field>
         </record>
     </data>
