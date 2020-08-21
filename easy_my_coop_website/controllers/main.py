@@ -199,12 +199,12 @@ class WebsiteSubscription(http.Controller):
             if company.default_country_id:
                 values["country_id"] = company.default_country_id.id
             else:
-                values["country_id"] = "21"
+                values["country_id"] = "20"
         if not values.get("activities_country_id"):
             if company.default_country_id:
                 values["activities_country_id"] = company.default_country_id.id
             else:
-                values["activities_country_id"] = "21"
+                values["activities_country_id"] = "20"
         if not values.get("lang"):
             if company.default_lang_id:
                 values["lang"] = company.default_lang_id.code
@@ -218,6 +218,9 @@ class WebsiteSubscription(http.Controller):
                 "display_internal_rules": comp.display_internal_rules_approval,
                 "internal_rules_required": comp.internal_rules_approval_required,
                 "internal_rules_text": comp.internal_rules_approval_text,
+                "display_financial_risk": comp.display_financial_risk_approval,
+                "financial_risk_required": comp.financial_risk_approval_required,
+                "financial_risk_text": comp.financial_risk_approval_text,
             }
         )
         return values
@@ -438,6 +441,9 @@ class WebsiteSubscription(http.Controller):
 
         if kwargs.get("internal_rules_approved", "off") == "on":
             values["internal_rules_approved"] = True
+
+        if kwargs.get("financial_risk_approved", "off") == "on":
+            values["financial_risk_approved"] = True
 
         lastname = kwargs.get("lastname").upper()
         firstname = kwargs.get("firstname").title()
