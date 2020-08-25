@@ -44,6 +44,7 @@ class EMCBackend(models.Model):
         if url.startswith("/"):
             url = self.location + url
 
+        _logger.info("GET to {} w/ params {}".format(url, params))
         return requests.get(url, params=params, headers=headers)
 
     def _process_response(self, response):
@@ -88,6 +89,7 @@ class EMCBackend(models.Model):
         if url.startswith("/"):
             url = self.location + url
 
+        _logger.info("POST to %s" % url)
         return requests.post(url, json=data, headers=headers)
 
     def http_post_content(self, url, data, headers=None):
