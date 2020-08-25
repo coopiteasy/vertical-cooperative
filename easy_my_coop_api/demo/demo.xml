@@ -11,18 +11,22 @@
 
     <record id="easy_my_coop.subscription_request_1_demo" model="subscription.request">
         <field name="_api_external_id">1</field>
+        <field name="external_id_generated" eval="True"/>
     </record>
 
     <record id="easy_my_coop.subscription_request_waiting_demo" model="subscription.request">
         <field name="_api_external_id">2</field>
+        <field name="external_id_generated" eval="True"/>
     </record>
 
     <record id="easy_my_coop.product_template_share_type_1_demo" model="product.template">
         <field name="_api_external_id">1</field>
+        <field name="external_id_generated" eval="True"/>
     </record>
 
     <record id="easy_my_coop.product_template_share_type_2_demo" model="product.template">
         <field name="_api_external_id">2</field>
+        <field name="external_id_generated" eval="True"/>
     </record>
 
 </odoo>

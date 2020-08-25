@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2020 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">view_partner_form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='sales_purchases']" position="after">
+                <page name="api_page" string="API">
+                    <group>
+                        <field name="external_id_generated" invisible="1"/>
+                        <field name="_api_external_id" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                        <field name="first_api_export_date" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                        <field name="last_api_export_date" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                        <button name="get_api_external_id"
+                                string="Generate external ID"
+                                type="object"
+                                class="oe_highlight"
+                                attrs="{'invisible': [('external_id_generated', '=', True)]}"
+                        />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_form" model="ir.ui.view">
+        <field name="name">view_account_form</field>
+        <field name="model">account.account</field>
+        <field name="inherit_id" ref="account.view_account_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='code']/../.." position="after">
+                <notebook>
+                    <page name="api_page" string="API">
+                        <group>
+                            <field name="external_id_generated" invisible="1"/>
+                            <field name="_api_external_id" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                            <field name="first_api_export_date" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                            <field name="last_api_export_date" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                            <button name="get_api_external_id"
+                                    string="Generate external ID"
+                                    type="object"
+                                    class="oe_highlight"
+                                    attrs="{'invisible': [('external_id_generated', '=', True)]}"
+                            />
+                        </group>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_journal_form" model="ir.ui.view">
+        <field name="name">view_account_journal_form</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.view_account_journal_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='advanced_settings']" position="after">
+                <page name="api_page" string="API">
+                    <group>
+                        <field name="external_id_generated" invisible="1"/>
+                        <field name="_api_external_id" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                        <field name="first_api_export_date" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                        <field name="last_api_export_date" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                        <button name="get_api_external_id"
+                                string="Generate external ID"
+                                type="object"
+                                class="oe_highlight"
+                                attrs="{'invisible': [('external_id_generated', '=', True)]}"
+                        />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="invoice_form" model="ir.ui.view">
+        <field name="name">invoice_form</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='other_info']" position="after">
+                <page name="api_page" string="API">
+                    <group>
+                        <field name="external_id_generated" invisible="1"/>
+                        <field name="_api_external_id" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                        <field name="first_api_export_date" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                        <field name="last_api_export_date" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                        <button name="get_api_external_id"
+                                string="Generate external ID"
+                                type="object"
+                                class="oe_highlight"
+                                attrs="{'invisible': [('external_id_generated', '=', True)]}"
+                        />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_payment_form" model="ir.ui.view">
+        <field name="name">view_account_payment_form</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='communication']/../.." position="after">
+                <notebook>
+                    <page name="api_page" string="API">
+                        <group>
+                            <field name="external_id_generated" invisible="1"/>
+                            <field name="_api_external_id" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                            <field name="first_api_export_date" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                            <field name="last_api_export_date" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                            <button name="get_api_external_id"
+                                    string="Generate external ID"
+                                    type="object"
+                                    class="oe_highlight"
+                                    attrs="{'invisible': [('external_id_generated', '=', True)]}"
+                            />
+                        </group>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_form_view" model="ir.ui.view">
+        <field name="name">product_template_form_view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='inventory']" position="after">
+                <page name="api_page" string="API">
+                    <group>
+                        <field name="external_id_generated" invisible="1"/>
+                        <field name="_api_external_id" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                        <field name="first_api_export_date" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                        <field name="last_api_export_date" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                        <button name="get_api_external_id"
+                                string="Generate external ID"
+                                type="object"
+                                class="oe_highlight"
+                                attrs="{'invisible': [('external_id_generated', '=', True)]}"
+                        />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="subscription_request_form" model="ir.ui.view">
+        <field name="name">subscription_request_form</field>
+        <field name="model">subscription.request</field>
+        <field name="inherit_id" ref="easy_my_coop.subscription_request_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='capital_release_request']" position="after">
+                <page name="api_page" string="API">
+                    <group>
+                        <field name="external_id_generated" invisible="1"/>
+                        <field name="_api_external_id" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                        <field name="first_api_export_date" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                        <field name="last_api_export_date" attrs="{'invisible': [('external_id_generated', '=', False)]}"/>
+                        <button name="get_api_external_id"
+                                string="Generate external ID"
+                                type="object"
+                                class="oe_highlight"
+                                attrs="{'invisible': [('external_id_generated', '=', True)]}"
+                        />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

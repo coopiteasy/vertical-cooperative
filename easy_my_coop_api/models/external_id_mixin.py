@@ -35,6 +35,11 @@ class ExternalIdMixin(models.AbstractModel):
         string="Last API Export Date", required=False
     )
 
+    # only used to display and hide "Generate external ID" button
+    external_id_generated = fields.Boolean(
+        string="External ID Generated", default=False, required=False
+    )
+
     @api.multi
     def set_external_sequence(self):
         self.ensure_one()
@@ -61,7 +66,12 @@ class ExternalIdMixin(models.AbstractModel):
             while True:
                 try:
                     next_id = self.external_id_sequence_id._next()
-                    self.sudo().write({"_api_external_id": next_id})
+                    self.sudo().write(
+                        {
+                            "_api_external_id": next_id,
+                            "external_id_generated": True,
+                        }
+                    )
                     break
                 except IntegrityError as e:
                     if n > 0:
