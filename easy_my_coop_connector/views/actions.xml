@@ -40,4 +40,10 @@
         <field name="res_model">emc.binding.account.journal</field>
         <field name="view_mode">tree,form</field>
     </record>
+
+    <record id="emc_binding_account_account_action" model="ir.actions.act_window">
+        <field name="name">Account Bindings</field>
+        <field name="res_model">emc.binding.account.account</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 </odoo>
