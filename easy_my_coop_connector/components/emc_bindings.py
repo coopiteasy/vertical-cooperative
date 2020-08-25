@@ -73,3 +73,12 @@ class AccountJournalBinding(models.Model):
     internal_id = fields.Many2one(
         comodel_name="account.journal", string="Internal ID", required=True
     )
+
+
+class AccountAccountBinding(models.Model):
+    _name = "emc.binding.account.account"
+    _inherit = "emc.binding"
+
+    internal_id = fields.Many2one(
+        comodel_name="account.account", string="Internal ID", required=True
+    )
