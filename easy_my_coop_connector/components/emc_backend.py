@@ -101,6 +101,7 @@ class EMCBackend(models.Model):
     def action_ping(self):
         self.ensure_one()
         url = self.location + "/api/ping/test"
+        # todo ping as authentificated user
         try:
             response = requests.get(url)
         except Exception as e:
