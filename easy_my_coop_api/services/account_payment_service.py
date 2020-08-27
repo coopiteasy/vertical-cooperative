@@ -76,10 +76,14 @@ class AccountPaymentService(Component):
         }
 
     def _to_dict(self, payment):
+        invoice = {
+            "id": payment.invoice_ids.get_api_external_id(),
+            "name": payment.invoice_ids.number,
+        }
         return {
             "id": payment.get_api_external_id(),
             "journal": self._one_to_many_to_dict(payment.journal_id),
-            "invoice": self._one_to_many_to_dict(payment.invoice_ids),
+            "invoice": invoice,
             "payment_date": Date.to_string(payment.payment_date),
             "amount": payment.amount,
             "communication": payment.communication,

@@ -86,13 +86,14 @@ class SubscriptionRequestAdapter(AbstractEMCAdapter):
         data = {}
         try:
             invoice_dict = self.backend.http_post_content(url, data)
-        except BadRequest:
+        except BadRequest as bad_request:
             raise ValidationError(
                 _(
-                    "The request was already validated on the "
-                    "platform. Please check data consistency "
-                    "with your system administrator."
+                    "The Synergie platform replied with this error message:"
+                    "\n\n %s \n\n"
+                    "Please contact your system administrator."
                 )
+                % bad_request.description
             )
         ai_adapter = AccountInvoiceAdapter(backend=self.backend)
         return ai_adapter.to_write_values(invoice_dict)

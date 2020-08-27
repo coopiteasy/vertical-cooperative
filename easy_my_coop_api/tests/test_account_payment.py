@@ -48,7 +48,7 @@ class TestAccountPaymentController(BaseEMCRestCase):
             "communication": invoice.reference,
             "invoice": {
                 "id": invoice.get_api_external_id(),
-                "name": invoice.name,
+                "name": invoice.number,
             },
             "amount": self.demo_request_1.subscription_amount,
             "payment_date": Date.to_string(Date.today()),
