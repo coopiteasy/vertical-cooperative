@@ -21,23 +21,27 @@ class ExternalIdMixin(models.AbstractModel):
 
     # do not access directly, always use get_api_external_id method
     _api_external_id = fields.Integer(
-        string="External ID", index=True, required=False
+        string="External ID", index=True, required=False, copy=False
     )
     external_id_sequence_id = fields.Many2one(
         comodel_name="ir.sequence",
         string="External ID Sequence",
         required=False,
+        copy=False,
     )
     first_api_export_date = fields.Datetime(
-        string="First API Export Date", required=False
+        string="First API Export Date", required=False, copy=False
     )
     last_api_export_date = fields.Datetime(
-        string="Last API Export Date", required=False
+        string="Last API Export Date", required=False, copy=False
     )
 
     # only used to display and hide "Generate external ID" button
     external_id_generated = fields.Boolean(
-        string="External ID Generated", default=False, required=False
+        string="External ID Generated",
+        default=False,
+        required=False,
+        copy=False,
     )
 
     @api.multi
