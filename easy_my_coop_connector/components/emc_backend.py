@@ -53,12 +53,7 @@ class EMCBackend(models.Model):
             return json.loads(content)
         elif response.status_code == 400:
             content = response.content.decode("utf-8")
-            raise BadRequest(
-                _(
-                    "request returned status code %s with message %s"
-                    % (response.status_code, content)
-                )
-            )
+            raise BadRequest("%s" % content)
         elif response.status_code == 403:
             raise AccessDenied(
                 _("You are not allowed to access this resource")
@@ -69,12 +64,7 @@ class EMCBackend(models.Model):
             )
         else:  # 500 et al.
             content = response.content.decode("utf-8")
-            raise InternalServerError(
-                _(
-                    "request returned status code %s with message %s"
-                    % (response.status_code, content)
-                )
-            )
+            raise InternalServerError(_("%s" % content))
 
     @api.multi
     def http_get_content(self, url, params=None, headers=None):

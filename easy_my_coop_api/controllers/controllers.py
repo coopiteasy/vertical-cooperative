@@ -23,3 +23,13 @@ class UserController(main.RestController):
         return self._process_method(
             _service_name, "test", _id=None, params=None
         )
+
+    @route(
+        _root_path + "<string:_service_name>/<int:_id>/validate",
+        methods=["POST"],
+        csrf=False,
+    )
+    def validate(self, _service_name, _id, **params):
+        return self._process_method(
+            _service_name, "validate", _id=_id, params=params
+        )
