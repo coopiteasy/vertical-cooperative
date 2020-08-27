@@ -5,14 +5,16 @@
 -->
 <odoo>
 
+    <data noupdate="1">
+        <record id="emc_backend_demo" model="emc.backend">
+            <field name="name">IWP backend</field>
+            <field name="location">http://localhost:9876</field>
+            <field name="api_key">cbd07f57-c903-43b4-b668-436b3bec5f15</field>
+        </record>
+    </data>
+
     <record id="easy_my_coop.subscription_request_1_demo" model="subscription.request">
         <field name="source">emc_api</field>
-    </record>
-
-    <record id="emc_backend_demo" model="emc.backend">
-        <field name="name">IWP backend</field>
-        <field name="location">http://localhost:9876</field>
-        <field name="api_key">cbd07f57-c903-43b4-b668-436b3bec5f15</field>
     </record>
 
     <record id="emc_binding_product_template_A_demo" model="emc.binding.product.template">
