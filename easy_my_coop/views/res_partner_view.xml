@@ -55,11 +55,11 @@
                         </group>
                         <group name="approvals">
                             <field name="internal_rules_approved"
-                            	   attrs="{'invisible':[('member','=',False)]}"/>
+                                   attrs="{'invisible':[('member','=',False)]}"/>
                             <field name="data_policy_approved"
-                            	   attrs="{'invisible':[('member','=',False)]}"/>
+                                   attrs="{'invisible':[('member','=',False)]}"/>
                             <field name="financial_risk_approved"
-                            	   attrs="{'invisible':[('member','=',False)]}"/>
+                                   attrs="{'invisible':[('member','=',False)]}"/>
                         </group>
                     </group>
                 </xpath>
