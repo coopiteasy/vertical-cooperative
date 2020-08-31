@@ -16,9 +16,9 @@
         <field name="model">mail.template</field>
         <field name="inherit_id" ref="mail.email_template_form"/>
         <field name="arch" type="xml">
-        	<field name="mail_server_id" position="after">
-        		<field name="easy_my_coop"/>
-        	</field>
+            <field name="mail_server_id" position="after">
+                <field name="easy_my_coop"/>
+            </field>
         </field>
     </record>
 </odoo>
