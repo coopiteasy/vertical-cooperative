@@ -105,6 +105,11 @@ class PortalTaxShelter(CustomerPortal):
             "easy_my_coop_website_taxshelter.portal_my_tax_shelter", values
         )
 
+    # Black adds a trailing comma after last argument of function definition
+    #  this syntax is invalid for python < 3.6
+    # Exclude for formatting while not fixed, follow status here:
+    # https://github.com/psf/black/issues/1657
+    # fmt: off
     @http.route(
         ["/my/tax_shelter_certificates/<int:certificate_id>"],
         type="http",
@@ -118,8 +123,9 @@ class PortalTaxShelter(CustomerPortal):
         report_type=None,
         download=False,
         query_string=None,
-        **kw,
+        **kw
     ):
+        # fmt: on
         partner = request.env.user.partner_id
         try:
             taxshelter_certificate_sudo = self._document_check_access(
