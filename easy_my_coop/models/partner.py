@@ -206,12 +206,11 @@ class ResPartner(models.Model):
             member_companies = self.env["res.partner"].search(
                 [("is_company", "=", True), ("member", "=", True)]
             )
+            representatives = member_companies.mapped("child_ids").filtered(
+                "representative"
+            )
             partner.representative_of_member_company = (
-                partner in member_companies.mapped(
-                    "child_ids"
-                ).filtered(
-                    "representative"
-                )
+                partner in representatives
             )
 
     @api.multi
