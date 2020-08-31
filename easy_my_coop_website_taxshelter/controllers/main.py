@@ -118,7 +118,7 @@ class PortalTaxShelter(CustomerPortal):
         report_type=None,
         download=False,
         query_string=None,
-        **kw
+        **kw,
     ):
         partner = request.env.user.partner_id
         try:
