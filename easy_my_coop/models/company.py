@@ -90,7 +90,7 @@ class ResCompany(models.Model):
     )
     financial_risk_approval_text = fields.Html(
         translate=True,
-        help="Text to display aside the checkbox to approve financial risk."
+        help="Text to display aside the checkbox to approve financial risk.",
     )
 
     @api.onchange("data_policy_approval_required")
@@ -103,7 +103,7 @@ class ResCompany(models.Model):
         if self.internal_rules_approval_required:
             self.display_internal_rules_approval = True
 
-    @api.onchange('financial_risk_approval_required')
+    @api.onchange("financial_risk_approval_required")
     def onchange_financial_risk_approval_required(self):
         if self.financial_risk_approval_required:
             self.display_financial_risk_approval = True

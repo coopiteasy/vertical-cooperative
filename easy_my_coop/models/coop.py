@@ -44,7 +44,7 @@ class SubscriptionRequest(models.Model):
         if company.internal_rules_approval_required:
             required_fields.append("internal_rules_approved")
         if company.financial_risk_approval_required:
-            required_fields.append('financial_risk_approved')
+            required_fields.append("financial_risk_approved")
         return required_fields
 
     def get_mail_template_notif(self, is_company=False):
@@ -432,8 +432,7 @@ class SubscriptionRequest(models.Model):
         string="Approved Internal Rules", default=False
     )
     financial_risk_approved = fields.Boolean(
-        string='Financial Risk Approved',
-        default=False,
+        string="Financial Risk Approved", default=False
     )
 
     _order = "id desc"
@@ -580,7 +579,7 @@ class SubscriptionRequest(models.Model):
             "lang": self.lang,
             "data_policy_approved": self.data_policy_approved,
             "internal_rules_approved": self.internal_rules_approved,
-            'financial_risk_approved': self.financial_risk_approved
+            "financial_risk_approved": self.financial_risk_approved,
         }
         return partner_vals
 
@@ -602,7 +601,7 @@ class SubscriptionRequest(models.Model):
             "customer": self.share_product_id.customer,
             "data_policy_approved": self.data_policy_approved,
             "internal_rules_approved": self.internal_rules_approved,
-            "financial_risk_approved": self.financial_risk_approved
+            "financial_risk_approved": self.financial_risk_approved,
         }
         return partner_vals
 
