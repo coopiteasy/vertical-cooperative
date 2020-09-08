@@ -328,7 +328,7 @@ msgstr "Vous devez charger une copie de votre carte d'identité."
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "You want to\n"
-"                                        modify your personnal information ?"
+"                                        modify your personal information ?"
 msgstr "Vous voulez \n modifier vos informations personnelles ?"
 
 #. module: easy_my_coop_website
