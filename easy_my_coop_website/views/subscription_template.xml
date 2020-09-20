@@ -85,7 +85,7 @@
                                 <div t-attf-class="form-group">
                                     <a class='btn btn-primary' t-if="logged"
                                        t-attf-href="/my/account">You want to
-                                        modify your personnal information ?
+                                        modify your personal information ?
                                     </a>
                                     <br/>
                                 </div>
