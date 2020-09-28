@@ -61,6 +61,7 @@ class TaxShelterDeclaration(models.Model):
                                            "as non eligible")
 
     def _excluded_from_declaration(self, entry):
+        # entry is a subscription.register object
         if entry.date >= self.date_from and entry.date <= self.date_to:
             declarations = self
         else:
