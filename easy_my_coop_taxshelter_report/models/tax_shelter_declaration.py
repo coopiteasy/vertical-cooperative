@@ -62,11 +62,11 @@ class TaxShelterDeclaration(models.Model):
 
     def _excluded_from_declaration(self, entry):
         if entry.date >= self.date_from and entry.date <= self.date_to:
-            declaration = self
+            declarations = self
         else:
-            declaration = self.search([('date_from', '<=', entry.date),
+            declarations = self.search([('date_from', '<=', entry.date),
                                        ('date_to', '>=', entry.date)])
-        if entry.partner_id.id in declaration.excluded_cooperator.ids:
+        if entry.partner_id.id in declarations.mapped('excluded_cooperator').ids:
             return True
         return False
 
