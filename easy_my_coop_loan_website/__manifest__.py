@@ -5,7 +5,11 @@
 {
     "name": "Easy My Coop Loan Issues Website",
     "version": "12.0.1.0.1",
-    "depends": ["easy_my_coop_loan", "easy_my_coop_website", "website"],
+    "depends": [
+        "easy_my_coop_loan",
+        "easy_my_coop_website",
+        "website",
+    ],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
     "website": "http://www.coopiteasy.be",
@@ -14,6 +18,9 @@
     This module implements the subscription page
     for bonds and subordinated loans.
     """,
-    "data": ["data/website_loan_data.xml", "template/loan_issue_template.xml"],
+    "data": [
+        "data/website_loan_data.xml",
+        "template/loan_issue_template.xml"
+    ],
     "installable": True,
 }

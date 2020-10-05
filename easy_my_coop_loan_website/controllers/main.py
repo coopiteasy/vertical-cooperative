@@ -26,6 +26,27 @@ class WebsiteLoanIssueSubscription(http.Controller):
         else:
             return False
 
+    def missing_mandatory_info(self):
+        partner = request.env.user.partner_id
+        if (
+            not partner.bank_ids
+            or not partner.birthdate_date
+            or not partner.street
+            or not partner.city
+            or not partner.zip
+            or not partner.country_id
+            or not partner.gender
+            or not partner.phone
+        ):
+            return False
+        if partner.is_company:
+            if (
+                not partner.company_name
+                or not partner.vat
+            ):
+                return False
+        return True
+
     @http.route(
         ["/subscription/loan_issue_form"],
         type="http",
@@ -34,8 +55,9 @@ class WebsiteLoanIssueSubscription(http.Controller):
     )
     def display_loan_issue_subscription_page(self, **kwargs):
         values = {}
-        partner = request.env.user.partner_id
-        is_company = partner.is_company
+        if not self.missing_mandatory_info():
+            return request.redirect("/my/account")
+        is_company = request.env.user.partner_id.is_company
 
         values = self.fill_values(values, is_company)
         values.update(kwargs=kwargs.items())

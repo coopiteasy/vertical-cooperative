@@ -18,7 +18,7 @@ from odoo.addons.portal.controllers.portal import (
 
 class CooperatorPortalAccount(CustomerPortal):
     CustomerPortal.MANDATORY_BILLING_FIELDS.extend(
-        ["iban", "birthdate_date", "gender"]
+        ["iban", "birthdate_date", "gender", "lang"]
     )
 
     def _prepare_portal_layout_values(self):
@@ -62,6 +62,7 @@ class CooperatorPortalAccount(CustomerPortal):
                 "invoice_count": invoice_count,
                 "iban": iban,
                 "genders": fields_desc["gender"]["selection"],
+                "langs": request.env["res.lang"].search([])
             }
         )
         return values
@@ -81,9 +82,10 @@ class CooperatorPortalAccount(CustomerPortal):
 
     @route(["/my/account"], type="http", auth="user", website=True)
     def account(self, redirect=None, **post):
+        partner = request.env.user.partner_id
+
         res = super(CooperatorPortalAccount, self).account(redirect, **post)
         if not res.qcontext.get("error"):
-            partner = request.env.user.partner_id
             partner_bank = request.env["res.partner.bank"]
             iban = post.get("iban")
             if iban:

@@ -76,6 +76,9 @@ class LoanIssue(models.Model):
         compute="_compute_amounts",
         currency_field="company_currency_id",
     )
+    capital_payment = fields.Selection(
+        [("end", "End"), ("yearly", "Yearly")], string="Capital reimbursement"
+    )
     interest_payment = fields.Selection(
         [("end", "End"), ("yearly", "Yearly")], string="Interest payment"
     )
@@ -181,60 +184,23 @@ class LoanIssue(models.Model):
         self.ensure_one()
         self.write({"state": "closed"})
 
-    def get_interest_vals(self, line, vals):
-        interest_obj = self.env["loan.interest.line"]
-        accrued_amount = line.amount
-        accrued_interest = 0
-        accrued_net_interest = 0
-        accrued_taxes = 0
-        for year in range(1, int(self.loan_term) + 1):
-            interest = accrued_amount * (line.loan_issue_id.rate / 100)
-            accrued_amount += interest
-            taxes_amount = interest * (self.taxes_rate / 100)
-            net_interest = interest - taxes_amount
-            accrued_interest += interest
-            accrued_net_interest += net_interest
-            accrued_taxes += taxes_amount
-            vals["interest"] = interest
-            vals["net_interest"] = net_interest
-            vals["taxes_amount"] = taxes_amount
-            vals["accrued_amount"] = accrued_amount
-            vals["accrued_interest"] = accrued_interest
-            vals["accrued_net_interest"] = accrued_net_interest
-            vals["accrued_taxes"] = accrued_taxes
-            vals["name"] = year
-            interest_obj.create(vals)
-
     @api.multi
     def compute_loan_interest(self):
         self.ensure_one()
-
-        if self.interest_payment == "end":
-            due_date = self.term_date
-        else:
+        loan_term_year = self.loan_term / 12
+        if not (loan_term_year).is_integer():
+            # TODO Handle this case
             raise NotImplementedError(
-                _("Interest payment by year hasn't been " "implemented yet")
-            )
-        for line in self.loan_issue_lines:
-            # TODO remove this line
-            line.interest_lines.unlink()
-            # Please Do not Forget
-            vals = {
-                "issue_line": line.id,
-                "due_date": due_date,
-                "taxes_rate": self.taxes_rate,
-            }
-            self.get_interest_vals(line, vals)
-
-            rounded_term = int(self.loan_term)
-            if self.loan_term - rounded_term > 0:
-                # TODO Handle this case
-                raise NotImplementedError(
-                    _(
-                        "Calculation on non entire year "
-                        "hasn't been implemented yet"
-                    )
+                _(
+                    "Calculation on non entire year "
+                    "hasn't been implemented yet"
                 )
+            )
+
+        lines = self.loan_issue_lines.filtered(
+            lambda record: record.state == "paid"
+        )
+        lines.action_compute_interest()
 
     def _cron_check_subscription_end_date(self):
         today = fields.Date.today()
