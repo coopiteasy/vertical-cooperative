@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="loan_issue_line_document">
+
+        <t t-call="web.external_layout">
+            <t t-set="address">
+                <address t-field="o.partner_id"
+                         t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+            </t>
+            <div class="page mt32">
+                <h2>
+                    <span>Reimbursement table</span>
+                </h2>
+
+                <p name="loan_payment_date_date" class="mt16">
+                    <span>Loan payment received on</span>
+                    <span t-field="o.payment_date"/>
+                </p>
+
+                <table class="table table-sm o_main_table mt16"
+                       name="invoice_line_table">
+                    <thead>
+                        <tr>
+                            <t t-set="colspan" t-value="5"/>
+                            <th class="text-left">Year</th>
+                            <th class="text-right">Subscribed amount</th>
+                            <th class="text-right">Accrued amount</th>
+                            <th class="text-right">Gross interest</th>
+                            <th class="text-right">Accrued gross interest</th>
+                            <th class="text-right">Net interest</th>
+                            <th class="text-right">Tax amount</th>
+                            <th class="text-right">Due amount</th>
+                            <th class="text-right">State</th>
+                        </tr>
+                    </thead>
+                    <tbody class="invoice_tbody">
+                        <t t-foreach="o.interest_lines" t-as="line">
+                            <tr>
+                                <td class="text-left" name="name">
+                                    <span t-field="line.name"/>
+                                </td>
+                                <td class="text-right" name="subscribed_amount">
+                                    <span t-field="line.amount"/>
+                                </td>
+                                <td class="text-right" name="accrued_amount">
+                                    <span t-field="line.accrued_amount"/>
+                                </td>
+                                <td class="text-right" name="interest">
+                                    <span t-field="line.interest"
+                                          t-options='{"widget": "monetary", "display_currency": o.loan_issue_id.company_currency_id}'/>
+                                </td>
+                                <td class="text-right" name="accrued_interest">
+                                    <span t-field="line.accrued_interest"
+                                          t-options='{"widget": "monetary", "display_currency": o.loan_issue_id.company_currency_id}'/>
+                                </td>
+                                <td class="text-right" name="net_interest">
+                                    <span t-field="line.net_interest"
+                                          t-options='{"widget": "monetary", "display_currency": o.loan_issue_id.company_currency_id}'/>
+                                </td>
+                                <td class="text-right" name="taxes_amount">
+                                    <span t-field="line.taxes_amount"
+                                          t-options='{"widget": "monetary", "display_currency": o.loan_issue_id.company_currency_id}'/>
+                                </td>
+                                <td class="text-right" name="due_amount">
+                                    <span t-field="line.due_amount"
+                                          t-options='{"widget": "monetary", "display_currency": o.loan_issue_id.company_currency_id}'/>
+                                </td>
+                                <td class="text-right" name="due_date">
+                                    <span t-field="line.due_date"/>
+                                </td>
+                                <td class="text-right" name="state">
+                                    <span t-field="line.state"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+
+                <div class="row mt32">
+                    <div name="board_commitee" class="col-sm-6">
+                        <p>
+                            For the board of<span t-field="o.company_id.name"/>.
+                        </p>
+                        <p>
+                            <strong>
+                                <span t-field="o.company_id.board_representative"/>
+                            </strong>
+                        </p>
+                        <img t-if="o.company_id.signature_scan"
+                             t-attf-class="mt16 w-50"
+                             t-attf-style="{{ 'min-width: 100px; max-width: 250px' if report_type == 'pdf' else '' }}"
+                             t-att-src="'data:image/png;base64,%s' % o.company_id.signature_scan.decode()"/>
+                    </div>
+                </div>
+
+            </div>
+        </t>
+    </template>
+
+
+    <template id="loan_issue_line">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="easy_my_coop_loan.loan_issue_line_document"
+                   t-lang="o.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>

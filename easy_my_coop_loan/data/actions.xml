@@ -53,4 +53,15 @@ records.action_paid()
 records.action_draft()
         </field>
     </record>
+
+    <report
+        id="action_loan_issue_line_report"
+        model="loan.issue.line"
+        string="Reimbursment table report"
+        report_type="qweb-pdf"
+        name="easy_my_coop_loan.loan_issue_line"
+        file="easy_my_coop_loan.loan_issue_line_report.xml"
+        multi="True"
+        menu="True"
+    />
 </odoo>

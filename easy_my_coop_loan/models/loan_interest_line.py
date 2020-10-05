@@ -10,6 +10,9 @@ class LoanInterestLine(models.Model):
     _description = "Loan Interest Line"
 
     name = fields.Integer(string="Year", required=True)
+    loan_issue_id = fields.Many2one(
+        related="issue_line.loan_issue_id", store=True, readlonly=True
+    )
     issue_line = fields.Many2one(
         "loan.issue.line", string="Subscribed loan", required=True
     )
@@ -58,6 +61,12 @@ class LoanInterestLine(models.Model):
         currency_field="company_currency_id",
         readonly=True,
     )
+    due_loan_amount = fields.Monetary(
+        string="Due loan amount", currency_field="company_currency_id"
+    )
+    due_amount = fields.Monetary(
+        string="Total due amount", currency_field="company_currency_id"
+    )
     due_date = fields.Date(string="Due date")
     company_currency_id = fields.Many2one(
         "res.currency",
@@ -74,8 +83,9 @@ class LoanInterestLine(models.Model):
     state = fields.Selection(
         [
             ("draft", "Draft"),
+            ("due_fy", "Due in the year"),
             ("due", "Due"),
-            ("requested", "Payment requested"),
+            ("scheduled", "Payment scheduled"),
             ("donation", "Donation"),
             ("paid", "Paid"),
         ],

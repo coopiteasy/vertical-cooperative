@@ -92,7 +92,7 @@
 
     <p>Amount: ${object.amount} ${object.loan_issue_id.company_currency_id.symbol}</p>
     <p>Account number: ${object.company_id.bank_ids[0].sanitized_acc_number}</p>
-    <p>Communication: ${object.loan_issue_id.name} + ${object.partner_id.name}</p>
+    <p>Communication: ${object.reference}</p>
 
     <p>Sustainably your,</p>
     <p>${object.company_id.name}.</p>
@@ -125,8 +125,8 @@
 </div>
             ]]></field>
         </record>
-
-
+	</data>
+	<data>
         <record id="email_template_loan_confirm_paid" model="mail.template">
             <field name="name">Loan Issue Confirm Payment Received - Send by Email</field>
             <field name="email_from">
@@ -140,6 +140,8 @@
             <field name="model_id"
                    ref="easy_my_coop_loan.model_loan_issue_line"/>
             <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="easy_my_coop_loan.action_loan_issue_line_report"/>
+            <field name="report_name">Reimbursement table report</field>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="easy_my_coop" eval="True"/>
             <field name="body_html"><![CDATA[

@@ -1,0 +1,22 @@
+<odoo>
+
+    <record id="view_loan_issue_line_account_form" model="ir.ui.view">
+        <field name="name">loan.issue.line.form</field>
+        <field name="model">loan.issue.line</field>
+        <field name="inherit_id" ref="easy_my_coop_loan.view_loan_issue_line_form"/>
+        <field name="arch" type="xml">
+            <page name="interest_lines" position="after">
+                <page name="accounting" string="Accounting">
+                    <group>
+                        <group>
+                            <field name="awaiting_move_id" readonly="True"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+
+</odoo>

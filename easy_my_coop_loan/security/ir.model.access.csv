@@ -1,7 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_loan_issue_user,loan.issue,model_loan_issue,base.group_user,1,0,0,0
-access_loan_issue_manager,loan.issue,model_loan_issue,easy_my_coop.group_easy_my_coop_manager,1,1,1,0
-access_loan_issue_line_user,loan.issue.line,model_loan_issue_line,base.group_user,1,0,0,0
-access_loan_issue_line_manager,loan.issue.line,model_loan_issue_line,easy_my_coop.group_easy_my_coop_user,1,1,1,0
-access_loan_interest_line_user,loan.interest.line,model_loan_interest_line,base.group_user,1,0,0,0
-access_loan_interest_line_manager,loan.interest.line,model_loan_interest_line,easy_my_coop.group_easy_my_coop_manager,1,1,1,0
+access_loan_issue_base_user,loan.issue,model_loan_issue,base.group_user,1,0,0,0
+access_loan_issue_emc_manager,loan.issue,model_loan_issue,easy_my_coop.group_easy_my_coop_manager,1,1,1,0
+access_loan_issue_line_base_user,loan.issue.line,model_loan_issue_line,base.group_user,1,0,0,0
+access_loan_issue_line_emc_user,loan.issue.line,model_loan_issue_line,easy_my_coop.group_easy_my_coop_user,1,1,1,0
+access_loan_interest_line_base_user,loan.interest.line,model_loan_interest_line,base.group_user,1,0,0,0
+access_loan_interest_line_emc_user,loan.interest.line,model_loan_interest_line,easy_my_coop.group_easy_my_coop_user,1,1,1,0
+access_loan_interest_line_emc_manager,loan.interest.line,model_loan_interest_line,easy_my_coop.group_easy_my_coop_manager,1,1,1,1
