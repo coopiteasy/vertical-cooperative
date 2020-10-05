@@ -28,6 +28,20 @@
                     </t>
                 </select>
             </div>
+            <div t-attf-class="form-group #{error.get('lang') and 'has-error' or ''} col-xl-6">
+	            <label class="col-form-label" for="lang">Language</label>
+	            <select name="lang"
+	                    t-attf-class="form-control #{error.get('lang') or ''}">
+	                <option value=""></option>
+	                <t t-foreach="langs or []"
+	                   t-as="langue">
+	                    <option t-att-value="langue.code"
+	                            t-att-selected="langue.code == partner.lang">
+	                        <t t-esc="langue.name"/>
+	                    </option>
+	                </t>
+	            </select>
+	        </div>
             <div t-attf-class="form-group #{error.get('birthdate_date') and 'o_has_error' or ''} col-xl-6">
                 <label class="col-form-label" for="birthdate_date">Birthdate
                 </label>
