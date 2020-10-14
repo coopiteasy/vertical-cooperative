@@ -115,6 +115,16 @@ class LoanIssueLine(models.Model):
             line.write({"state": "cancelled"})
 
     @api.multi
+    def get_confirm_paid_email_template(self):
+        self.ensure_one()
+        return self.env.ref(
+            "easy_my_coop_loan.email_template_loan_confirm_paid"
+        )
+
+    @api.multi
     def action_paid(self):
         for line in self:
+            loan_email_template = self.get_confirm_paid_email_template()
+            loan_email_template.sudo().send_mail(line.id, force_send=False)
+
             line.write({"state": "paid"})
