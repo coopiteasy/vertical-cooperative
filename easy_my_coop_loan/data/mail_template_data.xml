@@ -62,6 +62,8 @@
 </div>
             ]]></field>
         </record>
+
+
         <!--Request the payment of the subscribed loan issue -->
         <record id="loan_issue_payment_request" model="mail.template">
             <field name="name">Loan Issue Payment Request - Send by Email
@@ -121,6 +123,58 @@
         <img src=${object.company_id.logo_url}>
     </div>
 </div>
+            ]]></field>
+        </record>
+
+
+        <record id="email_template_loan_confirm_paid" model="mail.template">
+            <field name="name">Loan Issue Confirm Payment Received - Send by Email</field>
+            <field name="email_from">
+                ${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}
+            </field>
+            <field name="subject">${object.company_id.name} Payment received (Ref ${object.loan_issue_id.name or 'n/a'})</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field name="reply_to">
+                ${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}
+            </field>
+            <field name="model_id"
+                   ref="easy_my_coop_loan.model_loan_issue_line"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="easy_my_coop" eval="True"/>
+            <field name="body_html"><![CDATA[
+    <div style="font-size:13px;font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; background-color: rgb(255, 255, 255);">
+    <p style="margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;color: rgb(34, 34, 34); font-size: 12px;">Bonjour ${object.partner_id.name},</p>
+    <p style="margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">Par la présente, nous vous confirmons que nous avons bien reçu de votre part le versement pour la souscription des obligations&nbsp;FinMip</p>
+    <table class="table table-bordered" style="border-style:solid;margin:0 0 1rem 0;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-top-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-width:1px;background-color:transparent;width:100%;border-collapse:collapse;"><tbody><tr><td style="border-style:solid;padding:0.75rem;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-color:rgb(222, 226, 230);border-top-width:1px;vertical-align:top;"><span style="color: rgb(34, 34, 34); font-family: &quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif; font-size: 12px;">${object.partner_id.name}</span><br></td><td style="border-style:solid;padding:0.75rem;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-color:rgb(222, 226, 230);border-top-width:1px;vertical-align:top;">${object.amount}<br></td><td style="border-style:solid;padding:0.75rem;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-color:rgb(222, 226, 230);border-top-width:1px;vertical-align:top;">${object.loan_issue_id.display_name}<br></td><td style="border-style:solid;padding:0.75rem;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-color:rgb(222, 226, 230);border-top-width:1px;vertical-align:top;">${object.quantity}<br></td></tr></tbody></table>
+    <p style="margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">Comme prévu dans la note d'information (reprise en attaché), ces obligations vous seront remboursées dans les 15 jours ouvrables qui suivent :</p><ul style="margin:0px 0 1rem 0;"><li><p style="margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">&nbsp;p<span style="font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; font-style: initial; font-variant-ligatures: initial; font-variant-caps: initial; font-weight: initial; text-align: inherit;">our les </span><span style="font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; font-style: initial; font-variant-ligatures: initial; font-variant-caps: initial; text-align: inherit;"><b style="font-weight:bolder;">obligations à 5 ans</b></span><span style="font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; font-style: initial; font-variant-ligatures: initial; font-variant-caps: initial; font-weight: initial; text-align: inherit;">, assorties d'un intérêt annuel brut de </span><span style="font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; font-style: initial; font-variant-ligatures: initial; font-variant-caps: initial; text-align: inherit;"><b style="font-weight:bolder;">0,85%</b><b style="font-weight:bolder;"><br></b></span></p></li></ul><ul style="margin:0px 0 1rem 0;"><li><p style="margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">pour les <b style="font-weight:bolder;">obligations à 10 ans</b>, assorties d'un intérêt annuel brut de<b style="font-weight:bolder;"> 1,25%</b><br></p></li></ul>
+    <p style="margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">Un précompte mobilier de 30 % sera retenu à la source sur les intérêts.</p>
+    <p style="margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">Si vous avez la moindre question, n'hésitez pas à nous contacter.</p><p style="margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">Nous vous remercions grandement pour votre soutien.</p>
+    <p style="margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;color: rgb(34, 34, 34); font-size: 12px;">
+
+<p>${object.company_id.name}.</p>
+
+    % if object.company_id.street:
+        ${object.company_id.street}
+    % endif
+    % if object.company_id.street2:
+        ${object.company_id.street2}<br/>
+    % endif
+    % if object.company_id.city or object.company_id.zip:
+        ${object.company_id.zip} ${object.company_id.city}<br/>
+    % endif
+    % if object.company_id.country_id:
+        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>
+    % endif
+    % if object.company_id.phone:
+        Phone:&nbsp; ${object.company_id.phone}
+    % endif
+
+    % if object.company_id.website:
+        <div>
+            Web :&nbsp;<a href="${object.company_id.website}">${object.company_id.website}</a>
+        </div>
+    %endif
             ]]></field>
         </record>
 
