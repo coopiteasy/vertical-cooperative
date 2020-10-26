@@ -336,6 +336,9 @@ class WebsiteSubscription(http.Controller):
                     )
                     return request.render(redirect, values)
 
+        # There's no issue with the email, so we can remember the confirmation email
+        values["confirm_email"] = email
+
         company = request.website.company_id
         if company.allow_id_card_upload:
             if not post_file:
