@@ -129,6 +129,7 @@
 
         <record id="email_template_loan_confirm_paid" model="mail.template">
             <field name="name">Loan Issue Confirm Payment Received - Send by Email</field>
+            <field name="template_key">loan_payment_req</field>
             <field name="email_from">
                 ${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}
             </field>
