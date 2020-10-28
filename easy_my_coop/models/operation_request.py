@@ -23,6 +23,7 @@ class operation_request(models.Model):
 
     request_date = fields.Date(string='Request date',
                                default=lambda self: self.get_date_now())
+    effective_date = fields.Date(string='Effective date')
     partner_id = fields.Many2one('res.partner',
                                  string='Cooperator',
                                  domain=[('member', '=', True)],
@@ -86,6 +87,15 @@ class operation_request(models.Model):
 
     invoice = fields.Many2one('account.invoice',
                               string="Invoice")
+
+    @api.multi
+    @api.constrains("effective_date")
+    def _constrain_effective_date(self):
+        for obj in self:
+            if obj.effective_date > fields.Datetime.now():
+                raise ValidationError(
+                    _("The effective date can not be in the future.")
+                )
 
     @api.multi
     def approve_operation(self):
@@ -219,7 +229,11 @@ class operation_request(models.Model):
     def execute_operation(self):
         self.ensure_one()
 
-        effective_date = self.get_date_now()
+        if self.effective_date:
+            effective_date = self.effective_date
+        else:
+            effective_date = self.get_date_now()
+            self.effective_date = effective_date
         sub_request = self.env['subscription.request']
 
         for rec in self:
