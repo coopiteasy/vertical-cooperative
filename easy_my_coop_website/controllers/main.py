@@ -8,6 +8,10 @@ from odoo.tools.translate import _
 
 # Only use for behavior, don't stock it
 _TECHNICAL = ["view_from", "view_callback"]
+
+# transient fields used to compute the address field
+_EXTRA_FIELDS = ["street_name", "house_number"]
+
 # Allow in description
 _BLACKLIST = [
     "id",
@@ -27,7 +31,8 @@ _COOP_FORM_FIELD = [
     "birthdate",
     "iban",
     "share_product_id",
-    "address",
+    "street_name",
+    "house_number",
     "city",
     "zip_code",
     "country_id",
@@ -50,7 +55,8 @@ _COMPANY_FORM_FIELD = [
     "birthdate",
     "iban",
     "share_product_id",
-    "address",
+    "street_name",
+    "house_number",
     "city",
     "zip_code",
     "country_id",
@@ -324,6 +330,9 @@ class WebsiteSubscription(http.Controller):
                     )
                     return request.render(redirect, values)
 
+        # There's no issue with the email, so we can remember the confirmation email
+        values["confirm_email"] = email
+
         company = request.website.company_id
         if company.allow_id_card_upload:
             if not post_file:
@@ -412,6 +421,8 @@ class WebsiteSubscription(http.Controller):
                 and field_name not in _BLACKLIST
             ):
                 values[field_name] = field_value
+            elif field_name in _EXTRA_FIELDS and field_name not in _BLACKLIST:
+                values[field_name] = field_value
             # allow to add some free fields or blacklisted field like ID
             elif field_name not in _TECHNICAL:
                 post_description.append(
@@ -457,6 +468,13 @@ class WebsiteSubscription(http.Controller):
         values["source"] = "website"
 
         values["share_product_id"] = self.get_selected_share(kwargs).id
+
+        values["address"] = "{street}, {number}".format(
+            street=kwargs.get("street_name", ""),
+            number=kwargs.get("house_number", ""),
+        )
+        del values["street_name"]
+        del values["house_number"]
 
         if is_company:
             if kwargs.get("company_register_number", is_company):
