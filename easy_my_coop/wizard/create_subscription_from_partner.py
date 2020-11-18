@@ -133,7 +133,6 @@ class PartnerCreateSubscription(models.TransientModel):
 
         cooperator = self.cooperator
         vals = {'partner_id': cooperator.id,
-                'cooperator': True,
                 'share_product_id': self.share_product.id,
                 'ordered_parts': self.share_qty,
                 'user_id': self.env.uid,
@@ -148,6 +147,7 @@ class PartnerCreateSubscription(models.TransientModel):
         if self.is_company:
             vals['company_name'] = cooperator.name
             vals['company_email'] = cooperator.email
+            vals['email'] = self.representative_email
             vals['name'] = '/'
             vals['company_register_number'] = self.register_number
             vals['is_company'] = True
