@@ -201,9 +201,19 @@ class ResPartner(models.Model):
         return self.child_ids.filtered('representative')
 
     def get_cooperator_from_email(self, email):
-        return self.search([('cooperator', '=', True),
-                            ('email', '=', email)])
+        partner = self.search([('cooperator', '=', True),
+                               ('email', '=', email)], limit=1)
+        if not partner:
+            partner = self.search([('email', '=', email)], limit=1)
+        return partner
 
     def get_cooperator_from_crn(self, comp_reg_number):
-        return self.search([('cooperator', '=', True),
-                            ('company_register_number', '=', comp_reg_number)])
+        partner = self.search([
+            ('cooperator', '=', True),
+            ('company_register_number', '=', comp_reg_number)
+            ], limit=1)
+        if not partner:
+            partner = self.search([
+                ('company_register_number', '=', comp_reg_number)
+                ], limit=1)
+        return partner

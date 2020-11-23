@@ -48,18 +48,12 @@ class subscription_request(models.Model):
                 cooperator = partner_obj.get_cooperator_from_email(
                                             vals.get('email'))
             if cooperator:
-                # TODO remove the following line of code once it has
-                # been found a way to avoid double entry
-                cooperator = cooperator[0]
                 if cooperator.member:
                     vals['type'] = 'increase'
                     vals['already_cooperator'] = True
                 else:
                     vals['type'] = 'subscription'
                 vals['partner_id'] = cooperator.id
-
-                if not cooperator.cooperator:
-                    cooperator.write({'cooperator': True})
         else:
             cooperator_id = vals.get('partner_id')
             cooperator = partner_obj.browse(cooperator_id)
@@ -80,9 +74,12 @@ class subscription_request(models.Model):
         if not vals.get('partner_id'):
             cooperator = self.env['res.partner'].get_cooperator_from_crn(vals.get('company_register_number'))
             if cooperator:
+                if cooperator.member:
+                    vals['type'] = 'increase'
+                    vals['already_cooperator'] = True
+                else:
+                    vals['type'] = 'subscription'
                 vals['partner_id'] = cooperator.id
-                vals['type'] = 'increase'
-                vals['already_cooperator'] = True
         subscr_request = super(subscription_request, self).create(vals)
 
         confirmation_mail_template = self.env.ref('easy_my_coop.email_template_confirmation_company', False)
