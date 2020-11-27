@@ -1013,7 +1013,7 @@ msgstr "Marca si ja no es socia activa"
 #. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_res_company__display_data_policy_approval
 msgid "Choose to display a data policy checkbox on the cooperator website form."
-msgstr ""
+msgstr "Posa la politica de protecció de dades al formulari de la web"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_res_company__display_internal_rules_approval
@@ -1130,7 +1130,7 @@ msgstr "Persona de contacte"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__coop_email_contact
 msgid "Contact email address for the cooperator"
-msgstr ""
+msgstr "Correu electrònic per a persones sòcies"
 
 #. module: easy_my_coop
 #: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_main_coop
@@ -1223,7 +1223,7 @@ msgstr ""
 #. module: easy_my_coop
 #: model:ir.actions.act_window,name:easy_my_coop.action_partner_cooperator_candidate_form
 msgid "Cooperator candidates"
-msgstr ""
+msgstr "Persones apuntades per entrar a la cooperativa"
 
 #. module: easy_my_coop
 #: model:ir.actions.report,name:easy_my_coop.action_cooperator_report_certificat
@@ -1271,7 +1271,7 @@ msgstr "Crea Inscripció des de Contacte"
 #. module: easy_my_coop
 #: model_terms:ir.actions.act_window,help:easy_my_coop.action_invoice_tree_coop
 msgid "Create a customer invoice"
-msgstr ""
+msgstr "Crea una factura per al client"
 
 #. module: easy_my_coop
 #: model_terms:ir.actions.act_window,help:easy_my_coop.action_invoice_tree_coop
@@ -1281,7 +1281,7 @@ msgstr ""
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__create_user
 msgid "Create user for cooperator"
-msgstr ""
+msgstr "Crea usuari per a socia"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__create_uid
@@ -1343,7 +1343,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "Didier"
-msgstr "Joan"
+msgstr "Patrick"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__display_data_policy_approval
@@ -1410,7 +1410,7 @@ msgstr ""
 #. module: easy_my_coop
 #: model:ir.ui.menu,name:easy_my_coop.menu_main_easy_my_coop
 msgid "Easy-My Coop"
-msgstr ""
+msgstr "Gestió de Sòcies"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_company_inherit_form2
