@@ -837,7 +837,7 @@ msgstr "Aprova"
 #. module: easy_my_coop
 #: selection:operation.request,state:0
 msgid "Approved"
-msgstr ""
+msgstr "Aprobat"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_partner__data_policy_approved
@@ -911,12 +911,12 @@ msgstr ""
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__board_representative
 msgid "Board representative name"
-msgstr ""
+msgstr "Nom President"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__signature_scan
 msgid "Board representative signature"
-msgstr ""
+msgstr "Firma president"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__bottom_logo1
@@ -938,7 +938,7 @@ msgstr "Peiró"
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "Bruxelles"
-msgstr "Mataró"
+msgstr "Manresa"
 
 #. module: easy_my_coop
 #: selection:subscription.request,source:0
@@ -982,7 +982,7 @@ msgstr "Factura cancel·lada"
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__capital_release_request
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.subscription_request_form
 msgid "Capital release request"
-msgstr ""
+msgstr "Petició aportació capital social"
 
 #. module: easy_my_coop
 #: model:mail.template,report_name:easy_my_coop.email_template_certificat
@@ -996,19 +996,19 @@ msgstr ""
 #: model:ir.model.fields,help:easy_my_coop.field_res_partner__cooperator
 #: model:ir.model.fields,help:easy_my_coop.field_res_users__cooperator
 msgid "Check this box if this contact is a cooperator (effective or not)."
-msgstr ""
+msgstr "Marca si auqest contacte es socià de la cooperativa (sigui actiu o no)"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_res_partner__member
 #: model:ir.model.fields,help:easy_my_coop.field_res_users__member
 msgid "Check this box if this cooperator is an effective member."
-msgstr ""
+msgstr "Marca si es una persona socia aciva"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_res_partner__old_member
 #: model:ir.model.fields,help:easy_my_coop.field_res_users__old_member
 msgid "Check this box if this cooperator is no more an effective member."
-msgstr ""
+msgstr "Marca si ja no es socia activa"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_res_company__display_data_policy_approval
@@ -1050,7 +1050,7 @@ msgstr "Empreses"
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register__company_id
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__company_id
 msgid "Company"
-msgstr "Companyia"
+msgstr "Cooperativa"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_share_line__company_currency_id
@@ -1062,42 +1062,42 @@ msgstr "Moneda de l'empresa"
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "Company Info"
-msgstr "Informació de la companyia"
+msgstr "Informació de la cooperativa"
 
 #. modules: easy_my_coop_website, easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_partner__company_register_number
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_users__company_register_number
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "Company Register Number"
-msgstr "Codi de registre de la companyia"
+msgstr "Codi de Registre General de Cooperatives de Catalunya"
 
 #. module: easy_my_coop
 #: model:product.category,name:easy_my_coop.product_category_company_share
 msgid "Company Share"
-msgstr ""
+msgstr "Títol nominatiu cooperativa"
 
 #. modules: easy_my_coop_website, easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__company_email
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "Company email"
-msgstr "Correu de la companyia"
+msgstr "Correu de la cooperativa"
 
 #. modules: easy_my_coop_website, easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__company_name
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "Company name"
-msgstr "Nom de la companyia"
+msgstr "Nom de la cooperativa"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__company_register_number
 msgid "Company register number"
-msgstr ""
+msgstr "Nif cooperativa"
 
 #. module: easy_my_coop
 #: model:ir.actions.act_window,name:easy_my_coop.action_company_representative_form
 #: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_company_representative
 msgid "Company representative"
-msgstr ""
+msgstr "President cooperativa"
 
 #. modules: easy_my_coop_website, easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__company_type
@@ -1179,7 +1179,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.subscription_request_form
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_share_line_filter
 msgid "Cooperator"
-msgstr ""
+msgstr "Socià"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__property_cooperator_account
@@ -1190,18 +1190,18 @@ msgstr ""
 #: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_cooperator_candidate
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_res_partner_filter_coop
 msgid "Cooperator Candidates"
-msgstr ""
+msgstr "Presones que volen ser socià"
 
 #. module: easy_my_coop
 #: model:ir.actions.act_window,name:easy_my_coop.action_invoice_tree_coop
 msgid "Cooperator Invoices"
-msgstr ""
+msgstr "Facatua per a socià"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_partner__cooperator_register_number
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_users__cooperator_register_number
 msgid "Cooperator Number"
-msgstr ""
+msgstr "Nombre Sociá"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_res_partner_filter_coop
@@ -1228,12 +1228,12 @@ msgstr ""
 #. module: easy_my_coop
 #: model:ir.actions.report,name:easy_my_coop.action_cooperator_report_certificat
 msgid "Cooperator certificat"
-msgstr ""
+msgstr "Certificat Socià"
 
 #. module: easy_my_coop
 #: model:ir.actions.report,name:easy_my_coop.action_report_cooperator_register
 msgid "Cooperator register"
-msgstr ""
+msgstr "Registre persones socies"
 
 #. module: easy_my_coop
 #: model:account.account,name:easy_my_coop.account_cooperator_demo
@@ -1241,7 +1241,7 @@ msgstr ""
 #: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_cooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_res_partner_filter_coop
 msgid "Cooperators"
-msgstr ""
+msgstr "Persones Sòcies"
 
 #. modules: easy_my_coop_website, easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__country_id
@@ -1261,12 +1261,12 @@ msgstr "País..."
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_create_subscription
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_partner_form_easy_my_coop
 msgid "Create Subscription"
-msgstr ""
+msgstr "Crea Inscripció"
 
 #. module: easy_my_coop
 #: model:ir.model,name:easy_my_coop.model_partner_create_subscription
 msgid "Create Subscription From Partner"
-msgstr ""
+msgstr "Crea Inscripció des de Contacte"
 
 #. module: easy_my_coop
 #: model_terms:ir.actions.act_window,help:easy_my_coop.action_invoice_tree_coop
