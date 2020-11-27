@@ -2764,7 +2764,7 @@ msgstr ""
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
 msgid "is recorded in the register of cooperators under number"
-msgstr ""
+msgstr "consta al registre de persones sòcies amb nombre"
 
 #. module: easy_my_coop
 #: model:product.template,weight_uom_name:easy_my_coop.product_template_share_type_1_demo
