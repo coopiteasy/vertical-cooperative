@@ -677,12 +677,12 @@ msgstr ""
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
 msgid "<span> share(s) </span>"
-msgstr "<span>participacions</span>"
+msgstr "<span>títols</span>"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_register_G001
 msgid "<span>COOPERATOR REGISTER</span>"
-msgstr "<span>REGISTRE DE SOCIES</span>"
+msgstr "<span>REGISTRE DE SÒCIES</span>"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
@@ -1435,7 +1435,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_register_G001
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_share_line_filter
 msgid "Effective date"
-msgstr "Data ingres"
+msgstr "Data ingrés"
 
 #. modules: easy_my_coop_website, easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_partner_create_subscription__email
@@ -1488,7 +1488,7 @@ msgstr ""
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
 msgid "For the board of"
-msgstr "En representació de "
+msgstr "Signa en representació de "
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_product_product__force_min_qty
@@ -1807,7 +1807,7 @@ msgstr ""
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_register_G001
 msgid "Number"
-msgstr "Número"
+msgstr "Nombre"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register__name
@@ -2242,7 +2242,7 @@ msgstr ""
 #: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_share_product
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
 msgid "Share type"
-msgstr "Tipus Capital Social"
+msgstr "Tipus Sòcia"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__share_short_name
@@ -2347,7 +2347,7 @@ msgstr ""
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_subscription_G001
 msgid "Subscription date"
-msgstr ""
+msgstr "Data ingrés"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__date
