@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-02-12 16:36+0000\n"
-"PO-Revision-Date: 2020-02-14 15:17+0100\n"
+"PO-Revision-Date: 2020-11-29 09:17+0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
 "Language: ca_ES\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. module: easy_my_coop
 #: model:mail.template,body_html:easy_my_coop.email_template_certificat_increase
@@ -635,7 +635,7 @@ msgstr ""
 #. module: easy_my_coop
 #: model:mail.template,subject:easy_my_coop.email_template_release_capital
 msgid "${object.company_id.name} Request to Release Capital (Ref ${object.number or 'n/a'})"
-msgstr ""
+msgstr "${object.company_id.name} Sol·licitud ingrés de capital (Ref ${object.number or 'n/a'})"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.cooperator_thanks
@@ -663,7 +663,7 @@ msgstr "08301"
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "25"
-msgstr ""
+msgstr "50"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
@@ -697,7 +697,7 @@ msgstr "<span>Descripció</span>"
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
 msgid "<span>Part Type</span>"
-msgstr "<span>Tipus de participació</span>"
+msgstr "<span>Tipus de títol</span>"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
@@ -714,8 +714,6 @@ msgstr "<span>REGISTRE DE INSCRIPCIONS</span>"
 msgid "<span> Certificate generated on </span>"
 msgstr "<span> Certificat títol generat el </span>"
 
-
-
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
 msgid "<span>Source Document</span>"
@@ -724,7 +722,7 @@ msgstr "<span>Document original</span>"
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
 msgid "<span>Unit Price</span>"
-msgstr "<span>Preu unitari</span>"
+msgstr "<span>Preu Títul</span>"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
@@ -734,12 +732,12 @@ msgstr ""
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
 msgid "<strong class=\"text-center\">Scan me with your banking app.</strong><br/><br/>"
-msgstr ""
+msgstr "<strong class=\"text-center\">Escaneu-me amb la vostra aplicació bancària.</strong><br/><br/>"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
 msgid "<strong class=\"text-center\">The SEPA QR Code informations are not set correctly.</strong><br/>"
-msgstr ""
+msgstr "<strong class =\"text-center \">La informació del codi QR SEPA no està configurada correctament.</strong> <br/>"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
@@ -754,12 +752,12 @@ msgstr "<strong>Descripció:</strong>"
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
 msgid "<strong>Request Date:</strong>"
-msgstr ""
+msgstr "<strong>Data de sol·licitud:</strong>"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
 msgid "<strong>Structured Communication:</strong>"
-msgstr ""
+msgstr "<strong>Comunicació estructurada:</strong>"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
@@ -770,19 +768,19 @@ msgstr ""
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
 msgid "<strong>Your Contact:</strong>"
-msgstr ""
+msgstr "<strong>El vostre contacte:</strong>"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/wizard/create_subscription_from_partner.py:175
 #, python-format
 msgid "A person can't be representative of two different companies."
-msgstr ""
+msgstr "Una persona no pot ser representant de dues empreses diferents."
 
 #. module: easy_my_coop
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
 msgid "ASBL"
-msgstr ""
+msgstr "Organització sense ànim de lucre"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__iban
@@ -792,27 +790,27 @@ msgstr "Número de compte"
 #. module: easy_my_coop
 #: sql_constraint:res.partner.bank:0
 msgid "Account Number must be unique!"
-msgstr ""
+msgstr "El número de compte ha de ser únic."
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__activities_address
 msgid "Activities address"
-msgstr ""
+msgstr "Adreça de les activitats"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__activities_city
 msgid "Activities city"
-msgstr ""
+msgstr "Ciutat Activitats"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__activities_country_id
 msgid "Activities country"
-msgstr ""
+msgstr "País Activitats"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__activities_zip_code
 msgid "Activities zip Code"
-msgstr ""
+msgstr "Codi postal Activitats"
 
 #. modules: easy_my_coop_website, easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__address
@@ -824,7 +822,7 @@ msgstr "Adreça"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__allow_id_card_upload
 msgid "Allow ID Card upload"
-msgstr ""
+msgstr "Permet la càrrega de la targeta d'identitat"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
@@ -850,14 +848,14 @@ msgstr "Aprobat"
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_partner__data_policy_approved
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_users__data_policy_approved
 msgid "Approved Data Policy"
-msgstr ""
+msgstr "Política de dades aprovada"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_partner__internal_rules_approved
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_users__internal_rules_approved
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__internal_rules_approved
 msgid "Approved Internal Rules"
-msgstr ""
+msgstr "Reglament intern aprobat"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
@@ -923,7 +921,7 @@ msgstr "Nom President"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__signature_scan
 msgid "Board representative signature"
-msgstr "Firma president"
+msgstr "Signatura president"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__bottom_logo1
@@ -956,13 +954,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:easy_my_coop.field_product_product__by_company
 #: model:ir.model.fields,field_description:easy_my_coop.field_product_template__by_company
 msgid "Can be subscribed by companies?"
-msgstr ""
+msgstr "Es poden inscriure persones juridiques?"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_product_product__by_individual
 #: model:ir.model.fields,field_description:easy_my_coop.field_product_template__by_individual
 msgid "Can be subscribed by individuals?"
-msgstr ""
+msgstr "Es poden inscriure persones fisiques?"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.operation_request_form
@@ -1003,29 +1001,29 @@ msgstr ""
 #: model:ir.model.fields,help:easy_my_coop.field_res_partner__cooperator
 #: model:ir.model.fields,help:easy_my_coop.field_res_users__cooperator
 msgid "Check this box if this contact is a cooperator (effective or not)."
-msgstr "Marca si auqest contacte es socià de la cooperativa (sigui actiu o no)"
+msgstr "Marca si auquest contacte es socià de la cooperativa (sigui actiu o no)"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_res_partner__member
 #: model:ir.model.fields,help:easy_my_coop.field_res_users__member
 msgid "Check this box if this cooperator is an effective member."
-msgstr "Marca si es una persona socia aciva"
+msgstr "Marca si es una sòcia activa"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_res_partner__old_member
 #: model:ir.model.fields,help:easy_my_coop.field_res_users__old_member
 msgid "Check this box if this cooperator is no more an effective member."
-msgstr "Marca si ja no es socia activa"
+msgstr "Marca si ja no es sòcia activa"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_res_company__display_data_policy_approval
 msgid "Choose to display a data policy checkbox on the cooperator website form."
-msgstr "Posa la politica de protecció de dades al formulari de la web"
+msgstr "Posa la política de protecció de dades al formulari de la web"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_res_company__display_internal_rules_approval
 msgid "Choose to display an internal rules checkbox on the cooperator website form."
-msgstr ""
+msgstr "Trieu mostrar una casella de selecció del reglament intern al formulari del lloc web de les socies."
 
 #. modules: easy_my_coop_website, easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__city
@@ -1039,12 +1037,12 @@ msgstr "Ciutat"
 #: model_terms:ir.actions.act_window,help:easy_my_coop.action_partner_cooperator_candidate_form
 #: model_terms:ir.actions.act_window,help:easy_my_coop.action_partner_cooperator_form
 msgid "Click to add a contact in your address book."
-msgstr ""
+msgstr "Feu clic per afegir un contacte a la llibreta d'adreces."
 
 #. module: easy_my_coop
 #: model_terms:ir.actions.act_window,help:easy_my_coop.share_product_action
 msgid "Click to define a new share product."
-msgstr ""
+msgstr "Feu clic per definir un nou títol."
 
 #. module: easy_my_coop
 #: model:ir.model,name:easy_my_coop.model_res_company
@@ -1081,7 +1079,7 @@ msgstr "Codi de Registre General de Cooperatives de Catalunya"
 #. module: easy_my_coop
 #: model:product.category,name:easy_my_coop.product_category_company_share
 msgid "Company Share"
-msgstr "Títol nominatiu cooperativa"
+msgstr "Títol cooperativa"
 
 #. modules: easy_my_coop_website, easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__company_email
@@ -1137,7 +1135,7 @@ msgstr "Persona de contacte"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__coop_email_contact
 msgid "Contact email address for the cooperator"
-msgstr "Correu electrònic per a persones sòcies"
+msgstr "Correu electrònic de contacte per a persones sòcies"
 
 #. module: easy_my_coop
 #: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_main_coop
@@ -1148,29 +1146,29 @@ msgstr "Contactes"
 #: selection:operation.request,operation_type:0
 #: selection:subscription.register,type:0
 msgid "Conversion"
-msgstr ""
+msgstr "Conversió"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_subscription_register_filter
 msgid "Convert"
-msgstr ""
+msgstr "Converteix"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__share_to_product_id
 msgid "Convert to this share type"
-msgstr ""
+msgstr "Converteix a aquest tipus de títol"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/operation_request.py:193
 #: code:addons/easy_my_coop/models/operation_request.py:272
 #, python-format
 msgid "Converting just part of the shares is not yet implemented"
-msgstr ""
+msgstr "Convertir tan sols una part de títols no està encara implementat"
 
 #. module: easy_my_coop
 #: model:ir.module.category,name:easy_my_coop.module_category_cooperator_management
 msgid "Cooperative Management"
-msgstr ""
+msgstr "Gestió de la cooperativa"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__partner_id
@@ -1191,41 +1189,41 @@ msgstr "Socià"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__property_cooperator_account
 msgid "Cooperator Account"
-msgstr ""
+msgstr "Compte de cooperador"
 
 #. module: easy_my_coop
 #: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_cooperator_candidate
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_res_partner_filter_coop
 msgid "Cooperator Candidates"
-msgstr "Persones que volen ser socià"
+msgstr "persones que volen ser sòcia"
 
 #. module: easy_my_coop
 #: model:ir.actions.act_window,name:easy_my_coop.action_invoice_tree_coop
 msgid "Cooperator Invoices"
-msgstr "Factura per a socià"
+msgstr "Factures de sòcies"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_partner__cooperator_register_number
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_users__cooperator_register_number
 msgid "Cooperator Number"
-msgstr "Nombre Sociá"
+msgstr "Número Sociá"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_res_partner_filter_coop
 msgid "Cooperator Partners"
-msgstr ""
+msgstr "Socies"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_partner__cooperator_type
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_users__cooperator_type
 msgid "Cooperator Type"
-msgstr ""
+msgstr "Tipos sòcia"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_partner__coop_candidate
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_users__coop_candidate
 msgid "Cooperator candidate"
-msgstr ""
+msgstr "Vol ser sòcia"
 
 #. module: easy_my_coop
 #: model:ir.actions.act_window,name:easy_my_coop.action_partner_cooperator_candidate_form
@@ -1283,7 +1281,7 @@ msgstr "Crea una factura per al client"
 #. module: easy_my_coop
 #: model_terms:ir.actions.act_window,help:easy_my_coop.action_invoice_tree_coop
 msgid "Create invoices, register payments and keep track of the discussions with your customers."
-msgstr ""
+msgstr "Creeu factures, registreu pagaments i feu un seguiment de les discussions amb els vostres clients."
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__create_user
@@ -1323,12 +1321,12 @@ msgstr "Factura rectificativa (abonament)"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__data_policy_approval_text
 msgid "Data Policy Approval Text"
-msgstr ""
+msgstr "Text d'aprovació de la política de dades"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__data_policy_approved
 msgid "Data Policy Approved"
-msgstr ""
+msgstr "Política de dades aprovada"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__default_country_id
@@ -1355,12 +1353,12 @@ msgstr "Patrick"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__display_data_policy_approval
 msgid "Display Data Policy Approval"
-msgstr ""
+msgstr "Visualitza Aprovació de la política de dades"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__display_internal_rules_approval
 msgid "Display Internal Rules Approval"
-msgstr ""
+msgstr "Visualitza Aprovació reglament intern"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__display_name
@@ -1412,7 +1410,7 @@ msgstr "Factura esborrany"
 #: model:ir.model.fields,field_description:easy_my_coop.field_email_template_preview__easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_mail_template__easy_my_coop
 msgid "Easy my coop mail template"
-msgstr ""
+msgstr "Easy my coop plantilla correu"
 
 #. module: easy_my_coop
 #: model:ir.ui.menu,name:easy_my_coop.menu_main_easy_my_coop
@@ -1435,7 +1433,7 @@ msgstr "Data Ingres"
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_partner__member
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_users__member
 msgid "Effective cooperator"
-msgstr ""
+msgstr "Socià activa"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
@@ -1461,18 +1459,18 @@ msgstr "Plantilles de correu electrònic"
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_subscription_register_filter
 msgid "Entry type"
-msgstr ""
+msgstr "Tipus entrada"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/wizard/update_share_line.py:42
 #, python-format
 msgid "Error the update return more than one subscription register lines."
-msgstr ""
+msgstr "S'ha produït un error en actualitzar més d'una línia de registre de inscripció."
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.operation_request_form
 msgid "Execute"
-msgstr ""
+msgstr "Executar"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/coop.py:155 selection:res.partner,gender:0
@@ -1490,7 +1488,7 @@ msgstr "Nom"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__firstname
 msgid "Firstname"
-msgstr ""
+msgstr "Nom"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
@@ -1501,12 +1499,12 @@ msgstr "Signa en representació de "
 #: model:ir.model.fields,field_description:easy_my_coop.field_product_product__force_min_qty
 #: model:ir.model.fields,field_description:easy_my_coop.field_product_template__force_min_qty
 msgid "Force Min Qty"
-msgstr ""
+msgstr "Força Quantitat mín"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__capital_release_request_date
 msgid "Force the capital release request date"
-msgstr ""
+msgstr "Força la data de sol·licitud d'ingrés de capital"
 
 #. modules: easy_my_coop_website, easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__contact_person_function
@@ -1526,12 +1524,12 @@ msgstr "Gènere"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_account_journal__get_cooperator_payment
 msgid "Get cooperator payments?"
-msgstr ""
+msgstr "Vols obtenir pagaments per sòcies?"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_account_journal__get_general_payment
 msgid "Get general payments?"
-msgstr ""
+msgstr "Obtenir pagaments generals?"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.share_product_filter
@@ -1544,7 +1542,7 @@ msgstr "Agrupar per"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__already_cooperator
 msgid "I'm already cooperator"
-msgstr "ja soc sòcia"
+msgstr "Ja soc sòcia"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__id
@@ -1566,17 +1564,17 @@ msgstr "Document d'identitat escanejat"
 #. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_res_company__unmix_share_type
 msgid "If checked, A cooperator will be authorised to have only one type of share"
-msgstr ""
+msgstr "Si es marca, una sòcia estarà autoritzat a tenir només un tipus de títol"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_operation_request__subscription_request
 msgid "In case on a transfer of share. If the share receiver isn't a effective member then a subscription form should be filled."
-msgstr ""
+msgstr "En cas de transferència de títols. Si el destinatari no és sòcia activa, s'hauria d'omplir un formulari de inscripció."
 
 #. module: easy_my_coop
 #: selection:subscription.request,type:0
 msgid "Increase number of share"
-msgstr ""
+msgstr "Augmenta el nombre de titols"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.product_template_share_form_view
@@ -1624,28 +1622,28 @@ msgstr "És una companyia?"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__is_operation
 msgid "Is an operation"
-msgstr ""
+msgstr "Es una operació"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_partner_update_info__is_company
 msgid "Is company"
-msgstr ""
+msgstr "Es empresa"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__data_policy_approval_required
 msgid "Is data policy approval required?"
-msgstr ""
+msgstr "Cal l'aprovació de la política de dades?"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__internal_rules_approval_required
 msgid "Is internal rules approval required?"
-msgstr ""
+msgstr "Cal l'aprovació del reglament intern?"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_product_product__is_share
 #: model:ir.model.fields,field_description:easy_my_coop.field_product_template__is_share
 msgid "Is share?"
-msgstr ""
+msgstr "Es Títol?"
 
 #. module: easy_my_coop
 #: model:ir.model,name:easy_my_coop.model_account_journal
@@ -1655,12 +1653,12 @@ msgstr "Diari"
 #. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_subscription_request__capital_release_request_date
 msgid "Keep empty to use the current date"
-msgstr "Deixa-ho buit per utilitzar la data actual."
+msgstr "Deixa-ho buit per utilitzar la data actual"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "La super coopérative"
-msgstr "Supercoop"
+msgstr "Supercoop Manresa"
 
 #. modules: easy_my_coop_website, easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__lang
@@ -1720,19 +1718,19 @@ msgstr "Última actualització el"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__lastname
 msgid "Lastname"
-msgstr ""
+msgstr "Cognoms"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_partner__representative
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_users__representative
 msgid "Legal Representative"
-msgstr "Presitent"
+msgstr "President"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_partner__legal_form
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_users__legal_form
 msgid "Legal form"
-msgstr ""
+msgstr "Forma juridica"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
@@ -1749,13 +1747,13 @@ msgstr ""
 #: model:ir.actions.act_window,name:easy_my_coop.action_easy_my_coop_email_templates
 #: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_templates
 msgid "Mail Templates"
-msgstr ""
+msgstr "Plantilles correu"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_product_product__mail_template
 #: model:ir.model.fields,field_description:easy_my_coop.field_product_template__mail_template
 msgid "Mail template"
-msgstr ""
+msgstr "plantilla correu"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
@@ -1772,7 +1770,7 @@ msgstr "Home"
 #. module: easy_my_coop
 #: model:ir.module.category,description:easy_my_coop.module_category_cooperator_management
 msgid "Manage your cooperative."
-msgstr ""
+msgstr "Gestionar la teva cooperativa."
 
 #. module: easy_my_coop
 #: model:res.groups,name:easy_my_coop.group_easy_my_coop_manager
@@ -1787,7 +1785,7 @@ msgstr ""
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__subscription_maximum_amount
 msgid "Maximum authorised subscription amount"
-msgstr ""
+msgstr "Import màxim de títols"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_product_product__minimum_quantity
@@ -1804,28 +1802,28 @@ msgstr "Nom"
 #. module: easy_my_coop
 #: selection:subscription.request,type:0
 msgid "New Cooperator"
-msgstr ""
+msgstr "Sòcia nova"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_subscription_request_filter
 msgid "Not Validated"
-msgstr ""
+msgstr "No validat"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_register_G001
 msgid "Number"
-msgstr "Nombre"
+msgstr "Número"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register__name
 msgid "Number Operation"
-msgstr ""
+msgstr "Número d'operació"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_share_line__share_number
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__ordered_parts
 msgid "Number of Share"
-msgstr ""
+msgstr "Quantitat de títols"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__quantity
@@ -1833,29 +1831,29 @@ msgstr ""
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_users__number_of_share
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register__quantity
 msgid "Number of share"
-msgstr ""
+msgstr "Quantitat de títols"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/coop.py:539
 #, python-format
 msgid "Number of share must be greater than 0."
-msgstr ""
+msgstr "El nombre de titols ha de ser superior a 0."
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register__quantity_to
 msgid "Number of share to"
-msgstr ""
+msgstr "Número de titols a"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_res_partner_filter_coop
 msgid "Old Cooperators"
-msgstr ""
+msgstr "Sòcies antigues"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_partner__old_member
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_users__old_member
 msgid "Old cooperator"
-msgstr ""
+msgstr "Sòcia antiga"
 
 #. module: easy_my_coop
 #: model_terms:ir.actions.act_window,help:easy_my_coop.action_company_representative_form
@@ -1870,28 +1868,28 @@ msgstr ""
 #. module: easy_my_coop
 #: selection:subscription.request,source:0
 msgid "Operation"
-msgstr ""
+msgstr "Apunt comptable"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__operation_request_id
 msgid "Operation Request"
-msgstr ""
+msgstr "Petició d'apunt comptable"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__operation_type
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register__type
 msgid "Operation Type"
-msgstr "Tipus d'operació"
+msgstr "Tipus d'apunt"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__subscription_amount
 msgid "Operation amount"
-msgstr ""
+msgstr "Cantitat apunt"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_subscription_G001
 msgid "Operation number"
-msgstr ""
+msgstr "Nùmero operació"
 
 #. module: easy_my_coop
 #: model:ir.actions.act_window,name:easy_my_coop.operation_request_action
@@ -1899,23 +1897,23 @@ msgstr ""
 #: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_operation_request
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.operation_request_form
 msgid "Operation request"
-msgstr ""
+msgstr "Petició operació"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.operation_request_tree
 msgid "Operation requests"
-msgstr ""
+msgstr "Petició operació"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_subscription_G001
 msgid "Operation type"
-msgstr ""
+msgstr "Tipus operació"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/coop.py:156 selection:res.partner,gender:0
 #, python-format
 msgid "Other"
-msgstr ""
+msgstr "Altres"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_subscription_request_filter
@@ -1925,30 +1923,30 @@ msgstr "Pagat"
 #. module: easy_my_coop
 #: model:product.template,name:easy_my_coop.product_template_share_type_1_demo
 msgid "Part A - Founder"
-msgstr ""
+msgstr "Títol A fundador"
 
 #. module: easy_my_coop
 #: model:product.template,name:easy_my_coop.product_template_share_type_2_demo
 msgid "Part B - Worker"
-msgstr ""
+msgstr "Títol B - treballador"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "Parts number"
-msgstr "Quantitat a adquirir"
+msgstr "Quantitat títols"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "Parts type"
-msgstr "Participacions"
+msgstr "tipus Títols"
 
 #. module: easy_my_coop
 #: model:mail.template,subject:easy_my_coop.email_template_certificat
 #: model:mail.template,subject:easy_my_coop.email_template_certificat_increase
 msgid "Payment Received Confirmation"
-msgstr ""
+msgstr "Confirmació pagament rebut"
 
 #. modules: easy_my_coop_website, easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__phone
@@ -1961,7 +1959,7 @@ msgstr "Telèfon"
 #: code:addons/easy_my_coop/models/coop.py:385
 #, python-format
 msgid "Please define income account for this product: \"%s\" (id:%d) - or for its category: \"%s\"."
-msgstr ""
+msgstr "Definiu el compte d'ingressos per a aquest producte: \"%s\" (id:%d) - o per a la seva categoria: \"%s\"."
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
@@ -1974,7 +1972,7 @@ msgstr "Si us plau utilitzeu la següent comunicació per al vostre pagament:"
 #: model:ir.model.fields,help:easy_my_coop.field_partner_create_subscription__share_unit_price
 #: model:ir.model.fields,help:easy_my_coop.field_subscription_request__share_unit_price
 msgid "Price at which the product is sold to customers."
-msgstr ""
+msgstr "Preu al qual es ven el producte als clients."
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
@@ -1997,7 +1995,7 @@ msgstr "Quantitat"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__receiver_not_member
 msgid "Receiver is not a member"
-msgstr ""
+msgstr "El receptor no és sòcia"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.subscription_request_form
@@ -2012,7 +2010,7 @@ msgstr "Rebutja"
 #. module: easy_my_coop
 #: selection:operation.request,state:0
 msgid "Refused"
-msgstr ""
+msgstr "Rebutjat"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_partner_create_subscription__register_number
@@ -2023,22 +2021,22 @@ msgstr ""
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register__register_number_operation
 msgid "Register Number Operation"
-msgstr ""
+msgstr "Nùmero operació al registre"
 
 #. module: easy_my_coop
 #: model:ir.ui.menu,name:easy_my_coop.menu_action_invoice_tree_coop
 msgid "Register Payment"
-msgstr ""
+msgstr "Registrar ingrés"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_account_invoice_report__release_capital_request
 msgid "Release capital request"
-msgstr ""
+msgstr "Petició ingrés capital"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_account_invoice__release_capital_request
 msgid "Release of capital request"
-msgstr ""
+msgstr "Petició ingrés capital"
 
 #. module: easy_my_coop
 #: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_main_reporting
@@ -2048,33 +2046,33 @@ msgstr "Informes"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_partner_create_subscription__representative_email
 msgid "Representative email"
-msgstr ""
+msgstr "correu representant"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_partner_create_subscription__representative_name
 msgid "Representative name"
-msgstr ""
+msgstr "Nom representant"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.subscription_request_tree
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_subscription_request_filter
 msgid "Request Date"
-msgstr ""
+msgstr "Data petició"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__request_date
 msgid "Request date"
-msgstr ""
+msgstr "Data petició"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
 msgid "Request to Release Capital"
-msgstr ""
+msgstr "Petició per ingrés capital"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_subscription_request_filter
 msgid "Request type"
-msgstr ""
+msgstr "Tipus de petició"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__user_id
@@ -2104,33 +2102,33 @@ msgstr ""
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__same_address
 msgid "Same address"
-msgstr ""
+msgstr "La mateixa adreça"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_share_line_filter
 msgid "Search Share Line"
-msgstr ""
+msgstr "Cerqueu línia títol"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_subscription_register_filter
 msgid "Search Subscription Register"
-msgstr ""
+msgstr "cerca Registre de inscripció"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_subscription_request_filter
 msgid "Search Subscription Request"
-msgstr ""
+msgstr "carca Petició inscripció"
 
 #. module: easy_my_coop
 #: selection:operation.request,operation_type:0
 #: selection:subscription.register,type:0
 msgid "Sell Back"
-msgstr ""
+msgstr "devolució"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_subscription_register_filter
 msgid "Sell back"
-msgstr ""
+msgstr "devolució"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
@@ -2141,22 +2139,22 @@ msgstr "Enviat"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_partner_update_info__representative_function
 msgid "Set function"
-msgstr ""
+msgstr "Posa representació"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_partner_update_info__legal_form
 msgid "Set legal form"
-msgstr ""
+msgstr "Posa forma juridica"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_partner_update_info__birthdate
 msgid "Set missing birth date"
-msgstr ""
+msgstr "Posa data de neixament qui falta"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.product_template_share_form_view
 msgid "Share Information"
-msgstr ""
+msgstr "Informació del títol"
 
 #. module: easy_my_coop
 #: model:ir.actions.act_window,name:easy_my_coop.share_line_action
@@ -2164,7 +2162,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_users__share_ids
 #: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_share_line
 msgid "Share Lines"
-msgstr ""
+msgstr "Líneas de títols"
 
 #. module: easy_my_coop
 #: model:ir.ui.menu,name:easy_my_coop.menu_easy_my_coop_main_subscription
@@ -2174,35 +2172,35 @@ msgstr ""
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_partner_create_subscription__share_qty
 msgid "Share Quantity"
-msgstr ""
+msgstr "Quantitat titols"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__subscription_request
 msgid "Share Receiver Info"
-msgstr ""
+msgstr "Info destinitaria titol"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_partner_create_subscription__share_product
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.subscription_request_tree
 msgid "Share Type"
-msgstr "Tipus Capital Social"
+msgstr "Tipus Títol"
 
 #. module: easy_my_coop
 #: model:ir.model,name:easy_my_coop.model_share_line
 #: model:ir.model.fields,field_description:easy_my_coop.field_share_line_update_info__share_line
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.share_line_form
 msgid "Share line"
-msgstr ""
+msgstr "línea títol"
 
 #. module: easy_my_coop
 #: model:ir.model,name:easy_my_coop.model_share_line_update_info
 msgid "Share line update info"
-msgstr ""
+msgstr "actualització línea títol"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_subscription_G001
 msgid "Share number"
-msgstr ""
+msgstr "Número Títol"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__share_unit_price
@@ -2211,34 +2209,34 @@ msgstr ""
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register__share_unit_price
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__share_unit_price
 msgid "Share price"
-msgstr ""
+msgstr "Preu Títol"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_partner_form_easy_my_coop
 msgid "Share subscriptions"
-msgstr ""
+msgstr "Inscripcions Titols"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__share_to_unit_price
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register__share_to_unit_price
 msgid "Share to price"
-msgstr ""
+msgstr "Títol a preu"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register__share_to_product_id
 msgid "Share to type"
-msgstr ""
+msgstr "Títol a tipus"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__share_to_short_name
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register__share_to_short_name
 msgid "Share to type name"
-msgstr ""
+msgstr "Títol a nom curt"
 
 #. module: easy_my_coop
 #: model:mail.template,subject:easy_my_coop.email_template_share_transfer
 msgid "Share transfert"
-msgstr ""
+msgstr "transferència titols"
 
 #. module: easy_my_coop
 #: model:ir.actions.act_window,name:easy_my_coop.share_product_action
@@ -2257,17 +2255,17 @@ msgstr "Tipus Sòcia"
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register__share_short_name
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__share_short_name
 msgid "Share type name"
-msgstr ""
+msgstr "Nom curt títol"
 
 #. module: easy_my_coop
 #: model:mail.template,subject:easy_my_coop.email_template_share_update
 msgid "Share update"
-msgstr ""
+msgstr "actualització títol"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_partner_form_easy_my_coop
 msgid "Shares"
-msgstr ""
+msgstr "Titols"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_product_product__short_name
@@ -2278,7 +2276,7 @@ msgstr "Nom curt"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__skip_control_ng
 msgid "Skip control"
-msgstr ""
+msgstr "Omet control"
 
 #. module: easy_my_coop_website
 #: code:addons/easy_my_coop_website/controllers/main.py:232
@@ -2307,13 +2305,13 @@ msgstr "Desa"
 #: selection:operation.request,operation_type:0
 #: selection:subscription.register,type:0 selection:subscription.request,type:0
 msgid "Subscription"
-msgstr ""
+msgstr "Inscripció"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register__date
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_subscription_register_filter
 msgid "Subscription Date"
-msgstr ""
+msgstr "Data Inscripció"
 
 #. module: easy_my_coop
 #: model:account.journal,name:easy_my_coop.subscription_journal
@@ -2331,12 +2329,12 @@ msgstr "Registre d'Inscripcions"
 #. module: easy_my_coop
 #: model:ir.actions.report,name:easy_my_coop.action_cooperator_subscription_report
 msgid "Subscription Register Report"
-msgstr ""
+msgstr "Informe Registre Inscripcions"
 
 #. module: easy_my_coop
 #: model:ir.model,name:easy_my_coop.model_subscription_request
 msgid "Subscription Request"
-msgstr ""
+msgstr "Petició inscripció"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.operation_request_form
@@ -2349,7 +2347,7 @@ msgstr "Peticions d'Inscripció"
 #: model:ir.model.fields,field_description:easy_my_coop.field_partner_create_subscription__subscription_amount
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__subscription_amount
 msgid "Subscription amount"
-msgstr ""
+msgstr "Import Inscripció"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_subscription_G001
@@ -2359,30 +2357,30 @@ msgstr "Data ingrés"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__date
 msgid "Subscription date request"
-msgstr ""
+msgstr "Data petició inscripció"
 
 #. module: easy_my_coop
 #: model:ir.model,name:easy_my_coop.model_subscription_register
 msgid "Subscription register"
-msgstr ""
+msgstr "Registre inscripcions"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_account_invoice__subscription_request
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_partner__subscription_request_ids
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_users__subscription_request_ids
 msgid "Subscription request"
-msgstr ""
+msgstr "Petició inscripció"
 
 #. module: easy_my_coop
 #: model:mail.template,subject:easy_my_coop.email_template_confirmation
 #: model:mail.template,subject:easy_my_coop.email_template_confirmation_company
 msgid "Subscription request confirmation"
-msgstr ""
+msgstr "Confirmació petició inscripció"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_create_subscription
 msgid "Subscription request will be created with data from the partner."
-msgstr ""
+msgstr "La petició d'inscripció es crea amb dades des del contacte"
 
 #. module: easy_my_coop
 #: model:ir.actions.act_window,name:easy_my_coop.subscription_request_action
@@ -2398,12 +2396,12 @@ msgstr ""
 #. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_res_company__data_policy_approval_text
 msgid "Text to display aside the checkbox to approve data policy."
-msgstr ""
+msgstr "Text per mostrar a banda de la casella de selecció per aprovar la política de dades."
 
 #. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_res_company__internal_rules_approval_text
 msgid "Text to display aside the checkbox to approve internal rules."
-msgstr ""
+msgstr "Text per mostrar a banda de la casella de selecció per aprovar el reglament intern"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.cooperator_thanks
@@ -2414,19 +2412,19 @@ msgstr "Gràcies!"
 #: code:addons/easy_my_coop/models/coop.py:546
 #, python-format
 msgid "The checkbox already cooperator is checked please select a cooperator."
-msgstr ""
+msgstr "La casella de selecció sòcia ja està marcada, seleccioneu una sòcia."
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/operation_request.py:180
 #, python-format
 msgid "The cooperator can't hand over more shares that he/she owns."
-msgstr ""
+msgstr "Una sòcia no pot traspasar més titols dels que té"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/operation_request.py:172
 #, python-format
 msgid "The cooperator doesn't own this share type. Please choose the appropriate share type."
-msgstr ""
+msgstr "La sòcia no te aquest tipus de títol. Tria tipus de títol correcte"
 
 #. module: easy_my_coop_website
 #: code:addons/easy_my_coop_website/controllers/main.py:252
@@ -2438,7 +2436,7 @@ msgstr "Els dos correus no coincideixen. Comprova'ls tots dos i corregeix l'erro
 #: code:addons/easy_my_coop/models/operation_request.py:204
 #, python-format
 msgid "The information of the receiver are not correct. Please correct the information before submitting"
-msgstr ""
+msgstr "La informació del receptor no és correcta. Corregiu la informació abans d’enviar-la"
 
 #. module: easy_my_coop_website
 #: code:addons/easy_my_coop_website/controllers/main.py:242
@@ -2451,42 +2449,42 @@ msgstr "Ja hi ha un compte amb aquest correu. Inicia la sessió abans d'omplir e
 #: code:addons/easy_my_coop/wizard/create_subscription_from_partner.py:170
 #, python-format
 msgid "There is two different persons with the same national register number. Please proceed to a merge before to continue"
-msgstr ""
+msgstr "Hi ha dues persones diferents amb el mateix DNI. Abans de continuar, procediu a una combinació"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_res_company__property_cooperator_account
 msgid "This account will be the default one as the receivable account for the cooperators"
-msgstr ""
+msgstr "Aquest compte serà el predeterminat com a compte a cobrar dels cooperants"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/coop.py:581
 #, python-format
 msgid "This contact person is already defined for another company. Please select another contact"
-msgstr ""
+msgstr "Aquesta persona de contacte ja està definida per a una altra empresa. Seleccioneu un altre contacte"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/operation_request.py:139
 #, python-format
 msgid "This operation can't be executed if the cooperator is not an effective member"
-msgstr ""
+msgstr "Aquesta operació no es pot executar si el contacte no és sòcia activa"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/operation_request.py:309
 #, python-format
 msgid "This operation is not yet implemented."
-msgstr ""
+msgstr "Aquesta operació encara no està implementada"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/operation_request.py:245
 #, python-format
 msgid "This operation must be approved before to be executed"
-msgstr ""
+msgstr "Aquesta operació s'ha d'aprovar abans de ser executada"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/operation_request.py:199
 #, python-format
 msgid "This share type could not be transfered to "
-msgstr ""
+msgstr "Aquest tipus de títol no s'ha pogut transferir a "
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
@@ -2504,33 +2502,33 @@ msgstr "Import total"
 #: model:ir.model.fields,field_description:easy_my_coop.field_share_line__total_amount_line
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register__total_amount_line
 msgid "Total amount line"
-msgstr ""
+msgstr "Lìna de import total"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_partner_form_easy_my_coop
 msgid "Total of shares"
-msgstr ""
+msgstr "Total titols"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.subscription_request_tree
 msgid "Total ordered parts"
-msgstr ""
+msgstr "total titols sol·licitats"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.subscription_register_tree
 msgid "Total quantity"
-msgstr ""
+msgstr "Quantitat total"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_partner_form_easy_my_coop
 msgid "Total subscribed amount"
-msgstr ""
+msgstr "Import total inscrpció"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_partner__total_value
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_users__total_value
 msgid "Total value of shares"
-msgstr ""
+msgstr "Valor total títols"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_subscription_register_filter
@@ -2544,7 +2542,7 @@ msgstr "Transferència"
 #: model:ir.model.fields,field_description:easy_my_coop.field_operation_request__partner_id_to
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_register__partner_id_to
 msgid "Transfered to"
-msgstr ""
+msgstr "Transferit a"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__type
@@ -2559,7 +2557,7 @@ msgstr ""
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
 msgid "Unit Price"
-msgstr "Preu unitari"
+msgstr "Preu"
 
 #. module: easy_my_coop
 #: model:product.template,uom_name:easy_my_coop.product_template_share_type_1_demo
@@ -2570,29 +2568,29 @@ msgstr "Unitat(s)"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_company__unmix_share_type
 msgid "Unmix share type"
-msgstr ""
+msgstr "Tipus titol únic"
 
 #. module: easy_my_coop
 #: model:ir.actions.act_window,name:easy_my_coop.action_view_update_partner_info
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_update_partner_info
 msgid "Update Cooperator Info"
-msgstr ""
+msgstr "Actualitzar informació sòcia"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_update_partner_info
 msgid "Update Cooperator Info."
-msgstr ""
+msgstr "Actualitzar informació sòcia"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_update_partner_info
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_update_share_line_info
 msgid "Update Info"
-msgstr ""
+msgstr "Actualitzar informació"
 
 #. module: easy_my_coop
 #: model:ir.model,name:easy_my_coop.model_partner_update_info
 msgid "Update Partner Info"
-msgstr ""
+msgstr "Actualitzar informació contacte"
 
 #. module: easy_my_coop
 #: model:ir.actions.act_window,name:easy_my_coop.action_view_update_share_line_info
@@ -2603,18 +2601,18 @@ msgstr "Actualiza la linea amb l'Informacio de titols"
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_update_share_line_info
 msgid "Update Share Line Info."
-msgstr ""
+msgstr "Actualitzar informació línea títol"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_partner_update_info__all
 msgid "Update from subscription request"
-msgstr ""
+msgstr "Actualitzar des de petició inscripció"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.share_line_form
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_partner_form_easy_my_coop
 msgid "Update info"
-msgstr ""
+msgstr "Actualitzar informació"
 
 #. module: easy_my_coop
 #: model:res.groups,name:easy_my_coop.group_easy_my_coop_user
@@ -2624,7 +2622,7 @@ msgstr "Usuari"
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__validated
 msgid "Valid Line?"
-msgstr ""
+msgstr "línea valida?"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.subscription_request_form
@@ -2637,17 +2635,17 @@ msgstr "Validar"
 #: model:ir.actions.act_window,name:easy_my_coop.action_account_invoice_confirm
 #: model:ir.model,name:easy_my_coop.model_validate_subscription_request
 msgid "Validate subscription request"
-msgstr ""
+msgstr "Validar petició inscripció"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_validate_subscription_request
 msgid "Validate the subscription request"
-msgstr ""
+msgstr "Validar la petició inscripció"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.view_validate_subscription_request
 msgid "Validate the subscription request."
-msgstr ""
+msgstr "Validar la petició inscripció"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
@@ -2657,17 +2655,17 @@ msgstr "Factura de proveïdor "
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
 msgid "Vendor Credit Note"
-msgstr ""
+msgstr "Devolució proveïdor"
 
 #. module: easy_my_coop
 #: selection:operation.request,state:0 selection:subscription.request,state:0
 msgid "Waiting"
-msgstr ""
+msgstr "esperant"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.subscription_request_form
 msgid "Waiting list"
-msgstr ""
+msgstr "llista d'espera"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.cooperator_thanks
@@ -2682,25 +2680,25 @@ msgstr ""
 #. module: easy_my_coop_website
 #: model:ir.actions.act_url,name:easy_my_coop_website.action_open_website
 msgid "Website Cooperator contact Form"
-msgstr "Formulari de contacte de la persona cooperadora"
+msgstr "Formulari de contacte sòcia"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/operation_request.py:186
 #, python-format
 msgid "You can't convert the share to the same share type."
-msgstr ""
+msgstr "No podeu convertir el títol al mateix tipus de títol."
 
 #. module: easy_my_coop_website
 #: code:addons/easy_my_coop_website/controllers/main.py:292
 #, python-format
 msgid "You can't subscribe for an amount that exceed "
-msgstr "No pots subscriure't per una quantitat superior a"
+msgstr "No pots inscriure't per una quantitat superior a"
 
 #. module: easy_my_coop_website
 #: code:addons/easy_my_coop_website/controllers/main.py:285
 #, python-format
 msgid "You can't subscribe two different types of share"
-msgstr "No pots adquirir dos tipus diferents de participació"
+msgstr "No pots adquirir dos tipus diferents de titols"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
@@ -2717,13 +2715,13 @@ msgstr "El número de compte IBAN no és vàlid"
 #: code:addons/easy_my_coop/models/operation_request.py:189
 #, python-format
 msgid "You must convert all the shares to the selected type."
-msgstr ""
+msgstr "Heu de convertir tots els titold al tipus seleccionat"
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/coop.py:427
 #, python-format
 msgid "You must set a cooperator account on you company."
-msgstr ""
+msgstr "Heu d’establir un compte de sòcia a la vostra entitat"
 
 #. module: easy_my_coop_website
 #: code:addons/easy_my_coop_website/controllers/main.py:262
@@ -2734,12 +2732,12 @@ msgstr "Has de pujar una imatge del teu document d'identitat escanejat"
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.cooperator_thanks
 msgid "Your subscription has been successfully registered."
-msgstr "S'ha registrat amb èxit la teva subscripció."
+msgstr "S'ha registrat amb èxit la teva inscripció."
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__zip_code
 msgid "Zip Code"
-msgstr ""
+msgstr "Codi postal"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
@@ -2766,12 +2764,12 @@ msgstr "data ingres"
 #. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_subscription_request__skip_control_ng
 msgid "if this field is checked then no control will be done on the national register number and on the iban bank account. To be done in case of the id card is from abroad or in case of a passport"
-msgstr ""
+msgstr "si es marca aquest camp, no es farà cap control sobre el DNI i el compte bancari iban. Per fer-ho en cas que la targeta d’identitat sigui de l’estranger o en cas de passaport"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
 msgid "is recorded in the register of cooperators under number"
-msgstr "consta al registre de persones sòcies amb nombre"
+msgstr "consta al registre de persones sòcies amb Número "
 
 #. module: easy_my_coop
 #: model:product.template,weight_uom_name:easy_my_coop.product_template_share_type_1_demo
@@ -2787,7 +2785,7 @@ msgstr ""
 #. module: easy_my_coop
 #: selection:subscription.request,state:0
 msgid "paid"
-msgstr ""
+msgstr "pagat"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
