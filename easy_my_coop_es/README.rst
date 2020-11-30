@@ -44,6 +44,7 @@ Authors
 
 * Coop IT Easy SCRLfs
 * Coopdevs Treball SCCL
+* PatrickKappert
 
 Maintainers
 ~~~~~~~~~~~
