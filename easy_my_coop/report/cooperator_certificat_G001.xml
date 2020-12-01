@@ -100,11 +100,11 @@
                              t-attf-class="mt16 w-50"
                              t-attf-style="{{ 'min-width: 100px; max-width: 250px' if report_type == 'pdf' else '' }}"
                              t-att-src="'data:image/png;base64,%s' % o.company_id.signature_scan.decode()"/>
-                          <p>
-                            <strong>
-                                <span t-field="o.company_id.report_certificate_ids"/>
-                            </strong>
-                        </p>
+#                          <p>
+#                           <strong>
+#                               <span t-field="o.company_id.report_certificate_ids"/>
+#                            </strong>
+#                        </p>
                     </div>
                 </div>
 
