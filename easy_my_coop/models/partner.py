@@ -200,7 +200,7 @@ class ResPartner(models.Model):
             partner.coop_candidate = is_candidate
 
     @api.multi
-    @api.depends("parent_id", "representative")
+    @api.depends("parent_id", "parent_id.member", "representative")
     def _compute_representative_of_member_company(self):
         for partner in self:
             member_companies = self.env["res.partner"].search(
