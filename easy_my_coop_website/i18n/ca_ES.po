@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-29 08:01+0000\n"
-"PO-Revision-Date: 2020-11-30 08:43+0100\n"
+"PO-Revision-Date: 2020-12-02 18:49+0100\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.cooperator_thanks
 msgid "&amp;times;"
-msgstr ""
+msgstr "&amp;times;"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
@@ -43,7 +43,7 @@ msgstr "08301"
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "25"
-msgstr "50"
+msgstr "10"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
@@ -100,7 +100,7 @@ msgstr "Mataró"
 #. module: easy_my_coop_website
 #: model:ir.model.fields,field_description:easy_my_coop_website.field_res_company__captcha_type
 msgid "Captcha type or disabled"
-msgstr ""
+msgstr "Tipus de captcha o desactivat"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
@@ -123,28 +123,28 @@ msgstr "Codi de Registre General de Cooperatives de Catalunya"
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "Company Info"
-msgstr "Informació de la companyia"
+msgstr "Informació de l'empresa"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "Company email"
-msgstr "Correu de la companyia"
+msgstr "Correu electrònic de l'empresa"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "Company name"
-msgstr "Nom de la companyia"
+msgstr "Nom de l' empresa"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "Company type"
-msgstr "Tipus de companyia"
+msgstr "Tipus d'empresa"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "Confirm Email"
-msgstr "Confirma el correu"
+msgstr "Confirma el correu electrònic"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
@@ -167,7 +167,7 @@ msgstr "País..."
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "Didier"
-msgstr "Joan"
+msgstr "Patrick"
 
 #. module: easy_my_coop_website
 #: selection:res.company,captcha_type:0
@@ -200,14 +200,16 @@ msgstr "Gènere"
 #. module: easy_my_coop_website
 #: selection:res.company,captcha_type:0
 msgid "Google Recaptcha"
-msgstr ""
+msgstr "Google Recaptcha"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid ""
 "Idendity\n"
 "                                        card scan"
-msgstr "Escanea el DNI"
+msgstr ""
+"Escanea \n"
+"                                 el DNI"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
@@ -390,4 +392,4 @@ msgstr "plaça del Forn de Vidre, 1"
 #: code:addons/easy_my_coop_website/controllers/main.py:277
 #, python-format
 msgid "the captcha has not been validated, please fill in the captcha"
-msgstr "No s'ha validat el Captcha. Si us plau, resol-lo per continuar"
+msgstr "No s'ha validat el Captcha. Si us plau, resol-ho per continuar"
