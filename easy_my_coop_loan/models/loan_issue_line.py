@@ -4,7 +4,8 @@
 
 from datetime import datetime
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class LoanIssueLine(models.Model):
@@ -93,26 +94,41 @@ class LoanIssueLine(models.Model):
 
     @api.multi
     def action_draft(self):
-        for line in self:
-            line.write({"state": "draft"})
+        if self.filtered(lambda l: l.state != "cancelled"):
+            raise ValidationError(
+                _("You can only set cancelled loans to draft")
+            )
+        self.write({"state": "draft"})
 
     @api.multi
     def action_validate(self):
-        for line in self:
-            line.write({"state": "subscribed"})
+        if self.filtered(lambda l: l.state != "draft"):
+            raise ValidationError(_("You can only validate draft loans"))
+        self.write({"state": "subscribed"})
 
     @api.multi
     def action_request_payment(self):
-        pay_req_mail_template = self.get_loan_pay_req_mail_template()
+        if self.filtered(lambda l: l.state != "subscribed"):
+            raise ValidationError(
+                _("You can only request payment for validated loans")
+            )
 
         for line in self:
+            pay_req_mail_template = line.get_loan_pay_req_mail_template()
             pay_req_mail_template.send_mail(line.id)
             line.write({"state": "waiting"})
 
     @api.multi
     def action_cancel(self):
-        for line in self:
-            line.write({"state": "cancelled"})
+        allowed_states = ["draft", "subscribed", "waiting"]
+        if self.filtered(lambda l: l.state not in allowed_states):
+            raise ValidationError(
+                _(
+                    "You can only cancel loans in states draft, "
+                    "subscribed or waiting for payment."
+                )
+            )
+        self.write({"state": "cancelled"})
 
     @api.multi
     def get_confirm_paid_email_template(self):
@@ -123,8 +139,13 @@ class LoanIssueLine(models.Model):
 
     @api.multi
     def action_paid(self):
+        if self.filtered(lambda l: l.state != "waiting"):
+            raise ValidationError(
+                _("You can only park as paid loans waiting for payment")
+            )
+
         for line in self:
-            loan_email_template = self.get_confirm_paid_email_template()
+            loan_email_template = line.get_confirm_paid_email_template()
             loan_email_template.sudo().send_mail(line.id, force_send=False)
 
             line.write({"state": "paid"})

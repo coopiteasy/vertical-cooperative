@@ -16,10 +16,11 @@
     """,
     "data": [
         "security/ir.model.access.csv",
+        "data/actions.xml",
+        "data/mail_template_data.xml",
         "views/loan_view.xml",
         "views/partner_view.xml",
         "views/menus.xml",
-        "data/mail_template_data.xml",
     ],
     "demo": ["demo/coop.xml"],
     "installable": True,

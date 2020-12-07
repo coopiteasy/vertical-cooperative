@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2020 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="batch_loan_issue_line_validate_action" model="ir.actions.server">
+        <field name="name">Validate Loans</field>
+        <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line"/>
+        <field name="binding_model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
+        <field name="state">code</field>
+        <field name="code">
+records.action_validate()
+        </field>
+    </record>
+
+    <record id="batch_loan_issue_line_request_payment_action" model="ir.actions.server">
+        <field name="name">Request Payments</field>
+        <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line"/>
+        <field name="binding_model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
+        <field name="state">code</field>
+        <field name="code">
+records.action_request_payment()
+        </field>
+    </record>
+
+    <record id="batch_loan_issue_line_cancel_action" model="ir.actions.server">
+        <field name="name">Cancel Loans</field>
+        <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line"/>
+        <field name="binding_model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
+        <field name="state">code</field>
+        <field name="code">
+records.action_cancel()
+        </field>
+    </record>
+
+    <record id="batch_loan_issue_line_set_as_paid_action" model="ir.actions.server">
+        <field name="name">Set as Paid</field>
+        <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line"/>
+        <field name="binding_model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
+        <field name="state">code</field>
+        <field name="code">
+records.action_paid()
+        </field>
+    </record>
+
+    <record id="batch_loan_issue_line_set_as_draft_action" model="ir.actions.server">
+        <field name="name">Set to Draft</field>
+        <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line"/>
+        <field name="binding_model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
+        <field name="state">code</field>
+        <field name="code">
+records.action_draft()
+        </field>
+    </record>
+</odoo>
