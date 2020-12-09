@@ -33,7 +33,9 @@ class LoanIssue(models.Model):
     loan_start_date = fields.Date(string="Loan start date")
     term_date = fields.Date(string="Term date")
     loan_term = fields.Float(string="Duration of the loan in month")
-    rate = fields.Float(string="Interest rate")
+    rate = fields.Float(string="Net Interest rate")
+    gross_rate = fields.Float(string="Gross Interest rate")
+    taxes_rate = fields.Float(string="Taxes on interest", required=True)
     face_value = fields.Monetary(
         string="Facial value",
         currency_field="company_currency_id",
@@ -100,7 +102,6 @@ class LoanIssue(models.Model):
     by_company = fields.Boolean(string="By company")
     by_individual = fields.Boolean(string="By individuals")
     display_on_website = fields.Boolean(sting="Display on website")
-    taxes_rate = fields.Float(string="Taxes on interest", required=True)
 
     @api.multi
     def get_max_amount(self, partner):

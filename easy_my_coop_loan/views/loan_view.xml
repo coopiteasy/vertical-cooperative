@@ -12,6 +12,7 @@
                 <field name="term_date"/>
                 <field name="loan_term"/>
                 <field name="rate"/>
+                <field name="gross_rate"/>
                 <field name="minimum_amount"/>
                 <field name="maximum_amount"/>
                 <field name="subscribed_amount"/>
@@ -87,9 +88,14 @@
                         </group>
                         <group>
                             <field name="user_id" widget="selection"/>
-                            <label for="rate" string="Interest rate"/>
+                            <label for="rate" string="Net Interest rate"/>
                             <div>
                                 <field name="rate" class="oe_inline"/>
+                                <span class="o_form_label oe_inline">%</span>
+                            </div>
+                            <label for="gross_rate" string="Gross Interest rate"/>
+                            <div>
+                                <field name="gross_rate" class="oe_inline"/>
                                 <span class="o_form_label oe_inline">%</span>
                             </div>
                             <label for="taxes_rate" string="Taxes on interest"/>
