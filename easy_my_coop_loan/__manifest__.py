@@ -4,7 +4,7 @@
 
 {
     "name": "Easy My Coop Bond and Subordinated Loan Issues",
-    "version": "12.0.1.0.1",
+    "version": "12.0.1.0.2",
     "depends": ["easy_my_coop"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",

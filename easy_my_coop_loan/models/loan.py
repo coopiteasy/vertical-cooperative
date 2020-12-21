@@ -14,14 +14,17 @@ class LoanIssue(models.Model):
     _description = "Loan Issue"
 
     @api.multi
-    def _compute_subscribed_amount(self):
+    def _compute_amounts(self):
         for issue in self:
-            susbscribed_amount = 0.0
-            for line in issue.loan_issue_lines.filtered(
-                lambda record: record.state != "cancelled"
-            ):
-                susbscribed_amount += line.amount
-            issue.subscribed_amount = susbscribed_amount
+            subscription_lines = issue.loan_issue_lines.filtered(
+                lambda line: line.state != "cancelled"
+            )
+            issue.subscribed_amount = sum(subscription_lines.mapped("amount"))
+
+            paid_lines = issue.loan_issue_lines.filtered(
+                lambda line: line.state == "paid"
+            )
+            issue.paid_amount = sum(paid_lines.mapped("amount"))
 
     name = fields.Char(string="Name", translate=True)
     default_issue = fields.Boolean(string="Default issue")
@@ -65,7 +68,12 @@ class LoanIssue(models.Model):
     )
     subscribed_amount = fields.Monetary(
         string="Subscribed amount",
-        compute="_compute_subscribed_amount",
+        compute="_compute_amounts",
+        currency_field="company_currency_id",
+    )
+    paid_amount = fields.Monetary(
+        string="Paid amount",
+        compute="_compute_amounts",
         currency_field="company_currency_id",
     )
     interest_payment = fields.Selection(
