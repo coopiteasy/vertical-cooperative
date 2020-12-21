@@ -16,6 +16,7 @@
                 <field name="minimum_amount"/>
                 <field name="maximum_amount"/>
                 <field name="subscribed_amount"/>
+                <field name="paid_amount"/>
                 <field name="user_id"/>
                 <field name="state"/>
             </tree>
@@ -74,6 +75,7 @@
                             <field name="minimum_amount"/>
                             <field name="maximum_amount"/>
                             <field name="subscribed_amount"/>
+                            <field name="paid_amount"/>
                             <field name="by_individual"/>
                             <field name="min_amount_person"
                                    attrs="{'invisible':[('by_individual','=',False)]}"/>
