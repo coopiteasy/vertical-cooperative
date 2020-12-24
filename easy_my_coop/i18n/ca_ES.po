@@ -769,7 +769,7 @@ msgstr "<span> Certificat generat el </span>"
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.cooperator_certificat_G001_document
 msgid "<span>Cooperator Certificate</span>"
-msgstr "<span>Títol nominatiu capital social obligatori</span>"
+msgstr "<span>Títol nominatiu capital social </span>"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:easy_my_coop.theme_invoice_G002_document
