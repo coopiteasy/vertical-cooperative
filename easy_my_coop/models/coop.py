@@ -89,8 +89,9 @@ class SubscriptionRequest(models.Model):
             cooperator.write({"cooperator": True})
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
-        mail_template_notif = subscr_request.get_mail_template_notif(False)
-        mail_template_notif.send_mail(subscr_request.id)
+        if self._send_confirmation_email():
+            mail_template_notif = subscr_request.get_mail_template_notif(False)
+            mail_template_notif.send_mail(subscr_request.id)
 
         return subscr_request
 
@@ -107,10 +108,11 @@ class SubscriptionRequest(models.Model):
                 vals["already_cooperator"] = True
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
-        confirmation_mail_template = subscr_request.get_mail_template_notif(
-            True
-        )
-        confirmation_mail_template.send_mail(subscr_request.id)
+        if self._send_confirmation_email():
+            confirmation_mail_template = subscr_request.get_mail_template_notif(
+                True
+            )
+            confirmation_mail_template.send_mail(subscr_request.id)
 
         return subscr_request
 
@@ -760,6 +762,8 @@ class SubscriptionRequest(models.Model):
         waiting_list_mail_template.send_mail(self.id, True)
         self.write({"state": "waiting"})
 
+    def _send_confirmation_email(self):
+        return self.company_id.send_confirmation_email
 
 # todo move to share_line.py
 class ShareLine(models.Model):
