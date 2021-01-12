@@ -93,6 +93,7 @@ class ResCompany(models.Model):
         help="Text to display aside the checkbox to approve financial risk.",
     )
     send_certificate_email = fields.Boolean(string="Send certificate email", default=True)
+    send_confirmation_email = fields.Boolean(string="Send confirmation email", default=True)
 
     @api.onchange("data_policy_approval_required")
     def onchange_data_policy_approval_required(self):
