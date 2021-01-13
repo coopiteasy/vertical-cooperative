@@ -32,6 +32,7 @@
                     <field name="financial_risk_approval_required"/>
                     <field name="financial_risk_approval_text"/>
                     <field name="send_confirmation_email"/>
+                    <field name="send_capital_release_email"/>
                     <field name="send_certificate_email"/>
                 </group>
             </group>
