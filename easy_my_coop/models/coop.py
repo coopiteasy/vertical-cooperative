@@ -516,10 +516,11 @@ class SubscriptionRequest(models.Model):
     def send_capital_release_request(self, invoice):
         email_template = self.get_capital_release_mail_template()
 
-        # we send the email with the capital release request in attachment
-        # TODO remove sudo() and give necessary access right
-        email_template.sudo().send_mail(invoice.id, True)
-        invoice.sent = True
+        if self.company_id.send_capital_release_email:
+            # we send the email with the capital release request in attachment
+            # TODO remove sudo() and give necessary access right
+            email_template.sudo().send_mail(invoice.id, True)
+            invoice.sent = True
 
     def get_journal(self):
         return self.env.ref("easy_my_coop.subscription_journal")
