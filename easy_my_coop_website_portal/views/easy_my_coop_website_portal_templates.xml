@@ -107,9 +107,9 @@
                     <label>Date of Birth:</label>
                     <t t-esc="coop.birthdate_date"/>
                 </p>
-                <p t-if="coop_bank and coop_bank.acc_number">
-                    <label>Bank Account:</label>
-                    <t t-esc="coop_bank.acc_number"/>
+                <p t-if="barcode">
+                    <label>Barcode:</label>
+                    <t t-esc="barcode"/>
                 </p>
                 <p t-if="coop.is_company and coop.company_register_number">
                     <label>Company Register Number:</label>
