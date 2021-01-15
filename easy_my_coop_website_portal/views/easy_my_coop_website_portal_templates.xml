@@ -35,11 +35,11 @@
                        t-attf-class="form-control #{error.get('birthdate_date') or ''}"
                        t-att-value="birthdate_date or partner.birthdate_date"/>
             </div>
-            <div t-attf-class="form-group #{error.get('iban') and 'o_has_error' or ''} col-xl-6">
-                <label class="col-form-label" for="iban">Iban</label>
-                <input type="input" name="iban"
-                       t-attf-class="form-control #{error.get('iban') or ''}"
-                       t-att-value="iban"/>
+            <div t-attf-class="form-group #{error.get('barcode') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="barcode">Barcode</label>
+                <input type="input" name="barcode"
+                       t-attf-class="form-control #{error.get('barcode') or ''}"
+                       t-att-value="barcode"/>
             </div>
         </xpath>
     </template>
@@ -107,9 +107,9 @@
                     <label>Date of Birth:</label>
                     <t t-esc="coop.birthdate_date"/>
                 </p>
-                <p t-if="barcode">
+                <p t-if="coop.barcode">
                     <label>Barcode:</label>
-                    <t t-esc="barcode"/>
+                    <t t-esc="coop.barcode"/>
                 </p>
                 <p t-if="coop.is_company and coop.company_register_number">
                     <label>Company Register Number:</label>
