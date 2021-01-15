@@ -35,12 +35,7 @@
                        t-attf-class="form-control #{error.get('birthdate_date') or ''}"
                        t-att-value="birthdate_date or partner.birthdate_date"/>
             </div>
-            <div t-attf-class="form-group #{error.get('barcode') and 'o_has_error' or ''} col-xl-6">
-                <label class="col-form-label" for="barcode">Barcode</label>
-                <input type="input" name="barcode"
-                       t-attf-class="form-control #{error.get('barcode') or ''}"
-                       t-att-value="barcode"/>
-            </div>
+         
         </xpath>
     </template>
 
