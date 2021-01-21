@@ -11,8 +11,9 @@
                     </p>
                     <group>
                         <field name="is_company" invisible="True"/>
-                        <field name="all"/>
+                        <field name="from_sub_req"/>
                         <field name="birthdate"/>
+                        <field name="all"/>
                         <field name="legal_form"/>
                         <field name="representative_function"/>
                         <field name="cooperator" readonly="True"/>
