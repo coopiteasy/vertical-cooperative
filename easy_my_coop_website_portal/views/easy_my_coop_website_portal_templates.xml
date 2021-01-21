@@ -105,7 +105,14 @@
                 <p t-if="coop.barcode">
                     <label>Barcode:</label>
                     <t t-esc="coop.barcode"/>
+                     <img t-if="coop.barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' %('EAN13',coop.barcode,200,25)" ></img>
+    
                 </p>
+                 
+                
+             
+                 
+                 
                 <p t-if="coop.is_company and coop.company_register_number">
                     <label>Company Register Number:</label>
                     <t t-esc="coop.company_register_number"/>
