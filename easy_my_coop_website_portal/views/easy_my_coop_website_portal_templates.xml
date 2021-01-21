@@ -55,6 +55,12 @@
                         You are not a cooperator
                     </span>
                 </p>
+                     <p t-if="coop.barcode">
+                    <label>Barcode:</label>
+                    <t t-esc="coop.barcode"/>
+                     <img t-if="coop.barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' %('EAN13',coop.barcode,200,25)" ></img>
+    
+                </p>
                 <p t-if="coop.cooperator_register_number">
                     <label>Cooperator Number:</label>
                     <t t-esc="coop.cooperator_register_number"/>
@@ -102,12 +108,7 @@
                     <label>Date of Birth:</label>
                     <t t-esc="coop.birthdate_date"/>
                 </p>
-                <p t-if="coop.barcode">
-                    <label>Barcode:</label>
-                    <t t-esc="coop.barcode"/>
-                     <img t-if="coop.barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' %('EAN13',coop.barcode,200,25)" ></img>
-    
-                </p>
+            
                  
                 
              
