@@ -74,9 +74,6 @@ class SubscriptionRequest(models.Model):
                     vals.get("email")
                 )
             if cooperator:
-                # TODO remove the following line once it has
-                # been found a way to avoid double encoding
-                cooperator = cooperator[0]
                 vals["type"] = "subscription"
                 vals = self.is_member(vals, cooperator)
                 vals["partner_id"] = cooperator.id
@@ -103,9 +100,9 @@ class SubscriptionRequest(models.Model):
                 vals.get("company_register_number")
             )
             if cooperator:
+                vals["type"] = "subscription"
+                vals = self.is_member(vals, cooperator)
                 vals["partner_id"] = cooperator.id
-                vals["type"] = "increase"
-                vals["already_cooperator"] = True
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
         if self._send_confirmation_email():
