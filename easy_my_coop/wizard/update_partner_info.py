@@ -36,11 +36,11 @@ class PartnerUpdateInfo(models.TransientModel):
     from_sub_req = fields.Boolean(
         string="Update from subscription request"
     )
-    birthdate = fields.Boolean(
-        string="Update birth date from subscription request"
-    )
     all = fields.Boolean(
-        string="Update all info from subscription request"
+        string="Update all info"
+    )
+    birthdate = fields.Boolean(
+        string="Update birth date"
     )
     legal_form = fields.Boolean(
         string="Set legal form"
@@ -55,8 +55,9 @@ class PartnerUpdateInfo(models.TransientModel):
         cooperator = self.cooperator
         coop_vals = {}
 
-        if self.all:
-            if self.legal_form or self.representative_function:
+        if self.from_sub_req:
+            if self.is_company and (self.legal_form or
+                                    self.representative_function):
                 coops = partner_obj.search(
                     [("cooperator", "=", True), ("is_company", "=", True)]
                 )
