@@ -87,7 +87,7 @@ class SubscriptionRequest(models.Model):
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
         if self._send_confirmation_email():
-            mail_template_notif = subscr_request.get_mail_template_notif(False)
+            mail_template_notif = subscr_request.get_mail_template_notif(is_company=False)
             mail_template_notif.send_mail(subscr_request.id)
 
         return subscr_request
@@ -107,7 +107,7 @@ class SubscriptionRequest(models.Model):
 
         if self._send_confirmation_email():
             confirmation_mail_template = subscr_request.get_mail_template_notif(
-                True
+                is_company=True
             )
             confirmation_mail_template.send_mail(subscr_request.id)
 
