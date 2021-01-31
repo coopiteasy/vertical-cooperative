@@ -11,10 +11,11 @@
                     </p>
                     <group>
                         <field name="is_company" invisible="True"/>
-                        <field name="all"/>
-                        <field name="birthdate"/>
-                        <field name="legal_form"/>
-                        <field name="representative_function"/>
+                        <field name="from_sub_req"/>
+                        <field name="all" attrs="{'invisible':[('from_sub_req', '=', False)]}"/>
+                        <field name="birthdate" attrs="{'invisible':['|', '|',('from_sub_req', '=', False), ('all', '=', True), ('is_company', '=', True)]}"/>
+                        <field name="legal_form" attrs="{'invisible':['|', '|',('from_sub_req', '=', False), ('all', '=', True), ('is_company', '=', False)]}"/>
+                        <field name="representative_function" attrs="{'invisible':['|', '|',('from_sub_req', '=', False), ('all', '=', True),('is_company', '=', False)]}"/>
                         <field name="cooperator" readonly="True"/>
                         <field name="register_number"
                                attrs="{'required':['|', ('is_company', '=', True), ('all', '=', False)], 'invisible':[('is_company', '=', False)]}"/>
