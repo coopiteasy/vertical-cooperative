@@ -17,6 +17,7 @@
     "data": [
         "security/ir.model.access.csv",
         "data/actions.xml",
+        "data/ir_cron_data.xml",
         "data/mail_template_data.xml",
         "views/loan_view.xml",
         "views/partner_view.xml",

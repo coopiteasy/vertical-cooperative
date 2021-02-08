@@ -235,3 +235,19 @@ class LoanIssue(models.Model):
                         "hasn't been implemented yet"
                     )
                 )
+
+    def _cron_check_subscription_end_date(self):
+        today = fields.Date.today()
+        loans_to_close = self.search(
+            [("state", "!=", "closed"), ("subscription_end_date", "<=", today)]
+        )
+        for loan in loans_to_close:
+            try:
+                loan.action_close()
+                self.env.cr.commit()
+                _logger.debug("Loan: '%s' - state: '%s'" % (loan, loan.state))
+            except Exception:
+                _logger.exception(
+                    "An exception occured while closing loan: '%s'" % (loan)
+                )
+                self.env.cr.rollback()
