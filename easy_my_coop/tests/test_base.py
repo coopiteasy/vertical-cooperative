@@ -10,17 +10,23 @@ class EMCBaseCase(common.TransactionCase):
     def setUpClass(cls, *args, **kwargs):
         super().setUpClass(*args, **kwargs)
 
-    def _chart_template_create(self):
-        transfer_account_id = self.env["account.account.template"].create(
+    def _create_account_template(self, code, name, user_type_ref, chart):
+        act = self.env["account.account.template"].create(
             {
-                "code": "000",
-                "name": "Liquidity Transfers",
+                "code": code,
+                "name": name,
+                "user_type_id": self.env.ref(user_type_ref).id,
+                "chart_template_id": chart.id,
                 "reconcile": True,
-                "user_type_id": self.env.ref(
-                    "account.data_account_type_current_assets"
-                ).id,
             }
         )
+        data_name = "demo %s data" % name
+        self.env["ir.model.data"].create(
+            {"res_id": act.id, "model": act._name, "name": data_name}
+        )
+        return act
+
+    def _chart_template_create(self):
         self.chart = self.env["account.chart.template"].create(
             {
                 "name": "Test COA",
@@ -31,126 +37,77 @@ class EMCBaseCase(common.TransactionCase):
                 "transfer_account_code_prefix": "000",
             }
         )
-        transfer_account_id.update({"chart_template_id": self.chart.id})
-        self.env["ir.model.data"].create(
-            {
-                "res_id": transfer_account_id.id,
-                "model": transfer_account_id._name,
-                "name": "Liquidity Transfers",
-            }
+        self._create_account_template(
+            "000",
+            "Liquidity Transfers",
+            "account.data_account_type_current_assets",
+            self.chart,
         )
-        act = self.env["account.account.template"].create(
-            {
-                "code": "001",
-                "name": "Expenses",
-                "user_type_id": self.env.ref(
-                    "account.data_account_type_expenses"
-                ).id,
-                "chart_template_id": self.chart.id,
-                "reconcile": True,
-            }
+        self._create_account_template(
+            "001",
+            "Expenses",
+            "account.data_account_type_expenses",
+            self.chart,
         )
-        self.env["ir.model.data"].create(
-            {"res_id": act.id, "model": act._name, "name": "expenses"}
+        self._create_account_template(
+            "002",
+            "Product Sales",
+            "account.data_account_type_revenue",
+            self.chart,
         )
-        act = self.env["account.account.template"].create(
-            {
-                "code": "002",
-                "name": "Product Sales",
-                "user_type_id": self.env.ref(
-                    "account.data_account_type_revenue"
-                ).id,
-                "chart_template_id": self.chart.id,
-                "reconcile": True,
-            }
+        self._create_account_template(
+            "003",
+            "Account Receivable",
+            "account.data_account_type_receivable",
+            self.chart,
         )
-        self.env["ir.model.data"].create(
-            {"res_id": act.id, "model": act._name, "name": "sales"}
+        self._create_account_template(
+            "004",
+            "Account Payable",
+            "account.data_account_type_payable",
+            self.chart,
         )
-        act = self.env["account.account.template"].create(
-            {
-                "code": "003",
-                "name": "Account Receivable",
-                "user_type_id": self.env.ref(
-                    "account.data_account_type_receivable"
-                ).id,
-                "chart_template_id": self.chart.id,
-                "reconcile": True,
-            }
+        self._create_account_template(
+            "41610",
+            "Cooperator Test Account",
+            "account.data_account_type_receivable",
+            self.chart,
         )
-        self.env["ir.model.data"].create(
-            {"res_id": act.id, "model": act._name, "name": "receivable"}
-        )
-        act = self.env["account.account.template"].create(
-            {
-                "code": "004",
-                "name": "Account Payable",
-                "user_type_id": self.env.ref(
-                    "account.data_account_type_payable"
-                ).id,
-                "chart_template_id": self.chart.id,
-                "reconcile": True,
-            }
-        )
-        self.env["ir.model.data"].create(
-            {"res_id": act.id, "model": act._name, "name": "payable"}
+        self._create_account_template(
+            "100911",
+            "Equity Test Account",
+            "account.data_account_type_equity",
+            self.chart,
         )
 
     def _add_chart_of_accounts(self):
         self.company = self.env.user.company_id
         self.chart.try_loading_for_current_company()
-        self.revenue = self.env["account.account"].search(
-            [
-                (
-                    "user_type_id",
-                    "=",
-                    self.env.ref("account.data_account_type_revenue").id,
-                )
-            ],
-            limit=1,
+        account_obj = self.env["account.account"]
+        self.expense = account_obj.search(
+            [("code", "=", "0010")],
         )
-        self.expense = self.env["account.account"].search(
-            [
-                (
-                    "user_type_id",
-                    "=",
-                    self.env.ref("account.data_account_type_expenses").id,
-                )
-            ],
-            limit=1,
+        self.receivable = account_obj.search(
+            [("code", "=", "0030")],
         )
-        self.receivable = self.env["account.account"].search(
-            [
-                (
-                    "user_type_id",
-                    "=",
-                    self.env.ref("account.data_account_type_receivable").id,
-                )
-            ],
-            limit=1,
+        self.payable = account_obj.search(
+            [("code", "=", "0040")],
         )
-        self.payable = self.env["account.account"].search(
-            [
-                (
-                    "user_type_id",
-                    "=",
-                    self.env.ref("account.data_account_type_payable").id,
-                )
-            ],
-            limit=1,
+        self.cooperator_account = account_obj.search(
+            [("code", "=", "41610")],
         )
-        self.equity_account = self.env.ref("easy_my_coop.account_equity_demo")
-        self.cooperator_account = self.env.ref(
-            "easy_my_coop.account_cooperator_demo"
+        self.equity_account = account_obj.search(
+            [("code", "=", "100911")],
         )
+
         return True
 
     def _journals_setup(self):
-        self.subscription_journal = self.env.ref(
-            "easy_my_coop.subscription_journal"
-        )
-        self.subscription_journal.write(
+        self.subscription_journal = self.env["account.journal"].create(
             {
+                "name": "Subscription Journal",
+                "code": "SUBR",
+                "type": "sale",
                 "default_debit_account_id": self.equity_account.id,
                 "default_credit_account_id": self.equity_account.id,
             }
