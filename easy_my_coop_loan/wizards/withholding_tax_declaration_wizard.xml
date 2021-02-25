@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2021 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+    <record id="withholding_tax_declaration_wizard" model="ir.ui.view">
+        <field name="name">withholding_tax_declaration_wizard</field>
+        <field name="model">withholding.tax.declaration.wizard</field>
+        <field name="arch" type="xml">
+            <form name="withholding_tax_declaration_form">
+                <group>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                </group>
+                <footer>
+                    <button name="action_export_pdf" string="Export to PDF" type="object"/>
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_withholding_tax_declaration_wizard" model="ir.actions.act_window">
+        <field name="name">Withholding Tax Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">withholding.tax.declaration.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

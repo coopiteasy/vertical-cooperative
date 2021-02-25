@@ -56,12 +56,16 @@ class LoanIssueLine(models.Model):
         required=True
     )
     date = fields.Date(
-        string="Subscription date",
-        default=lambda self: date.strftime(date.today(), "%Y-%m-%d"),
+        string="Subscription Date",
+        default=lambda _: fields.Date.today(),
         required=True,
     )
     payment_date = fields.Date(
         string="Payment date"
+    )
+    date_end = fields.Date(
+        string="Subscription End Date",
+        compute="_compute_subscription_end_date",
     )
     amount = fields.Monetary(
         string="Subscribed amount",
@@ -97,6 +101,14 @@ class LoanIssueLine(models.Model):
         string="Company",
         readonly=True,
     )
+
+    @api.multi
+    @api.depends("date")
+    def _compute_subscription_end_date(self):
+        for line in self:
+            line.date_end = line.date + relativedelta(
+                months=line.loan_issue_id.loan_term
+            )
 
     def get_loan_sub_mail_template(self):
         return self.env.ref(

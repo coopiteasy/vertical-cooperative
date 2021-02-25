@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2021 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+    <template id="withholding_tax_declaration_document">
+        <t t-call="web.external_layout">
+            <div class="page mt32">
+                <h2>
+                    <span>Withholding Tax Declaration</span>
+                </h2>
+
+                <p name="document_generation_date" class="mt16">
+                    <span>Document generated on</span>
+                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/>
+                    <span t-esc="datetime.datetime.now()"/>
+                </p>
+
+                <p name="document_date_range">
+                    This report covers tax declaration data from
+                    <span t-field="o.date_start"/>
+                    to
+                    <span t-field="o.date_end"/>
+                </p>
+
+                <p name="declaration_data">
+                    <ul>
+                        <li>Total Gross Interests:
+                            <span t-field="o.total_gross_interests"/>
+                        </li>
+                        <li>Total Withholding Tax:
+                            <span t-field="o.total_withholding_tax"/>
+                        </li>
+                        <li>Total Net Interests:
+                            <span t-field="o.total_net_interests"/>
+                        </li>
+                    </ul>
+                </p>
+            </div>
+        </t>
+    </template>
+
+    <template id="withholding_tax_declaration_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="easy_my_coop_loan.withholding_tax_declaration_document"/>
+            </t>
+        </t>
+    </template>
+
+    <report
+            id="action_withholding_tax_declaration_report"
+            model="withholding.tax.declaration.wizard"
+            string="Withholding Tax Declaration"
+            report_type="qweb-html"
+            name="easy_my_coop_loan.withholding_tax_declaration_report"
+            file="easy_my_coop_loan.withholding_tax_declaration_report.xml"
+            multi="True"
+            menu="True"
+    />
+
+</odoo>
