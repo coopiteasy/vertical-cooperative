@@ -72,12 +72,12 @@ class CooperatorPortalAccount(CustomerPortal):
         ).details_form_validate(data)
         sub_req_obj = request.env["subscription.request"]
         iban = data.get("iban")
-        valid = sub_req_obj.check_iban(iban)
+      #  valid = sub_req_obj.check_iban(iban)
 
-        if not valid:
-            error["iban"] = "error"
-            error_message.append(_("You iban account number is not valid"))
-        return error, error_message
+     #   if not valid:
+     #      error["iban"] = "error"
+      #      error_message.append(_("You iban account number is not valid"))
+       # return error, error_message
 
     @route(["/my/account"], type="http", auth="user", website=True)
     def account(self, redirect=None, **post):
