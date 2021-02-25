@@ -35,9 +35,15 @@
                        t-attf-class="form-control #{error.get('birthdate_date') or ''}"
                        t-att-value="birthdate_date or partner.birthdate_date"/>
             </div>
-         
+            <div t-attf-class="form-group #{error.get('iban') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label" for="iban">Iban</label>
+                <input type="input" name="iban"
+                       t-attf-class="form-control #{error.get('iban') or ''}"
+                       t-att-value="iban"/>
+            </div>
         </xpath>
     </template>
+
 
     <!-- Add cooperator information -->
     <template
