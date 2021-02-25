@@ -35,15 +35,9 @@
                        t-attf-class="form-control #{error.get('birthdate_date') or ''}"
                        t-att-value="birthdate_date or partner.birthdate_date"/>
             </div>
-            <div t-attf-class="form-group #{error.get('iban') and 'o_has_error' or ''} col-xl-6">
-                <label class="col-form-label" for="iban">Iban</label>
-                <input type="input" name="iban"
-                       t-attf-class="form-control #{error.get('iban') or ''}"
-                       t-att-value="iban"/>
-            </div>
+         
         </xpath>
     </template>
-
 
     <!-- Add cooperator information -->
     <template
@@ -161,7 +155,7 @@
         </xpath>
     </template>
 
- <template id="portal_my_home_capital_release"
+    <template id="portal_my_home_capital_release"
               name="Portal My Home : Easy My Coop Capital Release Requests"
               inherit_id="portal.portal_my_home" priority="30">
         <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
@@ -173,7 +167,7 @@
         </xpath>
     </template>
 
-  <template id="portal_my_capital_releases" name="My Capital Releases">
+    <template id="portal_my_capital_releases" name="My Capital Releases">
         <t t-call="portal.portal_layout">
             <t t-set="breadcrumbs_searchbar" t-value="True"/>
 
@@ -252,8 +246,5 @@
                 </tbody>
             </t>
         </t>
-     </template>
-   
-
-  
+    </template>
 </odoo>
