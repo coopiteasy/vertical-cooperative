@@ -72,7 +72,7 @@ class CooperatorPortalAccount(CustomerPortal):
         ).details_form_validate(data)
         sub_req_obj = request.env["subscription.request"]
         iban = data.get("iban")
-      #  valid = sub_req_obj.check_iban(iban)
+      valid = sub_req_obj.check_iban(iban)
 
      #   if not valid:
      #      error["iban"] = "error"
