@@ -48,6 +48,8 @@ class SubscriptionRequest(models.Model):
             required_fields.append("internal_rules_approved")
         if company.financial_risk_approval_required:
             required_fields.append("financial_risk_approved")
+        if company.generic_rules_approval_required:
+            required_fields.append("generic_rules_approved")
         return required_fields
 
     def get_mail_template_notif(self, is_company=False):
@@ -87,7 +89,7 @@ class SubscriptionRequest(models.Model):
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
         if self._send_confirmation_email():
-            mail_template_notif = subscr_request.get_mail_template_notif(is_company=False)
+            mail_template_notif = subscr_request.get_mail_template_notif(is_company = False) #noqa
             mail_template_notif.send_mail(subscr_request.id)
 
         return subscr_request
@@ -436,6 +438,9 @@ class SubscriptionRequest(models.Model):
     financial_risk_approved = fields.Boolean(
         string="Financial Risk Approved", default=False
     )
+    generic_rules_approved = fields.Boolean(
+        string="Generic Rules Approved", default=False
+    )
 
     _order = "id desc"
 
@@ -583,6 +588,7 @@ class SubscriptionRequest(models.Model):
             "data_policy_approved": self.data_policy_approved,
             "internal_rules_approved": self.internal_rules_approved,
             "financial_risk_approved": self.financial_risk_approved,
+            "generic_rules_approved": self.generic_rules_approved,
         }
         return partner_vals
 
@@ -605,6 +611,7 @@ class SubscriptionRequest(models.Model):
             "data_policy_approved": self.data_policy_approved,
             "internal_rules_approved": self.internal_rules_approved,
             "financial_risk_approved": self.financial_risk_approved,
+            "generic_rules_approved": self.generic_rules_approved,
         }
         return partner_vals
 
@@ -634,6 +641,7 @@ class SubscriptionRequest(models.Model):
             "data_policy_approved": self.data_policy_approved,
             "internal_rules_approved": self.internal_rules_approved,
             "financial_risk_approved": self.financial_risk_approved,
+            "generic_rules_approved": self.generic_rules_approved,
         }
         return contact_vals
 
