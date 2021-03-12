@@ -104,6 +104,7 @@
                             <field name="internal_rules_approved"/>
                             <field name="data_policy_approved"/>
                             <field name="financial_risk_approved"/>
+                            <field name="generic_rules_approved"/>
                         </group>
                     </group>
                     <notebook>

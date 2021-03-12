@@ -92,6 +92,18 @@ class ResCompany(models.Model):
         translate=True,
         help="Text to display aside the checkbox to approve financial risk.",
     )
+    display_generic_rules_approval = fields.Boolean(
+        help="Choose to display generic rules checkbox on the"
+        " cooperator website form."
+    )
+    generic_rules_approval_required = fields.Boolean(
+        string="Is generic rules approval required?"
+    )
+    generic_rules_approval_text = fields.Html(
+        translate=True,
+        help="Text to display aside the checkbox to approve the "
+        "generic rules.",
+    )
     send_certificate_email = fields.Boolean(
         string="Send certificate email",
         default=True
@@ -119,3 +131,8 @@ class ResCompany(models.Model):
     def onchange_financial_risk_approval_required(self):
         if self.financial_risk_approval_required:
             self.display_financial_risk_approval = True
+
+    @api.onchange("generic_rules_approval_required")
+    def onchange_generic_rules_approval_required(self):
+        if self.generic_rules_approval_required:
+            self.display_generic_rules_approval = True
