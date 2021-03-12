@@ -935,7 +935,7 @@ msgstr "Política de dades aprovada"
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_partner__financial_risk_approved
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_users__financial_risk_approved
 msgid "Approved Financial Risk"
-msgstr "Aprobat Risc financer"
+msgstr "Signat riscos laborals i Assegurança"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_partner__internal_rules_approved
