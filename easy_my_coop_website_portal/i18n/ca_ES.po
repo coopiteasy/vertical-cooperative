@@ -193,7 +193,7 @@ msgstr "No ets sòcia"
 #. module: easy_my_coop_website_portal
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.website_portal_details_form
 msgid "Your Cooperator Details"
-msgstr "Els teus dades de sòcia"
+msgstr "Les teves dades de sòcia"
 
 #. module: easy_my_coop_website_portal
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_home_capital_release
