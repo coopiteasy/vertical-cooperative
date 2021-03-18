@@ -1009,6 +1009,27 @@
 
                                 <br/>
 
+                                <div id="generic_rules_approved"
+                                     t-if="display_generic_rules"
+                                     t-attf-class="form-group">
+                                    <label class="col-md-3 col-sm-4 control-label"
+                                           for="generic_rules_approved">
+                                        Generic Rules
+                                    </label>
+                                    <div class="col-md-9 col-sm-8">
+                                        <div class="form-check">
+                                            <input type="checkbox"
+                                                   name="generic_rules_approved"
+                                                   class="form-check-input"
+                                                   t-att-required="generic_rules_required"
+                                                   t-att-checked="generic_rules_approved"/>
+                                            <div class="form-check-label">
+                                                <t t-raw="generic_rules_text"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div id="data_policy_approved"
                                      t-if="display_data_policy"
                                      t-attf-class="form-group">
