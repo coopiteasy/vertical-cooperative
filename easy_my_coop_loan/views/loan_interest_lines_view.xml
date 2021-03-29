@@ -18,6 +18,7 @@
                 <field name="interest"/>
                 <field name="accrued_interest"/>
                 <field name="net_interest"/>
+                <field name="taxes_rate"/>
                 <field name="taxes_amount"/>
                 <field name="due_loan_amount"/>
                 <field name="due_amount"/>
@@ -49,6 +50,8 @@
                         <group>
                             <field name="interest"/>
                             <field name="net_interest"/>
+                            <field name="tax_exemption"/>
+                            <field name="taxes_rate"/>
                             <field name="taxes_amount"/>
                             <field name="accrued_interest"/>
                             <field name="accrued_net_interest"/>

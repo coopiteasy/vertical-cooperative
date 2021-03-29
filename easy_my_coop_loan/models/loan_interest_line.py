@@ -35,7 +35,13 @@ class LoanInterestLine(models.Model):
         currency_field="company_currency_id",
         readonly=True,
     )
-    taxes_rate = fields.Float(string="Taxes on interest", required=True)
+    tax_exemption = fields.Boolean(
+        string="Tax exemption"
+    )
+    taxes_rate = fields.Float(
+        string="Taxes on interest",
+        required=True
+    )
     taxes_amount = fields.Monetary(
         string="Taxes amount",
         currency_field="company_currency_id",

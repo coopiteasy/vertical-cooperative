@@ -59,6 +59,9 @@ class LoanIssueLine(models.Model):
         compute="_compute_amount",
         store=True,
     )
+    tax_exemption = fields.Boolean(
+        string="Tax exemption"
+    )
     state = fields.Selection(
         [
             ("draft", "Draft"),
@@ -158,7 +161,7 @@ class LoanIssueLine(models.Model):
     def action_paid(self):
         if self.filtered(lambda l: l.state != "waiting"):
             raise ValidationError(
-                _("You can only park as paid loans waiting for payment")
+                _("You can only mark as paid loans waiting for payment")
             )
 
         loan_email_template = self.get_confirm_paid_email_template()
@@ -180,9 +183,14 @@ class LoanIssueLine(models.Model):
     def action_compute_interest(self):
         for line in self:
             loan_issue = line.loan_issue_id
+            taxes_rate = loan_issue.taxes_rate
+
+            if line.tax_exemption:
+                taxes_rate = 0.0
             vals = {
                 "issue_line": line.id,
-                "taxes_rate": loan_issue.taxes_rate,
+                "tax_exemption": line.tax_exemption,
+                "taxes_rate": taxes_rate
             }
             list_vals = []
             accrued_amount = line.amount
@@ -252,13 +260,13 @@ class LoanIssueLine(models.Model):
                     net_interest = 0
                     if year == loan_term:
                         taxes_amount = accrued_interest * (
-                            loan_issue.taxes_rate / 100
+                            taxes_rate / 100
                         )
                         net_interest = accrued_interest - taxes_amount
                         due_amount += net_interest
                 else:
                     due_date = start_date + relativedelta(years=+year)
-                    taxes_amount = interest * (loan_issue.taxes_rate / 100)
+                    taxes_amount = interest * (taxes_rate / 100)
                     net_interest = interest - taxes_amount
                     due_amount += net_interest
                     accrued_interest = interest
