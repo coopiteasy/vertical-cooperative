@@ -35,10 +35,16 @@ class LoanIssue(models.Model):
     user_id = fields.Many2one("res.users", string="Responsible")
     loan_start_date = fields.Date(string="Loan start date")
     term_date = fields.Date(string="Term date")
-    loan_term = fields.Float(string="Duration of the loan in month")
+    loan_term = fields.Float(
+        string="Duration of the loan in month",
+        required=True
+    )
     rate = fields.Float(string="Net Interest rate")
     gross_rate = fields.Float(string="Gross Interest rate")
-    taxes_rate = fields.Float(string="Taxes on interest", required=True)
+    taxes_rate = fields.Float(
+        string="Taxes on interest",
+        required=True
+    )
     face_value = fields.Monetary(
         string="Facial value",
         currency_field="company_currency_id",
