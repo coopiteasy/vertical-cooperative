@@ -51,6 +51,7 @@
                         <group>
                             <field name="name"/>
                             <field name="partner_id"/>
+                            <field name="tax_exemption"/>
                             <field name="loan_issue_id"/>
                             <field name="quantity"/>
                             <field name="face_value"/>
