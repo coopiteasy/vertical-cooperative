@@ -111,15 +111,17 @@ class WebsiteLoanIssueSubscription(http.Controller):
         loan_obj = request.env["loan.issue"]
         loan_obj_line = request.env["loan.issue.line"]
 
-        loan_issue = loan_obj.sudo().browse(kwargs.get("loan_issue_id"))
+        loan_issue = loan_obj.sudo().browse(int(kwargs.get("loan_issue_id")))
         partner = request.env.user.partner_id
 
         if self.validation(loan_issue, kwargs):
+            amount = float(kwargs["subscription_amount"])
+            quantity = amount / loan_issue.face_value
             values = {
                 "loan_issue_id": loan_issue.id,
                 "partner_id": partner.id,
-                "amount": kwargs["subscription_amount"],
+                "quantity": quantity,
                 "state": "subscribed",
             }
             loan_obj_line.sudo().create(values)
-        return request.render("easy_my_coop_website.cooperator_thanks", values)
+        return request.render("easy_my_coop_loan_website.loan_thanks", values)
