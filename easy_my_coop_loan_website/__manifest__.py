@@ -7,7 +7,7 @@
     "version": "12.0.1.0.1",
     "depends": [
         "easy_my_coop_loan",
-        "easy_my_coop_website",
+        "easy_my_coop_website_portal",
         "website",
     ],
     "author": "Coop IT Easy SCRLfs",
