@@ -184,6 +184,7 @@ class ResPartner(models.Model):
     data_policy_approved = fields.Boolean(string="Approved Data Policy")
     internal_rules_approved = fields.Boolean(string="Approved Internal Rules")
     financial_risk_approved = fields.Boolean(string="Approved Financial Risk")
+    generic_rules_approved = fields.Boolean(string="Approved generic rules")
 
     @api.multi
     @api.depends("subscription_request_ids.state")
