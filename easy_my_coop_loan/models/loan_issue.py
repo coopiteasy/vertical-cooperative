@@ -157,13 +157,13 @@ class LoanIssue(models.Model):
 
     @api.multi
     def get_web_issues(self, is_company):
-        bond_issues = self.search(
+        loan_issues = self.search(
             [("display_on_website", "=", True), ("state", "=", "ongoing")]
         )
         if is_company is True:
-            return bond_issues.filtered("by_company")
+            return loan_issues.filtered("by_company")
         else:
-            return bond_issues.filtered("by_company")
+            return loan_issues.filtered("by_company")
 
     @api.multi
     def action_confirm(self):
