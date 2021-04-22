@@ -12,7 +12,7 @@
                eval="datetime.today() + timedelta(days=60)"/>
         <field name="term_date" eval="datetime.today() + timedelta(days=600)"/>
         <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo"/>
-        <field name="rate">3</field>
+        <field name="gross_rate">3</field>
         <field name="face_value">100</field>
         <field name="minimum_amount">4000</field>
         <field name="maximum_amount">10000</field>
@@ -34,7 +34,7 @@
                eval="datetime.today() + timedelta(days=60)"/>
         <field name="term_date" eval="datetime.today() + timedelta(days=600)"/>
         <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo"/>
-        <field name="rate">3</field>
+        <field name="gross_rate">3</field>
         <field name="face_value">100</field>
         <field name="minimum_amount">4000</field>
         <field name="maximum_amount">10000</field>
@@ -56,8 +56,7 @@
                eval="datetime.today() + timedelta(days=60)"/>
         <field name="term_date" eval="datetime.today() + timedelta(days=600)"/>
         <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo"/>
-        <field name="rate">3</field>
-        <field name="gross_rate">0.4</field>
+        <field name="gross_rate">3</field>
         <field name="face_value">100</field>
         <field name="minimum_amount">4000</field>
         <field name="maximum_amount">10000</field>
@@ -79,7 +78,7 @@
                eval="datetime.today() + timedelta(days=60)"/>
         <field name="term_date" eval="datetime.today() + timedelta(days=600)"/>
         <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo"/>
-        <field name="rate">3</field>
+        <field name="gross_rate">3</field>
         <field name="face_value">100</field>
         <field name="minimum_amount">1000</field>
         <field name="maximum_amount">10000</field>

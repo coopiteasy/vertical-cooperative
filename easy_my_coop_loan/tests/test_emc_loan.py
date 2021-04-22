@@ -20,7 +20,7 @@ class EMCLoanCase(EMCBaseCase):
             "subscription_end_date": Date.today() + timedelta(days=60),
             "user_id": self.ref("easy_my_coop.res_users_manager_emc_demo"),
             "term_date": Date.today() + timedelta(days=600),  # ?
-            "rate": 0.03,
+            "gross_rate": 0.03,
             "face_value": 100,
             "minimum_amount": 4000,
             "maximum_amount": 10,  # ?
@@ -49,7 +49,7 @@ class EMCLoanCase(EMCBaseCase):
             "subscription_start_date": Date.today(),
             "subscription_end_date": Date.today() + timedelta(days=60),
             "term_date": Date.today() + timedelta(days=600),  # ?
-            "rate": 0.03,
+            "gross_rate": 0.03,
             "face_value": 100,
             "minimum_amount": 2000,
             "maximum_amount": 10000,  # ?
