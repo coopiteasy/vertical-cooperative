@@ -230,16 +230,16 @@ class LoanIssueLine(models.Model):
                     (start_date - relativedelta(days=1)) - line.payment_date
                 ).days
 
-            rate = loan_issue.rate / 100
+            gross_rate = loan_issue.gross_rate / 100
 
             # take leap year into account
             days = self.get_number_of_days(line.payment_date.year)
-            interim_amount = line.amount * rate * (diff_days / days)
+            interim_amount = line.amount * gross_rate * (diff_days / days)
 
             due_date = start_date + relativedelta(years=loan_term)
 
             for year in range(1, loan_term + 1):
-                interest = accrued_amount * rate
+                interest = accrued_amount * gross_rate
                 due_amount = 0
                 due_loan_amount = 0
 
