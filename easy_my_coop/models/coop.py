@@ -88,7 +88,7 @@ class SubscriptionRequest(models.Model):
             cooperator.write({"cooperator": True})
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
-        if self._send_confirmation_email():
+        if subscr_request._send_confirmation_email():
             mail_template_notif = subscr_request.get_mail_template_notif(is_company = False) #noqa
             mail_template_notif.send_mail(subscr_request.id)
 
