@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 from dateutil.relativedelta import relativedelta
 from odoo import api, fields, models
+from odoo.exceptions import UserError
 
 
 class LoanInterestLine(models.Model):
@@ -14,7 +15,7 @@ class LoanInterestLine(models.Model):
     )
     loan_due_move = fields.Many2one(
         comodel_name="account.move",
-        string="Loan due this fiscal year account move"
+        string="Loan due now account move"
     )
     loan_reimbursment_move = fields.Many2one(
         comodel_name="account.move",
@@ -63,11 +64,16 @@ class LoanInterestLine(models.Model):
                 company = line.company_id
                 move = line.create_move()
 
-                debit_vals = line.get_move_line(move, line.partner_id)
+                debit_vals = line.get_move_line(move)
                 loaner_vals = line.get_move_line(move, line.partner_id)
 
                 debit_vals["debit"] = line.interest
                 debit_vals["account_id"] = company.interest_account.id
+
+                loan_vals = line.get_move_line(move)
+                if line.due_loan_amount > 0:
+                    loan_vals["debit"] = line.due_loan_amount
+                    loan_vals["account_id"] = company.debt_long_term_due_account.id
 
                 if line.due_loan_amount > 0 and line.net_interest > 0:
                     loaner_vals["credit"] = line.due_amount
@@ -75,9 +81,9 @@ class LoanInterestLine(models.Model):
                     loaner_vals["credit"] = line.due_loan_amount
                 elif line.net_interest > 0:
                     loaner_vals["credit"] = line.net_interest
-                loaner_vals["account_id"] = company.loaner_account
+                loaner_vals["account_id"] = company.loaner_account.id
 
-                vals_list = [debit_vals, loaner_vals]
+                vals_list = [debit_vals, loan_vals, loaner_vals]
 
                 if line.taxes_amount > 0:
                     tax_vals = line.get_move_line(move)
@@ -87,8 +93,14 @@ class LoanInterestLine(models.Model):
 
                 self.env["account.move.line"].create(vals_list)
 
-                line.write({"loan_reimbursment_move": move.id})
+                line.write({
+                    "loan_reimbursment_move": move.id,
+                    "state": "scheduled"
+                })
 
+    """ this function create the end of year accounting account for
+        the accrued interest due for the closing fiscal year.
+    """
     @api.multi
     def generate_interest_move_lines_fy(self, date, next_fy):
         aml_obj = self.env["account.move.line"]
@@ -162,39 +174,51 @@ class LoanInterestLine(models.Model):
 
                 line.write({"loan_due_fy_move": move.id})
 
+    """ This function will generate the account move lines
+        to transfer the due amount from long term debt account
+        to the long term debt due (for this fiscal year) account
+    """
     @api.multi
     def generate_loan_due_now(self):
 
         for line in self:
-            if line.loan_due_move:
+            if not line.loan_due_move:
                 company = line.company_id
-                move = line.create_move(fields.Date.today())
+                move = line.create_move(line.due_date)
 
                 debit_vals = line.get_move_line(move, line.partner_id)
-                credit_vals = line.get_move_line(move, line.partner_id)
+                cred_vals = line.get_move_line(move, line.partner_id)
 
                 debit_vals["debit"] = line.due_loan_amount
                 debit_vals["account_id"] = company.debt_long_term_fy_account.id
 
-                credit_vals["credit"] = line.due_loan_amount
-                credit_vals["account_id"] = company.debt_long_term_due_account
+                cred_vals["credit"] = line.due_loan_amount
+                cred_vals["account_id"] = company.debt_long_term_due_account.id
 
-                self.env["account.move.line"].create([debit_vals, credit_vals])
+                self.env["account.move.line"].create([debit_vals, cred_vals])
 
-                line.write({"loan_due_move": move.id,
-                            "state": "due"})
+                line.write({"loan_due_move": move.id, "state": "due"})
 
     @api.model
     def _generate_payment_move(self):
         # TODO configure how many days before you want generate the move lines
         fy = self.env["account.fiscal.year"].get_next_fiscal_year()
         interest_lines = self.search([
-            ('due_date', '>=', fy.date_from),
-            ('due_date', '<=', fy.date_to),
-            ('due_amount', '>', 0),
-            ('state', '=', 'due')
-            ])
+            ("due_date", ">=", fy.date_from),
+            ("due_date", "<=", fy.date_to),
+            ("due_amount", ">", 0),
+            ("state", "=", "due")
+        ])
 
         interest_lines.generate_payment_move_lines()
 
         return True
+
+    @api.multi
+    def action_paid(self):
+        paid_by = self.env.context.get("paid_by_bank_statement")
+        if paid_by:
+            super(LoanInterestLine, self).action_paid()
+        else:
+            raise UserError(_("The payment must be registered"
+                              " by bank statement"))
