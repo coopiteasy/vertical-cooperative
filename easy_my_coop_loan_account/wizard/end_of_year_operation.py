@@ -8,9 +8,12 @@ from odoo.exceptions import UserError
 
 class LoanEndOfYearOperation(models.TransientModel):
     _name = "loan.end.of.year.operation"
-    operation_type = fields.Selection(
-        [("eoy_operation", "End of year operation"),
-         ("loan_due", "Loan payment account move lines")],
+
+    operation_type = fields.Selection([
+            ("eoy_operation", "End of year operation"),
+            ("loan_due", "Reimbursement due operation"),
+            ("payment_due", "Payment due operation")
+        ],
         required=True,
         string="Operation type"
     )
@@ -43,9 +46,10 @@ class LoanEndOfYearOperation(models.TransientModel):
                     ("due_loan_amount", ">", 0),
                     ("loan_issue_id", "in", loan_issues.ids),
                     ("loan_reimbursment_move", "=", False)
-                    ])
+                ])
 
                 interest_lines_loan.generate_loan_due_fy(last_fy_day)
+
                 interest_lines = interest_line_obj.search([
                     ("due_date", ">=", next_fy.date_from),
                     ("due_date", "<=", next_fy.date_to),
@@ -53,7 +57,7 @@ class LoanEndOfYearOperation(models.TransientModel):
                     ("loan_issue_id", "in", loan_issues.ids),
                     ("interest_closing_fy", "=", False),
                     ("interest_opening_fy", "=", False)
-                    ])
+                ])
 
                 interest_lines.generate_interest_move_lines_fy(last_fy_day,
                                                                next_fy)
@@ -66,12 +70,22 @@ class LoanEndOfYearOperation(models.TransientModel):
         elif self.operation_type == "loan_due":
             fy = afy_obj.get_next_fiscal_year()
             interest_lines = interest_line_obj.search([
-                    ("due_date", ">=", fy.date_from),
-                    ("due_date", "<=", fy.date_to),
-                    ("due_loan_amount", ">", 0),
-                    ("loan_issue_id", "in", loan_issues.ids),
-                    ("state", "=", "due_fy"),
-                    ("loan_due_move", "=", False)
-                    ])
+                ("due_date", ">=", fy.date_from),
+                ("due_date", "<=", fy.date_to),
+                ("due_loan_amount", ">", 0),
+                ("loan_issue_id", "in", loan_issues.ids),
+                ("state", "=", "due_fy"),
+                ("loan_due_move", "=", False)
+            ])
             interest_lines.generate_loan_due_now()
-            interest_lines.write({"state": "scheduled"})
+        elif self.operation_type == "payment_due":
+            fy = afy_obj.get_next_fiscal_year()
+            interest_lines = interest_line_obj.search([
+                ("due_date", ">=", fy.date_from),
+                ("due_date", "<=", fy.date_to),
+                ("loan_issue_id", "in", loan_issues.ids),
+                ("due_amount", ">", 0),
+                ("state", "=", "due")
+            ])
+
+            interest_lines.generate_payment_move_lines()

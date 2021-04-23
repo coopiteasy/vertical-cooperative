@@ -9,6 +9,11 @@ from odoo import fields, models
 class ResCompany(models.Model):
     _inherit = "res.company"
 
+    days_ahead = fields.Integer(
+        string="Days ahead the due date",
+        help="We are waiting x days before due date to create the "
+             "reimbursement accounting entries creation"
+    )
     awaiting_loan_payment_account = fields.Many2one(
         "account.account",
         company_dependent=True,

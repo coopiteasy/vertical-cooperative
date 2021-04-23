@@ -7,7 +7,7 @@ from datetime import date
 from dateutil.relativedelta import relativedelta
 
 from odoo import _, api, fields, models
-from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError
 
 
 class LoanIssueLine(models.Model):
@@ -32,12 +32,18 @@ class LoanIssueLine(models.Model):
         states={"draft": [("readonly", False)]},
     )
     loan_issue_id = fields.Many2one(
-        "loan.issue", string="Loan issue", required=True
+        "loan.issue",
+        string="Loan issue",
+        required=True
     )
     interest_lines = fields.One2many(
-        "loan.interest.line", "issue_line", string="Interest lines"
+        "loan.interest.line",
+        "issue_line",
+        string="Interest lines"
     )
-    quantity = fields.Integer(string="Quantity", required=True)
+    quantity = fields.Integer(
+        string="Quantity", required=True
+    )
     face_value = fields.Monetary(
         related="loan_issue_id.face_value",
         currency_field="company_currency_id",
@@ -45,14 +51,18 @@ class LoanIssueLine(models.Model):
         readonly=True,
     )
     partner_id = fields.Many2one(
-        "res.partner", string="Subscriber", required=True
+        "res.partner",
+        string="Subscriber",
+        required=True
     )
     date = fields.Date(
         string="Subscription date",
         default=lambda self: date.strftime(date.today(), "%Y-%m-%d"),
         required=True,
     )
-    payment_date = fields.Date(string="Payment date")
+    payment_date = fields.Date(
+        string="Payment date"
+    )
     amount = fields.Monetary(
         string="Subscribed amount",
         currency_field="company_currency_id",
@@ -110,7 +120,7 @@ class LoanIssueLine(models.Model):
     @api.multi
     def action_draft(self):
         if self.filtered(lambda l: l.state != "cancelled"):
-            raise ValidationError(
+            raise UserError(
                 _("You can only set cancelled loans to draft")
             )
         self.write({"state": "draft"})
@@ -118,7 +128,7 @@ class LoanIssueLine(models.Model):
     @api.multi
     def action_validate(self):
         if self.filtered(lambda l: l.state != "draft"):
-            raise ValidationError(_("You can only validate draft loans"))
+            raise UserError(_("You can only validate draft loans"))
         sequence_id = self.env.ref(
             "easy_my_coop_loan.sequence_loan_issue_line", False
         )
@@ -129,7 +139,7 @@ class LoanIssueLine(models.Model):
     @api.multi
     def action_request_payment(self):
         if self.filtered(lambda l: l.state != "subscribed"):
-            raise ValidationError(
+            raise UserError(
                 _("You can only request payment for validated loans")
             )
 
@@ -142,7 +152,7 @@ class LoanIssueLine(models.Model):
     def action_cancel(self):
         allowed_states = ["draft", "subscribed", "waiting"]
         if self.filtered(lambda l: l.state not in allowed_states):
-            raise ValidationError(
+            raise UserError(
                 _(
                     "You can only cancel loans in states draft, "
                     "subscribed or waiting for payment."
@@ -160,7 +170,7 @@ class LoanIssueLine(models.Model):
     @api.multi
     def action_paid(self):
         if self.filtered(lambda l: l.state != "waiting"):
-            raise ValidationError(
+            raise UserError(
                 _("You can only mark as paid loans waiting for payment")
             )
 
@@ -200,14 +210,12 @@ class LoanIssueLine(models.Model):
             taxes_amount = 0
             diff_days = 0
 
-            # In case of a recompute is done. Only the interest lines
-            # in the future will be deleted. We also needed to determine
+            # In case of a recompute is done. Only the future interest lines
+            # and in draft state will be deleted. We also needed to determine
             # from which year we'll have to regenerate the lines.
-            # Through the beautiful mind of Houssine, we implemented
-            # a small piece code to allows it.
             today = fields.Date.today()
             posted_lines = line.interest_lines.filtered(
-                lambda r: r.state == "paid" or r.due_date < today
+                lambda r: r.state != "draft" or r.due_date < today
             )
             futur_lines = line.interest_lines - posted_lines
             start_to_line = len(posted_lines) + 1
