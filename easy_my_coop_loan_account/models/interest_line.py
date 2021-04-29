@@ -109,8 +109,8 @@ class LoanInterestLine(models.Model):
                 company = line.company_id
 
                 # compute the prorata interest for the fiscal year
-                prorata_date = line.due_date - relativedelta(years=-1)
-                diff_days = (prorata_date - date).days
+                prorata_date = line.due_date - relativedelta(years=1)
+                diff_days = (date - prorata_date).days
                 days = line.issue_line.get_number_of_days(date.year)
 
                 previous_interest = line.accrued_interest - line.interest
