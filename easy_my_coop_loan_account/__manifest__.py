@@ -23,6 +23,7 @@
         "data/emc_loan_account_data.xml",
         "views/res_company_view.xml",
         "views/loan_issue_line_view.xml",
+        "views/interest_line_view.xml",
         "wizard/end_of_year_operation.xml",
     ],
     "demo": [
