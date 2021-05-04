@@ -1,8 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-     Copyright 2021 Coop IT Easy
-     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
--->
 <odoo>
 
     <record id="withholding_tax_declaration_wizard" model="ir.ui.view">
@@ -11,11 +6,13 @@
         <field name="arch" type="xml">
             <form name="withholding_tax_declaration_form">
                 <group>
-                    <field name="date_start"/>
-                    <field name="date_end"/>
+                    <group>
+                        <field name="date_start"/>
+                    </group>
+                    <group></group>
                 </group>
                 <footer>
-                    <button name="action_export_pdf" string="Export to PDF" type="object"/>
+                    <button name="action_print_pdf" string="Print" type="object"/>
                     <button string="Cancel" class="oe_link" special="cancel"/>
                 </footer>
             </form>

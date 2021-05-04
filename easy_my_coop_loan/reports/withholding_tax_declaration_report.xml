@@ -24,8 +24,8 @@
                     to
                     <span t-field="o.date_end"/>
                 </p>
-
-                <p name="declaration_data">
+   
+                <p name="declaration_total">
                     <ul>
                         <li>Total Gross Interests:
                             <span t-field="o.total_gross_interests"/>
@@ -38,6 +38,32 @@
                         </li>
                     </ul>
                 </p>
+
+                <table class="table table-condensed table-statement">
+                    <thead>
+                        <tr>
+                            <th>Loaner</th>
+                            <th>Tax Exemption</th>
+                            <th>Taxe %</th>
+                            <th class="amount">Taxes amount</th>
+                            <th>Due date</th>
+                            <th>State</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="o.interest_lines" t-as="line">
+                            <td><span t-field="line.partner_id"/></td>
+                            <td><span t-field="line.tax_exemption"/></td>
+                            <td><span t-field="line.taxes_rate"/></td>
+                            <td class="amount">
+                                <span t-field="line.taxes_amount" t-options="{'widget': 'monetary', 'display_currency': o.company_currency_id}"/>
+                            </td>
+                            <td><span t-field="line.due_date"/></td>
+                            <td><span t-field="line.state"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </div>
         </t>
     </template>
@@ -52,7 +78,7 @@
 
     <report
             id="action_withholding_tax_declaration_report"
-            model="withholding.tax.declaration.wizard"
+            model="withholding.tax.declaration.report"
             string="Withholding Tax Declaration"
             report_type="qweb-html"
             name="easy_my_coop_loan.withholding_tax_declaration_report"
