@@ -27,6 +27,7 @@
         "reports/loan_issue_line_report.xml",
         "reports/withholding_tax_declaration_report.xml",
         "wizards/withholding_tax_declaration_wizard.xml",
+        "views/assets.xml",
         "views/menus.xml",
     ],
     "demo": ["demo/coop.xml"],

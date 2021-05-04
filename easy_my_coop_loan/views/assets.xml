@@ -1,0 +1,9 @@
+<odoo>
+
+    <template id="report_assets_common" name="report assets" inherit_id="web.report_assets_common">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/easy_my_coop_loan/static/src/scss/loan_report.scss" type="text/scss" />
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,35 +1,48 @@
 # Copyright 2021+ Coop IT Easy SCRL fs
+#   Houssine Bakkali <houssine@coopiteasy.be>
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, fields, models
-from calendar import monthrange
+from odoo import fields, models
 
 
-def _get_first_day_of_month(_):
-    today = fields.Date.today()
-    return today.replace(day=1)
+class WithholdingTaxDeclarationReport(models.TransientModel):
+    _name = "withholding.tax.declaration.report"
+    _description = "Tax Withholding Declaration Report"
 
-
-def _get_last_day_of_month(_):
-    today = fields.Date.today()
-    _, days_in_month = monthrange(today.year, today.month)
-    return today.replace(day=days_in_month)
-
-
-class WithholdingTaxDeclarationWizard(models.Model):
-    _name = "withholding.tax.declaration.wizard"
-    _description = "Wizard to Compute Tax Withholding Declaration"
-
-    date_start = fields.Date(
-        string="Start Date",
-        default=_get_first_day_of_month,
+    date_start = fields.Date(string="Start Date")
+    date_end = fields.Date(string="End Date")
+    interest_lines = fields.Many2many(comodel_name='loan.interest.line')
+    total_gross_interests = fields.Monetary(
+        string="Total gross interests",
+        currency_field="company_currency_id",
     )
-    date_end = fields.Date(
-        string="Date End",
-        default=_get_last_day_of_month,
+    total_net_interests = fields.Monetary(
+        string="Total net interests",
+        currency_field="company_currency_id",
+    )
+    total_withholding_tax = fields.Monetary(
+        string="Total Withholding Tax",
+        currency_field="company_currency_id",
+    )
+    company_currency_id = fields.Many2one(
+        "res.currency",
+        related="company_id.currency_id",
+        string="Company Currency",
+        readonly=True,
+    )
+    company_id = fields.Many2one(
+        "res.company",
+        string="Company",
+        required=True,
+        readonly=True,
+        default=lambda self: self.env["res.company"]._company_default_get(),
     )
 
-    def action_export_pdf(self):
+    def print_report(self):
         self.ensure_one()
-        return True
+        context = dict(self.env.context)
+        action = self.env.ref(
+            "easy_my_coop_loan.action_withholding_tax_declaration_report"
+        )
+        return action.with_context(context).report_action(self, config=False)
