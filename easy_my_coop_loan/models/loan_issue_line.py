@@ -3,7 +3,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 import calendar
-from datetime import date
 from dateutil.relativedelta import relativedelta
 
 from odoo import _, api, fields, models
