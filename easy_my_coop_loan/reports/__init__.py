@@ -1,1 +1,1 @@
-from . import withholding_tax_declaration_report
+from . import loan_interest_line_report

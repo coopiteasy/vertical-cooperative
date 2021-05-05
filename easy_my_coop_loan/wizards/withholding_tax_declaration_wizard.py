@@ -51,6 +51,6 @@ class WithholdingTaxDeclarationWizard(models.TransientModel):
     def action_print_pdf(self):
         self.ensure_one()
 
-        model = self.env['withholding.tax.declaration.report']
+        model = self.env['loan.interest.line.report']
         report = model.create(self._prepare_withholding_tax_report())
         return report.print_report()
