@@ -1,0 +1,31 @@
+<odoo>
+
+    <record id="payment_report_wizard" model="ir.ui.view">
+        <field name="name">payment_report_wizard</field>
+        <field name="model">payment.report.wizard</field>
+        <field name="arch" type="xml">
+            <form name="payment_report_wizard_form">
+                <group>
+                    <group>
+                        <field name="report_type"/>
+                        <field name="date_start"/>
+                    </group>
+                    <group></group>
+                </group>
+                <footer>
+                    <button name="action_print_pdf" string="Print" type="object"/>
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_payment_report_wizard" model="ir.actions.act_window">
+        <field name="name">Payment Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">payment.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

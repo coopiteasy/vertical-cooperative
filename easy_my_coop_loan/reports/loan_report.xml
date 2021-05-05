@@ -1,0 +1,25 @@
+<odoo>
+
+    <report
+        id="action_withholding_tax_declaration_report"
+        model="loan.interest.line.report"
+        string="Withholding Tax Declaration"
+        report_type="qweb-html"
+        name="easy_my_coop_loan.withholding_tax_declaration_report"
+        file="easy_my_coop_loan.withholding_tax_declaration_report.xml"
+        multi="True"
+        menu="True"
+    />
+    
+    <report
+        id="action_loan_reimbursement_report"
+        model="loan.interest.line.report"
+        string="Loan Reimbursement Report"
+        report_type="qweb-html"
+        name="easy_my_coop_loan.loan_reimbursement_report"
+        file="easy_my_coop_loan.loan_reimbursement_report.xml"
+        multi="True"
+        menu="True"
+    />
+    
+</odoo>
