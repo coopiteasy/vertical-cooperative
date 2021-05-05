@@ -1,12 +1,13 @@
 <odoo>
 
-    <record id="withholding_tax_declaration_wizard" model="ir.ui.view">
-        <field name="name">withholding_tax_declaration_wizard</field>
-        <field name="model">withholding.tax.declaration.wizard</field>
+    <record id="payment_report_wizard" model="ir.ui.view">
+        <field name="name">payment_report_wizard</field>
+        <field name="model">payment.report.wizard</field>
         <field name="arch" type="xml">
-            <form name="withholding_tax_declaration_form">
+            <form name="payment_report_wizard_form">
                 <group>
                     <group>
+                        <field name="report_type"/>
                         <field name="date_start"/>
                     </group>
                     <group></group>
@@ -19,10 +20,10 @@
         </field>
     </record>
 
-    <record id="action_withholding_tax_declaration_wizard" model="ir.actions.act_window">
-        <field name="name">Withholding Tax Report</field>
+    <record id="action_payment_report_wizard" model="ir.actions.act_window">
+        <field name="name">Payment Report</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">withholding.tax.declaration.wizard</field>
+        <field name="res_model">payment.report.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
     </record>

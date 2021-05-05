@@ -12,9 +12,9 @@
     <menuitem name="Loans" id="loan_issue_line_menu"
               action="action_loan_issue_lines"
               parent="menu_easy_my_coop_main_loan_issue" sequence="120"/>
-    <menuitem name="Withholding Tax Report" id="menu_withholding_tax_declaration_wizard"
+    <menuitem name="Payment Report" id="menu_payment_report_wizard"
               parent="menu_easy_my_coop_main_loan_issue"
-              action="action_withholding_tax_declaration_wizard"
+              action="action_payment_report_wizard"
               sequence="130"/>
     <menuitem name="Loaners" id="loaners_menu"
               action="action_loaners"

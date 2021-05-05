@@ -1,1 +1,1 @@
-from . import withholding_tax_declaration_wizard
+from . import payment_report_wizard
