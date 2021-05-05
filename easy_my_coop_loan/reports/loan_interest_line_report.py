@@ -7,8 +7,8 @@ from odoo import fields, models
 
 
 class WithholdingTaxDeclarationReport(models.TransientModel):
-    _name = "withholding.tax.declaration.report"
-    _description = "Tax Withholding Declaration Report"
+    _name = "loan.interest.line.report"
+    _description = "Loan Interest Line Report"
 
     date_start = fields.Date(string="Start Date")
     date_end = fields.Date(string="End Date")
