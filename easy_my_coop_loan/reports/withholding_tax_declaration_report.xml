@@ -76,15 +76,4 @@
         </t>
     </template>
 
-    <report
-            id="action_withholding_tax_declaration_report"
-            model="withholding.tax.declaration.report"
-            string="Withholding Tax Declaration"
-            report_type="qweb-html"
-            name="easy_my_coop_loan.withholding_tax_declaration_report"
-            file="easy_my_coop_loan.withholding_tax_declaration_report.xml"
-            multi="True"
-            menu="True"
-    />
-
 </odoo>

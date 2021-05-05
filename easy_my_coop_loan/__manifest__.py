@@ -26,6 +26,7 @@
         "views/partner_view.xml",
         "reports/loan_issue_line_report.xml",
         "reports/withholding_tax_declaration_report.xml",
+        "reports/loan_report.xml",
         "wizards/withholding_tax_declaration_wizard.xml",
         "views/assets.xml",
         "views/menus.xml",
