@@ -8,6 +8,7 @@
     "depends": [
         "easy_my_coop_loan",
         "easy_my_coop_website_portal",
+        "auth_company_signup",
         "website",
     ],
     "author": "Coop IT Easy SCRLfs",
