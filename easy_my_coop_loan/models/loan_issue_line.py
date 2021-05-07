@@ -203,6 +203,8 @@ class LoanIssueLine(models.Model):
     @api.multi
     def action_compute_interest(self):
         for line in self:
+            round_curr = line.company_currency_id.round
+
             loan_issue = line.loan_issue_id
             taxes_rate = loan_issue.taxes_rate
 
@@ -234,8 +236,8 @@ class LoanIssueLine(models.Model):
 
             loan_term = int(loan_issue.loan_term / 12)
 
-            # if payment_date is first day of the month
-            # we take the current month
+            # if payment_date is first day of the month,
+            # we take the current month either we take the next one
             if line.payment_date.day == 1:
                 start_date = line.payment_date
             else:
@@ -253,12 +255,12 @@ class LoanIssueLine(models.Model):
 
             # take leap year into account
             days = self.get_number_of_days(line.payment_date.year)
-            interim_amount = line.amount * gross_rate * (diff_days / days)
+            interim_amount = round_curr(line.amount * gross_rate * (diff_days / days)) #noqa
 
             due_date = start_date + relativedelta(years=loan_term)
 
             for year in range(1, loan_term + 1):
-                interest = accrued_amount * gross_rate
+                interest = round_curr(accrued_amount * gross_rate)
                 due_amount = 0
                 due_loan_amount = 0
 
@@ -266,7 +268,7 @@ class LoanIssueLine(models.Model):
                     if year == loan_term:
                         due_amount = line.amount
                 else:
-                    due_amount = line.amount * (loan_term / 100)
+                    due_amount = round_curr(line.amount * (loan_term / 100))
                     accrued_amount -= due_amount
 
                 due_loan_amount = due_amount
@@ -278,14 +280,14 @@ class LoanIssueLine(models.Model):
                     accrued_amount += interest
                     net_interest = 0
                     if year == loan_term:
-                        taxes_amount = accrued_interest * (
+                        taxes_amount = round_curr(accrued_interest * (
                             taxes_rate / 100
-                        )
+                        ))
                         net_interest = accrued_interest - taxes_amount
                         due_amount += net_interest
                 else:
                     due_date = start_date + relativedelta(years=+year)
-                    taxes_amount = interest * (taxes_rate / 100)
+                    taxes_amount = round_curr(interest * (taxes_rate / 100))
                     net_interest = interest - taxes_amount
                     due_amount += net_interest
                     accrued_interest = interest
