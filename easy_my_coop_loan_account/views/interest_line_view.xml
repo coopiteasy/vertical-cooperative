@@ -1,0 +1,26 @@
+<odoo>
+    <record id="view_loan_interest_line_form" model="ir.ui.view">
+        <field name="name">loan.interest.line.form</field>
+        <field name="model">loan.interest.line</field>
+        <field name="inherit_id" ref="easy_my_coop_loan.view_loan_interest_line_form"/>
+        <field name="arch" type="xml">
+            <sheet position="inside">
+                <notebook>
+                    <page name="accounting" string="Accounting">
+                        <group>
+                        <group>
+                            <field name="loan_due_fy_move" readonly="True"/>
+                            <field name="loan_due_move" readonly="True"/>
+                            <field name="loan_reimbursment_move" readonly="True"/>
+                            <field name="interest_closing_fy" readonly="True"/>
+                            <field name="interest_opening_fy" readonly="True"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                    </page>
+                </notebook>
+            </sheet>
+        </field>
+    </record>
+</odoo>

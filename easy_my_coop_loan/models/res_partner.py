@@ -15,15 +15,16 @@ class ResPartner(models.Model):
         string="Loans",
     )
     is_loaner = fields.Boolean(
-        string="Loaner", compute="_compute_is_loaner", store=True
+        string="Loaner",
+        compute="_compute_is_loaner",
+        store=True
     )
 
     @api.multi
     @api.depends("loan_line_ids", "loan_line_ids.state")
     def _compute_is_loaner(self):
         for partner in self:
-            sudo_partner = partner.sudo()
-            loans = sudo_partner.loan_line_ids.filtered(
+            loans = partner.sudo().loan_line_ids.filtered(
                 lambda l: l.state in ["subscribed", "waiting", "paid"]
             )
-            sudo_partner.is_loaner = bool(loans)
+            partner.is_loaner = bool(loans)

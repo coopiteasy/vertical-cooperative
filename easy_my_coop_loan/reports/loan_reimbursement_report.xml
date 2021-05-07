@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2021 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+    <template id="easy_my_coop_loan.loan_reimbursement_document">
+        <t t-call="web.external_layout">
+            <div class="page mt32">
+                <h2>
+                    <span>Loan Reimbursement Report</span>
+                </h2>
+
+                <p name="document_generation_date" class="mt16">
+                    <span>Document generated on</span>
+                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/>
+                    <span t-esc="datetime.datetime.now()"/>
+                </p>
+
+                <p name="document_date_range">
+                    This report covers tax declaration data from
+                    <span t-field="o.date_start"/>
+                    to
+                    <span t-field="o.date_end"/>
+                </p>
+   
+                <p name="declaration_total">
+                    <ul>
+                        <li>Total Loan amount:
+                            <span t-field="o.total_loan_amount"/>
+                        </li>
+                        <li>Total Net Interests:
+                            <span t-field="o.total_net_interests"/>
+                        </li>
+                        <li>Total Amount Due:
+                            <span t-field="o.total_amount_due"/>
+                        </li>
+                    </ul>
+                </p>
+
+                <table class="table table-condensed table-statement">
+                    <thead>
+                        <tr>
+                            <th>Loaner</th>
+                            <th>Loan amount</th>
+                            <th>Interest amount</th>
+                            <th>Amount Due</th>
+                            <th>Due date</th>
+                            <th>State</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="o.interest_lines" t-as="line">
+                            <td><span t-field="line.partner_id"/></td>
+                            <td><span t-field="line.due_loan_amount"/></td>
+                            <td><span t-field="line.net_interest"/></td>
+                            <td class="amount">
+                                <span t-field="line.due_amount" t-options="{'widget': 'monetary', 'display_currency': o.company_currency_id}"/>
+                            </td>
+                            <td><span t-field="line.due_date"/></td>
+                            <td><span t-field="line.state"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </t>
+    </template>
+
+    <template id="easy_my_coop_loan.loan_reimbursement_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="easy_my_coop_loan.loan_reimbursement_document"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>

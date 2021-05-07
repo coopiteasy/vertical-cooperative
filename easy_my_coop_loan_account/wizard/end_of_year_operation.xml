@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_loan_end_of_year_operation" model="ir.ui.view">
+        <field name="name">End of year loan operation</field>
+        <field name="model">loan.end.of.year.operation</field>
+        <field name="arch" type="xml">
+            <form string="Accounting operations">
+                <p class="oe_grey">
+                    Accounting operations
+                </p>
+                <group>
+                    <field name="ongoing_fy_id" widget="selection"/>
+                    <field name="operation_type"/>
+                    <field name="due_date" attrs="{'invisible':[('ongoing_fy_id', '!=', 'loan_due')]}"/>
+                </group>
+                <footer>
+                    <button name="run" string="Run" type="object"
+                            class="btn-primary"/>
+                    <button string="Cancel" class="btn-default"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <act_window id="action_view_loan_end_of_year_operation"
+            multi="True"
+            key2="client_action_multi" 
+            name="Accounting operations"
+            res_model="loan.end.of.year.operation"
+            src_model="loan.issue"
+            view_mode="form"
+            view_type="form"
+            target="new"
+            groups="easy_my_coop.group_easy_my_coop_manager"/>
+</odoo>
