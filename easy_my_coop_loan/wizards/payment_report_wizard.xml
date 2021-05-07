@@ -9,6 +9,7 @@
                     <group>
                         <field name="report_type"/>
                         <field name="date_start"/>
+                        <field name="date_end"/>
                     </group>
                     <group></group>
                 </group>
