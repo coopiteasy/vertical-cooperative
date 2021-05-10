@@ -97,7 +97,7 @@ class WebsiteLoanIssueSubscription(http.Controller):
             values["error_msg"] = _("The selected loan issue is not found")
             return request.render(redirect, values)
         if sub_amount:
-            values["error_msg"] = _("The amount shoud be of monetary type")
+            values["error_msg"] = _("The amount should be of monetary type")
             return request.render(redirect, values)
         return True
 
