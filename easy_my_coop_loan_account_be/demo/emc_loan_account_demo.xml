@@ -54,33 +54,12 @@
                 name="awaiting_loan_payment_account"
                 ref="easy_my_coop.account_cooperator_demo"
             />
-        </record>
-
-        <record id="base.main_company" model="res.company">
             <field name="loaner_account" ref="easy_my_coop.account_cooperator_demo" />
-        </record>
-
-        <record id="base.main_company" model="res.company">
             <field name="debt_long_term_account" ref="account_loan_1_demo" />
-        </record>
-
-        <record id="base.main_company" model="res.company">
             <field name="debt_long_term_fy_account" ref="account_loan_2_demo" />
-        </record>
-
-        <record id="base.main_company" model="res.company">
             <field name="debt_long_term_due_account" ref="account_loan_3_demo" />
-        </record>
-
-        <record id="base.main_company" model="res.company">
             <field name="expense_account" ref="l10n_be.1_a492" />
-        </record>
-
-        <record id="base.main_company" model="res.company">
             <field name="interest_account" ref="account_loan_5_demo" />
-        </record>
-
-        <record id="base.main_company" model="res.company">
             <field name="tax_account" ref="l10n_be.1_a4533" />
         </record>
     </data>

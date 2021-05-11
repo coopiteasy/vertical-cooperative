@@ -5,7 +5,7 @@
 
 from dateutil.relativedelta import relativedelta
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -23,7 +23,7 @@ class AccountFiscalYear(models.Model):
         )
 
         if not fy:
-            raise UserError("No fiscal year has been found for %s" % str(today))
+            raise UserError(_("No fiscal year has been found for %s") % str(today))
 
         if company_id:
             return fy.filtered(lambda r: r.company_id == company_id)
@@ -41,7 +41,9 @@ class AccountFiscalYear(models.Model):
             ]
         )
         if not fy:
-            raise UserError("No next fiscal year has been found for %s" % str(nextyear))
+            raise UserError(
+                _("No next fiscal year has been found for %s") % str(nextyear)
+            )
         if company_id:
             return fy.filtered(lambda r: r.company_id == company_id)
 
