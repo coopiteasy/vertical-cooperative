@@ -83,7 +83,7 @@ class SubscriptionRequestAdapter(AbstractEMCAdapter):
         }
 
     def validate(self, id_):
-        url = self._get_url([str(id_), "validate"])
+        url = self._get_url() + "/" + str(id_) + "/" + "validate"
         data = {}
         try:
             invoice_dict = self.backend.http_post_content(url, data)
