@@ -5,19 +5,14 @@
 {
     "name": "Easy My Coop Website Portal",
     "version": "12.0.1.0.1",
-    "depends": [
-        "easy_my_coop",
-        "website",
-        "account",
-        "portal"
-    ],
+    "depends": ["easy_my_coop", "website", "account", "portal"],
     "summary": """
         Show cooperator information in the website portal.
     """,
     "author": "Coop IT Easy SCRLfs",
     "license": "AGPL-3",
     "category": "Cooperative Management",
-    "website": "https://coopiteasy.be",
+    "website": "https://github.com/OCA/sale-workflow",
     "data": ["views/easy_my_coop_website_portal_templates.xml"],
     "installable": True,
 }
