@@ -9,7 +9,7 @@
     "depends": ["easy_my_coop", "l10n_be", "l10n_be_invoice_bba"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
-    "website": "https://coopiteasy.be",
+    "website": "https://github.com/OCA/sale-workflow",
     "license": "AGPL-3",
     "data": [],
     "installable": True,
