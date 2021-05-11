@@ -1,12 +1,13 @@
 # Copyright 2020 Coop IT Easy SCRL fs
 #   Houssine BAKKALI <houssine@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
 class LoanEndOfYearOperation(models.TransientModel):
     _name = "loan.end.of.year.operation"
+    _description = "Loan End of Year Operation"
 
     operation_type = fields.Selection(
         [
@@ -61,9 +62,11 @@ class LoanEndOfYearOperation(models.TransientModel):
                 (interest_lines + interest_lines_loan).write({"state": "due_fy"})
                 if not interest_lines_loan and not interest_lines:
                     raise UserError(
-                        "There is no end of year account move"
-                        " lines to generate for the selected loan"
-                        " issue"
+                        _(
+                            "There is no end of year account move"
+                            " lines to generate for the selected loan"
+                            " issue"
+                        )
                     )
         elif self.operation_type == "loan_due":
             fy = afy_obj.get_next_fiscal_year()
