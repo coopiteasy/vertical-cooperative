@@ -7,7 +7,7 @@
             <field name="use_date_range">True</field>
         </record>
 
-        <record id="awaiting_loan_paymen_journal" model="account.journal">
+        <record id="awaiting_loan_payment_journal" model="account.journal">
             <field name="name">Awaiting Loan Payment Journal</field>
             <field name="code">ALPJ</field>
             <field name="type">general</field>

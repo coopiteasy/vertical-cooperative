@@ -4,7 +4,7 @@
 from dateutil.relativedelta import relativedelta
 
 from odoo import _, api, fields, models
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 
 
 class LoanInterestLine(models.Model):
@@ -45,6 +45,8 @@ class LoanInterestLine(models.Model):
             due_date = date
         else:
             due_date = self.due_date
+        if not self.company_id.loan_journal:
+            raise ValidationError(_("You must set Loan Journal on company"))
 
         return self.env["account.move"].create(
             {
