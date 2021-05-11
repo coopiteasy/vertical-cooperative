@@ -5,7 +5,7 @@
 from datetime import date
 
 from odoo import _, api, fields, models
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 
 
 class LoanIssueLine(models.Model):
@@ -40,6 +40,10 @@ class LoanIssueLine(models.Model):
         move_line_obj = self.env["account.move.line"]
         for line in self:
             comp = line.company_id
+            if not comp.awaiting_loan_payment_journal:
+                raise ValidationError(
+                    _("You must set awaiting loan payment journal on company")
+                )
             move = self.create_move(
                 line,
                 date.today(),
