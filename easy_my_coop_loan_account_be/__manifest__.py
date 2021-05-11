@@ -10,19 +10,16 @@
         "easy_my_coop_be",
         "easy_my_coop_loan_bba",
         "easy_my_coop_loan_account",
-        ],
+    ],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
-    "website": "https://www.coopiteasy.be",
+    "website": "https://github.com/OCA/sale-workflow",
     "license": "AGPL-3",
     "summary": """
     This module install belgian localisation demo data for EMC loan account.
     It also trigger installation for the dependency module
     """,
-    "data": [
-    ],
-    "demo": [
-        "demo/emc_loan_account_demo.xml"
-    ],
+    "data": [],
+    "demo": ["demo/emc_loan_account_demo.xml"],
     "installable": True,
 }

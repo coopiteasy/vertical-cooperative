@@ -21,9 +21,7 @@ class PortalTaxShelter(CustomerPortal):
         tax_shelter_count = (
             request.env["tax.shelter.certificate"]
             .sudo()
-            .search_count(
-                [("partner_id", "in", [partner.commercial_partner_id.id])]
-            )
+            .search_count([("partner_id", "in", [partner.commercial_partner_id.id])])
         )
         values["tax_shelter_count"] = tax_shelter_count
         return values
@@ -57,8 +55,8 @@ class PortalTaxShelter(CustomerPortal):
         self, page=1, date_begin=None, date_end=None, **kw
     ):
         """Render a page that lits the tax shelter report:
-            * Tax Shelter Certificates
-            * Shares Certifcates
+        * Tax Shelter Certificates
+        * Shares Certifcates
         """
         values = self._prepare_portal_layout_values()
         TaxShelterCertificate = request.env["tax.shelter.certificate"]
@@ -88,9 +86,7 @@ class PortalTaxShelter(CustomerPortal):
         tax_shelters = tax_shelters.sorted(
             key=lambda r: r.declaration_id.fiscal_year, reverse=True
         )
-        request.session[
-            "my_taxshelter_certificates_history"
-        ] = tax_shelters.ids[:100]
+        request.session["my_taxshelter_certificates_history"] = tax_shelters.ids[:100]
 
         values.update(
             {

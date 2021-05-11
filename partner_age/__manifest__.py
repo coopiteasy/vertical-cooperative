@@ -8,7 +8,7 @@
     "depends": ["partner_contact_birthdate"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
-    "website": "https://www.coopiteasy.be",
+    "website": "https://github.com/OCA/sale-workflow",
     "license": "AGPL-3",
     "summary": "This module computes the age of the partner.",
     "data": ["view/partner_view.xml"],

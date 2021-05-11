@@ -10,7 +10,7 @@
         multi="True"
         menu="True"
     />
-    
+
     <report
         id="action_loan_reimbursement_report"
         model="loan.interest.line.report"
@@ -21,5 +21,5 @@
         multi="True"
         menu="True"
     />
-    
+
 </odoo>

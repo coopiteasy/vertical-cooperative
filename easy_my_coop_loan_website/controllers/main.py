@@ -40,10 +40,7 @@ class WebsiteLoanIssueSubscription(http.Controller):
         ):
             return False
         if partner.is_company:
-            if (
-                not partner.company_name
-                or not partner.vat
-            ):
+            if not partner.company_name or not partner.vat:
                 return False
         return True
 
@@ -61,9 +58,7 @@ class WebsiteLoanIssueSubscription(http.Controller):
 
         values = self.fill_values(values, is_company)
         values.update(kwargs=kwargs.items())
-        return request.render(
-            "easy_my_coop_loan_website.loanissuesubscription", values
-        )
+        return request.render("easy_my_coop_loan_website.loanissuesubscription", values)
 
     def get_loan_issues(self, is_company):
         loan_obj = request.env["loan.issue"]
