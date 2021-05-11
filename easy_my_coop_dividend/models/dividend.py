@@ -18,9 +18,7 @@ class DividendYear(models.Model):
                 "grand_total_taxes": 0.0,
             }
             for line in dividend.dividend_ids:
-                res[dividend.id][
-                    "grand_total_dividend"
-                ] += line.dividend_amount
+                res[dividend.id]["grand_total_dividend"] += line.dividend_amount
                 res[dividend.id]["grand_total_taxes"] += line.dividend_taxes
         return res
 
@@ -60,9 +58,7 @@ class DividendYear(models.Model):
             [("dividend_year_id", "=", self.id)]
         )
         detailed_dividend_ids.unlink()
-        dividend_ids = div_line_obj.search(
-            [("dividend_year_id", "=", self.id)]
-        )
+        dividend_ids = div_line_obj.search([("dividend_year_id", "=", self.id)])
         dividend_ids.unlink()
 
         partner_ids = res_partner_obj.search(
@@ -93,9 +89,7 @@ class DividendYear(models.Model):
 
                     vals["days"] = date_res
                     vals["dividend_year_id"] = self.id
-                    vals[
-                        "coop_number"
-                    ] = line.partner_id.cooperator_register_number
+                    vals["coop_number"] = line.partner_id.cooperator_register_number
                     vals["partner_id"] = partner.id
                     vals["share_line_id"] = line.id
                     vals["coeff"] = coeff
@@ -107,9 +101,7 @@ class DividendYear(models.Model):
                     dividend_amount = line.total_amount_line * self.percentage
                     vals["days"] = number_of_days
                     vals["dividend_year_id"] = self.id
-                    vals[
-                        "coop_number"
-                    ] = line.partner_id.cooperator_register_number
+                    vals["coop_number"] = line.partner_id.cooperator_register_number
                     vals["partner_id"] = partner.id
                     vals["share_line_id"] = line.id
                     vals["coeff"] = self.percentage
@@ -118,9 +110,7 @@ class DividendYear(models.Model):
 
                     line_id = det_div_line_obj.create(vals)
             if line_id:
-                vals2[
-                    "coop_number"
-                ] = line.partner_id.cooperator_register_number
+                vals2["coop_number"] = line.partner_id.cooperator_register_number
                 vals2["dividend_year_id"] = self.id
                 vals2["partner_id"] = line.partner_id.id
 
@@ -131,13 +121,9 @@ class DividendYear(models.Model):
                 if total_amount_dividend <= 190.00:
                     vals2["dividend_taxes"] = 0.0
                 else:
-                    div_tax = (
-                        total_amount_dividend - 190
-                    ) * self.withholding_tax
+                    div_tax = (total_amount_dividend - 190) * self.withholding_tax
                     vals2["dividend_taxes"] = div_tax
-                    vals2["dividend_amount_net"] = (
-                        total_amount_dividend - div_tax
-                    )
+                    vals2["dividend_amount_net"] = total_amount_dividend - div_tax
 
                 div_line_obj.create(vals2)
         return True
@@ -156,12 +142,8 @@ class DetailedDividendLine(models.Model):
     dividend_year_id = fields.Many2one("dividend.year", string="Dividend year")
     coop_number = fields.Integer(string="Cooperator Number")
     days = fields.Integer(string="Days")
-    partner_id = fields.Many2one(
-        "res.partner", string="Cooperator", readonly=True
-    )
-    share_line_id = fields.Many2one(
-        "share.line", string="Share line", readonly=True
-    )
+    partner_id = fields.Many2one("res.partner", string="Cooperator", readonly=True)
+    share_line_id = fields.Many2one("share.line", string="Share line", readonly=True)
     share_number = fields.Integer(
         related="share_line_id.share_number", string="Number of Share"
     )
@@ -202,12 +184,8 @@ class DividendLine(models.Model):
 
     coop_number = fields.Integer(string="Coop Number")
     dividend_year_id = fields.Many2one("dividend.year", string="Dividend year")
-    partner_id = fields.Many2one(
-        "res.partner", string="Cooperator", readonly=True
-    )
-    account_number = fields.Char(
-        compute=_get_account_number, string="Account Number"
-    )
+    partner_id = fields.Many2one("res.partner", string="Cooperator", readonly=True)
+    account_number = fields.Char(compute=_get_account_number, string="Account Number")
     dividend_amount = fields.Float(string="Gross Dividend")
     dividend_amount_net = fields.Float(string="Dividend net")
     dividend_taxes = fields.Float(string="Taxes")

@@ -10,9 +10,7 @@ class ExternalIdMixin(models.AbstractModel):
     _description = "External ID Mixin"
 
     # do not access directly, always use get_api_external_id method
-    _api_external_id = fields.Integer(
-        string="External ID", index=True, required=False
-    )
+    _api_external_id = fields.Integer(string="External ID", index=True, required=False)
     external_id_sequence_id = fields.Many2one(
         comodel_name="ir.sequence",
         string="External ID Sequence",

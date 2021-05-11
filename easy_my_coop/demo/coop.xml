@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!--
      Copyright 2019 Coop IT Easy
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
@@ -7,116 +7,115 @@
 
     <record id="res_partner_cooperator_1_demo" model="res.partner">
         <field name="name">Virginie Leloup</field>
-        <field name="customer" eval="True"/>
-        <field name="is_company" eval="False"/>
+        <field name="customer" eval="True" />
+        <field name="is_company" eval="False" />
         <field name="email">virginie@demo.net</field>
         <field name="street">Avenue des Dessus-de-Livres, 2</field>
         <field name="city">Namur (Loyers)</field>
         <field name="zip">5101</field>
-        <field name="country_id" ref="base.be"/>
-        <field name="member" eval="True"/>
+        <field name="country_id" ref="base.be" />
+        <field name="member" eval="True" />
     </record>
 
     <record id="bank_account_virginie_demo" model="res.partner.bank">
         <field name="acc_number">FR7611808009101234567890147</field>
         <field name="bank_name">Bank</field>
-        <field name="partner_id" ref="res_partner_cooperator_1_demo"/>
+        <field name="partner_id" ref="res_partner_cooperator_1_demo" />
     </record>
 
     <record id="res_partner_cooperator_2_demo" model="res.partner">
         <field name="name">Houssine Intégrale</field>
-        <field name="customer" eval="True"/>
-        <field name="is_company" eval="False"/>
+        <field name="customer" eval="True" />
+        <field name="is_company" eval="False" />
         <field name="email">houssine@demo.net</field>
         <field name="street">Avenue des Dessous-de-Livres, 3</field>
         <field name="city">Namur (Loyers)</field>
         <field name="zip">5101</field>
-        <field name="country_id" ref="base.be"/>
-        <field name="member" eval="True"/>
+        <field name="country_id" ref="base.be" />
+        <field name="member" eval="True" />
     </record>
 
     <record id="bank_account_houssine_demo" model="res.partner.bank">
         <field name="acc_number">FR7630001007941234567890185</field>
         <field name="bank_name">Bank</field>
-        <field name="partner_id" ref="res_partner_cooperator_2_demo"/>
+        <field name="partner_id" ref="res_partner_cooperator_2_demo" />
     </record>
 
     <record id="res_partner_cooperator_3_demo" model="res.partner">
         <field name="name">Vincent Bixolon</field>
-        <field name="customer" eval="True"/>
-        <field name="is_company" eval="False"/>
+        <field name="customer" eval="True" />
+        <field name="is_company" eval="False" />
         <field name="email">vincent@demo.net</field>
         <field name="street">Rue de la colocation, 23</field>
         <field name="city">Namur (Loyers)</field>
         <field name="zip">5101</field>
-        <field name="country_id" ref="base.be"/>
+        <field name="country_id" ref="base.be" />
     </record>
 
     <record id="bank_account_vincent_demo" model="res.partner.bank">
         <field name="acc_number">BE71096123456769</field>
         <field name="bank_name">Bank</field>
-        <field name="partner_id" ref="res_partner_cooperator_3_demo"/>
+        <field name="partner_id" ref="res_partner_cooperator_3_demo" />
     </record>
 
     <record id="res_partner_cooperator_4_demo" model="res.partner">
         <field name="name">Rémy Commit</field>
-        <field name="customer" eval="True"/>
-        <field name="is_company" eval="False"/>
+        <field name="customer" eval="True" />
+        <field name="is_company" eval="False" />
         <field name="email">remy@demo.net</field>
         <field name="street">Rue Guido Van Rossum, 2</field>
         <field name="city">Evere</field>
         <field name="zip">5101</field>
-        <field name="country_id" ref="base.be"/>
+        <field name="country_id" ref="base.be" />
     </record>
 
     <record id="account_cooperator_demo" model="account.account">
         <field name="code">416101</field>
         <field name="name">Cooperators</field>
-        <field name="user_type_id" ref="account.data_account_type_receivable"/>
-        <field name="reconcile" eval="True"/>
+        <field name="user_type_id" ref="account.data_account_type_receivable" />
+        <field name="reconcile" eval="True" />
     </record>
 
     <record id="account_equity_demo" model="account.account">
         <field name="name">Equity</field>
         <field name="code">100910</field>
-        <field eval="True" name="reconcile"/>
-        <field name="user_type_id" ref="account.data_account_type_equity"/>
+        <field eval="True" name="reconcile" />
+        <field name="user_type_id" ref="account.data_account_type_equity" />
     </record>
 
     <record id="base.main_company" model="res.company">
-        <field name="property_cooperator_account"
-               ref="account_cooperator_demo"/>
+        <field name="property_cooperator_account" ref="account_cooperator_demo" />
     </record>
 
     <record id="subscription_journal" model="account.journal">
-        <field name="default_credit_account_id" ref="account_equity_demo"/>
-        <field name="default_debit_account_id" ref="account_equity_demo"/>
+        <field name="default_credit_account_id" ref="account_equity_demo" />
+        <field name="default_debit_account_id" ref="account_equity_demo" />
     </record>
 
     <record id="product_template_share_type_1_demo" model="product.template">
         <field name="name">Part A - Founder</field>
         <field name="short_name">Part A</field>
-        <field name="is_share" eval="True"/>
-        <field name="default_share_product" eval="True"/>
-        <field name="force_min_qty" eval="True"/>
+        <field name="is_share" eval="True" />
+        <field name="default_share_product" eval="True" />
+        <field name="force_min_qty" eval="True" />
         <field name="minimum_quantity">2</field>
-        <field name="by_individual" eval="True"/>
-        <field name="by_company" eval="True"/>
+        <field name="by_individual" eval="True" />
+        <field name="by_company" eval="True" />
         <field name="list_price">50</field>
-        <field name="display_on_website" eval="True"/>
+        <field name="display_on_website" eval="True" />
     </record>
 
     <record id="product_template_share_type_2_demo" model="product.template">
         <field name="name">Part B - Worker</field>
         <field name="short_name">Part B</field>
-        <field name="is_share" eval="True"/>
-        <field name="default_share_product" eval="True"/>
-        <field name="force_min_qty" eval="True"/>
+        <field name="is_share" eval="True" />
+        <field name="default_share_product" eval="True" />
+        <field name="force_min_qty" eval="True" />
         <field name="minimum_quantity">2</field>
-        <field name="by_individual" eval="True"/>
-        <field name="by_company" eval="False"/>
+        <field name="by_individual" eval="True" />
+        <field name="by_company" eval="False" />
         <field name="list_price">25</field>
-        <field name="display_on_website" eval="True"/>
+        <field name="display_on_website" eval="True" />
     </record>
 
     <record id="subscription_request_1_demo" model="subscription.request">
@@ -125,14 +124,17 @@
         <field name="address">schaerbeekstraat</field>
         <field name="zip_code">1111</field>
         <field name="city">Brussels</field>
-        <field name="country_id" ref="base.be"/>
-        <field name="date" eval="datetime.now() - timedelta(days=12)"/>
+        <field name="country_id" ref="base.be" />
+        <field name="date" eval="datetime.now() - timedelta(days=12)" />
         <field name="source">manual</field>
         <field name="ordered_parts">3</field>
-        <field name="share_product_id" model="product.template"
-               eval="obj(ref('product_template_share_type_2_demo')).product_variant_id.id"/>
+        <field
+            name="share_product_id"
+            model="product.template"
+            eval="obj(ref('product_template_share_type_2_demo')).product_variant_id.id"
+        />
         <field name="lang">en_US</field>
-        <field name="skip_control_ng" eval="True"/>
+        <field name="skip_control_ng" eval="True" />
     </record>
 
     <record id="subscription_request_waiting_demo" model="subscription.request">
@@ -141,35 +143,42 @@
         <field name="address">Chemin des bois fleuris</field>
         <field name="zip_code">1000</field>
         <field name="city">Brussels</field>
-        <field name="country_id" ref="base.be"/>
-        <field name="date" eval="datetime.now() - timedelta(days=60)"/>
+        <field name="country_id" ref="base.be" />
+        <field name="date" eval="datetime.now() - timedelta(days=60)" />
         <field name="source">manual</field>
         <field name="ordered_parts">4</field>
-        <field name="share_product_id" model="product.template"
-               eval="obj(ref('product_template_share_type_1_demo')).product_variant_id.id"/>
+        <field
+            name="share_product_id"
+            model="product.template"
+            eval="obj(ref('product_template_share_type_1_demo')).product_variant_id.id"
+        />
         <field name="lang">en_US</field>
-        <field name="skip_control_ng" eval="True"/>
+        <field name="skip_control_ng" eval="True" />
         <field name="state">waiting</field>
     </record>
 
     <record id="share_line_1_demo" model="share.line">
-        <field name="share_product_id" model="product.template"
-               eval="obj(ref('product_template_share_type_1_demo')).product_variant_id.id"/>
+        <field
+            name="share_product_id"
+            model="product.template"
+            eval="obj(ref('product_template_share_type_1_demo')).product_variant_id.id"
+        />
         <field name="share_number">2</field>
         <field name="share_unit_price">50</field>
-        <field name="partner_id" ref="res_partner_cooperator_1_demo"/>
-        <field name="effective_date"
-               eval="datetime.now() - timedelta(days=120)"/>
+        <field name="partner_id" ref="res_partner_cooperator_1_demo" />
+        <field name="effective_date" eval="datetime.now() - timedelta(days=120)" />
     </record>
 
     <record id="share_line_2_demo" model="share.line">
-        <field name="share_product_id" model="product.template"
-               eval="obj(ref('product_template_share_type_1_demo')).product_variant_id.id"/>
+        <field
+            name="share_product_id"
+            model="product.template"
+            eval="obj(ref('product_template_share_type_1_demo')).product_variant_id.id"
+        />
         <field name="share_number">4</field>
         <field name="share_unit_price">50</field>
-        <field name="partner_id" ref="res_partner_cooperator_2_demo"/>
-        <field name="effective_date"
-               eval="datetime.now() - timedelta(days=120)"/>
+        <field name="partner_id" ref="res_partner_cooperator_2_demo" />
+        <field name="effective_date" eval="datetime.now() - timedelta(days=120)" />
     </record>
 
 </odoo>

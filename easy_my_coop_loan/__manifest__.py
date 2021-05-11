@@ -8,7 +8,7 @@
     "depends": ["easy_my_coop"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
-    "website": "https://www.coopiteasy.be",
+    "website": "https://github.com/OCA/sale-workflow",
     "license": "AGPL-3",
     "summary": """
     This module allows to manage the bonds and

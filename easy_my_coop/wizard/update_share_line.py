@@ -20,9 +20,7 @@ class ShareLineUpdateInfo(models.TransientModel):
     effective_date = fields.Date(
         string="effective date", required=True, default=_get_effective_date
     )
-    cooperator = fields.Many2one(
-        related="share_line.partner_id", string="Cooperator"
-    )
+    cooperator = fields.Many2one(related="share_line.partner_id", string="Cooperator")
     share_line = fields.Many2one(
         "share.line", string="Share line", default=_get_share_line
     )

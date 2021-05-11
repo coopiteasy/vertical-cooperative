@@ -79,9 +79,7 @@ class EMCLoanCase(EMCBaseCase):
             loan_issue.action_open()
 
         self.as_emc_manager()
-        loan_issue_manager = self.browse_ref(
-            "easy_my_coop_loan.loan_issue_1_demo"
-        )
+        loan_issue_manager = self.browse_ref("easy_my_coop_loan.loan_issue_1_demo")
         loan_issue_manager.action_confirm()
         loan_issue_manager.action_open()
 

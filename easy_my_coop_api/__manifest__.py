@@ -12,7 +12,7 @@
     ],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
-    "website": "https://www.coopiteasy.be",
+    "website": "https://github.com/OCA/sale-workflow",
     "license": "AGPL-3",
     "summary": """
         Open Easy My Coop to the world: RESTful API.

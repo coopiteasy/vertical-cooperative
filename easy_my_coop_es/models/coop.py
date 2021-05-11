@@ -14,11 +14,11 @@ class SubscriptionRequest(models.Model):
 
     def get_partner_vals(self):
         vals = super(SubscriptionRequest, self).get_partner_vals()
-        vals['vat'] = self.vat
+        vals["vat"] = self.vat
         return vals
 
     def get_required_field(self):
         req_fields = super(SubscriptionRequest, self).get_required_field()[:]
-        req_fields.append('vat')
+        req_fields.append("vat")
 
         return req_fields

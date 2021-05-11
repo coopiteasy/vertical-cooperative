@@ -1,24 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!--
      Copyright 2019 Coop IT Easy
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
 <odoo>
     <record id="loan_issue_1_demo" model="loan.issue">
-        <field name="name">loan issue 10 years - 3% - capital and interest paid on term</field>
-        <field name="default_issue" eval="True"/>
-        <field name="subscription_start_date" eval="datetime.today()"/>
-        <field name="subscription_end_date"
-               eval="datetime.today() + timedelta(days=60)"/>
-        <field name="term_date" eval="datetime.today() + timedelta(days=600)"/>
-        <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo"/>
+        <field
+            name="name"
+        >loan issue 10 years - 3% - capital and interest paid on term</field>
+        <field name="default_issue" eval="True" />
+        <field name="subscription_start_date" eval="datetime.today()" />
+        <field
+            name="subscription_end_date"
+            eval="datetime.today() + timedelta(days=60)"
+        />
+        <field name="term_date" eval="datetime.today() + timedelta(days=600)" />
+        <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo" />
         <field name="gross_rate">3</field>
         <field name="face_value">100</field>
         <field name="minimum_amount">4000</field>
         <field name="maximum_amount">10000</field>
-        <field name="by_company" eval="True"/>
-        <field name="by_individual" eval="True"/>
-        <field name="display_on_website" eval="True"/>
+        <field name="by_company" eval="True" />
+        <field name="by_individual" eval="True" />
+        <field name="display_on_website" eval="True" />
         <field name="loan_term">120</field>
         <field name="capital_payment">end</field>
         <field name="interest_payment">end</field>
@@ -27,20 +31,24 @@
     </record>
 
     <record id="loan_issue_2_demo" model="loan.issue">
-        <field name="name">loan issue 10 years - 3% - capital and interest paid yearly</field>
-        <field name="default_issue" eval="True"/>
-        <field name="subscription_start_date" eval="datetime.today()"/>
-        <field name="subscription_end_date"
-               eval="datetime.today() + timedelta(days=60)"/>
-        <field name="term_date" eval="datetime.today() + timedelta(days=600)"/>
-        <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo"/>
+        <field
+            name="name"
+        >loan issue 10 years - 3% - capital and interest paid yearly</field>
+        <field name="default_issue" eval="True" />
+        <field name="subscription_start_date" eval="datetime.today()" />
+        <field
+            name="subscription_end_date"
+            eval="datetime.today() + timedelta(days=60)"
+        />
+        <field name="term_date" eval="datetime.today() + timedelta(days=600)" />
+        <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo" />
         <field name="gross_rate">3</field>
         <field name="face_value">100</field>
         <field name="minimum_amount">4000</field>
         <field name="maximum_amount">10000</field>
-        <field name="by_company" eval="True"/>
-        <field name="by_individual" eval="True"/>
-        <field name="display_on_website" eval="True"/>
+        <field name="by_company" eval="True" />
+        <field name="by_individual" eval="True" />
+        <field name="display_on_website" eval="True" />
         <field name="loan_term">120</field>
         <field name="capital_payment">yearly</field>
         <field name="interest_payment">yearly</field>
@@ -49,20 +57,24 @@
     </record>
 
     <record id="loan_issue_3_demo" model="loan.issue">
-        <field name="name">loan issue 10 years - 3% - capital paid yearly and interest on term</field>
-        <field name="default_issue" eval="True"/>
-        <field name="subscription_start_date" eval="datetime.today()"/>
-        <field name="subscription_end_date"
-               eval="datetime.today() + timedelta(days=60)"/>
-        <field name="term_date" eval="datetime.today() + timedelta(days=600)"/>
-        <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo"/>
+        <field
+            name="name"
+        >loan issue 10 years - 3% - capital paid yearly and interest on term</field>
+        <field name="default_issue" eval="True" />
+        <field name="subscription_start_date" eval="datetime.today()" />
+        <field
+            name="subscription_end_date"
+            eval="datetime.today() + timedelta(days=60)"
+        />
+        <field name="term_date" eval="datetime.today() + timedelta(days=600)" />
+        <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo" />
         <field name="gross_rate">3</field>
         <field name="face_value">100</field>
         <field name="minimum_amount">4000</field>
         <field name="maximum_amount">10000</field>
-        <field name="by_company" eval="True"/>
-        <field name="by_individual" eval="True"/>
-        <field name="display_on_website" eval="True"/>
+        <field name="by_company" eval="True" />
+        <field name="by_individual" eval="True" />
+        <field name="display_on_website" eval="True" />
         <field name="loan_term">120</field>
         <field name="capital_payment">yearly</field>
         <field name="interest_payment">end</field>
@@ -71,20 +83,24 @@
     </record>
 
     <record id="loan_issue_4_demo" model="loan.issue">
-        <field name="name">loan issue 10 years - 3% - capital on term and interest yearly</field>
-        <field name="default_issue" eval="True"/>
-        <field name="subscription_start_date" eval="datetime.today()"/>
-        <field name="subscription_end_date"
-               eval="datetime.today() + timedelta(days=60)"/>
-        <field name="term_date" eval="datetime.today() + timedelta(days=600)"/>
-        <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo"/>
+        <field
+            name="name"
+        >loan issue 10 years - 3% - capital on term and interest yearly</field>
+        <field name="default_issue" eval="True" />
+        <field name="subscription_start_date" eval="datetime.today()" />
+        <field
+            name="subscription_end_date"
+            eval="datetime.today() + timedelta(days=60)"
+        />
+        <field name="term_date" eval="datetime.today() + timedelta(days=600)" />
+        <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo" />
         <field name="gross_rate">3</field>
         <field name="face_value">100</field>
         <field name="minimum_amount">1000</field>
         <field name="maximum_amount">10000</field>
-        <field name="by_company" eval="True"/>
-        <field name="by_individual" eval="True"/>
-        <field name="display_on_website" eval="True"/>
+        <field name="by_company" eval="True" />
+        <field name="by_individual" eval="True" />
+        <field name="display_on_website" eval="True" />
         <field name="loan_term">120</field>
         <field name="capital_payment">end</field>
         <field name="interest_payment">yearly</field>
@@ -93,68 +109,68 @@
     </record>
 
     <record id="loan_issue_line_1_demo" model="loan.issue.line">
-        <field name="loan_issue_id" ref="loan_issue_1_demo"/>
+        <field name="loan_issue_id" ref="loan_issue_1_demo" />
         <field name="quantity">50</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_1_demo"/>
+        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_1_demo" />
     </record>
 
     <record id="loan_issue_line_2_demo" model="loan.issue.line">
-        <field name="loan_issue_id" ref="loan_issue_1_demo"/>
+        <field name="loan_issue_id" ref="loan_issue_1_demo" />
         <field name="quantity">20</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_2_demo"/>
+        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_2_demo" />
     </record>
 
     <record id="loan_issue_line_3_demo" model="loan.issue.line">
-        <field name="loan_issue_id" ref="loan_issue_1_demo"/>
+        <field name="loan_issue_id" ref="loan_issue_1_demo" />
         <field name="quantity">40</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_4_demo"/>
+        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_4_demo" />
     </record>
 
     <record id="loan_issue_line_4_demo" model="loan.issue.line">
-        <field name="loan_issue_id" ref="loan_issue_2_demo"/>
+        <field name="loan_issue_id" ref="loan_issue_2_demo" />
         <field name="quantity">50</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_2_demo"/>
+        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_2_demo" />
     </record>
 
     <record id="loan_issue_line_5_demo" model="loan.issue.line">
-        <field name="loan_issue_id" ref="loan_issue_2_demo"/>
+        <field name="loan_issue_id" ref="loan_issue_2_demo" />
         <field name="quantity">10</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_3_demo"/>
+        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_3_demo" />
     </record>
 
     <record id="loan_issue_line_6_demo" model="loan.issue.line">
-        <field name="loan_issue_id" ref="loan_issue_2_demo"/>
+        <field name="loan_issue_id" ref="loan_issue_2_demo" />
         <field name="quantity">25</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_4_demo"/>
+        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_4_demo" />
     </record>
 
     <record id="loan_issue_line_7_demo" model="loan.issue.line">
-        <field name="loan_issue_id" ref="loan_issue_3_demo"/>
+        <field name="loan_issue_id" ref="loan_issue_3_demo" />
         <field name="quantity">50</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_1_demo"/>
+        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_1_demo" />
     </record>
 
     <record id="loan_issue_line_8_demo" model="loan.issue.line">
-        <field name="loan_issue_id" ref="loan_issue_3_demo"/>
+        <field name="loan_issue_id" ref="loan_issue_3_demo" />
         <field name="quantity">15</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_3_demo"/>
+        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_3_demo" />
     </record>
 
     <record id="loan_issue_line_9_demo" model="loan.issue.line">
-        <field name="loan_issue_id" ref="loan_issue_4_demo"/>
+        <field name="loan_issue_id" ref="loan_issue_4_demo" />
         <field name="quantity">25</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_2_demo"/>
+        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_2_demo" />
     </record>
 
     <record id="loan_issue_line_10_demo" model="loan.issue.line">
-        <field name="loan_issue_id" ref="loan_issue_4_demo"/>
+        <field name="loan_issue_id" ref="loan_issue_4_demo" />
         <field name="quantity">50</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_1_demo"/>
+        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_1_demo" />
     </record>
 
     <record id="loan_issue_line_11_demo" model="loan.issue.line">
-        <field name="loan_issue_id" ref="loan_issue_4_demo"/>
+        <field name="loan_issue_id" ref="loan_issue_4_demo" />
         <field name="quantity">100</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_4_demo"/>
+        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_4_demo" />
     </record>
 </odoo>
