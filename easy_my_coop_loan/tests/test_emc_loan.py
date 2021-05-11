@@ -23,12 +23,13 @@ class EMCLoanCase(EMCBaseCase):
             "gross_rate": 0.03,
             "face_value": 100,
             "minimum_amount": 4000,
-            "maximum_amount": 10,  # ?
+            "maximum_amount": 10000,
             "interest_payment": "end",
             "by_company": True,
             "by_individual": True,
             "display_on_website": True,
             "taxes_rate": 0.08,
+            "loan_term": 12,
         }
 
         self.as_emc_manager()
