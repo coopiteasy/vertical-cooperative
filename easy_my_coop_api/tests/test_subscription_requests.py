@@ -85,11 +85,12 @@ class TestSRController(BaseEMCRestCase):
     #     route = "/api/subscription-request/%s" % "99999"
     #     response = self.http_get(route)
     #     self.assertEquals(response.status_code, 404)
-
-    def test_route_get_string_returns_method_not_allowed(self):
-        route = "/api/subscription-request/%s" % "abc"
-        response = self.http_get(route)
-        self.assertEquals(response.status_code, 405)
+    #
+    #
+    # def test_route_get_string_returns_method_not_allowed(self):
+    #     route = "/api/subscription-request/%s" % "abc"
+    #     response = self.http_get(route)
+    #     self.assertEquals(response.status_code, 405)
 
     def test_route_search_all(self):
         route = "/api/subscription-request"
