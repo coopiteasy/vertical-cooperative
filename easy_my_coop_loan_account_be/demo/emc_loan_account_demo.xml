@@ -3,19 +3,30 @@
          <record id="account_loan_1_demo" model="account.account">
             <field name="name">Emprunts obligataires non subordonnés</field>
             <field name="code">1711</field>
-            <field name="user_type_id" ref="account.data_account_type_non_current_liabilities"/>
+            <field
+                name="user_type_id"
+                ref="account.data_account_type_non_current_liabilities"
+            />
         </record>
 
         <record id="account_loan_2_demo" model="account.account">
-            <field name="name">Emprunts obligataires non subordonnés échéant dans l'année</field>
+            <field
+                name="name"
+            >Emprunts obligataires non subordonnés échéant dans l'année</field>
             <field name="code">4271</field>
-            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+            <field
+                name="user_type_id"
+                ref="account.data_account_type_current_liabilities"
+            />
         </record>
 
         <record id="account_loan_3_demo" model="account.account">
             <field name="name">Obligations et coupons échus</field>
             <field name="code">480</field>
-            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+            <field
+                name="user_type_id"
+                ref="account.data_account_type_current_liabilities"
+            />
         </record>
 
         <!-- <record id="account_loan_4_demo" model="account.account">
@@ -25,9 +36,11 @@
         </record> -->
 
         <record id="account_loan_5_demo" model="account.account">
-            <field name="name">Intérêts, commissions et frais afférents aux dettes</field>
+            <field
+                name="name"
+            >Intérêts, commissions et frais afférents aux dettes</field>
             <field name="code">6500</field>
-            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field name="user_type_id" ref="account.data_account_type_expenses" />
         </record>
 
 <!--         <record id="account_loan_6_demo" model="account.account">
@@ -37,35 +50,38 @@
         </record> -->
 
         <record id="base.main_company" model="res.company">
-            <field name="awaiting_loan_payment_account" ref="easy_my_coop.account_cooperator_demo"/>
+            <field
+                name="awaiting_loan_payment_account"
+                ref="easy_my_coop.account_cooperator_demo"
+            />
         </record>
 
         <record id="base.main_company" model="res.company">
-            <field name="loaner_account" ref="easy_my_coop.account_cooperator_demo"/>
+            <field name="loaner_account" ref="easy_my_coop.account_cooperator_demo" />
         </record>
 
         <record id="base.main_company" model="res.company">
-            <field name="debt_long_term_account" ref="account_loan_1_demo"/>
+            <field name="debt_long_term_account" ref="account_loan_1_demo" />
         </record>
 
         <record id="base.main_company" model="res.company">
-            <field name="debt_long_term_fy_account" ref="account_loan_2_demo"/>
+            <field name="debt_long_term_fy_account" ref="account_loan_2_demo" />
         </record>
 
         <record id="base.main_company" model="res.company">
-            <field name="debt_long_term_due_account" ref="account_loan_3_demo"/>
+            <field name="debt_long_term_due_account" ref="account_loan_3_demo" />
         </record>
 
         <record id="base.main_company" model="res.company">
-            <field name="expense_account" ref="l10n_be.1_a492"/>
+            <field name="expense_account" ref="l10n_be.1_a492" />
         </record>
 
         <record id="base.main_company" model="res.company">
-            <field name="interest_account" ref="account_loan_5_demo"/>
+            <field name="interest_account" ref="account_loan_5_demo" />
         </record>
 
         <record id="base.main_company" model="res.company">
-            <field name="tax_account" ref="l10n_be.1_a4533"/>
+            <field name="tax_account" ref="l10n_be.1_a4533" />
         </record>
     </data>
 </odoo>

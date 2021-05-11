@@ -124,9 +124,7 @@ class OperationRequest(models.Model):
     def _constrain_effective_date(self):
         for obj in self:
             if obj.effective_date and obj.effective_date > fields.Date.today():
-                raise ValidationError(
-                    _("The effective date can not be in the future.")
-                )
+                raise ValidationError(_("The effective date can not be in the future."))
 
     @api.multi
     def approve_operation(self):
@@ -156,9 +154,7 @@ class OperationRequest(models.Model):
 
     def get_total_share_dic(self, partner):
         total_share_dic = {}
-        share_products = self.env["product.product"].search(
-            [("is_share", "=", True)]
-        )
+        share_products = self.env["product.product"].search([("is_share", "=", True)])
 
         for share_product in share_products:
             total_share_dic[share_product.id] = 0
@@ -224,27 +220,18 @@ class OperationRequest(models.Model):
 
             if self.quantity > total_share_dic[self.share_product_id.id]:
                 raise ValidationError(
-                    _(
-                        "The cooperator can't hand over more"
-                        " shares that he/she owns."
-                    )
+                    _("The cooperator can't hand over more" " shares that he/she owns.")
                 )
 
         if self.operation_type == "convert":
             if self.company_id.unmix_share_type:
                 if self.share_product_id.code == self.share_to_product_id.code:
                     raise ValidationError(
-                        _(
-                            "You can't convert the share to"
-                            " the same share type."
-                        )
+                        _("You can't convert the share to" " the same share type.")
                     )
                 if self.subscription_amount != self.partner_id.total_value:
                     raise ValidationError(
-                        _(
-                            "You must convert all the shares"
-                            " to the selected type."
-                        )
+                        _("You must convert all the shares" " to the selected type.")
                     )
             else:
                 if self.subscription_amount != self.partner_id.total_value:
@@ -270,10 +257,7 @@ class OperationRequest(models.Model):
                         " transfered to " + self.partner_id_to.name
                     )
                 )
-            if (
-                self.partner_id_to.is_company
-                and not self.share_product_id.by_company
-            ):
+            if self.partner_id_to.is_company and not self.share_product_id.by_company:
                 raise ValidationError(
                     _("This share can not be" " subscribed by a company")
                 )
@@ -299,9 +283,7 @@ class OperationRequest(models.Model):
                 )
 
     def get_share_trans_mail_template(self):
-        return self.env.ref(
-            "easy_my_coop.email_template_share_transfer", False
-        )
+        return self.env.ref("easy_my_coop.email_template_share_transfer", False)
 
     def get_share_update_mail_template(self):
         return self.env.ref("easy_my_coop.email_template_share_update", False)
@@ -349,14 +331,10 @@ class OperationRequest(models.Model):
         values = self.get_subscription_register_vals(effective_date)
 
         if self.operation_type == "sell_back":
-            self.hand_share_over(
-                self.partner_id, self.share_product_id, self.quantity
-            )
+            self.hand_share_over(self.partner_id, self.share_product_id, self.quantity)
         elif self.operation_type == "convert":
             amount_to_convert = self.share_unit_price * self.quantity
-            convert_quant = int(
-                amount_to_convert / self.share_to_product_id.list_price
-            )
+            convert_quant = int(amount_to_convert / self.share_to_product_id.list_price)
             remainder = amount_to_convert % self.share_to_product_id.list_price
 
             if convert_quant > 0 and remainder == 0:
@@ -376,15 +354,10 @@ class OperationRequest(models.Model):
                 values["quantity_to"] = convert_quant
             else:
                 raise ValidationError(
-                    _(
-                        "Converting just part of the"
-                        " shares is not yet implemented"
-                    )
+                    _("Converting just part of the" " shares is not yet implemented")
                 )
         elif self.operation_type == "transfer":
-            sequence_id = self.env.ref(
-                "easy_my_coop.sequence_subscription", False
-            )
+            sequence_id = self.env.ref("easy_my_coop.sequence_subscription", False)
             partner_vals = {"member": True}
             if self.receiver_not_member:
                 partner = self.subscription_request.create_coop_partner()
@@ -401,9 +374,7 @@ class OperationRequest(models.Model):
                 if not self.partner_id_to.member:
                     if self.partner_id_to.cooperator_register_number == 0:
                         sub_reg_num = int(sequence_id.next_by_id())
-                        partner_vals[
-                            "cooperator_register_number"
-                        ] = sub_reg_num
+                        partner_vals["cooperator_register_number"] = sub_reg_num
                     partner_vals.update(
                         sub_request.get_eater_vals(
                             self.partner_id_to, self.share_product_id
@@ -412,9 +383,7 @@ class OperationRequest(models.Model):
                     partner_vals["old_member"] = False
                     self.partner_id_to.write(partner_vals)
             # remove the parts to the giver
-            self.hand_share_over(
-                self.partner_id, self.share_product_id, self.quantity
-            )
+            self.hand_share_over(self.partner_id, self.share_product_id, self.quantity)
             # give the share to the receiver
             self.env["share.line"].create(
                 {
@@ -427,9 +396,7 @@ class OperationRequest(models.Model):
             )
             values["partner_id_to"] = self.partner_id_to.id
         else:
-            raise ValidationError(
-                _("This operation is not yet" " implemented.")
-            )
+            raise ValidationError(_("This operation is not yet" " implemented."))
 
         sequence_operation = self.env.ref(
             "easy_my_coop.sequence_register_operation", False

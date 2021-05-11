@@ -10,9 +10,7 @@ class ResCompany(models.Model):
     _inherit = "res.company"
 
     def _compute_base_logo(self):
-        base_url = (
-            self.env["ir.config_parameter"].sudo().get_param("web.base.url")
-        )
+        base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         self.logo_url = base_url + "/logo.png"
 
     coop_email_contact = fields.Char(
@@ -28,9 +26,7 @@ class ResCompany(models.Model):
     )
     default_lang_id = fields.Many2one("res.lang", string="Default lang")
     allow_id_card_upload = fields.Boolean(string="Allow ID Card upload")
-    create_user = fields.Boolean(
-        string="Create user for cooperator", default=False
-    )
+    create_user = fields.Boolean(string="Create user for cooperator", default=False)
     board_representative = fields.Char(string="Board representative name")
     signature_scan = fields.Binary(string="Board representative signature")
     property_cooperator_account = fields.Many2one(
@@ -101,20 +97,16 @@ class ResCompany(models.Model):
     )
     generic_rules_approval_text = fields.Html(
         translate=True,
-        help="Text to display aside the checkbox to approve the "
-        "generic rules.",
+        help="Text to display aside the checkbox to approve the " "generic rules.",
     )
     send_certificate_email = fields.Boolean(
-        string="Send certificate email",
-        default=True
+        string="Send certificate email", default=True
     )
     send_confirmation_email = fields.Boolean(
-        string="Send confirmation email",
-        default=True
+        string="Send confirmation email", default=True
     )
     send_capital_release_email = fields.Boolean(
-        string="Send Capital Release email",
-        default=True
+        string="Send Capital Release email", default=True
     )
 
     @api.onchange("data_policy_approval_required")

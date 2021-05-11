@@ -13,15 +13,15 @@ class MailTemplate(models.Model):
         raise_exception=False,
     ):
         """Generates a new mail message for the given template and record,
-           and schedules it for delivery through the ``mail``
-           module's scheduler.
+        and schedules it for delivery through the ``mail``
+        module's scheduler.
 
-           :param int res_id: id of the record to render the template with
-                              (model is taken from the template)
-           :param bool force_send: if True, the generated mail.message is
-                immediately sent after being created, as if the scheduler
-                was executed for this message only.
-           :returns: id of the mail.message that was created
+        :param int res_id: id of the record to render the template with
+                           (model is taken from the template)
+        :param bool force_send: if True, the generated mail.message is
+             immediately sent after being created, as if the scheduler
+             was executed for this message only.
+        :returns: id of the mail.message that was created
         """
         self.ensure_one()
         Mail = self.env["mail.mail"]

@@ -134,9 +134,7 @@ class ExportGlobalReport(models.TransientModel):
                 i += 1
                 if invoice.subscription_request:
                     ind = len(invoice.subscription_request) - 1
-                    worksheet1.write(
-                        j, i, invoice.subscription_request[ind].date
-                    )
+                    worksheet1.write(j, i, invoice.subscription_request[ind].date)
                 j += 1
 
             sub_requests = subscription_obj.search(
@@ -222,9 +220,7 @@ class ExportGlobalReport(models.TransientModel):
                 i += 1
                 if invoice.subscription_request:
                     ind = len(invoice.subscription_request) - 1
-                    worksheet1bis.write(
-                        j, i, invoice.subscription_request[ind].date
-                    )
+                    worksheet1bis.write(j, i, invoice.subscription_request[ind].date)
                 j += 1
 
             sub_requests = subscription_obj.search(
@@ -256,9 +252,7 @@ class ExportGlobalReport(models.TransientModel):
 
         worksheet2 = workbook.add_worksheet()
         self.write_header(worksheet2, HEADER2)
-        sub_requests = subscription_obj.search(
-            [("state", "in", ["draft", "waiting"])]
-        )
+        sub_requests = subscription_obj.search([("state", "in", ["draft", "waiting"])])
 
         j = 1
         for sub_request in sub_requests:
@@ -268,9 +262,7 @@ class ExportGlobalReport(models.TransientModel):
             worksheet2.write(j, i, sub_request.name)
             i += 1
             sub_type_sel = subscription_obj._columns["type"].selection
-            worksheet2.write(
-                j, i, dict(sub_type_sel).get(sub_request.type, False)
-            )
+            worksheet2.write(j, i, dict(sub_type_sel).get(sub_request.type, False))
             i += 1
             quantity = int(sub_request.ordered_parts)
             worksheet2.write(j, i, quantity)
@@ -300,9 +292,7 @@ class ExportGlobalReport(models.TransientModel):
 
         attachment_id = self.env["ir.attachment"].create(
             {
-                "name": "Global export"
-                + time.strftime("%Y-%m-%d %H:%M")
-                + ".xlsx",
+                "name": "Global export" + time.strftime("%Y-%m-%d %H:%M") + ".xlsx",
                 "datas": data,
                 "datas_fname": "Global_export.xlsx",
                 "res_model": "export.global.report",
@@ -310,9 +300,7 @@ class ExportGlobalReport(models.TransientModel):
         )
 
         # Prepare your download URL
-        download_url = (
-            "/web/content/" + str(attachment_id.id) + "?download=True"
-        )
+        download_url = "/web/content/" + str(attachment_id.id) + "?download=True"
         base_url = self.env["ir.config_parameter"].get_param("web.base.url")
 
         return {

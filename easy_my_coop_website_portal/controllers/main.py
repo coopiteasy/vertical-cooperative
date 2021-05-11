@@ -22,9 +22,7 @@ class CooperatorPortalAccount(CustomerPortal):
     )
 
     def _prepare_portal_layout_values(self):
-        values = super(
-            CooperatorPortalAccount, self
-        )._prepare_portal_layout_values()
+        values = super(CooperatorPortalAccount, self)._prepare_portal_layout_values()
         # We assume that commercial_partner_id always point to the
         # partner itself or to the linked partner. So there is no
         # need to check if the partner is a "contact" or not.
@@ -62,7 +60,7 @@ class CooperatorPortalAccount(CustomerPortal):
                 "invoice_count": invoice_count,
                 "iban": iban,
                 "genders": fields_desc["gender"]["selection"],
-                "langs": request.env["res.lang"].search([])
+                "langs": request.env["res.lang"].search([]),
             }
         )
         return values
@@ -113,9 +111,7 @@ class CooperatorPortalAccount(CustomerPortal):
         invoice_obj = request.env["account.invoice"]
         qcontext = res.qcontext
         if qcontext:
-            invoices = invoice_obj.search(
-                [("release_capital_request", "=", False)]
-            )
+            invoices = invoice_obj.search([("release_capital_request", "=", False)])
             invoice_count = len(invoices)
             qcontext["invoices"] = invoices
             qcontext["pager"]["invoice_count"] = invoice_count
@@ -147,9 +143,7 @@ class CooperatorPortalAccount(CustomerPortal):
             # Get only the release capital request
             ("release_capital_request", "=", True),
         ]
-        archive_groups = self._get_archive_groups_sudo(
-            "account.invoice", domain
-        )
+        archive_groups = self._get_archive_groups_sudo("account.invoice", domain)
         if date_begin and date_end:
             domain += [
                 ("create_date", ">=", date_begin),

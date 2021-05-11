@@ -12,9 +12,7 @@ class EMCCase(EMCBaseCase):
     def setUp(self):
         super(EMCCase, self).setUp()
 
-        self.request = self.browse_ref(
-            "easy_my_coop.subscription_request_1_demo"
-        )
+        self.request = self.browse_ref("easy_my_coop.subscription_request_1_demo")
         self.bank_journal_euro = self.env["account.journal"].create(
             {"name": "Bank", "type": "bank", "code": "BNK67"}
         )
@@ -69,9 +67,7 @@ class EMCCase(EMCBaseCase):
 
         share = partner.share_ids[0]
         self.assertEquals(share.share_number, self.request.ordered_parts)
-        self.assertEquals(
-            share.share_product_id, self.request.share_product_id
-        )
+        self.assertEquals(share.share_product_id, self.request.share_product_id)
         self.assertEquals(share.effective_date, Date.today())
 
     def test_user_rights(self):
@@ -94,9 +90,7 @@ class EMCCase(EMCBaseCase):
 
         # test ir model access for base user
         self.as_user()
-        read_request = self.browse_ref(
-            "easy_my_coop.subscription_request_1_demo"
-        )
+        read_request = self.browse_ref("easy_my_coop.subscription_request_1_demo")
         with self.assertRaises(AccessError):
             read_request.name = "test write request"
         with self.assertRaises(AccessError):
@@ -110,13 +104,9 @@ class EMCCase(EMCBaseCase):
 
         # test ir model access for easy my coop user
         self.as_emc_user()
-        read_request = self.browse_ref(
-            "easy_my_coop.subscription_request_1_demo"
-        )
+        read_request = self.browse_ref("easy_my_coop.subscription_request_1_demo")
         read_request.name = "test write request"
-        create_request = self.env["subscription.request"].create(
-            request_values
-        )
+        create_request = self.env["subscription.request"].create(request_values)
         with self.assertRaises(AccessError):
             create_request.unlink()
 
@@ -125,9 +115,7 @@ class EMCCase(EMCBaseCase):
         with self.assertRaises(AccessError):
             share_line.unlink()
 
-        share_type = self.browse_ref(
-            "easy_my_coop.product_template_share_type_1_demo"
-        )
+        share_type = self.browse_ref("easy_my_coop.product_template_share_type_1_demo")
         share_type.list_price = 30
         with self.assertRaises(AccessError):
             self.env["product.template"].create(
@@ -149,13 +137,9 @@ class EMCCase(EMCBaseCase):
 
         # test ir model access for easy my coop manager
         self.as_emc_manager()
-        read_request = self.browse_ref(
-            "easy_my_coop.subscription_request_1_demo"
-        )
+        read_request = self.browse_ref("easy_my_coop.subscription_request_1_demo")
         read_request.name = "test write request"
-        create_request = self.env["subscription.request"].create(
-            request_values
-        )
+        create_request = self.env["subscription.request"].create(request_values)
         create_request.unlink()
 
         share_type = self.env["product.template"].create(

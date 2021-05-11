@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <!-- Mail template are declared in a NOUPDATE block
          so users can freely customize/delete them -->
@@ -17,15 +17,17 @@
             <field name="reply_to">
                 ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
             </field>
-            <field name="model_id" ref="account.model_account_invoice"/>
-            <field name="auto_delete" eval="True"/>
-            <field name="report_template" ref="action_cooperator_invoices"/>
+            <field name="model_id" ref="account.model_account_invoice" />
+            <field name="auto_delete" eval="True" />
+            <field name="report_template" ref="action_cooperator_invoices" />
             <field name="report_name">
                 ${(object.number or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}
             </field>
             <field name="lang">${object.partner_id.lang}</field>
-            <field name="easy_my_coop" eval="True"/>
-            <field name="body_html"><![CDATA[
+            <field name="easy_my_coop" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
     <p>Hello ${object.partner_id.name},</p>
@@ -76,11 +78,13 @@
             <field name="reply_to">
                 ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
             </field>
-            <field name="model_id" ref="model_subscription_request"/>
-            <field name="auto_delete" eval="True"/>
+            <field name="model_id" ref="model_subscription_request" />
+            <field name="auto_delete" eval="True" />
             <field name="lang">${object.lang}</field>
-            <field name="easy_my_coop" eval="True"/>
-            <field name="body_html"><![CDATA[
+            <field name="easy_my_coop" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
     <p>Hello ${object.name},</p>
@@ -134,11 +138,13 @@
             <field name="reply_to">
                 ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
             </field>
-            <field name="model_id" ref="model_subscription_request"/>
-            <field name="auto_delete" eval="True"/>
+            <field name="model_id" ref="model_subscription_request" />
+            <field name="auto_delete" eval="True" />
             <field name="lang">${object.lang}</field>
-            <field name="easy_my_coop" eval="True"/>
-            <field name="body_html"><![CDATA[
+            <field name="easy_my_coop" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
     <p>Hello ${object.name},</p>
@@ -194,11 +200,13 @@
             <field name="reply_to">
                 ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
             </field>
-            <field name="model_id" ref="model_subscription_request"/>
-            <field name="auto_delete" eval="True"/>
+            <field name="model_id" ref="model_subscription_request" />
+            <field name="auto_delete" eval="True" />
             <field name="lang">${object.lang}</field>
-            <field name="easy_my_coop" eval="True"/>
-            <field name="body_html"><![CDATA[
+            <field name="easy_my_coop" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
     <p>Hello ${object.name},</p>
@@ -254,16 +262,17 @@
             <field name="reply_to">
                 ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
             </field>
-            <field name="model_id" ref="model_res_partner"/>
-            <field name="auto_delete" eval="True"/>
-            <field name="report_template"
-                   ref="action_cooperator_report_certificat"/>
+            <field name="model_id" ref="model_res_partner" />
+            <field name="auto_delete" eval="True" />
+            <field name="report_template" ref="action_cooperator_report_certificat" />
             <field name="report_name">Certificat
                 ${(object.cooperator_register_number or '')}
             </field>
             <field name="lang">${object.lang}</field>
-            <field name="easy_my_coop" eval="True"/>
-            <field name="body_html"><![CDATA[
+            <field name="easy_my_coop" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
     <p>Hello ${object.name},</p>
@@ -318,16 +327,17 @@
             <field name="reply_to">
                 ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
             </field>
-            <field name="model_id" ref="model_res_partner"/>
-            <field name="auto_delete" eval="True"/>
-            <field name="report_template"
-                   ref="action_cooperator_report_certificat"/>
+            <field name="model_id" ref="model_res_partner" />
+            <field name="auto_delete" eval="True" />
+            <field name="report_template" ref="action_cooperator_report_certificat" />
             <field name="report_name">Certificat
                 ${(object.cooperator_register_number or '')}
             </field>
             <field name="lang">${object.lang}</field>
-            <field name="easy_my_coop" eval="True"/>
-            <field name="body_html"><![CDATA[
+            <field name="easy_my_coop" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
     <p>Hello ${object.name},</p>
@@ -380,16 +390,17 @@
             <field name="reply_to">
                 ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
             </field>
-            <field name="model_id" ref="model_res_partner"/>
-            <field name="auto_delete" eval="True"/>
-            <field name="report_template"
-                   ref="action_cooperator_report_certificat"/>
+            <field name="model_id" ref="model_res_partner" />
+            <field name="auto_delete" eval="True" />
+            <field name="report_template" ref="action_cooperator_report_certificat" />
             <field name="report_name">Certificat
                 ${(object.cooperator_register_number or '')}
             </field>
             <field name="lang">${object.lang}</field>
-            <field name="easy_my_coop" eval="True"/>
-            <field name="body_html"><![CDATA[
+            <field name="easy_my_coop" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
     <p>Hello ${object.name},</p>
@@ -442,16 +453,17 @@
             <field name="reply_to">
                 ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
             </field>
-            <field name="model_id" ref="model_res_partner"/>
-            <field name="auto_delete" eval="True"/>
-            <field name="report_template"
-                   ref="action_cooperator_report_certificat"/>
+            <field name="model_id" ref="model_res_partner" />
+            <field name="auto_delete" eval="True" />
+            <field name="report_template" ref="action_cooperator_report_certificat" />
             <field name="report_name">Certificat
                 ${(object.cooperator_register_number or '')}
             </field>
             <field name="lang">${object.lang}</field>
-            <field name="easy_my_coop" eval="True"/>
-            <field name="body_html"><![CDATA[
+            <field name="easy_my_coop" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
     <p>Hello ${object.name},</p>

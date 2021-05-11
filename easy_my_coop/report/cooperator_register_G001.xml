@@ -2,9 +2,9 @@
     <template id="cooperator_register_G001">
         <t t-call="web.html_container">
 
-            <t t-set="data_report_margin_top" t-value="5"/>
-            <t t-set="data_report_header_spacing" t-value="0"/>
-            <t t-set="data_report_dpi" t-value="110"/>
+            <t t-set="data_report_margin_top" t-value="5" />
+            <t t-set="data_report_header_spacing" t-value="0" />
+            <t t-set="data_report_dpi" t-value="110" />
 
             <!--<t t-call="theme_light.report_layout_002">-->
 
@@ -15,16 +15,18 @@
 
                 <!--<t t-call="theme_light.list_header_G002"/>-->
 
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
                 <table class="title_table">
                     <tr>
                         <td>
-                            <span class="color_text"
-                                  t-esc="time.strftime('%Y-%m-%d')"/>
+                            <span
+                                class="color_text"
+                                t-esc="time.strftime('%Y-%m-%d')"
+                            />
                         </td>
                         <td>
                             <div class="title_doc" style="font-size:16px">
@@ -34,19 +36,19 @@
                     </tr>
                 </table>
 
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
 
 
                 <table class="list_line_table_head" width="100%">
 
-                    <t t-set="total_quantity" t-value="0"/>
-                    <t t-set="total_amount" t-value="0"/>
+                    <t t-set="total_quantity" t-value="0" />
+                    <t t-set="total_amount" t-value="0" />
 
-                    <br/>
+                    <br />
                     <tr>
                         <th width="15%" style="text-align: center;">Number</th>
                         <th width="25%" style="text-align: center;">Name</th>
@@ -58,83 +60,111 @@
                         </th>
                         <th width="15%" style="text-align: center;">Total</th>
                     </tr>
-                    <t t-set="nb_ligne" t-value="0"/>
+                    <t t-set="nb_ligne" t-value="0" />
 
                     <t t-foreach="docs" t-as="partner">
-                        <t t-set="new_partner" t-value="0"/>
+                        <t t-set="new_partner" t-value="0" />
 
                         <t t-foreach="partner.share_ids" t-as="line">
-                            <t t-set="nb_ligne" t-value="nb_ligne+1"/>
+                            <t t-set="nb_ligne" t-value="nb_ligne+1" />
                             <tr height="40px">
                                 <div t-if="(nb_ligne%2)==1">
                                     <div t-if="(new_partner)==0">
-                                        <td class="lgn_impair"
-                                            style="text-align:left;text-indent:20px;">
-                                            <span t-field="partner.cooperator_register_number"></span>
+                                        <td
+                                            class="lgn_impair"
+                                            style="text-align:left;text-indent:20px;"
+                                        >
+                                            <span
+                                                t-field="partner.cooperator_register_number"
+                                            />
                                         </td>
                                         <td style="text-align:left">
-                                            <span t-field="partner.name"></span>
+                                            <span t-field="partner.name" />
                                         </td>
                                         <td style="text-align:left">
-                                            <span t-field="partner.email"></span>
+                                            <span t-field="partner.email" />
                                         </td>
                                     </div>
 
                                     <div t-if="(new_partner)!=0">
-                                        <td class="lgn_impair"
+                                        <td
+                                            class="lgn_impair"
                                             style="text-align:left;text-indent:20px;"
-                                            colspan="3">
+                                            colspan="3"
+                                        >
                                         </td>
                                     </div>
                                     <td>
-                                        <span t-field="line.effective_date"></span>
+                                        <span t-field="line.effective_date" />
                                     </td>
                                     <td>
-                                        <span t-field="line.share_number"></span>
+                                        <span t-field="line.share_number" />
                                     </td>
                                     <td>
-                                        <span t-field="line.total_amount_line"
-                                              t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/>
+                                        <span
+                                            t-field="line.total_amount_line"
+                                            t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'
+                                        />
                                     </td>
                                 </div>
                                 <div t-if="(nb_ligne%2)==0">
                                     <div t-if="(new_partner)==0">
-                                        <td class="lgn_pair"
-                                            style="text-align:left;text-indent:20px;background-color:#ffffff">
-                                            <span t-field="partner.cooperator_register_number"></span>
-                                        </td>
-                                        <td class="lgn_pair"
-                                            style="background-color:#ffffff;text-align:left">
-                                            <span t-field="partner.name"></span>
-                                        </td>
-                                        <td class="lgn_pair"
-                                            style="background-color:#ffffff;text-align:left">
-                                            <span t-field="partner.email"></span>
-                                        </td>
-                                    </div>
-                                    <div t-if="(new_partner)!=0"
-                                         style="background-color:#ffffff">
-                                        <td class="lgn_pair"
+                                        <td
+                                            class="lgn_pair"
                                             style="text-align:left;text-indent:20px;background-color:#ffffff"
-                                            colspan="3">
+                                        >
+                                            <span
+                                                t-field="partner.cooperator_register_number"
+                                            />
+                                        </td>
+                                        <td
+                                            class="lgn_pair"
+                                            style="background-color:#ffffff;text-align:left"
+                                        >
+                                            <span t-field="partner.name" />
+                                        </td>
+                                        <td
+                                            class="lgn_pair"
+                                            style="background-color:#ffffff;text-align:left"
+                                        >
+                                            <span t-field="partner.email" />
                                         </td>
                                     </div>
-                                    <td class="lgn_pair"
-                                        style="background-color:#ffffff">
-                                        <span t-field="line.effective_date"></span>
+                                    <div
+                                        t-if="(new_partner)!=0"
+                                        style="background-color:#ffffff"
+                                    >
+                                        <td
+                                            class="lgn_pair"
+                                            style="text-align:left;text-indent:20px;background-color:#ffffff"
+                                            colspan="3"
+                                        >
+                                        </td>
+                                    </div>
+                                    <td
+                                        class="lgn_pair"
+                                        style="background-color:#ffffff"
+                                    >
+                                        <span t-field="line.effective_date" />
                                     </td>
-                                    <td class="lgn_pair"
-                                        style="background-color:#ffffff">
-                                        <span t-field="line.share_number"></span>
+                                    <td
+                                        class="lgn_pair"
+                                        style="background-color:#ffffff"
+                                    >
+                                        <span t-field="line.share_number" />
                                     </td>
-                                    <td class="lgn_pair"
-                                        style="background-color:#ffffff">
-                                        <span t-field="line.total_amount_line"
-                                              t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/>
+                                    <td
+                                        class="lgn_pair"
+                                        style="background-color:#ffffff"
+                                    >
+                                        <span
+                                            t-field="line.total_amount_line"
+                                            t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'
+                                        />
                                     </td>
                                 </div>
                             </tr>
-                            <t t-set="new_partner" t-value="new_partner+1"/>
+                            <t t-set="new_partner" t-value="new_partner+1" />
                         </t>
                     </t>
                 </table>

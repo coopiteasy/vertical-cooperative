@@ -10,9 +10,7 @@ def date_validator(field, value, error):
     try:
         Date.from_string(value)
     except ValueError:
-        return error(
-            field, _("{} does not match format '%Y-%m-%d'".format(value))
-        )
+        return error(field, _("{} does not match format '%Y-%m-%d'".format(value)))
 
 
 S_MANY_2_ONE = {

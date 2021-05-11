@@ -72,9 +72,7 @@ class SubscriptionRequest(models.Model):
         if not vals.get("partner_id"):
             cooperator = False
             if vals.get("email"):
-                cooperator = partner_obj.get_cooperator_from_email(
-                    vals.get("email")
-                )
+                cooperator = partner_obj.get_cooperator_from_email(vals.get("email"))
             if cooperator:
                 vals["type"] = "subscription"
                 vals = self.is_member(vals, cooperator)
@@ -89,7 +87,9 @@ class SubscriptionRequest(models.Model):
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
         if subscr_request._send_confirmation_email():
-            mail_template_notif = subscr_request.get_mail_template_notif(is_company = False) #noqa
+            mail_template_notif = subscr_request.get_mail_template_notif(
+                is_company=False
+            )  # noqa
             mail_template_notif.send_mail(subscr_request.id)
 
         return subscr_request
@@ -134,20 +134,15 @@ class SubscriptionRequest(models.Model):
     @api.depends("iban", "skip_control_ng")
     def _compute_validated_lines(self):
         for sub_request in self:
-            validated = sub_request.skip_control_ng or self.check_iban(
-                sub_request.iban
-            )
+            validated = sub_request.skip_control_ng or self.check_iban(sub_request.iban)
             sub_request.validated = validated
 
     @api.multi
-    @api.depends(
-        "share_product_id", "share_product_id.list_price", "ordered_parts"
-    )
+    @api.depends("share_product_id", "share_product_id.list_price", "ordered_parts")
     def _compute_subscription_amount(self):
         for sub_request in self:
             sub_request.subscription_amount = (
-                sub_request.share_product_id.list_price
-                * sub_request.ordered_parts
+                sub_request.share_product_id.list_price * sub_request.ordered_parts
             )
 
     already_cooperator = fields.Boolean(
@@ -429,9 +424,7 @@ class SubscriptionRequest(models.Model):
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
-    data_policy_approved = fields.Boolean(
-        string="Data Policy Approved", default=False
-    )
+    data_policy_approved = fields.Boolean(string="Data Policy Approved", default=False)
     internal_rules_approved = fields.Boolean(
         string="Approved Internal Rules", default=False
     )
@@ -536,9 +529,7 @@ class SubscriptionRequest(models.Model):
             if accounts:
                 account = accounts[0]
             else:
-                raise UserError(
-                    _("You must set a cooperator account on you company.")
-                )
+                raise UserError(_("You must set a cooperator account on you company."))
         return account
 
     def get_invoice_vals(self, partner):
@@ -734,9 +725,7 @@ class SubscriptionRequest(models.Model):
                         )
                     )
                 else:
-                    contact.write(
-                        {"parent_id": partner.id, "representative": True}
-                    )
+                    contact.write({"parent_id": partner.id, "representative": True})
 
         invoice = self.create_invoice(partner)
         self.write({"state": "done"})
@@ -770,6 +759,7 @@ class SubscriptionRequest(models.Model):
 
     def _send_confirmation_email(self):
         return self.company_id.send_confirmation_email
+
 
 # todo move to share_line.py
 class ShareLine(models.Model):
@@ -848,9 +838,7 @@ class SubscriptionRegister(models.Model):
     partner_id_to = fields.Many2one(
         "res.partner", string="Transfered to", readonly=True
     )
-    date = fields.Date(
-        string="Subscription Date", required=True, readonly=True
-    )
+    date = fields.Date(string="Subscription Date", required=True, readonly=True)
     quantity = fields.Integer(string="Number of share", readonly=True)
     share_unit_price = fields.Monetary(
         string="Share price",

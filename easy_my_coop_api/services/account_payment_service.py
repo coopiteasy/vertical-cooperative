@@ -57,9 +57,7 @@ class AccountPaymentService(Component):
             ]
         )
         if not payment_method_id:
-            codes = (
-                self.env["account.payment.method"].search([]).mapped("code")
-            )
+            codes = self.env["account.payment.method"].search([]).mapped("code")
             raise wrapJsonException(
                 NotFound(_("Payment method must be one of %s") % codes)
             )

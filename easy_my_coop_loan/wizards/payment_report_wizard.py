@@ -3,8 +3,9 @@
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, fields, models
 from calendar import monthrange
+
+from odoo import api, fields, models
 
 
 class WithholdingTaxDeclarationWizard(models.TransientModel):
@@ -29,22 +30,17 @@ class WithholdingTaxDeclarationWizard(models.TransientModel):
         return date.to_date("{}-{}-{}".format(year, month, l_day))
 
     report_type = fields.Selection(
-        [("tax", "Withholding Tax Report"),
-         ("reimbursement", "Loan reimbursement Report")
-         ],
+        [
+            ("tax", "Withholding Tax Report"),
+            ("reimbursement", "Loan reimbursement Report"),
+        ],
         string="Report type",
-        required=True
+        required=True,
     )
     date_start = fields.Date(
-        string="Start Date",
-        default=_default_date_start,
-        required=True
+        string="Start Date", default=_default_date_start, required=True
     )
-    date_end = fields.Date(
-        string="Start End",
-        default=_default_date_end,
-        required=True
-    )
+    date_end = fields.Date(string="Start End", default=_default_date_end, required=True)
 
     def _prepare_payment_report(self):
         interest_lines = self.env["loan.interest.line"].search(
@@ -76,13 +72,13 @@ class WithholdingTaxDeclarationWizard(models.TransientModel):
             "total_net_interests": total_net_interests,
             "total_withholding_tax": total_withholding_tax,
             "total_loan_amount": total_loan_amount,
-            "total_amount_due": total_amount_due
+            "total_amount_due": total_amount_due,
         }
 
     def action_print_pdf(self):
         self.ensure_one()
 
-        model = self.env['loan.interest.line.report']
+        model = self.env["loan.interest.line.report"]
         report = model.create(self._prepare_payment_report())
 
         return report.print_report()

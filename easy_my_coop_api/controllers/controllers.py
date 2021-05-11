@@ -20,6 +20,4 @@ class UserController(main.RestController):
         csrf=False,
     )
     def test(self, _service_name):
-        return self._process_method(
-            _service_name, "test", _id=None, params=None
-        )
+        return self._process_method(_service_name, "test", _id=None, params=None)

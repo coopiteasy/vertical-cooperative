@@ -2,7 +2,7 @@
 #   Houssine BAKKALI <houssine@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -10,24 +10,15 @@ class LoanInterestLine(models.Model):
     _name = "loan.interest.line"
     _description = "Loan Interest Line"
 
-    name = fields.Integer(
-        string="Year",
-        required=True
-    )
+    name = fields.Integer(string="Year", required=True)
     loan_issue_id = fields.Many2one(
-        related="issue_line.loan_issue_id",
-        store=True,
-        readlonly=True
+        related="issue_line.loan_issue_id", store=True, readlonly=True
     )
     issue_line = fields.Many2one(
-        "loan.issue.line",
-        string="Subscribed loan",
-        required=True
+        "loan.issue.line", string="Subscribed loan", required=True
     )
     partner_id = fields.Many2one(
-        related="issue_line.partner_id",
-        store=True,
-        readlonly=True
+        related="issue_line.partner_id", store=True, readlonly=True
     )
     amount = fields.Monetary(
         related="issue_line.amount",
@@ -45,13 +36,8 @@ class LoanInterestLine(models.Model):
         currency_field="company_currency_id",
         readonly=True,
     )
-    tax_exemption = fields.Boolean(
-        string="Tax exemption"
-    )
-    taxes_rate = fields.Float(
-        string="Taxes on interest",
-        required=True
-    )
+    tax_exemption = fields.Boolean(string="Tax exemption")
+    taxes_rate = fields.Float(string="Taxes on interest", required=True)
     taxes_amount = fields.Monetary(
         string="Taxes amount",
         currency_field="company_currency_id",
@@ -78,19 +64,13 @@ class LoanInterestLine(models.Model):
         readonly=True,
     )
     due_loan_amount = fields.Monetary(
-        string="Due loan amount",
-        currency_field="company_currency_id"
+        string="Due loan amount", currency_field="company_currency_id"
     )
     due_amount = fields.Monetary(
-        string="Total due amount",
-        currency_field="company_currency_id"
+        string="Total due amount", currency_field="company_currency_id"
     )
-    due_date = fields.Date(
-        string="Due date"
-    )
-    payment_date = fields.Date(
-        string="Payment date"
-    )
+    due_date = fields.Date(string="Due date")
+    payment_date = fields.Date(string="Payment date")
     company_currency_id = fields.Many2one(
         "res.currency",
         related="company_id.currency_id",
@@ -120,8 +100,10 @@ class LoanInterestLine(models.Model):
     def action_paid(self):
         if self.filtered(lambda l: l.state not in ["due", "scheduled"]):
             raise UserError(
-                _("You can only mark as paid reimbursement that are due or "
-                  "scheduled for payment")
+                _(
+                    "You can only mark as paid reimbursement that are due or "
+                    "scheduled for payment"
+                )
             )
 
         for line in self:

@@ -11,15 +11,16 @@ class WithholdingTaxDeclarationReport(models.TransientModel):
     _description = "Loan Interest Line Report"
 
     report_type = fields.Selection(
-        [("tax", "Withholding Tax Report"),
-         ("reimbursement", "Loan reimbursement Report")
-         ],
+        [
+            ("tax", "Withholding Tax Report"),
+            ("reimbursement", "Loan reimbursement Report"),
+        ],
         string="Report type",
-        required=True
+        required=True,
     )
     date_start = fields.Date(string="Start Date")
     date_end = fields.Date(string="End Date")
-    interest_lines = fields.Many2many(comodel_name='loan.interest.line')
+    interest_lines = fields.Many2many(comodel_name="loan.interest.line")
     total_gross_interests = fields.Monetary(
         string="Total gross interests",
         currency_field="company_currency_id",
@@ -58,7 +59,9 @@ class WithholdingTaxDeclarationReport(models.TransientModel):
         self.ensure_one()
         context = dict(self.env.context)
         if self.report_type == "tax":
-            report = "easy_my_coop_loan.action_withholding_tax_declaration_report" # noqa
+            report = (
+                "easy_my_coop_loan.action_withholding_tax_declaration_report"  # noqa
+            )
         elif self.report_type == "reimbursement":
             report = "easy_my_coop_loan.action_loan_reimbursement_report"
         action = self.env.ref(report)

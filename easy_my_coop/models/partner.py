@@ -122,8 +122,7 @@ class ResPartner(models.Model):
 
     cooperator = fields.Boolean(
         string="Cooperator",
-        help="Check this box if this contact is a"
-        " cooperator (effective or not).",
+        help="Check this box if this contact is a" " cooperator (effective or not).",
     )
     member = fields.Boolean(
         string="Effective cooperator",
@@ -137,17 +136,14 @@ class ResPartner(models.Model):
     )
     old_member = fields.Boolean(
         string="Old cooperator",
-        help="Check this box if this cooperator is"
-        " no more an effective member.",
+        help="Check this box if this cooperator is" " no more an effective member.",
     )
     # todo use oca partner_contact_gender
     gender = fields.Selection(
         [("male", "Male"), ("female", "Female"), ("other", "Other")],
         string="Gender",
     )
-    share_ids = fields.One2many(
-        "share.line", "partner_id", string="Share Lines"
-    )
+    share_ids = fields.One2many("share.line", "partner_id", string="Share Lines")
     cooperator_register_number = fields.Integer(string="Cooperator Number")
     number_of_share = fields.Integer(
         compute="_compute_share_info",
@@ -210,9 +206,7 @@ class ResPartner(models.Model):
             representatives = member_companies.mapped("child_ids").filtered(
                 "representative"
             )
-            partner.representative_of_member_company = (
-                partner in representatives
-            )
+            partner.representative_of_member_company = partner in representatives
 
     @api.multi
     def has_representative(self):
@@ -227,22 +221,26 @@ class ResPartner(models.Model):
         return self.child_ids.filtered("representative")
 
     def get_cooperator_from_email(self, email):
-        partner = self.search([('cooperator', '=', True),
-                               ('email', '=', email)], limit=1)
+        partner = self.search(
+            [("cooperator", "=", True), ("email", "=", email)], limit=1
+        )
         if not partner:
-            partner = self.search([('email', '=', email)], limit=1)
+            partner = self.search([("email", "=", email)], limit=1)
         return partner
 
     def get_cooperator_from_crn(self, company_register_number):
         if not company_register_number:
             company_register_number = ""
         company_register_number = company_register_number.strip()
-        partner = self.search([
-            ('cooperator', '=', True),
-            ('company_register_number', '=', company_register_number)
-            ], limit=1)
+        partner = self.search(
+            [
+                ("cooperator", "=", True),
+                ("company_register_number", "=", company_register_number),
+            ],
+            limit=1,
+        )
         if not partner:
-            partner = self.search([
-                ('company_register_number', '=', company_register_number)
-                ], limit=1)
+            partner = self.search(
+                [("company_register_number", "=", company_register_number)], limit=1
+            )
         return partner
