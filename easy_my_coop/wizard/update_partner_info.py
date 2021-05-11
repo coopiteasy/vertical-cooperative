@@ -20,34 +20,18 @@ class PartnerUpdateInfo(models.TransientModel):
     def _get_is_company(self):
         return self._get_partner().is_company
 
-    is_company = fields.Boolean(
-        string="Is company",
-        default=_get_is_company
-    )
+    is_company = fields.Boolean(string="Is company", default=_get_is_company)
     register_number = fields.Char(
-        string="Register Company Number",
-        default=_get_register_number
+        string="Register Company Number", default=_get_register_number
     )
     cooperator = fields.Many2one(
-        "res.partner",
-        string="Cooperator",
-        default=_get_partner
+        "res.partner", string="Cooperator", default=_get_partner
     )
-    from_sub_req = fields.Boolean(
-        string="Update from subscription request"
-    )
-    all = fields.Boolean(
-        string="Update all info"
-    )
-    birthdate = fields.Boolean(
-        string="Update birth date"
-    )
-    legal_form = fields.Boolean(
-        string="Set legal form"
-    )
-    representative_function = fields.Boolean(
-        string="Set function"
-    )
+    from_sub_req = fields.Boolean(string="Update from subscription request")
+    all = fields.Boolean(string="Update all info")
+    birthdate = fields.Boolean(string="Update birth date")
+    legal_form = fields.Boolean(string="Set legal form")
+    representative_function = fields.Boolean(string="Set function")
 
     @api.multi
     def update(self):
@@ -56,8 +40,7 @@ class PartnerUpdateInfo(models.TransientModel):
         coop_vals = {}
 
         if self.from_sub_req:
-            if self.is_company and (self.legal_form or
-                                    self.representative_function):
+            if self.is_company and (self.legal_form or self.representative_function):
                 coops = partner_obj.search(
                     [("cooperator", "=", True), ("is_company", "=", True)]
                 )
@@ -102,15 +85,17 @@ class PartnerUpdateInfo(models.TransientModel):
                                 "phone": sub_req.phone,
                                 "lang": sub_req.lang,
                                 "data_policy_approved": sub_req.data_policy_approved,
-                                "internal_rules_approved": sub_req.internal_rules_approved,
-                                "financial_risk_approved": sub_req.financial_risk_approved
-                                }
+                                "internal_rules_approved": sub_req.internal_rules_approved,  # noqa
+                                "financial_risk_approved": sub_req.financial_risk_approved,  # noqa
+                            }
                             if not coop.bank_ids:
                                 if sub_req.iban:
-                                    self.env["res.partner.bank"].create({
-                                        "partner_id": coop.id,
-                                        "acc_number": sub_req.iban
-                                    })
+                                    self.env["res.partner.bank"].create(
+                                        {
+                                            "partner_id": coop.id,
+                                            "acc_number": sub_req.iban,
+                                        }
+                                    )
                         coop.write(coop_vals)
         else:
             if cooperator:

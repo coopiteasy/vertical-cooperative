@@ -14,9 +14,7 @@ class AccountInvoice(models.Model):
     subscription_request = fields.Many2one(
         "subscription.request", string="Subscription request"
     )
-    release_capital_request = fields.Boolean(
-        string="Release of capital request"
-    )
+    release_capital_request = fields.Boolean(string="Release of capital request")
 
     @api.model
     def _prepare_refund(
@@ -40,17 +38,13 @@ class AccountInvoice(models.Model):
 
         user = user_obj.search([("login", "=", email)])
         if not user:
-            user = user_obj.search(
-                [("login", "=", email), ("active", "=", False)]
-            )
+            user = user_obj.search([("login", "=", email), ("active", "=", False)])
             if user:
                 user.sudo().write({"active": True})
             else:
                 user_values = {"partner_id": partner.id, "login": email}
                 user = user_obj.sudo()._signup_create_user(user_values)
-                user.sudo().with_context(
-                    {"create_user": True}
-                ).action_reset_password()
+                user.sudo().with_context({"create_user": True}).action_reset_password()
 
         return user
 
@@ -90,10 +84,7 @@ class AccountInvoice(models.Model):
         # flag the partner as an effective member
         # if not yet cooperator we generate a cooperator number
         vals = {}
-        if (
-            self.partner_id.member is False
-            and self.partner_id.old_member is False
-        ):
+        if self.partner_id.member is False and self.partner_id.old_member is False:
             sequence_id = self.get_sequence_register()
             sub_reg_num = sequence_id.next_by_id()
             vals = {
@@ -129,9 +120,7 @@ class AccountInvoice(models.Model):
         sub_reg_operation = sequence_operation.next_by_id()
 
         for line in self.invoice_line_ids:
-            sub_reg_vals = self.get_subscription_register_vals(
-                line, effective_date
-            )
+            sub_reg_vals = self.get_subscription_register_vals(line, effective_date)
             sub_reg_vals["name"] = sub_reg_operation
             sub_reg_vals["register_number_operation"] = int(sub_reg_operation)
 
