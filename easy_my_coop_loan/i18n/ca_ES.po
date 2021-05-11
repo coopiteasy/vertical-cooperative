@@ -1,0 +1,790 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* easy_my_coop_loan
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-29 19:46+0000\n"
+"PO-Revision-Date: 2020-12-02 18:32+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: ca\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#. module: easy_my_coop_loan
+#: model:mail.template,body_html:easy_my_coop_loan.email_template_loan_confirm_paid
+msgid ""
+"\n"
+"    <div style=\"font-size:13px;font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; background-color: rgb(255, 255, 255);\">\n"
+"    <p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;color: rgb(34, 34, 34); font-size: 12px;\">Bonjour ${object.partner_id.name},</p>\n"
+"    <p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">Par la présente, nous vous confirmons que nous avons bien reçu de votre part le versement pour la souscription des obligations&nbsp;FinMip</p>\n"
+"    <table class=\"table table-bordered\" style=\"border-style:solid;margin:0 0 1rem 0;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-top-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-width:1px;background-color:transparent;width:100%;border-collapse:collapse;\"><tbody><tr><td style=\"border-style:solid;padding:0.75rem;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-color:rgb(222, 226, 230);border-top-width:1px;vertical-align:top;\"><span style=\"color: rgb(34, 34, 34); font-family: &quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif; font-size: 12px;\">${object.partner_id.name}</span><br></td><td style=\"border-style:solid;padding:0.75rem;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-color:rgb(222, 226, 230);border-top-width:1px;vertical-align:top;\">${object.amount}<br></td><td style=\"border-style:solid;padding:0.75rem;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-color:rgb(222, 226, 230);border-top-width:1px;vertical-align:top;\">${object.loan_issue_id.display_name}<br></td><td style=\"border-style:solid;padding:0.75rem;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-color:rgb(222, 226, 230);border-top-width:1px;vertical-align:top;\">${object.quantity}<br></td></tr></tbody></table>\n"
+"    <p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">Comme prévu dans la note d'information (reprise en attaché), ces obligations vous seront remboursées dans les 15 jours ouvrables qui suivent :</p><ul style=\"margin:0px 0 1rem 0;\"><li><p style=\"margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">&nbsp;p<span style=\"font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; font-style: initial; font-variant-ligatures: initial; font-variant-caps: initial; font-weight: initial; text-align: inherit;\">our les </span><span style=\"font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; font-style: initial; font-variant-ligatures: initial; font-variant-caps: initial; text-align: inherit;\"><b style=\"font-weight:bolder;\">obligations à 5 ans</b></span><span style=\"font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; font-style: initial; font-variant-ligatures: initial; font-variant-caps: initial; font-weight: initial; text-align: inherit;\">, assorties d'un intérêt annuel brut de </span><span style=\"font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; font-style: initial; font-variant-ligatures: initial; font-variant-caps: initial; text-align: inherit;\"><b style=\"font-weight:bolder;\">0,85%</b><b style=\"font-weight:bolder;\"><br></b></span></p></li></ul><ul style=\"margin:0px 0 1rem 0;\"><li><p style=\"margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">pour les <b style=\"font-weight:bolder;\">obligations à 10 ans</b>, assorties d'un intérêt annuel brut de<b style=\"font-weight:bolder;\"> 1,25%</b><br></p></li></ul>\n"
+"    <p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">Un précompte mobilier de 30 % sera retenu à la source sur les intérêts.</p>\n"
+"    <p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">Si vous avez la moindre question, n'hésitez pas à nous contacter.</p><p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">Nous vous remercions grandement pour votre soutien.</p>\n"
+"    <p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;color: rgb(34, 34, 34); font-size: 12px;\">\n"
+"\n"
+"<p>${object.company_id.name}.</p>\n"
+"\n"
+"    % if object.company_id.street:\n"
+"        ${object.company_id.street}\n"
+"    % endif\n"
+"    % if object.company_id.street2:\n"
+"        ${object.company_id.street2}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.city or object.company_id.zip:\n"
+"        ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.country_id:\n"
+"        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.phone:\n"
+"        Phone:&nbsp; ${object.company_id.phone}\n"
+"    % endif\n"
+"\n"
+"    % if object.company_id.website:\n"
+"        <div>\n"
+"            Web :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"        </div>\n"
+"    %endif\n"
+"            "
+msgstr ""
+"\n"
+"    <div style=\"font-size:13px;font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; background-color: rgb(255, 255, 255);\">\n"
+"    <p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;color: rgb(34, 34, 34); font-size: 12px;\">Hola ${object.partner_id.name},</p>\n"
+"    <p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">Amb aquest missatge es confirma que hem rebut l'ingrés de la seva participació  del Capital Social Voluntari &nbsp;FinMip</p>\n"
+"    <table class=\"table table-bordered\" style=\"border-style:solid;margin:0 0 1rem 0;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-top-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-width:1px;background-color:transparent;width:100%;border-collapse:collapse;\"><tbody><tr><td style=\"border-style:solid;padding:0.75rem;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-color:rgb(222, 226, 230);border-top-width:1px;vertical-align:top;\"><span style=\"color: rgb(34, 34, 34); font-family: &quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif; font-size: 12px;\">${object.partner_id.name}</span><br></td><td style=\"border-style:solid;padding:0.75rem;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-color:rgb(222, 226, 230);border-top-width:1px;vertical-align:top;\">${object.amount}<br></td><td style=\"border-style:solid;padding:0.75rem;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-color:rgb(222, 226, 230);border-top-width:1px;vertical-align:top;\">${object.loan_issue_id.display_name}<br></td><td style=\"border-style:solid;padding:0.75rem;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-color:rgb(222, 226, 230);border-top-width:1px;vertical-align:top;\">${object.quantity}<br></td></tr></tbody></table>\n"
+"    <p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">Comme prévu dans la note d'information (reprise en attaché), ces obligations vous seront remboursées dans les 15 jours ouvrables qui suivent :</p><ul style=\"margin:0px 0 1rem 0;\"><li><p style=\"margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">&nbsp;p<span style=\"font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; font-style: initial; font-variant-ligatures: initial; font-variant-caps: initial; font-weight: initial; text-align: inherit;\">our les </span><span style=\"font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; font-style: initial; font-variant-ligatures: initial; font-variant-caps: initial; text-align: inherit;\"><b style=\"font-weight:bolder;\">obligations à 5 ans</b></span><span style=\"font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; font-style: initial; font-variant-ligatures: initial; font-variant-caps: initial; font-weight: initial; text-align: inherit;\">, assorties d'un intérêt annuel brut de </span><span style=\"font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; font-style: initial; font-variant-ligatures: initial; font-variant-caps: initial; text-align: inherit;\"><b style=\"font-weight:bolder;\">0,85%</b><b style=\"font-weight:bolder;\"><br></b></span></p></li></ul><ul style=\"margin:0px 0 1rem 0;\"><li><p style=\"margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">pour les <b style=\"font-weight:bolder;\">obligations à 10 ans</b>, assorties d'un intérêt annuel brut de<b style=\"font-weight:bolder;\"> 1,25%</b><br></p></li></ul>\n"
+"    <p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">Un précompte mobilier de 30 % sera retenu à la source sur les intérêts.</p>\n"
+"    <p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">Si vous avez la moindre question, n'hésitez pas à nous contacter.</p><p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">Nous vous remercions grandement pour votre soutien.</p>\n"
+"    <p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;color: rgb(34, 34, 34); font-size: 12px;\">\n"
+"\n"
+"<p>${object.company_id.name}.</p>\n"
+"\n"
+"    % if object.company_id.street:\n"
+"        ${object.company_id.street}\n"
+"    % endif"
+
+#. module: easy_my_coop_loan
+#: model:mail.template,body_html:easy_my_coop_loan.loan_issue_payment_request
+msgid ""
+"\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"    <p>Hello ${object.partner_id.name},</p>\n"
+"\n"
+"    <p>Find here after the necessary information for the payment. We kindly remind you that your subscription will be effective only once we received the payment.</p>\n"
+"\n"
+"    <p>Amount: ${object.amount} ${object.loan_issue_id.company_currency_id.symbol}</p>\n"
+"    <p>Account number: ${object.company_id.bank_ids[0].sanitized_acc_number}</p>\n"
+"    <p>Communication: ${object.loan_issue_id.name} + ${object.partner_id.name}</p>\n"
+"\n"
+"    <p>Sustainably your,</p>\n"
+"    <p>${object.company_id.name}.</p>\n"
+"\n"
+"    % if object.company_id.street:\n"
+"        ${object.company_id.street}\n"
+"    % endif\n"
+"    % if object.company_id.street2:\n"
+"        ${object.company_id.street2}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.city or object.company_id.zip:\n"
+"        ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.country_id:\n"
+"        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.phone:\n"
+"        Phone:&nbsp; ${object.company_id.phone}\n"
+"    % endif\n"
+"\n"
+"    % if object.company_id.website:\n"
+"        <div>\n"
+"            Web :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"        </div>\n"
+"    %endif\n"
+"\n"
+"    <div>\n"
+"        <img src=${object.company_id.logo_url}>\n"
+"    </div>\n"
+"</div>\n"
+"            "
+msgstr ""
+"\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"    <p>Hola ${object.partner_id.name},</p>\n"
+"\n"
+"    <p>Aqui trobes l'informació per fer l'ingres. Su inscripció compta amb la data de rebre el pagament.</p>\n"
+"\n"
+"    <p>Import: ${object.amount} ${object.loan_issue_id.company_currency_id.symbol}</p>\n"
+"    <p>Compte bancàri: ${object.company_id.bank_ids[0].sanitized_acc_number}</p>\n"
+"    <p>Comunicació: ${object.loan_issue_id.name} + ${object.partner_id.name}</p>\n"
+"\n"
+"    <p>Salutacions cooperativestes,</p>\n"
+"    <p>${object.company_id.name}.</p>\n"
+"\n"
+"    % if object.company_id.street:\n"
+"        ${object.company_id.street}\n"
+"    % endif\n"
+"    % if object.company_id.street2:\n"
+"        ${object.company_id.street2}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.city or object.company_id.zip:\n"
+"        ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.country_id:\n"
+"        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.phone:\n"
+"        Phone:&nbsp; ${object.company_id.phone}\n"
+"    % endif\n"
+"\n"
+"    % if object.company_id.website:\n"
+"        <div>\n"
+"            Web :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"        </div>\n"
+"    %endif\n"
+"\n"
+"    <div>\n"
+"        <img src=${object.company_id.logo_url}>\n"
+"    </div>\n"
+"</div>\n"
+"            "
+
+#. module: easy_my_coop_loan
+#: model:mail.template,body_html:easy_my_coop_loan.loan_subscription_confirmation
+msgid ""
+"\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"    <p>Hello ${object.partner_id.name},</p>\n"
+"\n"
+"    <p>Your request will be soon processed by our team. If all the provided info are correct you will soon receive the payment information in another email</p>\n"
+"\n"
+"    <br/>\n"
+"    <p>If you have any question, do not hesitate to contact us.</p>\n"
+"    <br/>\n"
+"\n"
+"    <p>Sustainably your,</p>\n"
+"    <p>${object.company_id.name}.</p>\n"
+"\n"
+"    % if object.company_id.street:\n"
+"        ${object.company_id.street}\n"
+"    % endif\n"
+"    % if object.company_id.street2:\n"
+"        ${object.company_id.street2}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.city or object.company_id.zip:\n"
+"        ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.country_id:\n"
+"        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.phone:\n"
+"        Phone:&nbsp; ${object.company_id.phone}\n"
+"    % endif\n"
+"\n"
+"    % if object.company_id.website:\n"
+"        <div>\n"
+"            Web :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"        </div>\n"
+"    %endif\n"
+"\n"
+"    <div>\n"
+"        <img src=${object.company_id.logo_url}>\n"
+"    </div>\n"
+"</div>\n"
+"            "
+msgstr ""
+"\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"    <p>Hola ${object.partner_id.name},</p>\n"
+"\n"
+"    <p>La vostra sol·licitud serà processada aviat pel nostre equip. Si tota la informació proporcionada és correcta, aviat rebrà la informació de pagament en un altre correu electrònic</p>\n"
+"\n"
+"    <br/>\n"
+"    <p>Si teniu alguna pregunta, no dubteu en posar-vos en contacte amb nosaltres.</p>\n"
+"    <br/>\n"
+"\n"
+"    <p>Salutacions cooperatives,</p>\n"
+"    <p>${object.company_id.name}.</p>\n"
+"\n"
+"    % if object.company_id.street:\n"
+"        ${object.company_id.street}\n"
+"    % endif\n"
+"    % if object.company_id.street2:\n"
+"        ${object.company_id.street2}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.city or object.company_id.zip:\n"
+"        ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.country_id:\n"
+"        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.phone:\n"
+"        Phone:&nbsp; ${object.company_id.phone}\n"
+"    % endif\n"
+"\n"
+"    % if object.company_id.website:\n"
+"        <div>\n"
+"            Web :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"        </div>\n"
+"    %endif\n"
+"\n"
+"    <div>\n"
+"        <img src=${object.company_id.logo_url}>\n"
+"    </div>\n"
+"</div>\n"
+"            "
+
+#. module: easy_my_coop_loan
+#: model:mail.template,subject:easy_my_coop_loan.loan_subscription_confirmation
+msgid ""
+"${object.company_id.name} Loan subscription\n"
+"                confirmation (Ref ${object.loan_issue_id.name or 'n/a'})\n"
+"            "
+msgstr ""
+"${object.company_id.name} Confirmació inscripció \n"
+"                Capital social voluntari (Ref ${object.loan_issue_id.name or 'n/a'})\n"
+"            "
+
+#. module: easy_my_coop_loan
+#: model:mail.template,subject:easy_my_coop_loan.email_template_loan_confirm_paid
+msgid "${object.company_id.name} Payment received (Ref ${object.loan_issue_id.name or 'n/a'})"
+msgstr "${object.company_id.name} Ingrés rebut (Ref ${object.loan_issue_id.name or 'n/a'})"
+
+#. module: easy_my_coop_loan
+#: model:mail.template,subject:easy_my_coop_loan.loan_issue_payment_request
+msgid ""
+"${object.company_id.name} Payment request (Ref\n"
+"                ${object.loan_issue_id.name or 'n/a'})\n"
+"            "
+msgstr ""
+"${object.company_id.name} Sol·licitud pagament (Ref\n"
+"                ${object.loan_issue_id.name or 'n/a'})"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__accrued_amount
+msgid "Accrued amount"
+msgstr "Import acumulat"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__accrued_interest
+msgid "Accrued gross interest"
+msgstr "Interessos bruts acumulats"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__accrued_net_interest
+msgid "Accrued net interest"
+msgstr "Interessos nets acumulats"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__accrued_taxes
+msgid "Accrued taxes to pay"
+msgstr "Impostos acumulats a pagar"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Are you sure you want to cancel this loan issue?"
+msgstr "Esteu segur que voleu cancel·lar aquest aportació al capital social voluntari?"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_form
+msgid "Are you sure you want to cancel this loan subscription ?"
+msgstr "Esteu segur que voleu cancel·lar aquesta inscripció al capital social voluntari?"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Are you sure you want to close this loan issue?"
+msgstr "Esteu segur que voleu tancar aquest aportació al capital social voluntari?"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__by_company
+msgid "By company"
+msgstr "Per empresa"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__by_individual
+msgid "By individuals"
+msgstr "Per persones"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_form
+msgid "Cancel"
+msgstr "Cancel·lar"
+
+#. module: easy_my_coop_loan
+#: selection:loan.issue,state:0 selection:loan.issue.line,state:0
+msgid "Cancelled"
+msgstr "Cancel·lat"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Close"
+msgstr "Tancar"
+
+#. module: easy_my_coop_loan
+#: selection:loan.issue,state:0
+msgid "Closed"
+msgstr "Tancat"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__company_id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__company_id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__company_id
+msgid "Company"
+msgstr "Empresa"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__company_currency_id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__company_currency_id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__company_currency_id
+msgid "Company Currency"
+msgstr "Moneda de l'empresa"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Compute interest"
+msgstr "Calcula els interessos"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: easy_my_coop_loan
+#: selection:loan.issue,state:0
+msgid "Confirmed"
+msgstr "Confirmat"
+
+#. module: easy_my_coop_loan
+#: model:ir.model,name:easy_my_coop_loan.model_res_partner
+msgid "Contact"
+msgstr "Contacte"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__create_uid
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__create_uid
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__create_uid
+msgid "Created by"
+msgstr "Creat per"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__create_date
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__create_date
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__create_date
+msgid "Created on"
+msgstr "Creat el"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__default_issue
+msgid "Default issue"
+msgstr "Emissió per defecte"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__display_name
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__display_name
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__display_name
+msgid "Display Name"
+msgstr "Mostrar Nom"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__display_on_website
+msgid "Display On Website"
+msgstr "Mostrar a la pàgina web"
+
+#. module: easy_my_coop_loan
+#: selection:loan.interest.line,state:0
+msgid "Donation"
+msgstr "Donació"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_filter
+msgid "Done"
+msgstr "Fet"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_filter
+#: selection:loan.interest.line,state:0 selection:loan.issue,state:0
+#: selection:loan.issue.line,state:0
+msgid "Draft"
+msgstr "Esborrany"
+
+#. module: easy_my_coop_loan
+#: selection:loan.interest.line,state:0
+msgid "Due"
+msgstr "vençuda"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__due_date
+msgid "Due date"
+msgstr "Data de venciment"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__loan_term
+msgid "Duration of the loan in month"
+msgstr "Durada de la participació al capital social voluntari en mesos"
+
+#. module: easy_my_coop_loan
+#: selection:loan.issue,interest_payment:0
+msgid "End"
+msgstr "Fi"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__subscription_end_date
+msgid "End date subscription period"
+msgstr "Data de finalització del període de inscripció"
+
+#. module: easy_my_coop_loan
+#: selection:loan.issue.line,state:0
+msgid "Ended"
+msgstr "Finalitzat"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__face_value
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__face_value
+msgid "Facial value"
+msgstr "Valor facial"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__interest
+msgid "Gross interest amount"
+msgstr "Import brut dels interessos"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_filter
+msgid "Group By"
+msgstr "Agrupar per"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__id
+msgid "ID"
+msgstr "ID"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__interest_lines
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_form
+msgid "Interest lines"
+msgstr "Línies d’interès"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__interest_payment
+msgid "Interest payment"
+msgstr "Pagament d’interessos"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__rate
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Interest rate"
+msgstr "Tipus d’interès"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line____last_update
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue____last_update
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line____last_update
+msgid "Last Modified on"
+msgstr "Última modificació el"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__write_uid
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__write_uid
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__write_uid
+msgid "Last Updated by"
+msgstr "Última actualització per"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__write_date
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__write_date
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__write_date
+msgid "Last Updated on"
+msgstr "Última actualització el"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Lines"
+msgstr "Línies"
+
+#. module: easy_my_coop_loan
+#: model:ir.model,name:easy_my_coop_loan.model_loan_interest_line
+msgid "Loan Interest Line"
+msgstr "Línia d'interès de la aportació"
+
+#. module: easy_my_coop_loan
+#: model:ir.model,name:easy_my_coop_loan.model_loan_issue
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_filter
+msgid "Loan Issue"
+msgstr "Emissió de aportació capital social voluntari"
+
+#. module: easy_my_coop_loan
+#: model:ir.model,name:easy_my_coop_loan.model_loan_issue_line
+msgid "Loan Issue Line"
+msgstr "Línia d’emissió d'aportació"
+
+#. module: easy_my_coop_loan
+#: model:ir.actions.act_window,name:easy_my_coop_loan.action_loan_issue
+#: model:ir.ui.menu,name:easy_my_coop_loan.loan_issue_menu
+msgid "Loan Issues"
+msgstr "Emissions de aportació capital social voluntari"
+
+#. module: easy_my_coop_loan
+#: model:ir.ui.menu,name:easy_my_coop_loan.menu_easy_my_coop_main_loan_issue
+msgid "Loan Management"
+msgstr "Gestió capital Social voluntari"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__loan_issue_id
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_form
+msgid "Loan issue"
+msgstr "Emissió de aportació capital social voluntari"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Loan issue Name"
+msgstr "Nom emissió de aportació capital social voluntari"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__loan_issue_lines
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_partner_form_loan_issue
+msgid "Loan issue lines"
+msgstr "Línies d'emissió d'aportació"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_tree
+msgid "Loan issues"
+msgstr "Emissions de aportació capital social voluntari"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__loan_start_date
+msgid "Loan start date"
+msgstr "Data d'inici del préstec"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_res_partner__is_loaner
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_res_users__is_loaner
+msgid "Loaner"
+msgstr "Participant emisió"
+
+#. module: easy_my_coop_loan
+#: model:ir.actions.act_window,name:easy_my_coop_loan.action_loaners
+#: model:ir.ui.menu,name:easy_my_coop_loan.loaners_menu
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_res_partner_loaner_filter
+msgid "Loaners"
+msgstr "Participants emisió"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_res_partner_loaner_filter
+msgid "Loaning Partners"
+msgstr "Sòcies de emisions"
+
+#. module: easy_my_coop_loan
+#: model:ir.actions.act_window,name:easy_my_coop_loan.action_loan_issue_lines
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_res_partner__loan_line_ids
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_res_users__loan_line_ids
+#: model:ir.ui.menu,name:easy_my_coop_loan.loan_issue_line_menu
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_issue_line_view_tree
+msgid "Loans"
+msgstr "Emissions"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__max_amount_company
+msgid "Maximum amount for a company"
+msgstr "Import màxim per a una empresa"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__max_amount_person
+msgid "Maximum amount for a person"
+msgstr "Import màxim per a una persona"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__maximum_amount
+msgid "Maximum amount of issue"
+msgstr "Import màxim d’emissió"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__min_amount_company
+msgid "Minimum amount for a company"
+msgstr "Import mínim per a una empresa"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__min_amount_person
+msgid "Minimum amount for a person"
+msgstr "Import mínim per a una persona"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__minimum_amount
+msgid "Minimum amount of issue"
+msgstr "Import mínim d’emissió"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__name
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Name"
+msgstr "Nom"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__net_interest
+msgid "Net interest amount"
+msgstr "Import net dels interessos"
+
+#. module: easy_my_coop_loan
+#: selection:loan.issue,state:0
+msgid "Ongoing"
+msgstr "En marxa"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Open"
+msgstr "oberta"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_filter
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_form
+#: selection:loan.interest.line,state:0
+msgid "Paid"
+msgstr "Pagat"
+
+#. module: easy_my_coop_loan
+#: selection:loan.interest.line,state:0
+msgid "Payment requested"
+msgstr "Pagament sol·licitat"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__name
+msgid "Reference"
+msgstr "Referència"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_form
+msgid "Request Payment"
+msgstr "Sol·licita el pagament"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__user_id
+msgid "Responsible"
+msgstr "Responsable"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_filter
+msgid "Search Loan Issue"
+msgstr "Cerca emissió de capital social voluntari"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_filter
+msgid "Search Loans"
+msgstr "Cerca aportacions capital voluntari"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_form
+msgid "Set to draft"
+msgstr "Estableix com a esborrany"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__subscription_start_date
+msgid "Start date subscription period"
+msgstr "Data d' inici  del període de inscripció"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__state
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__state
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__state
+msgid "State"
+msgstr "província"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_filter
+#: selection:loan.issue.line,state:0
+msgid "Subscribed"
+msgstr "Inscrit"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__amount
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__subscribed_amount
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__amount
+msgid "Subscribed amount"
+msgstr "Import inscrit"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__issue_line
+msgid "Subscribed loan"
+msgstr "participació capital social voluntari inscrit"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__partner_id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__partner_id
+msgid "Subscriber"
+msgstr "Inscriptor"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_filter
+msgid "Subscription Date"
+msgstr "Data Inscripció"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__date
+msgid "Subscription date"
+msgstr "Data Inscripció"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__taxes_amount
+msgid "Taxes amount"
+msgstr "Import dels impostos"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__taxes_rate
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__taxes_rate
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Taxes on interest"
+msgstr "Impostos sobre els interessos"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__term_date
+msgid "Term date"
+msgstr "data de venciment"
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_form
+msgid "Validate"
+msgstr "Validar"
+
+#. module: easy_my_coop_loan
+#: selection:loan.issue.line,state:0
+msgid "Waiting payment"
+msgstr "En espera de pagament"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__name
+msgid "Year"
+msgstr "Any"
+
+#. module: easy_my_coop_loan
+#: selection:loan.issue,interest_payment:0
+msgid "Yearly"
+msgstr "Anual"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__interest_payment_info
+msgid "Yearly payment on"
+msgstr "Pagament anual el"
+
+#. module: easy_my_coop_loan
+#: selection:loan.issue.line,state:0
+msgid "paid"
+msgstr "pagat"
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__quantity
+msgid "quantity"
+msgstr "Quantitat"

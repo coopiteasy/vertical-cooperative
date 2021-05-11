@@ -18,7 +18,7 @@ from odoo.addons.portal.controllers.portal import (
 
 class CooperatorPortalAccount(CustomerPortal):
     CustomerPortal.MANDATORY_BILLING_FIELDS.extend(
-        ["iban", "birthdate_date", "gender", "lang"]
+        ["iban", "birthdate_date", "gender"]
     )
 
     def _prepare_portal_layout_values(self):
@@ -62,18 +62,28 @@ class CooperatorPortalAccount(CustomerPortal):
                 "invoice_count": invoice_count,
                 "iban": iban,
                 "genders": fields_desc["gender"]["selection"],
-                "langs": request.env["res.lang"].search([])
             }
         )
         return values
 
-    
+    def details_form_validate(self, data):
+        error, error_message = super(
+            CooperatorPortalAccount, self
+        ).details_form_validate(data)
+        sub_req_obj = request.env["subscription.request"]
+        iban = data.get("iban")
+        valid = sub_req_obj.check_iban(iban)
+
+        if not valid:
+            error["iban"] = "error"
+            error_message.append(_("You iban account number is not valid"))
+        return error, error_message
+
     @route(["/my/account"], type="http", auth="user", website=True)
     def account(self, redirect=None, **post):
-        partner = request.env.user.partner_id
-
         res = super(CooperatorPortalAccount, self).account(redirect, **post)
         if not res.qcontext.get("error"):
+            partner = request.env.user.partner_id
             partner_bank = request.env["res.partner.bank"]
             iban = post.get("iban")
             if iban:

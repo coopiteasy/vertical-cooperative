@@ -1,0 +1,49 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* easy_my_coop_loan_website
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-29 19:48+0000\n"
+"PO-Revision-Date: 2020-12-02 18:38+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: ca\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.loanissuesubscription
+msgid "Amount"
+msgstr "Import"
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.loanissuesubscription
+msgid "Loan issue"
+msgstr "Càpital Social voluntari"
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.subscribe_loan_issue_page_ir_ui_view
+#: model_terms:website.page,arch_db:easy_my_coop_loan_website.subscribe_loan_issue_page
+msgid "Scheduled Actions"
+msgstr "Accions planificades"
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.loanissuesubscription
+msgid "Send"
+msgstr "Envia"
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.loanissuesubscription
+msgid "Subscribe to Loan Issue"
+msgstr "Inscripció a participació capital social voluntari"
+
+#. module: easy_my_coop_loan_website
+#: model:website.menu,name:easy_my_coop_loan_website.menu_subscribeloanissue
+msgid "Subscribe to loan issue"
+msgstr "Inscripció a capital social voluntari"

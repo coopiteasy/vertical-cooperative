@@ -1,0 +1,875 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* easy_my_coop_taxshelter_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-29 19:49+0000\n"
+"PO-Revision-Date: 2020-12-03 09:35+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: ca\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:mail.template,body_html:easy_my_coop_taxshelter_report.email_template_tax_shelter_certificate
+msgid ""
+"\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"    <p>Hello ${object.partner_id.name},</p>\n"
+"\n"
+"    <p>You have subscribed to some shares of ${object.company_id.name} on ${object.declaration_id.fiscal_year}.\n"
+"    You can benefit from the tax shelter, it means a tax reduction of ${object.declaration_id.tax_shelter_percentage} percent on the invested amount.\n"
+"    For this you will find in attachments the documents certifying that you've suscribed to ${object.company_id.name} shares</p>\n"
+"    <p>A dedicated FAQ is coming soon on ${object.company_id.website}.</p>\n"
+"    <p>For any additional questions, please contact ${object.company_id.coop_email_contact}</p>\n"
+"    <p>Sustainably your,</p>\n"
+"    <p>${object.company_id.name}.</p>\n"
+"\n"
+"    % if object.company_id.street:\n"
+"        ${object.company_id.street}\n"
+"    % endif\n"
+"    % if object.company_id.street2:\n"
+"        ${object.company_id.street2}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.city or object.company_id.zip:\n"
+"        ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.country_id:\n"
+"        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.phone:\n"
+"        Phone:&nbsp; ${object.company_id.phone}\n"
+"    % endif\n"
+"\n"
+"    % if object.company_id.website:\n"
+"        <div>\n"
+"            Web :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"        </div>\n"
+"    %endif\n"
+"\n"
+"    <div>\n"
+"        <img src=${object.company_id.logo_web}>\n"
+"    </div>\n"
+"</div>\n"
+"            "
+msgstr ""
+"\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"    <p>Hola ${object.partner_id.name},</p>\n"
+"\n"
+"    <p>T'has inscrit a titols de participació de capital social voluntari  ${object.company_id.name} en ${object.declaration_id.fiscal_year}.\n"
+"    Podeu beneficiar-vos de la protecció fiscal, això significa una reducció fiscal de ${object.declaration_id.tax_shelter_percentage} percentatge sobre l'import invertit.\n"
+"    Per a això, trobareu en els fitxers adjunts els documents que certifiquen que us heu subscrit ${object.company_id.name} títols</p>\n"
+"    <p>Aviat apareixerà una FAQs dedicada ${object.company_id.website}.</p>\n"
+"    <p>Per a qualsevol pregunta addicional, poseu-vos en contacte amb ${object.company_id.coop_email_contact}</p>\n"
+"    <p>salutacions cooperatives,</p>\n"
+"    <p>${object.company_id.name}.</p>\n"
+"\n"
+"    % if object.company_id.street:\n"
+"        ${object.company_id.street}\n"
+"    % endif\n"
+"    % if object.company_id.street2:\n"
+"        ${object.company_id.street2}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.city or object.company_id.zip:\n"
+"        ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.country_id:\n"
+"        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.phone:\n"
+"        Phone:&nbsp; ${object.company_id.phone}\n"
+"    % endif\n"
+"\n"
+"    % if object.company_id.website:\n"
+"        <div>\n"
+"            Web :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"        </div>\n"
+"    %endif\n"
+"\n"
+"    <div>\n"
+"        <img src=${object.company_id.logo_web}>\n"
+"    </div>\n"
+"</div>\n"
+"            "
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "(et avant"
+msgstr "(i abans"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+msgid ""
+",\n"
+"                    vous êtes devenu coopérateur de"
+msgstr "et vas convertir en sòcia de"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid ""
+", connu aussi\n"
+"                    comme normative Tax Shelter, donnent droit à une réduction\n"
+"                    d’impôt à hauteur de"
+msgstr ""
+", també conegut\n"
+"                      com a estàndard de reducció fiscal, donen dret a una reducció\n"
+"                    d'impost fins a"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+msgid ""
+", vous êtes toujours\n"
+"                    en possession de parts de"
+msgstr ""
+", avui dia posseeix\n"
+"                   participacions de capital social voluntari"
+
+#. module: easy_my_coop_taxshelter_report
+#: selection:tax.shelter.declaration,tax_shelter_percentage:0
+msgid "30%"
+msgstr "30%"
+
+#. module: easy_my_coop_taxshelter_report
+#: selection:tax.shelter.declaration,tax_shelter_percentage:0
+msgid "45%"
+msgstr "45%"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "<span>Déclaration Tax Shelter</span>"
+msgstr "<span>Declaració retencions fiscals</span>"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+msgid ""
+"<span>Déclaration Tax Shelter</span>\n"
+"                    <br/>\n"
+"                    <small>Attestation concernant une des quatre années suivant\n"
+"                        l’acquisition de parts\n"
+"                    </small>"
+msgstr ""
+"<span>DCertificat relatiu a un dels quatre anys següents\n"
+"                        l'adquisició d'accions\n"
+"                    </small>"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+msgid "A la date du"
+msgstr "En data de"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__access_warning
+msgid "Access warning"
+msgstr "Advertència d'accés"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "Amount"
+msgstr "Import"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "Amount ligible"
+msgstr "Import apte"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__amount_resold
+msgid "Amount resold"
+msgstr "Import retornat"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__amount_subscribed
+msgid "Amount subscribed"
+msgstr "Import inscrit"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__amount_subscribed_eligible
+msgid "Amount subscribed eligible"
+msgstr "Import inscrit apte"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__amount_transfered
+msgid "Amount transfered"
+msgstr "Import transferit"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "Capital after"
+msgstr "Import capital després"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__capital_after_sub
+msgid "Capital after subscription"
+msgstr "Import capital després dìnscripció"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "Capital before"
+msgstr "Import capital abans"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__capital_before_sub
+msgid "Capital before subscription"
+msgstr "Import capital abans inscripció"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__capital_limit
+msgid "Capital limit"
+msgstr "Límit de capital"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__lines
+msgid "Certificate lines"
+msgstr "Línies de certificat"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+msgid "Cette lettre confirme qu’en date du"
+msgstr "Aquesta carta confirma que a data de"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "Cette lettre vaut donc comme certificat que"
+msgstr "Per tant, aquesta carta és vàlida com a certificat que"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "Cher membre,"
+msgstr "Benvolguda socia,"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__company_id
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__company_id
+msgid "Company"
+msgstr "Empresa"
+
+#. module: easy_my_coop_taxshelter_report
+#: selection:tax.shelter.declaration,state:0
+msgid "Computed"
+msgstr "Calculat"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__partner_id
+msgid "Cooperator"
+msgstr "Socià"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__cooperator_number
+msgid "Cooperator number"
+msgstr "Número sòcia"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__create_uid
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__create_uid
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__create_uid
+msgid "Created by"
+msgstr "Creat per"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__create_date
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__create_date
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__create_date
+msgid "Created on"
+msgstr "Creat el"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,help:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__access_url
+msgid "Customer Portal URL"
+msgstr "URL del portal dels clients"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "Date"
+msgstr "Data"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__date_from
+msgid "Date from"
+msgstr "Data Des de"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__date_to
+msgid "Date to"
+msgstr "Data fins"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__declaration_id
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__declaration_id
+#: model:ir.ui.menu,name:easy_my_coop_taxshelter_report.menu_easy_my_coop_main_declaration
+msgid "Declaration"
+msgstr "Declaració"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__name
+msgid "Declaration year"
+msgstr "Any de declaració"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__display_name
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__display_name
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__display_name
+msgid "Display Name"
+msgstr "Mostrar Nom"
+
+#. module: easy_my_coop_taxshelter_report
+#: selection:tax.shelter.certificate,state:0
+#: selection:tax.shelter.declaration,state:0
+msgid "Draft"
+msgstr "Esborrany"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "Durant l'année"
+msgstr "Durant l'any"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model,name:easy_my_coop_taxshelter_report.model_mail_template
+msgid "Email Templates"
+msgstr "Plantilles de correu electrònic"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__excluded_cooperator
+msgid "Excluded cooperator"
+msgstr "Sòcia exclosa"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_declaration_form
+msgid "Excluded from Tax shelter"
+msgstr "Exclosa de la declaració retencions fiscals"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__fiscal_year
+msgid "Fiscal Year"
+msgstr "Any fiscal"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__id
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__id
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__id
+msgid "ID"
+msgstr "ID"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,help:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__excluded_cooperator
+msgid "If these cooperator have subscribed share during the time frame of this Tax Shelter Declaration. They will be marked as non eligible"
+msgstr "Aquestes sòcies han subscrit participacions de capital social voluntari durant el període de temps d'aquesta declaració de retencions. Es marcaran com a no aptes"
+
+#. module: easy_my_coop_taxshelter_report
+#: selection:certificate.line,type:0
+msgid "Kept"
+msgstr "Mantingut"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "L' Article 145/26, CIR 92 sur les revenus"
+msgstr "Article 145/26, CIR 92 sobre ingressos"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line____last_update
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate____last_update
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration____last_update
+msgid "Last Modified on"
+msgstr "Última modificació el"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__write_uid
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__write_uid
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__write_uid
+msgid "Last Updated by"
+msgstr "Última actualització per"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__write_date
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__write_date
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__write_date
+msgid "Last Updated on"
+msgstr "Última actualització el"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid ""
+"Le maintien de la réduction d’impôt n’est possible que si\n"
+"                    l'investisseur conserve les parts de la coopérative pendant\n"
+"                    4 ans au minimum, sauf si la sortie est imposée par des\n"
+"                    conditions extérieures (telles que la faillite, par\n"
+"                    exemple). En cas de sortie volontaire avant la période de 4\n"
+"                    ans, l’avantage fiscal devra être remboursé au prorata du\n"
+"                    nombre de mois entre la sortie et les 4 ans. La coopérative\n"
+"                    s’engage à fournir pour chacune des quatre années suivant\n"
+"                    l’année d’acquisition une attestation certifiant que ces\n"
+"                    parts sont toujours en possession du souscripteur."
+msgstr ""
+"Mantenir la reducció d’impostos només és possible si\n"
+"                    l’inversor conserva les accions de la cooperativa durant\n"
+"                    4 anys mínim, excepte si la sortida és imposada per\n"
+"                    condicions externes (com la fallida, per\n"
+"                    exemple). En cas de sortida voluntària abans del període de 4\n"
+"                    anys, el benefici fiscal s’ha de retornar proporcionalment al\n"
+"                    nombre de mesos entre el llançament i els 4 anys. Cooperativa\n"
+"                    es compromet a proporcionar per a cadascun dels quatre anys següents\n"
+"                    l'any d'adquisició un certificat que certifica que aquests\n"
+"                    les accions encara estan en poder del subscriptor."
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid ""
+"L’apport de capitaux par le chef d’entreprise lui-même ou\n"
+"                    par des administrateurs existants de la société ne permet\n"
+"                    pas de bénéficier du tax shelter."
+msgstr ""
+"L’aportació de capital per part del propi empresari o\n"
+"                    per part dels directius existents de la companyia no ho permet\n"
+"                    cap benefici del refugi fiscal."
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__month_from
+msgid "Month From"
+msgstr "Mes a partir de"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__month_to
+msgid "Month To"
+msgstr "Mes a"
+
+#. module: easy_my_coop_taxshelter_report
+#: selection:tax.shelter.certificate,state:0
+msgid "No eligible"
+msgstr "No és elegible"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "Non"
+msgstr "No"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__quantity
+msgid "Number of shares"
+msgstr "Quantitat de títols"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "Numéro de coopérateur :"
+msgstr "Número de sòcia:"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "Oui"
+msgstr "Sí"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__access_url
+msgid "Portal Access URL"
+msgstr "URL del portal d'accés"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid ""
+"Pour bénéficier de la réduction d’impôts, vous pouvez\n"
+"                    joindre cette lettre à votre déclaration fiscale pour les\n"
+"                    revenus"
+msgstr ""
+"Per beneficiar-vos de la reducció d’impostos, podeu\n"
+"                    adjunteu aquesta carta a la vostra declaració d'impostos per\n"
+"                    ingressos"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "Pour le Conseil d'administration de"
+msgstr "En representació de"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid ""
+"Pour toute information complémentaire, consultez le texte de\n"
+"                    l’Arrêté Royale."
+msgstr ""
+"Per a més informació, consulteu el text de\n"
+"                    el Reial decret."
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__previously_subscribed_capital
+msgid "Previously Subscribed Capital"
+msgstr "Capital inscrit anteriorment"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__previously_subscribed_eligible_lines
+msgid "Previously Subscribed eligible lines"
+msgstr "Línies elegibles prèviament inscrites"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__previously_subscribed_lines
+msgid "Previously Subscribed lines"
+msgstr "Línies d'emisió inscrites anteriorment"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_certificate_form
+msgid "Previously subscribed"
+msgstr "Inscrit anteriorment"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_certificate_form
+msgid "Print Shares Certificate"
+msgstr "Imprimeix Certificat capital social voluntari"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_certificate_form
+msgid "Print Subscription Certificate"
+msgstr "Imprimeix certificat inscripció"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_declaration_form
+msgid "Process Declaration"
+msgstr "Gestiona declaració"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_declaration_form
+msgid "Reset Declaration"
+msgstr "Reiniciar declaració"
+
+#. module: easy_my_coop_taxshelter_report
+#: selection:certificate.line,type:0
+msgid "Resold"
+msgstr "Resolt"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__access_token
+msgid "Security Token"
+msgstr "Token de Seguretat"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_certificate_form
+msgid "Sell back"
+msgstr "Devolució"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_certificate_form
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_declaration_form
+msgid "Send Certificates"
+msgstr "Enavia certificats"
+
+#. module: easy_my_coop_taxshelter_report
+#: selection:tax.shelter.certificate,state:0
+msgid "Sent"
+msgstr "Enviat"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__share_unit_price
+msgid "Share price"
+msgstr "Preu Títol"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__share_type
+msgid "Share type"
+msgstr "Tipus Capital Social"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__share_short_name
+msgid "Share type name"
+msgstr "Nom curt títol"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__resold_lines
+msgid "Shares resold"
+msgstr "Títols retornat"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__subscribed_lines
+msgid "Shares subscribed"
+msgstr "participació capital social voluntari inscrit"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__transfered_lines
+msgid "Shares transfered"
+msgstr "Títols transferit"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__state
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__state
+msgid "State"
+msgstr "Estat"
+
+#. module: easy_my_coop_taxshelter_report
+#: selection:certificate.line,type:0
+msgid "Subscribed"
+msgstr "Inscrit"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_certificate_form
+msgid "Subscription"
+msgstr "Inscripció"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model,name:easy_my_coop_taxshelter_report.model_tax_shelter_certificate
+#: model:mail.template,subject:easy_my_coop_taxshelter_report.email_template_tax_shelter_certificate
+msgid "Tax Shelter Certificate"
+msgstr "Declaració retencions fiscals"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model,name:easy_my_coop_taxshelter_report.model_certificate_line
+msgid "Tax Shelter Certificate Line"
+msgstr "Declaració retencions fiscals per línea"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.actions.act_window,name:easy_my_coop_taxshelter_report.tax_shelter_certificate_action
+#: model:ir.ui.menu,name:easy_my_coop_taxshelter_report.menu_tax_shelter_certificate
+msgid "Tax Shelter Certificates"
+msgstr "Certificats retencions fiscals"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model,name:easy_my_coop_taxshelter_report.model_tax_shelter_declaration
+#: model:ir.ui.menu,name:easy_my_coop_taxshelter_report.menu_tax_shelter_declaration
+msgid "Tax Shelter Declaration"
+msgstr "Declaració retencions fiscals"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.actions.act_window,name:easy_my_coop_taxshelter_report.tax_shelter_declaration_action
+msgid "Tax Shelter Declarations"
+msgstr "Declaracions retencions fiscals"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__tax_shelter_percentage
+msgid "Tax Shelter percentage"
+msgstr "Percentage retencions fiscals"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__tax_shelter_capital_limit
+msgid "Tax shelter capital limit"
+msgstr "Límit de capital reducció impost"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__tax_shelter_certificate
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_certificate_form
+msgid "Tax shelter certificate"
+msgstr "Certificat retencions fiscals"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_declaration__tax_shelter_certificates
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_certificate_tree
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_declaration_form
+msgid "Tax shelter certificates"
+msgstr "Certificats retencions fiscals"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_declaration_form
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_declaration_tree
+msgid "Tax shelter declaration"
+msgstr "Declaració retencions fiscals"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__tax_shelter
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "Tax shelter eligible"
+msgstr "Llistat retencions fiscals"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.actions.server,name:easy_my_coop_taxshelter_report.ir_cron_mail_tax_shelter_action_ir_actions_server
+#: model:ir.cron,cron_name:easy_my_coop_taxshelter_report.ir_cron_mail_tax_shelter_action
+#: model:ir.cron,name:easy_my_coop_taxshelter_report.ir_cron_mail_tax_shelter_action
+msgid "Tax shelter mail batch mail"
+msgstr "Correu en massa retencions fiscals"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.actions.report,name:easy_my_coop_taxshelter_report.action_tax_shelter_shares_report
+msgid "Tax shelter shares report"
+msgstr "Informe retencions fiscals títols"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.actions.report,name:easy_my_coop_taxshelter_report.action_tax_shelter_subscription_report
+msgid "Tax shelter subscription report"
+msgstr "Informe inscripció retencions fiscals"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__total_amount
+msgid "Total"
+msgstr "Total"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_declaration_form
+msgid "Total amount"
+msgstr "Import total"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__total_amount_eligible
+msgid "Total amount eligible To Tax shelter"
+msgstr "Import total amb bonificació fiscal"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__total_amount_eligible_previously_subscribed
+msgid "Total eligible previously subscribed"
+msgstr "Total seleccionable anteriorment inscrit"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__total_amount_previously_subscribed
+msgid "Total previously subscribed"
+msgstr "Total anteriorment inscrit"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__total_amount_resold
+msgid "Total resold"
+msgstr "Total retornat"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__total_amount_subscribed
+msgid "Total subscribed"
+msgstr "Import total inscrpció"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_tax_shelter_certificate__total_amount_transfered
+msgid "Total transfered"
+msgstr "Total import transferit"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__transaction_date
+msgid "Transaction date"
+msgstr "Data de la transacció"
+
+#. module: easy_my_coop_taxshelter_report
+#: selection:certificate.line,type:0
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_certificate_form
+msgid "Transfered"
+msgstr "Transferit"
+
+#. module: easy_my_coop_taxshelter_report
+#: model:ir.model.fields,field_description:easy_my_coop_taxshelter_report.field_certificate_line__type
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "Type"
+msgstr "Tipus"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_declaration_form
+msgid "Validate Declaration"
+msgstr "Validar la declaració"
+
+#. module: easy_my_coop_taxshelter_report
+#: selection:tax.shelter.certificate,state:0
+#: selection:tax.shelter.declaration,state:0
+msgid "Validated"
+msgstr "Validat"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "du montant de la valeur des parts souscrites depuis"
+msgstr "l'import del valor de les unitats inscrites des de"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+msgid ""
+"euros et que la condition prévue à l’article 145(26), $3,\n"
+"                    alinéa 2, CIR92 est remplie."
+msgstr ""
+"euros i que la condició prevista a l’article 145, apartat 26, 3 $,\n"
+"                    paràgraf 2, CIR92 es compleix."
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid ""
+"euros.\n"
+"                    <br/>"
+msgstr ""
+"euros.\n"
+"                    <br/>"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid ""
+"euros.\n"
+"                    <br/>\n"
+"                    Le montant éligible pour le Tax shelter est de"
+msgstr ""
+"euros.\n"
+"                    <br/>\n"
+"                    L’import elegible per a la bonificació fiscal és de"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid ""
+"la moyenne des travailleurs occupés pendant l’année\n"
+"                            est inférieure ou égale à 10."
+msgstr ""
+"el nombre mitjà de treballadors ocupats durant l'any\n"
+"                            és menor o igual a 10."
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid ""
+"le chiffre d’affaires, hors taxe sur la valeur\n"
+"                            ajoutée, est inférieur ou égal à 700.000 euros ;"
+msgstr ""
+"facturació, sense impostos sobre el valor\n"
+"                            afegit, és inferior o igual a 700.000 euros;"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid ""
+"le total du bilan est inférieur ou égal à 350.000\n"
+"                            euros ;"
+msgstr ""
+"el total del balanç és inferior o igual a 350.000\n"
+"                            euros;"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "pour la déclaration des revenus"
+msgstr "per al compte de pèrdues i guanys"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "pour un montant total de"
+msgstr "per un import total de"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_shares_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid ""
+"remplit en effet tous les critères permettant un tel\n"
+"                    avantage fiscal. Dans les grandes lignes il faut être une\n"
+"                    micro-entreprise n’ayant encore jamais distribué de\n"
+"                    dividende et qui n'est pas issue d’une fusion ou scission de\n"
+"                    sociétés et qui répond à au moins deux des trois critères\n"
+"                    suivants :"
+msgstr ""
+"de fet, compleix tots els criteris que permeten aquest tipus\n"
+"                    benefici fiscal. Bàsicament, has de ser un\n"
+"                    microempresa que mai abans no s’havia distribuït\n"
+"                    dividend i que no és el resultat d 'una fusió o escissió de\n"
+"                    empreses i que compleix almenys dos dels tres criteris\n"
+"                    següents:"
+
+#. module: easy_my_coop_taxshelter_report
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document
+msgid "vous avez souscrit des parts de"
+msgstr "us heu subscrit a participació a títols de copital social voluntari de"
