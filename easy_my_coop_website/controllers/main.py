@@ -111,9 +111,7 @@ class WebsiteSubscription(http.Controller):
             if kwargs.get(field):
                 values[field] = kwargs.pop(field)
         values.update(kwargs=kwargs.items())
-        return request.render(
-            "easy_my_coop_website.becomecompanycooperator", values
-        )
+        return request.render("easy_my_coop_website.becomecompanycooperator", values)
 
     def preRenderThanks(self, values, kwargs):
         """ Allow to be overrided """
@@ -145,9 +143,7 @@ class WebsiteSubscription(http.Controller):
 
             if is_company:
                 # company values
-                values[
-                    "company_register_number"
-                ] = partner.company_register_number
+                values["company_register_number"] = partner.company_register_number
                 values["company_name"] = partner.name
                 values["company_email"] = partner.email
                 values["company_type"] = partner.legal_form
@@ -168,9 +164,7 @@ class WebsiteSubscription(http.Controller):
                 values["lastname"] = partner.lastname
                 values["email"] = partner.email
                 values["gender"] = partner.gender
-                values["birthdate"] = self.get_date_string(
-                    partner.birthdate_date
-                )
+                values["birthdate"] = self.get_date_string(partner.birthdate_date)
                 values["lang"] = partner.lang
                 values["phone"] = partner.phone
         return values
@@ -278,34 +272,26 @@ class WebsiteSubscription(http.Controller):
                 values = self.fill_values(values, is_company, logged)
                 values.update(kwargs)
                 values["error_msg"] = _(
-                    "the captcha has not been validated,"
-                    " please fill in the captcha"
+                    "the captcha has not been validated," " please fill in the captcha"
                 )
 
                 return request.render(redirect, values)
-            elif not request.website.is_captcha_valid(
-                kwargs["g-recaptcha-response"]
-            ):
+            elif not request.website.is_captcha_valid(kwargs["g-recaptcha-response"]):
                 values = self.fill_values(values, is_company, logged)
                 values.update(kwargs)
                 values["error_msg"] = _(
-                    "the captcha has not been validated,"
-                    " please fill in the captcha"
+                    "the captcha has not been validated," " please fill in the captcha"
                 )
 
                 return request.render(redirect, values)
 
         # Check that required field from model subscription_request exists
         required_fields = sub_req_obj.sudo().get_required_field()
-        error = {
-            field for field in required_fields if not values.get(field)
-        }  # noqa
+        error = {field for field in required_fields if not values.get(field)}  # noqa
 
         if error:
             values = self.fill_values(values, is_company, logged)
-            values["error_msg"] = _(
-                "Some mandatory fields have not " "been filled"
-            )
+            values["error_msg"] = _("Some mandatory fields have not " "been filled")
             values = dict(values, error=error, kwargs=kwargs.items())
             return request.render(redirect, values)
 
@@ -341,9 +327,7 @@ class WebsiteSubscription(http.Controller):
             if not post_file:
                 values = self.fill_values(values, is_company, logged)
                 values.update(kwargs)
-                values["error_msg"] = _(
-                    "You need to upload a" " scan of your id card"
-                )
+                values["error_msg"] = _("You need to upload a" " scan of your id card")
                 return request.render(redirect, values)
 
         iban = kwargs.get("iban")
@@ -366,8 +350,7 @@ class WebsiteSubscription(http.Controller):
                     if partner.cooperator_type != share.default_code:
                         values = self.fill_values(values, is_company, logged)
                         values["error_msg"] = _(
-                            "You can't subscribe two "
-                            "different types of share"
+                            "You can't subscribe two " "different types of share"
                         )
                         return request.render(redirect, values)
         total_amount = float(kwargs.get("total_parts"))
@@ -400,13 +383,13 @@ class WebsiteSubscription(http.Controller):
             }
         }
 
-    @http.route(
+    @http.route(  # noqa: C901 (method too complex)
         ["/subscription/subscribe_share"],
         type="http",
         auth="public",
         website=True,
-    )
-    def share_subscription(self, **kwargs):
+    )  # noqa: C901 (method too complex)
+    def share_subscription(self, **kwargs):  # noqa: C901 (method too complex)
         sub_req_obj = request.env["subscription.request"]
         attach_obj = request.env["ir.attachment"]
 
@@ -419,18 +402,13 @@ class WebsiteSubscription(http.Controller):
         for field_name, field_value in kwargs.items():
             if hasattr(field_value, "filename"):
                 post_file.append(field_value)
-            elif (
-                field_name in sub_req_obj._fields
-                and field_name not in _BLACKLIST
-            ):
+            elif field_name in sub_req_obj._fields and field_name not in _BLACKLIST:
                 values[field_name] = field_value
             elif field_name in _EXTRA_FIELDS and field_name not in _BLACKLIST:
                 values[field_name] = field_value
             # allow to add some free fields or blacklisted field like ID
             elif field_name not in _TECHNICAL:
-                post_description.append(
-                    "{}: {}".format(field_name, field_value)
-                )
+                post_description.append("{}: {}".format(field_name, field_value))
 
         logged = kwargs.get("logged") == "on"
         is_company = kwargs.get("is_company") == "on"
