@@ -23,6 +23,10 @@
                                 type="action"
                                 context="{'default_active_id': active_id}"
                                 groups="easy_my_coop.group_easy_my_coop_user"/>
+                         <button string="Touch"
+                         		name="touch_cooperator_type"
+                         		type="object" 
+                         		groups="base.group_system"/>
                     </header>
                 </sheet>
 
