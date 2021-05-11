@@ -2,7 +2,7 @@
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from os.path import join
+from urllib.parse import urljoin
 
 from werkzeug.exceptions import BadRequest
 
@@ -13,7 +13,7 @@ from odoo.fields import Date
 
 class AbstractEMCAdapter:
     _model = "set in implementation class"
-    _root = "api"
+    _root = "/api/"
     _service = "set in implementation class"
 
     def __init__(self, backend):
@@ -25,7 +25,7 @@ class AbstractEMCAdapter:
         """
         if args is None:
             args = []
-        return join("/", self._root, self._service, *args)
+        return urljoin(self._root, self._service, *args)
 
     def search(self, **params):
         raise NotImplementedError
@@ -69,6 +69,7 @@ class SubscriptionRequestAdapter(AbstractEMCAdapter):
 
     def search(self, date_from=None, date_to=None):
         url = self._get_url()
+
         params = {}
         if date_from:
             params.update({"date_from": Date.to_string(date_from)})
