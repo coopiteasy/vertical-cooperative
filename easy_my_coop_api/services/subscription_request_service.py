@@ -27,9 +27,7 @@ class SubscriptionRequestService(Component):
     """
 
     def get(self, _id):
-        sr = self.env["subscription.request"].search(
-            [("_api_external_id", "=", _id)]
-        )
+        sr = self.env["subscription.request"].search([("_api_external_id", "=", _id)])
         if sr:
             sr._timestamp_export()
             return self._to_dict(sr)
@@ -66,9 +64,7 @@ class SubscriptionRequestService(Component):
 
     def update(self, _id, **params):
         params = self._prepare_update(params)
-        sr = self.env["subscription.request"].search(
-            [("_api_external_id", "=", _id)]
-        )
+        sr = self.env["subscription.request"].search([("_api_external_id", "=", _id)])
         if not sr:
             raise wrapJsonException(
                 NotFound(_("No subscription request for id %s") % _id)
@@ -77,18 +73,14 @@ class SubscriptionRequestService(Component):
         return self._to_dict(sr)
 
     def validate(self, _id, **params):
-        sr = self.env["subscription.request"].search(
-            [("_api_external_id", "=", _id)]
-        )
+        sr = self.env["subscription.request"].search([("_api_external_id", "=", _id)])
         if not sr:
             raise wrapJsonException(
                 NotFound(_("No subscription request for id %s") % _id)
             )
         if sr.state != "draft":
             raise wrapJsonException(
-                BadRequest(
-                    _("Subscription request %s is not in draft state") % _id
-                )
+                BadRequest(_("Subscription request %s is not in draft state") % _id)
             )
         invoice = sr.validate_subscription_request()
         invoice_service = self.work.component(usage="invoice")
@@ -99,8 +91,7 @@ class SubscriptionRequestService(Component):
 
         if sr.capital_release_request:
             invoice_ids = [
-                invoice.get_api_external_id()
-                for invoice in sr.capital_release_request
+                invoice.get_api_external_id() for invoice in sr.capital_release_request
             ]
         else:
             invoice_ids = []
@@ -129,9 +120,7 @@ class SubscriptionRequestService(Component):
         if country:
             return country
         else:
-            raise wrapJsonException(
-                BadRequest(_("No country for isocode %s") % code)
-            )
+            raise wrapJsonException(BadRequest(_("No country for isocode %s") % code))
 
     def _get_share_product(self, template_id):
         product = self.env["product.product"].search(
@@ -140,9 +129,7 @@ class SubscriptionRequestService(Component):
         if product:
             return product
         else:
-            raise wrapJsonException(
-                BadRequest(_("No share for id %s") % template_id)
-            )
+            raise wrapJsonException(BadRequest(_("No share for id %s") % template_id))
 
     def _prepare_create(self, params):
         """Prepare a writable dictionary of values"""
@@ -173,9 +160,7 @@ class SubscriptionRequestService(Component):
             address = {}
 
         if "share_product" in params:
-            share_product_id = self._get_share_product(
-                params["share_product"]
-            ).id
+            share_product_id = self._get_share_product(params["share_product"]).id
         else:
             share_product_id = None
 

@@ -13,15 +13,12 @@
     ],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
-    "website": "http://www.coopiteasy.be",
+    "website": "https://github.com/OCA/sale-workflow",
     "license": "AGPL-3",
     "summary": """
     This module implements the subscription page
     for bonds and subordinated loans.
     """,
-    "data": [
-        "data/website_loan_data.xml",
-        "template/loan_issue_template.xml"
-    ],
+    "data": ["data/website_loan_data.xml", "template/loan_issue_template.xml"],
     "installable": True,
 }

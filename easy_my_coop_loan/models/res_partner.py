@@ -15,9 +15,7 @@ class ResPartner(models.Model):
         string="Loans",
     )
     is_loaner = fields.Boolean(
-        string="Loaner",
-        compute="_compute_is_loaner",
-        store=True
+        string="Loaner", compute="_compute_is_loaner", store=True
     )
 
     @api.multi

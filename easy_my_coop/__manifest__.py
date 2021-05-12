@@ -23,7 +23,7 @@
     ],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
-    "website": "https://www.coopiteasy.be",
+    "website": "https://github.com/OCA/sale-workflow",
     "license": "AGPL-3",
     "data": [
         "data/easy_my_coop_data.xml",

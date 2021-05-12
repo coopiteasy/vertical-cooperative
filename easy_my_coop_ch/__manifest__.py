@@ -10,7 +10,7 @@
     "depends": ["easy_my_coop", "easy_my_coop_website", "l10n_ch"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
-    "website": "https://www.coopiteasy.be",
+    "website": "https://github.com/OCA/sale-workflow",
     "data": [
         "views/subscription_template.xml",
         # "views/subscription_request_view.xml",

@@ -102,18 +102,13 @@ class TaxShelterDeclaration(models.Model):
         line_vals["type"] = TYPE_MAP[entry.type]
         if entry.type == "subscription":
             if not excluded:
-                capital_after_sub = (
-                    ongoing_capital_sub + entry.total_amount_line
-                )
+                capital_after_sub = ongoing_capital_sub + entry.total_amount_line
             else:
                 capital_after_sub = ongoing_capital_sub
             line_vals["capital_before_sub"] = ongoing_capital_sub
             line_vals["capital_after_sub"] = capital_after_sub
             line_vals["capital_limit"] = self.tax_shelter_capital_limit
-            if (
-                ongoing_capital_sub < self.tax_shelter_capital_limit
-                and not excluded
-            ):
+            if ongoing_capital_sub < self.tax_shelter_capital_limit and not excluded:
                 line_vals["tax_shelter"] = True
         return line_vals
 
@@ -130,9 +125,7 @@ class TaxShelterDeclaration(models.Model):
                 cert_vals[
                     "cooperator_number"
                 ] = entry.partner_id.cooperator_register_number
-                certificate = self.env["tax.shelter.certificate"].create(
-                    cert_vals
-                )
+                certificate = self.env["tax.shelter.certificate"].create(cert_vals)
                 partner_certificate[entry.partner_id.id] = certificate
             excluded = self._excluded_from_declaration(entry)
             line_vals = self._prepare_line(
@@ -274,9 +267,7 @@ class TaxShelterCertificate(models.Model):
     total_amount = fields.Float(
         compute="_compute_amounts", string="Total", readonly=True
     )
-    company_id = fields.Many2one(
-        related="declaration_id.company_id", string="Company"
-    )
+    company_id = fields.Many2one(related="declaration_id.company_id", string="Company")
 
     def _compute_access_url(self):
         super()._compute_access_url()
@@ -290,12 +281,7 @@ class TaxShelterCertificate(models.Model):
         report = self.env.ref(report).render_qweb_pdf(self.id)[0]
         report = base64.b64encode(report)
         report_name = (
-            self.partner_id.name
-            + " "
-            + name
-            + " "
-            + self.declaration_id.name
-            + ".pdf"
+            self.partner_id.name + " " + name + " " + self.declaration_id.name + ".pdf"
         )
 
         return (report_name, report)
@@ -374,9 +360,7 @@ class TaxShelterCertificate(models.Model):
             certificate.total_amount_eligible = total_amount_elligible
 
             for line in certificate.previously_subscribed_eligible_lines:
-                total_amount_previously_eligible += (
-                    line.amount_subscribed_eligible
-                )
+                total_amount_previously_eligible += line.amount_subscribed_eligible
             certificate.total_amount_eligible_previously_subscribed = (
                 total_amount_previously_eligible
             )
@@ -408,10 +392,12 @@ class TaxShelterCertificate(models.Model):
                 lambda r: r.type == "subscribed"
                 and r.transaction_date < certificate.declaration_id.date_from
             )
-            certificate.previously_subscribed_eligible_lines = certificate.lines.filtered(  # noqa
-                lambda r: r.type == "subscribed"
-                and r.transaction_date < certificate.declaration_id.date_from
-                and r.tax_shelter
+            certificate.previously_subscribed_eligible_lines = (
+                certificate.lines.filtered(  # noqa
+                    lambda r: r.type == "subscribed"
+                    and r.transaction_date < certificate.declaration_id.date_from
+                    and r.tax_shelter
+                )
             )
             certificate.subscribed_lines = certificate.lines.filtered(
                 lambda r: r.type == "subscribed"
@@ -452,12 +438,8 @@ class TaxShelterCertificateLine(models.Model):
     share_type = fields.Many2one(
         "product.product", string="Share type", required=True, readonly=True
     )
-    share_unit_price = fields.Float(
-        string="Share price", required=True, readonly=True
-    )
-    quantity = fields.Integer(
-        string="Number of shares", required=True, readonly=True
-    )
+    share_unit_price = fields.Float(string="Share price", required=True, readonly=True)
+    quantity = fields.Integer(string="Number of shares", required=True, readonly=True)
     transaction_date = fields.Date(string="Transaction date")
     tax_shelter = fields.Boolean(string="Tax shelter eligible", readonly=True)
     type = fields.Selection(
@@ -488,9 +470,7 @@ class TaxShelterCertificateLine(models.Model):
     capital_before_sub = fields.Float(
         string="Capital before subscription", readonly=True
     )
-    capital_after_sub = fields.Float(
-        string="Capital after subscription", readonly=True
-    )
+    capital_after_sub = fields.Float(string="Capital after subscription", readonly=True)
     capital_limit = fields.Float(string="Capital limit", readonly=True)
 
     @api.multi
@@ -519,6 +499,4 @@ class TaxShelterCertificateLine(models.Model):
             if line.type == "resold":
                 line.amount_resold = line.share_unit_price * -(line.quantity)
             if line.type == "transfered":
-                line.amount_transfered = line.share_unit_price * -(
-                    line.quantity
-                )
+                line.amount_transfered = line.share_unit_price * -(line.quantity)

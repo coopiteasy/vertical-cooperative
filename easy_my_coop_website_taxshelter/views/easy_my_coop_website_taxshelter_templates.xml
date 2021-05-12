@@ -1,33 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
     <!-- Tax Shelter Certificate in the menu -->
-    <template id="portal_my_home_menu_tax_shelter"
-              name="Portal layout: Easy My Coop Tax Shelter Certificate Menu Entries"
-              inherit_id="portal.portal_breadcrumbs"
-              priority="25">
+    <template
+        id="portal_my_home_menu_tax_shelter"
+        name="Portal layout: Easy My Coop Tax Shelter Certificate Menu Entries"
+        inherit_id="portal.portal_breadcrumbs"
+        priority="25"
+    >
         <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
-            <li t-if="page_name == 'taxshelter' or taxshelter and taxshelter.state in ('validated', 'sent')"
-                t-attf-class="breadcrumb-item #{'active ' if not taxshelter else ''}">
-                <a t-if="taxshelter" t-attf-href="/my/tax_shelter_certificates?{{ keep_query() }}">Tax Shelter Certificates</a>
+            <li
+                t-if="page_name == 'taxshelter' or taxshelter and taxshelter.state in ('validated', 'sent')"
+                t-attf-class="breadcrumb-item #{'active ' if not taxshelter else ''}"
+            >
+                <a
+                    t-if="taxshelter"
+                    t-attf-href="/my/tax_shelter_certificates?{{ keep_query() }}"
+                >Tax Shelter Certificates</a>
                 <t t-else="">Tax Shelter Certificates</t>
             </li>
             <li t-if="taxshelter" class="breadcrumb-item active">
-                <t t-esc="taxshelter.declaration_id.name" t-if="taxshelter.declaration_id.name"/>
+                <t
+                    t-esc="taxshelter.declaration_id.name"
+                    t-if="taxshelter.declaration_id.name"
+                />
             </li>
         </xpath>
     </template>
 
     <!-- Tax Shelter Certificate on the main page -->
-    <template id="portal_my_home_tax_shelter"
-              name="Portal My Home : Easy My Coop Tax Shelter Certificate Entries"
-              inherit_id="portal.portal_my_home"
-              priority="25">
+    <template
+        id="portal_my_home_tax_shelter"
+        name="Portal My Home : Easy My Coop Tax Shelter Certificate Entries"
+        inherit_id="portal.portal_my_home"
+        priority="25"
+    >
         <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
             <t t-if="tax_shelter_count" t-call="portal.portal_docs_entry">
                 <t t-set="title">Tax Shelter Certificates</t>
-                <t t-set="url" t-value="'/my/tax_shelter_certificates'"/>
-                <t t-set="count" t-value="tax_shelter_count"/>
+                <t t-set="url" t-value="'/my/tax_shelter_certificates'" />
+                <t t-set="count" t-value="tax_shelter_count" />
             </t>
         </xpath>
     </template>
@@ -36,7 +48,7 @@
     <!-- Tax Shelter Certificate page -->
     <template id="portal_my_tax_shelter" name="My Tax Shelter">
         <t t-call="portal.portal_layout">
-            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-set="breadcrumbs_searchbar" t-value="True" />
             <t t-call="portal.portal_searchbar">
                 <t t-set="title">Tax Shelter Certificates</t>
             </t>
@@ -54,13 +66,22 @@
                 <t t-foreach="tax_shelters" t-as="tax_shelter">
                     <tr>
                         <td>
-                            <a t-att-href="tax_shelter.get_portal_url()" t-att-title="tax_shelter.declaration_id.name">
-                                <t t-esc="tax_shelter.declaration_id.name" t-if="tax_shelter.declaration_id.name"/>
+                            <a
+                                t-att-href="tax_shelter.get_portal_url()"
+                                t-att-title="tax_shelter.declaration_id.name"
+                            >
+                                <t
+                                    t-esc="tax_shelter.declaration_id.name"
+                                    t-if="tax_shelter.declaration_id.name"
+                                />
                                 <em t-else="">Draft Tax Shelter Certificate</em>
                             </a>
                         </td>
                         <td class="text-right">
-                            <span t-field="tax_shelter.total_amount" t-options='{"widget": "monetary", "display_currency":tax_shelter.partner_id.company_id.currency_id}'/>
+                            <span
+                                t-field="tax_shelter.total_amount"
+                                t-options='{"widget": "monetary", "display_currency":tax_shelter.partner_id.company_id.currency_id}'
+                            />
                         </td>
                     </tr>
                 </t>
@@ -69,27 +90,54 @@
     </template>
 
     <!-- Tax Shelter Certificate Content -->
-    <template id="portal_taxshelter_page" name="Tax Shelter Portal Template" inherit_id="portal.portal_sidebar" primary="True">
+    <template
+        id="portal_taxshelter_page"
+        name="Tax Shelter Portal Template"
+        inherit_id="portal.portal_sidebar"
+        primary="True"
+    >
         <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
             <div class="row mt16">
                 <!-- Sidebar -->
                 <t t-call="portal.portal_record_sidebar">
-                    <t t-set="classes" t-value="'col-lg-auto d-print-none'"/>
+                    <t t-set="classes" t-value="'col-lg-auto d-print-none'" />
                     <t t-set="title">
-                        <h2 class="mb-0"><b t-field="taxshelter.total_amount" data-id="total_amount" t-options='{"widget": "monetary", "display_currency":taxshelter.partner_id.company_id.currency_id}'/> </h2>
+                        <h2 class="mb-0"><b
+                                t-field="taxshelter.total_amount"
+                                data-id="total_amount"
+                                t-options='{"widget": "monetary", "display_currency":taxshelter.partner_id.company_id.currency_id}'
+                            /> </h2>
                     </t>
 
                     <t t-set="entries">
-                        <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column">
+                        <ul
+                            class="list-group list-group-flush flex-wrap flex-row flex-lg-column"
+                        >
                             <li class="list-group-item flex-grow-1">
                                 <div class="o_download_pdf btn-toolbar flex-sm-nowrap">
                                     <div class="btn-group flex-grow-1 mb-1">
-                                        <a id="print_taxshelter_subscription" class="btn btn-secondary btn-block o_print_btn" t-att-href="taxshelter.get_portal_url(report_type='pdf', query_string='&amp;query_string=subscription')" title="Print Subscription" target="_blank"><i class="fa fa-print"/> Subscription Certificate</a>
+                                        <a
+                                            id="print_taxshelter_subscription"
+                                            class="btn btn-secondary btn-block o_print_btn"
+                                            t-att-href="taxshelter.get_portal_url(report_type='pdf', query_string='&amp;query_string=subscription')"
+                                            title="Print Subscription"
+                                            target="_blank"
+                                        ><i
+                                                class="fa fa-print"
+                                            /> Subscription Certificate</a>
                                     </div>
                                 </div>
                                 <div class="o_download_pdf btn-toolbar flex-sm-nowrap">
                                     <div class="btn-group flex-grow-1 mb-1">
-                                        <a id="print_taxshelter_shares" class="btn btn-secondary btn-block o_print_btn" t-att-href="taxshelter.get_portal_url(report_type='pdf', query_string='&amp;query_string=shares')" title="Print Shares" target="_blank"><i class="fa fa-print"/> Shares Certificate</a>
+                                        <a
+                                            id="print_taxshelter_shares"
+                                            class="btn btn-secondary btn-block o_print_btn"
+                                            t-att-href="taxshelter.get_portal_url(report_type='pdf', query_string='&amp;query_string=shares')"
+                                            title="Print Shares"
+                                            target="_blank"
+                                        ><i
+                                                class="fa fa-print"
+                                            /> Shares Certificate</a>
                                     </div>
                                 </div>
                             </li>

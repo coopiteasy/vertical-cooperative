@@ -8,7 +8,7 @@
     "depends": ["easy_my_coop"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Connector",
-    "website": "www.coopiteasy.be",
+    "website": "https://github.com/OCA/sale-workflow",
     "license": "AGPL-3",
     "summary": """
         Connect to Easy My Coop RESTful API.

@@ -1,24 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="view_loan_issue_tree" model="ir.ui.view">
         <field name="name">loan.issue.tree</field>
         <field name="model">loan.issue</field>
         <field name="arch" type="xml">
             <tree string="Loan issues">
-                <field name="name"/>
-                <field name="subscription_start_date"/>
-                <field name="subscription_end_date"/>
-                <field name="loan_start_date"/>
-                <field name="term_date"/>
-                <field name="loan_term"/>
-                <field name="gross_rate"/>
-                <field name="rate"/>
-                <field name="minimum_amount"/>
-                <field name="maximum_amount"/>
-                <field name="subscribed_amount"/>
-                <field name="paid_amount"/>
-                <field name="user_id"/>
-                <field name="state"/>
+                <field name="name" />
+                <field name="subscription_start_date" />
+                <field name="subscription_end_date" />
+                <field name="loan_start_date" />
+                <field name="term_date" />
+                <field name="loan_term" />
+                <field name="gross_rate" />
+                <field name="rate" />
+                <field name="minimum_amount" />
+                <field name="maximum_amount" />
+                <field name="subscribed_amount" />
+                <field name="paid_amount" />
+                <field name="user_id" />
+                <field name="state" />
             </tree>
         </field>
     </record>
@@ -30,106 +30,147 @@
             <form string="Loan issue">
                 <header>
                     <!-- todo check access rights  -->
-                    <button name="action_confirm" string="Confirm" type="object"
-                            states="draft"
-                            groups="easy_my_coop.group_easy_my_coop_manager"/>
-                    <button name="action_cancel" string="Cancel" type="object"
-                            states="draft,ongoing"
-                            confirm="Are you sure you want to cancel this loan issue?"
-                            groups="easy_my_coop.group_easy_my_coop_manager"/>
-                    <button name="action_open" string="Open" type="object"
-                            states="confirmed"
-                            groups="easy_my_coop.group_easy_my_coop_manager"/>
-                    <button name="action_close" string="Close" type="object"
-                            states="ongoing"
-                            confirm="Are you sure you want to close this loan issue?"
-                            groups="easy_my_coop.group_easy_my_coop_manager"/>
-                    <button name="action_draft" string="Set to draft"
-                            type="object" states="confirmed,cancelled"
-                            groups="easy_my_coop.group_easy_my_coop_manager"/>
-                    <button name="compute_loan_interest"
-                            string="Compute interest"
-                            type="object" states="closed,ongoing"
-                            groups="easy_my_coop.group_easy_my_coop_manager"/>
+                    <button
+                        name="action_confirm"
+                        string="Confirm"
+                        type="object"
+                        states="draft"
+                        groups="easy_my_coop.group_easy_my_coop_manager"
+                    />
+                    <button
+                        name="action_cancel"
+                        string="Cancel"
+                        type="object"
+                        states="draft,ongoing"
+                        confirm="Are you sure you want to cancel this loan issue?"
+                        groups="easy_my_coop.group_easy_my_coop_manager"
+                    />
+                    <button
+                        name="action_open"
+                        string="Open"
+                        type="object"
+                        states="confirmed"
+                        groups="easy_my_coop.group_easy_my_coop_manager"
+                    />
+                    <button
+                        name="action_close"
+                        string="Close"
+                        type="object"
+                        states="ongoing"
+                        confirm="Are you sure you want to close this loan issue?"
+                        groups="easy_my_coop.group_easy_my_coop_manager"
+                    />
+                    <button
+                        name="action_draft"
+                        string="Set to draft"
+                        type="object"
+                        states="confirmed,cancelled"
+                        groups="easy_my_coop.group_easy_my_coop_manager"
+                    />
+                    <button
+                        name="compute_loan_interest"
+                        string="Compute interest"
+                        type="object"
+                        states="closed,ongoing"
+                        groups="easy_my_coop.group_easy_my_coop_manager"
+                    />
 
-                    <field name="state" widget="statusbar"
-                           statusbar_visible="draft,confirmed,ongoing,closed"/>
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,confirmed,ongoing,closed"
+                    />
                 </header>
                 <sheet>
                     <div class="oe_title">
-                        <label class="oe_edit_only" for="name" string="Name"/>
+                        <label class="oe_edit_only" for="name" string="Name" />
                         <h1>
-                            <field name="name" placeholder="Loan issue Name"/>
+                            <field name="name" placeholder="Loan issue Name" />
                         </h1>
                         <div name="options">
                             <div>
-                                <field name="display_on_website"/>
-                                <label for="display_on_website"/>
+                                <field name="display_on_website" />
+                                <label for="display_on_website" />
                             </div>
                         </div>
                     </div>
                     <group>
                         <group>
-                            <field name="default_issue"/>
-                            <field name="face_value"/>
-                            <field name="minimum_amount"/>
-                            <field name="maximum_amount"/>
-                            <field name="subscribed_amount"/>
-                            <field name="paid_amount"/>
-                            <field name="by_individual"/>
-                            <field name="min_amount_person"
-                                   attrs="{'invisible':[('by_individual','=',False)]}"/>
-                            <field name="max_amount_person"
-                                   attrs="{'invisible':[('by_individual','=',False)]}"/>
-                            <field name="by_company"/>
-                            <field name="min_amount_company"
-                                   attrs="{'invisible':[('by_company','=',False)]}"/>
-                            <field name="max_amount_company"
-                                   attrs="{'invisible':[('by_company','=',False)]}"/>
-                            <field name="company_currency_id" invisible="True"/>
+                            <field name="default_issue" />
+                            <field name="face_value" />
+                            <field name="minimum_amount" />
+                            <field name="maximum_amount" />
+                            <field name="subscribed_amount" />
+                            <field name="paid_amount" />
+                            <field name="by_individual" />
+                            <field
+                                name="min_amount_person"
+                                attrs="{'invisible':[('by_individual','=',False)]}"
+                            />
+                            <field
+                                name="max_amount_person"
+                                attrs="{'invisible':[('by_individual','=',False)]}"
+                            />
+                            <field name="by_company" />
+                            <field
+                                name="min_amount_company"
+                                attrs="{'invisible':[('by_company','=',False)]}"
+                            />
+                            <field
+                                name="max_amount_company"
+                                attrs="{'invisible':[('by_company','=',False)]}"
+                            />
+                            <field name="company_currency_id" invisible="True" />
                         </group>
                         <group>
-                            <field name="user_id" widget="selection"/>
-                            <label for="gross_rate" string="Gross Interest rate"/>
+                            <field name="user_id" widget="selection" />
+                            <label for="gross_rate" string="Gross Interest rate" />
                             <div>
-                                <field name="gross_rate" class="oe_inline"/>
+                                <field name="gross_rate" class="oe_inline" />
                                 <span class="o_form_label oe_inline">%</span>
                             </div>
-                            <label for="rate" string="Net Interest rate"/>
+                            <label for="rate" string="Net Interest rate" />
                             <div>
-                                <field name="rate" class="oe_inline"/>
+                                <field name="rate" class="oe_inline" />
                                 <span class="o_form_label oe_inline">%</span>
                             </div>
-                            <label for="taxes_rate" string="Taxes on interest"/>
+                            <label for="taxes_rate" string="Taxes on interest" />
                             <div>
-                                <field name="taxes_rate" class="oe_inline"/>
+                                <field name="taxes_rate" class="oe_inline" />
                                 <span class="o_form_label oe_inline">%</span>
                             </div>
-                            <field name="subscription_start_date"/>
-                            <field name="subscription_end_date"/>
-                            <field name="loan_start_date"/>
-                            <field name="term_date"/>
-                            <field name="loan_term"/>
-                            <field name="capital_payment" widget="selection"/>
-                            <field name="interest_payment" widget="selection"/>
-                            <field name="interest_payment_info"
-                                   attrs="{'invisible':[('interest_payment','not in',['end','yearly'])]}"/>
+                            <field name="subscription_start_date" />
+                            <field name="subscription_end_date" />
+                            <field name="loan_start_date" />
+                            <field name="term_date" />
+                            <field name="loan_term" />
+                            <field name="capital_payment" widget="selection" />
+                            <field name="interest_payment" widget="selection" />
+                            <field
+                                name="interest_payment_info"
+                                attrs="{'invisible':[('interest_payment','not in',['end','yearly'])]}"
+                            />
                         </group>
                     </group>
                     <notebook>
                         <page name="lines" string="Lines">
-                            <field name="loan_issue_lines" context="{'default_loan_issue_id': id}"
-                                   attrs="{'readonly':[('state', '!=', 'ongoing')]}">
+                            <field
+                                name="loan_issue_lines"
+                                context="{'default_loan_issue_id': id}"
+                                attrs="{'readonly':[('state', '!=', 'ongoing')]}"
+                            >
                                 <tree delete="false">
-                                    <field name="name"/>
-                                    <field name="partner_id"/>
-                                    <field name="date"/>
-                                    <field name="quantity"/>
-                                    <field name="face_value"/>
-                                    <field name="amount"/>
-                                    <field name="state"/>
-                                    <field name="company_currency_id"
-                                           invisible="True"/>
+                                    <field name="name" />
+                                    <field name="partner_id" />
+                                    <field name="date" />
+                                    <field name="quantity" />
+                                    <field name="face_value" />
+                                    <field name="amount" />
+                                    <field name="state" />
+                                    <field
+                                        name="company_currency_id"
+                                        invisible="True"
+                                    />
                                 </tree>
                             </field>
                         </page>
@@ -144,7 +185,7 @@
         <field name="model">loan.issue</field>
         <field name="arch" type="xml">
             <search string="Search Loan Issue">
-                <field name="name"/>
+                <field name="name" />
             </search>
         </field>
     </record>

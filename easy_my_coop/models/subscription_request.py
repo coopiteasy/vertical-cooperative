@@ -4,7 +4,6 @@
 
 from datetime import datetime
 
-# pylint: disable=missing-manifest-dependency
 from addons.base_iban.models.res_partner_bank import validate_iban
 
 from odoo import _, api, fields, models
@@ -33,7 +32,6 @@ def _lang_get(self):
     return [(language.code, language.name) for language in languages]
 
 
-# todo move to subscription_request.py
 class SubscriptionRequest(models.Model):
     _name = "subscription.request"
     _description = "Subscription Request"
@@ -72,9 +70,7 @@ class SubscriptionRequest(models.Model):
         if not vals.get("partner_id"):
             cooperator = False
             if vals.get("email"):
-                cooperator = partner_obj.get_cooperator_from_email(
-                    vals.get("email")
-                )
+                cooperator = partner_obj.get_cooperator_from_email(vals.get("email"))
             if cooperator:
                 vals["type"] = "subscription"
                 vals = self.is_member(vals, cooperator)
@@ -89,7 +85,9 @@ class SubscriptionRequest(models.Model):
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
         if subscr_request._send_confirmation_email():
-            mail_template_notif = subscr_request.get_mail_template_notif(is_company = False) #noqa
+            mail_template_notif = subscr_request.get_mail_template_notif(
+                is_company=False
+            )  # noqa
             mail_template_notif.send_mail(subscr_request.id)
 
         return subscr_request
@@ -134,20 +132,15 @@ class SubscriptionRequest(models.Model):
     @api.depends("iban", "skip_control_ng")
     def _compute_validated_lines(self):
         for sub_request in self:
-            validated = sub_request.skip_control_ng or self.check_iban(
-                sub_request.iban
-            )
+            validated = sub_request.skip_control_ng or self.check_iban(sub_request.iban)
             sub_request.validated = validated
 
     @api.multi
-    @api.depends(
-        "share_product_id", "share_product_id.list_price", "ordered_parts"
-    )
+    @api.depends("share_product_id", "share_product_id.list_price", "ordered_parts")
     def _compute_subscription_amount(self):
         for sub_request in self:
             sub_request.subscription_amount = (
-                sub_request.share_product_id.list_price
-                * sub_request.ordered_parts
+                sub_request.share_product_id.list_price * sub_request.ordered_parts
             )
 
     already_cooperator = fields.Boolean(
@@ -429,9 +422,7 @@ class SubscriptionRequest(models.Model):
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
-    data_policy_approved = fields.Boolean(
-        string="Data Policy Approved", default=False
-    )
+    data_policy_approved = fields.Boolean(string="Data Policy Approved", default=False)
     internal_rules_approved = fields.Boolean(
         string="Approved Internal Rules", default=False
     )
@@ -536,9 +527,7 @@ class SubscriptionRequest(models.Model):
             if accounts:
                 account = accounts[0]
             else:
-                raise UserError(
-                    _("You must set a cooperator account on you company.")
-                )
+                raise UserError(_("You must set a cooperator account on you company."))
         return account
 
     def get_invoice_vals(self, partner):
@@ -734,9 +723,7 @@ class SubscriptionRequest(models.Model):
                         )
                     )
                 else:
-                    contact.write(
-                        {"parent_id": partner.id, "representative": True}
-                    )
+                    contact.write({"parent_id": partner.id, "representative": True})
 
         invoice = self.create_invoice(partner)
         self.write({"state": "done"})
@@ -770,190 +757,3 @@ class SubscriptionRequest(models.Model):
 
     def _send_confirmation_email(self):
         return self.company_id.send_confirmation_email
-
-# todo move to share_line.py
-class ShareLine(models.Model):
-    _name = "share.line"
-    _description = "Share line"
-
-    @api.multi
-    def _compute_total_line(self):
-        res = {}
-        for line in self:
-            line.total_amount_line = line.share_unit_price * line.share_number
-        return res
-
-    share_product_id = fields.Many2one(
-        "product.product", string="Share type", required=True, readonly=True
-    )
-    share_number = fields.Integer(
-        string="Number of Share", required=True, readonly=True
-    )
-    share_short_name = fields.Char(
-        related="share_product_id.short_name",
-        string="Share type name",
-        readonly=True,
-    )
-    share_unit_price = fields.Monetary(
-        string="Share price",
-        currency_field="company_currency_id",
-        readonly=True,
-    )
-    effective_date = fields.Date(string="Effective Date", readonly=True)
-    partner_id = fields.Many2one(
-        "res.partner",
-        string="Cooperator",
-        required=True,
-        ondelete="cascade",
-        readonly=True,
-    )
-    total_amount_line = fields.Monetary(
-        string="Total amount line",
-        currency_field="company_currency_id",
-        compute="_compute_total_line",
-    )
-    company_id = fields.Many2one(
-        "res.company",
-        string="Company",
-        required=True,
-        change_default=True,
-        readonly=True,
-        default=lambda self: self.env["res.company"]._company_default_get(),
-    )
-    company_currency_id = fields.Many2one(
-        "res.currency",
-        string="Company Currency",
-        related="company_id.currency_id",
-        readonly=True,
-    )
-
-
-# todo move to subscription_register.py
-class SubscriptionRegister(models.Model):
-    _name = "subscription.register"
-    _description = "Subscription register"
-
-    @api.multi
-    def _compute_total_line(self):
-        for line in self:
-            line.total_amount_line = line.share_unit_price * line.quantity
-
-    name = fields.Char(string="Number Operation", required=True, readonly=True)
-    register_number_operation = fields.Integer(
-        string="Register Number Operation", required=True, readonly=True
-    )
-    partner_id = fields.Many2one(
-        "res.partner", string="Cooperator", required=True, readonly=True
-    )
-    partner_id_to = fields.Many2one(
-        "res.partner", string="Transfered to", readonly=True
-    )
-    date = fields.Date(
-        string="Subscription Date", required=True, readonly=True
-    )
-    quantity = fields.Integer(string="Number of share", readonly=True)
-    share_unit_price = fields.Monetary(
-        string="Share price",
-        currency_field="company_currency_id",
-        readonly=True,
-    )
-    total_amount_line = fields.Monetary(
-        string="Total amount line",
-        currency_field="company_currency_id",
-        compute="_compute_total_line",
-    )
-    share_product_id = fields.Many2one(
-        "product.product",
-        string="Share type",
-        required=True,
-        readonly=True,
-        domain=[("is_share", "=", True)],
-    )
-    share_short_name = fields.Char(
-        related="share_product_id.short_name",
-        string="Share type name",
-        readonly=True,
-    )
-    share_to_product_id = fields.Many2one(
-        "product.product",
-        string="Share to type",
-        readonly=True,
-        domain=[("is_share", "=", True)],
-    )
-    share_to_short_name = fields.Char(
-        related="share_to_product_id.short_name",
-        string="Share to type name",
-        readonly=True,
-    )
-    quantity_to = fields.Integer(string="Number of share to", readonly=True)
-    share_to_unit_price = fields.Monetary(
-        string="Share to price",
-        currency_field="company_currency_id",
-        readonly=True,
-    )
-    type = fields.Selection(
-        [
-            ("subscription", "Subscription"),
-            ("transfer", "Transfer"),
-            ("sell_back", "Sell Back"),
-            ("convert", "Conversion"),
-        ],
-        string="Operation Type",
-        readonly=True,
-    )
-    company_id = fields.Many2one(
-        "res.company",
-        string="Company",
-        required=True,
-        change_default=True,
-        readonly=True,
-        default=lambda self: self.env["res.company"]._company_default_get(),
-    )
-    company_currency_id = fields.Many2one(
-        "res.currency",
-        related="company_id.currency_id",
-        string="Company Currency",
-        readonly=True,
-    )
-    user_id = fields.Many2one(
-        "res.users",
-        string="Responsible",
-        readonly=True,
-        default=lambda self: self.env.user,
-    )
-
-    _order = "register_number_operation asc"
-
-    @api.model
-    def read_group(
-        self,
-        domain,
-        fields,
-        groupby,
-        offset=0,
-        limit=None,
-        orderby=False,
-        lazy=True,
-    ):
-        if "share_unit_price" in fields:
-            fields.remove("share_unit_price")
-        if "register_number_operation" in fields:
-            fields.remove("register_number_operation")
-        res = super(SubscriptionRegister, self).read_group(
-            domain,
-            fields,
-            groupby,
-            offset=offset,
-            limit=limit,
-            orderby=orderby,
-            lazy=lazy,
-        )
-        if "total_amount_line" in fields:
-            for line in res:
-                if "__domain" in line:
-                    lines = self.search(line["__domain"])
-                    inv_value = 0.0
-                    for line2 in lines:
-                        inv_value += line2.total_amount_line
-                    line["total_amount_line"] = inv_value
-        return res

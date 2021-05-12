@@ -11,9 +11,7 @@ from odoo import api, fields, models
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
-    age = fields.Integer(
-        string="Age", compute="_compute_age", search="_search_age"
-    )
+    age = fields.Integer(string="Age", compute="_compute_age", search="_search_age")
 
     def _search_age(self, operator, value):
         if operator not in ("=", "!=", "<", "<=", ">", ">=", "in", "not in"):
@@ -42,8 +40,5 @@ class ResPartner(models.Model):
                 partner.age = (
                     today.year
                     - birthday.year
-                    - (
-                        (today.month, today.day)
-                        < (birthday.month, birthday.day)
-                    )
+                    - ((today.month, today.day) < (birthday.month, birthday.day))
                 )

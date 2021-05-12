@@ -7,15 +7,15 @@
             <form name="payment_report_wizard_form">
                 <group>
                     <group>
-                        <field name="report_type"/>
-                        <field name="date_start"/>
-                        <field name="date_end"/>
+                        <field name="report_type" />
+                        <field name="date_start" />
+                        <field name="date_end" />
                     </group>
-                    <group></group>
+                    <group />
                 </group>
                 <footer>
-                    <button name="action_print_pdf" string="Print" type="object"/>
-                    <button string="Cancel" class="oe_link" special="cancel"/>
+                    <button name="action_print_pdf" string="Print" type="object" />
+                    <button string="Cancel" class="oe_link" special="cancel" />
                 </footer>
             </form>
         </field>

@@ -9,10 +9,10 @@
         "account",
         "account_fiscal_year",
         "easy_my_coop_loan",
-        ],
+    ],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
-    "website": "https://www.coopiteasy.be",
+    "website": "https://github.com/OCA/sale-workflow",
     "license": "AGPL-3",
     "summary": """
     This module brings the accounting part of the loan issue.
@@ -26,8 +26,6 @@
         "views/interest_line_view.xml",
         "wizard/end_of_year_operation.xml",
     ],
-    "demo": [
-        "demo/emc_loan_account_demo.xml"
-    ],
+    "demo": ["demo/emc_loan_account_demo.xml"],
     "installable": True,
 }
