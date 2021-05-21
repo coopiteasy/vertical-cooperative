@@ -35,9 +35,7 @@ class SubscriptionRequest(models.Model):
             if sr_binding:  # update request
                 sr_binding.internal_id.write(request_dict)
             else:
-                srequest = self.env["subscription.request"].create(
-                    request_dict
-                )
+                srequest = self.env["subscription.request"].create(request_dict)
                 SRBinding.create(
                     {
                         "backend_id": backend.id,
@@ -45,9 +43,7 @@ class SubscriptionRequest(models.Model):
                         "internal_id": srequest.id,
                     }
                 )
-        external_ids = [
-            external_id for external_id, _ in requests_dict["rows"]
-        ]
+        external_ids = [external_id for external_id, _ in requests_dict["rows"]]
         srequests = SRBinding.search(
             [
                 ("backend_id", "=", backend.id),
@@ -98,16 +94,12 @@ class SubscriptionRequest(models.Model):
     @api.multi
     def validate_subscription_request(self):
         self.ensure_one()
-        invoice = super(
-            SubscriptionRequest, self
-        ).validate_subscription_request()
+        invoice = super(SubscriptionRequest, self).validate_subscription_request()
 
         if self.source == "emc_api":
             backend = self.env["emc.backend"].get_backend()
             sr_adapter = SubscriptionRequestAdapter(backend=backend)
-            external_id, invoice_dict = sr_adapter.validate(
-                self.binding_id.external_id
-            )
+            external_id, invoice_dict = sr_adapter.validate(self.binding_id.external_id)
 
             InvoiceBinding = self.env["emc.binding.account.invoice"]
             InvoiceBinding.create(

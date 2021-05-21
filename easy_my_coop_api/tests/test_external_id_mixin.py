@@ -87,14 +87,10 @@ class TestExternalIdMixin(TransactionCase):
 
     @odoo.tools.mute_logger("odoo.sql_db")
     def test_duplicate_api_external_id_raises(self):
-        invoice_1 = self.env["account.invoice"].create(
-            {"name": "create passes"}
-        )
+        invoice_1 = self.env["account.invoice"].create({"name": "create passes"})
         external_id = invoice_1.get_api_external_id()
         self.assertTrue(bool(invoice_1._api_external_id))
 
-        invoice_2 = self.env["account.invoice"].create(
-            {"name": "create passes"}
-        )
+        invoice_2 = self.env["account.invoice"].create({"name": "create passes"})
         with self.assertRaises(IntegrityError):
             invoice_2._api_external_id = external_id

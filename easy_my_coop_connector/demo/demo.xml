@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!--
      Copyright 2020 Coop IT Easy
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
@@ -17,15 +17,27 @@
         <field name="source">emc_api</field>
     </record>
 
-    <record id="emc_binding_product_template_A_demo" model="emc.binding.product.template">
-        <field name="backend_id" ref="emc_backend_demo"/>
-        <field name="internal_id" ref="easy_my_coop.product_template_share_type_1_demo"/>
+    <record
+        id="emc_binding_product_template_A_demo"
+        model="emc.binding.product.template"
+    >
+        <field name="backend_id" ref="emc_backend_demo" />
+        <field
+            name="internal_id"
+            ref="easy_my_coop.product_template_share_type_1_demo"
+        />
         <field name="external_id">37</field>
     </record>
 
-    <record id="emc_binding_product_template_B_demo" model="emc.binding.product.template">
-        <field name="backend_id" ref="emc_backend_demo"/>
-        <field name="internal_id" ref="easy_my_coop.product_template_share_type_2_demo"/>
+    <record
+        id="emc_binding_product_template_B_demo"
+        model="emc.binding.product.template"
+    >
+        <field name="backend_id" ref="emc_backend_demo" />
+        <field
+            name="internal_id"
+            ref="easy_my_coop.product_template_share_type_2_demo"
+        />
         <field name="external_id">31</field>
     </record>
 
