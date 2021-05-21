@@ -21,9 +21,7 @@ from .test_data import (
 class EMCSRConnectorCase(EMCBaseCase):
     def setUp(self):
         super().setUp()
-        self.backend = self.browse_ref(
-            "easy_my_coop_connector.emc_backend_demo"
-        )
+        self.backend = self.browse_ref("easy_my_coop_connector.emc_backend_demo")
         self.share_type_B_pt = self.browse_ref(
             "easy_my_coop.product_template_share_type_2_demo"
         )
@@ -54,9 +52,7 @@ class EMCSRConnectorCase(EMCBaseCase):
 
         srequest = binding.internal_id
         self.assertEquals(srequest.name, "Manuel Dublues")
-        self.assertEquals(
-            srequest.share_product_id.id, self.share_type_B_pp.id
-        )
+        self.assertEquals(srequest.share_product_id.id, self.share_type_B_pp.id)
         self.assertEquals(
             srequest.subscription_amount, self.share_type_B_pt.list_price * 3
         )
