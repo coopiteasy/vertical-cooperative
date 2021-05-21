@@ -89,16 +89,20 @@
                                 class="form-horizontal mt32"
                                 enctype="multipart/form-data"
                             >
-                                <p style="color:red;">
-                                    <t t-esc="error_msg" />
-                                </p>
-                                <input
-                                    type="hidden"
-                                    name="csrf_token"
-                                    t-att-value="request.csrf_token()"
-                                />
-
-                                <div t-attf-class="form-group">
+                                <div name="crsf_token_container">
+                                    <p style="color:red;">
+                                        <t t-esc="error_msg" />
+                                    </p>
+                                    <input
+                                        type="hidden"
+                                        name="csrf_token"
+                                        t-att-value="request.csrf_token()"
+                                    />
+                                </div>
+                                <div 
+                                    t-attf-class="form-group"
+                                    name="my_account_link_container"
+                                >
                                     <a
                                         class='btn btn-primary'
                                         t-if="logged"
@@ -109,7 +113,10 @@
                                     <br />
                                 </div>
 
-                                <div t-attf-class="form-group">
+                                <div 
+                                    t-attf-class="form-group"
+                                    name="my_account_link_container"
+                                >
                                     <a
                                         class='btn btn-primary'
                                         t-if="not logged"
@@ -120,7 +127,11 @@
                                     <br />
                                 </div>
 
-                                <div t-attf-class="form-group" style="display: none;">
+                                <div 
+                                    t-attf-class="form-group" 
+                                    style="display: none;"
+                                    name="logged_container"
+                                >
                                     <label>
                                         <input
                                             type="checkbox"
@@ -131,7 +142,11 @@
                                     </label>
                                 </div>
 
-                                <div t-attf-class="form-group" style="display: none;">
+                                <div 
+                                    t-attf-class="form-group" 
+                                    style="display: none;"
+                                    name="already_cooperator_container"
+                                >
                                     <label>
                                         <input
                                             type="checkbox"
@@ -195,6 +210,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'firstname' in error and 'has-error' or ''}"
+                                    name="firstname_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -219,6 +235,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'lastname' in error and 'has-error' or ''}"
+                                    name="lastname_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -240,6 +257,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'gender' in error and 'has-error' or ''}"
+                                    name="gender_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -267,6 +285,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'birthdate' in error and 'has-error' or ''}"
+                                    name="birthdate_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -289,6 +308,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}"
+                                    name="iban_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -310,6 +330,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'lang' in error and 'has-error' or ''}"
+                                    name="lang_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -342,6 +363,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'address' in error and 'has-error' or ''}"
+                                    name="address_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -363,6 +385,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'zip_code' in error and 'has-error' or ''}"
+                                    name="zip_code_city_container" 
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -402,6 +425,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'country_id' in error and 'has-error' or ''}"
+                                    name="country_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -431,6 +455,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}"
+                                    name="phone_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -455,6 +480,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'share_product_id' in error and 'has-error' or ''}"
+                                    name="share_product_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -492,6 +518,7 @@
                                             <td width="15%">
                                                 <div
                                                     class="css_quantity input-group oe_website_spinner"
+                                                    name="ordered_parts_container"
                                                 >
                                                     <span
                                                         class="input-group-addon"
@@ -537,6 +564,7 @@
                                                 <div
                                                     style="margin-top:12px"
                                                     t-attf-class="form-group #{error and 'total_parts' in error and 'has-error' or ''}"
+                                                    name="total_parts_container"
                                                 >
                                                     <div>
                                                         <input
@@ -557,6 +585,7 @@
                                 <div
                                     t-if="res_company.allow_id_card_upload"
                                     t-attf-class="form-group #{error and 'file' in error and 'has-error' or ''}"
+                                    name="resume_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -587,6 +616,7 @@
                                     id="generic_rules_approved"
                                     t-if="display_generic_rules"
                                     t-attf-class="form-group"
+                                    name="generic_rules_approved_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -614,6 +644,8 @@
                                     id="internal_rules_approved"
                                     t-if="display_internal_rules"
                                     t-attf-class="form-group"
+                                    name="internal_rules_approved_container"
+
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -641,6 +673,7 @@
                                     id="data_policy_approved"
                                     t-if="display_data_policy"
                                     t-attf-class="form-group"
+                                    name="data_policy_approved_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -668,6 +701,7 @@
                                     id="financial_risk_approved"
                                     t-if="display_financial_risk"
                                     t-attf-class="form-group"
+                                    name="financial_risk_approved_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -700,11 +734,15 @@
                                                 t-if="website.company_id.captcha_type == 'google'"
                                                 t-att-data-sitekey="website.recaptcha_key_site"
                                                 data-theme="green"
+                                                name="recaptcha_key_site"
                                             />
                                             <br />
                                         </td>
                                         <td>
-                                            <div class="form-group">
+                                            <div 
+                                                class="form-group"
+                                                name="send_button_container"
+                                            >
                                                 <div
                                                     class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7"
                                                 >
@@ -744,16 +782,23 @@
                                 class="form-horizontal mt32"
                                 enctype="multipart/form-data"
                             >
-                                <p style="color:red;">
-                                    <t t-esc="error_msg" />
-                                </p>
-                                <input
-                                    type="hidden"
-                                    name="csrf_token"
-                                    t-att-value="request.csrf_token()"
-                                />
 
-                                <div t-attf-class="form-group" style="display: none;">
+                                <div name="crsf_token_container">
+                                    <p style="color:red;">
+                                        <t t-esc="error_msg" />
+                                    </p>
+                                    <input
+                                        type="hidden"
+                                        name="csrf_token"
+                                        t-att-value="request.csrf_token()"
+                                    />
+                                </div>
+
+                                <div 
+                                    t-attf-class="form-group" 
+                                    style="display: none;"
+                                    name="logged_is_company_container"
+                                >
                                     <label>
                                         <input
                                             type="checkbox"
@@ -781,6 +826,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'company_register_number' in error and 'has-error' or ''}"
+                                    name="company_register_number_container">
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -803,6 +849,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'company_name' in error and 'has-error' or ''}"
+                                    name="company_name_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -824,6 +871,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'company_type' in error and 'has-error' or ''}"
+                                    name="company_type_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -851,6 +899,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'company_email' in error and 'has-error' or ''}"
+                                    name="company_email_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -871,6 +920,7 @@
                                 <div
                                     t-if="not logged"
                                     t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}"
+                                    name="confirm_email_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -894,6 +944,7 @@
                                 </div>
                                 <div
                                     t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}"
+                                    name="iban_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -922,6 +973,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'address' in error and 'has-error' or ''}"
+                                    name="address_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -943,6 +995,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'zip_code' in error and 'has-error' or ''}"
+                                    name="zip_code_city_container">
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -982,6 +1035,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'country_id' in error and 'has-error' or ''}"
+                                    name="country_container">
                                 >
 
                                     <label
@@ -1018,6 +1072,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'firstname' in error and 'has-error' or ''}"
+                                    name="firstname_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -1042,6 +1097,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'lastname' in error and 'has-error' or ''}"
+                                    name="lastname_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -1063,6 +1119,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'gender' in error and 'has-error' or ''}"
+                                    name="gender_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -1115,6 +1172,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}"
+                                    name="phone_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -1139,6 +1197,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'contact_person_function' in error and 'has-error' or ''}"
+                                    name="contact_person_function_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -1160,6 +1219,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'birthday' in error and 'has-error' or ''}"
+                                    name="birthdate_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -1182,6 +1242,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'lang' in error and 'has-error' or ''}"
+                                    name="lang_container"
                                 >
 
                                     <label
@@ -1215,6 +1276,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'product_id' in error and 'has-error' or ''}"
+                                    name="share_product_container"
                                 >
 
                                     <label
@@ -1252,6 +1314,7 @@
                                             <td width="15%">
                                                 <div
                                                     class="css_quantity input-group oe_website_spinner"
+                                                    name="ordered_parts_container"
                                                 >
                                                     <span
                                                         class="input-group-addon"
@@ -1290,6 +1353,7 @@
                                                 <div
                                                     style="margin-top:12px"
                                                     t-attf-class="form-group #{error and 'total_parts' in error and 'has-error' or ''}"
+                                                    name="total_parts_container"
                                                 >
                                                     <div>
                                                         <input
@@ -1315,6 +1379,7 @@
 
                                 <div
                                     id="generic_rules_approved"
+                                    name="generic_rules_approved_container"
                                     t-if="display_generic_rules"
                                     t-attf-class="form-group"
                                 >
@@ -1342,6 +1407,7 @@
 
                                 <div
                                     id="data_policy_approved"
+                                    name="data_policy_approved_container"
                                     t-if="display_data_policy"
                                     t-attf-class="form-group"
                                 >
@@ -1368,6 +1434,7 @@
 
                                 <div
                                     id="internal_rules_approved"
+                                    name="internal_rules_approved_container"
                                     t-if="display_internal_rules"
                                     t-attf-class="form-group"
                                 >
@@ -1394,6 +1461,7 @@
 
                                 <div
                                     id="financial_risk_approved"
+                                    name="financial_risk_approved_container"
                                     t-if="display_financial_risk"
                                     t-attf-class="form-group"
                                 >
@@ -1425,6 +1493,7 @@
                                             <!-- TODO: Use a overloaded function with the captcha implementation !-->
                                             <div
                                                 class="g-recaptcha"
+                                                name="recaptcha_key_site"
                                                 t-if="website.company_id.captcha_type == 'google'"
                                                 t-att-data-sitekey="website.recaptcha_key_site"
                                                 data-theme="green"
