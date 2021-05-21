@@ -23,9 +23,7 @@ class EMCHistoryImportSR(models.TransientModel):
     date_from = fields.Date(
         string="Date From", required=True, default=first_day_of_month
     )
-    date_to = fields.Date(
-        string="Date To", required=True, default=last_day_of_month
-    )
+    date_to = fields.Date(string="Date To", required=True, default=last_day_of_month)
 
     @api.multi
     def import_subscription_button(self):

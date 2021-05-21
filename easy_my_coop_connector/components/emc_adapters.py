@@ -101,9 +101,7 @@ class SubscriptionRequestAdapter(AbstractEMCAdapter):
 
     def to_write_values(self, api_dict):
         Country = self.backend.env["res.country"]
-        ProductTemplateBinding = self.backend.env[
-            "emc.binding.product.template"
-        ]
+        ProductTemplateBinding = self.backend.env["emc.binding.product.template"]
         address = api_dict["address"]
 
         country = Country.search([("code", "=", address["country"])])

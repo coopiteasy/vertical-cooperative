@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <openerp>
     <data>
         <record id="emc_history_import_sr_view_form" model="ir.ui.view">
@@ -8,16 +8,21 @@
                 <form string="emc_history_import_sr_form">
                     <sheet>
                         <group>
-                            <field name="date_from"/>
-                            <field name="date_to"/>
+                            <field name="date_from" />
+                            <field name="date_to" />
                         </group>
                         <footer>
-                            <button name="import_subscription_button"
-                                    string="Import Subscription History"
-                                    type="object"
-                                    class="btn-primary"/>
-                            <button string="Cancel" class="btn-default"
-                                    special="cancel"/>
+                            <button
+                                name="import_subscription_button"
+                                string="Import Subscription History"
+                                type="object"
+                                class="btn-primary"
+                            />
+                            <button
+                                string="Cancel"
+                                class="btn-default"
+                                special="cancel"
+                            />
                         </footer>
                     </sheet>
                 </form>
