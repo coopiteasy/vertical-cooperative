@@ -21,9 +21,7 @@ class BaseEMCRestCase(BaseRestCase):
     def setUpClass(cls, *args, **kwargs):
         super().setUpClass(*args, **kwargs)
         cls.AuthApiKey = cls.env["auth.api.key"]
-        cls.api_key_test = cls.env.ref(
-            "easy_my_coop_api.auth_api_key_manager_emc_demo"
-        )
+        cls.api_key_test = cls.env.ref("easy_my_coop_api.auth_api_key_manager_emc_demo")
         cls._chart_template_create()
         cls._add_chart_of_accounts()
         cls._journals_setup()
@@ -66,9 +64,7 @@ class BaseEMCRestCase(BaseRestCase):
             {
                 "code": "001",
                 "name": "Expenses",
-                "user_type_id": cls.env.ref(
-                    "account.data_account_type_expenses"
-                ).id,
+                "user_type_id": cls.env.ref("account.data_account_type_expenses").id,
                 "chart_template_id": cls.chart.id,
                 "reconcile": True,
             }
@@ -80,9 +76,7 @@ class BaseEMCRestCase(BaseRestCase):
             {
                 "code": "002",
                 "name": "Product Sales",
-                "user_type_id": cls.env.ref(
-                    "account.data_account_type_revenue"
-                ).id,
+                "user_type_id": cls.env.ref("account.data_account_type_revenue").id,
                 "chart_template_id": cls.chart.id,
                 "reconcile": True,
             }
@@ -94,9 +88,7 @@ class BaseEMCRestCase(BaseRestCase):
             {
                 "code": "003",
                 "name": "Account Receivable",
-                "user_type_id": cls.env.ref(
-                    "account.data_account_type_receivable"
-                ).id,
+                "user_type_id": cls.env.ref("account.data_account_type_receivable").id,
                 "chart_template_id": cls.chart.id,
                 "reconcile": True,
             }
@@ -108,9 +100,7 @@ class BaseEMCRestCase(BaseRestCase):
             {
                 "code": "004",
                 "name": "Account Payable",
-                "user_type_id": cls.env.ref(
-                    "account.data_account_type_payable"
-                ).id,
+                "user_type_id": cls.env.ref("account.data_account_type_payable").id,
                 "chart_template_id": cls.chart.id,
                 "reconcile": True,
             }
@@ -164,16 +154,12 @@ class BaseEMCRestCase(BaseRestCase):
             limit=1,
         )
         cls.equity_account = cls.env.ref("easy_my_coop.account_equity_demo")
-        cls.cooperator_account = cls.env.ref(
-            "easy_my_coop.account_cooperator_demo"
-        )
+        cls.cooperator_account = cls.env.ref("easy_my_coop.account_cooperator_demo")
         return True
 
     @classmethod
     def _journals_setup(cls):
-        cls.subscription_journal = cls.env.ref(
-            "easy_my_coop.subscription_journal"
-        )
+        cls.subscription_journal = cls.env.ref("easy_my_coop.subscription_journal")
         cls.subscription_journal.write(
             {
                 "default_debit_account_id": cls.equity_account.id,

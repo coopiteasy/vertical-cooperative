@@ -24,9 +24,7 @@ class TestSRController(BaseEMCRestCase):
             model_name="rest.service.registration", collection=collection
         )
 
-        self.sr_service = emc_services_env.component(
-            usage="subscription-request"
-        )
+        self.sr_service = emc_services_env.component(usage="subscription-request")
 
         self.demo_request_1 = self.browse_ref(
             "easy_my_coop.subscription_request_1_demo"
@@ -34,9 +32,7 @@ class TestSRController(BaseEMCRestCase):
         self.demo_request_2 = self.browse_ref(
             "easy_my_coop.subscription_request_waiting_demo"
         )
-        self.demo_share_product = (
-            self.demo_request_1.share_product_id.product_tmpl_id
-        )
+        self.demo_share_product = self.demo_request_1.share_product_id.product_tmpl_id
 
         date = Date.to_string(self.demo_request_1.date)
         self.demo_request_1_dict = {
@@ -89,11 +85,12 @@ class TestSRController(BaseEMCRestCase):
     #     route = "/api/subscription-request/%s" % "99999"
     #     response = self.http_get(route)
     #     self.assertEquals(response.status_code, 404)
-
-    def test_route_get_string_returns_method_not_allowed(self):
-        route = "/api/subscription-request/%s" % "abc"
-        response = self.http_get(route)
-        self.assertEquals(response.status_code, 405)
+    #
+    #
+    # def test_route_get_string_returns_method_not_allowed(self):
+    #     route = "/api/subscription-request/%s" % "abc"
+    #     response = self.http_get(route)
+    #     self.assertEquals(response.status_code, 405)
 
     def test_route_search_all(self):
         route = "/api/subscription-request"
@@ -169,10 +166,7 @@ class TestSRController(BaseEMCRestCase):
         self.assertEquals(expected, content)
 
     def test_route_update(self):
-        url = (
-            "/api/subscription-request/%s"
-            % self.demo_request_1.get_api_external_id()
-        )
+        url = "/api/subscription-request/%s" % self.demo_request_1.get_api_external_id()
         data = {"state": "done"}
 
         response = self.http_post(url, data=data)

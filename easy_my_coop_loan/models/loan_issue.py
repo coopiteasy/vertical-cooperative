@@ -28,23 +28,15 @@ class LoanIssue(models.Model):
 
     name = fields.Char(string="Name", translate=True)
     default_issue = fields.Boolean(string="Default issue")
-    subscription_start_date = fields.Date(
-        string="Start date subscription period"
-    )
+    subscription_start_date = fields.Date(string="Start date subscription period")
     subscription_end_date = fields.Date(string="End date subscription period")
     user_id = fields.Many2one("res.users", string="Responsible")
     loan_start_date = fields.Date(string="Loan start date")
     term_date = fields.Date(string="Term date")
-    loan_term = fields.Float(
-        string="Duration of the loan in month",
-        required=True
-    )
+    loan_term = fields.Float(string="Duration of the loan in month", required=True)
     rate = fields.Float(string="Net Interest rate")
     gross_rate = fields.Float(string="Gross Interest rate")
-    taxes_rate = fields.Float(
-        string="Taxes on interest",
-        required=True
-    )
+    taxes_rate = fields.Float(string="Taxes on interest", required=True)
     face_value = fields.Monetary(
         string="Facial value",
         currency_field="company_currency_id",
@@ -197,15 +189,10 @@ class LoanIssue(models.Model):
         if not (loan_term_year).is_integer():
             # TODO Handle this case
             raise NotImplementedError(
-                _(
-                    "Calculation on non entire year "
-                    "hasn't been implemented yet"
-                )
+                _("Calculation on non entire year " "hasn't been implemented yet")
             )
 
-        lines = self.loan_issue_lines.filtered(
-            lambda record: record.state == "paid"
-        )
+        lines = self.loan_issue_lines.filtered(lambda record: record.state == "paid")
         lines.action_compute_interest()
 
     def _cron_check_subscription_end_date(self):
@@ -216,8 +203,8 @@ class LoanIssue(models.Model):
         for loan in loans_to_close:
             try:
                 loan.action_close()
-                self.env.cr.commit()
-                _logger.debug("Loan: '%s' - state: '%s'" % (loan, loan.state))
+                self.env.cr.commit()  # pylint: disable=invalid-commit
+                _logger.debug("Loan: '{}' - state: '{}'".format(loan, loan.state))
             except Exception:
                 _logger.exception(
                     "An exception occured while closing loan: '%s'" % (loan)

@@ -47,13 +47,11 @@ class AccountMoveLine(models.Model):
             for move_line in self:
                 if move_line.statement_id:
                     loan_issue_line.payment_date = move_line.date
-            loan_issue_line.with_context({
-                "paid_by_bank_statement": True
-            }).action_paid()
+            loan_issue_line.with_context({"paid_by_bank_statement": True}).action_paid()
         if full_reconcile_id and loan_interest_line:
             for move_line in self:
                 if move_line.statement_id:
                     loan_interest_line.payment_date = move_line.date
-            loan_interest_line.with_context({
-                "paid_by_bank_statement": True
-            }).action_paid()
+            loan_interest_line.with_context(
+                {"paid_by_bank_statement": True}
+            ).action_paid()

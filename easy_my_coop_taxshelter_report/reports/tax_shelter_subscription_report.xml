@@ -1,13 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <template id="tax_shelter_report_subscription_document">
         <t t-call="web.external_layout">
             <t t-set="address">
-                <address t-field="o.partner_id"
-                         t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                <address
+                    t-field="o.partner_id"
+                    t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'
+                />
                 <div t-if="o.partner_id.cooperator_register_number">
                     Numéro de coopérateur :
-                    <span t-field="o.partner_id.cooperator_register_number"/>
+                    <span t-field="o.partner_id.cooperator_register_number" />
                 </div>
             </t>
             <div class="page mt32" style="font-size: 10px !important;">
@@ -22,23 +24,26 @@
 
                 <p>
                     Durant l'année
-                    <span t-field="o.declaration_id.fiscal_year"/>
+                    <span t-field="o.declaration_id.fiscal_year" />
                     vous avez souscrit des parts de
-                    <span t-field="o.company_id.name"/>
+                    <span t-field="o.company_id.name" />
                     pour un montant total de
-                    <span t-field="o.total_amount_subscribed"
-                          t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/>
+                    <span
+                        t-field="o.total_amount_subscribed"
+                        t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'
+                    />
                     euros.
-                    <br/>
+                    <br />
                     Le montant éligible pour le Tax shelter est de
-                    <span t-field="o.total_amount_eligible"
-                          t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'/>
+                    <span
+                        t-field="o.total_amount_eligible"
+                        t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'
+                    />
                     euros.
-                    <br/>
+                    <br />
                 </p>
 
-                <table class="table table-sm o_main_table"
-                       name="taxshelter_line_table">
+                <table class="table table-sm o_main_table" name="taxshelter_line_table">
                     <thead>
                         <tr>
                             <th>Type</th>
@@ -53,50 +58,50 @@
                     <tbody class="invoice_tbody">
                         <tr t-foreach="o.previously_subscribed_lines" t-as="l">
                             <td>
-                                <span t-field="l.type"/>
+                                <span t-field="l.type" />
                             </td>
                             <td>
-                                <span t-field="l.capital_before_sub"/>
+                                <span t-field="l.capital_before_sub" />
                             </td>
                             <td>
-                                <span t-field="l.capital_after_sub"/>
+                                <span t-field="l.capital_after_sub" />
                             </td>
                             <td>
                                 <span t-if="l.tax_shelter">Oui</span>
                                 <span t-else="">Non</span>
                             </td>
                             <td>
-                                <span t-field="l.transaction_date"/>
+                                <span t-field="l.transaction_date" />
                             </td>
                             <td>
-                                <span t-field="l.amount_subscribed"/>
+                                <span t-field="l.amount_subscribed" />
                             </td>
                             <td>
-                                <span t-field="l.amount_subscribed_eligible"/>
+                                <span t-field="l.amount_subscribed_eligible" />
                             </td>
                         </tr>
                         <tr t-foreach="o.subscribed_lines" t-as="l">
                             <td>
-                                <span t-field="l.type"/>
+                                <span t-field="l.type" />
                             </td>
                             <td>
-                                <span t-field="l.capital_before_sub"/>
+                                <span t-field="l.capital_before_sub" />
                             </td>
                             <td>
-                                <span t-field="l.capital_after_sub"/>
+                                <span t-field="l.capital_after_sub" />
                             </td>
                             <td>
                                 <span t-if="l.tax_shelter">Oui</span>
                                 <span t-else="">Non</span>
                             </td>
                             <td>
-                                <span t-field="l.transaction_date"/>
+                                <span t-field="l.transaction_date" />
                             </td>
                             <td>
-                                <span t-field="l.amount_subscribed"/>
+                                <span t-field="l.amount_subscribed" />
                             </td>
                             <td>
-                                <span t-field="l.amount_subscribed_eligible"/>
+                                <span t-field="l.amount_subscribed_eligible" />
                             </td>
                         </tr>
                     </tbody>
@@ -104,21 +109,24 @@
 
                 <p>
                     L' Article 145/26, CIR 92 sur les revenus<span
-                        t-field="o.declaration_id.fiscal_year"/>, connu aussi
+                        t-field="o.declaration_id.fiscal_year"
+                    />, connu aussi
                     comme normative Tax Shelter, donnent droit à une réduction
                     d’impôt à hauteur de &#160;<span
-                        t-field="o.declaration_id.tax_shelter_percentage"/>
+                        t-field="o.declaration_id.tax_shelter_percentage"
+                    />
                     du montant de la valeur des parts souscrites depuis
-                    <span t-field="o.declaration_id.month_from"/>
+                    <span t-field="o.declaration_id.month_from" />
                     (et avant
-                    <span t-field="o.declaration_id.month_to"/>
+                    <span t-field="o.declaration_id.month_to" />
                     pour la déclaration des revenus &#160;<span
-                        t-field="o.declaration_id.fiscal_year"/>).
+                        t-field="o.declaration_id.fiscal_year"
+                    />).
                 </p>
 
                 <p>
                     Cette lettre vaut donc comme certificat que
-                    <span t-field="o.company_id.name"/>
+                    <span t-field="o.company_id.name" />
                     remplit en effet tous les critères permettant un tel
                     avantage fiscal. Dans les grandes lignes il faut être une
                     micro-entreprise n’ayant encore jamais distribué de
@@ -160,7 +168,7 @@
                 <p>
                     Pour bénéficier de la réduction d’impôts, vous pouvez
                     joindre cette lettre à votre déclaration fiscale pour les
-                    revenus<span t-field="o.declaration_id.fiscal_year"/>.
+                    revenus<span t-field="o.declaration_id.fiscal_year" />.
                 </p>
 
                 <p>
@@ -170,14 +178,16 @@
 
                 <p>
                     Pour le Conseil d'administration de<span
-                        t-field="o.company_id.name"/>,
-                    <br/>
-                    <strong t-field="o.company_id.board_representative"/>
-                    <br/>
-                    <img t-if="o.company_id.signature_scan"
-                         t-attf-class="mt16"
-                         t-attf-style="{{ 'min-height: 50px; max-height: 100px' if report_type == 'pdf' else '' }}"
-                         t-att-src="'data:image/png;base64,%s' % o.company_id.signature_scan.decode()"
+                        t-field="o.company_id.name"
+                    />,
+                    <br />
+                    <strong t-field="o.company_id.board_representative" />
+                    <br />
+                    <img
+                        t-if="o.company_id.signature_scan"
+                        t-attf-class="mt16"
+                        t-attf-style="{{ 'min-height: 50px; max-height: 100px' if report_type == 'pdf' else '' }}"
+                        t-att-src="'data:image/png;base64,%s' % o.company_id.signature_scan.decode()"
                     />
                 </p>
             </div>
@@ -187,8 +197,10 @@
     <template id="tax_shelter_subscription_report">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <t t-call="easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document"
-                   t-lang="o.partner_id.lang"/>
+                <t
+                    t-call="easy_my_coop_taxshelter_report.tax_shelter_report_subscription_document"
+                    t-lang="o.partner_id.lang"
+                />
             </t>
         </t>
     </template>

@@ -25,7 +25,7 @@
     "author": "Houssine BAKKALI, <houssine@coopiteasy.be>",
     "license": "AGPL-3",
     "version": "12.0.0.0.1",
-    "website": "https://www.coopiteasy.be",
+    "website": "https://github.com/OCA/sale-workflow",
     "category": "Cooperative Management",
     "depends": ["easy_my_coop"],
     "data": ["security/ir.model.access.csv", "views/dividend_views.xml"],

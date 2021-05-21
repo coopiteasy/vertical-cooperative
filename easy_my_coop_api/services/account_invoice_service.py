@@ -27,15 +27,11 @@ class AccountInvoiceService(Component):
     """
 
     def get(self, _id):
-        sr = self.env["account.invoice"].search(
-            [("_api_external_id", "=", _id)]
-        )
+        sr = self.env["account.invoice"].search([("_api_external_id", "=", _id)])
         if sr:
             return self._to_dict(sr)
         else:
-            raise wrapJsonException(
-                NotFound(_("No invoice found for id %s") % _id)
-            )
+            raise wrapJsonException(NotFound(_("No invoice found for id %s") % _id))
 
     def _to_dict(self, invoice):
         invoice.ensure_one()
@@ -64,9 +60,7 @@ class AccountInvoiceService(Component):
         return {
             "name": line.name,
             "account": self._one_to_many_to_dict(line.account_id),
-            "product": self._one_to_many_to_dict(
-                line.product_id.product_tmpl_id
-            ),
+            "product": self._one_to_many_to_dict(line.product_id.product_tmpl_id),
             "quantity": line.quantity,
             "price_unit": line.price_unit,
         }

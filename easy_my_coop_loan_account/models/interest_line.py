@@ -2,32 +2,28 @@
 #   Houssine BAKKALI <houssine@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 from dateutil.relativedelta import relativedelta
-from odoo import api, fields, models
-from odoo.exceptions import UserError
+
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError, ValidationError
 
 
 class LoanInterestLine(models.Model):
     _inherit = "loan.interest.line"
 
     loan_due_fy_move = fields.Many2one(
-        comodel_name="account.move",
-        string="Loan due this fiscal year account move"
+        comodel_name="account.move", string="Loan due this fiscal year account move"
     )
     loan_due_move = fields.Many2one(
-        comodel_name="account.move",
-        string="Loan due now account move"
+        comodel_name="account.move", string="Loan due now account move"
     )
     loan_reimbursment_move = fields.Many2one(
-        comodel_name="account.move",
-        string="Loan reimbursement account move"
+        comodel_name="account.move", string="Loan reimbursement account move"
     )
     interest_closing_fy = fields.Many2one(
-        comodel_name="account.move",
-        string="Interest closing fiscal year account move"
+        comodel_name="account.move", string="Interest closing fiscal year account move"
     )
     interest_opening_fy = fields.Many2one(
-        comodel_name="account.move",
-        string="Interest opening fiscal year account move"
+        comodel_name="account.move", string="Interest opening fiscal year account move"
     )
 
     @api.multi
@@ -49,12 +45,16 @@ class LoanInterestLine(models.Model):
             due_date = date
         else:
             due_date = self.due_date
+        if not self.company_id.loan_journal:
+            raise ValidationError(_("You must set Loan Journal on company"))
 
-        return self.env["account.move"].create({
-            "ref": self.name,
-            "date": due_date,
-            "journal_id": self.company_id.loan_journal.id,
-        })
+        return self.env["account.move"].create(
+            {
+                "ref": self.name,
+                "date": due_date,
+                "journal_id": self.company_id.loan_journal.id,
+            }
+        )
 
     @api.multi
     def generate_payment_move_lines(self):
@@ -93,16 +93,13 @@ class LoanInterestLine(models.Model):
 
                 self.env["account.move.line"].create(vals_list)
 
-                line.write({
-                    "loan_reimbursment_move": move.id,
-                    "state": "scheduled"
-                })
+                line.write({"loan_reimbursment_move": move.id, "state": "scheduled"})
 
-    """ this function create the end of year accounting account for
-        the accrued interest due for the closing fiscal year.
-    """
     @api.multi
     def generate_interest_move_lines_fy(self, date, next_fy):
+        """this function create the end of year accounting account for
+        the accrued interest due for the closing fiscal year.
+        """
         aml_obj = self.env["account.move.line"]
         for line in self:
             if not line.interest_closing_fy:
@@ -174,12 +171,12 @@ class LoanInterestLine(models.Model):
 
                 line.write({"loan_due_fy_move": move.id})
 
-    """ This function will generate the account move lines
-        to transfer the due amount from long term debt account
-        to the long term debt due (for this fiscal year) account
-    """
     @api.multi
     def generate_loan_due_now(self):
+        """This function will generate the account move lines
+        to transfer the due amount from long term debt account
+        to the long term debt due (for this fiscal year) account
+        """
 
         for line in self:
             if not line.loan_due_move:
@@ -203,12 +200,14 @@ class LoanInterestLine(models.Model):
     def _generate_payment_move(self):
         # TODO configure how many days before you want generate the move lines
         fy = self.env["account.fiscal.year"].get_next_fiscal_year()
-        interest_lines = self.search([
-            ("due_date", ">=", fy.date_from),
-            ("due_date", "<=", fy.date_to),
-            ("due_amount", ">", 0),
-            ("state", "=", "due")
-        ])
+        interest_lines = self.search(
+            [
+                ("due_date", ">=", fy.date_from),
+                ("due_date", "<=", fy.date_to),
+                ("due_amount", ">", 0),
+                ("state", "=", "due"),
+            ]
+        )
 
         interest_lines.generate_payment_move_lines()
 
@@ -220,5 +219,4 @@ class LoanInterestLine(models.Model):
         if paid_by:
             super(LoanInterestLine, self).action_paid()
         else:
-            raise UserError(_("The payment must be registered"
-                              " by bank statement"))
+            raise UserError(_("The payment must be registered" " by bank statement"))

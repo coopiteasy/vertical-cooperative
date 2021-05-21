@@ -12,7 +12,7 @@ class ResCompany(models.Model):
     days_ahead = fields.Integer(
         string="Days ahead the due date",
         help="We are waiting x days before due date to create the "
-             "reimbursement accounting entries creation"
+        "reimbursement accounting entries creation",
     )
     awaiting_loan_payment_account = fields.Many2one(
         "account.account",
@@ -86,12 +86,10 @@ class ResCompany(models.Model):
         string="Awaiting loan payment journal",
         help="This journal will be the default one as the"
         " to track the payment from the loaners",
-        required=True,
     )
     loan_journal = fields.Many2one(
         "account.journal",
         string="Loan journal",
         help="This journal will be the one used to register all"
         " the loan account move lines",
-        required=True,
     )

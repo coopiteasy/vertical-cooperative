@@ -1,1 +1,1 @@
-from . import coop
+from . import subscription_request

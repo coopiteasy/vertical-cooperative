@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <!-- Mail template are declared in a NOUPDATE block
          so users can freely customize/delete them -->
@@ -15,12 +15,13 @@
             <field name="reply_to">
                 ${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}
             </field>
-            <field name="model_id"
-                   ref="easy_my_coop_loan.model_loan_issue_line"/>
-            <field name="auto_delete" eval="True"/>
+            <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
+            <field name="auto_delete" eval="True" />
             <field name="lang">${object.partner_id.lang}</field>
-            <field name="easy_my_coop" eval="True"/>
-            <field name="body_html"><![CDATA[
+            <field name="easy_my_coop" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
     <p>Hello ${object.partner_id.name},</p>
@@ -78,12 +79,13 @@
             <field name="reply_to">
                 ${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}
             </field>
-            <field name="model_id"
-                   ref="easy_my_coop_loan.model_loan_issue_line"/>
-            <field name="auto_delete" eval="True"/>
+            <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
+            <field name="auto_delete" eval="True" />
             <field name="lang">${object.partner_id.lang}</field>
-            <field name="easy_my_coop" eval="True"/>
-            <field name="body_html"><![CDATA[
+            <field name="easy_my_coop" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
     <p>Hello ${object.partner_id.name},</p>
@@ -125,26 +127,34 @@
 </div>
             ]]></field>
         </record>
-	</data>
-	<data>
+    </data>
+    <data>
         <record id="email_template_loan_confirm_paid" model="mail.template">
-            <field name="name">Loan Issue Confirm Payment Received - Send by Email</field>
+            <field
+                name="name"
+            >Loan Issue Confirm Payment Received - Send by Email</field>
             <field name="email_from">
                 ${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}
             </field>
-            <field name="subject">${object.company_id.name} Payment received (Ref ${object.loan_issue_id.name or 'n/a'})</field>
+            <field
+                name="subject"
+            >${object.company_id.name} Payment received (Ref ${object.loan_issue_id.name or 'n/a'})</field>
             <field name="partner_to">${object.partner_id.id}</field>
             <field name="reply_to">
                 ${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}
             </field>
-            <field name="model_id"
-                   ref="easy_my_coop_loan.model_loan_issue_line"/>
-            <field name="auto_delete" eval="True"/>
-            <field name="report_template" ref="easy_my_coop_loan.action_loan_issue_line_report"/>
+            <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
+            <field name="auto_delete" eval="True" />
+            <field
+                name="report_template"
+                ref="easy_my_coop_loan.action_loan_issue_line_report"
+            />
             <field name="report_name">Reimbursement table report</field>
             <field name="lang">${object.partner_id.lang}</field>
-            <field name="easy_my_coop" eval="True"/>
-            <field name="body_html"><![CDATA[
+            <field name="easy_my_coop" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
     <div style="font-size:13px;font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; background-color: rgb(255, 255, 255);">
     <p style="margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;color: rgb(34, 34, 34); font-size: 12px;">Bonjour ${object.partner_id.name},</p>
     <p style="margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">Par la présente, nous vous confirmons que nous avons bien reçu de votre part le versement pour la souscription des obligations&nbsp;FinMip</p>

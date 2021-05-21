@@ -4,16 +4,15 @@
 
 from datetime import date
 
-from odoo import api, fields, models, _
-from odoo.exceptions import UserError
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError, ValidationError
 
 
 class LoanIssueLine(models.Model):
     _inherit = "loan.issue.line"
 
     awaiting_move_id = fields.Many2one(
-        comodel_name="account.move",
-        string="Awaiting payment account move"
+        comodel_name="account.move", string="Awaiting payment account move"
     )
 
     @api.multi
@@ -28,17 +27,23 @@ class LoanIssueLine(models.Model):
 
     @api.model
     def create_move(self, line, date, journal):
-        return self.env["account.move"].create({
-            "ref": line.reference,
-            "date": date.today(),
-            "journal_id": journal,
-        })
+        return self.env["account.move"].create(
+            {
+                "ref": line.reference,
+                "date": date.today(),
+                "journal_id": journal,
+            }
+        )
 
     @api.multi
     def create_waiting_payment_move(self):
         move_line_obj = self.env["account.move.line"]
         for line in self:
             comp = line.company_id
+            if not comp.awaiting_loan_payment_journal:
+                raise ValidationError(
+                    _("You must set awaiting loan payment journal on company")
+                )
             move = self.create_move(
                 line,
                 date.today(),
@@ -67,5 +72,4 @@ class LoanIssueLine(models.Model):
         if paid_by:
             super(LoanIssueLine, self).action_paid()
         else:
-            raise UserError(_("The payment must be registered"
-                              " by bank statement"))
+            raise UserError(_("The payment must be registered" " by bank statement"))
