@@ -31,8 +31,7 @@ class EMCBackend(models.Model):
             backend.ensure_one()
         except ValueError as e:
             _logger.error(
-                "One and only one backend is allowed for the Easy My Coop "
-                "connector."
+                "One and only one backend is allowed for the Easy My Coop " "connector."
             )
             raise e
         return backend
@@ -55,13 +54,9 @@ class EMCBackend(models.Model):
             content = response.content.decode("utf-8")
             raise BadRequest("%s" % content)
         elif response.status_code == 403:
-            raise AccessDenied(
-                _("You are not allowed to access this resource")
-            )
+            raise AccessDenied(_("You are not allowed to access this resource"))
         elif response.status_code == 404:
-            raise NotFound(
-                _("Resource not found %s on server" % response.status_code)
-            )
+            raise NotFound(_("Resource not found %s on server" % response.status_code))
         else:  # 500 et al.
             content = response.content.decode("utf-8")
             raise InternalServerError(_("%s" % content))
