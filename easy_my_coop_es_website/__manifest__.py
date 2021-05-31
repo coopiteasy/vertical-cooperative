@@ -1,6 +1,6 @@
 {
     "name": "Easy My Coop Spain Website",
-    "version": "12.0.0.0.2",
+    "version": "12.0.0.0.3",
     "depends": ["easy_my_coop_es", "easy_my_coop_website"],
     "author": "Coop IT Easy SCRLfs, " "Coopdevs Treball SCCL",
     "mantainer": "Coopdevs Treball SCCL",
