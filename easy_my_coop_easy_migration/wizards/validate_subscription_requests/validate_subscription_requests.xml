@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="view_force_draft_validation_subscription_request" model="ir.ui.view">
+    <field name="name">Validate subscription request</field>
+    <field name="model">validate.subscription.request</field>
+    <field name="inherit_id" ref="easy_my_coop.view_validate_subscription_request" />
+    <field name="arch" type="xml">
+      <xpath expr="//p" position="after">
+        <group name="migration_tools" groups="easy_my_coop_easy_migration.group_easy_my_coop_easy_migration">
+          <field name="force_validate_all_in_draft"/>
+        </group>
+      </xpath>
+    </field>
+  </record>
+</odoo>
