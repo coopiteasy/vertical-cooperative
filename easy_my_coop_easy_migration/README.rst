@@ -25,6 +25,7 @@ Easy My Coop Easy Migration
 This project aim to facilitate the migration from other ERP to Odoo with EMC application:
 
  - Add new field to SubscriptionRequest to save the migrated cooperator number.
+ - Add a wizard to validate all the SubscriptionRequests in background.
 
 Please don't hesitate to suggest one of your modules to this project.
 
@@ -52,6 +53,21 @@ For instance, for the addon `easy_my_coop_easy_migration`
 pip install odoo12-addon-easy-my-coop-easy-migration==12.0.1.0.0
 ```
 Beware that for word separation, pypi uses dashes `-` and odoo underscores `_`.
+
+Usage
+=====
+
+Configuration steps:
+
+1. Configure the `property_cooperator_account` in Settings > Company.
+2. Create the Share product and generate the ExternalId. You can export the share product to generate the external Id.
+3. Add `Migration Manager` group to the migration user.
+4. Modify the Subscription Journal sequence implementation to NoGap: Settings > Technical > Sequences > Account Default Subscription Journal
+
+Execution steps:
+
+1. Import SR with the `migrated_cooperator_register_number` and `share_type/external_id`.
+2. Open the SR validator wizard and check the flag `Force validate all in draft` and validate.
 
 Bug Tracker
 ===========
