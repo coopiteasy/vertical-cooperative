@@ -4,6 +4,7 @@
     "version": "12.0.1.0.0",
     "depends": [
         "easy_my_coop",
+        "queue_job",
     ],
     "author": "Coopdevs Treball SCCL",
     "category": "Cooperative management",
