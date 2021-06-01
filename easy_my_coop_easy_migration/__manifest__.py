@@ -9,7 +9,9 @@
     "category": "Cooperative management",
     "website": "https://www.coopdevs.org",
     "license": "AGPL-3",
-    "data": [],
+    "data": [
+        "security/res_groups.xml",
+    ],
     "demo": [],
     "installable": True,
     "application": False,
