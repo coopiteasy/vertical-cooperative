@@ -373,6 +373,7 @@ ul.auto-toc {
 <ul class="simple">
 <li>Add new field to SubscriptionRequest to save the migrated cooperator number.</li>
 <li>Add a wizard to validate all the SubscriptionRequests in background.</li>
+<li>Add a wizard to mark as paid all the capital release invoices in background sorted by the migrated cooperator number.</li>
 </ul>
 </blockquote>
 <p>Please don’t hesitate to suggest one of your modules to this project.</p>
@@ -418,7 +419,8 @@ Beware that for word separation, pypi uses dashes <cite>-</cite> and odoo unders
 <p>Execution steps:</p>
 <ol class="arabic simple">
 <li>Import SR with the <cite>migrated_cooperator_register_number</cite> and <cite>share_type/external_id</cite>.</li>
-<li>Open the SR validator wizard and check the flag <cite>Force validate all in draft</cite> and validate.</li>
+<li>Open the SR validator wizard and check the flag <cite>Force validate all in draft</cite> and validate to validate the SR and generate the partner and the capital release invoice.</li>
+<li>Open the ‘Pay capital release invoice of migration’ wizard and configure the journal to use. Then execute the wizard thar enqueue a job to mask as paid all the capital release invoices.</li>
 </ol>
 </div>
 <div class="section" id="bug-tracker">

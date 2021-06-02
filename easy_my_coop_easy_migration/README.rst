@@ -26,6 +26,7 @@ This project aim to facilitate the migration from other ERP to Odoo with EMC app
 
  - Add new field to SubscriptionRequest to save the migrated cooperator number.
  - Add a wizard to validate all the SubscriptionRequests in background.
+ - Add a wizard to mark as paid all the capital release invoices in background sorted by the migrated cooperator number.
 
 Please don't hesitate to suggest one of your modules to this project.
 
@@ -67,7 +68,8 @@ Configuration steps:
 Execution steps:
 
 1. Import SR with the `migrated_cooperator_register_number` and `share_type/external_id`.
-2. Open the SR validator wizard and check the flag `Force validate all in draft` and validate.
+2. Open the SR validator wizard and check the flag `Force validate all in draft` and validate to validate the SR and generate the partner and the capital release invoice.
+3. Open the 'Pay capital release invoice of migration' wizard and configure the journal to use. Then execute the wizard thar enqueue a job to mask as paid all the capital release invoices.
 
 Bug Tracker
 ===========

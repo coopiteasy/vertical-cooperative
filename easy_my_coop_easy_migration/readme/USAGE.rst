@@ -8,4 +8,5 @@ Configuration steps:
 Execution steps:
 
 1. Import SR with the `migrated_cooperator_register_number` and `share_type/external_id`.
-2. Open the SR validator wizard and check the flag `Force validate all in draft` and validate.
+2. Open the SR validator wizard and check the flag `Force validate all in draft` and validate to validate the SR and generate the partner and the capital release invoice.
+3. Open the 'Pay capital release invoice of migration' wizard and configure the journal to use. Then execute the wizard thar enqueue a job to mask as paid all the capital release invoices.

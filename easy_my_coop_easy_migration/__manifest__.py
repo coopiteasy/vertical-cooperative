@@ -13,6 +13,7 @@
     "data": [
         "security/res_groups.xml",
         "wizards/validate_subscription_requests/validate_subscription_requests.xml",
+        "wizards/pay_capital_release_invoices/pay_capital_release_invoices.xml",
     ],
     "demo": [],
     "installable": True,
