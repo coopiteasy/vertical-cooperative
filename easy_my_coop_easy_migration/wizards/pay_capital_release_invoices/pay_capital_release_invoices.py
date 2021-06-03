@@ -31,4 +31,10 @@ class PayCapitalReleaseInvoices(models.TransientModel):
                 "payment_method_id": self.account_payment_method.id,
                 "journal_id": self.journal_id.id,
             })
-            wizard.create_payments()
+            try:
+                wizard.create_payments()
+                self.env.cr.commit()
+            except Exception as error:
+                self.env.cr.commit()
+                raise error
+
