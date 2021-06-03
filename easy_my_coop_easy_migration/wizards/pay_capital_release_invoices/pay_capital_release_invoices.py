@@ -1,5 +1,8 @@
+import logging
 from odoo import api, models, fields
 from odoo.addons.queue_job.job import job
+
+log = logging.getLogger(__name__)
 
 
 class PayCapitalReleaseInvoices(models.TransientModel):
@@ -12,6 +15,7 @@ class PayCapitalReleaseInvoices(models.TransientModel):
 
     @job
     def _create_payments(self):
+        log.info("Preparing data to create payments...")
         capital_release_invoices = self.env["account.invoice"].search([
             ("state", "=", "open"),
             ("subscription_request", "!=", None),
@@ -22,7 +26,9 @@ class PayCapitalReleaseInvoices(models.TransientModel):
 
         self.account_payment_method = self.env.ref("account.account_payment_method_manual_in")
 
+        log.info("Starting to create payments")
         for cs_invoice in capital_release_invoices:
+            log.info("Creating payment for invoice {}".format(cs_invoice.invoice_number))
             wizard = self.AccountRegisterPaymentWizard.with_context({
                 "active_model": "account.invoice",
                 "active_ids": [cs_invoice.id]
@@ -37,4 +43,5 @@ class PayCapitalReleaseInvoices(models.TransientModel):
             except Exception as error:
                 self.env.cr.commit()
                 raise error
+            log.info("Payments created for invoice {}".format(cs_invoice.invoice_number))
 
