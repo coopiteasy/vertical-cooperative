@@ -3,7 +3,7 @@ Configuration steps:
 1. Configure the `property_cooperator_account` in Settings > Company.
 2. Create the Share product and generate the ExternalId. You can export the share product to generate the external Id.
 3. Add `Migration Manager` group to the migration user.
-4. Modify the Subscription Journal sequence implementation to NoGap: Settings > Technical > Sequences > Account Default Subscription Journal
+4. Ensure that the sequence 'Subscription Register' has the newt number to 1.
 
 Execution steps:
 
