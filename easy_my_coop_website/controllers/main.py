@@ -383,7 +383,7 @@ class WebsiteSubscription(http.Controller):
             }
         }
 
-    def format_address(self, house_number, street_name):
+    def _format_address(self, house_number, street_name):
         return "{street}, {number}".format(
             street=street_name,
             number=house_number,
@@ -458,7 +458,7 @@ class WebsiteSubscription(http.Controller):
 
         values["share_product_id"] = self.get_selected_share(kwargs).id
 
-        values["address"] = self.format_address(
+        values["address"] = self._format_address(
             street_name=kwargs.get("street_name", ""),
             house_number=kwargs.get("house_number", ""),
         )
