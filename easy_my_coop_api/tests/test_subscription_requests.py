@@ -72,6 +72,8 @@ class TestSRController(BaseEMCRestCase):
 
         date_sr = self.sr_service.search(date_from=date_from, date_to=date_to)
         self.assertTrue(date_sr)
+        self.assertTrue(self.demo_request_1.first_api_export_date)
+        self.assertTrue(self.demo_request_1.last_api_export_date)
 
     def test_route_get(self):
         external_id = self.demo_request_1.get_api_external_id()
@@ -187,7 +189,7 @@ class TestSRController(BaseEMCRestCase):
         content = json.loads(response.content.decode("utf-8"))
 
         state = content.get("state")
-        self.assertEquals(state, "done")
+        self.assertEquals(state, "open")
 
     def test_service_validate_draft_request(self):
         self.sr_service.validate(self.demo_request_1.get_api_external_id())

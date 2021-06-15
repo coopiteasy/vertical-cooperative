@@ -30,11 +30,20 @@ class TestAccountInvoiceController(BaseEMCRestCase):
 
         today = Date.to_string(Date.today())
         self.demo_invoice_dict = {
-            "id": 1,
-            "name": "Capital Release Example",
-            "partner": {"id": 1, "name": "Catherine des Champs"},
-            "account": {"id": 1, "name": "Cooperators"},
-            "journal": {"id": 1, "name": "Subscription Journal"},
+            "id": self.capital_release.get_api_external_id(),
+            "number": "xxx",  # can't guess it
+            "partner": {
+                "id": self.coop_candidate.get_api_external_id(),
+                "name": self.coop_candidate.name,
+            },
+            "account": {
+                "id": self.cooperator_account.get_api_external_id(),
+                "name": self.cooperator_account.name,
+            },
+            "journal": {
+                "id": self.subscription_journal.get_api_external_id(),
+                "name": self.subscription_journal.name,
+            },
             "subscription_request": {},
             "state": "open",
             "date": today,
@@ -47,7 +56,10 @@ class TestAccountInvoiceController(BaseEMCRestCase):
                     "product": {"id": 1, "name": "Part A - Founder"},
                     "price_unit": 100.0,
                     "quantity": 2.0,
-                    "account": {"id": 2, "name": "Equity"},
+                    "account": {
+                        "id": self.equity_account.get_api_external_id(),
+                        "name": self.equity_account.name,
+                    },
                 }
             ],
         }
@@ -79,7 +91,7 @@ class TestAccountInvoiceController(BaseEMCRestCase):
 
         self.capital_release = self.env["account.invoice"].create(
             {
-                "name": "Capital Release Example",
+                "number": "Capital Release Example",
                 "partner_id": self.coop_candidate.id,
                 "type": "out_invoice",
                 "invoice_line_ids": capital_release_line,
@@ -92,10 +104,14 @@ class TestAccountInvoiceController(BaseEMCRestCase):
     def test_service_get(self):
         external_id = self.capital_release.get_api_external_id()
         result = self.ai_service.get(external_id)
-        self.assertEquals(self.demo_invoice_dict, result)
+        expected = self.demo_invoice_dict.copy()
+        expected["number"] = result["number"]
+        self.assertEquals(expected, result)
 
     def test_route_get(self):
         external_id = self.capital_release.get_api_external_id()
         route = "/api/invoice/%s" % external_id
         content = self.http_get_content(route)
-        self.assertEquals(self.demo_invoice_dict, content)
+        expected = self.demo_invoice_dict.copy()
+        expected["number"] = content["number"]
+        self.assertEquals(expected, content)
