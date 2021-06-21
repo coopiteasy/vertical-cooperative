@@ -956,7 +956,7 @@
                                                         name="house_number"
                                                         required="True"
                                                         t-att-readonly="logged"
-                                                        t-attf-value="#{street_number or ''}"
+                                                        t-attf-value="#{house_number or ''}"
                                                         placeholder="19"
                                                     />
                                                 </td>
