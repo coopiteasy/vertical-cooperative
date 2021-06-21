@@ -137,6 +137,8 @@ class WebsiteSubscription(http.Controller):
             if partner.bank_ids:
                 values["iban"] = partner.bank_ids[0].acc_number
             values["address"] = partner.street
+            # can fail if `street` is not formatted as `"{street}, {number}"`
+            [values["street_name"], values["house_number"]] = partner.street.split(", ", 1)
             values["zip_code"] = partner.zip
             values["city"] = partner.city
             values["country_id"] = partner.country_id.id
