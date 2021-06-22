@@ -7,10 +7,16 @@ from odoo.http import request
 from odoo.tools.translate import _
 
 # Only use for behavior, don't stock it
-_TECHNICAL = ["view_from", "view_callback"]
+_TECHNICAL = [
+    "view_from",
+    "view_callback"
+]
 
 # transient fields used to compute the address field
-_EXTRA_FIELDS = ["street_name", "house_number"]
+_EXTRA_FIELDS = [
+    "street_name",
+    "house_number"
+]
 
 # Allow in description
 _BLACKLIST = [
@@ -264,7 +270,7 @@ class WebsiteSubscription(http.Controller):
             redirect = "easy_my_coop_website.becomecompanycooperator"
             email = kwargs.get("company_email")
         # TODO: Use a overloaded function with the captcha implementation
-        if request.website.company_id.captcha_type == "google":
+        if request.website.company_id.captcha_type == 'google':
             if (
                 "g-recaptcha-response" not in kwargs
                 or kwargs["g-recaptcha-response"] == ""
@@ -404,7 +410,10 @@ class WebsiteSubscription(http.Controller):
                 post_file.append(field_value)
             elif field_name in sub_req_obj._fields and field_name not in _BLACKLIST:
                 values[field_name] = field_value
-            elif field_name in _EXTRA_FIELDS and field_name not in _BLACKLIST:
+            elif (
+                field_name in _EXTRA_FIELDS
+                and field_name not in _BLACKLIST
+            ):
                 values[field_name] = field_value
             # allow to add some free fields or blacklisted field like ID
             elif field_name not in _TECHNICAL:
@@ -452,10 +461,7 @@ class WebsiteSubscription(http.Controller):
 
         values["share_product_id"] = self.get_selected_share(kwargs).id
 
-        values["address"] = "{street}, {number}".format(
-            street=kwargs.get("street_name", ""),
-            number=kwargs.get("house_number", ""),
-        )
+        values["address"] = kwargs.get("street_name") + ", " + kwargs.get("house_number")
         del values["street_name"]
         del values["house_number"]
 
