@@ -89,10 +89,10 @@
                                 class="form-horizontal mt32"
                                 enctype="multipart/form-data"
                             >
+                                <p style="color:red;">
+                                    <t t-esc="error_msg" />
+                                </p>
                                 <div name="crsf_token_container">
-                                    <p style="color:red;">
-                                        <t t-esc="error_msg" />
-                                    </p>
                                     <input
                                         type="hidden"
                                         name="csrf_token"
@@ -783,10 +783,10 @@
                                 enctype="multipart/form-data"
                             >
 
+                                <p style="color:red;">
+                                    <t t-esc="error_msg" />
+                                </p>
                                 <div name="crsf_token_container">
-                                    <p style="color:red;">
-                                        <t t-esc="error_msg" />
-                                    </p>
                                     <input
                                         type="hidden"
                                         name="csrf_token"
