@@ -38,34 +38,6 @@
             >
                 <attribute name="hidden">1</attribute>
             </xpath>
-            <!-- Reversing street_name and house_number -->
-            <xpath expr="//input[@name='house_number']/../.." position="replace">
-                <tr>
-                    <td>
-                        <input
-                            type="text"
-                            class="form-control mandatory-field"
-                            name="street_name"
-                            required="True"
-                            t-att-readonly="logged"
-                            t-attf-value="#{street_name or ''}"
-                            placeholder="calle Mayor"
-                        />
-                    </td>
-                    <td width="3%" />
-                    <td width="15%">
-                        <input
-                            type="text"
-                            class="form-control mandatory-field"
-                            name="house_number"
-                            required="True"
-                            t-att-readonly="logged"
-                            t-attf-value="#{house_number or ''}"
-                            placeholder="19"
-                        />
-                    </td>
-                </tr>
-            </xpath>
         </template>
     </data>
 </odoo>
