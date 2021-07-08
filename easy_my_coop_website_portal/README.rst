@@ -24,11 +24,18 @@ Easy My Coop Website Portal
 * On page /my/account
    * prevents modifications to "name" and "email"
    * makes "iban", "birthdate_date", "gender" and "lang" compulsory
+* ...
 
 **Table of contents**
 
 .. contents::
    :local:
+
+Known issues / Roadmap
+======================
+
+Use module website_portal_restrict_modification to modify readonly attributes on
+portal mage /my/account .
 
 Bug Tracker
 ===========
