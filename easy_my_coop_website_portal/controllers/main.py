@@ -17,9 +17,21 @@ from odoo.addons.portal.controllers.portal import (
 
 
 class CooperatorPortalAccount(CustomerPortal):
-    CustomerPortal.MANDATORY_BILLING_FIELDS.extend(
-        ["iban", "birthdate_date", "gender", "lang"]
-    )
+    def __init__(self, *args, **kwargs):
+        super().__init__()
+        # Class scope is accessible throughout the server even on
+        # odoo instances that do not install this module.
+
+        # Therefore : bring back to instance scope if not already
+        #  if "MANDATORY_BILLING_FIELDS" in vars(self):
+        if "MANDATORY_BILLING_FIELDS" not in vars(self):
+            self.MANDATORY_BILLING_FIELDS = (
+                CustomerPortal.MANDATORY_BILLING_FIELDS.copy()
+            )
+
+        self.MANDATORY_BILLING_FIELDS.extend(
+            ["iban", "birthdate_date", "gender", "lang"]
+        )
 
     def _prepare_portal_layout_values(self):
         values = super(CooperatorPortalAccount, self)._prepare_portal_layout_values()
