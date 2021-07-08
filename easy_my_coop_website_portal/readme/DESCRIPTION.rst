@@ -3,3 +3,4 @@
 * On page /my/account
    * prevents modifications to "name" and "email"
    * makes "iban", "birthdate_date", "gender" and "lang" compulsory
+* ...
