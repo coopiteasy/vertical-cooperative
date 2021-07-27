@@ -42,7 +42,7 @@
     </record>
 
     <record id="res_partner_cooperator_3_demo" model="res.partner">
-        <field name="name">Vincent Bixolon</field>
+        <field name="name">Vincent Bixolon 2000</field>
         <field name="customer" eval="True" />
         <field name="is_company" eval="False" />
         <field name="email">vincent@demo.net</field>
