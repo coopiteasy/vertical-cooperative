@@ -32,10 +32,7 @@
                 </div>
             </xpath>
             <!-- Hide -/+ share input -->
-            <xpath
-                expr="//*[@id='wrap']/div[2]/div/div/form/div[22]"
-                position="attributes"
-            >
+            <xpath expr="//div[@name='share_div']" position="attributes">
                 <attribute name="hidden">1</attribute>
             </xpath>
         </template>
