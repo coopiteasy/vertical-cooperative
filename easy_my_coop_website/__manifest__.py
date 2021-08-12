@@ -5,7 +5,7 @@
 
 {
     "name": "Easy My Coop Website",
-    "version": "12.0.1.0.4",
+    "version": "12.0.1.0.6",
     "depends": [
         "easy_my_coop",
         "website",
