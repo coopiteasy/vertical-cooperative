@@ -195,9 +195,7 @@
             <field
                 name="domain"
             >['|', ('cooperator','=',True), '|', ('member','=',True),('old_member','=', True)]</field>
-            <field
-                name="context"
-            >{'default_cooperator':1, 'search_default_cooperators':1}</field>
+            <field name="context">{'create':False}</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Click to add a contact in your address book.
@@ -221,9 +219,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
             <field name="domain">[('cooperator','=',True)]</field>
-            <field name="context">{'default_cooperator':1,
-                'search_default_cooperator_candidates':1}
-            </field>
+            <field name="context">{'create':False}</field>
             <field name="filter" eval="True" />
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
