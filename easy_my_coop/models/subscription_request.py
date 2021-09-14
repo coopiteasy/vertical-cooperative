@@ -557,6 +557,7 @@ class SubscriptionRequest(models.Model):
         return invoice
 
     def get_partner_company_vals(self):
+        # fixme out_inv_comm_type was removed from v12
         partner_vals = {
             "name": self.company_name,
             "last_name": self.company_name,
@@ -602,6 +603,7 @@ class SubscriptionRequest(models.Model):
         return partner_vals
 
     def get_representative_vals(self):
+        # fixme out_inv_comm_type was removed from v12
         contact_vals = {
             "name": self.name,
             "firstname": self.firstname,
