@@ -50,7 +50,6 @@
                             />
                             <field
                                 name="coop_candidate"
-                                readonly="True"
                                 groups="easy_my_coop.group_easy_my_coop_user"
                             />
                             <field
@@ -60,7 +59,6 @@
                             />
                             <field
                                 name="member"
-                                readonly="True"
                                 groups="easy_my_coop.group_easy_my_coop_manager"
                             />
                             <field
