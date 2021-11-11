@@ -20,6 +20,7 @@
         "partner_contact_birthdate",
         "partner_contact_address",
         "email_template_config",
+        "mail",
     ],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
