@@ -33,6 +33,7 @@ def _lang_get(self):
 class SubscriptionRequest(models.Model):
     _name = "subscription.request"
     _description = "Subscription Request"
+    _inherit = ["mail.thread", "mail.activity.mixin"]
 
     def get_required_field(self):
         required_fields = _REQUIRED
@@ -210,6 +211,7 @@ class SubscriptionRequest(models.Model):
         string="State",
         required=True,
         default="draft",
+        track_visibility=True,
     )
     email = fields.Char(
         string="Email",
