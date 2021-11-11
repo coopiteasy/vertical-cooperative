@@ -429,6 +429,7 @@ class SubscriptionRequest(models.Model):
     generic_rules_approved = fields.Boolean(
         string="Generic Rules Approved", default=False
     )
+    active = fields.Boolean(default=True)
 
     _order = "id desc"
 
