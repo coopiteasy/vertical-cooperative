@@ -162,20 +162,22 @@ class SubscriptionRequest(models.Model):
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
+
+    # deprecated, used to keep historic data
     name = fields.Char(
         string="Name",
-        required=True,
         readonly=True,
-        states={"draft": [("readonly", False)]},
     )
     firstname = fields.Char(
         string="Firstname",
         readonly=True,
+        required=True,
         states={"draft": [("readonly", False)]},
     )
     lastname = fields.Char(
         string="Lastname",
         readonly=True,
+        required=True,
         states={"draft": [("readonly", False)]},
     )
     birthdate = fields.Date(
