@@ -438,7 +438,7 @@ class WebsiteSubscription(http.Controller):
         values["lastname"] = lastname
         values["firstname"] = firstname
         values["birthdate"] = datetime.strptime(
-            kwargs.get("birthdate"), "%d/%m/%Y"
+            kwargs.get("birthdate"), "%Y-%m-%d"
         ).date()
         values["source"] = "website"
 
