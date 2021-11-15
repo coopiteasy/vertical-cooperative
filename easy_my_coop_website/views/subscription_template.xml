@@ -563,7 +563,7 @@
                                                         type="text"
                                                         class="form-control total"
                                                         name="total_parts"
-                                                        value="100"
+                                                        value="25"
                                                         t-att-data-max="company.subscription_maximum_amount"
                                                         t-att-readonly="'readonly'"
                                                     />
@@ -1267,81 +1267,76 @@
                                         </t>
                                     </select>
                                 </div>
-                                <div name="share_div" class="form-group">
-                                    <table style="width:80%">
-                                        <tr>
-                                            <td width="30%">
-                                                <label
-                                                    style="text-align:right; width:100%;padding-right:30px"
-                                                >
+                                <div
+                                    t-attf-class="form-group #{error and 'share_product_id' in error and 'has-error' or ''}"
+                                    name="share_number_container"
+                                >
+                                    <label
+                                        class="col-md-3 col-sm-4 control-label"
+                                        style="width:25%"
+                                    >
                                                     Parts number
                                                 </label>
-                                            </td>
-                                            <td width="15%">
+                                                <div class="row">
+                                                    <div class="col col-md-2">
                                                 <div
-                                                    class="css_quantity input-group oe_website_spinner"
-                                                    name="ordered_parts_container"
-                                                >
+                                                class="css_quantity input-group oe_website_spinner"
+                                                name="ordered_parts_container"
+                                            >
                                                     <span
-                                                        class="input-group-addon"
-                                                        style="margin-left:0px"
-                                                    >
+                                                    class="input-group-addon"
+                                                    style="margin-left:0px"
+                                                >
                                                         <a
-                                                            t-attf-href="#"
-                                                            class="mb8 js_add_cart_json"
-                                                        >
+                                                        t-attf-href="#"
+                                                        class="mb8 js_add_cart_json"
+                                                    >
                                                             <i class="fa fa-minus" />
                                                         </a>
                                                     </span>
                                                     <input
-                                                        type="text"
-                                                        class="js_quantity form-control"
-                                                        data-min="1"
-                                                        name="ordered_parts"
-                                                        t-attf-value="#{ordered_parts or 1}"
-                                                    />
+                                                    type="text"
+                                                    class="js_quantity form-control"
+                                                    data-min="1"
+                                                    name="ordered_parts"
+                                                    t-attf-value="#{ordered_parts or 1}"
+                                                />
                                                     <span class="input-group-addon">
                                                         <a
-                                                            t-attf-href="#"
-                                                            class="mb8 float_left js_add_cart_json"
-                                                        >
+                                                        t-attf-href="#"
+                                                        class="mb8 float_left js_add_cart_json"
+                                                    >
                                                             <i class="fa fa-plus" />
                                                         </a>
                                                     </span>
                                                 </div>
-                                            </td>
-                                            <td width="5%">x</td>
-                                            <td id="share_price" width="7%">25
-                                            </td>
-                                            <td width="3%">€</td>
-                                            <td width="5%">=</td>
-                                            <td width="20%">
+                                        </div>
+                                        <div class="col col-md-2">
                                                 <div
-                                                    style="margin-top:12px"
-                                                    t-attf-class="form-group #{error and 'total_parts' in error and 'has-error' or ''}"
-                                                    name="total_parts_container"
-                                                >
-                                                    <div>
+                                                t-attf-class="form-group #{error and 'total_parts' in error and 'has-error' or ''}"
+                                                name="total_parts_container"
+                                            >
+                                                <div class="input-group">
+                                                    <div class="input-group-text"><span
+                                                            t-esc="company.currency_id.symbol"
+                                                        /></div>
                                                         <input
-                                                            type="text"
-                                                            class="form-control total"
-                                                            name="total_parts"
-                                                            value="25"
-                                                            data-max="5000"
-                                                            t-att-readonly="'readonly'"
-                                                        />
+                                                        type="text"
+                                                        class="form-control total"
+                                                        name="total_parts"
+                                                        value="25"
+                                                        data-max="5000"
+                                                        t-att-readonly="'readonly'"
+                                                    />
                                                     </div>
                                                 </div>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div
                                     class="bottom-line"
                                     style="margin-left:178px;margin-top:0px;width:61%"
                                 />
-
-                                <br />
 
                                 <div
                                     id="generic_rules_approved"
@@ -1452,37 +1447,26 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <table style="margin-left:195px">
-                                    <tr>
-                                        <td width="80%">
                                             <!-- TODO: Use a overloaded function with the captcha implementation !-->
                                             <div
-                                                class="g-recaptcha"
-                                                name="recaptcha_key_site"
-                                                t-if="website.company_id.captcha_type == 'google'"
-                                                t-att-data-sitekey="website.recaptcha_key_site"
-                                                data-theme="green"
-                                            />
-                                            <br />
-                                        </td>
-                                        <td>
-                                            <div class="form-group">
-                                                <div
-                                                    class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7"
-                                                >
-                                                    <button
-                                                        class="btn btn-primary btn-lg"
-                                                    >
-                                                        Send
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
+                                    class="g-recaptcha"
+                                    t-if="website.company_id.captcha_type == 'google'"
+                                    t-att-data-sitekey="website.recaptcha_key_site"
+                                    data-theme="green"
+                                    name="recaptcha_key_site"
+                                />
+                                        <br />
 
-                                <br />
+                                        <div
+                                    class="form-group"
+                                    name="send_button_container"
+                                >
+                                                            <button
+                                        class="btn btn-primary"
+                                    >
+                                                                Send
+                                                            </button>
+                                                        </div>
                             </form>
                         </div>
                     </div>
