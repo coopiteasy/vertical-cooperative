@@ -107,6 +107,7 @@
                                         class='btn btn-primary'
                                         t-if="logged"
                                         t-attf-href="/my/account"
+                                        style="margin-bottom:4px;white-space: normal;"
                                     >You want to
                                         modify your personal information ?
                                     </a>
@@ -596,13 +597,6 @@
                                 </div>
 
                                 <div
-                                    class="bottom-line"
-                                    style="margin-left:178px;margin-top:0px;width:61%"
-                                />
-
-                                <br />
-
-                                <div
                                     id="generic_rules_approved"
                                     t-if="display_generic_rules"
                                     t-attf-class="form-group"
@@ -722,10 +716,9 @@
                                     data-theme="green"
                                     name="recaptcha_key_site"
                                 />
-                                            <div
-                                    class="form-group"
-                                    name="send_button_container"
-                                >
+                                <br />
+
+                                <div class="form-group" name="send_button_container">
                                                     <button class="btn btn-primary">
                                                         Send
                                                     </button>
