@@ -17,7 +17,8 @@ exclude: |
   # You don't usually want a bot to modify your legal texts
   (LICENSE.*|COPYING.*)
 default_language_version:
-  python: python3
+  # pylint-odoo does not (yet) support Python 3.10.
+  python: python3.9
 repos:
   - repo: local
     hooks:
