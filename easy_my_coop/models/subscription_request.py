@@ -60,6 +60,20 @@ class SubscriptionRequest(models.Model):
             vals["already_cooperator"] = True
         return vals
 
+    @api.constrains("share_product_id", "is_company")
+    def _check_share_available_to_user(self):
+        for request in self:
+            if request.is_company and not request.share_product_id.by_company:
+                raise ValidationError(
+                    _("%s is not available to companies")
+                    % request.share_product_id.name
+                )
+            elif not request.is_company and not request.share_product_id.by_individual:
+                raise ValidationError(
+                    _("%s is not available to individuals")
+                    % request.share_product_id.name
+                )
+
     @api.model
     def create(self, vals):
         partner_obj = self.env["res.partner"]
