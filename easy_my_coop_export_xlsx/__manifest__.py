@@ -25,7 +25,7 @@
     "author": "Coop IT Easy SCRLfs",
     "license": "AGPL-3",
     "version": "12.0.0.0.1",
-    "website": "https://github.com/OCA/sale-workflow",
+    "website": "https://coopiteasy.be",
     "category": "Cooperative Management",
     "depends": ["easy_my_coop"],
     "external_dependencies": {"python": ["xlsxwriter"]},
