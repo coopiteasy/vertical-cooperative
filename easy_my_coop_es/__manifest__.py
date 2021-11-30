@@ -4,7 +4,7 @@
     "depends": ["easy_my_coop"],
     "author": "Coop IT Easy SCRLfs, " "Coopdevs Treball SCCL",
     "mantainer": "Coopdevs Treball SCCL",
-    "website": "https://github.com/OCA/sale-workflow",
+    "website": "https://coopiteasy.be",
     "category": "Cooperative management",
     "summary": """
     Easy My Coop localization for Spain
