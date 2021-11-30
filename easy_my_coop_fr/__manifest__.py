@@ -8,7 +8,7 @@
     "depends": ["easy_my_coop", "easy_my_coop_website", "l10n_fr"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
-    "website": "https://github.com/OCA/sale-workflow",
+    "website": "https://coopiteasy.be",
     "license": "AGPL-3",
     "summary": """
         This is the french localization for the easy my coop module
