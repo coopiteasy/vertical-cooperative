@@ -146,7 +146,7 @@
 
                 <p t-if="coop.gender">
                     <label>Gender:</label>
-                    <t t-esc="coop.gender" />
+                    <span t-field="coop.gender" />
                 </p>
                 <p t-if="coop.birthdate_date">
                     <label>Date of Birth:</label>
