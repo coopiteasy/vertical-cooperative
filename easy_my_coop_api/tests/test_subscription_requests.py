@@ -197,5 +197,6 @@ class TestSRController(BaseEMCRestCase):
         self.assertTrue(len(self.demo_request_1.capital_release_request) > 0)
 
     def test_service_validate_done_request(self):
+        self.demo_request_2.validate_subscription_request()
         with self.assertRaises(BadRequest):
             self.sr_service.validate(self.demo_request_2.get_api_external_id())

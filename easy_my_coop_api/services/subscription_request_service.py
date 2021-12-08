@@ -78,7 +78,7 @@ class SubscriptionRequestService(Component):
             raise wrapJsonException(
                 NotFound(_("No subscription request for id %s") % _id)
             )
-        if sr.state != "draft":
+        if sr.state not in ("draft", "waiting"):
             raise wrapJsonException(
                 BadRequest(_("Subscription request %s is not in draft state") % _id)
             )
