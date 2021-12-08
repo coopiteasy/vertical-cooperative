@@ -40,7 +40,7 @@ class UserController(main.RestController):
     )
     def test(self, _service_name):
         return self._process_method(
-            _service_name, "test", _id=None, params=None
+            _service_name, "test", params=None
         )
 
     @route(
