@@ -79,6 +79,7 @@ class ExternalIdMixin(models.AbstractModel):
                     break
                 except IntegrityError as e:
                     if n > 0:
+                        n -= 1
                         continue
                     else:
                         raise e
