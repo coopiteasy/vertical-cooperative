@@ -47,6 +47,9 @@ S_SUBSCRIPTION_REQUEST_RETURN_GET = {
         "required": True,
         "empty": True,
     },
+    "data_policy_approved": {"type": "boolean", "required": True},
+    "internal_rules_approved": {"type": "boolean", "required": True},
+    "financial_risk_approved": {"type": "boolean", "required": True},
 }
 
 S_SUBSCRIPTION_REQUEST_SEARCH = {
@@ -80,6 +83,9 @@ S_SUBSCRIPTION_REQUEST_CREATE = {
         },
     },
     "lang": {"type": "string", "required": True, "empty": False},
+    "data_policy_approved": {"type": "boolean", "required": True},
+    "internal_rules_approved": {"type": "boolean", "required": True},
+    "financial_risk_approved": {"type": "boolean", "required": True},
 }
 
 S_SUBSCRIPTION_REQUEST_UPDATE = {
@@ -98,6 +104,9 @@ S_SUBSCRIPTION_REQUEST_UPDATE = {
     },
     "lang": {"type": "string"},
     "share_product": {"type": "integer"},
+    "data_policy_approved": {"type": "boolean"},
+    "internal_rules_approved": {"type": "boolean"},
+    "financial_risk_approved": {"type": "boolean"},
 }
 
 S_SUBSCRIPTION_REQUEST_VALIDATE = {"_id": {"type": "integer"}}
