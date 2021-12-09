@@ -135,6 +135,9 @@
         />
         <field name="lang">en_US</field>
         <field name="skip_control_ng" eval="True" />
+        <field name="data_policy_approved" eval="True" />
+        <field name="internal_rules_approved" eval="True" />
+        <field name="financial_risk_approved" eval="True" />
     </record>
 
     <record id="subscription_request_waiting_demo" model="subscription.request">
@@ -155,6 +158,9 @@
         <field name="lang">en_US</field>
         <field name="skip_control_ng" eval="True" />
         <field name="state">waiting</field>
+        <field name="data_policy_approved" eval="True" />
+        <field name="internal_rules_approved" eval="True" />
+        <field name="financial_risk_approved" eval="True" />
     </record>
 
     <record id="share_line_1_demo" model="share.line">
