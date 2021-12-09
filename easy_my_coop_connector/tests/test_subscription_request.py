@@ -27,7 +27,7 @@ class EMCSRConnectorCase(EMCBaseCase):
         )
         self.share_type_B_pp = self.share_type_B_pt.product_variant_id
 
-    def test_search_requests(self):
+    def test_search_and_get_requests(self):
         SubscriptionRequest = self.env["subscription.request"]
         SRBinding = self.env["emc.binding.subscription.request"]
 
