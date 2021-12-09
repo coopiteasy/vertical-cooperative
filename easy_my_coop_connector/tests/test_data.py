@@ -35,6 +35,9 @@ SR_SEARCH_RESULT = {
             "name": "Manuel Dublues",
             "share_product": {"name": "Part B - Worker", "id": 2},
             "state": "draft",
+            "data_policy_approved": "some data_policy_approved data",
+            "internal_rules_approved": "some internal_rules_approved data",
+            "financial_risk_approved": "some financial_risk_approved data",
         }
     ],
 }
@@ -54,6 +57,9 @@ SR_GET_RESULT = {
     "ordered_parts": 3,
     "share_product": {"name": "Part B - Worker", "id": 2},
     "state": "draft",
+    "data_policy_approved": "some data_policy_approved data",
+    "internal_rules_approved": "some internal_rules_approved data",
+    "financial_risk_approved": "some financial_risk_approved data",
 }
 
 SR_VALIDATE_RESULT = {

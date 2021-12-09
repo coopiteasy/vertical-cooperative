@@ -134,6 +134,9 @@ class SubscriptionRequestAdapter(AbstractEMCAdapter):
             "country_id": country.id,
             "share_product_id": product_product.id,
             "source": "emc_api",
+            "data_policy_approved": api_dict["data_policy_approved"],
+            "internal_rules_approved": api_dict["internal_rules_approved"],
+            "financial_risk_approved": api_dict["financial_risk_approved"],
         }
         return external_id, writable_dict
 
