@@ -29,7 +29,9 @@ class AccountPaymentService(Component):
     def create(self, **params):  # pylint: disable=method-required-super
         params = self._prepare_create(params)
         payment = self.env["account.payment"].create(params)
-        payment.post()
+        # sudo is needed to change state of invoice linked to a request
+        #  sent through the api
+        payment.sudo().post()
         return self._to_dict(payment)
 
     def _prepare_create(self, params):

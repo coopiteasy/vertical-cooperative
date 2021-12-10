@@ -68,7 +68,8 @@ class SubscriptionRequestService(Component):
             raise wrapJsonException(
                 NotFound(_("No subscription request for id %s") % _id)
             )
-        sr.write(params)
+        # sudo is needed to update requests sent through the api
+        sr.sudo().write(params)
         return self._to_dict(sr)
 
     def validate(self, _id, **params):
@@ -81,7 +82,8 @@ class SubscriptionRequestService(Component):
             raise wrapJsonException(
                 BadRequest(_("Subscription request %s is not in draft state") % _id)
             )
-        invoice = sr.validate_subscription_request()
+        # sudo is needed to update requests sent through the api
+        invoice = sr.sudo().validate_subscription_request()
         invoice_service = self.work.component(usage="invoice")
         return invoice_service.get(invoice.get_api_external_id())
 
