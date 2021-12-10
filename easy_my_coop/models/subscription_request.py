@@ -100,7 +100,7 @@ class SubscriptionRequest(models.Model):
             mail_template_notif = subscr_request.get_mail_template_notif(
                 is_company=False
             )  # noqa
-            mail_template_notif.send_mail(subscr_request.id)
+            mail_template_notif.sudo().send_mail(subscr_request.id)
 
         return subscr_request
 
