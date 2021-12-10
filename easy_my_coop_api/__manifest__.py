@@ -17,7 +17,10 @@
     "summary": """
         Open Easy My Coop to the world: RESTful API.
     """,
-    "data": ["views/external_id_mixin_views.xml"],
+    "data": [
+        "security/ir_rule.xml",
+        "views/external_id_mixin_views.xml",
+    ],
     "demo": ["demo/demo.xml"],
     "installable": True,
     "application": False,

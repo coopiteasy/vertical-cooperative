@@ -28,6 +28,9 @@ class BaseEMCRestCase(BaseRestCase):
 
     def setUp(self):
         super().setUp()
+        # tests are run as res_users_manager_emc_demo with
+        #   emc manager access rights
+        self.uid = self.ref("easy_my_coop.res_users_manager_emc_demo")
         self.session = requests.Session()
 
     @classmethod
@@ -180,6 +183,8 @@ class BaseEMCRestCase(BaseRestCase):
         return headers
 
     def http_get(self, url, headers=None):
+        # api is called by res_users_manager_emc_demo with
+        #   emc manager access rights
         headers = self._add_api_key(headers)
         if url.startswith("/"):
             url = "http://{}:{}{}".format(HOST, PORT, url)
@@ -193,6 +198,8 @@ class BaseEMCRestCase(BaseRestCase):
         return json.loads(content)
 
     def http_post(self, url, data, headers=None):
+        # api is called by res_users_manager_emc_demo with
+        #   emc manager access rights
         headers = self._add_api_key(headers)
         if url.startswith("/"):
             url = "http://{}:{}{}".format(HOST, PORT, url)
