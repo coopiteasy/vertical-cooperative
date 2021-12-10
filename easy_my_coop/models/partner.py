@@ -123,11 +123,13 @@ class ResPartner(models.Model):
     cooperator = fields.Boolean(
         string="Cooperator",
         help="Check this box if this contact is a" " cooperator (effective or not).",
+        copy=False,
     )
     member = fields.Boolean(
         string="Effective cooperator",
         help="Check this box if this cooperator" " is an effective member.",
         readonly=True,
+        copy=False,
     )
     coop_candidate = fields.Boolean(
         string="Cooperator candidate",
@@ -145,7 +147,7 @@ class ResPartner(models.Model):
         string="Gender",
     )
     share_ids = fields.One2many("share.line", "partner_id", string="Share Lines")
-    cooperator_register_number = fields.Integer(string="Cooperator Number")
+    cooperator_register_number = fields.Integer(string="Cooperator Number", copy=False)
     number_of_share = fields.Integer(
         compute="_compute_share_info",
         multi="share",
