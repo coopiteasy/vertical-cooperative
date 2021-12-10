@@ -8,6 +8,7 @@ from datetime import timedelta
 from werkzeug.exceptions import BadRequest
 
 import odoo
+from odoo.exceptions import AccessError
 from odoo.fields import Date
 
 from odoo.addons.base_rest.controllers.main import _PseudoCollection
@@ -74,6 +75,12 @@ class TestSRController(BaseEMCRestCase):
         self.assertTrue(date_sr)
         self.assertTrue(self.demo_request_1.first_api_export_date)
         self.assertTrue(self.demo_request_1.last_api_export_date)
+
+    def test_fetched_request_cannot_be_updated(self):
+        external_id = self.demo_request_1.get_api_external_id()
+        self.sr_service.get(external_id)
+        with self.assertRaises(AccessError):
+            self.demo_request_1.email = "other@email.be"
 
     def test_route_get(self):
         external_id = self.demo_request_1.get_api_external_id()
