@@ -7,7 +7,7 @@
 {
     "name": "Easy My Coop",
     "summary": "Manage your cooperative shares",
-    "version": "12.0.3.0.2",
+    "version": "12.0.3.1.0",
     "depends": [
         "base",
         "web",
