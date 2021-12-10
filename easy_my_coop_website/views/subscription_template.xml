@@ -99,7 +99,7 @@
                                         t-att-value="request.csrf_token()"
                                     />
                                 </div>
-                                <div 
+                                <div
                                     t-attf-class="form-group"
                                     name="my_account_link_container"
                                 >
@@ -113,7 +113,7 @@
                                     <br />
                                 </div>
 
-                                <div 
+                                <div
                                     t-attf-class="form-group"
                                     name="my_account_link_container"
                                 >
@@ -127,8 +127,8 @@
                                     <br />
                                 </div>
 
-                                <div 
-                                    t-attf-class="form-group" 
+                                <div
+                                    t-attf-class="form-group"
                                     style="display: none;"
                                     name="logged_container"
                                 >
@@ -142,8 +142,8 @@
                                     </label>
                                 </div>
 
-                                <div 
-                                    t-attf-class="form-group" 
+                                <div
+                                    t-attf-class="form-group"
                                     style="display: none;"
                                     name="already_cooperator_container"
                                 >
@@ -385,7 +385,7 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'zip_code' in error and 'has-error' or ''}"
-                                    name="zip_code_city_container" 
+                                    name="zip_code_city_container"
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -645,7 +645,6 @@
                                     t-if="display_internal_rules"
                                     t-attf-class="form-group"
                                     name="internal_rules_approved_container"
-
                                 >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
@@ -739,7 +738,7 @@
                                             <br />
                                         </td>
                                         <td>
-                                            <div 
+                                            <div
                                                 class="form-group"
                                                 name="send_button_container"
                                             >
@@ -794,8 +793,8 @@
                                     />
                                 </div>
 
-                                <div 
-                                    t-attf-class="form-group" 
+                                <div
+                                    t-attf-class="form-group"
                                     style="display: none;"
                                     name="logged_is_company_container"
                                 >
@@ -826,7 +825,8 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'company_register_number' in error and 'has-error' or ''}"
-                                    name="company_register_number_container">
+                                    name="company_register_number_container"
+                                >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
                                         for="company_register_number"
@@ -994,7 +994,8 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'zip_code' in error and 'has-error' or ''}"
-                                    name="zip_code_city_container">
+                                    name="zip_code_city_container"
+                                >
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
                                         for="zip_code"
@@ -1033,7 +1034,8 @@
 
                                 <div
                                     t-attf-class="form-group #{error and 'country_id' in error and 'has-error' or ''}"
-                                    name="country_container">
+                                    name="country_container"
+                                >
 
                                     <label
                                         class="col-md-3 col-sm-4 control-label"
