@@ -291,7 +291,8 @@
                     alternator,
                     lastMatch,
                     groupToken,
-                    tokenizer = /(?:[?*+]|\{[0-9\+\*]+(?:,[0-9\+\*]*)?\})|[^.?*+^${[]()|\\]+|./g,
+                    tokenizer =
+                        /(?:[?*+]|\{[0-9\+\*]+(?:,[0-9\+\*]*)?\})|[^.?*+^${[]()|\\]+|./g,
                     escaped = !1,
                     currentToken = new MaskToken(),
                     openenings = [],
@@ -1015,9 +1016,8 @@
                                             }
                                         }
                                     }
-                                    malternateMatches = malternateMatches.concat(
-                                        maltMatches
-                                    );
+                                    malternateMatches =
+                                        malternateMatches.concat(maltMatches);
                                 }
                                 typeof altIndex === "string" &&
                                     (malternateMatches = $.map(
@@ -1058,7 +1058,8 @@
                                                                   ] = parseInt(
                                                                       altLocArr[alndx]
                                                                   )),
-                                                            (lmnt.alternation = alternation));
+                                                            (lmnt.alternation =
+                                                                alternation));
                                                 }
                                                 if (
                                                     void 0 !== lmnt.locator[alternation]
@@ -1068,9 +1069,8 @@
                                             }
                                         }
                                     )),
-                                    (matches = currentMatches.concat(
-                                        malternateMatches
-                                    )),
+                                    (matches =
+                                        currentMatches.concat(malternateMatches)),
                                     (testPos = pos),
                                     (insertStop = matches.length > 0);
                             } else {
@@ -1455,8 +1455,8 @@
                     !altPos ||
                         void 0 === altPos.alternation ||
                         ((lastAlt = lAlt),
-                        (alternation = getMaskSet().validPositions[lastAlt]
-                            .alternation),
+                        (alternation =
+                            getMaskSet().validPositions[lastAlt].alternation),
                         getTestTemplate(lastAlt).locator[altPos.alternation] ===
                             altPos.locator[altPos.alternation]));
                     lAlt--
@@ -1472,17 +1472,17 @@
                             var altNdxs;
                             lastAlt === 0
                                 ? ((altNdxs = []),
-                                  $.each(getMaskSet().tests[lastAlt], function (
-                                      ndx,
-                                      test
-                                  ) {
-                                      void 0 !== test.locator[alternation] &&
-                                          (altNdxs = altNdxs.concat(
-                                              test.locator[alternation]
-                                                  .toString()
-                                                  .split(",")
-                                          ));
-                                  }))
+                                  $.each(
+                                      getMaskSet().tests[lastAlt],
+                                      function (ndx, test) {
+                                          void 0 !== test.locator[alternation] &&
+                                              (altNdxs = altNdxs.concat(
+                                                  test.locator[alternation]
+                                                      .toString()
+                                                      .split(",")
+                                              ));
+                                      }
+                                  ))
                                 : (altNdxs = getMaskSet()
                                       .validPositions[lastAlt].locator[
                                           alternation
@@ -1507,8 +1507,8 @@
                                         dp--
                                     ) {
                                         if (
-                                            ((possibilityPos = getMaskSet()
-                                                .validPositions[dp]),
+                                            ((possibilityPos =
+                                                getMaskSet().validPositions[dp]),
                                             void 0 !== possibilityPos)
                                         ) {
                                             var bestMatch = selectBestMatch(
@@ -1521,12 +1521,10 @@
                                                     getMaskSet().validPositions[dp]
                                                         .input
                                                 ),
-                                                (getMaskSet().validPositions[
-                                                    dp
-                                                ] = bestMatch),
-                                                (getMaskSet().validPositions[
-                                                    dp
-                                                ].input = getPlaceholder(dp)),
+                                                (getMaskSet().validPositions[dp] =
+                                                    bestMatch),
+                                                (getMaskSet().validPositions[dp].input =
+                                                    getPlaceholder(dp)),
                                                 getMaskSet().validPositions[dp].match
                                                     .fn === null &&
                                                     staticInputsBeforePosAlternate++,
@@ -1535,9 +1533,8 @@
                                                     possibilityPos.locator[
                                                         alternation
                                                     ]),
-                                                (possibilityPos.locator[
-                                                    alternation
-                                                ] = parseInt(altNdxs[mndx]));
+                                                (possibilityPos.locator[alternation] =
+                                                    parseInt(altNdxs[mndx]));
                                             break;
                                         }
                                     }
@@ -1582,9 +1579,8 @@
                                         }
                                         if (
                                             ((possibilityPos.alternation = alternation),
-                                            (possibilityPos.locator[
-                                                alternation
-                                            ] = possibilities),
+                                            (possibilityPos.locator[alternation] =
+                                                possibilities),
                                             isValidRslt)
                                         ) {
                                             var targetLvp =
@@ -1594,9 +1590,8 @@
                                                 i < getLastValidPosition() + 1;
                                                 i++
                                             ) {
-                                                (validPos = getMaskSet().validPositions[
-                                                    i
-                                                ]),
+                                                (validPos =
+                                                    getMaskSet().validPositions[i]),
                                                     (void 0 === validPos ||
                                                         validPos.match.fn == null) &&
                                                         pos > i &&
@@ -2036,9 +2031,8 @@
                     ? null
                     : (isRTL ? umValue.reverse() : umValue).join("");
             if (unmaskedValue !== null) {
-                var bufferValue = (isRTL
-                    ? getBuffer().slice().reverse()
-                    : getBuffer()
+                var bufferValue = (
+                    isRTL ? getBuffer().slice().reverse() : getBuffer()
                 ).join("");
                 $.isFunction(opts.onUnMask) &&
                     (unmaskedValue =
@@ -3202,9 +3196,11 @@
                               (isRTL = el.inputmask.isRTL))
                             : ((valueBuffer = actionObj.value),
                               opts.numericInput && (isRTL = !0),
-                              (valueBuffer = ($.isFunction(opts.onBeforeMask)
-                                  ? opts.onBeforeMask(valueBuffer, opts) || valueBuffer
-                                  : valueBuffer
+                              (valueBuffer = (
+                                  $.isFunction(opts.onBeforeMask)
+                                      ? opts.onBeforeMask(valueBuffer, opts) ||
+                                        valueBuffer
+                                      : valueBuffer
                               ).split("")),
                               checkVal(
                                   void 0,
@@ -3229,10 +3225,11 @@
                 case "format":
                     return (
                         opts.numericInput && (isRTL = !0),
-                        (valueBuffer = ($.isFunction(opts.onBeforeMask)
-                            ? opts.onBeforeMask(actionObj.value, opts) ||
-                              actionObj.value
-                            : actionObj.value
+                        (valueBuffer = (
+                            $.isFunction(opts.onBeforeMask)
+                                ? opts.onBeforeMask(actionObj.value, opts) ||
+                                  actionObj.value
+                                : actionObj.value
                         ).split("")),
                         checkVal(
                             void 0,
@@ -3324,8 +3321,8 @@
                                 void 0 !==
                                     getMaskSet().validPositions[firstAlt].alternation
                             ) {
-                                alternation = getMaskSet().validPositions[firstAlt]
-                                    .alternation;
+                                alternation =
+                                    getMaskSet().validPositions[firstAlt].alternation;
                                 break;
                             }
                         }
@@ -3414,34 +3411,8 @@
                 },
             },
             ignorables: [
-                8,
-                9,
-                13,
-                19,
-                27,
-                33,
-                34,
-                35,
-                36,
-                37,
-                38,
-                39,
-                40,
-                45,
-                46,
-                93,
-                112,
-                113,
-                114,
-                115,
-                116,
-                117,
-                118,
-                119,
-                120,
-                121,
-                122,
-                123,
+                8, 9, 13, 19, 27, 33, 34, 35, 36, 37, 38, 39, 40, 45, 46, 93, 112, 113,
+                114, 115, 116, 117, 118, 119, 120, 121, 122, 123,
             ],
             isComplete: null,
             canClearPosition: $.noop,
@@ -4150,9 +4121,8 @@
                                                 ))
                                             ) {
                                                 return (
-                                                    (maskset.buffer[
-                                                        pos++
-                                                    ] = yearPrefix.charAt(0)),
+                                                    (maskset.buffer[pos++] =
+                                                        yearPrefix.charAt(0)),
                                                     {
                                                         pos: pos,
                                                     }
@@ -4174,12 +4144,10 @@
                                                 )))
                                             ) {
                                                 return (
-                                                    (maskset.buffer[
-                                                        pos++
-                                                    ] = yearPrefix.charAt(0)),
-                                                    (maskset.buffer[
-                                                        pos++
-                                                    ] = yearPrefix.charAt(1)),
+                                                    (maskset.buffer[pos++] =
+                                                        yearPrefix.charAt(0)),
+                                                    (maskset.buffer[pos++] =
+                                                        yearPrefix.charAt(1)),
                                                     {
                                                         pos: pos,
                                                     }
@@ -4220,9 +4188,8 @@
                                                 ))
                                             ) {
                                                 return (
-                                                    (maskset.buffer[
-                                                        pos++
-                                                    ] = yearPrefix.charAt(1)),
+                                                    (maskset.buffer[pos++] =
+                                                        yearPrefix.charAt(1)),
                                                     {
                                                         pos: pos,
                                                     }
@@ -4264,15 +4231,12 @@
                                             }
                                             if (isValid) {
                                                 return (
-                                                    (maskset.buffer[
-                                                        pos - 1
-                                                    ] = yearPrefix.charAt(0)),
-                                                    (maskset.buffer[
-                                                        pos++
-                                                    ] = yearPrefix.charAt(1)),
-                                                    (maskset.buffer[
-                                                        pos++
-                                                    ] = chrs.charAt(0)),
+                                                    (maskset.buffer[pos - 1] =
+                                                        yearPrefix.charAt(0)),
+                                                    (maskset.buffer[pos++] =
+                                                        yearPrefix.charAt(1)),
+                                                    (maskset.buffer[pos++] =
+                                                        chrs.charAt(0)),
                                                     {
                                                         refreshFromBuffer: {
                                                             start: pos - 3,
@@ -4491,12 +4455,12 @@
                                         tmp < 10
                                             ? ((maskset.buffer[pos] = tmp.toString()),
                                               (maskset.buffer[pos - 1] = "0"))
-                                            : ((maskset.buffer[
-                                                  pos
-                                              ] = tmp.toString().charAt(1)),
-                                              (maskset.buffer[
-                                                  pos - 1
-                                              ] = tmp.toString().charAt(0))),
+                                            : ((maskset.buffer[pos] = tmp
+                                                  .toString()
+                                                  .charAt(1)),
+                                              (maskset.buffer[pos - 1] = tmp
+                                                  .toString()
+                                                  .charAt(0))),
                                         {
                                             refreshFromBuffer: {
                                                 start: pos - 1,
@@ -4762,8 +4726,7 @@
                     },
                 },
                 email: {
-                    mask:
-                        "*{1,64}[.*{1,64}][.*{1,64}][.*{1,64}]@*{1,64}[.*{2,64}][.*{2,6}][.*{1,2}]",
+                    mask: "*{1,64}[.*{1,64}][.*{1,64}][.*{1,64}]@*{1,64}[.*{2,64}][.*{2,6}][.*{1,2}]",
                     greedy: !1,
                     onBeforePaste: function (pastedValue, opts) {
                         return (
@@ -5545,11 +5508,10 @@
                                                                   : "+",
                                                           caret: pos + 1,
                                                           insert: {
-                                                              pos:
-                                                                  maskset.buffer.length,
-                                                              c:
-                                                                  opts.negationSymbol
-                                                                      .back,
+                                                              pos: maskset.buffer
+                                                                  .length,
+                                                              c: opts.negationSymbol
+                                                                  .back,
                                                           },
                                                       }
                                                     : {
@@ -5984,7 +5946,8 @@
                     repeat: "*",
                     regex: null,
                     regexTokens: null,
-                    tokenizer: /\[\^?]?(?:[^\\\]]+|\\[\S\s]?)*]?|\\(?:0(?:[0-3][0-7]{0,2}|[4-7][0-7]?)?|[1-9][0-9]*|x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4}|c[A-Za-z]|[\S\s]?)|\((?:\?[:=!]?)?|(?:[?*+]|\{[0-9]+(?:,[0-9]*)?\})\??|[^.?*+^${[()|\\]+|./g,
+                    tokenizer:
+                        /\[\^?]?(?:[^\\\]]+|\\[\S\s]?)*]?|\\(?:0(?:[0-3][0-7]{0,2}|[4-7][0-7]?)?|[1-9][0-9]*|x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4}|c[A-Za-z]|[\S\s]?)|\((?:\?[:=!]?)?|(?:[?*+]|\{[0-9]+(?:,[0-9]*)?\})\??|[^.?*+^${[()|\\]+|./g,
                     quantifierFilter: /[0-9]+[^,]/,
                     isComplete: function (buffer, opts) {
                         return new RegExp(opts.regex).test(buffer.join(""));
@@ -6060,9 +6023,8 @@
                                                         ].matches;
                                                     (match = matches.pop()),
                                                         match.isGroup ||
-                                                            ((groupToken = new RegexToken(
-                                                                !0
-                                                            )),
+                                                            ((groupToken =
+                                                                new RegexToken(!0)),
                                                             groupToken.matches.push(
                                                                 match
                                                             ),
@@ -6070,11 +6032,11 @@
                                                         matches.push(match),
                                                         matches.push(quantifierToken);
                                                 } else {
-                                                    (match = currentToken.matches.pop()),
+                                                    (match =
+                                                        currentToken.matches.pop()),
                                                         match.isGroup ||
-                                                            ((groupToken = new RegexToken(
-                                                                !0
-                                                            )),
+                                                            ((groupToken =
+                                                                new RegexToken(!0)),
                                                             groupToken.matches.push(
                                                                 match
                                                             ),
@@ -6140,7 +6102,8 @@
                                                     isvalid ||
                                                     validateRegexToken(matchGroup, !0)),
                                                     isvalid &&
-                                                        (matchToken.repeaterPart = regexPart),
+                                                        (matchToken.repeaterPart =
+                                                            regexPart),
                                                     (regexPart =
                                                         regexPartBak +
                                                         matchToken.quantifier.max);
@@ -6199,10 +6162,11 @@
                                                 ) {
                                                     if (matchToken.charAt(l) !== "\\") {
                                                         (testExp = regexPart),
-                                                            (testExp += matchToken.substr(
-                                                                0,
-                                                                l + 1
-                                                            )),
+                                                            (testExp +=
+                                                                matchToken.substr(
+                                                                    0,
+                                                                    l + 1
+                                                                )),
                                                             (testExp = testExp.replace(
                                                                 /\|$/,
                                                                 ""
@@ -6218,9 +6182,8 @@
                                                             "^(" + testExp + ")$"
                                                         );
                                                         if (
-                                                            (isvalid = exp.test(
-                                                                bufferStr
-                                                            ))
+                                                            (isvalid =
+                                                                exp.test(bufferStr))
                                                         ) {
                                                             break;
                                                         }
