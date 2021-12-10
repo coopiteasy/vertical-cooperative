@@ -26,7 +26,7 @@
             name="internal_id"
             ref="easy_my_coop.product_template_share_type_1_demo"
         />
-        <field name="external_id">37</field>
+        <field name="external_id">1</field>
     </record>
 
     <record
@@ -38,7 +38,21 @@
             name="internal_id"
             ref="easy_my_coop.product_template_share_type_2_demo"
         />
-        <field name="external_id">31</field>
+        <field name="external_id">2</field>
     </record>
 
+    <record
+        id="emc_binding_subscription_journal_demo"
+        model="emc.binding.account.journal"
+    >
+        <field name="backend_id" ref="emc_backend_demo" />
+        <field name="internal_id" ref="easy_my_coop.subscription_journal" />
+        <field name="external_id">1</field>
+    </record>
+
+    <record id="emc_binding_account_account_demo" model="emc.binding.account.account">
+        <field name="backend_id" ref="emc_backend_demo" />
+        <field name="internal_id" ref="easy_my_coop.account_equity_demo" />
+        <field name="external_id">1</field>
+    </record>
 </odoo>
