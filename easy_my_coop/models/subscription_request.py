@@ -201,7 +201,7 @@ class SubscriptionRequest(models.Model):
     state = fields.Selection(
         [
             ("draft", "Draft"),
-            ("block", "Blocked"),
+            ("block", "Blocked"),  # todo reword to blocked
             ("done", "Done"),
             ("waiting", "Waiting"),
             ("transfer", "Transfer"),
@@ -516,19 +516,6 @@ class SubscriptionRequest(models.Model):
         }
         return res
 
-    def get_capital_release_mail_template(self):
-        template = "easy_my_coop.email_template_release_capital"
-        return self.env.ref(template, False)
-
-    def send_capital_release_request(self, invoice):
-        email_template = self.get_capital_release_mail_template()
-
-        if self.company_id.send_capital_release_email:
-            # we send the email with the capital release request in attachment
-            # TODO remove sudo() and give necessary access right
-            email_template.sudo().send_mail(invoice.id, True)
-            invoice.sent = True
-
     def get_journal(self):
         return self.env.ref("easy_my_coop.subscription_journal")
 
@@ -568,8 +555,7 @@ class SubscriptionRequest(models.Model):
 
         # validate the capital release request
         invoice.action_invoice_open()
-
-        self.send_capital_release_request(invoice)
+        invoice.send_capital_release_request()
 
         return invoice
 
