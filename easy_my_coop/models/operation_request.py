@@ -288,17 +288,19 @@ class OperationRequest(models.Model):
     def get_share_update_mail_template(self):
         return self.env.ref("easy_my_coop.email_template_share_update", False)
 
-    def send_share_trans_mail(
+    def send_share_trans_mail(  # todo rename
         self, sub_register_line
-    ):  # Unused argument is used in synergie project. Do not remove.
-        cert_email_template = self.get_share_trans_mail_template()
-        cert_email_template.send_mail(self.partner_id_to.id, False)
+    ):  # fixme unused argument is used in synergie project. Do not remove.
+        if self.company_id.send_share_transfert_email:
+            cert_email_template = self.get_share_trans_mail_template()
+            cert_email_template.send_mail(self.partner_id_to.id, False)
 
-    def send_share_update_mail(
+    def send_share_update_mail(  # todo rename
         self, sub_register_line
-    ):  # Unused argument is used in synergie project. Do not remove.
-        cert_email_template = self.get_share_update_mail_template()
-        cert_email_template.send_mail(self.partner_id.id, False)
+    ):  # fixme unused argument is used in synergie project. Do not remove.
+        if self.company_id.send_share_update_email:
+            cert_email_template = self.get_share_update_mail_template()
+            cert_email_template.send_mail(self.partner_id.id, False)
 
     def get_subscription_register_vals(self, effective_date):
         return {
