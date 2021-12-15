@@ -165,7 +165,7 @@ class ResPartner(models.Model):
     effective_date = fields.Date(
         sting="Effective Date", compute=_compute_effective_date, store=True
     )
-    representative = fields.Boolean(string="Legal Representative")
+    representative = fields.Boolean(string="Legal Representative", default=True)
     representative_of_member_company = fields.Boolean(
         string="Legal Representative of Member Company",
         store=True,
