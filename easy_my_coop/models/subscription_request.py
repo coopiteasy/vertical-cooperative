@@ -75,10 +75,21 @@ class SubscriptionRequest(models.Model):
                     % request.share_product_id.name
                 )
 
+    def send_confirmation_email(self):
+        if self.company_id.send_confirmation_email:
+            mail_template_notif = self.get_mail_template_notif(
+                is_company=self.partner_id.is_company
+            )
+            mail_template_notif.sudo().send_mail(self.id)
+
+    # todo code this in a more pythonic way
+    #  - do not bypass self.create in create_comp_sub_req
+    #  - use "not in" where applicable
+    #  - sanitize declaration and assignation of cooperator
+    #  beware if usage in investor_wallet_platform
     @api.model
     def create(self, vals):
         partner_obj = self.env["res.partner"]
-
         if not vals.get("partner_id"):
             cooperator = False
             if vals.get("email"):
@@ -94,15 +105,10 @@ class SubscriptionRequest(models.Model):
 
         if not cooperator.cooperator:
             cooperator.write({"cooperator": True})
-        subscr_request = super(SubscriptionRequest, self).create(vals)
 
-        if self.company_id.send_confirmation_email:
-            mail_template_notif = subscr_request.get_mail_template_notif(
-                is_company=False
-            )  # noqa
-            mail_template_notif.sudo().send_mail(subscr_request.id)
-
-        return subscr_request
+        subscription_request = super(SubscriptionRequest, self).create(vals)
+        subscription_request.send_confirmation_email()
+        return subscription_request
 
     @api.model
     def create_comp_sub_req(self, vals):
@@ -115,16 +121,9 @@ class SubscriptionRequest(models.Model):
                 vals["type"] = "subscription"
                 vals = self.is_member(vals, cooperator)
                 vals["partner_id"] = cooperator.id
-        subscr_request = super(SubscriptionRequest, self).create(vals)
-
-        # fixme sends two emails
-        if self.company_id.send_confirmation_email:
-            confirmation_mail_template = subscr_request.get_mail_template_notif(
-                is_company=True
-            )
-            confirmation_mail_template.send_mail(subscr_request.id)
-
-        return subscr_request
+        subscription_request = super(SubscriptionRequest, self).create(vals)
+        subscription_request.send_confirmation_email()
+        return subscription_request
 
     def check_empty_string(self, value):
         if value is None or value is False or value == "":
