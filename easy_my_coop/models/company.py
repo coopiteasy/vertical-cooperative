@@ -97,7 +97,7 @@ class ResCompany(models.Model):
     )
     generic_rules_approval_text = fields.Html(
         translate=True,
-        help="Text to display aside the checkbox to approve the " "generic rules.",
+        help="Text to display aside the checkbox to approve the generic rules.",
     )
     send_certificate_email = fields.Boolean(
         string="Send certificate email", default=True
@@ -107,6 +107,9 @@ class ResCompany(models.Model):
     )
     send_capital_release_email = fields.Boolean(
         string="Send Capital Release email", default=True
+    )
+    send_waiting_list_email = fields.Boolean(
+        string="Send Waiting List email", default=True
     )
 
     @api.onchange("data_policy_approval_required")
