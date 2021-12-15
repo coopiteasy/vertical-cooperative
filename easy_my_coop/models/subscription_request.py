@@ -34,6 +34,7 @@ class SubscriptionRequest(models.Model):
     _name = "subscription.request"
     _description = "Subscription Request"
     _inherit = ["mail.thread", "mail.activity.mixin"]
+    _rec_name = "lastname"
 
     def get_required_field(self):
         required_fields = _REQUIRED
