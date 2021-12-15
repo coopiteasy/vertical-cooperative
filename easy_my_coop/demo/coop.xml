@@ -119,7 +119,6 @@
     </record>
 
     <record id="subscription_request_1_demo" model="subscription.request">
-        <field name="name">Manuel Dublues</field>
         <field name="firstname">Manuel</field>
         <field name="lastname">Dublues</field>
         <field name="email">manuel@demo.net</field>
@@ -148,7 +147,6 @@
     </record>
 
     <record id="subscription_request_waiting_demo" model="subscription.request">
-        <field name="name">Catherine des Champs</field>
         <field name="firstname">Catherine</field>
         <field name="lastname">des Champs</field>
         <field name="email">catherine@demo.net</field>
