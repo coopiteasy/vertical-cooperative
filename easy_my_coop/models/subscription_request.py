@@ -96,7 +96,7 @@ class SubscriptionRequest(models.Model):
             cooperator.write({"cooperator": True})
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
-        if subscr_request._send_confirmation_email():
+        if self.company_id.send_confirmation_email:
             mail_template_notif = subscr_request.get_mail_template_notif(
                 is_company=False
             )  # noqa
@@ -117,7 +117,8 @@ class SubscriptionRequest(models.Model):
                 vals["partner_id"] = cooperator.id
         subscr_request = super(SubscriptionRequest, self).create(vals)
 
-        if self._send_confirmation_email():
+        # fixme sends two emails
+        if self.company_id.send_confirmation_email:
             confirmation_mail_template = subscr_request.get_mail_template_notif(
                 is_company=True
             )
@@ -760,6 +761,3 @@ class SubscriptionRequest(models.Model):
         self.ensure_one()
         self.send_waiting_list_email()
         self.write({"state": "waiting"})
-
-    def _send_confirmation_email(self):
-        return self.company_id.send_confirmation_email
