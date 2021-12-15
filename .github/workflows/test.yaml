@@ -1,0 +1,39 @@
+name: Test Odoo addons
+
+on:
+  push:
+    branches:
+      - 12.0
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: ghcr.io/coopiteasy/cie-odoo-ci:${{ matrix.container-tag }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - container-tag: 12.0-py3.6-main
+          - container-tag: 12.0-py3.7-main
+          - container-tag: 12.0-py3.8-main
+    services:
+      postgres:
+        image: postgres:12
+        env:
+          POSTGRES_USER: odoo
+          POSTGRES_PASSWORD: odoo
+          POSTGRES_DB: odoo
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Refresh gitaggregate
+        run: refresh_gitaggregate
+
+      - name: Install base Odoo
+        run: initialise_odoo .
+
+      - name: Run Odoo tests
+        run: run_tests .
