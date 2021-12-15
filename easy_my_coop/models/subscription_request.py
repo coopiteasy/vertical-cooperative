@@ -748,13 +748,17 @@ class SubscriptionRequest(models.Model):
         self.ensure_one()
         self.write({"state": "cancelled"})
 
+    def send_waiting_list_email(self):
+        if self.company_id.send_waiting_list_email:
+            waiting_list_mail_template = self.env.ref(
+                "easy_my_coop.email_template_waiting_list", False
+            )
+            waiting_list_mail_template.send_mail(self.id, True)
+
     @api.multi
     def put_on_waiting_list(self):
         self.ensure_one()
-        waiting_list_mail_template = self.env.ref(
-            "easy_my_coop.email_template_waiting_list", False
-        )
-        waiting_list_mail_template.send_mail(self.id, True)
+        self.send_waiting_list_email()
         self.write({"state": "waiting"})
 
     def _send_confirmation_email(self):
