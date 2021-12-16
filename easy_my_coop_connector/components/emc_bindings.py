@@ -10,10 +10,16 @@ class EMCBinding(models.AbstractModel):
     _description = "EMC Binding (abstract)"
 
     backend_id = fields.Many2one(
-        comodel_name="emc.backend", string="EMC Backend", ondelete="restrict"
+        comodel_name="emc.backend", string="EMC Backend", ondelete="cascade"
     )
     external_id = fields.Integer(string="ID in Platform", index=True)
-    # internal_id = fields.Many2one  # implement in concrete class
+
+    # internal_id = fields.Many2one(  # implement in concrete model
+    #     comodel_name="bound model",
+    #     string="Internal ID",
+    #     required=True,
+    #     ondelete="cascade",
+    # )
 
     @api.model
     def search_binding(self, backend, external_id):
@@ -33,6 +39,7 @@ class SubscriptionRequestBinding(models.Model):
         comodel_name="subscription.request",
         string="Internal ID",
         required=True,
+        ondelete="cascade",
     )
 
 
@@ -45,6 +52,7 @@ class ProductTemplateBinding(models.Model):
         string="Internal ID",
         domain="[('is_share', '=', True)]",
         required=True,
+        ondelete="cascade",
     )
 
 
@@ -53,7 +61,10 @@ class AccountInvoiceBinding(models.Model):
     _inherit = "emc.binding"
 
     internal_id = fields.Many2one(
-        comodel_name="account.invoice", string="Internal ID", required=True
+        comodel_name="account.invoice",
+        string="Internal ID",
+        required=True,
+        ondelete="cascade",
     )
 
 
@@ -62,7 +73,10 @@ class AccountPaymentBinding(models.Model):
     _inherit = "emc.binding"
 
     internal_id = fields.Many2one(
-        comodel_name="account.payment", string="Internal ID", required=True
+        comodel_name="account.payment",
+        string="Internal ID",
+        required=True,
+        ondelete="cascade",
     )
 
 
@@ -71,7 +85,10 @@ class AccountJournalBinding(models.Model):
     _inherit = "emc.binding"
 
     internal_id = fields.Many2one(
-        comodel_name="account.journal", string="Internal ID", required=True
+        comodel_name="account.journal",
+        string="Internal ID",
+        required=True,
+        ondelete="cascade",
     )
 
 
@@ -80,5 +97,8 @@ class AccountAccountBinding(models.Model):
     _inherit = "emc.binding"
 
     internal_id = fields.Many2one(
-        comodel_name="account.account", string="Internal ID", required=True
+        comodel_name="account.account",
+        string="Internal ID",
+        required=True,
+        ondelete="cascade",
     )
