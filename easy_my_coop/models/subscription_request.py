@@ -75,7 +75,7 @@ class SubscriptionRequest(models.Model):
                     % request.share_product_id.name
                 )
 
-    def send_confirmation_email(self):
+    def _send_confirmation_email(self):
         if self.company_id.send_confirmation_email:
             mail_template_notif = self.get_mail_template_notif(
                 is_company=self.partner_id.is_company
@@ -107,7 +107,7 @@ class SubscriptionRequest(models.Model):
             cooperator.write({"cooperator": True})
 
         subscription_request = super(SubscriptionRequest, self).create(vals)
-        subscription_request.send_confirmation_email()
+        subscription_request._send_confirmation_email()
         return subscription_request
 
     @api.model
@@ -122,7 +122,7 @@ class SubscriptionRequest(models.Model):
                 vals = self.is_member(vals, cooperator)
                 vals["partner_id"] = cooperator.id
         subscription_request = super(SubscriptionRequest, self).create(vals)
-        subscription_request.send_confirmation_email()
+        subscription_request._send_confirmation_email()
         return subscription_request
 
     def check_empty_string(self, value):
@@ -555,7 +555,7 @@ class SubscriptionRequest(models.Model):
 
         # validate the capital release request
         invoice.action_invoice_open()
-        invoice.send_capital_release_request()
+        invoice.send_capital_release_request_email()
 
         return invoice
 
@@ -748,7 +748,7 @@ class SubscriptionRequest(models.Model):
         self.ensure_one()
         self.write({"state": "cancelled"})
 
-    def send_waiting_list_email(self):
+    def _send_waiting_list_email(self):
         if self.company_id.send_waiting_list_email:
             waiting_list_mail_template = self.env.ref(
                 "easy_my_coop.email_template_waiting_list", False
@@ -758,5 +758,5 @@ class SubscriptionRequest(models.Model):
     @api.multi
     def put_on_waiting_list(self):
         self.ensure_one()
-        self.send_waiting_list_email()
+        self._send_waiting_list_email()
         self.write({"state": "waiting"})
