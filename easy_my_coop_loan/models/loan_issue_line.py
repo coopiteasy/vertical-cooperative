@@ -94,17 +94,17 @@ class LoanIssueLine(models.Model):
                 months=line.loan_issue_id.loan_term
             )
 
-    def get_loan_sub_mail_template(self):
+    def _get_loan_sub_mail_template(self):
         return self.env.ref("easy_my_coop_loan.loan_subscription_confirmation", False)
 
-    def get_loan_pay_req_mail_template(self):
+    def _get_loan_pay_req_mail_template(self):
         return self.env.ref("easy_my_coop_loan.loan_issue_payment_request", False)
 
     @api.model
     def create(self, vals):
         line = super(LoanIssueLine, self).create(vals)
 
-        confirmation_mail_template = line.get_loan_sub_mail_template()
+        confirmation_mail_template = line._get_loan_sub_mail_template()
         confirmation_mail_template.send_mail(line.id)
 
         return line
@@ -130,7 +130,7 @@ class LoanIssueLine(models.Model):
             raise UserError(_("You can only request payment for validated loans"))
 
         for line in self:
-            pay_req_mail_template = line.get_loan_pay_req_mail_template()
+            pay_req_mail_template = line._get_loan_pay_req_mail_template()
             pay_req_mail_template.send_mail(line.id)
             line.write({"state": "waiting"})
 
