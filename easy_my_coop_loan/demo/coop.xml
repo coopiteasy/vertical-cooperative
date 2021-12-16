@@ -28,6 +28,7 @@
         <field name="interest_payment">end</field>
         <field name="taxes_rate">30</field>
         <field name="state">ongoing</field>
+        <field name="loan_term">12</field>
     </record>
 
     <record id="loan_issue_2_demo" model="loan.issue">
@@ -54,6 +55,7 @@
         <field name="interest_payment">yearly</field>
         <field name="taxes_rate">30</field>
         <field name="state">ongoing</field>
+        <field name="loan_term">12</field>
     </record>
 
     <record id="loan_issue_3_demo" model="loan.issue">
@@ -80,6 +82,7 @@
         <field name="interest_payment">end</field>
         <field name="taxes_rate">30</field>
         <field name="state">ongoing</field>
+        <field name="loan_term">12</field>
     </record>
 
     <record id="loan_issue_4_demo" model="loan.issue">
@@ -106,6 +109,7 @@
         <field name="interest_payment">yearly</field>
         <field name="taxes_rate">30</field>
         <field name="state">ongoing</field>
+        <field name="loan_term">12</field>
     </record>
 
     <record id="loan_issue_line_1_demo" model="loan.issue.line">
