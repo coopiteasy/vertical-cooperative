@@ -192,7 +192,7 @@
             <field name="view_mode">kanban,tree,form</field>
             <field
                 name="domain"
-            >['|', ('cooperator','=',True), '|', ('member','=',True),('old_member','=', True)]</field>
+            >['|', ('member','=',True),('old_member','=', True)]</field>
             <field name="context">{'create':False}</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
@@ -216,7 +216,9 @@
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
-            <field name="domain">[('cooperator','=',True)]</field>
+            <field
+                name="domain"
+            >[('coop_candidate', '=',True)]</field>
             <field name="context">{'create':False}</field>
             <field name="filter" eval="True" />
             <field name="help" type="html">
