@@ -8,6 +8,7 @@ import logging
 from werkzeug.exceptions import BadRequest, NotFound
 
 from odoo import _
+from odoo.exceptions import ValidationError
 from odoo.fields import Date
 
 from odoo.addons.base_rest.http import wrapJsonException
@@ -62,16 +63,23 @@ class SubscriptionRequestService(Component):
         return self._to_dict(sr)
 
     def update(self, _id, **params):
+        state = params.pop("state", False)
         params = self._prepare_update(params)
         sr = self.env["subscription.request"].search([("_api_external_id", "=", _id)])
         if not sr:
             raise wrapJsonException(
                 NotFound(_("No subscription request for id %s") % _id)
             )
-        # sudo is needed to update requests sent through the api
+
         sr.sudo().write(params)
+        if state:
+            try:
+                sr.update_state(state)
+            except ValidationError as e:
+                raise wrapJsonException(BadRequest(str(e)))
         return self._to_dict(sr)
 
+    # todo manage through update_state
     def validate(self, _id, **params):
         sr = self.env["subscription.request"].search([("_api_external_id", "=", _id)])
         if not sr:
@@ -174,7 +182,6 @@ class SubscriptionRequestService(Component):
         params = {
             "name": params.get("name"),
             "email": params.get("email"),
-            "state": params.get("state"),
             "ordered_parts": params.get("ordered_parts"),
             "share_product_id": share_product_id,
             "address": address.get("street"),
