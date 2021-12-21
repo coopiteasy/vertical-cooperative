@@ -179,27 +179,19 @@ class TestSRController(BaseEMCRestCase):
         expected.update(data)
         self.assertEquals(expected, content)
 
-    def test_route_validate(self):
-        url = (
-            "/api/subscription-request/%s/validate"
-            % self.demo_request_1.get_api_external_id()
-        )
-        response = self.http_post(url, data={})
-        self.assertEquals(response.status_code, 200)
-        content = json.loads(response.content.decode("utf-8"))
-
-        state = content.get("state")
-        self.assertEquals(state, "open")
-
     def test_service_validate_draft_request(self):
-        self.sr_service.validate(self.demo_request_1.get_api_external_id())
+        id_ = self.demo_request_1.get_api_external_id()
+        payload = {"state": "done"}
+        self.sr_service.update(_id=id_, **payload)
         self.assertEquals(self.demo_request_1.state, "done")
         self.assertTrue(len(self.demo_request_1.capital_release_request) > 0)
 
-    def test_service_validate_done_request(self):
+    def test_service_validate_done_request_nok(self):
+        _id = self.demo_request_2.get_api_external_id()
         self.demo_request_2.validate_subscription_request()
+        payload = {"state": "done"}
         with self.assertRaises(BadRequest):
-            self.sr_service.validate(self.demo_request_2.get_api_external_id())
+            self.sr_service.update(_id=_id, **payload)
 
     def test_service_set_to_waiting_ok(self):
         _id = self.demo_request_1.get_api_external_id()
