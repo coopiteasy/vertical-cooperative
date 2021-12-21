@@ -169,14 +169,14 @@ class TestSRController(BaseEMCRestCase):
 
     def test_route_update(self):
         url = "/api/subscription-request/%s" % self.demo_request_1.get_api_external_id()
-        data = {"state": "done"}
+        data = {"email": "another@email.coop"}
 
         response = self.http_post(url, data=data)
         self.assertEquals(response.status_code, 200)
         content = json.loads(response.content.decode("utf-8"))
 
         expected = self.demo_request_1_dict
-        expected["state"] = "done"
+        expected.update(data)
         self.assertEquals(expected, content)
 
     def test_route_validate(self):
@@ -200,3 +200,57 @@ class TestSRController(BaseEMCRestCase):
         self.demo_request_2.validate_subscription_request()
         with self.assertRaises(BadRequest):
             self.sr_service.validate(self.demo_request_2.get_api_external_id())
+
+    def test_service_set_to_waiting_ok(self):
+        _id = self.demo_request_1.get_api_external_id()
+        payload = {"state": "waiting"}
+        self.sr_service.update(_id=_id, **payload)
+        self.assertEquals(self.demo_request_1.state, "waiting")
+
+    def test_service_set_to_waiting_nok(self):
+        self.demo_request_1.put_on_waiting_list()
+        _id = self.demo_request_1.get_api_external_id()
+        payload = {"state": "waiting"}
+        with self.assertRaises(BadRequest):
+            self.sr_service.update(_id=_id, **payload)
+
+    def test_service_set_to_block_ok(self):
+        _id = self.demo_request_1.get_api_external_id()
+        payload = {"state": "block"}
+        self.sr_service.update(_id=_id, **payload)
+        self.assertEquals(self.demo_request_1.state, "block")
+
+    def test_service_set_to_block_nok(self):
+        self.demo_request_1.put_on_waiting_list()
+        _id = self.demo_request_1.get_api_external_id()
+        payload = {"state": "block"}
+        with self.assertRaises(BadRequest):
+            self.sr_service.update(_id=_id, **payload)
+
+    def test_service_set_to_draft_ok(self):
+        _id = self.demo_request_1.get_api_external_id()
+        self.demo_request_1.block_subscription_request()
+        payload = {"state": "draft"}
+        self.sr_service.update(_id=_id, **payload)
+        self.assertEquals(self.demo_request_1.state, "draft")
+
+    def test_service_set_to_draft_nok(self):
+        self.demo_request_1.validate_subscription_request()
+        _id = self.demo_request_1.get_api_external_id()
+        payload = {"state": "draft"}
+        with self.assertRaises(BadRequest):
+            self.sr_service.update(_id=_id, **payload)
+
+    def test_service_set_to_paid_nok(self):
+        self.demo_request_1.validate_subscription_request()
+        _id = self.demo_request_1.get_api_external_id()
+        payload = {"state": "paid"}
+        with self.assertRaises(BadRequest):
+            self.sr_service.update(_id=_id, **payload)
+
+    def test_service_set_to_transfer_nok(self):
+        self.demo_request_1.validate_subscription_request()
+        _id = self.demo_request_1.get_api_external_id()
+        payload = {"state": "transfer"}
+        with self.assertRaises(BadRequest):
+            self.sr_service.update(_id=_id, **payload)

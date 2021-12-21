@@ -657,8 +657,13 @@ class SubscriptionRequest(models.Model):
 
     @api.multi
     def validate_subscription_request(self):
-        self.ensure_one()
         # todo rename to validate (careful with iwp dependencies)
+        self.ensure_one()
+        if self.state not in ("draft", "waiting"):
+            raise ValidationError(
+                _("The request must be in draft or on waiting list to be " "validated")
+            )
+
         partner_obj = self.env["res.partner"]
 
         if self.ordered_parts <= 0:
@@ -736,16 +741,22 @@ class SubscriptionRequest(models.Model):
     @api.multi
     def block_subscription_request(self):
         self.ensure_one()
+        if self.state != "draft":
+            raise ValidationError(_("Only draft requests can be blocked."))
         self.write({"state": "block"})
 
     @api.multi
     def unblock_subscription_request(self):
         self.ensure_one()
+        if self.state != "block":
+            raise ValidationError(_("Only blocked requests can be unblocked."))
         self.write({"state": "draft"})
 
     @api.multi
     def cancel_subscription_request(self):
         self.ensure_one()
+        if self.state not in ("draft", "waiting", "done", "block"):
+            raise ValidationError(_("You cannot cancel a request in this " "state."))
         self.write({"state": "cancelled"})
 
     def _send_waiting_list_email(self):
@@ -758,5 +769,9 @@ class SubscriptionRequest(models.Model):
     @api.multi
     def put_on_waiting_list(self):
         self.ensure_one()
+        if self.state != "draft":
+            raise ValidationError(
+                _("Only draft request can be put on the waiting list.")
+            )
         self._send_waiting_list_email()
         self.write({"state": "waiting"})
