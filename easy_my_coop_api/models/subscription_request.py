@@ -22,16 +22,17 @@ class SubscriptionRequest(models.Model):
     @api.multi
     def update_state(self, state):
         self.ensure_one()
+        # sudo is needed yo write on api type requests
         if state == "draft":
-            self.unblock_subscription_request()
+            self.sudo().unblock_subscription_request()
         elif state == "block":
-            self.block_subscription_request()
+            self.sudo().block_subscription_request()
         elif state == "done":
-            self.validate_subscription_request()
+            self.sudo().validate_subscription_request()
         elif state == "waiting":
-            self.put_on_waiting_list()
+            self.sudo().put_on_waiting_list()
         elif state == "cancelled":
-            self.cancel_subscription_request()
+            self.sudo().cancel_subscription_request()
         elif state == "paid":
             raise ValidationError(
                 _(
