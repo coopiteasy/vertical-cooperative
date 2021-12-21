@@ -79,22 +79,6 @@ class SubscriptionRequestService(Component):
                 raise wrapJsonException(BadRequest(str(e)))
         return self._to_dict(sr)
 
-    # todo manage through update_state
-    def validate(self, _id, **params):
-        sr = self.env["subscription.request"].search([("_api_external_id", "=", _id)])
-        if not sr:
-            raise wrapJsonException(
-                NotFound(_("No subscription request for id %s") % _id)
-            )
-        if sr.state not in ("draft", "waiting"):
-            raise wrapJsonException(
-                BadRequest(_("Subscription request %s is not in draft state") % _id)
-            )
-        # sudo is needed to update requests sent through the api
-        invoice = sr.sudo().validate_subscription_request()
-        invoice_service = self.work.component(usage="invoice")
-        return invoice_service.get(invoice.get_api_external_id())
-
     def _to_dict(self, sr):
         sr.ensure_one()
 
@@ -219,9 +203,3 @@ class SubscriptionRequestService(Component):
 
     def _validator_return_update(self):
         return schemas.S_SUBSCRIPTION_REQUEST_RETURN_GET
-
-    def _validator_validate(self):
-        return schemas.S_SUBSCRIPTION_REQUEST_VALIDATE
-
-    def _validator_return_validate(self):
-        return schemas.S_INVOICE_RETURN_GET

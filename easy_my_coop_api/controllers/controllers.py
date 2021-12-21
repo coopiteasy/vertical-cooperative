@@ -39,18 +39,4 @@ class UserController(main.RestController):
         csrf=False,
     )
     def test(self, _service_name):
-        return self._process_method(
-            _service_name, "test", params=None
-        )
-
-    @route(
-        _root_path + "<string:_service_name>/<int:_id>/validate",
-        methods=["POST"],
-        csrf=False,
-    )
-    def validate(self, _service_name, _id, **params):
-        return self._process_method(
-            _service_name, "validate", _id=_id, params=params
-        )
-
-    patch_for_json("^/api/subscription-request/[0-9]*/validate$")
+        return self._process_method(_service_name, "test", params=None)

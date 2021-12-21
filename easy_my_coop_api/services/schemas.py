@@ -109,8 +109,6 @@ S_SUBSCRIPTION_REQUEST_UPDATE = {
     "financial_risk_approved": {"type": "boolean"},
 }
 
-S_SUBSCRIPTION_REQUEST_VALIDATE = {"_id": {"type": "integer"}}
-
 S_INVOICE_GET = {"_id": {"type": "integer"}}
 
 S_INVOICE_LINE_RETURN_GET = {
