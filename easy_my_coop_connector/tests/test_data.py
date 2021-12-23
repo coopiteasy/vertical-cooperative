@@ -63,36 +63,31 @@ SR_GET_RESULT = {
 }
 
 SR_VALIDATE_RESULT = {
-    "id": 9999,
-    "number": "SUBJ/2020/001",
-    "date_due": "2020-08-12",
-    "state": "open",
-    "date_invoice": "2020-08-12",
-    "date": "2020-08-12",
-    "type": "out_invoice",
-    "subscription_request": {"name": "Manuel Dublues", "id": 1},
-    "partner": {"name": "Manuel Dublues", "id": 1},
-    "invoice_lines": [
-        {
-            "price_unit": 25.0,
-            "quantity": 3.0,
-            "account": {"name": "Product Sales", "id": 2},
-            "name": "Part B - Worker",
-            "product": {"name": "Part B - Worker", "id": 2},
-        }
-    ],
-    "journal": {"name": "Subscription Journal", "id": 1},
-    "account": {"name": "Cooperators", "id": 1},
+    "id": 1,
+    "name": "Robin Des Bois",
+    "date": "2020-05-14",
+    "email": "manuel@demo.net",
+    "address": {
+        "city": "Brussels",
+        "street": "schaerbeekstraat",
+        "zip_code": "1111",
+        "country": "BE",
+    },
+    "lang": "en_US",
+    "ordered_parts": 3,
+    "share_product": {"name": "Part B - Worker", "id": 2},
+    "capital_release_request": [9999],
+    "state": "done",
 }
 
 AP_CREATE_RESULT = {
     "id": 9876,
     "journal": {"id": 1, "name": "bank"},
     "invoice": {
-        "id": SR_VALIDATE_RESULT["id"],
-        "name": SR_VALIDATE_RESULT["number"],
+        "id": 9999,
+        "name": ["SUBJ/2020/001"],
     },
     "payment_date": Date.to_string(Date.today()),
     "amount": 75.0,
-    "communication": SR_VALIDATE_RESULT["number"],
+    "communication": "SUBJ/2020/001",
 }

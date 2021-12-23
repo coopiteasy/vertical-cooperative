@@ -98,16 +98,7 @@ class SubscriptionRequest(models.Model):
 
         if self.source == "emc_api":
             backend = self.env["emc.backend"].get_backend()
-            sr_adapter = SubscriptionRequestAdapter(backend=backend)
-            external_id, invoice_dict = sr_adapter.validate(self.binding_id.external_id)
-
-            InvoiceBinding = self.env["emc.binding.account.invoice"]
-            InvoiceBinding.create(
-                {
-                    "backend_id": backend.id,
-                    "external_id": external_id,
-                    "internal_id": invoice.id,
-                }
-            )
+            sr_adapter = SubscriptionRequestAdapter(backend=backend, record=self)
+            _, request_dict = sr_adapter.update({"state": "done"})
 
         return invoice

@@ -82,7 +82,7 @@ class EMCSRConnectorCase(EMCBaseCase):
         # local invoice linked to external invoice
         self.assertEquals(
             srequest.capital_release_request.binding_id.external_id,
-            SR_VALIDATE_RESULT["id"],
+            SR_VALIDATE_RESULT["capital_release_request"][0],
         )
 
     # todo test 400
