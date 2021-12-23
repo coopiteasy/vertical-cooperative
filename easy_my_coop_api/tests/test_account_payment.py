@@ -26,10 +26,16 @@ class TestAccountPaymentController(BaseEMCRestCase):
         self.demo_request_1 = self.browse_ref(
             "easy_my_coop.subscription_request_1_demo"
         )
+        self.demo_request_1.write(
+            {
+                "_api_external_id": 1,
+                "external_id_generated": True,
+            }
+        )
         return res
 
     def test_service_create(self):
-        self.demo_request_1.validate_subscription_request()
+        self.demo_request_1.sudo().validate_subscription_request()
         invoice = self.demo_request_1.capital_release_request
         journal = self.bank_journal
 

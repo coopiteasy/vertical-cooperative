@@ -78,6 +78,9 @@ SR_VALIDATE_RESULT = {
     "share_product": {"name": "Part B - Worker", "id": 2},
     "capital_release_request": [9999],
     "state": "done",
+    "data_policy_approved": True,
+    "internal_rules_approved": True,
+    "financial_risk_approved": True,
 }
 
 AP_CREATE_RESULT = {

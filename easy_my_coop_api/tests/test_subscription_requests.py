@@ -30,8 +30,20 @@ class TestSRController(BaseEMCRestCase):
         self.demo_request_1 = self.browse_ref(
             "easy_my_coop.subscription_request_1_demo"
         )
+        self.demo_request_1.write(
+            {
+                "_api_external_id": 1,
+                "external_id_generated": True,
+            }
+        )
         self.demo_request_2 = self.browse_ref(
             "easy_my_coop.subscription_request_waiting_demo"
+        )
+        self.demo_request_2.write(
+            {
+                "_api_external_id": 2,
+                "external_id_generated": True,
+            }
         )
         self.demo_share_product = self.demo_request_1.share_product_id.product_tmpl_id
 
@@ -188,7 +200,7 @@ class TestSRController(BaseEMCRestCase):
 
     def test_service_validate_done_request_nok(self):
         _id = self.demo_request_2.get_api_external_id()
-        self.demo_request_2.validate_subscription_request()
+        self.demo_request_2.sudo().validate_subscription_request()
         payload = {"state": "done"}
         with self.assertRaises(BadRequest):
             self.sr_service.update(_id=_id, **payload)
@@ -200,7 +212,7 @@ class TestSRController(BaseEMCRestCase):
         self.assertEquals(self.demo_request_1.state, "waiting")
 
     def test_service_set_to_waiting_nok(self):
-        self.demo_request_1.put_on_waiting_list()
+        self.demo_request_1.sudo().put_on_waiting_list()
         _id = self.demo_request_1.get_api_external_id()
         payload = {"state": "waiting"}
         with self.assertRaises(BadRequest):
@@ -213,7 +225,7 @@ class TestSRController(BaseEMCRestCase):
         self.assertEquals(self.demo_request_1.state, "block")
 
     def test_service_set_to_block_nok(self):
-        self.demo_request_1.put_on_waiting_list()
+        self.demo_request_1.sudo().put_on_waiting_list()
         _id = self.demo_request_1.get_api_external_id()
         payload = {"state": "block"}
         with self.assertRaises(BadRequest):
@@ -221,27 +233,27 @@ class TestSRController(BaseEMCRestCase):
 
     def test_service_set_to_draft_ok(self):
         _id = self.demo_request_1.get_api_external_id()
-        self.demo_request_1.block_subscription_request()
+        self.demo_request_1.sudo().block_subscription_request()
         payload = {"state": "draft"}
         self.sr_service.update(_id=_id, **payload)
         self.assertEquals(self.demo_request_1.state, "draft")
 
     def test_service_set_to_draft_nok(self):
-        self.demo_request_1.validate_subscription_request()
+        self.demo_request_1.sudo().validate_subscription_request()
         _id = self.demo_request_1.get_api_external_id()
         payload = {"state": "draft"}
         with self.assertRaises(BadRequest):
             self.sr_service.update(_id=_id, **payload)
 
     def test_service_set_to_paid_nok(self):
-        self.demo_request_1.validate_subscription_request()
+        self.demo_request_1.sudo().validate_subscription_request()
         _id = self.demo_request_1.get_api_external_id()
         payload = {"state": "paid"}
         with self.assertRaises(BadRequest):
             self.sr_service.update(_id=_id, **payload)
 
     def test_service_set_to_transfer_nok(self):
-        self.demo_request_1.validate_subscription_request()
+        self.demo_request_1.sudo().validate_subscription_request()
         _id = self.demo_request_1.get_api_external_id()
         payload = {"state": "transfer"}
         with self.assertRaises(BadRequest):
