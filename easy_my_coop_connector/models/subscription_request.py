@@ -96,7 +96,7 @@ class SubscriptionRequest(models.Model):
     @api.multi
     def validate_subscription_request(self):
         self.ensure_one()
-        invoice = super(SubscriptionRequest, self).validate_subscription_request()
+        invoice = super().validate_subscription_request()
 
         if self.source == "emc_api":
             backend = self.env["emc.backend"].get_backend()
@@ -104,3 +104,39 @@ class SubscriptionRequest(models.Model):
             _, request_dict = sr_adapter.update({"state": "done"})
 
         return invoice
+
+    @api.multi
+    def block_subscription_request(self):
+        self.ensure_one()
+        super().block_subscription_request()
+        if self.source == "emc_api":
+            backend = self.env["emc.backend"].get_backend()
+            sr_adapter = SubscriptionRequestAdapter(backend=backend, record=self)
+            _, request_dict = sr_adapter.update({"state": "block"})
+
+    @api.multi
+    def unblock_subscription_request(self):
+        self.ensure_one()
+        super().unblock_subscription_request()
+        if self.source == "emc_api":
+            backend = self.env["emc.backend"].get_backend()
+            sr_adapter = SubscriptionRequestAdapter(backend=backend, record=self)
+            _, request_dict = sr_adapter.update({"state": "draft"})
+
+    @api.multi
+    def cancel_subscription_request(self):
+        self.ensure_one()
+        super().cancel_subscription_request()
+        if self.source == "emc_api":
+            backend = self.env["emc.backend"].get_backend()
+            sr_adapter = SubscriptionRequestAdapter(backend=backend, record=self)
+            _, request_dict = sr_adapter.update({"state": "cancelled"})
+
+    @api.multi
+    def put_on_waiting_list(self):
+        self.ensure_one()
+        super().put_on_waiting_list()
+        if self.source == "emc_api":
+            backend = self.env["emc.backend"].get_backend()
+            sr_adapter = SubscriptionRequestAdapter(backend=backend, record=self)
+            _, request_dict = sr_adapter.update({"state": "waiting"})
