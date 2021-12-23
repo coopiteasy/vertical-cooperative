@@ -35,12 +35,9 @@ class ExternalIdMixin(models.AbstractModel):
     last_api_export_date = fields.Datetime(
         string="Last API Export Date", required=False, copy=False
     )
-
-    # only used to display and hide "Generate external ID" button
     external_id_generated = fields.Boolean(
         string="External ID Generated",
         default=False,
-        required=False,
         copy=False,
     )
 
