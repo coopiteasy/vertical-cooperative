@@ -5,7 +5,7 @@
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
-from ..components.emc_adapters import AccountPaymentAdapter
+from ..components.account_payment_adapter import AccountPaymentAdapter
 
 
 class AccountPayment(models.Model):
