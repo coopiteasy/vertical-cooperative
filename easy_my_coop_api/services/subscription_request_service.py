@@ -57,7 +57,6 @@ class SubscriptionRequestService(Component):
         return response
 
     def create(self, **params):  # pylint: disable=method-required-super
-
         params = self._prepare_create(params)
         sr = self.env["subscription.request"].create(params)
         return self._to_dict(sr)
@@ -113,6 +112,9 @@ class SubscriptionRequestService(Component):
             },
             "lang": sr.lang,
             "capital_release_request": invoice_ids,
+            "data_policy_approved": sr.data_policy_approved,
+            "internal_rules_approved": sr.internal_rules_approved,
+            "financial_risk_approved": sr.financial_risk_approved,
         }
 
     def _get_country(self, code):
@@ -148,6 +150,9 @@ class SubscriptionRequestService(Component):
             "city": address["city"],
             "country_id": country.id,
             "lang": params["lang"],
+            "data_policy_approved": params.get("data_policy_approved"),
+            "internal_rules_approved": params.get("internal_rules_approved"),
+            "financial_risk_approved": params.get("financial_risk_approved"),
         }
 
     def _prepare_update(self, params):
@@ -175,6 +180,9 @@ class SubscriptionRequestService(Component):
             "city": address.get("city"),
             "country_id": address.get("country"),
             "lang": params.get("lang"),
+            "data_policy_approved": params.get("data_policy_approved"),
+            "internal_rules_approved": params.get("internal_rules_approved"),
+            "financial_risk_approved": params.get("financial_risk_approved"),
         }
         params = {k: v for k, v in params.items() if v is not None}
         return params
