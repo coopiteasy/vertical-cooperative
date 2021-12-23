@@ -140,7 +140,8 @@ class EMCCase(EMCBaseCase):
         read_request = self.browse_ref("easy_my_coop.subscription_request_1_demo")
         read_request.name = "test write request"
         create_request = self.env["subscription.request"].create(request_values)
-        create_request.unlink()
+        with self.assertRaises(AccessError):
+            create_request.unlink()
 
         share_type = self.env["product.template"].create(
             {
