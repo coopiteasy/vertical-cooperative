@@ -75,10 +75,21 @@ class SubscriptionRequest(models.Model):
                     % request.share_product_id.name
                 )
 
+    def _send_confirmation_email(self):
+        if self.company_id.send_confirmation_email:
+            mail_template_notif = self.get_mail_template_notif(
+                is_company=self.partner_id.is_company
+            )
+            mail_template_notif.sudo().send_mail(self.id)
+
+    # todo code this in a more pythonic way
+    #  - do not bypass self.create in create_comp_sub_req
+    #  - use "not in" where applicable
+    #  - sanitize declaration and assignation of cooperator
+    #  beware if usage in investor_wallet_platform
     @api.model
     def create(self, vals):
         partner_obj = self.env["res.partner"]
-
         if not vals.get("partner_id"):
             cooperator = False
             if vals.get("email"):
@@ -94,15 +105,10 @@ class SubscriptionRequest(models.Model):
 
         if not cooperator.cooperator:
             cooperator.write({"cooperator": True})
-        subscr_request = super(SubscriptionRequest, self).create(vals)
 
-        if subscr_request._send_confirmation_email():
-            mail_template_notif = subscr_request.get_mail_template_notif(
-                is_company=False
-            )  # noqa
-            mail_template_notif.sudo().send_mail(subscr_request.id)
-
-        return subscr_request
+        subscription_request = super(SubscriptionRequest, self).create(vals)
+        subscription_request._send_confirmation_email()
+        return subscription_request
 
     @api.model
     def create_comp_sub_req(self, vals):
@@ -115,15 +121,9 @@ class SubscriptionRequest(models.Model):
                 vals["type"] = "subscription"
                 vals = self.is_member(vals, cooperator)
                 vals["partner_id"] = cooperator.id
-        subscr_request = super(SubscriptionRequest, self).create(vals)
-
-        if self._send_confirmation_email():
-            confirmation_mail_template = subscr_request.get_mail_template_notif(
-                is_company=True
-            )
-            confirmation_mail_template.send_mail(subscr_request.id)
-
-        return subscr_request
+        subscription_request = super(SubscriptionRequest, self).create(vals)
+        subscription_request._send_confirmation_email()
+        return subscription_request
 
     def check_empty_string(self, value):
         if value is None or value is False or value == "":
@@ -201,7 +201,7 @@ class SubscriptionRequest(models.Model):
     state = fields.Selection(
         [
             ("draft", "Draft"),
-            ("block", "Blocked"),
+            ("block", "Blocked"),  # todo reword to blocked
             ("done", "Done"),
             ("waiting", "Waiting"),
             ("transfer", "Transfer"),
@@ -516,19 +516,6 @@ class SubscriptionRequest(models.Model):
         }
         return res
 
-    def get_capital_release_mail_template(self):
-        template = "easy_my_coop.email_template_release_capital"
-        return self.env.ref(template, False)
-
-    def send_capital_release_request(self, invoice):
-        email_template = self.get_capital_release_mail_template()
-
-        if self.company_id.send_capital_release_email:
-            # we send the email with the capital release request in attachment
-            # TODO remove sudo() and give necessary access right
-            email_template.sudo().send_mail(invoice.id, True)
-            invoice.sent = True
-
     def get_journal(self):
         return self.env.ref("easy_my_coop.subscription_journal")
 
@@ -568,8 +555,7 @@ class SubscriptionRequest(models.Model):
 
         # validate the capital release request
         invoice.action_invoice_open()
-
-        self.send_capital_release_request(invoice)
+        invoice.send_capital_release_request_email()
 
         return invoice
 
@@ -762,14 +748,15 @@ class SubscriptionRequest(models.Model):
         self.ensure_one()
         self.write({"state": "cancelled"})
 
+    def _send_waiting_list_email(self):
+        if self.company_id.send_waiting_list_email:
+            waiting_list_mail_template = self.env.ref(
+                "easy_my_coop.email_template_waiting_list", False
+            )
+            waiting_list_mail_template.send_mail(self.id, True)
+
     @api.multi
     def put_on_waiting_list(self):
         self.ensure_one()
-        waiting_list_mail_template = self.env.ref(
-            "easy_my_coop.email_template_waiting_list", False
-        )
-        waiting_list_mail_template.send_mail(self.id, True)
+        self._send_waiting_list_email()
         self.write({"state": "waiting"})
-
-    def _send_confirmation_email(self):
-        return self.company_id.send_confirmation_email
