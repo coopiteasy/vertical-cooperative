@@ -85,4 +85,54 @@ class EMCSRConnectorCase(EMCBaseCase):
             SR_VALIDATE_RESULT["capital_release_request"][0],
         )
 
+    def test_block_subscription_request(self):
+        srequest = self.browse_ref("easy_my_coop.subscription_request_1_demo")
+        with patch.object(requests, "post") as mock_get:
+            mock_get.return_value = mock_response = Mock()
+            mock_response.status_code = 200
+            response_content = SR_GET_RESULT.copy()
+            response_content["state"] = "block"
+            mock_response.content = dict_to_dump(response_content)
+
+            srequest.validate_subscription_request()
+
+        self.assertEquals(srequest.state, "block")
+
+    def test_unblock_subscription_request(self):
+        srequest = self.browse_ref("easy_my_coop.subscription_request_1_demo")
+        srequest.state = "block"
+        with patch.object(requests, "post") as mock_get:
+            mock_get.return_value = mock_response = Mock()
+            mock_response.status_code = 200
+            response_content = SR_GET_RESULT.copy()
+            response_content["state"] = "draft"
+            mock_response.content = dict_to_dump(response_content)
+            srequest.validate_subscription_request()
+
+        self.assertEquals(srequest.state, "draft")
+
+    def test_cancel_subscription_request(self):
+        srequest = self.browse_ref("easy_my_coop.subscription_request_1_demo")
+        with patch.object(requests, "post") as mock_get:
+            mock_get.return_value = mock_response = Mock()
+            mock_response.status_code = 200
+            response_content = SR_GET_RESULT.copy()
+            response_content["state"] = "cancelled"
+            mock_response.content = dict_to_dump(response_content)
+            srequest.validate_subscription_request()
+
+        self.assertEquals(srequest.state, "cancelled")
+
+    def test_put_on_waiting_list(self):
+        srequest = self.browse_ref("easy_my_coop.subscription_request_1_demo")
+        with patch.object(requests, "post") as mock_get:
+            mock_get.return_value = mock_response = Mock()
+            mock_response.status_code = 200
+            response_content = SR_GET_RESULT.copy()
+            response_content["state"] = "waiting"
+            mock_response.content = dict_to_dump(response_content)
+            srequest.validate_subscription_request()
+
+        self.assertEquals(srequest.state, "waiting")
+
     # todo test 400
