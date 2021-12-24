@@ -20,6 +20,7 @@ from .common import BaseEMCRestCase
 class TestSRController(BaseEMCRestCase):
     def setUp(self):
         super().setUp()
+        self.maxDiff = None
         collection = _PseudoCollection("emc.services", self.env)
         emc_services_env = WorkContext(
             model_name="rest.service.registration", collection=collection
@@ -50,7 +51,9 @@ class TestSRController(BaseEMCRestCase):
         date = Date.to_string(self.demo_request_1.date)
         self.demo_request_1_dict = {
             "id": self.demo_request_1.get_api_external_id(),
-            "name": "Manuel Dublues",
+            "is_company": False,
+            "firstname": "Manuel",
+            "lastname": "Dublues",
             "email": "manuel@demo.net",
             "date": date,
             "state": "draft",
@@ -70,12 +73,17 @@ class TestSRController(BaseEMCRestCase):
             "data_policy_approved": True,
             "internal_rules_approved": True,
             "financial_risk_approved": True,
+            "generic_rules_approved": True,
+            "birthdate": "1990-12-21",
+            "phone": None,
+            "gender": "male",
+            "iban": "09898765454",
+            "skip_control_ng": True,
+            "capital_release_request_date": None,
         }
 
     def test_service(self):
         # kept as example
-        # useful if you need to change data in database and check db type
-
         result = self.sr_service.get(self.demo_request_1.get_api_external_id())
         self.assertEquals(self.demo_request_1_dict, result)
 
@@ -144,7 +152,8 @@ class TestSRController(BaseEMCRestCase):
     def test_route_create(self):
         url = "/api/subscription-request"
         data = {
-            "name": "Lisa des Danses",
+            "firstname": "Lisa",
+            "lastname": "des Danses",
             "email": "lisa@desdanses.be",
             "ordered_parts": 3,
             "share_product": self.demo_share_product.id,
@@ -158,6 +167,13 @@ class TestSRController(BaseEMCRestCase):
             "data_policy_approved": True,
             "internal_rules_approved": True,
             "financial_risk_approved": True,
+            "generic_rules_approved": True,
+            "is_company": False,
+            "birthdate": "1992-08-05",
+            "gender": "other",
+            "iban": "98765456789",
+            "skip_control_ng": True,
+            "capital_release_request_date": None,
         }
 
         response = self.http_post(url, data=data)
@@ -175,6 +191,7 @@ class TestSRController(BaseEMCRestCase):
                     "name": self.demo_share_product.name,
                 },
                 "capital_release_request": [],
+                "phone": None,
             },
         }
         self.assertEquals(expected, content)

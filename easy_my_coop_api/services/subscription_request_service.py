@@ -92,7 +92,9 @@ class SubscriptionRequestService(Component):
         share_product = sr.share_product_id.product_tmpl_id
         return {
             "id": sr.get_api_external_id(),
-            "name": sr.name,
+            "is_company": sr.is_company,
+            "firstname": sr.firstname,
+            "lastname": sr.lastname,
             "email": sr.email,
             "state": sr.state,
             "date": Date.to_string(sr.date),
@@ -105,10 +107,19 @@ class SubscriptionRequestService(Component):
                 "country": sr.country_id.code,
             },
             "lang": sr.lang,
+            "birthdate": self._or_none(Date.to_string(sr.birthdate)),
+            "gender": self._or_none(sr.gender),
+            "iban": self._or_none(sr.iban),
+            "phone": self._or_none(sr.phone),
+            "capital_release_request_date": self._or_none(
+                Date.to_string(sr.capital_release_request_date)
+            ),
             "capital_release_request": invoice_ids,
             "data_policy_approved": sr.data_policy_approved,
             "internal_rules_approved": sr.internal_rules_approved,
             "financial_risk_approved": sr.financial_risk_approved,
+            "generic_rules_approved": sr.generic_rules_approved,
+            "skip_control_ng": sr.skip_control_ng,
         }
 
     def _get_country(self, code):
@@ -135,7 +146,10 @@ class SubscriptionRequestService(Component):
         share_product_id = self._get_share_product(params["share_product"])
 
         return {
-            "name": params["name"],
+            "firstname": params["firstname"],
+            "lastname": params["lastname"],
+            "name": params["firstname"] + " " + params["lastname"],
+            "is_company": params["is_company"],
             "email": params["email"],
             "ordered_parts": params["ordered_parts"],
             "share_product_id": share_product_id.id,
@@ -144,9 +158,16 @@ class SubscriptionRequestService(Component):
             "city": address["city"],
             "country_id": country.id,
             "lang": params["lang"],
-            "data_policy_approved": params.get("data_policy_approved"),
-            "internal_rules_approved": params.get("internal_rules_approved"),
-            "financial_risk_approved": params.get("financial_risk_approved"),
+            "data_policy_approved": params["data_policy_approved"],
+            "internal_rules_approved": params["internal_rules_approved"],
+            "financial_risk_approved": params["financial_risk_approved"],
+            "generic_rules_approved": params["generic_rules_approved"],
+            "birthdate": params.get("birthdate"),
+            "gender": params.get("gender"),
+            "iban": params.get("iban"),
+            "phone": params.get("phone"),
+            "skip_control_ng": params.get("skip_control_ng"),
+            "capital_release_request_date": params.get("capital_release_request_date"),
         }
 
     def _prepare_update(self, params):
@@ -164,7 +185,9 @@ class SubscriptionRequestService(Component):
             share_product_id = None
 
         params = {
-            "name": params.get("name"),
+            "is_company": params.get("is_company"),
+            "firstname": params.get("firstname"),
+            "lastname": params.get("lastname"),
             "email": params.get("email"),
             "ordered_parts": params.get("ordered_parts"),
             "share_product_id": share_product_id,
@@ -176,6 +199,13 @@ class SubscriptionRequestService(Component):
             "data_policy_approved": params.get("data_policy_approved"),
             "internal_rules_approved": params.get("internal_rules_approved"),
             "financial_risk_approved": params.get("financial_risk_approved"),
+            "generic_rules_approved": params.get("generic_rules_approved"),
+            "birthdate": params.get("birthdate"),
+            "gender": params.get("gender"),
+            "iban": params.get("iban"),
+            "phone": params.get("phone"),
+            "skip_control_ng": params.get("skip_control_ng"),
+            "capital_release_request_date": params.get("capital_release_request_date"),
         }
         params = {k: v for k, v in params.items() if v is not None}
         return params

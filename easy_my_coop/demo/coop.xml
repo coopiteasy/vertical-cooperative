@@ -120,6 +120,8 @@
 
     <record id="subscription_request_1_demo" model="subscription.request">
         <field name="name">Manuel Dublues</field>
+        <field name="firstname">Manuel</field>
+        <field name="lastname">Dublues</field>
         <field name="email">manuel@demo.net</field>
         <field name="address">schaerbeekstraat</field>
         <field name="zip_code">1111</field>
@@ -138,10 +140,17 @@
         <field name="data_policy_approved" eval="True" />
         <field name="internal_rules_approved" eval="True" />
         <field name="financial_risk_approved" eval="True" />
+        <field name="gender">male</field>
+        <field name="iban">09898765454</field>
+        <field name="birthdate">1990-12-21</field>
+        <field name="generic_rules_approved" eval="True" />
+        <field name="skip_control_ng" eval="True" />
     </record>
 
     <record id="subscription_request_waiting_demo" model="subscription.request">
         <field name="name">Catherine des Champs</field>
+        <field name="firstname">Catherine</field>
+        <field name="lastname">des Champs</field>
         <field name="email">catherine@demo.net</field>
         <field name="address">Chemin des bois fleuris</field>
         <field name="zip_code">1000</field>
