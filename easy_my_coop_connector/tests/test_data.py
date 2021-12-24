@@ -32,19 +32,30 @@ SR_SEARCH_RESULT = {
             },
             "lang": "en_US",
             "ordered_parts": 3,
-            "name": "Manuel Dublues",
+            "is_company": False,
+            "firstname": "Manuel",
+            "lastname": "Dublues",
             "share_product": {"name": "Part B - Worker", "id": 2},
             "state": "draft",
             "data_policy_approved": "some data_policy_approved data",
             "internal_rules_approved": "some internal_rules_approved data",
             "financial_risk_approved": "some financial_risk_approved data",
+            "generic_rules_approved": True,
+            "birthdate": "1990-12-21",
+            "gender": "male",
+            "iban": "98765434567",
+            "phone": None,
+            "skip_control_ng": True,
+            "capital_release_request_date": None,
         }
     ],
 }
 
 SR_GET_RESULT = {
     "id": 1,
-    "name": "Robin Des Bois",
+    "is_company": False,
+    "firstname": "Robin",
+    "lastname": "Des Bois",
     "date": "2020-05-14",
     "email": "manuel@demo.net",
     "address": {
@@ -60,11 +71,20 @@ SR_GET_RESULT = {
     "data_policy_approved": "some data_policy_approved data",
     "internal_rules_approved": "some internal_rules_approved data",
     "financial_risk_approved": "some financial_risk_approved data",
+    "generic_rules_approved": True,
+    "birthdate": "1990-12-21",
+    "gender": "male",
+    "iban": "98765434567",
+    "phone": None,
+    "skip_control_ng": True,
+    "capital_release_request_date": None,
 }
 
 SR_VALIDATE_RESULT = {
     "id": 1,
-    "name": "Robin Des Bois",
+    "is_company": False,
+    "firstname": "Robin",
+    "lastname": "Des Bois",
     "date": "2020-05-14",
     "email": "manuel@demo.net",
     "address": {
@@ -81,6 +101,13 @@ SR_VALIDATE_RESULT = {
     "data_policy_approved": True,
     "internal_rules_approved": True,
     "financial_risk_approved": True,
+    "generic_rules_approved": True,
+    "birthdate": "1990-12-21",
+    "gender": "male",
+    "iban": "98765434567",
+    "phone": None,
+    "skip_control_ng": True,
+    "capital_release_request_date": None,
 }
 
 AP_CREATE_RESULT = {
