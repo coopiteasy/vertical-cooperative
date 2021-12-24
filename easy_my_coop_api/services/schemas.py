@@ -26,11 +26,15 @@ S_SUBSCRIPTION_REQUEST_GET = {"_id": {"type": "integer"}}
 S_SUBSCRIPTION_REQUEST_RETURN_GET = {
     "id": {"type": "integer", "required": True},
     "email": {"type": "string", "required": True, "empty": False},
-    "name": {"type": "string", "required": True, "empty": False},
+    "is_company": {"type": "boolean", "required": True},
+    "firstname": {"type": "string", "required": True, "empty": False},
+    "lastname": {"type": "string", "required": True, "empty": False},
     "date": {"type": "string", "required": True, "empty": False},
     "state": {"type": "string", "required": True, "empty": False},
     "ordered_parts": {"type": "integer", "required": True},
     "share_product": S_MANY_2_ONE,
+    "phone": {"type": "string", "required": True, "empty": False, "nullable": True},
+    "iban": {"type": "string", "required": True, "empty": False, "nullable": True},
     "address": {
         "type": "dict",
         "schema": {
@@ -47,6 +51,15 @@ S_SUBSCRIPTION_REQUEST_RETURN_GET = {
         "required": True,
         "empty": True,
     },
+    "gender": {"type": "string", "required": True, "empty": False, "nullable": True},
+    "birthdate": {"type": "string", "check_with": date_validator, "nullable": True},
+    "capital_release_request_date": {
+        "type": "string",
+        "check_with": date_validator,
+        "nullable": True,
+    },
+    "generic_rules_approved": {"type": "boolean", "required": True},
+    "skip_control_ng": {"type": "boolean", "required": True},
     "data_policy_approved": {"type": "boolean", "required": True},
     "internal_rules_approved": {"type": "boolean", "required": True},
     "financial_risk_approved": {"type": "boolean", "required": True},
@@ -69,7 +82,9 @@ S_SUBSCRIPTION_REQUEST_RETURN_SEARCH = {
 }
 
 S_SUBSCRIPTION_REQUEST_CREATE = {
-    "name": {"type": "string", "required": True, "empty": False},
+    "firstname": {"type": "string", "required": True, "empty": False},
+    "lastname": {"type": "string", "required": True, "empty": False},
+    "is_company": {"type": "boolean", "required": True},
     "email": {"type": "string", "required": True, "empty": False},
     "ordered_parts": {"type": "integer", "required": True},
     "share_product": {"type": "integer", "required": True},
@@ -83,13 +98,26 @@ S_SUBSCRIPTION_REQUEST_CREATE = {
         },
     },
     "lang": {"type": "string", "required": True, "empty": False},
+    "phone": {"type": "string", "nullable": True},
+    "iban": {"type": "string", "nullable": True},
+    "gender": {"type": "string", "nullable": True},
+    "birthdate": {"type": "string", "check_with": date_validator, "nullable": True},
+    "capital_release_request_date": {
+        "type": "string",
+        "check_with": date_validator,
+        "nullable": True,
+    },
     "data_policy_approved": {"type": "boolean", "required": True},
     "internal_rules_approved": {"type": "boolean", "required": True},
     "financial_risk_approved": {"type": "boolean", "required": True},
+    "generic_rules_approved": {"type": "boolean", "required": True},
+    "skip_control_ng": {"type": "boolean"},
 }
 
 S_SUBSCRIPTION_REQUEST_UPDATE = {
-    "name": {"type": "string"},
+    "firstname": {"type": "string"},
+    "lastname": {"type": "string"},
+    "is_company": {"type": "boolean"},
     "email": {"type": "string"},
     "ordered_parts": {"type": "integer"},
     "state": {"type": "string"},
@@ -102,11 +130,18 @@ S_SUBSCRIPTION_REQUEST_UPDATE = {
             "country": {"type": "string"},
         },
     },
+    "phone": {"type": "string"},
+    "iban": {"type": "string"},
+    "gender": {"type": "string"},
+    "birthdate": {"type": "string", "check_with": date_validator},
+    "capital_release_request_date": {"type": "string", "check_with": date_validator},
     "lang": {"type": "string"},
     "share_product": {"type": "integer"},
+    "generic_rules_approved": {"type": "boolean"},
     "data_policy_approved": {"type": "boolean"},
     "internal_rules_approved": {"type": "boolean"},
     "financial_risk_approved": {"type": "boolean"},
+    "skip_control_ng": {"type": "boolean"},
 }
 
 S_INVOICE_GET = {"_id": {"type": "integer"}}
