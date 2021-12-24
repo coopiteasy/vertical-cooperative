@@ -64,7 +64,10 @@ class EMCSRConnectorCase(EMCBaseCase):
 
             SubscriptionRequest.backend_read(external_id)
 
+        self.assertEquals(srequest.firstname, "Robin")
+        self.assertEquals(srequest.phone, False)
         self.assertEquals(srequest.name, "Robin Des Bois")
+        self.assertEquals(srequest.iban, "98765434567")
 
     def test_validate_request(self):
         srequest = self.browse_ref("easy_my_coop.subscription_request_1_demo")
@@ -94,7 +97,7 @@ class EMCSRConnectorCase(EMCBaseCase):
             response_content["state"] = "block"
             mock_response.content = dict_to_dump(response_content)
 
-            srequest.validate_subscription_request()
+            srequest.block_subscription_request()
 
         self.assertEquals(srequest.state, "block")
 
@@ -107,7 +110,7 @@ class EMCSRConnectorCase(EMCBaseCase):
             response_content = SR_GET_RESULT.copy()
             response_content["state"] = "draft"
             mock_response.content = dict_to_dump(response_content)
-            srequest.validate_subscription_request()
+            srequest.unblock_subscription_request()
 
         self.assertEquals(srequest.state, "draft")
 
@@ -119,7 +122,7 @@ class EMCSRConnectorCase(EMCBaseCase):
             response_content = SR_GET_RESULT.copy()
             response_content["state"] = "cancelled"
             mock_response.content = dict_to_dump(response_content)
-            srequest.validate_subscription_request()
+            srequest.cancel_subscription_request()
 
         self.assertEquals(srequest.state, "cancelled")
 
@@ -131,7 +134,7 @@ class EMCSRConnectorCase(EMCBaseCase):
             response_content = SR_GET_RESULT.copy()
             response_content["state"] = "waiting"
             mock_response.content = dict_to_dump(response_content)
-            srequest.validate_subscription_request()
+            srequest.put_on_waiting_list()
 
         self.assertEquals(srequest.state, "waiting")
 
