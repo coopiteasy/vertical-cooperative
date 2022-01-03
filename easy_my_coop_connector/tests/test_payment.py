@@ -28,7 +28,7 @@ class EMCPaymentConnectorCase(EMCBaseCase):
 
     def test_post_payment_sends_and_binds_request(self):
         srequest = self.browse_ref("easy_my_coop.subscription_request_1_demo")
-        with patch.object(requests, "post") as mock_get:
+        with patch.object(requests, "put") as mock_get:
             mock_get.return_value = mock_response = Mock()
             mock_response.status_code = 200
             mock_response.content = dict_to_dump(SR_VALIDATE_RESULT)

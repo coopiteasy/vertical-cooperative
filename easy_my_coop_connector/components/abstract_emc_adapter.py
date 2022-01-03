@@ -4,6 +4,11 @@
 
 from urllib.parse import urljoin
 
+from werkzeug.exceptions import BadRequest
+
+from odoo import _
+from odoo.exceptions import ValidationError
+
 
 class AbstractEMCAdapter:
     _model = "set in implementation class"
@@ -40,7 +45,21 @@ class AbstractEMCAdapter:
         return external_id, writeable_dict
 
     def update(self, data):
-        raise NotImplementedError
+        if self.record is None:
+            raise AttributeError("record field must be set for an update.")
+        external_id = self.record.binding_id.external_id
+        url = self._get_url([str(external_id)])
+        try:
+            request_dict = self.backend.http_put_content(url, data)
+        except BadRequest as bad_request:
+            raise ValidationError(
+                _(
+                    "The Synergie platform replied with this error message:"
+                    "\n\n %s \n\n"
+                    "Please contact your system administrator."
+                )
+            ) % bad_request.description
+        return self.to_write_values(request_dict)
 
     def delete(self):
         raise NotImplementedError

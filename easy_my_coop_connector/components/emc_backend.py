@@ -83,6 +83,21 @@ class EMCBackend(models.Model):
         return self._process_response(response)
 
     @api.multi
+    def http_put(self, url, data, headers=None):
+        self.ensure_one()
+        headers = self._add_api_key(headers)
+        if url.startswith("/"):
+            url = self.location + url
+
+        _logger.info("PUT to %s" % url)
+        return requests.put(url, json=data, headers=headers)
+
+    def http_put_content(self, url, data, headers=None):
+        self.ensure_one()
+        response = self.http_put(url, data, headers=headers)
+        return self._process_response(response)
+
+    @api.multi
     def _add_api_key(self, headers):
         self.ensure_one()
         key_dict = {"API-KEY": self.api_key}
