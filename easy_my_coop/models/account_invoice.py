@@ -103,7 +103,7 @@ class AccountInvoice(models.Model):
 
         return True
 
-    def _send_certificate_email(self, certificate_email_template, sub_reg_line):
+    def _send_certificate_mail(self, certificate_email_template, sub_reg_line):
         if self.company_id.send_certificate_email:
             # we send the email with the certificate in attachment
             certificate_email_template.sudo().send_mail(self.partner_id.id, False)
@@ -132,7 +132,7 @@ class AccountInvoice(models.Model):
             if line.product_id.mail_template:
                 certificate_email_template = line.product_id.mail_template
 
-        self._send_certificate_email(certificate_email_template, sub_reg_line)
+        self._send_certificate_mail(certificate_email_template, sub_reg_line)
 
         if self.company_id.create_user:
             self.create_user(self.partner_id)
@@ -189,7 +189,7 @@ class AccountInvoice(models.Model):
     def _get_capital_release_mail_template(self):
         return self.env.ref("easy_my_coop.email_template_release_capital", False)
 
-    def send_capital_release_request_email(self):
+    def send_capital_release_request_mail(self):
         if self.company_id.send_capital_release_email:
             email_template = self._get_capital_release_mail_template()
             # we send the email with the capital release request in attachment
