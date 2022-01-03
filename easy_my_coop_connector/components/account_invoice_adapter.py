@@ -10,6 +10,6 @@ class AccountInvoiceAdapter(AbstractEMCAdapter):
     _service = "invoice"
 
     def to_write_values(self, api_dict):
-        external_id = api_dict.pop("id")
-        writable_dict = api_dict
+        writable_dict = api_dict.copy()
+        external_id = writable_dict.pop("id")
         return external_id, writable_dict
