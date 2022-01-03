@@ -385,7 +385,7 @@
             <field name="email_from">
                 ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
             </field>
-            <field name="subject">Share transfert</field>
+            <field name="subject">Share transfer</field>
             <field name="partner_to">${object.id}</field>
             <field name="reply_to">
                 ${(object.company_id.coop_email_contact or object.user_id.email)|safe}

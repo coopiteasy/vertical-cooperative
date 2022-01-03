@@ -111,7 +111,7 @@ class ResCompany(models.Model):
     send_waiting_list_email = fields.Boolean(
         string="Send Waiting List email", default=True
     )
-    send_share_transfert_email = fields.Boolean(
+    send_share_transfer_email = fields.Boolean(
         string="Send Share Transfer Email", default=True
     )
     send_share_update_email = fields.Boolean(
