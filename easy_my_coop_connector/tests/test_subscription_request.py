@@ -71,7 +71,7 @@ class EMCSRConnectorCase(EMCBaseCase):
 
     def test_validate_request(self):
         srequest = self.browse_ref("easy_my_coop.subscription_request_1_demo")
-        with patch.object(requests, "post") as mock_get:
+        with patch.object(requests, "put") as mock_get:
             mock_get.return_value = mock_response = Mock()
             mock_response.status_code = 200
             mock_response.content = dict_to_dump(SR_VALIDATE_RESULT)
@@ -90,7 +90,7 @@ class EMCSRConnectorCase(EMCBaseCase):
 
     def test_block_subscription_request(self):
         srequest = self.browse_ref("easy_my_coop.subscription_request_1_demo")
-        with patch.object(requests, "post") as mock_get:
+        with patch.object(requests, "put") as mock_get:
             mock_get.return_value = mock_response = Mock()
             mock_response.status_code = 200
             response_content = SR_GET_RESULT.copy()
@@ -104,7 +104,7 @@ class EMCSRConnectorCase(EMCBaseCase):
     def test_unblock_subscription_request(self):
         srequest = self.browse_ref("easy_my_coop.subscription_request_1_demo")
         srequest.state = "block"
-        with patch.object(requests, "post") as mock_get:
+        with patch.object(requests, "put") as mock_get:
             mock_get.return_value = mock_response = Mock()
             mock_response.status_code = 200
             response_content = SR_GET_RESULT.copy()
@@ -116,7 +116,7 @@ class EMCSRConnectorCase(EMCBaseCase):
 
     def test_cancel_subscription_request(self):
         srequest = self.browse_ref("easy_my_coop.subscription_request_1_demo")
-        with patch.object(requests, "post") as mock_get:
+        with patch.object(requests, "put") as mock_get:
             mock_get.return_value = mock_response = Mock()
             mock_response.status_code = 200
             response_content = SR_GET_RESULT.copy()
@@ -128,7 +128,7 @@ class EMCSRConnectorCase(EMCBaseCase):
 
     def test_put_on_waiting_list(self):
         srequest = self.browse_ref("easy_my_coop.subscription_request_1_demo")
-        with patch.object(requests, "post") as mock_get:
+        with patch.object(requests, "put") as mock_get:
             mock_get.return_value = mock_response = Mock()
             mock_response.status_code = 200
             response_content = SR_GET_RESULT.copy()

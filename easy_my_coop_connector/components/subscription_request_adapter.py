@@ -2,7 +2,6 @@
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from werkzeug.exceptions import BadRequest
 
 from odoo import _
 from odoo.exceptions import UserError, ValidationError
@@ -29,23 +28,6 @@ class SubscriptionRequestAdapter(AbstractEMCAdapter):
             "count": sr_list["count"],
             "rows": [self.to_write_values(row) for row in sr_list["rows"]],
         }
-
-    def update(self, data):
-        if self.record is None:
-            raise AttributeError("record field must be set for an update.")
-        external_id = self.record.binding_id.external_id
-        url = "/".join((self._get_url(), str(external_id), "update"))
-        try:
-            request_dict = self.backend.http_post_content(url, data)
-        except BadRequest as bad_request:
-            raise ValidationError(
-                _(
-                    "The Synergie platform replied with this error message:"
-                    "\n\n %s \n\n"
-                    "Please contact your system administrator."
-                )
-            ) % bad_request.description
-        return self.to_write_values(request_dict)
 
     def _map_product(self, api_dict):
         """maps the external product id found in the api dict
