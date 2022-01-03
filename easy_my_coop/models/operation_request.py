@@ -282,16 +282,16 @@ class OperationRequest(models.Model):
                     )
                 )
 
-    def _get_share_transfert_mail_template(self):
+    def _get_share_transfer_mail_template(self):
         return self.env.ref("easy_my_coop.email_template_share_transfer", False)
 
     def _get_share_update_mail_template(self):
         return self.env.ref("easy_my_coop.email_template_share_update", False)
 
-    def _send_share_transfert_email(
+    def _send_share_transfer_email(
         self, sub_register_line
     ):  # fixme unused argument is used in synergie project. Do not remove.
-        if self.company_id.send_share_transfert_email:
+        if self.company_id.send_share_transfer_email:
             cert_email_template = self._get_share_transfert_mail_template()
             cert_email_template.send_mail(self.partner_id_to.id, False)
 
@@ -414,6 +414,6 @@ class OperationRequest(models.Model):
 
         # send mail to the receiver
         if self.operation_type == "transfer":
-            self._send_share_transfert_email(sub_register_line)
+            self._send_share_transfer_email(sub_register_line)
 
         self._send_share_update_email(sub_register_line)
