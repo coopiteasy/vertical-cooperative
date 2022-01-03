@@ -14,9 +14,8 @@ class AccountPaymentAdapter(AbstractEMCAdapter):
     _service = "payment"
 
     def to_write_values(self, api_dict):
-        api_dict = api_dict.copy()
-        external_id = api_dict.pop("id")
-        writable_dict = api_dict
+        writable_dict = api_dict.copy()
+        external_id = writable_dict.pop("id")
         return external_id, writable_dict
 
     def to_api_dict(self, record):
