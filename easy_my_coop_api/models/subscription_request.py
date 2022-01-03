@@ -15,7 +15,7 @@ class SubscriptionRequest(models.Model):
     def _timestamp_export(self):
         sudo_self = self.sudo()
         sudo_self.write({"last_api_export_date": Datetime.now()})
-        sudo_self.filtered(lambda sr: not sr.first_api_export_date).write(
+        sudo_self.search([("first_api_export_date", "=", False)]).write(
             {"first_api_export_date": Datetime.now()}
         )
 
