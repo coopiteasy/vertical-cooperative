@@ -80,6 +80,8 @@ class SubscriptionRequest(models.Model):
             mail_template_notif = self.get_mail_template_notif(
                 is_company=self.partner_id.is_company
             )
+            # sudo is needed to change state of invoice linked to a request
+            #  sent through the api
             mail_template_notif.sudo().send_mail(self.id)
 
     # todo code this in a more pythonic way
