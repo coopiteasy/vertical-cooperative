@@ -663,7 +663,7 @@ class SubscriptionRequest(models.Model):
         self.ensure_one()
         if self.state not in ("draft", "waiting"):
             raise ValidationError(
-                _("The request must be in draft or on waiting list to be " "validated")
+                _("The request must be in draft or on waiting list to be validated")
             )
 
         partner_obj = self.env["res.partner"]
