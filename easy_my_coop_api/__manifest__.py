@@ -8,6 +8,7 @@
     "depends": [
         "base_rest",
         "easy_my_coop",
+        "easy_my_coop_api_logs",
         "auth_api_key",  # todo conf running_env = dev
     ],
     "author": "Coop IT Easy SCRLfs",
