@@ -129,14 +129,14 @@ class SubscriptionRequestService(Component):
         else:
             raise wrapJsonException(BadRequest(_("No country for isocode %s") % code))
 
-    def _get_share_product(self, template_id):
-        product = self.env["product.product"].search(
-            [("product_tmpl_id", "=", template_id)]
+    def _get_share_product(self, external_id):
+        product_template = self.env["product.template"].search(
+            [("_api_external_id", "=", external_id)]
         )
-        if product:
-            return product
+        if product_template:
+            return product_template.product_variant_id
         else:
-            raise wrapJsonException(BadRequest(_("No share for id %s") % template_id))
+            raise wrapJsonException(BadRequest(_("No share for id %s") % external_id))
 
     def _prepare_create(self, params):
         """Prepare a writable dictionary of values"""
@@ -168,6 +168,7 @@ class SubscriptionRequestService(Component):
             "phone": params.get("phone"),
             "skip_control_ng": params.get("skip_control_ng"),
             "capital_release_request_date": params.get("capital_release_request_date"),
+            "source": "API",
         }
 
     def _prepare_update(self, params):

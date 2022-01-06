@@ -13,7 +13,7 @@
     ],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
-    "website": "https://github.com/OCA/sale-workflow",
+    "website": "https://coopiteasy.be",
     "license": "AGPL-3",
     "summary": """
     This module adds the cooperator subscription form
