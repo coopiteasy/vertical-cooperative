@@ -40,7 +40,7 @@ class SubscriptionRequestService(Component):
     def search(self, date_from=None, date_to=None):
         _logger.info("search from {} to {}".format(date_from, date_to))
 
-        domain = []
+        domain = [("state", "=", "draft")]
         if date_from:
             date_from = Date.from_string(date_from)
             domain.append(("date", ">=", date_from))
