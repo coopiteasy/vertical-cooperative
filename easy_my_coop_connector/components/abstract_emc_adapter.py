@@ -25,7 +25,9 @@ class AbstractEMCAdapter:
         """
         if args is None:
             args = []
-        return urljoin(self._root, self._service, *args)
+
+        url = "/".join([self._service] + args)
+        return urljoin(base=self._root, url=url)
 
     def search(self, **params):
         raise NotImplementedError
