@@ -44,7 +44,59 @@ class EMCBackend(models.Model):
             url = self.location + url
 
         _logger.info("GET to {} w/ params {}".format(url, params))
-        return requests.get(url, params=params, headers=headers)
+        response = requests.get(url, params=params, headers=headers)
+        self._log_emc_api_call(response)
+        return response
+
+    @api.multi
+    def http_get_content(self, url, params=None, headers=None):
+        self.ensure_one()
+        response = self.http_get(url, params=params, headers=headers)
+        return self._process_response(response)
+
+    @api.multi
+    def http_post(self, url, data, headers=None):
+        self.ensure_one()
+        headers = self._add_api_key(headers)
+        if url.startswith("/"):
+            url = self.location + url
+
+        _logger.info("POST to %s" % url)
+        response = requests.post(url, json=data, headers=headers)
+        self._log_emc_api_call(response)
+        return response
+
+    def http_post_content(self, url, data, headers=None):
+        self.ensure_one()
+        response = self.http_post(url, data, headers=headers)
+        return self._process_response(response)
+
+    @api.multi
+    def http_put(self, url, data, headers=None):
+        self.ensure_one()
+        headers = self._add_api_key(headers)
+        if url.startswith("/"):
+            url = self.location + url
+
+        _logger.info("PUT to %s" % url)
+        response = requests.put(url, json=data, headers=headers)
+        self._log_emc_api_call(response)
+        return response
+
+    def http_put_content(self, url, data, headers=None):
+        self.ensure_one()
+        response = self.http_put(url, data, headers=headers)
+        return self._process_response(response)
+
+    @api.multi
+    def _add_api_key(self, headers):
+        self.ensure_one()
+        key_dict = {"API-KEY": self.api_key}
+        if headers:
+            headers.update(key_dict)
+        else:
+            headers = key_dict
+        return headers
 
     def _process_response(self, response):
         if response.status_code == 200:
@@ -61,51 +113,20 @@ class EMCBackend(models.Model):
             content = response.content.decode("utf-8")
             raise InternalServerError(_("%s" % content))
 
-    @api.multi
-    def http_get_content(self, url, params=None, headers=None):
-        self.ensure_one()
-        response = self.http_get(url, params=params, headers=headers)
-        return self._process_response(response)
-
-    @api.multi
-    def http_post(self, url, data, headers=None):
-        self.ensure_one()
-        headers = self._add_api_key(headers)
-        if url.startswith("/"):
-            url = self.location + url
-
-        _logger.info("POST to %s" % url)
-        return requests.post(url, json=data, headers=headers)
-
-    def http_post_content(self, url, data, headers=None):
-        self.ensure_one()
-        response = self.http_post(url, data, headers=headers)
-        return self._process_response(response)
-
-    @api.multi
-    def http_put(self, url, data, headers=None):
-        self.ensure_one()
-        headers = self._add_api_key(headers)
-        if url.startswith("/"):
-            url = self.location + url
-
-        _logger.info("PUT to %s" % url)
-        return requests.put(url, json=data, headers=headers)
-
-    def http_put_content(self, url, data, headers=None):
-        self.ensure_one()
-        response = self.http_put(url, data, headers=headers)
-        return self._process_response(response)
-
-    @api.multi
-    def _add_api_key(self, headers):
-        self.ensure_one()
-        key_dict = {"API-KEY": self.api_key}
-        if headers:
-            headers.update(key_dict)
-        else:
-            headers = key_dict
-        return headers
+    def _log_emc_api_call(self, response):
+        request = response.request
+        # only admin can create emc.api.log
+        self.env["emc.api.log"].create(
+            {
+                "datetime": fields.datetime.now(),
+                "method": request.method,
+                "path": request.url,
+                "headers": request.headers,
+                "payload": request.body,
+                "response": response.content,
+                "status": response.status_code,
+            }
+        )
 
     @api.multi
     def action_ping(self):
