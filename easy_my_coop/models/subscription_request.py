@@ -35,7 +35,7 @@ class SubscriptionRequest(models.Model):
     _description = "Subscription Request"
     _inherit = ["mail.thread", "mail.activity.mixin"]
     _rec_name = "lastname"
-    
+
     def get_required_field(self):
         required_fields = _REQUIRED
         company = self.env["res.company"]._company_default_get()
@@ -163,10 +163,11 @@ class SubscriptionRequest(models.Model):
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
+
+    # deprecated, used to keep historic data
     name = fields.Char(
         string="Name",
         readonly=True,
-        states={"draft": [("readonly", False)]},
     )
     firstname = fields.Char(
         string="Firstname",
