@@ -24,8 +24,10 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [easy_my_coop](easy_my_coop/) | 12.0.3.2.0 |  | Manage your cooperative shares
 [easy_my_coop_api](easy_my_coop_api/) | 12.0.0.0.1 |  | Open Easy My Coop to the world: RESTful API.
+[easy_my_coop_api_logs](easy_my_coop_api_logs/) | 12.0.0.0.1 |  | Helpers to log calls in and out of easy_my_coop_api.
 [easy_my_coop_be](easy_my_coop_be/) | 12.0.1.2.0 |  | Easy My Coop Belgium Localization
 [easy_my_coop_ch](easy_my_coop_ch/) | 12.0.1.0.2 |  | Easy My Coop Switzerland localization
+[easy_my_coop_connector](easy_my_coop_connector/) | 12.0.0.0.1 |  | Connect to Easy My Coop RESTful API.
 [easy_my_coop_es](easy_my_coop_es/) | 12.0.0.0.16 |  | Easy My Coop localization for Spain
 [easy_my_coop_es_website](easy_my_coop_es_website/) | 12.0.0.0.6 |  | Easy My Coop Website localization for Spain
 [easy_my_coop_fr](easy_my_coop_fr/) | 12.0.1.0.2 |  | This is the french localization for the easy my coop module
