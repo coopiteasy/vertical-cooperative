@@ -21,6 +21,10 @@ Easy My Coop Spain Website
 
 This addon implements Spanish localization for Easy My Coop Website
 
+Features:
+
+- Add Tax identification on subscription request website form
+
 **Table of contents**
 
 .. contents::
@@ -43,6 +47,11 @@ Authors
 ~~~~~~~
 
 * Coop IT Easy SCRLfs
+* Coopdevs Treball SCCL
+
+Contributors
+~~~~~~~~~~~~
+
 * Coopdevs Treball SCCL
 
 Maintainers

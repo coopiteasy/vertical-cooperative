@@ -368,15 +368,30 @@ ul.auto-toc {
 !! changes will be overwritten.                   !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <p><a class="reference external" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external" href="https://github.com/coopiteasy/vertical-cooperative/tree/12.0/easy_my_coop"><img alt="coopiteasy/vertical-cooperative" src="https://img.shields.io/badge/github-coopiteasy%2Fvertical--cooperative-lightgray.png?logo=github" /></a></p>
-<p>This project aim to deal with modules related to cooperatives management. You’ll find modules that:</p>
-<blockquote>
+<p>Manage cooperators of a cooperative.</p>
+<p>A basic flow can be the following:</p>
 <ul class="simple">
-<li>Allow people to sign up as a member of the cooperative from website</li>
-<li>Manage member’s shares, loans and dividends</li>
-<li>Manage cooperative membership</li>
+<li>Create subscription request for a person (moral or physical)</li>
+<li>Validate subscription sequest, a capital release request (<cite>account.invoice</cite>). This invoice is sent to the future cooperator.</li>
+<li>Payment of the cooperator is registered and the capital Release
+request is marked as paid.</li>
+<li>A new cooperator (a special partner) is created, and the right type
+and amount of share is linked to this new cooperator.</li>
+<li>The new cooperator appears in the Cooperator Registry.</li>
 </ul>
-</blockquote>
-<p>Please don’t hesitate to suggest one of your modules to this project.</p>
+<p>Features:</p>
+<ul class="simple">
+<li>Manage several share types</li>
+<li>Manage share subscription request</li>
+<li>Cooperators can be individuals or companies</li>
+<li>Get an up to date Cooperator Registry</li>
+<li>See shares of a cooperator on the partner view</li>
+<li>Manage departure of cooperators</li>
+<li>Manage conversion between different share type</li>
+<li>Send automatic mail to the future cooperator during the procedure</li>
+<li>Can be used with multi-company configuration</li>
+<li>Generate Cooperator Certificate and several reports about cooperators</li>
+</ul>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
