@@ -19,8 +19,8 @@ Easy My Coop Website
 
 |badge1| |badge2| |badge3| 
 
-    This module adds the cooperator subscription form allowing to subscribe for
-     shares online.
+This module adds the cooperator subscription form allowing to subscribe for
+shares online.
 
 **Table of contents**
 
