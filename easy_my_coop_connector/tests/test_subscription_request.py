@@ -51,7 +51,7 @@ class EMCSRConnectorCase(EMCBaseCase):
         )
 
         srequest = binding.internal_id
-        self.assertEquals(srequest.name, "Manuel Dublues")
+        self.assertEquals(srequest.lastname, "Dublues")
         self.assertEquals(srequest.share_product_id.id, self.share_type_B_pp.id)
         self.assertEquals(
             srequest.subscription_amount, self.share_type_B_pt.list_price * 3
@@ -66,7 +66,7 @@ class EMCSRConnectorCase(EMCBaseCase):
 
         self.assertEquals(srequest.firstname, "Robin")
         self.assertEquals(srequest.phone, False)
-        self.assertEquals(srequest.name, "Robin Des Bois")
+        self.assertEquals(srequest.firstname, "Robin")
         self.assertEquals(srequest.iban, "98765434567")
 
     def test_validate_request(self):
