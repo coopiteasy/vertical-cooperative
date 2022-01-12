@@ -20,7 +20,8 @@ Easy My Coop tax shelter report
 |badge1| |badge2| |badge3| 
 
 This module allows you to create a fiscal declaration year and to print
-tax shelter declaration for each cooperator.
+tax shelter declaration for each cooperator. This is a belgian
+particularity.
 
 **Table of contents**
 
