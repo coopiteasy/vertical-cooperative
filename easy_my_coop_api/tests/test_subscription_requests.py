@@ -156,7 +156,7 @@ class TestSRController(BaseEMCRestCase):
             "lastname": "des Danses",
             "email": "lisa@desdanses.be",
             "ordered_parts": 3,
-            "share_product": self.demo_share_product.id,
+            "share_product": self.demo_share_product.get_api_external_id(),
             "address": {
                 "street": "schaerbeekstraat",
                 "zip_code": "1111",

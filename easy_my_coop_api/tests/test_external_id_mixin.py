@@ -27,7 +27,8 @@ class TestExternalIdMixin(TransactionCase):
         ).product_variant_id
         sr = self.env["subscription.request"].create(
             {
-                "name": "test create request",
+                "firstname": "Marc",
+                "lastname": "Demo",
                 "email": "test@demo.net",
                 "address": "schaerbeekstraat",
                 "zip_code": "1111",
