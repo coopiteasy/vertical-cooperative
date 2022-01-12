@@ -2,7 +2,7 @@
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import _, api, models
+from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.fields import Datetime
 
@@ -10,6 +10,8 @@ from odoo.fields import Datetime
 class SubscriptionRequest(models.Model):
     _name = "subscription.request"
     _inherit = ["subscription.request", "external.id.mixin"]
+
+    source = fields.Selection(selection_add=[("emc_api", "Easy My Coop API")])
 
     @api.multi
     def _timestamp_export(self):
