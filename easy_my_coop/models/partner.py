@@ -165,7 +165,7 @@ class ResPartner(models.Model):
     effective_date = fields.Date(
         sting="Effective Date", compute=_compute_effective_date, store=True
     )
-    representative = fields.Boolean(string="Legal Representative", default=True)
+    representative = fields.Boolean(string="Legal Representative")
     representative_of_member_company = fields.Boolean(
         string="Legal Representative of Member Company",
         store=True,
@@ -179,6 +179,13 @@ class ResPartner(models.Model):
     internal_rules_approved = fields.Boolean(string="Approved Internal Rules")
     financial_risk_approved = fields.Boolean(string="Approved Financial Risk")
     generic_rules_approved = fields.Boolean(string="Approved generic rules")
+
+    @api.onchange("parent_id")
+    def onchange_parent_id(self):
+        if len(self.parent_id) > 0:
+            self.representative = True
+        else:
+            self.representative = False
 
     @api.multi
     @api.depends("subscription_request_ids.state")
