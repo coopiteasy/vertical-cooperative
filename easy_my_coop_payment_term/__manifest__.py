@@ -2,7 +2,7 @@
 # - Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 {
-    "name": "Capital Release Request Default Payment Term",
+    "name": "Easy My Coop Default Payment Term",
     "version": "12.0.1.0.0",
     "depends": ["easy_my_coop"],
     "author": "Coop IT Easy SCRLfs",
@@ -10,8 +10,10 @@
     "category": "Invoice",
     "website": "https://coopiteasy.be",
     "summary": """
-        Add a configurable default payment term that is used 
+        Add a configurable default payment term that is used
         automatically when creating a capital release request.""",
-    "data": ["views/res_company_view.xml",],
+    "data": [
+        "views/res_company_view.xml",
+    ],
     "installable": True,
 }
