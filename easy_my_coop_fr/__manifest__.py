@@ -15,7 +15,6 @@
     """,
     "data": [
         "views/subscription_template.xml",
-        "views/layout_template.xml",  # todo remove?
         "views/certificate_template.xml",
     ],
     "installable": True,
