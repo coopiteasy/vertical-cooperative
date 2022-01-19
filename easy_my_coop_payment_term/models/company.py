@@ -1,10 +1,10 @@
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class ResCompany(models.Model):
     _inherit = "res.company"
 
-    default_payment_term = fields.Many2one(
+    default_subscription_request_payment_term = fields.Many2one(
         "account.payment.term",
         company_dependent=True,
         string="Default Payment Term",
