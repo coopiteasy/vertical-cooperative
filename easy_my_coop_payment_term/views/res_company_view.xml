@@ -6,7 +6,7 @@
         <field name="model">res.company</field>
         <field name="arch" type="xml">
             <field name="subscription_maximum_amount" position="after">
-                 <field name="default_payment_term" />
+                 <field name="default_subscription_request_payment_term" />
             </field>
         </field>
     </record>
