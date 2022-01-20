@@ -5,6 +5,7 @@
 from psycopg2 import IntegrityError
 
 from odoo import api, fields, models
+from odoo.fields import Datetime
 
 
 class ExternalIdMixin(models.AbstractModel):
@@ -40,6 +41,14 @@ class ExternalIdMixin(models.AbstractModel):
         default=False,
         copy=False,
     )
+
+    @api.multi
+    def timestamp_export(self):
+        sudo_self = self.sudo()
+        sudo_self.write({"last_api_export_date": Datetime.now()})
+        sudo_self.search([("first_api_export_date", "=", False)]).write(
+            {"first_api_export_date": Datetime.now()}
+        )
 
     @api.multi
     def set_external_sequence(self):
