@@ -4,7 +4,6 @@
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
-from odoo.fields import Datetime
 
 
 class SubscriptionRequest(models.Model):
@@ -12,14 +11,6 @@ class SubscriptionRequest(models.Model):
     _inherit = ["subscription.request", "external.id.mixin"]
 
     source = fields.Selection(selection_add=[("emc_api", "Easy My Coop API")])
-
-    @api.multi
-    def _timestamp_export(self):
-        sudo_self = self.sudo()
-        sudo_self.write({"last_api_export_date": Datetime.now()})
-        sudo_self.search([("first_api_export_date", "=", False)]).write(
-            {"first_api_export_date": Datetime.now()}
-        )
 
     @api.multi
     def update_state(self, state):

@@ -76,6 +76,9 @@ class AccountPaymentService(Component):
         }
 
     def _to_dict(self, payment):
+        payment.ensure_one()
+        payment.timestamp_export()
+
         invoice = {
             "id": payment.invoice_ids.get_api_external_id(),
             "name": payment.invoice_ids.number,
