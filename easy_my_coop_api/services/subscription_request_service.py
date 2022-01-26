@@ -147,7 +147,6 @@ class SubscriptionRequestService(Component):
         return {
             "firstname": params["firstname"],
             "lastname": params["lastname"],
-            "name": params["firstname"] + " " + params["lastname"],
             "is_company": params["is_company"],
             "email": params["email"],
             "ordered_parts": params["ordered_parts"],
@@ -167,7 +166,7 @@ class SubscriptionRequestService(Component):
             "phone": params.get("phone"),
             "skip_control_ng": params.get("skip_control_ng"),
             "capital_release_request_date": params.get("capital_release_request_date"),
-            "source": "API",
+            "source": "emc_api",
         }
 
     def _prepare_update(self, params):

@@ -10,7 +10,8 @@
                 string="Subscription Requests"
                 colors="red:validated == False; blue:state in ('draft'); grey: state in ('done')"
             >
-                <field name="name" />
+                <field name="firstname" />
+                <field name="lastname" />
                 <field name="company_name" />
                 <field name="date" string="Request Date" />
                 <field name="type" />
@@ -126,7 +127,6 @@
                                 name="company_register_number"
                                 attrs="{'invisible':[('is_company','=',False)]}"
                             />
-                            <field name="name" />
                             <field name="firstname" />
                             <field name="lastname" />
                             <field name="birthdate" />

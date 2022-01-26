@@ -68,19 +68,19 @@ class SubscriptionRequestAdapter(AbstractEMCAdapter):
                     raise ValidationError(
                         _(
                             "No capital release invoice generated "
-                            "subscription request %s. \n "
+                            "subscription request of %s %s. \n "
                             "Please contact your system administrator."
                         )
-                        % self.record.name
+                        % (self.record.lastname, self.record.firstname)
                     )
                 if len(crr) > 1:
                     raise ValidationError(
                         _(
                             "Cannot process multiple capital release invoices "
-                            "for subscription request %s at this time. \n "
+                            "for subscription request of %s %s at this time. \n "
                             "Please contact your system administrator."
                         )
-                        % self.record.name
+                        % (self.record.lastname, self.record.firstname)
                     )
                 new_binding = InvoiceBinding.create(
                     {
@@ -106,7 +106,6 @@ class SubscriptionRequestAdapter(AbstractEMCAdapter):
             "is_company": api_dict["is_company"],
             "firstname": api_dict["firstname"],
             "lastname": api_dict["lastname"],
-            "name": api_dict["firstname"] + " " + api_dict["lastname"],
             "date": api_dict["date"],
             "state": api_dict["state"],
             "lang": api_dict["lang"],
