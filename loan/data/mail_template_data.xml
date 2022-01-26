@@ -15,7 +15,7 @@
             <field name="reply_to">
                 ${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}
             </field>
-            <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
+            <field name="model_id" ref="loan.model_loan_issue_line" />
             <field name="auto_delete" eval="True" />
             <field name="lang">${object.partner_id.lang}</field>
             <field name="easy_my_coop" eval="True" />
@@ -79,7 +79,7 @@
             <field name="reply_to">
                 ${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}
             </field>
-            <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
+            <field name="model_id" ref="loan.model_loan_issue_line" />
             <field name="auto_delete" eval="True" />
             <field name="lang">${object.partner_id.lang}</field>
             <field name="easy_my_coop" eval="True" />
@@ -143,12 +143,9 @@
             <field name="reply_to">
                 ${(object.company_id.coop_email_contact or object.loan_issue_id.user_id.email)|safe}
             </field>
-            <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
+            <field name="model_id" ref="loan.model_loan_issue_line" />
             <field name="auto_delete" eval="True" />
-            <field
-                name="report_template"
-                ref="easy_my_coop_loan.action_loan_issue_line_report"
-            />
+            <field name="report_template" ref="loan.action_loan_issue_line_report" />
             <field name="report_name">Reimbursement table report</field>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="easy_my_coop" eval="True" />

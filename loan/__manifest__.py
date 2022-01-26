@@ -4,7 +4,7 @@
 
 {
     "name": "Easy My Coop Loan Issues Management",
-    "version": "12.0.2.0.1",
+    "version": "12.0.3.0.0",
     "depends": ["easy_my_coop"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
@@ -33,5 +33,6 @@
         "views/menus.xml",
     ],
     "demo": ["demo/coop.xml"],
+    "pre_init_hook": "pre_init_hook",
     "installable": True,
 }

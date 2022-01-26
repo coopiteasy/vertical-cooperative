@@ -59,11 +59,9 @@ class WithholdingTaxDeclarationReport(models.TransientModel):
         self.ensure_one()
         context = dict(self.env.context)
         if self.report_type == "tax":
-            report = (
-                "easy_my_coop_loan.action_withholding_tax_declaration_report"  # noqa
-            )
+            report = "loan.action_withholding_tax_declaration_report"  # noqa
         elif self.report_type == "reimbursement":
-            report = "easy_my_coop_loan.action_loan_reimbursement_report"
+            report = "loan.action_loan_reimbursement_report"
         action = self.env.ref(report)
 
         return action.with_context(context).report_action(self, config=False)

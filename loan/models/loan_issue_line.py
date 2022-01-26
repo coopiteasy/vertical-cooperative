@@ -95,10 +95,10 @@ class LoanIssueLine(models.Model):
             )
 
     def get_loan_sub_mail_template(self):
-        return self.env.ref("easy_my_coop_loan.loan_subscription_confirmation", False)
+        return self.env.ref("loan.loan_subscription_confirmation", False)
 
     def get_loan_pay_req_mail_template(self):
-        return self.env.ref("easy_my_coop_loan.loan_issue_payment_request", False)
+        return self.env.ref("loan.loan_issue_payment_request", False)
 
     @api.model
     def create(self, vals):
@@ -119,7 +119,7 @@ class LoanIssueLine(models.Model):
     def action_validate(self):
         if self.filtered(lambda l: l.state != "draft"):
             raise UserError(_("You can only validate draft loans"))
-        sequence_id = self.env.ref("easy_my_coop_loan.sequence_loan_issue_line", False)
+        sequence_id = self.env.ref("loan.sequence_loan_issue_line", False)
         for line in self:
             loan_line_num = sequence_id.next_by_id()
             line.write({"name": loan_line_num, "state": "subscribed"})
@@ -149,7 +149,7 @@ class LoanIssueLine(models.Model):
     @api.multi
     def get_confirm_paid_email_template(self):
         self.ensure_one()
-        return self.env.ref("easy_my_coop_loan.email_template_loan_confirm_paid")
+        return self.env.ref("loan.email_template_loan_confirm_paid")
 
     @api.multi
     def action_paid(self):

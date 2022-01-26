@@ -6,7 +6,7 @@
     "name": "Easy My Coop Loan Issues Website",
     "version": "12.0.1.0.1",
     "depends": [
-        "easy_my_coop_loan",
+        "loan",
         "easy_my_coop_website_portal",
         "auth_company_signup",
         "website",

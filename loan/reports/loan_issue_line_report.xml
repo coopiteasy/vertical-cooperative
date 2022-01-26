@@ -118,10 +118,7 @@
     <template id="loan_issue_line">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <t
-                    t-call="easy_my_coop_loan.loan_issue_line_document"
-                    t-lang="o.partner_id.lang"
-                />
+                <t t-call="loan.loan_issue_line_document" t-lang="o.partner_id.lang" />
             </t>
         </t>
     </template>

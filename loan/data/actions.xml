@@ -6,8 +6,8 @@
 <odoo>
     <record id="batch_loan_issue_line_validate_action" model="ir.actions.server">
         <field name="name">Validate Loans</field>
-        <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
-        <field name="binding_model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
+        <field name="model_id" ref="loan.model_loan_issue_line" />
+        <field name="binding_model_id" ref="loan.model_loan_issue_line" />
         <field name="state">code</field>
         <field name="code">
 records.action_validate()
@@ -16,8 +16,8 @@ records.action_validate()
 
     <record id="batch_loan_issue_line_request_payment_action" model="ir.actions.server">
         <field name="name">Request Payments</field>
-        <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
-        <field name="binding_model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
+        <field name="model_id" ref="loan.model_loan_issue_line" />
+        <field name="binding_model_id" ref="loan.model_loan_issue_line" />
         <field name="state">code</field>
         <field name="code">
 records.action_request_payment()
@@ -26,8 +26,8 @@ records.action_request_payment()
 
     <record id="batch_loan_issue_line_cancel_action" model="ir.actions.server">
         <field name="name">Cancel Loans</field>
-        <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
-        <field name="binding_model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
+        <field name="model_id" ref="loan.model_loan_issue_line" />
+        <field name="binding_model_id" ref="loan.model_loan_issue_line" />
         <field name="state">code</field>
         <field name="code">
 records.action_cancel()
@@ -36,8 +36,8 @@ records.action_cancel()
 
     <record id="batch_loan_issue_line_set_as_paid_action" model="ir.actions.server">
         <field name="name">Set as Paid</field>
-        <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
-        <field name="binding_model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
+        <field name="model_id" ref="loan.model_loan_issue_line" />
+        <field name="binding_model_id" ref="loan.model_loan_issue_line" />
         <field name="state">code</field>
         <field name="code">
 records.action_paid()
@@ -46,8 +46,8 @@ records.action_paid()
 
     <record id="batch_loan_issue_line_set_as_draft_action" model="ir.actions.server">
         <field name="name">Set to Draft</field>
-        <field name="model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
-        <field name="binding_model_id" ref="easy_my_coop_loan.model_loan_issue_line" />
+        <field name="model_id" ref="loan.model_loan_issue_line" />
+        <field name="binding_model_id" ref="loan.model_loan_issue_line" />
         <field name="state">code</field>
         <field name="code">
 records.action_draft()
@@ -59,8 +59,8 @@ records.action_draft()
         model="loan.issue.line"
         string="Reimbursment table report"
         report_type="qweb-pdf"
-        name="easy_my_coop_loan.loan_issue_line"
-        file="easy_my_coop_loan.loan_issue_line_report.xml"
+        name="loan.loan_issue_line"
+        file="loan.loan_issue_line_report.xml"
         multi="True"
         menu="True"
     />

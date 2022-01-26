@@ -64,7 +64,7 @@ class EMCLoanCase(EMCBaseCase):
         with self.assertRaises(AccessError):
             self.env["loan.issue"].create(loan_issue_values)
 
-        loan_issue = self.browse_ref("easy_my_coop_loan.loan_issue_1_demo")
+        loan_issue = self.browse_ref("loan.loan_issue_1_demo")
 
         with self.assertRaises(AccessError):
             loan_issue.name = "some name"
@@ -80,7 +80,7 @@ class EMCLoanCase(EMCBaseCase):
             loan_issue.action_open()
 
         self.as_emc_manager()
-        loan_issue_manager = self.browse_ref("easy_my_coop_loan.loan_issue_1_demo")
+        loan_issue_manager = self.browse_ref("loan.loan_issue_1_demo")
         loan_issue_manager.action_confirm()
         loan_issue_manager.action_open()
 
