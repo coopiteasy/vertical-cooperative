@@ -35,6 +35,7 @@ class EMCSRConnectorCase(EMCBaseCase):
         date_from = date_to - datetime.timedelta(days=1)
 
         with patch.object(requests, "get") as mock_get:
+            # todo use request_mock library
             mock_get.return_value = mock_response = Mock()
             mock_response.status_code = 200
             mock_response.content = dict_to_dump(SR_SEARCH_RESULT)

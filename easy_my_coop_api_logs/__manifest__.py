@@ -3,29 +3,20 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 {
-    "name": "Easy My Coop Connector",
+    "name": "Easy My Coop API Logs",
     "version": "12.0.0.0.1",
-    "depends": [
-        "easy_my_coop",
-        "easy_my_coop_api_logs",
-    ],
+    "depends": [],
     "author": "Coop IT Easy SCRLfs",
-    "category": "Connector",
+    "category": "Cooperative management",
     "website": "https://coopiteasy.be",
     "license": "AGPL-3",
     "summary": """
-        Connect to Easy My Coop RESTful API.
+        Helpers to log calls in and out of easy_my_coop_api.
     """,
     "data": [
         "security/ir.model.access.csv",
-        "views/emc_backend.xml",
-        "views/emc_bindings.xml",
-        "wizards/emc_history_import_sr.xml",
-        "views/actions.xml",
-        "views/menus.xml",
-        "data/cron.xml",
+        "views/emc_api_log_views.xml",
     ],
-    "demo": ["demo/demo.xml"],
     "installable": True,
     "application": False,
 }
