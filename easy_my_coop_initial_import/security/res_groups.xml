@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <record id="group_easy_my_coop_initial_import" model="res.groups">
+        <field name="name">Import Manager</field>
+        <field
+            name="category_id"
+            ref="easy_my_coop.module_category_cooperator_management"
+        />
+        <field
+            name="implied_ids"
+            eval="[(6, 0, [ref('easy_my_coop.group_easy_my_coop_manager')])]"
+        />
+    </record>
+</openerp>

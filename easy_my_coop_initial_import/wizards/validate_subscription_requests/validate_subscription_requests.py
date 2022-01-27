@@ -1,5 +1,7 @@
 import logging
-from odoo import api, models, fields
+
+from odoo import api, fields, models
+
 from odoo.addons.queue_job.job import job
 
 log = logging.getLogger(__name__)
@@ -22,18 +24,22 @@ class ValidateSubscriptionRequest(models.TransientModel):
     def enqueue_sr_validation(self):
         log.info("Preparing data to validate subscription requests...")
         subscription_requests = self.env["subscription.request"].search(
-            [
-                ("state", "=", "draft")
-            ],
-            order="capital_release_request_date"
+            [("state", "=", "draft")], order="capital_release_request_date"
         )
         for sr in subscription_requests:
-            log.info("Validating subscription requests {}".format(sr.migrated_cooperator_register_number))
+            log.info(
+                "Validating subscription requests {}".format(
+                    sr.migrated_cooperator_register_number
+                )
+            )
             try:
                 sr.validate_subscription_request()
                 self.env.cr.commit()
             except Exception as error:
                 self.env.cr.commit()
                 raise error
-            log.info("Validated subscription requests {}".format(sr.migrated_cooperator_register_number))
-
+            log.info(
+                "Validated subscription requests {}".format(
+                    sr.migrated_cooperator_register_number
+                )
+            )

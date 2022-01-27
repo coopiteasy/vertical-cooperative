@@ -1,5 +1,5 @@
 ===========================
-Easy My Coop Easy Migration
+Easy My Coop Initial Import
 ===========================
 
 .. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -13,16 +13,13 @@ Easy My Coop Easy Migration
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fvertical--cooperative-lightgray.png?logo=github
-    :target: https://github.com/OCA/vertical-cooperative/tree/12.0/easy_my_coop_easy_migration
-    :alt: OCA/vertical-cooperative
-.. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/vertical-cooperative-12-0/vertical-cooperative-12-0-easy_my_coop_easy_migration
-    :alt: Translate me on Weblate
+.. |badge3| image:: https://img.shields.io/badge/github-coopdevs%2Fvertical--telecom-lightgray.png?logo=github
+    :target: https://github.com/coopdevs/vertical-telecom/tree/12.0/easy_my_coop_initial_import
+    :alt: coopdevs/vertical-telecom
 
-|badge1| |badge2| |badge3| |badge4| 
+|badge1| |badge2| |badge3| 
 
-This project aim to facilitate the migration from other ERP to Odoo with EMC application:
+This project aim to facilitate the importation from other ERP to Odoo with EMC application:
 
  - Add new field to SubscriptionRequest to save the migrated cooperator number.
  - Add a wizard to validate all the SubscriptionRequests in background.
@@ -49,9 +46,9 @@ And then pip-install them [from pypi](https://pypi.org/user/coopdevs/).
 
 ### Example
 
-For instance, for the addon `easy_my_coop_easy_migration`
+For instance, for the addon `easy_my_coop_initial_import`
 ```shell
-pip install odoo12-addon-easy-my-coop-easy-migration==12.0.1.0.0
+pip install odoo12-addon-easy-my-coop-initial-import==12.0.1.0.0
 ```
 Beware that for word separation, pypi uses dashes `-` and odoo underscores `_`.
 
@@ -62,22 +59,22 @@ Configuration steps:
 
 1. Configure the `property_cooperator_account` in Settings > Company.
 2. Create the Share product and generate the ExternalId. You can export the share product to generate the external Id.
-3. Add `Migration Manager` group to the migration user.
-4. Modify the Subscription Journal sequence implementation to NoGap: Settings > Technical > Sequences > Account Default Subscription Journal
+3. Add `Import Manager` group to the importation users.
+4. Ensure that the sequence 'Subscription Register' has the newt number to 1.
 
 Execution steps:
 
 1. Import SR with the `migrated_cooperator_register_number` and `share_type/external_id`.
 2. Open the SR validator wizard and check the flag `Force validate all in draft` and validate to validate the SR and generate the partner and the capital release invoice.
-3. Open the 'Pay capital release invoice of migration' wizard and configure the journal to use. Then execute the wizard thar enqueue a job to mask as paid all the capital release invoices.
+3. Open the 'Pay capital release invoice of imported subscriptions' wizard and configure the journal to use. Then execute the wizard thar enqueue a job to mask as paid all the capital release invoices.
 
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/OCA/vertical-cooperative/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/coopdevs/vertical-telecom/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/vertical-cooperative/issues/new?body=module:%20easy_my_coop_easy_migration%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/coopdevs/vertical-telecom/issues/new?body=module:%20easy_my_coop_initial_import%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -97,16 +94,6 @@ Contributors
 Maintainers
 ~~~~~~~~~~~
 
-This module is maintained by the OCA.
+This module is part of the `coopdevs/vertical-telecom <https://github.com/coopdevs/vertical-telecom/tree/12.0/easy_my_coop_initial_import>`_ project on GitHub.
 
-.. image:: https://odoo-community.org/logo.png
-   :alt: Odoo Community Association
-   :target: https://odoo-community.org
-
-OCA, or the Odoo Community Association, is a nonprofit organization whose
-mission is to support the collaborative development of Odoo features and
-promote its widespread use.
-
-This module is part of the `OCA/vertical-cooperative <https://github.com/OCA/vertical-cooperative/tree/12.0/easy_my_coop_easy_migration>`_ project on GitHub.
-
-You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
+You are welcome to contribute.

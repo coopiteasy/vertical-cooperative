@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="view_pay_capital_release_invoices" model="ir.ui.view">
+    <field name="name">Pay capital release invoices</field>
+    <field name="model">pay.capital.release.invoices</field>
+    <field name="arch" type="xml">
+      <form string="Pay capital release invoices">
+        <group name="Payment options">
+          <field name="journal_id" />
+        </group>
+        <footer>
+          <button name="pay" string="Execute" type="object" class="btn-primary" />
+          <button string="Cancel" class="btn-default" special="cancel" />
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <act_window
+        id="action_pay_capital_release_invoices"
+        name="Pay capital release invoices"
+        res_model="pay.capital.release.invoices"
+        view_type="form"
+        view_mode="form"
+        target="new"
+    />
+
+  <menuitem
+        name="Pay capital release invoice of imported subscriptions"
+        id="menu_easy_my_coop_initial_import_pay_capital_release_invoices"
+        action="action_pay_capital_release_invoices"
+        groups="easy_my_coop_initial_import.group_easy_my_coop_initial_import"
+        parent="easy_my_coop.menu_easy_my_coop_config"
+        sequence="300"
+    />
+</odoo>

@@ -9,8 +9,8 @@ And then pip-install them [from pypi](https://pypi.org/user/coopdevs/).
 
 ### Example
 
-For instance, for the addon `easy_my_coop_easy_migration`
+For instance, for the addon `easy_my_coop_initial_import`
 ```shell
-pip install odoo12-addon-easy-my-coop-easy-migration==12.0.1.0.0
+pip install odoo12-addon-easy-my-coop-initial-import==12.0.1.0.0
 ```
 Beware that for word separation, pypi uses dashes `-` and odoo underscores `_`.
