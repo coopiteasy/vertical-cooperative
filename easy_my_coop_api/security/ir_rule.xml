@@ -26,7 +26,7 @@
             name="name"
         >Restrict subscription request update and delete if managed outside of platform
         </field>
-        <field name="model_id" ref="easy_my_coop.model_subscription_request" />
+        <field name="model_id" ref="cooperator.model_subscription_request" />
         <field name="perm_read" eval="False" />
         <field name="perm_create" eval="False" />
         <field name="perm_write" eval="True" />

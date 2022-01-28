@@ -24,7 +24,7 @@ class TestAccountInvoiceController(BaseEMCRestCase):
         self.ai_service = emc_services_env.component(usage="invoice")
 
         self.share_type_A = self.browse_ref(
-            "easy_my_coop.product_template_share_type_1_demo"
+            "cooperator.product_template_share_type_1_demo"
         )
         self._capital_release_create()
 

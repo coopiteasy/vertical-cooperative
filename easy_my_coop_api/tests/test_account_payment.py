@@ -23,9 +23,7 @@ class TestAccountPaymentController(BaseEMCRestCase):
         )
         self.ap_service = emc_services_env.component(usage="payment")
         self.ai_service = emc_services_env.component(usage="invoice")
-        self.demo_request_1 = self.browse_ref(
-            "easy_my_coop.subscription_request_1_demo"
-        )
+        self.demo_request_1 = self.browse_ref("cooperator.subscription_request_1_demo")
         self.demo_request_1.write(
             {
                 "_api_external_id": 1,
