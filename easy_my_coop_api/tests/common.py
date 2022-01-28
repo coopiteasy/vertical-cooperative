@@ -30,7 +30,7 @@ class BaseEMCRestCase(BaseRestCase):
         super().setUp()
         # tests are run as res_users_manager_emc_demo with
         #   emc manager access rights
-        self.uid = self.ref("easy_my_coop.res_users_manager_emc_demo")
+        self.uid = self.ref("cooperator.res_users_manager_emc_demo")
         self.session = requests.Session()
 
     @classmethod
@@ -156,13 +156,13 @@ class BaseEMCRestCase(BaseRestCase):
             ],
             limit=1,
         )
-        cls.equity_account = cls.env.ref("easy_my_coop.account_equity_demo")
-        cls.cooperator_account = cls.env.ref("easy_my_coop.account_cooperator_demo")
+        cls.equity_account = cls.env.ref("cooperator.account_equity_demo")
+        cls.cooperator_account = cls.env.ref("cooperator.account_cooperator_demo")
         return True
 
     @classmethod
     def _journals_setup(cls):
-        cls.subscription_journal = cls.env.ref("easy_my_coop.subscription_journal")
+        cls.subscription_journal = cls.env.ref("cooperator.subscription_journal")
         cls.subscription_journal.write(
             {
                 "default_debit_account_id": cls.equity_account.id,
