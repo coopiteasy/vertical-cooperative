@@ -5,6 +5,8 @@
 -->
 <odoo>
 
+    <!-- todo rely on data from standard modules for standard models (partners...) -->
+    <!-- todo remove this data since it has not been through the complete flow -->
     <record id="res_partner_cooperator_1_demo" model="res.partner">
         <field name="name">Virginie Leloup</field>
         <field name="customer" eval="True" />
@@ -23,6 +25,7 @@
         <field name="partner_id" ref="res_partner_cooperator_1_demo" />
     </record>
 
+    <!-- todo remove this data since it has not been through the complete flow -->
     <record id="res_partner_cooperator_2_demo" model="res.partner">
         <field name="name">Houssine Intégrale</field>
         <field name="customer" eval="True" />
