@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="view_company_easy_my_coop_loan">
+        <field name="name">res.company.form.easymy.coop</field>
+        <field name="inherit_id" ref="easy_my_coop.view_company_inherit_form2" />
+        <field name="model">res.company</field>
+        <field name="arch" type="xml">
+            <field name="subscription_maximum_amount" position="after">
+                 <field name="default_subscription_request_payment_term" />
+            </field>
+        </field>
+    </record>
+</odoo>
