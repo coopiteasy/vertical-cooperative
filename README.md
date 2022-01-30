@@ -22,7 +22,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[easy_my_coop](easy_my_coop/) | 12.0.3.1.0 |  | Manage your cooperative shares
+[easy_my_coop](easy_my_coop/) | 12.0.3.2.0 |  | Manage your cooperative shares
 [easy_my_coop_api](easy_my_coop_api/) | 12.0.0.0.1 |  | Open Easy My Coop to the world: RESTful API.
 [easy_my_coop_be](easy_my_coop_be/) | 12.0.1.2.0 |  | Easy My Coop Belgium Localization
 [easy_my_coop_ch](easy_my_coop_ch/) | 12.0.1.0.2 |  | Easy My Coop Switzerland localization
