@@ -28,7 +28,7 @@ addon | version | maintainers | summary
 [easy_my_coop_ch](easy_my_coop_ch/) | 12.0.1.0.2 |  | Easy My Coop Switzerland localization
 [easy_my_coop_es](easy_my_coop_es/) | 12.0.0.0.16 |  | Easy My Coop localization for Spain
 [easy_my_coop_es_website](easy_my_coop_es_website/) | 12.0.0.0.6 |  | Easy My Coop Website localization for Spain
-[easy_my_coop_fr](easy_my_coop_fr/) | 12.0.1.0.1 |  | This is the french localization for the easy my coop module
+[easy_my_coop_fr](easy_my_coop_fr/) | 12.0.1.0.2 |  | This is the french localization for the easy my coop module
 [easy_my_coop_loan](easy_my_coop_loan/) | 12.0.2.0.1 |  | This module allows to manage the bonds and subordinated loans subscription life cycle.
 [easy_my_coop_loan_account](easy_my_coop_loan_account/) | 12.0.1.0.0 |  | This module brings the accounting part of the loan issue. It has for purpose to generate all the accounting entries to the covered use cases.
 [easy_my_coop_loan_account_be](easy_my_coop_loan_account_be/) | 12.0.1.0.0 |  | This module install belgian localisation demo data for EMC loan account. It also trigger installation for the dependency module
