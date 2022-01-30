@@ -36,7 +36,7 @@ addon | version | summary
 [easy_my_coop_loan_website](easy_my_coop_loan_website/) | 12.0.1.0.1 | This module implements the subscription page for bonds and subordinated loans.
 [easy_my_coop_taxshelter_report](easy_my_coop_taxshelter_report/) | 12.0.1.0.1 | This module allows you to create a fiscal declaration year and to print tax shelter declaration for each cooperator.
 [easy_my_coop_website](easy_my_coop_website/) | 12.0.1.0.6 | This module adds the cooperator subscription form allowing to subscribe for shares online.
-[easy_my_coop_website_portal](easy_my_coop_website_portal/) | 12.0.1.0.1 | Show cooperator information in the website portal.
+[easy_my_coop_website_portal](easy_my_coop_website_portal/) | 12.0.1.0.2 | Show cooperator information in the website portal.
 [easy_my_coop_website_taxshelter](easy_my_coop_website_taxshelter/) | 12.0.1.0.0 | Give access to Tax Shelter Report in the website portal.
 [partner_age](partner_age/) | 12.0.2.0.0 | This module computes the age of the partner.
 [theme_light](theme_light/) | 12.0.1.0.0 | extract of the theme zen
