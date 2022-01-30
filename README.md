@@ -34,6 +34,7 @@ addon | version | summary
 [easy_my_coop_loan_account_be](easy_my_coop_loan_account_be/) | 12.0.1.0.0 | This module install belgian localisation demo data for EMC loan account. It also trigger installation for the dependency module
 [easy_my_coop_loan_bba](easy_my_coop_loan_bba/) | 12.0.1.0.0 | This module implements the bba structured communication on the loan line.
 [easy_my_coop_loan_website](easy_my_coop_loan_website/) | 12.0.1.0.1 | This module implements the subscription page for bonds and subordinated loans.
+[easy_my_coop_payment_term](easy_my_coop_payment_term/) | 12.0.1.0.0 | Add a configurable default payment term that is used automatically when creating a capital release request.
 [easy_my_coop_taxshelter_report](easy_my_coop_taxshelter_report/) | 12.0.1.0.1 | This module allows you to create a fiscal declaration year and to print tax shelter declaration for each cooperator.
 [easy_my_coop_website](easy_my_coop_website/) | 12.0.1.0.6 | This module adds the cooperator subscription form allowing to subscribe for shares online.
 [easy_my_coop_website_portal](easy_my_coop_website_portal/) | 12.0.1.0.2 | Show cooperator information in the website portal.
