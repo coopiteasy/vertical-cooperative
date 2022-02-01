@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).#
 {
     "name": "Easy My Coop Fr",
-    "version": "12.0.1.0.1",
+    "version": "12.0.1.0.2",
     "depends": ["easy_my_coop", "easy_my_coop_website", "l10n_fr"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
@@ -15,7 +15,6 @@
     """,
     "data": [
         "views/subscription_template.xml",
-        "views/layout_template.xml",  # todo remove?
         "views/certificate_template.xml",
     ],
     "installable": True,

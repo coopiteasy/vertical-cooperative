@@ -7,7 +7,7 @@
 {
     "name": "Easy My Coop",
     "summary": "Manage your cooperative shares",
-    "version": "12.0.3.1.0",
+    "version": "12.0.3.2.0",
     "depends": [
         "base",
         "web",
@@ -19,6 +19,7 @@
         "partner_firstname",
         "partner_contact_birthdate",
         "partner_contact_address",
+        "partner_contact_gender",
         "email_template_config",
         "mail",
     ],

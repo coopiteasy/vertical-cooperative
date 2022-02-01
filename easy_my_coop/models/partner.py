@@ -141,11 +141,6 @@ class ResPartner(models.Model):
         string="Old cooperator",
         help="Check this box if this cooperator is" " no more an effective member.",
     )
-    # todo use oca partner_contact_gender
-    gender = fields.Selection(
-        [("male", "Male"), ("female", "Female"), ("other", "Other")],
-        string="Gender",
-    )
     share_ids = fields.One2many("share.line", "partner_id", string="Share Lines")
     cooperator_register_number = fields.Integer(string="Cooperator Number", copy=False)
     number_of_share = fields.Integer(
@@ -184,6 +179,13 @@ class ResPartner(models.Model):
     internal_rules_approved = fields.Boolean(string="Approved Internal Rules")
     financial_risk_approved = fields.Boolean(string="Approved Financial Risk")
     generic_rules_approved = fields.Boolean(string="Approved generic rules")
+
+    @api.onchange("parent_id")
+    def onchange_parent_id(self):
+        if len(self.parent_id) > 0:
+            self.representative = True
+        else:
+            self.representative = False
 
     @api.multi
     @api.depends("subscription_request_ids.state")
