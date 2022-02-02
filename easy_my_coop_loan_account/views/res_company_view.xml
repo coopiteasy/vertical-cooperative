@@ -2,14 +2,14 @@
 <odoo>
     <record model="ir.ui.view" id="view_company_easy_my_coop_loan">
         <field name="name">res.company.form.easymy.coop</field>
-        <field name="inherit_id" ref="easy_my_coop.view_company_inherit_form2" />
+        <field name="inherit_id" ref="cooperator.view_company_inherit_form2" />
         <field name="model">res.company</field>
         <field name="arch" type="xml">
             <group name="coop_grp" position="before">
                 <group
                     name="coop_loan_grp"
                     string="EasyMy Coop Loan"
-                    groups="easy_my_coop.group_easy_my_coop_user"
+                    groups="cooperator.group_easy_my_coop_user"
                 >
                     <field name="days_ahead" />
                     <field name="awaiting_loan_payment_account" />
