@@ -5,7 +5,7 @@
 {
     "name": "Easy My Coop Website Portal",
     "version": "12.0.1.0.2",
-    "depends": ["easy_my_coop", "website", "account", "portal"],
+    "depends": ["cooperator", "website", "account", "portal"],
     "summary": """
         Show cooperator information in the website portal.
     """,
