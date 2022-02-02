@@ -27,7 +27,7 @@
     "version": "12.0.0.0.1",
     "website": "https://coopiteasy.be",
     "category": "Cooperative Management",
-    "depends": ["easy_my_coop"],
+    "depends": ["cooperator"],
     "external_dependencies": {"python": ["xlsxwriter"]},
     "data": ["wizard/export_global_wizard.xml"],
     "installable": False,
