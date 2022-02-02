@@ -5,7 +5,7 @@
 {
     "name": "Easy My Coop Fr",
     "version": "12.0.1.1.0",
-    "depends": ["easy_my_coop", "easy_my_coop_website", "l10n_fr"],
+    "depends": ["cooperator", "easy_my_coop_website", "l10n_fr"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
     "website": "https://coopiteasy.be",
