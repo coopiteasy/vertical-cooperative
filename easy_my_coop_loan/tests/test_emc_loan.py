@@ -7,7 +7,7 @@ from datetime import timedelta
 from odoo.exceptions import AccessError
 from odoo.fields import Date
 
-from odoo.addons.easy_my_coop.tests.test_base import EMCBaseCase
+from odoo.addons.cooperator.tests.test_base import EMCBaseCase
 
 
 class EMCLoanCase(EMCBaseCase):
@@ -18,7 +18,7 @@ class EMCLoanCase(EMCBaseCase):
             "default_issue": "xx",
             "subscription_start_date": Date.today(),
             "subscription_end_date": Date.today() + timedelta(days=60),
-            "user_id": self.ref("easy_my_coop.res_users_manager_emc_demo"),
+            "user_id": self.ref("cooperator.res_users_manager_emc_demo"),
             "term_date": Date.today() + timedelta(days=600),  # ?
             "gross_rate": 0.03,
             "face_value": 100,
@@ -46,7 +46,7 @@ class EMCLoanCase(EMCBaseCase):
         loan_issue_values = {
             "name": "test loan issue",
             "default_issue": True,
-            "user_id": self.ref("easy_my_coop.res_users_manager_emc_demo"),
+            "user_id": self.ref("cooperator.res_users_manager_emc_demo"),
             "subscription_start_date": Date.today(),
             "subscription_end_date": Date.today() + timedelta(days=60),
             "term_date": Date.today() + timedelta(days=600),  # ?
@@ -90,7 +90,7 @@ class EMCLoanCase(EMCBaseCase):
                 "loan_issue_id": loan_issue.id,
                 "quantity": 3,
                 "partner_id": self.browse_ref(
-                    "easy_my_coop.res_partner_cooperator_4_demo"
+                    "cooperator.res_partner_cooperator_4_demo"
                 ).id,
             }
         )
