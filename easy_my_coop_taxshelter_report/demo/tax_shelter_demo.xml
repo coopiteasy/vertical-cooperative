@@ -19,7 +19,7 @@
 
     <record id="tax_shelter_certificate_1_demo" model="tax.shelter.certificate">
         <field name="cooperator_number">1</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_1_demo" />
+        <field name="partner_id" ref="cooperator.res_partner_cooperator_1_demo" />
         <field
             name="declaration_id"
             ref="easy_my_coop_taxshelter_report.tax_shelter_declaration_1_demo"
@@ -35,7 +35,7 @@
         <field
             name="share_type"
             model="product.template"
-            eval="obj(ref('easy_my_coop.product_template_share_type_1_demo')).product_variant_id.id"
+            eval="obj(ref('cooperator.product_template_share_type_1_demo')).product_variant_id.id"
         />
         <field name="share_unit_price">25</field>
         <field name="quantity">12</field>
