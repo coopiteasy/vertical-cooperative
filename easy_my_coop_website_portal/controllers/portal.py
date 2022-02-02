@@ -215,7 +215,7 @@ class CooperatorPortalAccount(CustomerPortal):
         except (AccessError, MissingError):
             return request.redirect("/my")
         if invoice_sudo.release_capital_request:
-            report_ref = "easy_my_coop.action_cooperator_invoices"
+            report_ref = "cooperator.action_cooperator_invoices"
         else:
             report_ref = "account.account_invoices"
         if report_type in ("html", "pdf", "text"):
@@ -247,7 +247,7 @@ class CooperatorPortalAccount(CustomerPortal):
         return self._show_report(
             model=partner,
             report_type="pdf",
-            report_ref="easy_my_coop.action_cooperator_report_certificat",
+            report_ref="cooperator.action_cooperator_report_certificat",
             download=True,
         )
 
