@@ -381,6 +381,8 @@ class SubscriptionRequest(models.Model):
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
+    # todo remove activities_* fields
+    #  + check if all fields are necessary
     activities_address = fields.Char(
         string="Activities address",
         readonly=True,
