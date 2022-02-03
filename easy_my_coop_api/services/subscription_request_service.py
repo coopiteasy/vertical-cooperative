@@ -37,7 +37,9 @@ class SubscriptionRequestService(Component):
             )
 
     def search(self, date_from=None, date_to=None):
-        _logger.info("search from {} to {}".format(date_from, date_to))
+        _logger.info(
+            "search subscription requests from {} to {}".format(date_from, date_to)
+        )
 
         domain = [("state", "=", "draft")]
         if date_from:

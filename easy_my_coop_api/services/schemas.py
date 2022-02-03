@@ -21,6 +21,25 @@ S_MANY_2_ONE = {
     },
 }
 
+S_ADDRESS = {
+    "type": "dict",
+    "schema": {
+        "street": {"type": "string"},
+        "zip_code": {"type": "string"},
+        "city": {"type": "string"},
+        "country": {"type": "string"},
+    },
+}
+S_REQUIRED_ADDRESS = {
+    "type": "dict",
+    "schema": {
+        "street": {"type": "string", "required": True, "empty": False},
+        "zip_code": {"type": "string", "required": True, "empty": False},
+        "city": {"type": "string", "required": True, "empty": False},
+        "country": {"type": "string", "required": True, "empty": False},
+    },
+}
+
 S_SUBSCRIPTION_REQUEST_GET = {"_id": {"type": "integer"}}
 
 S_SUBSCRIPTION_REQUEST_RETURN_GET = {
@@ -33,17 +52,19 @@ S_SUBSCRIPTION_REQUEST_RETURN_GET = {
     "state": {"type": "string", "required": True, "empty": False},
     "ordered_parts": {"type": "integer", "required": True},
     "share_product": S_MANY_2_ONE,
-    "phone": {"type": "string", "required": True, "empty": False, "nullable": True},
-    "iban": {"type": "string", "required": True, "empty": False, "nullable": True},
-    "address": {
-        "type": "dict",
-        "schema": {
-            "street": {"type": "string", "required": True, "empty": False},
-            "zip_code": {"type": "string", "required": True, "empty": False},
-            "city": {"type": "string", "required": True, "empty": False},
-            "country": {"type": "string", "required": True, "empty": False},
-        },
+    "phone": {
+        "type": "string",
+        "required": True,
+        "empty": False,
+        "nullable": True,
     },
+    "iban": {
+        "type": "string",
+        "required": True,
+        "empty": False,
+        "nullable": True,
+    },
+    "address": S_REQUIRED_ADDRESS,
     "lang": {"type": "string", "required": True, "empty": False},
     "capital_release_request": {
         "type": "list",
@@ -88,20 +109,16 @@ S_SUBSCRIPTION_REQUEST_CREATE = {
     "email": {"type": "string", "required": True, "empty": False},
     "ordered_parts": {"type": "integer", "required": True},
     "share_product": {"type": "integer", "required": True},
-    "address": {
-        "type": "dict",
-        "schema": {
-            "street": {"type": "string", "required": True, "empty": False},
-            "zip_code": {"type": "string", "required": True, "empty": False},
-            "city": {"type": "string", "required": True, "empty": False},
-            "country": {"type": "string", "required": True, "empty": False},
-        },
-    },
+    "address": S_REQUIRED_ADDRESS,
     "lang": {"type": "string", "required": True, "empty": False},
     "phone": {"type": "string", "nullable": True},
     "iban": {"type": "string", "nullable": True},
     "gender": {"type": "string", "nullable": True},
-    "birthdate": {"type": "string", "check_with": date_validator, "nullable": True},
+    "birthdate": {
+        "type": "string",
+        "check_with": date_validator,
+        "nullable": True,
+    },
     "capital_release_request_date": {
         "type": "string",
         "check_with": date_validator,
@@ -121,20 +138,15 @@ S_SUBSCRIPTION_REQUEST_UPDATE = {
     "email": {"type": "string"},
     "ordered_parts": {"type": "integer"},
     "state": {"type": "string"},
-    "address": {
-        "type": "dict",
-        "schema": {
-            "street": {"type": "string"},
-            "zip_code": {"type": "string"},
-            "city": {"type": "string"},
-            "country": {"type": "string"},
-        },
-    },
+    "address": S_ADDRESS,
     "phone": {"type": "string"},
     "iban": {"type": "string"},
     "gender": {"type": "string"},
     "birthdate": {"type": "string", "check_with": date_validator},
-    "capital_release_request_date": {"type": "string", "check_with": date_validator},
+    "capital_release_request_date": {
+        "type": "string",
+        "check_with": date_validator,
+    },
     "lang": {"type": "string"},
     "share_product": {"type": "integer"},
     "generic_rules_approved": {"type": "boolean"},
@@ -151,7 +163,7 @@ S_INVOICE_LINE_RETURN_GET = {
     "schema": {
         "type": "dict",
         "schema": {
-            "name": {"type": "string", "required": True},
+            "name": {"type": "string", "required": True, "empty": False},
             "account": S_MANY_2_ONE,
             "product": S_MANY_2_ONE,
             "quantity": {"type": "float", "required": True},
@@ -195,6 +207,35 @@ S_PAYMENT_CREATE = {
     "payment_date": {"type": "string", "check_with": date_validator},
     "amount": {"type": "float", "required": True},
     "communication": {"type": "string", "required": True},
-    "payment_type": {"type": "string", "required": True},
-    "payment_method": {"type": "string", "required": True},
+    "payment_type": {"type": "string", "required": True, "empty": False},
+    "payment_method": {"type": "string", "required": True, "empty": False},
+}
+
+S_PARTNER_GET = {"_id": {"type": "integer"}}
+
+S_PARTNER_RETURN_GET = {
+    "id": {"type": "integer", "required": True},
+    "firstname": {"type": "string", "required": True, "empty": False},
+    "lastname": {"type": "string", "required": True, "empty": False},
+    "is_company": {"type": "boolean", "required": True},
+    "email": {"type": "string", "required": True, "empty": False},
+    "address": S_REQUIRED_ADDRESS,
+    "birthdate": {
+        "type": "string",
+        "check_with": date_validator,
+        "nullable": True,
+    },  # => birthdate_date
+    "gender": {"type": "string", "required": True, "empty": False, "nullable": True},
+    "lang": {"type": "string", "required": True, "empty": False},
+    "phone": {
+        "type": "string",
+        "required": True,
+        "empty": False,
+        "nullable": True,
+    },
+    "company": S_MANY_2_ONE,
+    "data_policy_approved": {"type": "boolean", "required": True},
+    "financial_risk_approved": {"type": "boolean", "required": True},
+    "generic_rules_approved": {"type": "boolean", "required": True},
+    "internal_rules_approved": {"type": "boolean", "required": True},
 }

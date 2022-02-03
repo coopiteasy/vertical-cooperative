@@ -20,7 +20,6 @@ from .common import BaseEMCRestCase
 class TestSRController(BaseEMCRestCase):
     def setUp(self):
         super().setUp()
-        self.maxDiff = None
         collection = _PseudoCollection("emc.services", self.env)
         emc_services_env = WorkContext(
             model_name="rest.service.registration", collection=collection

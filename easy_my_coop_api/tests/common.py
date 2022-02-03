@@ -28,6 +28,7 @@ class BaseEMCRestCase(BaseRestCase):
 
     def setUp(self):
         super().setUp()
+        self.maxDiff = None
         # tests are run as res_users_manager_emc_demo with
         #   emc manager access rights
         self.uid = self.ref("easy_my_coop.res_users_manager_emc_demo")
