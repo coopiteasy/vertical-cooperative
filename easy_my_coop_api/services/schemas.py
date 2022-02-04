@@ -13,44 +13,54 @@ def date_validator(field, value, error):
         return error(field, _("{} does not match format '%Y-%m-%d'".format(value)))
 
 
+S_STRING = {"type": "string"}
+S_REQUIRED_STRING = {"type": "string", "required": True, "empty": False}
+S_INTEGER = {"type": "integer"}
+S_REQUIRED_INTEGER = {"type": "integer", "required": True}
+S_BOOLEAN = {"type": "boolean"}
+S_REQUIRED_BOOLEAN = {"type": "boolean", "required": True}
+S_DATE = {"type": "string", "check_with": date_validator}
+S_REQUIRED_DATE = {"type": "string", "check_with": date_validator, "nullable": True}
+S_REQUIRED_FLOAT = {"type": "float", "required": True}
+
 S_MANY_2_ONE = {
     "type": "dict",
     "schema": {
-        "id": {"type": "integer", "required": True},
-        "name": {"type": "string", "required": True, "empty": False},
+        "id": S_REQUIRED_INTEGER,
+        "name": S_REQUIRED_STRING,
     },
 }
 
 S_ADDRESS = {
     "type": "dict",
     "schema": {
-        "street": {"type": "string"},
-        "zip_code": {"type": "string"},
-        "city": {"type": "string"},
-        "country": {"type": "string"},
+        "street": S_STRING,
+        "zip_code": S_STRING,
+        "city": S_STRING,
+        "country": S_STRING,
     },
 }
 S_REQUIRED_ADDRESS = {
     "type": "dict",
     "schema": {
-        "street": {"type": "string", "required": True, "empty": False},
-        "zip_code": {"type": "string", "required": True, "empty": False},
-        "city": {"type": "string", "required": True, "empty": False},
-        "country": {"type": "string", "required": True, "empty": False},
+        "street": S_REQUIRED_STRING,
+        "zip_code": S_REQUIRED_STRING,
+        "city": S_REQUIRED_STRING,
+        "country": S_REQUIRED_STRING,
     },
 }
 
-S_SUBSCRIPTION_REQUEST_GET = {"_id": {"type": "integer"}}
+S_SUBSCRIPTION_REQUEST_GET = {"_id": S_INTEGER}
 
 S_SUBSCRIPTION_REQUEST_RETURN_GET = {
-    "id": {"type": "integer", "required": True},
-    "email": {"type": "string", "required": True, "empty": False},
-    "is_company": {"type": "boolean", "required": True},
-    "firstname": {"type": "string", "required": True, "empty": False},
-    "lastname": {"type": "string", "required": True, "empty": False},
-    "date": {"type": "string", "required": True, "empty": False},
-    "state": {"type": "string", "required": True, "empty": False},
-    "ordered_parts": {"type": "integer", "required": True},
+    "id": S_REQUIRED_INTEGER,
+    "email": S_REQUIRED_STRING,
+    "is_company": S_REQUIRED_BOOLEAN,
+    "firstname": S_REQUIRED_STRING,
+    "lastname": S_REQUIRED_STRING,
+    "date": S_REQUIRED_STRING,
+    "state": S_REQUIRED_STRING,
+    "ordered_parts": S_REQUIRED_INTEGER,
     "share_product": S_MANY_2_ONE,
     "phone": {
         "type": "string",
@@ -65,34 +75,30 @@ S_SUBSCRIPTION_REQUEST_RETURN_GET = {
         "nullable": True,
     },
     "address": S_REQUIRED_ADDRESS,
-    "lang": {"type": "string", "required": True, "empty": False},
+    "lang": S_REQUIRED_STRING,
     "capital_release_request": {
         "type": "list",
-        "schema": {"type": "integer"},
+        "schema": S_INTEGER,
         "required": True,
         "empty": True,
     },
     "gender": {"type": "string", "required": True, "empty": False, "nullable": True},
-    "birthdate": {"type": "string", "check_with": date_validator, "nullable": True},
-    "capital_release_request_date": {
-        "type": "string",
-        "check_with": date_validator,
-        "nullable": True,
-    },
-    "generic_rules_approved": {"type": "boolean", "required": True},
-    "skip_control_ng": {"type": "boolean", "required": True},
-    "data_policy_approved": {"type": "boolean", "required": True},
-    "internal_rules_approved": {"type": "boolean", "required": True},
-    "financial_risk_approved": {"type": "boolean", "required": True},
+    "birthdate": S_REQUIRED_DATE,
+    "capital_release_request_date": S_REQUIRED_DATE,
+    "generic_rules_approved": S_REQUIRED_BOOLEAN,
+    "skip_control_ng": S_REQUIRED_BOOLEAN,
+    "data_policy_approved": S_REQUIRED_BOOLEAN,
+    "internal_rules_approved": S_REQUIRED_BOOLEAN,
+    "financial_risk_approved": S_REQUIRED_BOOLEAN,
 }
 
 S_SUBSCRIPTION_REQUEST_SEARCH = {
-    "date_from": {"type": "string", "check_with": date_validator},
-    "date_to": {"type": "string", "check_with": date_validator},
+    "date_from": S_DATE,
+    "date_to": S_DATE,
 }
 
 S_SUBSCRIPTION_REQUEST_RETURN_SEARCH = {
-    "count": {"type": "integer", "required": True},
+    "count": S_REQUIRED_INTEGER,
     "rows": {
         "type": "list",
         "schema": {
@@ -103,71 +109,60 @@ S_SUBSCRIPTION_REQUEST_RETURN_SEARCH = {
 }
 
 S_SUBSCRIPTION_REQUEST_CREATE = {
-    "firstname": {"type": "string", "required": True, "empty": False},
-    "lastname": {"type": "string", "required": True, "empty": False},
-    "is_company": {"type": "boolean", "required": True},
-    "email": {"type": "string", "required": True, "empty": False},
-    "ordered_parts": {"type": "integer", "required": True},
-    "share_product": {"type": "integer", "required": True},
+    "firstname": S_REQUIRED_STRING,
+    "lastname": S_REQUIRED_STRING,
+    "is_company": S_REQUIRED_BOOLEAN,
+    "email": S_REQUIRED_STRING,
+    "ordered_parts": S_REQUIRED_INTEGER,
+    "share_product": S_REQUIRED_INTEGER,
     "address": S_REQUIRED_ADDRESS,
-    "lang": {"type": "string", "required": True, "empty": False},
+    "lang": S_REQUIRED_STRING,
     "phone": {"type": "string", "nullable": True},
     "iban": {"type": "string", "nullable": True},
     "gender": {"type": "string", "nullable": True},
-    "birthdate": {
-        "type": "string",
-        "check_with": date_validator,
-        "nullable": True,
-    },
-    "capital_release_request_date": {
-        "type": "string",
-        "check_with": date_validator,
-        "nullable": True,
-    },
-    "data_policy_approved": {"type": "boolean", "required": True},
-    "internal_rules_approved": {"type": "boolean", "required": True},
-    "financial_risk_approved": {"type": "boolean", "required": True},
-    "generic_rules_approved": {"type": "boolean", "required": True},
-    "skip_control_ng": {"type": "boolean"},
+    "birthdate": S_REQUIRED_DATE,
+    "capital_release_request_date": S_REQUIRED_DATE,
+    "data_policy_approved": S_REQUIRED_BOOLEAN,
+    "internal_rules_approved": S_REQUIRED_BOOLEAN,
+    "financial_risk_approved": S_REQUIRED_BOOLEAN,
+    "generic_rules_approved": S_REQUIRED_BOOLEAN,
+    "skip_control_ng": S_BOOLEAN,
 }
 
 S_SUBSCRIPTION_REQUEST_UPDATE = {
-    "firstname": {"type": "string"},
-    "lastname": {"type": "string"},
-    "is_company": {"type": "boolean"},
-    "email": {"type": "string"},
-    "ordered_parts": {"type": "integer"},
-    "state": {"type": "string"},
+    "firstname": S_STRING,
+    "lastname": S_STRING,
+    "is_company": S_BOOLEAN,
+    "email": S_STRING,
+    "ordered_parts": S_INTEGER,
+    "state": S_STRING,
     "address": S_ADDRESS,
-    "phone": {"type": "string"},
-    "iban": {"type": "string"},
-    "gender": {"type": "string"},
-    "birthdate": {"type": "string", "check_with": date_validator},
-    "capital_release_request_date": {
-        "type": "string",
-        "check_with": date_validator,
-    },
-    "lang": {"type": "string"},
-    "share_product": {"type": "integer"},
-    "generic_rules_approved": {"type": "boolean"},
-    "data_policy_approved": {"type": "boolean"},
-    "internal_rules_approved": {"type": "boolean"},
-    "financial_risk_approved": {"type": "boolean"},
-    "skip_control_ng": {"type": "boolean"},
+    "phone": S_STRING,
+    "iban": S_STRING,
+    "gender": S_STRING,
+    "birthdate": S_DATE,
+    "capital_release_request_date": S_DATE,
+    "lang": S_STRING,
+    "share_product": S_INTEGER,
+    "generic_rules_approved": S_BOOLEAN,
+    "data_policy_approved": S_BOOLEAN,
+    "internal_rules_approved": S_BOOLEAN,
+    "financial_risk_approved": S_BOOLEAN,
+    "skip_control_ng": S_BOOLEAN,
 }
 
-S_INVOICE_GET = {"_id": {"type": "integer"}}
+S_INVOICE_GET = {"_id": S_INTEGER}
 
 S_INVOICE_LINE_RETURN_GET = {
     "type": "list",
     "schema": {
         "type": "dict",
         "schema": {
-            "name": {"type": "string", "required": True, "empty": False},
+            "name": S_REQUIRED_STRING,
             "account": S_MANY_2_ONE,
             "product": S_MANY_2_ONE,
-            "quantity": {"type": "float", "required": True},
-            "price_unit": {"type": "float", "required": True},
+            "quantity": S_REQUIRED_FLOAT,
+            "price_unit": S_REQUIRED_FLOAT,
         },
     },
     "required": True,
@@ -175,67 +170,61 @@ S_INVOICE_LINE_RETURN_GET = {
 }
 
 S_INVOICE_RETURN_GET = {
-    "id": {"type": "integer", "required": True},
-    "number": {"type": "string", "required": True, "empty": False},
-    "state": {"type": "string", "required": True, "empty": False},
-    "type": {"type": "string", "required": True, "empty": False},
-    "date": {"type": "string", "required": True, "empty": False},
-    "date_due": {"type": "string", "required": True, "empty": False},
-    "date_invoice": {"type": "string", "required": True, "empty": False},
+    "id": S_REQUIRED_INTEGER,
+    "number": S_REQUIRED_STRING,
+    "state": S_REQUIRED_STRING,
+    "type": S_REQUIRED_STRING,
+    "date": S_REQUIRED_STRING,
+    "date_due": S_REQUIRED_STRING,
+    "date_invoice": S_REQUIRED_STRING,
     "partner": S_MANY_2_ONE,
     "journal": S_MANY_2_ONE,
     "account": S_MANY_2_ONE,
     "subscription_request": {
         "type": "dict",
-        "schema": {"id": {"type": "integer"}, "name": {"type": "string"}},
+        "schema": {
+            "id": S_INTEGER,
+            "name": S_STRING,
+        },
     },
     "invoice_lines": S_INVOICE_LINE_RETURN_GET,
 }
 
 S_PAYMENT_RETURN_GET = {
-    "id": {"type": "integer", "required": True},
+    "id": S_REQUIRED_INTEGER,
     "journal": S_MANY_2_ONE,
     "invoice": S_MANY_2_ONE,
-    "payment_date": {"type": "string", "check_with": date_validator},
-    "amount": {"type": "float", "required": True},
+    "payment_date": S_DATE,
+    "amount": S_REQUIRED_FLOAT,
     "communication": {"type": "string", "required": True},
 }
 
 S_PAYMENT_CREATE = {
-    "journal": {"type": "integer", "required": True},
-    "invoice": {"type": "integer", "required": True},
-    "payment_date": {"type": "string", "check_with": date_validator},
-    "amount": {"type": "float", "required": True},
+    "journal": S_REQUIRED_INTEGER,
+    "invoice": S_REQUIRED_INTEGER,
+    "payment_date": S_DATE,
+    "amount": S_REQUIRED_FLOAT,
     "communication": {"type": "string", "required": True},
-    "payment_type": {"type": "string", "required": True, "empty": False},
-    "payment_method": {"type": "string", "required": True, "empty": False},
+    "payment_type": S_REQUIRED_STRING,
+    "payment_method": S_REQUIRED_STRING,
 }
 
-S_PARTNER_GET = {"_id": {"type": "integer"}}
+S_PARTNER_GET = {"_id": S_INTEGER}
 
 S_PARTNER_RETURN_GET = {
-    "id": {"type": "integer", "required": True},
-    "firstname": {"type": "string", "required": True, "empty": False},
-    "lastname": {"type": "string", "required": True, "empty": False},
-    "is_company": {"type": "boolean", "required": True},
-    "email": {"type": "string", "required": True, "empty": False},
+    "id": S_REQUIRED_INTEGER,
+    "firstname": S_REQUIRED_STRING,
+    "lastname": S_REQUIRED_STRING,
+    "is_company": S_REQUIRED_BOOLEAN,
+    "email": S_REQUIRED_STRING,
     "address": S_REQUIRED_ADDRESS,
-    "birthdate": {
-        "type": "string",
-        "check_with": date_validator,
-        "nullable": True,
-    },  # => birthdate_date
+    "birthdate": S_REQUIRED_DATE,
     "gender": {"type": "string", "required": True, "empty": False, "nullable": True},
-    "lang": {"type": "string", "required": True, "empty": False},
-    "phone": {
-        "type": "string",
-        "required": True,
-        "empty": False,
-        "nullable": True,
-    },
+    "lang": S_REQUIRED_STRING,
+    "phone": S_REQUIRED_STRING,
     "company": S_MANY_2_ONE,
-    "data_policy_approved": {"type": "boolean", "required": True},
-    "financial_risk_approved": {"type": "boolean", "required": True},
-    "generic_rules_approved": {"type": "boolean", "required": True},
-    "internal_rules_approved": {"type": "boolean", "required": True},
+    "data_policy_approved": S_REQUIRED_BOOLEAN,
+    "financial_risk_approved": S_REQUIRED_BOOLEAN,
+    "generic_rules_approved": S_REQUIRED_BOOLEAN,
+    "internal_rules_approved": S_REQUIRED_BOOLEAN,
 }
