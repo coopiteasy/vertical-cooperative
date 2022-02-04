@@ -5,12 +5,8 @@
 
 import logging
 
-from werkzeug.exceptions import NotFound
-
-from odoo import _
 from odoo.fields import Date
 
-from odoo.addons.base_rest.http import wrapJsonException
 from odoo.addons.component.core import Component
 
 from . import schemas
@@ -28,11 +24,7 @@ class AccountInvoiceService(Component):
     """
 
     def get(self, _id):
-        ai = self.env["account.invoice"].search([("_api_external_id", "=", _id)])
-        if ai:
-            return self._to_dict(ai)
-        else:
-            raise wrapJsonException(NotFound(_("No invoice found for id %s") % _id))
+        return self._get(_id)
 
     def _to_dict(self, invoice):
         invoice.ensure_one()

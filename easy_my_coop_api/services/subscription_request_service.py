@@ -5,7 +5,7 @@
 
 import logging
 
-from werkzeug.exceptions import BadRequest, NotFound
+from werkzeug.exceptions import BadRequest
 
 from odoo import _
 from odoo.exceptions import ValidationError
@@ -29,13 +29,7 @@ class SubscriptionRequestService(Component):
     """
 
     def get(self, _id):
-        sr = self.env["subscription.request"].search([("_api_external_id", "=", _id)])
-        if sr:
-            return self._to_dict(sr)
-        else:
-            raise wrapJsonException(
-                NotFound(_("No subscription request for id %s") % _id)
-            )
+        return self._get(_id)
 
     def search(self, date_from=None, date_to=None):
         _logger.info(

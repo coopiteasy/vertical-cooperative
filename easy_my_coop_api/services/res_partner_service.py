@@ -5,12 +5,8 @@
 
 import logging
 
-from werkzeug.exceptions import NotFound
-
-from odoo import _
 from odoo.fields import Date
 
-from odoo.addons.base_rest.http import wrapJsonException
 from odoo.addons.component.core import Component
 
 from . import schemas
@@ -28,11 +24,7 @@ class ResPartnerService(Component):
     """
 
     def get(self, _id):
-        partner = self.env["res.partner"].search([("_api_external_id", "=", _id)])
-        if partner:
-            return self._to_dict(partner)
-        else:
-            raise wrapJsonException(NotFound(_("No partner found for id %s") % _id))
+        return self._get(_id)
 
     def search(self, date_from=None, date_to=None):
         raise NotImplementedError

@@ -55,6 +55,16 @@ class BaseRestService(AbstractComponent):
     # If get, search, update, create or delete are defined
     # in the service, the route is opened in the controller.
     # therefore we put common code in _<method>.
+
+    def _get(self, _id):
+        """
+        :param _id: the external id of the resource to get
+        :return: a dictionary validated by the return get schema for the
+            corresponding model.
+        """
+        record = self._browse_record(_id)
+        return self._to_dict(record)
+
     def _update(self, _id, **params):
         """
         Updates the record for id _id and model _model
