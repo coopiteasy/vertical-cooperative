@@ -22,6 +22,7 @@ class AccountInvoiceService(Component):
     _name = "account.invoice.service"
     _inherit = "emc.rest.service"
     _usage = "invoice"
+    _model = "account.invoice"
     _description = """
         Account Invoice Services
     """

@@ -22,6 +22,7 @@ class AccountPaymentService(Component):
     _name = "account.payment.service"
     _inherit = "emc.rest.service"
     _usage = "payment"
+    _model = "account.payment"
     _description = """
         Account Payment Services
     """

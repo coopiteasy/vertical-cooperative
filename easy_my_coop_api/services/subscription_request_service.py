@@ -23,6 +23,7 @@ class SubscriptionRequestService(Component):
     _inherit = "emc.rest.service"
     _name = "subscription.request.services"
     _usage = "subscription-request"
+    _model = "subscription.request"
     _description = """
         Subscription Request Services
     """
@@ -64,19 +65,15 @@ class SubscriptionRequestService(Component):
 
     def update(self, _id, **params):
         state = params.pop("state", False)
-        params = self._prepare_update(params)
-        sr = self.env["subscription.request"].search([("_api_external_id", "=", _id)])
-        if not sr:
-            raise wrapJsonException(
-                NotFound(_("No subscription request for id %s") % _id)
-            )
-
-        sr.sudo().write(params)
+        self._update(_id, **params)
+        sr = self._browse_record(_id)
         if state:
             try:
                 sr.update_state(state)
             except ValidationError as e:
                 raise wrapJsonException(BadRequest(str(e)))
+
+        # return dict updated with self
         return self._to_dict(sr)
 
     def _to_dict(self, sr):
@@ -123,13 +120,6 @@ class SubscriptionRequestService(Component):
             "skip_control_ng": sr.skip_control_ng,
         }
 
-    def _get_country(self, code):
-        country = self.env["res.country"].search([("code", "=", code)])
-        if country:
-            return country
-        else:
-            raise wrapJsonException(BadRequest(_("No country for isocode %s") % code))
-
     def _get_share_product(self, external_id):
         product_template = self.env["product.template"].search(
             [("_api_external_id", "=", external_id)]
@@ -140,7 +130,7 @@ class SubscriptionRequestService(Component):
             raise wrapJsonException(BadRequest(_("No share for id %s") % external_id))
 
     def _prepare_create(self, params):
-        """Prepare a writable dictionary of values"""
+        """Prepare a creatable dictionary of values"""
         address = params["address"]
         country = self._get_country(address["country"])
 
@@ -172,6 +162,7 @@ class SubscriptionRequestService(Component):
         }
 
     def _prepare_update(self, params):
+        """Prepare a writable dictionary of values"""
         if "address" in params:
             address = params["address"]
             if "country" in address:

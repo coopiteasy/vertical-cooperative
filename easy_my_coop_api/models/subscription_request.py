@@ -15,7 +15,7 @@ class SubscriptionRequest(models.Model):
     @api.multi
     def update_state(self, state):
         self.ensure_one()
-        # sudo is needed yo write on api type requests
+        # sudo is needed to write on api type requests
         if state == "draft":
             self.sudo().unblock_subscription_request()
         elif state == "block":

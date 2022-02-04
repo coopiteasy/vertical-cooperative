@@ -22,6 +22,7 @@ class ResPartnerService(Component):
     _name = "res.partner.service"
     _inherit = "emc.rest.service"
     _usage = "partner"
+    _model = "res.partner"
     _description = """
         Partner Services
     """
