@@ -53,9 +53,7 @@ class SubscriptionRequestService(Component):
         return response
 
     def create(self, **params):  # pylint: disable=method-required-super
-        params = self._prepare_create(params)
-        sr = self.env["subscription.request"].create(params)
-        return self._to_dict(sr)
+        return self._create(**params)
 
     def update(self, _id, **params):
         state = params.pop("state", False)

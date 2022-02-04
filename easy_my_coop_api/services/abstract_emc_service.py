@@ -21,6 +21,45 @@ class BaseRestService(AbstractComponent):
         Base Rest Services
     """
 
+    # If get, search, update, create or delete are defined
+    # in the service, the route is opened in the controller.
+    # therefore we put common code in _<method>.
+
+    def _get(self, _id):
+        """
+        :param _id: the external id of the resource to get
+        :return: a dictionary validated by the return get schema for the
+            corresponding model.
+        """
+        record = self._browse_record(_id)
+        return self._to_dict(record)
+
+    def _update(self, _id, **params):
+        """
+        Updates the record for id _id and model _model
+        :param _id: the external id of the resource to update
+        :param params: a dictionary validated by the update schema
+            for the corresponding model
+        :return: a dictionary validated by the return get schema for the
+            corresponding model.
+        """
+        record = self._browse_record(_id)
+        params = self._prepare_update(params)
+        # need sudo to write on api type records
+        record.sudo().write(params)
+        return self._to_dict(record)
+
+    def _create(self, **params):
+        params = self._prepare_create(params)
+        record = self.env[self._model].create(params)
+        return self._to_dict(record)
+
+    def _to_dict(self, sr):
+        raise NotImplementedError
+
+    def _prepare_update(self, params):
+        raise NotImplementedError
+
     def _one_to_many_to_dict(self, record):
         if record:
             return {"id": record.get_api_external_id(), "name": record.name}
@@ -51,37 +90,3 @@ class BaseRestService(AbstractComponent):
             return country
         else:
             raise wrapJsonException(BadRequest(_("No country for isocode %s") % code))
-
-    # If get, search, update, create or delete are defined
-    # in the service, the route is opened in the controller.
-    # therefore we put common code in _<method>.
-
-    def _get(self, _id):
-        """
-        :param _id: the external id of the resource to get
-        :return: a dictionary validated by the return get schema for the
-            corresponding model.
-        """
-        record = self._browse_record(_id)
-        return self._to_dict(record)
-
-    def _update(self, _id, **params):
-        """
-        Updates the record for id _id and model _model
-        :param _id: the external id of the resource to update
-        :param params: a dictionary validated by the update schema
-            for the corresponding model
-        :return: a dictionary validated by the return get schema for the
-            corresponding model.
-        """
-        record = self._browse_record(_id)
-        params = self._prepare_update(params)
-        # need sudo to write on api type records
-        record.sudo().write(params)
-        return self._to_dict(record)
-
-    def _to_dict(self, sr):
-        raise NotImplementedError
-
-    def _prepare_update(self, params):
-        raise NotImplementedError
