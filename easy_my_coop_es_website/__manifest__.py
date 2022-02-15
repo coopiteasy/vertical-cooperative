@@ -11,8 +11,8 @@
     """,
     "license": "AGPL-3",
     "data": [
-        "views/become_company_cooperator_view.xml",
         "views/become_cooperator_view.xml",
+        "views/become_company_cooperator_view.xml",
     ],
     "installable": True,
 }

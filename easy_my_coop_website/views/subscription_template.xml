@@ -232,27 +232,6 @@
     </div>
     </template>
 
-    <template id="iban_template" name="iban_template">
-    <div
-            class="form-group field-bank_account"
-            t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}"
-            name="iban_container"
-        >
-        <label for="iban">Bank Account Number</label>
-        <input
-                class="form-control form-control-sm"
-                type="text"
-                name="iban"
-                id="iban"
-                required="True"
-                t-att-readonly="logged"
-                t-attf-value="#{iban or ''}"
-                placeholder="BE48523080767127"
-            />
-
-    </div>
-    </template>
-
     <template id="rules_template" name="rules_template">
         <div
             id="generic_rules_approved"
@@ -537,7 +516,6 @@
 
                                 </div>
 
-
                                 <div
                                     t-if="not logged"
                                     class="form-group field-confirm_login"
@@ -559,8 +537,6 @@
 
                                 </div>
                                 <t t-call="easy_my_coop_website.contact_template" />
-
-                                <t t-call="easy_my_coop_website.iban_template" />
 
                                 <t t-call="easy_my_coop_website.address_template" />
 
@@ -726,8 +702,6 @@
                                         placeholder="administration@beescoop.be"
                                     />
                                 </div>
-                                <t t-call="easy_my_coop_website.iban_template" />
-
 
                                 <h2 class="text-center">Main Address</h2>
                                 <t t-call="easy_my_coop_website.address_template" />
