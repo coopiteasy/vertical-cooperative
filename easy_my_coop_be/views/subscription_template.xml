@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="be_iban_template" name="be_iban_template">
+        <div
+            class="form-group field-bank_account"
+            t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}"
+            name="iban_container"
+        >
+            <label for="iban">Bank Account Number</label>
+            <input
+                class="form-control form-control-sm"
+                type="text"
+                name="iban"
+                id="iban"
+                required="True"
+                t-att-readonly="logged"
+                t-attf-value="#{iban or ''}"
+                placeholder="BE48523080767127"
+            />
+
+        </div>
+    </template>
+
+    <template id="becomecooperator" inherit_id="easy_my_coop_website.becomecooperator">
+        <xpath
+            expr="//t[@t-call='easy_my_coop_website.contact_template']"
+            position="after"
+        >
+            <t t-call="easy_my_coop_be.be_iban_template" />
+        </xpath>
+    </template>
+
+    <template
+        id="becomecompanycooperator"
+        inherit_id="easy_my_coop_website.becomecompanycooperator"
+    >
+        <xpath expr="//div[@name='confirm_email_container']" position="after">
+            <t t-call="easy_my_coop_be.be_iban_template" />
+        </xpath>
+    </template>
+</odoo>
