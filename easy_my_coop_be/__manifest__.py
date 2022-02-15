@@ -6,12 +6,19 @@
     "name": "Easy My Coop Belgium",
     "summary": "Easy My Coop Belgium Localization",
     "version": "12.0.1.2.0",
-    "depends": ["easy_my_coop", "l10n_be", "l10n_be_invoice_bba"],
+    "depends": [
+        "easy_my_coop",
+        "easy_my_coop_website",
+        "l10n_be",
+        "l10n_be_invoice_bba",
+    ],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
     "website": "https://coopiteasy.be",
     "license": "AGPL-3",
-    "data": [],
+    "data": [
+        "views/subscription_template.xml",
+    ],
     "installable": True,
     "application": False,
 }
