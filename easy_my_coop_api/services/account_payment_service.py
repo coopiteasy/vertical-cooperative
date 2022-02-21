@@ -29,7 +29,9 @@ class AccountPaymentService(Component):
     def create(self, **params):  # pylint: disable=method-required-super
         params = self._prepare_create(params)
         payment = self.env["account.payment"].create(params)
-        payment.post()
+        # sudo is needed to change state of invoice linked to a request
+        #  sent through the api
+        payment.sudo().post()
         return self._to_dict(payment)
 
     def _prepare_create(self, params):
@@ -74,10 +76,17 @@ class AccountPaymentService(Component):
         }
 
     def _to_dict(self, payment):
+        payment.ensure_one()
+        payment.timestamp_export()
+
+        invoice = {
+            "id": payment.invoice_ids.get_api_external_id(),
+            "name": payment.invoice_ids.number,
+        }
         return {
             "id": payment.get_api_external_id(),
             "journal": self._one_to_many_to_dict(payment.journal_id),
-            "invoice": self._one_to_many_to_dict(payment.invoice_ids),
+            "invoice": invoice,
             "payment_date": Date.to_string(payment.payment_date),
             "amount": payment.amount,
             "communication": payment.communication,

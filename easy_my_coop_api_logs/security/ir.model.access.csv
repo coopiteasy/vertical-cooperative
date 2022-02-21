@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_emc_api_log_group_system,access_emc_api_log_group_system,easy_my_coop_api_logs.model_emc_api_log,base.group_system,1,0,1,0

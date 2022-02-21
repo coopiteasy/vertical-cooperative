@@ -34,6 +34,7 @@ class SubscriptionRequest(models.Model):
     _name = "subscription.request"
     _description = "Subscription Request"
     _inherit = ["mail.thread", "mail.activity.mixin"]
+    _rec_name = "lastname"
 
     def get_required_field(self):
         required_fields = _REQUIRED
@@ -75,10 +76,23 @@ class SubscriptionRequest(models.Model):
                     % request.share_product_id.name
                 )
 
+    def _send_confirmation_mail(self):
+        if self.company_id.send_confirmation_email:
+            mail_template_notif = self.get_mail_template_notif(
+                is_company=self.partner_id.is_company
+            )
+            # sudo is needed to change state of invoice linked to a request
+            #  sent through the api
+            mail_template_notif.sudo().send_mail(self.id)
+
+    # todo code this in a more pythonic way
+    #  - do not bypass self.create in create_comp_sub_req
+    #  - use "not in" where applicable
+    #  - sanitize declaration and assignation of cooperator
+    #  beware if usage in investor_wallet_platform
     @api.model
     def create(self, vals):
         partner_obj = self.env["res.partner"]
-
         if not vals.get("partner_id"):
             cooperator = False
             if vals.get("email"):
@@ -94,15 +108,10 @@ class SubscriptionRequest(models.Model):
 
         if not cooperator.cooperator:
             cooperator.write({"cooperator": True})
-        subscr_request = super(SubscriptionRequest, self).create(vals)
 
-        if subscr_request._send_confirmation_email():
-            mail_template_notif = subscr_request.get_mail_template_notif(
-                is_company=False
-            )  # noqa
-            mail_template_notif.send_mail(subscr_request.id)
-
-        return subscr_request
+        subscription_request = super(SubscriptionRequest, self).create(vals)
+        subscription_request._send_confirmation_mail()
+        return subscription_request
 
     @api.model
     def create_comp_sub_req(self, vals):
@@ -115,15 +124,9 @@ class SubscriptionRequest(models.Model):
                 vals["type"] = "subscription"
                 vals = self.is_member(vals, cooperator)
                 vals["partner_id"] = cooperator.id
-        subscr_request = super(SubscriptionRequest, self).create(vals)
-
-        if self._send_confirmation_email():
-            confirmation_mail_template = subscr_request.get_mail_template_notif(
-                is_company=True
-            )
-            confirmation_mail_template.send_mail(subscr_request.id)
-
-        return subscr_request
+        subscription_request = super(SubscriptionRequest, self).create(vals)
+        subscription_request._send_confirmation_mail()
+        return subscription_request
 
     def check_empty_string(self, value):
         if value is None or value is False or value == "":
@@ -160,20 +163,22 @@ class SubscriptionRequest(models.Model):
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
+
+    # deprecated, used to keep historic data
     name = fields.Char(
         string="Name",
-        required=True,
         readonly=True,
-        states={"draft": [("readonly", False)]},
     )
     firstname = fields.Char(
         string="Firstname",
         readonly=True,
+        required=True,
         states={"draft": [("readonly", False)]},
     )
     lastname = fields.Char(
         string="Lastname",
         readonly=True,
+        required=True,
         states={"draft": [("readonly", False)]},
     )
     birthdate = fields.Date(
@@ -201,7 +206,7 @@ class SubscriptionRequest(models.Model):
     state = fields.Selection(
         [
             ("draft", "Draft"),
-            ("block", "Blocked"),
+            ("block", "Blocked"),  # todo reword to blocked
             ("done", "Done"),
             ("waiting", "Waiting"),
             ("transfer", "Transfer"),
@@ -518,19 +523,6 @@ class SubscriptionRequest(models.Model):
         }
         return res
 
-    def get_capital_release_mail_template(self):
-        template = "easy_my_coop.email_template_release_capital"
-        return self.env.ref(template, False)
-
-    def send_capital_release_request(self, invoice):
-        email_template = self.get_capital_release_mail_template()
-
-        if self.company_id.send_capital_release_email:
-            # we send the email with the capital release request in attachment
-            # TODO remove sudo() and give necessary access right
-            email_template.sudo().send_mail(invoice.id, True)
-            invoice.sent = True
-
     def get_journal(self):
         return self.env.ref("easy_my_coop.subscription_journal")
 
@@ -570,8 +562,7 @@ class SubscriptionRequest(models.Model):
 
         # validate the capital release request
         invoice.action_invoice_open()
-
-        self.send_capital_release_request(invoice)
+        invoice.send_capital_release_request_mail()
 
         return invoice
 
@@ -673,8 +664,13 @@ class SubscriptionRequest(models.Model):
 
     @api.multi
     def validate_subscription_request(self):
-        self.ensure_one()
         # todo rename to validate (careful with iwp dependencies)
+        self.ensure_one()
+        if self.state not in ("draft", "waiting"):
+            raise ValidationError(
+                _("The request must be in draft or on waiting list to be validated")
+            )
+
         partner_obj = self.env["res.partner"]
 
         if self.ordered_parts <= 0:
@@ -752,26 +748,37 @@ class SubscriptionRequest(models.Model):
     @api.multi
     def block_subscription_request(self):
         self.ensure_one()
+        if self.state != "draft":
+            raise ValidationError(_("Only draft requests can be blocked."))
         self.write({"state": "block"})
 
     @api.multi
     def unblock_subscription_request(self):
         self.ensure_one()
+        if self.state != "block":
+            raise ValidationError(_("Only blocked requests can be unblocked."))
         self.write({"state": "draft"})
 
     @api.multi
     def cancel_subscription_request(self):
         self.ensure_one()
+        if self.state not in ("draft", "waiting", "done", "block"):
+            raise ValidationError(_("You cannot cancel a request in this " "state."))
         self.write({"state": "cancelled"})
+
+    def _send_waiting_list_mail(self):
+        if self.company_id.send_waiting_list_email:
+            waiting_list_mail_template = self.env.ref(
+                "easy_my_coop.email_template_waiting_list", False
+            )
+            waiting_list_mail_template.send_mail(self.id, True)
 
     @api.multi
     def put_on_waiting_list(self):
         self.ensure_one()
-        waiting_list_mail_template = self.env.ref(
-            "easy_my_coop.email_template_waiting_list", False
-        )
-        waiting_list_mail_template.send_mail(self.id, True)
+        if self.state != "draft":
+            raise ValidationError(
+                _("Only draft request can be put on the waiting list.")
+            )
+        self._send_waiting_list_mail()
         self.write({"state": "waiting"})
-
-    def _send_confirmation_email(self):
-        return self.company_id.send_confirmation_email

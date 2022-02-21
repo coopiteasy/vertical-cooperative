@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+     Copyright 2020 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+    <data noupdate="1">
+        <record id="emc_backend_demo" model="emc.backend">
+            <field name="name">IWP backend</field>
+            <field name="location">http://localhost:9876</field>
+            <field name="api_key">cbd07f57-c903-43b4-b668-436b3bec5f15</field>
+        </record>
+    </data>
+
+    <record id="easy_my_coop.subscription_request_1_demo" model="subscription.request">
+        <field name="source">emc_api</field>
+    </record>
+
+    <record
+        id="emc_binding_product_template_A_demo"
+        model="emc.binding.product.template"
+    >
+        <field name="backend_id" ref="emc_backend_demo" />
+        <field
+            name="internal_id"
+            ref="easy_my_coop.product_template_share_type_1_demo"
+        />
+        <field name="external_id">1</field>
+    </record>
+
+    <record
+        id="emc_binding_product_template_B_demo"
+        model="emc.binding.product.template"
+    >
+        <field name="backend_id" ref="emc_backend_demo" />
+        <field
+            name="internal_id"
+            ref="easy_my_coop.product_template_share_type_2_demo"
+        />
+        <field name="external_id">2</field>
+    </record>
+
+    <record
+        id="emc_binding_subscription_journal_demo"
+        model="emc.binding.account.journal"
+    >
+        <field name="backend_id" ref="emc_backend_demo" />
+        <!-- fixme needs two install with -i to pass, it does not find
+                subscription_journal on first pass
+                I suspect self.chart.try_loading_for_current_company
+                removes the journal.
+         -->
+        <field name="internal_id" ref="easy_my_coop.subscription_journal" />
+        <field name="external_id">1</field>
+    </record>
+
+    <record id="emc_binding_account_account_demo" model="emc.binding.account.account">
+        <field name="backend_id" ref="emc_backend_demo" />
+        <field name="internal_id" ref="easy_my_coop.account_equity_demo" />
+        <field name="external_id">1</field>
+    </record>
+</odoo>

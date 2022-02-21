@@ -8,6 +8,7 @@ from datetime import timedelta
 from werkzeug.exceptions import BadRequest
 
 import odoo
+from odoo.exceptions import AccessError
 from odoo.fields import Date
 
 from odoo.addons.base_rest.controllers.main import _PseudoCollection
@@ -19,6 +20,7 @@ from .common import BaseEMCRestCase
 class TestSRController(BaseEMCRestCase):
     def setUp(self):
         super().setUp()
+        self.maxDiff = None
         collection = _PseudoCollection("emc.services", self.env)
         emc_services_env = WorkContext(
             model_name="rest.service.registration", collection=collection
@@ -29,15 +31,29 @@ class TestSRController(BaseEMCRestCase):
         self.demo_request_1 = self.browse_ref(
             "easy_my_coop.subscription_request_1_demo"
         )
+        self.demo_request_1.write(
+            {
+                "_api_external_id": 1,
+                "external_id_generated": True,
+            }
+        )
         self.demo_request_2 = self.browse_ref(
             "easy_my_coop.subscription_request_waiting_demo"
+        )
+        self.demo_request_2.write(
+            {
+                "_api_external_id": 2,
+                "external_id_generated": True,
+            }
         )
         self.demo_share_product = self.demo_request_1.share_product_id.product_tmpl_id
 
         date = Date.to_string(self.demo_request_1.date)
         self.demo_request_1_dict = {
             "id": self.demo_request_1.get_api_external_id(),
-            "name": "Manuel Dublues",
+            "is_company": False,
+            "firstname": "Manuel",
+            "lastname": "Dublues",
             "email": "manuel@demo.net",
             "date": date,
             "state": "draft",
@@ -54,12 +70,20 @@ class TestSRController(BaseEMCRestCase):
             },
             "lang": "en_US",
             "capital_release_request": [],
+            "data_policy_approved": True,
+            "internal_rules_approved": True,
+            "financial_risk_approved": True,
+            "generic_rules_approved": True,
+            "birthdate": "1990-12-21",
+            "phone": None,
+            "gender": "male",
+            "iban": "09898765454",
+            "skip_control_ng": True,
+            "capital_release_request_date": None,
         }
 
     def test_service(self):
         # kept as example
-        # useful if you need to change data in database and check db type
-
         result = self.sr_service.get(self.demo_request_1.get_api_external_id())
         self.assertEquals(self.demo_request_1_dict, result)
 
@@ -72,25 +96,20 @@ class TestSRController(BaseEMCRestCase):
 
         date_sr = self.sr_service.search(date_from=date_from, date_to=date_to)
         self.assertTrue(date_sr)
+        self.assertTrue(self.demo_request_1.first_api_export_date)
+        self.assertTrue(self.demo_request_1.last_api_export_date)
+
+    def test_fetched_request_cannot_be_updated(self):
+        external_id = self.demo_request_1.get_api_external_id()
+        self.sr_service.get(external_id)
+        with self.assertRaises(AccessError):
+            self.demo_request_1.email = "other@email.be"
 
     def test_route_get(self):
         external_id = self.demo_request_1.get_api_external_id()
         route = "/api/subscription-request/%s" % external_id
         content = self.http_get_content(route)
         self.assertEquals(self.demo_request_1_dict, content)
-
-    # fixme works locally, not on travis: check later and move on
-    # @odoo.tools.mute_logger("odoo.addons.base_rest.http")
-    # def test_route_get_returns_not_found(self):
-    #     route = "/api/subscription-request/%s" % "99999"
-    #     response = self.http_get(route)
-    #     self.assertEquals(response.status_code, 404)
-    #
-    #
-    # def test_route_get_string_returns_method_not_allowed(self):
-    #     route = "/api/subscription-request/%s" % "abc"
-    #     response = self.http_get(route)
-    #     self.assertEquals(response.status_code, 405)
 
     def test_route_search_all(self):
         route = "/api/subscription-request"
@@ -133,10 +152,11 @@ class TestSRController(BaseEMCRestCase):
     def test_route_create(self):
         url = "/api/subscription-request"
         data = {
-            "name": "Lisa des Danses",
+            "firstname": "Lisa",
+            "lastname": "des Danses",
             "email": "lisa@desdanses.be",
             "ordered_parts": 3,
-            "share_product": self.demo_share_product.id,
+            "share_product": self.demo_share_product.get_api_external_id(),
             "address": {
                 "street": "schaerbeekstraat",
                 "zip_code": "1111",
@@ -144,6 +164,16 @@ class TestSRController(BaseEMCRestCase):
                 "country": "BE",
             },
             "lang": "en_US",
+            "data_policy_approved": True,
+            "internal_rules_approved": True,
+            "financial_risk_approved": True,
+            "generic_rules_approved": True,
+            "is_company": False,
+            "birthdate": "1992-08-05",
+            "gender": "other",
+            "iban": "98765456789",
+            "skip_control_ng": True,
+            "capital_release_request_date": None,
         }
 
         response = self.http_post(url, data=data)
@@ -161,39 +191,87 @@ class TestSRController(BaseEMCRestCase):
                     "name": self.demo_share_product.name,
                 },
                 "capital_release_request": [],
+                "phone": None,
             },
         }
         self.assertEquals(expected, content)
 
     def test_route_update(self):
         url = "/api/subscription-request/%s" % self.demo_request_1.get_api_external_id()
-        data = {"state": "done"}
+        data = {"email": "another@email.coop"}
 
         response = self.http_post(url, data=data)
         self.assertEquals(response.status_code, 200)
         content = json.loads(response.content.decode("utf-8"))
 
         expected = self.demo_request_1_dict
-        expected["state"] = "done"
+        expected.update(data)
         self.assertEquals(expected, content)
 
-    def test_route_validate(self):
-        url = (
-            "/api/subscription-request/%s/validate"
-            % self.demo_request_1.get_api_external_id()
-        )
-        response = self.http_post(url, data={})
-        self.assertEquals(response.status_code, 200)
-        content = json.loads(response.content.decode("utf-8"))
-
-        state = content.get("state")
-        self.assertEquals(state, "done")
-
     def test_service_validate_draft_request(self):
-        self.sr_service.validate(self.demo_request_1.get_api_external_id())
+        id_ = self.demo_request_1.get_api_external_id()
+        payload = {"state": "done"}
+        self.sr_service.update(_id=id_, **payload)
         self.assertEquals(self.demo_request_1.state, "done")
         self.assertTrue(len(self.demo_request_1.capital_release_request) > 0)
 
-    def test_service_validate_done_request(self):
+    def test_service_validate_done_request_nok(self):
+        _id = self.demo_request_2.get_api_external_id()
+        self.demo_request_2.sudo().validate_subscription_request()
+        payload = {"state": "done"}
         with self.assertRaises(BadRequest):
-            self.sr_service.validate(self.demo_request_2.get_api_external_id())
+            self.sr_service.update(_id=_id, **payload)
+
+    def test_service_set_to_waiting_ok(self):
+        _id = self.demo_request_1.get_api_external_id()
+        payload = {"state": "waiting"}
+        self.sr_service.update(_id=_id, **payload)
+        self.assertEquals(self.demo_request_1.state, "waiting")
+
+    def test_service_set_to_waiting_nok(self):
+        self.demo_request_1.sudo().put_on_waiting_list()
+        _id = self.demo_request_1.get_api_external_id()
+        payload = {"state": "waiting"}
+        with self.assertRaises(BadRequest):
+            self.sr_service.update(_id=_id, **payload)
+
+    def test_service_set_to_block_ok(self):
+        _id = self.demo_request_1.get_api_external_id()
+        payload = {"state": "block"}
+        self.sr_service.update(_id=_id, **payload)
+        self.assertEquals(self.demo_request_1.state, "block")
+
+    def test_service_set_to_block_nok(self):
+        self.demo_request_1.sudo().put_on_waiting_list()
+        _id = self.demo_request_1.get_api_external_id()
+        payload = {"state": "block"}
+        with self.assertRaises(BadRequest):
+            self.sr_service.update(_id=_id, **payload)
+
+    def test_service_set_to_draft_ok(self):
+        _id = self.demo_request_1.get_api_external_id()
+        self.demo_request_1.sudo().block_subscription_request()
+        payload = {"state": "draft"}
+        self.sr_service.update(_id=_id, **payload)
+        self.assertEquals(self.demo_request_1.state, "draft")
+
+    def test_service_set_to_draft_nok(self):
+        self.demo_request_1.sudo().validate_subscription_request()
+        _id = self.demo_request_1.get_api_external_id()
+        payload = {"state": "draft"}
+        with self.assertRaises(BadRequest):
+            self.sr_service.update(_id=_id, **payload)
+
+    def test_service_set_to_paid_nok(self):
+        self.demo_request_1.sudo().validate_subscription_request()
+        _id = self.demo_request_1.get_api_external_id()
+        payload = {"state": "paid"}
+        with self.assertRaises(BadRequest):
+            self.sr_service.update(_id=_id, **payload)
+
+    def test_service_set_to_transfer_nok(self):
+        self.demo_request_1.sudo().validate_subscription_request()
+        _id = self.demo_request_1.get_api_external_id()
+        payload = {"state": "transfer"}
+        with self.assertRaises(BadRequest):
+            self.sr_service.update(_id=_id, **payload)

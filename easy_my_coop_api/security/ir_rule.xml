@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+     Copyright 2021 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <!--  1st try: add an api user group and two ir.rules
+    - for api user group, domain: (1 = 1)
+    - for emc_user_group, domain: (external_id_generated = False)
+
+    This solution does not work because any group ir.rule bypasses
+    these rules, most notably, the rules from iwp to restrict access
+    to own structure.
+
+    This solution adds a global rules: if records were fetched or created
+    by actions resulting from api calls, no one can update or delete them.
+
+    The api bypasses these rules with .sudo.
+
+    A major drawback of this solution is that only Administrator will
+    be able to manipulate these records in the future. This may or may
+    not be good thing.
+      -->
+    <record id="rule_subscription_request_restrict_access_all" model="ir.rule">
+        <field
+            name="name"
+        >Restrict subscription request update and delete if managed outside of platform
+        </field>
+        <field name="model_id" ref="easy_my_coop.model_subscription_request" />
+        <field name="perm_read" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_unlink" eval="True" />
+        <field name="domain_force">[("external_id_generated","=", False)]</field>
+    </record>
+    <record id="rule_account_invoice_access_all" model="ir.rule">
+        <field
+            name="name"
+        >Restrict invoice update and delete if managed outside of platform
+        </field>
+        <field name="model_id" ref="account.model_account_invoice" />
+        <field name="perm_read" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_unlink" eval="True" />
+        <field name="domain_force">[("external_id_generated","=", False)]</field>
+    </record>
+    <record id="rule_account_payment_restrict_access_all" model="ir.rule">
+        <field
+            name="name"
+        >Restrict payment update and delete if managed outside of platform
+        </field>
+        <field name="model_id" ref="account.model_account_payment" />
+        <field name="perm_read" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="perm_write" eval="True" />
+        <field name="perm_unlink" eval="True" />
+        <field name="domain_force">[("external_id_generated","=", False)]</field>
+    </record>
+</odoo>

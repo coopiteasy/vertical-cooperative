@@ -19,3 +19,9 @@ class BaseRestService(AbstractComponent):
             return {"id": record.get_api_external_id(), "name": record.name}
         else:
             return {}
+
+    def _or_none(self, value):
+        if value:
+            return value
+        else:
+            return None

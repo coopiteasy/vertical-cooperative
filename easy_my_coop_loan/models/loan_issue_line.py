@@ -94,17 +94,17 @@ class LoanIssueLine(models.Model):
                 months=line.loan_issue_id.loan_term
             )
 
-    def get_loan_sub_mail_template(self):
+    def _get_loan_sub_mail_template(self):
         return self.env.ref("easy_my_coop_loan.loan_subscription_confirmation", False)
 
-    def get_loan_pay_req_mail_template(self):
+    def _get_loan_pay_req_mail_template(self):
         return self.env.ref("easy_my_coop_loan.loan_issue_payment_request", False)
 
     @api.model
     def create(self, vals):
         line = super(LoanIssueLine, self).create(vals)
 
-        confirmation_mail_template = line.get_loan_sub_mail_template()
+        confirmation_mail_template = line._get_loan_sub_mail_template()
         confirmation_mail_template.send_mail(line.id)
 
         return line
@@ -130,7 +130,7 @@ class LoanIssueLine(models.Model):
             raise UserError(_("You can only request payment for validated loans"))
 
         for line in self:
-            pay_req_mail_template = line.get_loan_pay_req_mail_template()
+            pay_req_mail_template = line._get_loan_pay_req_mail_template()
             pay_req_mail_template.send_mail(line.id)
             line.write({"state": "waiting"})
 
@@ -147,7 +147,7 @@ class LoanIssueLine(models.Model):
         self.write({"state": "cancelled"})
 
     @api.multi
-    def get_confirm_paid_email_template(self):
+    def get_confirm_paid_mail_template(self):
         self.ensure_one()
         return self.env.ref("easy_my_coop_loan.email_template_loan_confirm_paid")
 
@@ -156,7 +156,7 @@ class LoanIssueLine(models.Model):
         if self.filtered(lambda l: l.state != "waiting"):
             raise UserError(_("You can only mark as paid loans waiting for payment"))
 
-        loan_email_template = self.get_confirm_paid_email_template()
+        loan_email_template = self.get_confirm_paid_mail_template()
         for line in self:
             vals = {"state": "paid"}
             if not line.payment_date:
