@@ -4,6 +4,7 @@
 
 
 from odoo.addons.easy_my_coop.tests.test_base import EMCBaseCase
+
 from ..components.abstract_emc_adapter import AbstractEMCAdapter
 
 
