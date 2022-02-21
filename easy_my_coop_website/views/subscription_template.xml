@@ -4,16 +4,15 @@
     <template id="contact_template" name="contact_template">
 
 
-
-                                <div class="row">
-                                <div class="col-md-6">
-                                <div
+        <div class="row">
+            <div class="col-md-6">
+                <div
                     class="form-group field-firstname"
                     t-attf-class="form-group #{error and 'firstname' in error and 'has-error' or ''}"
                     name="firstname_container"
                 >
-                                    <label for="firstname">Firstname</label>
-                                    <input
+                    <label for="firstname">Firstname</label>
+                    <input
                         class="form-control form-control-sm"
                         id="firstname"
                         type="text"
@@ -23,17 +22,17 @@
                         t-attf-value="#{firstname or ''}"
                         placeholder="Didier"
                     />
-                                </div>
-                                </div>
+                </div>
+            </div>
 
-                                <div class="col-md-6">
-                                <div
+            <div class="col-md-6">
+                <div
                     class="form-group field-lastname"
                     t-attf-class="form-group #{error and 'lastname' in error and 'has-error' or ''}"
                     name="lastname_container"
                 >
-                                    <label for="lastname">Lastname</label>
-                                    <input
+                    <label for="lastname">Lastname</label>
+                    <input
                         class="form-control form-control-sm"
                         id="lastname"
                         type="text"
@@ -44,47 +43,47 @@
                         placeholder="Bourdon"
                     />
 
-                                </div>
-                                </div>
-                                </div>
-                                <div class="row">
-                                <div class="col-md-6">
-                                <div
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div
                     class="form-group field-gender"
                     t-attf-class="form-group #{error and 'gender' in error and 'has-error' or ''}"
                     name="gender_container"
                 >
-                                    <label for="gender">Gender</label>
-                                    <select
+                    <label for="gender">Gender</label>
+                    <select
                         class="form-control form-control-sm"
                         id="gender"
                         name="gender"
                         required="True"
                         t-att-readonly="logged"
                     >
-                                        <option value="male">
-                                            <t t-foreach="genders or []" t-as="type">
-                                                <option
+                        <option value="male">
+                            <t t-foreach="genders or []" t-as="type">
+                                <option
                                     t-att-value="type[0]"
                                     t-att-selected="type[0] == gender"
                                 >
-                                                    <t t-esc="type[1]" />
-                                                </option>
-                                            </t>
-                                        </option>
-                                    </select>
+                                    <t t-esc="type[1]" />
+                                </option>
+                            </t>
+                        </option>
+                    </select>
 
-                                </div>
-                                </div>
-                                <div class="col-md-6">
+                </div>
+            </div>
+            <div class="col-md-6">
 
-                                <div
+                <div
                     class="form-group field-birthdate"
                     t-attf-class="form-group #{error and 'birthdate' in error and 'has-error' or ''}"
                     name="birthdate_container"
                 >
-                                    <label for="birthdate">Birthdate</label>
-                                    <input
+                    <label for="birthdate">Birthdate</label>
+                    <input
                         class="form-control form-control-sm  mandatory-field"
                         type="date"
                         name="birthdate"
@@ -94,18 +93,18 @@
                         placeholder="1978-03-05"
                     />
 
-                                </div>
-                                </div>
-                                </div>
+                </div>
+            </div>
+        </div>
 
 
-                                <div
+        <div
             class="form-group field-phone"
             t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''}"
             name="phone_container"
         >
-                                    <label for="phone">Phone</label>
-                                    <input
+            <label for="phone">Phone</label>
+            <input
                 class="form-control form-control-sm"
                 id="phone"
                 type="tel"
@@ -117,41 +116,41 @@
             />
 
 
-                            </div>
+        </div>
 
-                            <div
+        <div
             class="form-group field-lang"
             t-attf-class="form-group #{error and 'lang' in error and 'has-error' or ''}"
             name="lang_container"
         >
-                                <label for="lang">Language</label>
-                                <select
+            <label for="lang">Language</label>
+            <select
                 class="form-control form-control-sm"
                 id="lang"
                 name="lang"
                 required="True"
             >
-                                    <t t-foreach="langs or []" t-as="langue">
-                                        <option
+                <t t-foreach="langs or []" t-as="langue">
+                    <option
                         t-att-value="langue.code"
                         t-att-selected="langue.code == lang"
                     >
-                                            <t t-esc="langue.name" />
-                                        </option>
-                                    </t>
-                                </select>
+                        <t t-esc="langue.name" />
+                    </option>
+                </t>
+            </select>
 
-                            </div>
+        </div>
     </template>
 
     <template id="address_template" name="address_template">
-    <div
+        <div
             class="form-group field-address"
             t-attf-class="form-group #{error and 'address' in error and 'has-error' or ''}"
             name="address_container"
         >
-        <label for="address">Address</label>
-        <input
+            <label for="address">Address</label>
+            <input
                 class="form-control form-control-sm"
                 type="text"
                 name="address"
@@ -162,17 +161,17 @@
                 placeholder="rue Van Hove, 19"
             />
 
-    </div>
+        </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <div
+        <div class="row">
+            <div class="col-md-6">
+                <div
                     class="form-group field-city"
                     t-attf-class="form-group #{error and 'zip_code' in error and 'has-error' or ''}"
                     name="zip_code_city_container"
                 >
-                <label for="city">City</label>
-                <input
+                    <label for="city">City</label>
+                    <input
                         class="form-control form-control-sm"
                         id="city"
                         type="text"
@@ -183,12 +182,12 @@
                         placeholder="Bruxelles"
                     />
 
-            </div>
+                </div>
             </div>
             <div class="col-md-6">
-    <div class="form-group field-zip_code">
-        <label for="zip_code">Zip / Postal Code</label>
-        <input
+                <div class="form-group field-zip_code">
+                    <label for="zip_code">Zip / Postal Code</label>
+                    <input
                         class="form-control form-control-sm"
                         id="zip_code"
                         type="text"
@@ -199,37 +198,35 @@
                         placeholder="1030"
                     />
 
-    </div>
-    </div>
-    </div>
+                </div>
+            </div>
+        </div>
 
 
-
-
-    <div
+        <div
             class="form-group field-country"
             t-attf-class="form-group #{error and 'country_id' in error and 'has-error' or ''}"
             name="country_container"
         >
-        <label for="country_id">Country</label>
-        <select
+            <label for="country_id">Country</label>
+            <select
                 class="form-control form-control-sm"
                 id="country_id"
                 name="country_id"
                 required="True"
                 t-att-readonly="logged"
             >
-            <option value="">Country...</option>
-            <t t-foreach="countries or []" t-as="country">
-                <option
+                <option value="">Country...</option>
+                <t t-foreach="countries or []" t-as="country">
+                    <option
                         t-att-value="country.id"
                         t-att-selected="country.id == int(country_id)"
                     >
-                    <t t-esc="country.name" />
-                </option>
-            </t>
-        </select>
-    </div>
+                        <t t-esc="country.name" />
+                    </option>
+                </t>
+            </select>
+        </div>
     </template>
 
     <template id="rules_template" name="rules_template">
@@ -239,7 +236,7 @@
             t-if="display_generic_rules"
             t-attf-class="form-group"
         >
-        <label for="generic_rules_approved">
+            <label for="generic_rules_approved">
             Generic Rules
         </label>
             <div class="form-check">
@@ -253,16 +250,16 @@
                 <label>
                     <t t-raw="generic_rules_text" />
                 </label>
+            </div>
         </div>
-    </div>
 
-    <div
+        <div
             id="data_policy_approved"
             name="data_policy_approved_container"
             t-if="display_data_policy"
             t-attf-class="form-group"
         >
-        <label for="data_policy_approved">Privacy
+            <label for="data_policy_approved">Privacy
             Policy
         </label>
             <div class="form-check">
@@ -277,15 +274,15 @@
                     <t t-raw="data_policy_text" />
                 </label>
             </div>
-    </div>
+        </div>
 
-    <div
+        <div
             id="internal_rules_approved"
             name="internal_rules_approved_container"
             t-if="display_internal_rules"
             t-attf-class="form-group"
         >
-        <label for="internal_rules_approved">
+            <label for="internal_rules_approved">
             Internal Rules
         </label>
             <div class="form-check">
@@ -300,15 +297,15 @@
                     <t t-raw="internal_rules_text" />
                 </label>
             </div>
-    </div>
+        </div>
 
-    <div
+        <div
             id="financial_risk_approved"
             name="financial_risk_approved_container"
             t-if="display_financial_risk"
             t-attf-class="form-group"
         >
-        <label for="financial_risk_approved">
+            <label for="financial_risk_approved">
             Financial Risk
         </label>
             <div class="form-check">
@@ -323,40 +320,40 @@
                     <t t-raw="financial_risk_text" />
                 </label>
             </div>
-    </div>
+        </div>
     </template>
 
     <template id="shares_template" name="shares_template">
-    <div class="row">
-        <div class="col-md-5">
-        <div
+        <div class="row">
+            <div class="col-md-5">
+                <div
                     class="form-group field-parts-type"
                     t-attf-class="form-group #{error and 'share_product_id' in error and 'has-error' or ''}"
                     name="share_product_container"
                 >
-            <label for="share_product_id">Parts type</label>
-            <select
+                    <label for="share_product_id">Parts type</label>
+                    <select
                         class="form-control form-control-sm"
                         id="share_product_id"
                         name="share_product_id"
                         required="True"
                     >
-                <t t-foreach="products or []" t-as="product">
-                    <option
+                        <t t-foreach="products or []" t-as="product">
+                            <option
                                 t-att-value="product.id"
                                 t-att-selected="product.id == int(share_product_id)"
                             >
-                        <t t-esc="product.short_name" />
-                    </option>
-                </t>
-            </select>
-        </div>
-    </div>
-    <div class="col-md-4 col-6">
-        <label for="ordered_parts">
+                                <t t-esc="product.short_name" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4 col-6">
+                <label for="ordered_parts">
                                             Parts number
                                         </label>
-        <div t-attf-class="form-group" name="share_number_container">
+                <div t-attf-class="form-group" name="share_number_container">
                     <input
                         type="number"
                         name="ordered_parts"
@@ -369,18 +366,18 @@
                 </div>
             </div>
             <div class="col-md-3 col-6" name="total_parts_container">
-            <div id="share_price" style="display: none;" />
-            <label for="total_parts">
+                <div id="share_price" style="display: none;" />
+                <label for="total_parts">
                 Total
             </label>
-                    <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
-                            <span
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                        <span
                             class="input-group-text"
                             t-esc="company.currency_id.symbol"
                         />
-                          </div>
-                        <input
+                    </div>
+                    <input
                         type="text"
                         id="total_parts"
                         class="form-control total"
@@ -388,10 +385,10 @@
                         t-att-data-max="company.subscription_maximum_amount"
                         t-att-readonly="'readonly'"
                     />
-                    </div>
                 </div>
-
             </div>
+
+        </div>
     </template>
 
     <template id="captcha_template" name="captcha_template">
@@ -405,21 +402,17 @@
     </template>
 
     <template id="error_message_template" name="error_message_template">
-    <p style="color:red;">
+        <p style="color:red;">
             <!-- <t t-debug="ipdb"></t>                     -->
 
-        <t t-raw="error_msg" />
-    </p>
+            <t t-raw="error_msg" />
+        </p>
     </template>
 
     <template id="csrf_template" name="csrf_template">
-    <div name="csrf_token_container">
-                <input
-                type="hidden"
-                name="csrf_token"
-                t-att-value="request.csrf_token()"
-            />
-            </div>
+        <div name="csrf_token_container">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+        </div>
     </template>
 
     <template id="becomecooperator" name="Become Cooperator">
@@ -460,7 +453,7 @@
                                     t-attf-class="form-group"
                                     name="my_account_link_container"
                                 >
-                                <a
+                                    <a
                                         class='btn btn-primary'
                                         t-if="not logged"
                                         t-attf-href="/web/login?redirect=#{ request.httprequest.url }"
@@ -468,8 +461,8 @@
                                     >
                                     You have already an account?
                                 </a>
-                                <br />
-                            </div>
+                                    <br />
+                                </div>
 
                                 <div
                                     t-attf-class="form-group"
@@ -550,7 +543,9 @@
                                 <t t-call="easy_my_coop_website.captcha_template" />
 
                                 <div class="text-center">
-                                <button class="btn btn-primary mt-3 mb-3 text-center">
+                                    <button
+                                        class="btn btn-primary mt-3 mb-3 text-center"
+                                    >
                                         Send
                                     </button>
                                 </div>
@@ -581,11 +576,13 @@
                                 class="form-horizontal mt32 oe_subscription_request_form"
                                 enctype="multipart/form-data"
                             >
-                            <t t-call="easy_my_coop_website.error_message_template" />
+                                <t
+                                    t-call="easy_my_coop_website.error_message_template"
+                                />
 
-                        <t t-call="easy_my_coop_website.csrf_template" />
+                                <t t-call="easy_my_coop_website.csrf_template" />
 
-                            <div
+                                <div
                                     t-attf-class="form-group"
                                     style="display: none;"
                                     name="logged_is_company_container"
@@ -618,7 +615,7 @@
                                     <label for="company_register_number">Company
                                         Register Number
                                     </label>
-                                        <input
+                                    <input
                                         type="text"
                                         class="form-control mandatory-field"
                                         name="company_register_number"
@@ -635,7 +632,7 @@
                                 >
                                     <label for="company_name">Company name
                                     </label>
-                                        <input
+                                    <input
                                         type="text"
                                         class="form-control mandatory-field"
                                         name="company_name"
@@ -676,7 +673,7 @@
                                 >
                                     <label for="company_email">Company email
                                     </label>
-                                        <input
+                                    <input
                                         type="text"
                                         class="form-control mandatory-field"
                                         name="company_email"
@@ -692,7 +689,7 @@
                                 >
                                     <label for="confirm_email">Confirm Email
                                     </label>
-                                        <input
+                                    <input
                                         type="confirm_email"
                                         class="form-control mandatory-field"
                                         name="confirm_email"
@@ -733,7 +730,7 @@
                                     <label for="contact_person_function">
                                         Function
                                     </label>
-                                        <input
+                                    <input
                                         type="text"
                                         class="form-control form-control-sm"
                                         name="contact_person_function"
@@ -756,7 +753,7 @@
                                     >
                                             Send
                                         </button>
-                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
