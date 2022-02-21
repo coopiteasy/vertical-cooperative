@@ -5,9 +5,9 @@
 
 from datetime import datetime
 
+from odoo.http import request, route
+
 from odoo.addons.base_rest.controllers import main
-from odoo.http import request
-from odoo.http import route
 
 
 class UserController(main.RestController):
