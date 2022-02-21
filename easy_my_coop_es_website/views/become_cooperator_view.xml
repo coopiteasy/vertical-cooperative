@@ -15,7 +15,7 @@
                 required="True"
                 t-att-readonly="logged"
                 t-attf-value="#{iban or ''}"
-                placeholder="BE48523080767127"
+                placeholder="ES9000246912501234567891"
             />
 
         </div>
