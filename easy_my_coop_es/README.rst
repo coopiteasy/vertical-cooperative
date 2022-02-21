@@ -21,10 +21,20 @@ Easy My Coop Spain
 
 This addon implements Spanish localization for Easy My Coop
 
+Features:
+
+- Add Tax identification on subscription request
+
 **Table of contents**
 
 .. contents::
    :local:
+
+Known issues / Roadmap
+======================
+
+Move this feature to cooperator module
+- Change property_cooperator_account to not accept deprecated account
 
 Bug Tracker
 ===========
@@ -43,6 +53,11 @@ Authors
 ~~~~~~~
 
 * Coop IT Easy SCRLfs
+* Coopdevs Treball SCCL
+
+Contributors
+~~~~~~~~~~~~
+
 * Coopdevs Treball SCCL
 
 Maintainers
