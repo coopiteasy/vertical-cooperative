@@ -77,7 +77,8 @@ class EMCCase(EMCBaseCase):
     def test_user_rights(self):
 
         request_values = {
-            "name": "test create request",
+            "firstname": "test",
+            "lastname": "create request",
             "email": "test@demo.net",
             "address": "schaerbeekstraat",
             "zip_code": "1111",
@@ -168,6 +169,7 @@ class EMCCase(EMCBaseCase):
     @expectedFailure
     def test_compute_validated_lines_on_subscription_request(self):
         request = self.request
+        request.iban = False
         request.skip_control_ng = False
 
         self.assertFalse(request.skip_control_ng)
