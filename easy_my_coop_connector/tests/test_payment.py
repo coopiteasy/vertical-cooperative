@@ -9,7 +9,7 @@ import requests
 
 from odoo.fields import Date
 
-from odoo.addons.easy_my_coop.tests.test_base import EMCBaseCase
+from odoo.addons.cooperator.tests.test_base import EMCBaseCase
 
 from .test_data import AP_CREATE_RESULT, SR_VALIDATE_RESULT, dict_to_dump
 
@@ -27,7 +27,7 @@ class EMCPaymentConnectorCase(EMCBaseCase):
         )
 
     def test_post_payment_sends_and_binds_request(self):
-        srequest = self.browse_ref("easy_my_coop.subscription_request_1_demo")
+        srequest = self.browse_ref("cooperator.subscription_request_1_demo")
         with patch.object(requests, "put") as mock_get:
             mock_get.return_value = mock_response = Mock()
             mock_response.status_code = 200
