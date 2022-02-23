@@ -90,7 +90,7 @@
         <field name="property_cooperator_account" ref="account_cooperator_demo" />
     </record>
 
-    <record id="easy_my_coop.subscription_journal" model="account.journal">
+    <record id="subscription_journal" model="account.journal">
         <field name="default_credit_account_id" ref="account_equity_demo" />
         <field name="default_debit_account_id" ref="account_equity_demo" />
     </record>
@@ -138,7 +138,6 @@
             eval="obj(ref('product_template_share_type_2_demo')).product_variant_id.id"
         />
         <field name="lang">en_US</field>
-        <field name="skip_control_ng" eval="True" />
         <field name="data_policy_approved" eval="True" />
         <field name="internal_rules_approved" eval="True" />
         <field name="financial_risk_approved" eval="True" />

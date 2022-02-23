@@ -23,7 +23,6 @@
         <field name="by_company" eval="True" />
         <field name="by_individual" eval="True" />
         <field name="display_on_website" eval="True" />
-        <field name="loan_term">120</field>
         <field name="capital_payment">end</field>
         <field name="interest_payment">end</field>
         <field name="taxes_rate">30</field>
@@ -50,7 +49,6 @@
         <field name="by_company" eval="True" />
         <field name="by_individual" eval="True" />
         <field name="display_on_website" eval="True" />
-        <field name="loan_term">120</field>
         <field name="capital_payment">yearly</field>
         <field name="interest_payment">yearly</field>
         <field name="taxes_rate">30</field>
@@ -77,7 +75,6 @@
         <field name="by_company" eval="True" />
         <field name="by_individual" eval="True" />
         <field name="display_on_website" eval="True" />
-        <field name="loan_term">120</field>
         <field name="capital_payment">yearly</field>
         <field name="interest_payment">end</field>
         <field name="taxes_rate">30</field>
@@ -104,7 +101,6 @@
         <field name="by_company" eval="True" />
         <field name="by_individual" eval="True" />
         <field name="display_on_website" eval="True" />
-        <field name="loan_term">120</field>
         <field name="capital_payment">end</field>
         <field name="interest_payment">yearly</field>
         <field name="taxes_rate">30</field>
