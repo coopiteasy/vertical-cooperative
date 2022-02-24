@@ -12,9 +12,6 @@
             />
             <!-- Remove Company type field -->
             <xpath expr="//label[@for='company_type']/.." position="replace" />
-            <xpath expr="//div[@name='confirm_email_container']" position="after">
-                <t t-call="easy_my_coop_es.es_iban_template" />
-            </xpath>
             <!-- Hide -/+ share input -->
             <xpath expr="//div[@name='share_div']" position="attributes">
                 <attribute name="hidden">1</attribute>
