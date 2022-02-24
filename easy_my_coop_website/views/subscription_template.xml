@@ -143,6 +143,12 @@
         </div>
     </template>
 
+    <template id="iban_template" name="iban_template">
+        <div name="iban_template_container">
+        <!-- Empty container to be filled by EMC localization modules -->
+        </div>
+    </template>
+
     <template id="address_template" name="address_template">
         <div
             class="form-group field-address"
@@ -531,6 +537,8 @@
                                 </div>
                                 <t t-call="easy_my_coop_website.contact_template" />
 
+                                <t t-call="easy_my_coop_website.iban_template" />
+
                                 <t t-call="easy_my_coop_website.address_template" />
 
                                 <t t-call="easy_my_coop_website.shares_template" />
@@ -699,6 +707,8 @@
                                         placeholder="administration@beescoop.be"
                                     />
                                 </div>
+
+                                <t t-call="easy_my_coop_website.iban_template" />
 
                                 <h2 class="text-center">Main Address</h2>
                                 <t t-call="easy_my_coop_website.address_template" />
