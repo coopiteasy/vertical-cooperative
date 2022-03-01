@@ -61,6 +61,11 @@ class PayCapitalReleaseInvoices(models.TransientModel):
                     "journal_id": self.journal_id.id,
                 }
             )
+            # Why are we forcing the commit?
+            # We can commit the transaction here because this method is a
+            # job, and we want to save the changes done.
+            # Then, when we requeue this job, it
+            # continues from the last capital release invoice without payments.
             try:
                 wizard.create_payments()
                 self.env.cr.commit()

@@ -32,6 +32,11 @@ class ValidateSubscriptionRequest(models.TransientModel):
                     sr.migrated_cooperator_register_number
                 )
             )
+            # Why are we forcing the commit?
+            # We can commit the transaction here because this method is a
+            # job, and we want to save the changes done.
+            # Then, when we requeue this job, it
+            # continues from the last capital release invoice without payments.
             try:
                 sr.validate_subscription_request()
                 self.env.cr.commit()
