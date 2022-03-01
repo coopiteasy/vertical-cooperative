@@ -48,15 +48,15 @@ class PayCapitalReleaseInvoices(models.TransientModel):
         )
 
         log.info("Starting to create payments")
-        for cs_invoice in capital_release_invoices:
+        for cr_invoice in capital_release_invoices:
             log.info(
-                "Creating payment for invoice {}".format(cs_invoice.invoice_number)
+                "Creating payment for invoice {}".format(cr_invoice.invoice_number)
             )
             wizard = self.AccountRegisterPaymentWizard.with_context(
-                {"active_model": "account.invoice", "active_ids": [cs_invoice.id]}
+                {"active_model": "account.invoice", "active_ids": [cr_invoice.id]}
             ).create(
                 {
-                    "payment_date": cs_invoice.subscription_request.capital_release_request_date,  # noqa
+                    "payment_date": cr_invoice.subscription_request.capital_release_request_date,  # noqa
                     "payment_method_id": self.account_payment_method.id,
                     "journal_id": self.journal_id.id,
                 }
@@ -73,5 +73,5 @@ class PayCapitalReleaseInvoices(models.TransientModel):
                 self.env.cr.commit()
                 raise error
             log.info(
-                "Payments created for invoice {}".format(cs_invoice.invoice_number)
+                "Payments created for invoice {}".format(cr_invoice.invoice_number)
             )
