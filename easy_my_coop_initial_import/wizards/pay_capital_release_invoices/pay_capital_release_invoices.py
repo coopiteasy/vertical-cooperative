@@ -66,12 +66,8 @@ class PayCapitalReleaseInvoices(models.TransientModel):
             # job, and we want to save the changes done.
             # Then, when we requeue this job, it
             # continues from the last capital release invoice without payments.
-            try:
-                wizard.create_payments()
-                self.env.cr.commit()
-            except Exception as error:
-                self.env.cr.commit()
-                raise error
+            wizard.create_payments()
+            self.env.cr.commit()
             log.info(
                 "Payments created for invoice {}".format(cr_invoice.invoice_number)
             )

@@ -37,12 +37,8 @@ class ValidateSubscriptionRequest(models.TransientModel):
             # job, and we want to save the changes done.
             # Then, when we requeue this job, it
             # continues from the last capital release invoice without payments.
-            try:
-                sr.validate_subscription_request()
-                self.env.cr.commit()
-            except Exception as error:
-                self.env.cr.commit()
-                raise error
+            sr.validate_subscription_request()
+            self.env.cr.commit()
             log.info(
                 "Validated subscription requests {}".format(
                     sr.migrated_cooperator_register_number
