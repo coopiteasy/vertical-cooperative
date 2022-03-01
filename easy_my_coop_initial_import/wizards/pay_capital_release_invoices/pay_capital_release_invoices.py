@@ -28,11 +28,11 @@ class PayCapitalReleaseInvoices(models.TransientModel):
             .search(
                 [
                     ("state", "=", "open"),
-                    ("subscription_request", "!=", None),
+                    ("subscription_request", "!=", False),
                     (
                         "subscription_request.migrated_cooperator_register_number",
                         "!=",
-                        None,
+                        False,
                     ),
                 ]
             )
