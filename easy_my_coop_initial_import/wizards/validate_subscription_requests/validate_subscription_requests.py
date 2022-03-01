@@ -29,7 +29,7 @@ class ValidateSubscriptionRequest(models.TransientModel):
         for sr in subscription_requests:
             log.info(
                 "Validating subscription requests {}".format(
-                    sr.migrated_cooperator_register_number
+                    sr.imported_cooperator_register_number
                 )
             )
             # Why are we forcing the commit?
@@ -41,6 +41,6 @@ class ValidateSubscriptionRequest(models.TransientModel):
             self.env.cr.commit()
             log.info(
                 "Validated subscription requests {}".format(
-                    sr.migrated_cooperator_register_number
+                    sr.imported_cooperator_register_number
                 )
             )

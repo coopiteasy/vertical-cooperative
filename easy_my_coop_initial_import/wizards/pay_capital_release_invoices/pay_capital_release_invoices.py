@@ -30,14 +30,14 @@ class PayCapitalReleaseInvoices(models.TransientModel):
                     ("state", "=", "open"),
                     ("subscription_request", "!=", False),
                     (
-                        "subscription_request.migrated_cooperator_register_number",
+                        "subscription_request.imported_cooperator_register_number",
                         "!=",
                         False,
                     ),
                 ]
             )
             .sorted(
-                lambda i: i.subscription_request.migrated_cooperator_register_number
+                lambda i: i.subscription_request.imported_cooperator_register_number
             )
         )
 
