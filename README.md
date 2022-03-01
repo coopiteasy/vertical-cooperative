@@ -2,7 +2,7 @@
 [![Pre-commit Status](https://github.com/OCA/cooperative/actions/workflows/pre-commit.yml/badge.svg?branch=12.0)](https://github.com/OCA/cooperative/actions/workflows/pre-commit.yml?query=branch%3A12.0)
 [![Build Status](https://github.com/OCA/cooperative/actions/workflows/test.yml/badge.svg?branch=12.0)](https://github.com/OCA/cooperative/actions/workflows/test.yml?query=branch%3A12.0)
 [![codecov](https://codecov.io/gh/OCA/cooperative/branch/12.0/graph/badge.svg)](https://codecov.io/gh/OCA/cooperative)
-[![Translation Status](https://translation.odoo-community.org/widgets/cooperative-14-0/-/svg-badge.svg)](https://translation.odoo-community.org/engage/cooperative-14-0/?utm_source=widget)
+[![Translation Status](https://translation.odoo-community.org/widgets/cooperative-12-0/-/svg-badge.svg)](https://translation.odoo-community.org/engage/cooperative-12-0/?utm_source=widget)
 
 <!-- /!\ do not modify above this line -->
 
