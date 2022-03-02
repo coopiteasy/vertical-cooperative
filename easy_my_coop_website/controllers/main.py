@@ -117,7 +117,7 @@ class WebsiteSubscription(http.Controller):
 
     def get_date_string(self, birthdate):
         if birthdate:
-            return datetime.strftime(birthdate, "%d/%m/%Y")
+            return datetime.strftime(birthdate, "%Y-%m-%d")
         return False
 
     def get_values_from_user(self, values, is_company):
