@@ -324,14 +324,15 @@ class WebsiteSubscription(http.Controller):
                 values["error_msg"] = _("You need to upload a" " scan of your id card")
                 return request.render(redirect, values)
 
-        iban = kwargs.get("iban")
-        if iban.strip():
-            valid = sub_req_obj.check_iban(iban)
+        if "iban" in required_fields:
+            iban = kwargs.get("iban")
+            if iban.strip():
+                valid = sub_req_obj.check_iban(iban)
 
-            if not valid:
-                values = self.fill_values(values, is_company, logged)
-                values["error_msg"] = _("You iban account number is not valid")
-                return request.render(redirect, values)
+                if not valid:
+                    values = self.fill_values(values, is_company, logged)
+                    values["error_msg"] = _("You iban account number is not valid")
+                    return request.render(redirect, values)
 
         # check the subscription's amount
         max_amount = company.subscription_maximum_amount
