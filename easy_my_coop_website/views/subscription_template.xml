@@ -330,7 +330,7 @@
     </template>
 
     <template id="shares_template" name="shares_template">
-        <div class="row">
+        <div class="row" name="share_div">
             <div class="col-md-5">
                 <div
                     class="form-group field-parts-type"
