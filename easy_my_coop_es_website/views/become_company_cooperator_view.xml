@@ -12,10 +12,6 @@
             />
             <!-- Remove Company type field -->
             <xpath expr="//label[@for='company_type']/.." position="replace" />
-            <!-- Hide -/+ share input -->
-            <xpath expr="//div[@name='share_div']" position="attributes">
-                <attribute name="hidden">1</attribute>
-            </xpath>
         </template>
     </data>
 </odoo>
