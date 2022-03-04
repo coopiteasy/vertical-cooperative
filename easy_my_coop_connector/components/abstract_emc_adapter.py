@@ -60,7 +60,8 @@ class AbstractEMCAdapter:
                     "\n\n %s \n\n"
                     "Please contact your system administrator."
                 )
-            ) % bad_request.description
+                % bad_request.description
+            )
         return self.to_write_values(request_dict)
 
     def delete(self):
