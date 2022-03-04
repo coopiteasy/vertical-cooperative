@@ -11,7 +11,7 @@
                     t-attf-class="form-group #{error and 'firstname' in error and 'has-error' or ''}"
                     name="firstname_container"
                 >
-                    <label for="firstname">Firstname</label>
+                    <label for="firstname">First Name</label>
                     <input
                         class="form-control form-control-sm"
                         id="firstname"
@@ -31,7 +31,7 @@
                     t-attf-class="form-group #{error and 'lastname' in error and 'has-error' or ''}"
                     name="lastname_container"
                 >
-                    <label for="lastname">Lastname</label>
+                    <label for="lastname">Last Name</label>
                     <input
                         class="form-control form-control-sm"
                         id="lastname"
@@ -82,7 +82,7 @@
                     t-attf-class="form-group #{error and 'birthdate' in error and 'has-error' or ''}"
                     name="birthdate_container"
                 >
-                    <label for="birthdate">Birthdate</label>
+                    <label for="birthdate">Date of birth</label>
                     <input
                         class="form-control form-control-sm  mandatory-field"
                         type="date"
@@ -112,7 +112,7 @@
                 required="True"
                 t-att-readonly="logged"
                 t-attf-value="#{phone or ''}"
-                placeholder="e.g. (+32).81.81.37.00"
+                placeholder="e.g. +32 456 926 5059"
             />
 
 
@@ -164,7 +164,7 @@
                 required="True"
                 t-att-readonly="logged"
                 t-attf-value="#{address or ''}"
-                placeholder="rue Van Hove, 19"
+                placeholder="rue Van Hove, 199"
             />
 
         </div>
@@ -337,7 +337,7 @@
                     t-attf-class="form-group #{error and 'share_product_id' in error and 'has-error' or ''}"
                     name="share_product_container"
                 >
-                    <label for="share_product_id">Parts type</label>
+                    <label for="share_product_id">Share type</label>
                     <select
                         class="form-control form-control-sm"
                         id="share_product_id"
@@ -357,7 +357,7 @@
             </div>
             <div class="col-md-4 col-6">
                 <label for="ordered_parts">
-                                            Parts number
+                                            Share number
                                         </label>
                 <div t-attf-class="form-group" name="share_number_container">
                     <input
@@ -465,7 +465,7 @@
                                         t-attf-href="/web/login?redirect=#{ request.httprequest.url }"
                                         style="white-space: normal;"
                                     >
-                                    You have already an account?
+                                    Do you already have an account?
                                 </a>
                                     <br />
                                 </div>
@@ -496,7 +496,7 @@
                                             t-att-checked="already_cooperator"
                                             name="already_cooperator"
                                         />
-                                        Already cooperator?
+                                            Are you already a cooperator?
                                     </label>
                                 </div>
                                 <div class="form-group field-login">
@@ -576,7 +576,7 @@
                     <div class="row justify-content-center">
                         <div class="col-xs-12 col-sm-10  col-md-8 col-lg-6">
                             <h1 class="mt-4 text-center">
-                            Become Company Cooperator
+                                Become Cooperator as Company
                             </h1>
                             <form
                                 action="/subscription/subscribe_share"
