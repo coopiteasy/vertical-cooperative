@@ -74,7 +74,7 @@ class SubscriptionRequestService(Component):
             try:
                 sr.update_state(state)
             except ValidationError as e:
-                raise wrapJsonException(BadRequest(str(e)))
+                raise wrapJsonException(BadRequest(e.name))
         return self._to_dict(sr)
 
     def _to_dict(self, sr):
