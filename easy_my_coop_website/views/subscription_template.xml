@@ -236,6 +236,26 @@
     </template>
 
     <template id="rules_template" name="rules_template">
+
+
+        <div
+            t-if="res_company.allow_id_card_upload"
+            t-attf-class="form-group #{error and 'file' in error and 'has-error' or ''}"
+            name="resume_container"
+        >
+        <label for="Resume">Idendity
+            card scan
+        </label>
+        <div class="col-md-7 col-sm-8">
+            <input
+                    type="file"
+                    class="form-control"
+                    name="Resume"
+                    t-attf-value="#{file or ''}"
+                />
+        </div>
+    </div>
+
         <div
             id="generic_rules_approved"
             name="generic_rules_approved_container"
