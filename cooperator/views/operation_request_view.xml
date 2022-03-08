@@ -153,8 +153,8 @@
                                             <field name="city" />
                                             <field name="country_id" />
                                             <field name="lang" />
-                                            <field name="validated" />
-                                            <field name="skip_control_ng" />
+                                            <field name="is_valid_iban" />
+                                            <field name="skip_iban_control" />
                                             <field
                                                 name="ordered_parts"
                                                 invisible="True"
