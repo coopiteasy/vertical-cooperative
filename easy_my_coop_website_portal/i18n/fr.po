@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* easy_my_coop_website_portal
+# 	* easy_my_coop_website_portal
 #
 msgid ""
 msgstr ""
@@ -10,6 +10,7 @@ msgstr ""
 "PO-Revision-Date: 2020-06-29 15:48+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -22,9 +23,12 @@ msgstr "<em> Projet de demande </em>"
 
 #. module: easy_my_coop_website_portal
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_capital_releases
-msgid "<span class=\"badge badge-pill badge-info\">\n"
-"                                        <i class=\"fa fa-fw fa-clock-o\" aria-label=\"Opened\" title=\"Opened\" role=\"img\"/>\n"
-"                                        <span class=\"d-none d-md-inline\">Waiting\n"
+msgid ""
+"<span class=\"badge badge-pill badge-info\">\n"
+"                                        <i class=\"fa fa-fw fa-clock-o\" "
+"aria-label=\"Opened\" title=\"Opened\" role=\"img\"/>\n"
+"                                        <span class=\"d-none d-md-inline"
+"\">Waiting\n"
 "                                            for Payment\n"
 "                                        </span>\n"
 "                                    </span>"
@@ -32,17 +36,22 @@ msgstr ""
 
 #. module: easy_my_coop_website_portal
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_capital_releases
-msgid "<span class=\"badge badge-pill badge-success\">\n"
-"                                        <i class=\"fa fa-fw fa-check\" aria-label=\"Paid\" title=\"Paid\" role=\"img\"/>\n"
-"                                        <span class=\"d-none d-md-inline\">Paid\n"
+msgid ""
+"<span class=\"badge badge-pill badge-success\">\n"
+"                                        <i class=\"fa fa-fw fa-check\" aria-"
+"label=\"Paid\" title=\"Paid\" role=\"img\"/>\n"
+"                                        <span class=\"d-none d-md-inline"
+"\">Paid\n"
 "                                        </span>\n"
 "                                    </span>"
 msgstr ""
 
 #. module: easy_my_coop_website_portal
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_capital_releases
-msgid "<span class=\"badge badge-pill badge-warning\">\n"
-"                                        <i class=\"fa fa-fw fa-remove\" aria-label=\"Cancelled\" title=\"Cancelled\" role=\"img\"/>\n"
+msgid ""
+"<span class=\"badge badge-pill badge-warning\">\n"
+"                                        <i class=\"fa fa-fw fa-remove\" aria-"
+"label=\"Cancelled\" title=\"Cancelled\" role=\"img\"/>\n"
 "                                        <span class=\"d-none d-md-inline\">\n"
 "                                            Cancelled\n"
 "                                        </span>\n"
@@ -120,6 +129,11 @@ msgid "Iban"
 msgstr ""
 
 #. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_details_emc
+msgid "Language"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.website_portal_details_form
 msgid "Legal Representative:"
 msgstr "Représentant légal:"
@@ -146,9 +160,11 @@ msgstr "Date de la demande"
 
 #. module: easy_my_coop_website_portal
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_capital_releases
-msgid "There are currently no capital release request for your\n"
+msgid ""
+"There are currently no capital release request for your\n"
 "                    account."
-msgstr "Il n'y a actuellement aucune demande de libération de capital pour votre\n"
+msgstr ""
+"Il n'y a actuellement aucune demande de libération de capital pour votre\n"
 "                     Compte."
 
 #. module: easy_my_coop_website_portal
@@ -167,7 +183,7 @@ msgid "You are not a cooperator"
 msgstr "Vous n'êtes pas coopérateur."
 
 #. module: easy_my_coop_website_portal
-#: code:addons/easy_my_coop_website_portal/controllers/main.py:79
+#: code:addons/easy_my_coop_website_portal/controllers/portal.py:87
 #, python-format
 msgid "You iban account number is not valid"
 msgstr "Votre numéro IBAN n'est pas valide."
@@ -181,4 +197,3 @@ msgstr "Vos détails de coopérateur"
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_home_capital_release
 msgid "Your Release Capital Requests"
 msgstr "Vos demandes de libération de capital"
-

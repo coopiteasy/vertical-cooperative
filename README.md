@@ -1,9 +1,15 @@
-![Licence](https://img.shields.io/badge/licence-AGPL--3-blue.svg)
-[![Build Status](https://travis-ci.com/coopiteasy/vertical-cooperative.svg?branch=12.0)](https://travis-ci.com/coopiteasy/vertical-cooperative?branch=12.0)
 
-# vertical-cooperative
+[![Pre-commit Status](https://github.com/coopiteasy/vertical-cooperative/actions/workflows/pre-commit.yml/badge.svg?branch=12.0)](https://github.com/coopiteasy/vertical-cooperative/actions/workflows/pre-commit.yml?query=branch%3A12.0)
+[![Build Status](https://github.com/coopiteasy/vertical-cooperative/actions/workflows/test.yml/badge.svg?branch=12.0)](https://github.com/coopiteasy/vertical-cooperative/actions/workflows/test.yml?query=branch%3A12.0)
+[![codecov](https://codecov.io/gh/coopiteasy/vertical-cooperative/branch/12.0/graph/badge.svg)](https://codecov.io/gh/coopiteasy/vertical-cooperative)
 
-This project aim to deal with modules related to cooperatives management. You'll find modules that:
+<!-- /!\ do not modify above this line -->
+
+# Vertical Cooperative
+
+This project aim to deal with modules related to cooperatives management.
+
+You'll find modules that:
 
  - Allow people to sign up as a member of the cooperative from website
  - Manage member's shares, loans and dividends
@@ -15,7 +21,11 @@ The French and Catalan documentation can be found [here](https://doc.it4socialec
 This is part of the [IT 4 Social Economy](https://it4socialeconomy.org) initiative.
 Contact Coop IT Easy or Coopdevs for more information.
 
+
+<!-- /!\ do not modify below this line -->
+
 <!-- prettier-ignore-start -->
+
 [//]: # (addons)
 
 Available addons
@@ -54,4 +64,13 @@ addon | version | maintainers | summary
 [easy_my_coop_export_xlsx](easy_my_coop_export_xlsx/) | 12.0.0.0.1 (unported) |  | Generate a xlsx file with information on current state of subscription request, cooperators and capital release request.
 
 [//]: # (end addons)
+
 <!-- prettier-ignore-end -->
+
+## Licenses
+
+This repository is licensed under [AGPL-3.0](LICENSE).
+
+However, each module can have a totally different license. Consult each module's
+`__manifest__.py` file, which contains a `license` key that explains its
+license.
