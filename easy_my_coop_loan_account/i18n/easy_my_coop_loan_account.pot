@@ -6,8 +6,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-11 10:23+0000\n"
-"PO-Revision-Date: 2021-05-11 10:23+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -30,6 +28,11 @@ msgstr ""
 #. module: easy_my_coop_loan_account
 #: model:ir.model.fields,field_description:easy_my_coop_loan_account.field_res_company__awaiting_loan_payment_account
 msgid "Awaiting Loan Payment Account"
+msgstr ""
+
+#. module: easy_my_coop_loan_account
+#: model:account.journal,name:easy_my_coop_loan_account.awaiting_loan_payment_journal
+msgid "Awaiting Loan Payment Journal"
 msgstr ""
 
 #. module: easy_my_coop_loan_account
@@ -158,6 +161,11 @@ msgid "Loan Issue Line"
 msgstr ""
 
 #. module: easy_my_coop_loan_account
+#: model:account.journal,name:easy_my_coop_loan_account.loan_journal
+msgid "Loan Journal"
+msgstr ""
+
+#. module: easy_my_coop_loan_account
 #: model:ir.model.fields,field_description:easy_my_coop_loan_account.field_loan_interest_line__loan_due_move
 msgid "Loan due now account move"
 msgstr ""
@@ -210,6 +218,18 @@ msgid "Long Term Debt Due In The Year Account"
 msgstr ""
 
 #. module: easy_my_coop_loan_account
+#: code:addons/easy_my_coop_loan_account/models/account_fiscal_year.py:26
+#, python-format
+msgid "No fiscal year has been found for %s"
+msgstr ""
+
+#. module: easy_my_coop_loan_account
+#: code:addons/easy_my_coop_loan_account/models/account_fiscal_year.py:45
+#, python-format
+msgid "No next fiscal year has been found for %s"
+msgstr ""
+
+#. module: easy_my_coop_loan_account
 #: model:ir.model.fields,field_description:easy_my_coop_loan_account.field_loan_end_of_year_operation__ongoing_fy_id
 msgid "Ongoing fiscal year"
 msgstr ""
@@ -240,10 +260,16 @@ msgid "Tax Account"
 msgstr ""
 
 #. module: easy_my_coop_loan_account
-#: code:addons/easy_my_coop_loan_account/models/interest_line.py:220
-#: code:addons/easy_my_coop_loan_account/models/loan_issue_line.py:71
+#: code:addons/easy_my_coop_loan_account/models/interest_line.py:222
+#: code:addons/easy_my_coop_loan_account/models/loan_issue_line.py:75
 #, python-format
 msgid "The payment must be registered by bank statement"
+msgstr ""
+
+#. module: easy_my_coop_loan_account
+#: code:addons/easy_my_coop_loan_account/wizard/end_of_year_operation.py:65
+#, python-format
+msgid "There is no end of year account move lines to generate for the selected loan issue"
 msgstr ""
 
 #. module: easy_my_coop_loan_account
@@ -299,5 +325,17 @@ msgstr ""
 #. module: easy_my_coop_loan_account
 #: model:ir.model.fields,help:easy_my_coop_loan_account.field_res_company__days_ahead
 msgid "We are waiting x days before due date to create the reimbursement accounting entries creation"
+msgstr ""
+
+#. module: easy_my_coop_loan_account
+#: code:addons/easy_my_coop_loan_account/models/interest_line.py:49
+#, python-format
+msgid "You must set Loan Journal on company"
+msgstr ""
+
+#. module: easy_my_coop_loan_account
+#: code:addons/easy_my_coop_loan_account/models/loan_issue_line.py:45
+#, python-format
+msgid "You must set awaiting loan payment journal on company"
 msgstr ""
 

@@ -1,0 +1,499 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* easy_my_coop_connector
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: easy_my_coop_connector
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_backend__api_key
+msgid "API Key"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model,name:easy_my_coop_connector.model_account_account
+msgid "Account"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.actions.act_window,name:easy_my_coop_connector.emc_binding_account_account_action
+#: model:ir.ui.menu,name:easy_my_coop_connector.emc_binding_account_account_action_menu
+msgid "Account Bindings"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_account_account__binding_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_account_bank_statement_import_journal_creation__binding_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_account_invoice__binding_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_account_journal__binding_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_account_payment__binding_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_subscription_request__binding_id
+msgid "Binding ID"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: selection:subscription.request,source:0
+msgid "CRM"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_connector.emc_history_import_sr_view_form
+msgid "Cancel"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: code:addons/easy_my_coop_connector/components/subscription_request_adapter.py:78
+#, python-format
+msgid "Cannot process multiple capital release invoices for subscription request of %s %s at this time. \n"
+" Please contact your system administrator."
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_backend__create_uid
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_account__create_uid
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_invoice__create_uid
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_journal__create_uid
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_payment__create_uid
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_product_template__create_uid
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_subscription_request__create_uid
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_history_import_sr__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_backend__create_date
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_account__create_date
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_invoice__create_date
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_journal__create_date
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_payment__create_date
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_product_template__create_date
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_subscription_request__create_date
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_history_import_sr__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_history_import_sr__date_from
+msgid "Date From"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_history_import_sr__date_to
+msgid "Date To"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_backend__description
+msgid "Description"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_backend__display_name
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding__display_name
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_account__display_name
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_invoice__display_name
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_journal__display_name
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_payment__display_name
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_product_template__display_name
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_subscription_request__display_name
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_history_import_sr__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.actions.act_window,name:easy_my_coop_connector.emc_backend_action
+#: model:ir.model,name:easy_my_coop_connector.model_emc_backend
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding__backend_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_account__backend_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_invoice__backend_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_journal__backend_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_payment__backend_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_product_template__backend_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_subscription_request__backend_id
+#: model:ir.ui.menu,name:easy_my_coop_connector.emc_backend_action_menu
+msgid "EMC Backend"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model,name:easy_my_coop_connector.model_emc_binding
+msgid "EMC Binding (abstract)"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.ui.menu,name:easy_my_coop_connector.emc_connector_menu_menu
+msgid "EMC Connector Configuration"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: selection:subscription.request,source:0
+msgid "Easy My Coop API"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: code:addons/easy_my_coop_connector/components/emc_backend.py:140
+#: code:addons/easy_my_coop_connector/components/emc_backend.py:147
+#, python-format
+msgid "Failed to connect to backend: %s"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.actions.server,name:easy_my_coop_connector.fetch_subscription_requests_cron_ir_actions_server
+#: model:ir.cron,cron_name:easy_my_coop_connector.fetch_subscription_requests_cron
+#: model:ir.cron,name:easy_my_coop_connector.fetch_subscription_requests_cron
+msgid "Fetch Subscription Requests"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_backend__id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding__id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_account__id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_invoice__id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_journal__id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_payment__id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_product_template__id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_subscription_request__id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_history_import_sr__id
+msgid "ID"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding__external_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_account__external_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_invoice__external_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_journal__external_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_payment__external_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_product_template__external_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_subscription_request__external_id
+msgid "ID in Platform"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_connector.emc_history_import_sr_view_form
+msgid "Import Subscription History"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.actions.act_window,name:easy_my_coop_connector.emc_history_import_action
+#: model:ir.ui.menu,name:easy_my_coop_connector.emc_history_import_action_menu
+msgid "Import Subscription Request History"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_account__internal_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_invoice__internal_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_journal__internal_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_payment__internal_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_product_template__internal_id
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_subscription_request__internal_id
+msgid "Internal ID"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model,name:easy_my_coop_connector.model_account_invoice
+msgid "Invoice"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: code:addons/easy_my_coop_connector/components/account_payment_adapter.py:34
+#, python-format
+msgid "Invoice %s is not bound to a journal on the platform. Please contact system administrator."
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.actions.act_window,name:easy_my_coop_connector.emc_binding_account_invoice_action
+#: model:ir.ui.menu,name:easy_my_coop_connector.emc_binding_account_invoice_action_menu
+msgid "Invoice Bindings"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model,name:easy_my_coop_connector.model_account_journal
+msgid "Journal"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: code:addons/easy_my_coop_connector/components/account_payment_adapter.py:25
+#, python-format
+msgid "Journal %s is not bound to a journal on the platform. Please contact system administrator."
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.actions.act_window,name:easy_my_coop_connector.emc_binding_account_journal_action
+#: model:ir.ui.menu,name:easy_my_coop_connector.emc_binding_account_journal_action_menu
+msgid "Journal Bindings"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_backend____last_update
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding____last_update
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_account____last_update
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_invoice____last_update
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_journal____last_update
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_payment____last_update
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_product_template____last_update
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_subscription_request____last_update
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_history_import_sr____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_backend__write_uid
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_account__write_uid
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_invoice__write_uid
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_journal__write_uid
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_payment__write_uid
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_product_template__write_uid
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_subscription_request__write_uid
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_history_import_sr__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_backend__write_date
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_account__write_date
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_invoice__write_date
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_journal__write_date
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_account_payment__write_date
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_product_template__write_date
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_binding_subscription_request__write_date
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_history_import_sr__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: selection:subscription.request,source:0
+msgid "Manual"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_backend__name
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_history_import_sr__name
+msgid "Name"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: code:addons/easy_my_coop_connector/components/subscription_request_adapter.py:43
+#, python-format
+msgid "No binding exists for share product %s. Please contact system administrator "
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: code:addons/easy_my_coop_connector/components/subscription_request_adapter.py:69
+#, python-format
+msgid "No capital release invoice generated subscription request of %s %s. \n"
+" Please contact your system administrator."
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: selection:subscription.request,source:0
+msgid "Operation"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.ui.menu,name:easy_my_coop_connector.emc_binding_account_payment_action_menu
+msgid "Payment Bindings"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model,name:easy_my_coop_connector.model_account_payment
+msgid "Payments"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_connector.emc_backend_view_form
+msgid "Ping the API (no authentication)"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: code:addons/easy_my_coop_connector/components/emc_backend.py:111
+#, python-format
+msgid "Resource not found %s on server"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.actions.act_window,name:easy_my_coop_connector.emc_binding_product_template_action
+#: model:ir.ui.menu,name:easy_my_coop_connector.emc_binding_product_template_action_menu
+msgid "Share Product Bindings"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_subscription_request__source
+msgid "Source"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model,name:easy_my_coop_connector.model_subscription_request
+msgid "Subscription Request"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.actions.act_window,name:easy_my_coop_connector.emc_binding_subscription_request_action
+#: model:ir.ui.menu,name:easy_my_coop_connector.emc_binding_subscription_request_action_menu
+msgid "Subscription Request Bindings"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: code:addons/easy_my_coop_connector/components/emc_backend.py:144
+#, python-format
+msgid "Success: %s"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: code:addons/easy_my_coop_connector/components/abstract_emc_adapter.py:58
+#, python-format
+msgid "The Synergie platform replied with this error message:\n"
+"\n"
+" %s \n"
+"\n"
+"Please contact your system administrator."
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: code:addons/easy_my_coop_connector/models/account_payment.py:29
+#, python-format
+msgid "This version of easy my coop connector can't handle several invoice perpayment. Please contact  your system administrator"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_backend__location
+msgid "URL"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: selection:subscription.request,source:0
+msgid "Website"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: code:addons/easy_my_coop_connector/components/emc_backend.py:109
+#, python-format
+msgid "You are not allowed to access this resource"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model.fields,field_description:easy_my_coop_connector.field_emc_backend__active
+msgid "active"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model,name:easy_my_coop_connector.model_emc_binding_account_account
+msgid "emc.binding.account.account"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model,name:easy_my_coop_connector.model_emc_binding_account_invoice
+msgid "emc.binding.account.invoice"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model,name:easy_my_coop_connector.model_emc_binding_account_journal
+msgid "emc.binding.account.journal"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model,name:easy_my_coop_connector.model_emc_binding_account_payment
+msgid "emc.binding.account.payment"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model,name:easy_my_coop_connector.model_emc_binding_product_template
+msgid "emc.binding.product.template"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model,name:easy_my_coop_connector.model_emc_binding_subscription_request
+msgid "emc.binding.subscription.request"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.model,name:easy_my_coop_connector.model_emc_history_import_sr
+msgid "emc.history.import.sr"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_connector.emc_backend_view_form
+msgid "emc_backend_form"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_connector.emc_backend_view_tree
+msgid "emc_backend_tree"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_connector.emc_binding_account_account_view_form
+msgid "emc_binding_account_account_form"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_connector.emc_binding_account_account_view_tree
+msgid "emc_binding_account_account_tree"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_connector.emc_binding_account_invoice_view_form
+msgid "emc_binding_account_invoice_form"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_connector.emc_binding_account_invoice_view_tree
+msgid "emc_binding_account_invoice_tree"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_connector.emc_binding_account_journal_view_form
+msgid "emc_binding_account_journal_form"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_connector.emc_binding_account_journal_view_tree
+msgid "emc_binding_account_journal_tree"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_connector.emc_binding_account_payment_view_form
+msgid "emc_binding_account_payment_form"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_connector.emc_binding_account_payment_view_tree
+msgid "emc_binding_account_payment_tree"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_connector.emc_binding_product_template_view_form
+msgid "emc_binding_product_template_form"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_connector.emc_binding_product_template_view_tree
+msgid "emc_binding_product_template_tree"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_connector.emc_binding_subscription_request_view_form
+msgid "emc_binding_subscription_request_form"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_connector.emc_binding_subscription_request_view_tree
+msgid "emc_binding_subscription_request_tree"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_connector.emc_history_import_sr_view_form
+msgid "emc_history_import_sr_form"
+msgstr ""
+
+#. module: easy_my_coop_connector
+#: model:ir.actions.act_window,name:easy_my_coop_connector.emc_binding_account_payment_action
+msgid "payment Bindings"
+msgstr ""
+

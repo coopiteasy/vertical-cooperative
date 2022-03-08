@@ -1,0 +1,292 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* easy_my_coop_api
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: easy_my_coop_api
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_api.invoice_form
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_api.product_template_form_view
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_api.subscription_request_form
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_api.view_account_form
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_api.view_account_journal_form
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_api.view_account_payment_form
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_api.view_partner_form
+msgid "API"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: sql_constraint:account.account:0
+#: sql_constraint:account.invoice:0
+#: sql_constraint:account.journal:0
+#: sql_constraint:account.payment:0
+#: sql_constraint:external.id.mixin:0
+#: sql_constraint:product.template:0
+#: sql_constraint:res.partner:0
+#: sql_constraint:subscription.request:0
+msgid "API External ID must be unique!"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model,name:easy_my_coop_api.model_auth_api_key
+msgid "API Key"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model,name:easy_my_coop_api.model_account_account
+msgid "Account"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: selection:subscription.request,source:0
+msgid "CRM"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: code:addons/easy_my_coop_api/services/ping_service.py:24
+#, python-format
+msgid "Called ping on ping API"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: code:addons/easy_my_coop_api/services/ping_service.py:21
+#, python-format
+msgid "Called search on ping API"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model,name:easy_my_coop_api.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_external_id_mixin__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: selection:subscription.request,source:0
+msgid "Easy My Coop API"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_account___api_external_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_bank_statement_import_journal_creation___api_external_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_invoice___api_external_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_journal___api_external_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_payment___api_external_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_external_id_mixin___api_external_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_product_product___api_external_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_product_template___api_external_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_res_partner___api_external_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_res_users___api_external_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_subscription_request___api_external_id
+msgid "External ID"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_account__external_id_generated
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_bank_statement_import_journal_creation__external_id_generated
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_invoice__external_id_generated
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_journal__external_id_generated
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_payment__external_id_generated
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_external_id_mixin__external_id_generated
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_product_product__external_id_generated
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_product_template__external_id_generated
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_res_partner__external_id_generated
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_res_users__external_id_generated
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_subscription_request__external_id_generated
+msgid "External ID Generated"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model,name:easy_my_coop_api.model_external_id_mixin
+msgid "External ID Mixin"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_account__external_id_sequence_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_bank_statement_import_journal_creation__external_id_sequence_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_invoice__external_id_sequence_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_journal__external_id_sequence_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_payment__external_id_sequence_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_external_id_mixin__external_id_sequence_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_product_product__external_id_sequence_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_product_template__external_id_sequence_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_res_partner__external_id_sequence_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_res_users__external_id_sequence_id
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_subscription_request__external_id_sequence_id
+msgid "External ID Sequence"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_account__first_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_bank_statement_import_journal_creation__first_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_invoice__first_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_journal__first_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_payment__first_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_external_id_mixin__first_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_product_product__first_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_product_template__first_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_res_partner__first_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_res_users__first_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_subscription_request__first_api_export_date
+msgid "First API Export Date"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_api.invoice_form
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_api.product_template_form_view
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_api.subscription_request_form
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_api.view_account_form
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_api.view_account_journal_form
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_api.view_account_payment_form
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_api.view_partner_form
+msgid "Generate external ID"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_external_id_mixin__id
+msgid "ID"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model,name:easy_my_coop_api.model_account_invoice
+msgid "Invoice"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model,name:easy_my_coop_api.model_account_journal
+msgid "Journal"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_account__last_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_bank_statement_import_journal_creation__last_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_invoice__last_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_journal__last_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_account_payment__last_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_external_id_mixin__last_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_product_product__last_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_product_template__last_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_res_partner__last_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_res_users__last_api_export_date
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_subscription_request__last_api_export_date
+msgid "Last API Export Date"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_external_id_mixin____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: selection:subscription.request,source:0
+msgid "Manual"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_auth_api_key__name
+msgid "Name"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: code:addons/easy_my_coop_api/services/subscription_request_service.py:129
+#, python-format
+msgid "No country for isocode %s"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: code:addons/easy_my_coop_api/services/account_payment_service.py:52
+#, python-format
+msgid "No invoice %s on platform"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: code:addons/easy_my_coop_api/services/account_invoice_service.py:34
+#, python-format
+msgid "No invoice found for id %s"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: code:addons/easy_my_coop_api/services/account_payment_service.py:44
+#, python-format
+msgid "No journal %s on platform"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: code:addons/easy_my_coop_api/services/subscription_request_service.py:138
+#, python-format
+msgid "No share for id %s"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: code:addons/easy_my_coop_api/services/subscription_request_service.py:36
+#: code:addons/easy_my_coop_api/services/subscription_request_service.py:69
+#, python-format
+msgid "No subscription request for id %s"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: selection:subscription.request,source:0
+msgid "Operation"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: code:addons/easy_my_coop_api/services/account_payment_service.py:64
+#, python-format
+msgid "Payment method must be one of %s"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model,name:easy_my_coop_api.model_account_payment
+msgid "Payments"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model,name:easy_my_coop_api.model_product_template
+msgid "Product Template"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model.fields,field_description:easy_my_coop_api.field_subscription_request__source
+msgid "Source"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: model:ir.model,name:easy_my_coop_api.model_subscription_request
+msgid "Subscription Request"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: code:addons/easy_my_coop_api/models/subscription_request.py:31
+#, python-format
+msgid "Subscription are marked as paid through the capital release request payments "
+msgstr ""
+
+#. module: easy_my_coop_api
+#: code:addons/easy_my_coop_api/models/subscription_request.py:37
+#, python-format
+msgid "Unknown state."
+msgstr ""
+
+#. module: easy_my_coop_api
+#: selection:subscription.request,source:0
+msgid "Website"
+msgstr ""
+
+#. module: easy_my_coop_api
+#: code:addons/easy_my_coop_api/services/schemas.py:13
+#, python-format
+msgid "{} does not match format '%Y-%m-%d'"
+msgstr ""
+

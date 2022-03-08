@@ -1,0 +1,1117 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* easy_my_coop_loan
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: easy_my_coop_loan
+#: model:mail.template,body_html:easy_my_coop_loan.email_template_loan_confirm_paid
+msgid "\n"
+"    <div style=\"font-size:13px;font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; background-color: rgb(255, 255, 255);\">\n"
+"    <p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;color: rgb(34, 34, 34); font-size: 12px;\">Bonjour ${object.partner_id.name},</p>\n"
+"    <p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">Par la présente, nous vous confirmons que nous avons bien reçu de votre part le versement pour la souscription des obligations&nbsp;FinMip</p>\n"
+"    <table class=\"table table-bordered\" style=\"border-style:solid;margin:0 0 1rem 0;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-top-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-width:1px;background-color:transparent;width:100%;border-collapse:collapse;\"><tbody><tr><td style=\"border-style:solid;padding:0.75rem;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-color:rgb(222, 226, 230);border-top-width:1px;vertical-align:top;\"><span style=\"color: rgb(34, 34, 34); font-family: &quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif; font-size: 12px;\">${object.partner_id.name}</span><br></td><td style=\"border-style:solid;padding:0.75rem;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-color:rgb(222, 226, 230);border-top-width:1px;vertical-align:top;\">${object.amount}<br></td><td style=\"border-style:solid;padding:0.75rem;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-color:rgb(222, 226, 230);border-top-width:1px;vertical-align:top;\">${object.loan_issue_id.display_name}<br></td><td style=\"border-style:solid;padding:0.75rem;border-left-color:rgb(222, 226, 230);border-bottom-color:rgb(222, 226, 230);border-right-color:rgb(222, 226, 230);border-left-width:1px;border-bottom-width:1px;border-right-width:1px;border-top-color:rgb(222, 226, 230);border-top-width:1px;vertical-align:top;\">${object.quantity}<br></td></tr></tbody></table>\n"
+"    <p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">Comme prévu dans la note d'information (reprise en attaché), ces obligations vous seront remboursées dans les 15 jours ouvrables qui suivent :</p><ul style=\"margin:0px 0 1rem 0;\"><li><p style=\"margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">&nbsp;p<span style=\"font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; font-style: initial; font-variant-ligatures: initial; font-variant-caps: initial; font-weight: initial; text-align: inherit;\">our les </span><span style=\"font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; font-style: initial; font-variant-ligatures: initial; font-variant-caps: initial; text-align: inherit;\"><b style=\"font-weight:bolder;\">obligations à 5 ans</b></span><span style=\"font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; font-style: initial; font-variant-ligatures: initial; font-variant-caps: initial; font-weight: initial; text-align: inherit;\">, assorties d'un intérêt annuel brut de </span><span style=\"font-family: &quot;Lucica Grande&quot;, Ubuntu, Arial, Verdana, sans-serif; font-style: initial; font-variant-ligatures: initial; font-variant-caps: initial; text-align: inherit;\"><b style=\"font-weight:bolder;\">0,85%</b><b style=\"font-weight:bolder;\"><br></b></span></p></li></ul><ul style=\"margin:0px 0 1rem 0;\"><li><p style=\"margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">pour les <b style=\"font-weight:bolder;\">obligations à 10 ans</b>, assorties d'un intérêt annuel brut de<b style=\"font-weight:bolder;\"> 1,25%</b><br></p></li></ul>\n"
+"    <p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">Un précompte mobilier de 30 % sera retenu à la source sur les intérêts.</p>\n"
+"    <p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">Si vous avez la moindre question, n'hésitez pas à nous contacter.</p><p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;\">Nous vous remercions grandement pour votre soutien.</p>\n"
+"    <p style=\"margin:0px 0 1rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;color: rgb(34, 34, 34); font-size: 12px;\">\n"
+"\n"
+"<p>${object.company_id.name}.</p>\n"
+"\n"
+"    % if object.company_id.street:\n"
+"        ${object.company_id.street}\n"
+"    % endif\n"
+"    % if object.company_id.street2:\n"
+"        ${object.company_id.street2}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.city or object.company_id.zip:\n"
+"        ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.country_id:\n"
+"        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.phone:\n"
+"        Phone:&nbsp; ${object.company_id.phone}\n"
+"    % endif\n"
+"\n"
+"    % if object.company_id.website:\n"
+"        <div>\n"
+"            Web :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"        </div>\n"
+"    %endif\n"
+"            "
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:mail.template,body_html:easy_my_coop_loan.loan_issue_payment_request
+msgid "\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"    <p>Hello ${object.partner_id.name},</p>\n"
+"\n"
+"    <p>Find here after the necessary information for the payment. We kindly remind you that your subscription will be effective only once we received the payment.</p>\n"
+"\n"
+"    <p>Amount: ${object.amount} ${object.loan_issue_id.company_currency_id.symbol}</p>\n"
+"    <p>Account number: ${object.company_id.bank_ids[0].sanitized_acc_number}</p>\n"
+"    <p>Communication: ${object.reference}</p>\n"
+"\n"
+"    <p>Sustainably your,</p>\n"
+"    <p>${object.company_id.name}.</p>\n"
+"\n"
+"    % if object.company_id.street:\n"
+"        ${object.company_id.street}\n"
+"    % endif\n"
+"    % if object.company_id.street2:\n"
+"        ${object.company_id.street2}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.city or object.company_id.zip:\n"
+"        ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.country_id:\n"
+"        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.phone:\n"
+"        Phone:&nbsp; ${object.company_id.phone}\n"
+"    % endif\n"
+"\n"
+"    % if object.company_id.website:\n"
+"        <div>\n"
+"            Web :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"        </div>\n"
+"    %endif\n"
+"\n"
+"    <div>\n"
+"        <img src=${object.company_id.logo_url}>\n"
+"    </div>\n"
+"</div>\n"
+"            "
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:mail.template,body_html:easy_my_coop_loan.loan_subscription_confirmation
+msgid "\n"
+"<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"\n"
+"    <p>Hello ${object.partner_id.name},</p>\n"
+"\n"
+"    <p>Your request will be soon processed by our team. If all the provided info are correct you will soon receive the payment information in another email</p>\n"
+"\n"
+"    <br/>\n"
+"    <p>If you have any question, do not hesitate to contact us.</p>\n"
+"    <br/>\n"
+"\n"
+"    <p>Sustainably your,</p>\n"
+"    <p>${object.company_id.name}.</p>\n"
+"\n"
+"    % if object.company_id.street:\n"
+"        ${object.company_id.street}\n"
+"    % endif\n"
+"    % if object.company_id.street2:\n"
+"        ${object.company_id.street2}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.city or object.company_id.zip:\n"
+"        ${object.company_id.zip} ${object.company_id.city}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.country_id:\n"
+"        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>\n"
+"    % endif\n"
+"    % if object.company_id.phone:\n"
+"        Phone:&nbsp; ${object.company_id.phone}\n"
+"    % endif\n"
+"\n"
+"    % if object.company_id.website:\n"
+"        <div>\n"
+"            Web :&nbsp;<a href=\"${object.company_id.website}\">${object.company_id.website}</a>\n"
+"        </div>\n"
+"    %endif\n"
+"\n"
+"    <div>\n"
+"        <img src=${object.company_id.logo_url}>\n"
+"    </div>\n"
+"</div>\n"
+"            "
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:mail.template,subject:easy_my_coop_loan.loan_subscription_confirmation
+msgid "${object.company_id.name} Loan subscription\n"
+"                confirmation (Ref ${object.loan_issue_id.name or 'n/a'})\n"
+"            "
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:mail.template,subject:easy_my_coop_loan.email_template_loan_confirm_paid
+msgid "${object.company_id.name} Payment received (Ref ${object.loan_issue_id.name or 'n/a'})"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:mail.template,subject:easy_my_coop_loan.loan_issue_payment_request
+msgid "${object.company_id.name} Payment request (Ref\n"
+"                ${object.loan_issue_id.name or 'n/a'})\n"
+"            "
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_reimbursement_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.withholding_tax_declaration_document
+msgid "<span>Document generated on</span>"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_reimbursement_document
+msgid "<span>Loan Reimbursement Report</span>"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_issue_line_document
+msgid "<span>Loan payment received on</span>"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_issue_line_document
+msgid "<span>Reimbursement table</span>"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.withholding_tax_declaration_document
+msgid "<span>Withholding Tax Declaration</span>"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__accrued_amount
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_issue_line_document
+msgid "Accrued amount"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__accrued_interest
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_issue_line_document
+msgid "Accrued gross interest"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__accrued_net_interest
+msgid "Accrued net interest"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__accrued_taxes
+msgid "Accrued taxes to pay"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_reimbursement_document
+msgid "Amount Due"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Are you sure you want to cancel this loan issue?"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_form
+msgid "Are you sure you want to cancel this loan subscription ?"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Are you sure you want to close this loan issue?"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__by_company
+msgid "By company"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__by_individual
+msgid "By individuals"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: code:addons/easy_my_coop_loan/models/loan_issue.py:192
+#, python-format
+msgid "Calculation on non entire year hasn't been implemented yet"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.payment_report_wizard
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_form
+msgid "Cancel"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.actions.server,name:easy_my_coop_loan.batch_loan_issue_line_cancel_action
+msgid "Cancel Loans"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: selection:loan.issue,state:0
+#: selection:loan.issue.line,state:0
+msgid "Cancelled"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__capital_payment
+msgid "Capital reimbursement"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Close"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: selection:loan.issue,state:0
+msgid "Closed"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__company_id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line_report__company_id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__company_id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__company_id
+msgid "Company"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__company_currency_id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line_report__company_currency_id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__company_currency_id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__company_currency_id
+msgid "Company Currency"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_form
+msgid "Compute interest"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Confirm"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: selection:loan.issue,state:0
+msgid "Confirmed"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model,name:easy_my_coop_loan.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__create_uid
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line_report__create_uid
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__create_uid
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__create_uid
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_payment_report_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__create_date
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line_report__create_date
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__create_date
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__create_date
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_payment_report_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__default_issue
+msgid "Default issue"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__display_name
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line_report__display_name
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__display_name
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__display_name
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_payment_report_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__display_on_website
+msgid "Display On Website"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_interest_line_filter
+#: selection:loan.interest.line,state:0
+msgid "Donation"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_filter
+msgid "Done"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_interest_line_filter
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_filter
+#: selection:loan.interest.line,state:0
+#: selection:loan.issue,state:0
+#: selection:loan.issue.line,state:0
+msgid "Draft"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_interest_line_filter
+#: selection:loan.interest.line,state:0
+msgid "Due"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_interest_line_filter
+msgid "Due Date"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_issue_line_document
+msgid "Due amount"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__due_date
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_reimbursement_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.withholding_tax_declaration_document
+msgid "Due date"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: selection:loan.interest.line,state:0
+msgid "Due in the year"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__due_loan_amount
+msgid "Due loan amount"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__loan_term
+msgid "Duration of the loan in month"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: selection:loan.issue,capital_payment:0
+#: selection:loan.issue,interest_payment:0
+msgid "End"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line_report__date_end
+msgid "End Date"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__subscription_end_date
+msgid "End date subscription period"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: selection:loan.issue.line,state:0
+msgid "Ended"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__face_value
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__face_value
+msgid "Facial value"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_issue_line_document
+msgid "For the board of"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__gross_rate
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Gross Interest rate"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_issue_line_document
+msgid "Gross interest"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__interest
+msgid "Gross interest amount"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_interest_line_filter
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_filter
+msgid "Group By"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line_report__id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_payment_report_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line_report__interest_lines
+msgid "Interest Lines"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_reimbursement_document
+msgid "Interest amount"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__interest_lines
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_form
+msgid "Interest lines"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__interest_payment
+msgid "Interest payment"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line____last_update
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line_report____last_update
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue____last_update
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line____last_update
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_payment_report_wizard____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__write_uid
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line_report__write_uid
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__write_uid
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__write_uid
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_payment_report_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__write_date
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line_report__write_date
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__write_date
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__write_date
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_payment_report_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Lines"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_form
+msgid "Loan"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model,name:easy_my_coop_loan.model_loan_interest_line
+msgid "Loan Interest Line"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model,name:easy_my_coop_loan.model_loan_interest_line_report
+msgid "Loan Interest Line Report"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model,name:easy_my_coop_loan.model_loan_issue
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_filter
+msgid "Loan Issue"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model,name:easy_my_coop_loan.model_loan_issue_line
+msgid "Loan Issue Line"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.actions.server,name:easy_my_coop_loan.ir_cron_check_subscription_end_date_ir_actions_server
+#: model:ir.cron,cron_name:easy_my_coop_loan.ir_cron_check_subscription_end_date
+#: model:ir.cron,name:easy_my_coop_loan.ir_cron_check_subscription_end_date
+msgid "Loan Issue: Check Subscription End Date"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.actions.act_window,name:easy_my_coop_loan.action_loan_issue
+#: model:ir.ui.menu,name:easy_my_coop_loan.loan_issue_menu
+msgid "Loan Issues"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.ui.menu,name:easy_my_coop_loan.menu_easy_my_coop_main_loan_issue
+msgid "Loan Management"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.actions.report,name:easy_my_coop_loan.action_loan_reimbursement_report
+msgid "Loan Reimbursement Report"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_reimbursement_document
+msgid "Loan amount"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_interest_line_form
+msgid "Loan interest line"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.actions.act_window,name:easy_my_coop_loan.action_loan_interest_lines
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_interest_line_view_tree
+msgid "Loan interest lines"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__loan_issue_id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__loan_issue_id
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_interest_line_filter
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Loan issue"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Loan issue Name"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__loan_issue_lines
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_partner_form_loan_issue
+msgid "Loan issue lines"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_tree
+msgid "Loan issues"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: selection:loan.interest.line.report,report_type:0
+#: selection:payment.report.wizard,report_type:0
+msgid "Loan reimbursement Report"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__loan_start_date
+msgid "Loan start date"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_res_partner__is_loaner
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_res_users__is_loaner
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_reimbursement_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_interest_line_filter
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.withholding_tax_declaration_document
+msgid "Loaner"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.actions.act_window,name:easy_my_coop_loan.action_loaners
+#: model:ir.ui.menu,name:easy_my_coop_loan.loaners_menu
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_res_partner_loaner_filter
+msgid "Loaners"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_res_partner_loaner_filter
+msgid "Loaning Partners"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.actions.act_window,name:easy_my_coop_loan.action_loan_issue_lines
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_res_partner__loan_line_ids
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_res_users__loan_line_ids
+#: model:ir.ui.menu,name:easy_my_coop_loan.loan_issue_line_menu
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_issue_line_view_tree
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_interest_line_filter
+msgid "Loans"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.ui.menu,name:easy_my_coop_loan.loan_interest_line_menu
+msgid "Loans Reimbursement Table"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__max_amount_company
+msgid "Maximum amount for a company"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__max_amount_person
+msgid "Maximum amount for a person"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__maximum_amount
+msgid "Maximum amount of issue"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__min_amount_company
+msgid "Minimum amount for a company"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__min_amount_person
+msgid "Minimum amount for a person"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__minimum_amount
+msgid "Minimum amount of issue"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__name
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__name
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Name"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__rate
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Net Interest rate"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_issue_line_document
+msgid "Net interest"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__net_interest
+msgid "Net interest amount"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: selection:loan.issue,state:0
+msgid "Ongoing"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Open"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_interest_line_filter
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_filter
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_form
+#: selection:loan.interest.line,state:0
+msgid "Paid"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__paid_amount
+msgid "Paid amount"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.actions.act_window,name:easy_my_coop_loan.action_payment_report_wizard
+#: model:ir.ui.menu,name:easy_my_coop_loan.menu_payment_report_wizard
+msgid "Payment Report"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__payment_date
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__payment_date
+msgid "Payment date"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: selection:loan.interest.line,state:0
+msgid "Payment scheduled"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.payment_report_wizard
+msgid "Print"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__quantity
+msgid "Quantity"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__reference
+msgid "Reference"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:mail.template,report_name:easy_my_coop_loan.email_template_loan_confirm_paid
+msgid "Reimbursement table report"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.actions.report,name:easy_my_coop_loan.action_loan_issue_line_report
+msgid "Reimbursment table report"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line_report__report_type
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_payment_report_wizard__report_type
+msgid "Report type"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_form
+msgid "Request Payment"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.actions.server,name:easy_my_coop_loan.batch_loan_issue_line_request_payment_action
+msgid "Request Payments"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_interest_line_filter
+msgid "Requested"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__user_id
+msgid "Responsible"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_filter
+msgid "Search Loan Issue"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_interest_line_filter
+msgid "Search Loan interest lines"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_filter
+msgid "Search Loans"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.actions.server,name:easy_my_coop_loan.batch_loan_issue_line_set_as_paid_action
+msgid "Set as Paid"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.actions.server,name:easy_my_coop_loan.batch_loan_issue_line_set_as_draft_action
+msgid "Set to Draft"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_form
+msgid "Set to draft"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line_report__date_start
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_payment_report_wizard__date_start
+msgid "Start Date"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_payment_report_wizard__date_end
+msgid "Start End"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__subscription_start_date
+msgid "Start date subscription period"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__state
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__state
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__state
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_issue_line_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_reimbursement_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_interest_line_filter
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.withholding_tax_declaration_document
+msgid "State"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_filter
+#: selection:loan.issue.line,state:0
+msgid "Subscribed"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__amount
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__subscribed_amount
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__amount
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_issue_line_document
+msgid "Subscribed amount"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__issue_line
+msgid "Subscribed loan"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__partner_id
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__partner_id
+msgid "Subscriber"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__date
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_filter
+msgid "Subscription Date"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__date_end
+msgid "Subscription End Date"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.withholding_tax_declaration_document
+msgid "Tax Exemption"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_issue_line_document
+msgid "Tax amount"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__tax_exemption
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue_line__tax_exemption
+msgid "Tax exemption"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.withholding_tax_declaration_document
+msgid "Taxe %"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__taxes_amount
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.withholding_tax_declaration_document
+msgid "Taxes amount"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__taxes_rate
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__taxes_rate
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_form
+msgid "Taxes on interest"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__term_date
+msgid "Term date"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_reimbursement_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.withholding_tax_declaration_document
+msgid "This report covers tax declaration data from"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line_report__total_amount_due
+msgid "Total Amount Due"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_reimbursement_document
+msgid "Total Amount Due:"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.withholding_tax_declaration_document
+msgid "Total Gross Interests:"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line_report__total_loan_amount
+msgid "Total Loan Amount"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_reimbursement_document
+msgid "Total Loan amount:"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_reimbursement_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.withholding_tax_declaration_document
+msgid "Total Net Interests:"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line_report__total_withholding_tax
+msgid "Total Withholding Tax"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.withholding_tax_declaration_document
+msgid "Total Withholding Tax:"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__due_amount
+msgid "Total due amount"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line_report__total_gross_interests
+msgid "Total gross interests"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line_report__total_net_interests
+msgid "Total net interests"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.view_loan_issue_line_form
+msgid "Validate"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.actions.server,name:easy_my_coop_loan.batch_loan_issue_line_validate_action
+msgid "Validate Loans"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: selection:loan.issue.line,state:0
+msgid "Waiting payment"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.actions.report,name:easy_my_coop_loan.action_withholding_tax_declaration_report
+msgid "Withholding Tax Declaration"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: selection:loan.interest.line.report,report_type:0
+#: selection:payment.report.wizard,report_type:0
+msgid "Withholding Tax Report"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model,name:easy_my_coop_loan.model_payment_report_wizard
+msgid "Wizard to Compute Tax Withholding Declaration"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_interest_line__name
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_issue_line_document
+msgid "Year"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: selection:loan.issue,capital_payment:0
+#: selection:loan.issue,interest_payment:0
+msgid "Yearly"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:ir.model.fields,field_description:easy_my_coop_loan.field_loan_issue__interest_payment_info
+msgid "Yearly payment on"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: code:addons/easy_my_coop_loan/models/loan_issue_line.py:142
+#, python-format
+msgid "You can only cancel loans in states draft, subscribed or waiting for payment."
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: code:addons/easy_my_coop_loan/models/loan_issue_line.py:157
+#, python-format
+msgid "You can only mark as paid loans waiting for payment"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: code:addons/easy_my_coop_loan/models/loan_interest_line.py:103
+#, python-format
+msgid "You can only mark as paid reimbursement that are due or scheduled for payment"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: code:addons/easy_my_coop_loan/models/loan_issue_line.py:130
+#, python-format
+msgid "You can only request payment for validated loans"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: code:addons/easy_my_coop_loan/models/loan_issue_line.py:115
+#, python-format
+msgid "You can only set cancelled loans to draft"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: code:addons/easy_my_coop_loan/models/loan_issue_line.py:121
+#, python-format
+msgid "You can only validate draft loans"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:loan.issue,name:easy_my_coop_loan.loan_issue_1_demo
+msgid "loan issue 10 years - 3% - capital and interest paid on term"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:loan.issue,name:easy_my_coop_loan.loan_issue_2_demo
+msgid "loan issue 10 years - 3% - capital and interest paid yearly"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:loan.issue,name:easy_my_coop_loan.loan_issue_4_demo
+msgid "loan issue 10 years - 3% - capital on term and interest yearly"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model:loan.issue,name:easy_my_coop_loan.loan_issue_3_demo
+msgid "loan issue 10 years - 3% - capital paid yearly and interest on term"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: selection:loan.issue.line,state:0
+msgid "paid"
+msgstr ""
+
+#. module: easy_my_coop_loan
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.loan_reimbursement_document
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan.withholding_tax_declaration_document
+msgid "to"
+msgstr ""
+
