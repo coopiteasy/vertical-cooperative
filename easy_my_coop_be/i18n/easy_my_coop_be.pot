@@ -26,6 +26,16 @@ msgid "Association"
 msgstr ""
 
 #. module: easy_my_coop_be
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_be.iban_template_be
+msgid "BE4852308076712"
+msgstr ""
+
+#. module: easy_my_coop_be
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_be.iban_template_be
+msgid "Bank Account Number"
+msgstr ""
+
+#. module: easy_my_coop_be
 #: model:ir.model.fields,field_description:easy_my_coop_be.field_subscription_request__company_type
 msgid "Company type"
 msgstr ""
