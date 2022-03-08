@@ -10,12 +10,7 @@ import requests
 
 from odoo.addons.easy_my_coop.tests.test_base import EMCBaseCase
 
-from .test_data import (
-    SR_GET_RESULT,
-    SR_SEARCH_RESULT,
-    SR_VALIDATE_RESULT,
-    dict_to_dump,
-)
+from .test_data import SR_GET_RESULT, SR_SEARCH_RESULT, SR_VALIDATE_RESULT, dict_to_dump
 
 
 class EMCSRConnectorCase(EMCBaseCase):
