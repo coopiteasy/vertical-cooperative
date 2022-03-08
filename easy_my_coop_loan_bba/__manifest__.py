@@ -4,7 +4,7 @@
 {
     "name": "Easy My Coop Loan BBA",
     "category": "Sales",
-    "author": "Coop IT Easy - Houssine BAKKALI <houssine@coopiteasy.be>",
+    "author": "Coop IT Easy SCRLfs",
     "website": "https://coopiteasy.be",
     "version": "12.0.1.0.0",
     "license": "AGPL-3",

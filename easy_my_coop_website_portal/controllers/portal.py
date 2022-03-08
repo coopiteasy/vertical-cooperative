@@ -10,10 +10,7 @@ from odoo.fields import Date
 from odoo.http import request, route
 
 from odoo.addons.payment.controllers.portal import PaymentProcessing
-from odoo.addons.portal.controllers.portal import (
-    CustomerPortal,
-    pager as portal_pager,
-)
+from odoo.addons.portal.controllers.portal import CustomerPortal, pager as portal_pager
 
 
 class CooperatorPortalAccount(CustomerPortal):
