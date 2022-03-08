@@ -26,15 +26,13 @@ msgid "Association"
 msgstr ""
 
 #. module: easy_my_coop_ch
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_ch.company_subscription_i18n_ch
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_ch.subscription_i18n_ch
-msgid "BE48523080767127"
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_ch.iban_template_ch
+msgid "Bank Account Number"
 msgstr ""
 
 #. module: easy_my_coop_ch
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_ch.company_subscription_i18n_ch
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_ch.subscription_i18n_ch
-msgid "Bank Account Number"
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_ch.iban_template_ch
+msgid "CH48523080767127"
 msgstr ""
 
 #. module: easy_my_coop_ch
