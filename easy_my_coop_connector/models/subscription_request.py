@@ -7,9 +7,7 @@ from datetime import date, timedelta
 
 from odoo import api, fields, models
 
-from ..components.subscription_request_adapter import (
-    SubscriptionRequestAdapter,
-)
+from ..components.subscription_request_adapter import SubscriptionRequestAdapter
 
 _logger = logging.getLogger(__name__)
 

@@ -1,0 +1,48 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* easy_my_coop_es
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: easy_my_coop_es
+#: model:ir.model.fields,help:easy_my_coop_es.field_subscription_request__vat
+msgid "\n"
+"        The Tax Identification Number. Complete it if the contact is subjected to\n"
+"        government taxes. Used in some legal statements.\"\n"
+"        "
+msgstr ""
+
+#. module: easy_my_coop_es
+#: model:ir.model,name:easy_my_coop_es.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: easy_my_coop_es
+#: model:ir.model.fields,field_description:easy_my_coop_es.field_res_company__property_cooperator_account
+msgid "Cooperator Account"
+msgstr ""
+
+#. module: easy_my_coop_es
+#: model:ir.model,name:easy_my_coop_es.model_subscription_request
+msgid "Subscription Request"
+msgstr ""
+
+#. module: easy_my_coop_es
+#: model:ir.model.fields,field_description:easy_my_coop_es.field_subscription_request__vat
+msgid "Tax ID"
+msgstr ""
+
+#. module: easy_my_coop_es
+#: model:ir.model.fields,help:easy_my_coop_es.field_res_company__property_cooperator_account
+msgid "This account will be the default one as the receivable account for the cooperators"
+msgstr ""
+

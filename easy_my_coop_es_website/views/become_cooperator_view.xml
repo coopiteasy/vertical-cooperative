@@ -1,33 +1,52 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <data>
-        <template
-            id="become_cooperator_es"
-            inherit_id="easy_my_coop_website.becomecooperator"
-            name="Become cooperator"
-        >
-            <xpath expr="//label[@for='iban']/.." position="after">
-                <div
-                    t-attf-class="form-group #{error and 'vat' in error and 'has-error' or ''}"
-                >
-                    <label class="col-md-3 col-sm-4 control-label" for="vat">VAT</label>
-                    <div
-                        class="col-md-7 col-sm-8 bottom-line"
-                        style="padding-bottom:20px"
-                    >
-                        <input
-                            type="text"
-                            class="form-control"
-                            name="vat"
-                            placeholder="Y5643925S"
-                            required="True"
-                        />
-                    </div>
-                </div>
-            </xpath>
-            <xpath expr="//div[@name='share_div']" position="attributes">
-                <attribute name="hidden">1</attribute>
-            </xpath>
-        </template>
-    </data>
+    <template id="iban_template_es" inherit_id="easy_my_coop_website.iban_template">
+    <xpath expr="//div[@name='iban_template_container']" position="inside">
+
+        <div
+                class="form-group field-bank_account"
+                t-attf-class="form-group #{error and 'iban' in error and 'has-error' or ''}"
+                name="iban_container"
+            >
+            <label for="iban">Bank Account Number</label>
+            <input
+                    class="form-control form-control-sm"
+                    type="text"
+                    name="iban"
+                    id="iban"
+                    required="True"
+                    t-att-readonly="logged"
+                    t-attf-value="#{iban or ''}"
+                    placeholder="ES9000246912501234567891"
+                />
+
+        </div>
+        <div
+                class="form-group"
+                t-attf-class="form-group #{error and 'vat' in error and 'has-error' or ''}"
+                name="vat_container"
+            >
+            <label for="vat">VAT</label>
+            <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    name="vat"
+                    placeholder="Y5643925S"
+                    required="True"
+                    t-attf-value="#{vat or ''}"
+                />
+        </div>
+    </xpath>
+
+    </template>
+
+    <template
+        id="become_cooperator_es_share_div"
+        inherit_id="easy_my_coop_website.shares_template"
+        name="Removing Share div"
+    >
+        <xpath expr="//div[@name='share_div']" position="attributes">
+            <attribute name="hidden">1</attribute>
+        </xpath>
+    </template>
 </odoo>

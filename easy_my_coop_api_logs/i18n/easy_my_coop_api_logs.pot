@@ -1,0 +1,116 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* easy_my_coop_api_logs
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: easy_my_coop_api_logs
+#: model:ir.model.fields,field_description:easy_my_coop_api_logs.field_emc_api_log__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model:ir.model.fields,field_description:easy_my_coop_api_logs.field_emc_api_log__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model:ir.model.fields,field_description:easy_my_coop_api_logs.field_emc_api_log__datetime
+msgid "Datetime"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model:ir.model.fields,field_description:easy_my_coop_api_logs.field_emc_api_log__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model:ir.actions.act_window,name:easy_my_coop_api_logs.emc_api_log_action
+#: model:ir.ui.menu,name:easy_my_coop_api_logs.emc_api_log_menu
+msgid "EMC API Logs"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model:ir.model.fields,field_description:easy_my_coop_api_logs.field_emc_api_log__headers
+msgid "Headers"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model:ir.model.fields,field_description:easy_my_coop_api_logs.field_emc_api_log__id
+msgid "ID"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model:ir.model.fields,field_description:easy_my_coop_api_logs.field_emc_api_log__ip
+msgid "IP"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model:ir.model.fields,field_description:easy_my_coop_api_logs.field_emc_api_log____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model:ir.model.fields,field_description:easy_my_coop_api_logs.field_emc_api_log__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model:ir.model.fields,field_description:easy_my_coop_api_logs.field_emc_api_log__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model:ir.model,name:easy_my_coop_api_logs.model_emc_api_log
+msgid "Logs call to EMC API"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model:ir.model.fields,field_description:easy_my_coop_api_logs.field_emc_api_log__method
+msgid "Method"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model:ir.model.fields,field_description:easy_my_coop_api_logs.field_emc_api_log__path
+msgid "Path"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model:ir.model.fields,field_description:easy_my_coop_api_logs.field_emc_api_log__payload
+msgid "Payload"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model:ir.model.fields,field_description:easy_my_coop_api_logs.field_emc_api_log__response
+msgid "Response"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model:ir.model.fields,field_description:easy_my_coop_api_logs.field_emc_api_log__status
+msgid "Status"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_api_logs.emc_api_log_view_form
+msgid "headers"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_api_logs.emc_api_log_view_form
+msgid "payload"
+msgstr ""
+
+#. module: easy_my_coop_api_logs
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_api_logs.emc_api_log_view_form
+msgid "response"
+msgstr ""
+

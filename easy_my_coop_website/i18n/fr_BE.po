@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* easy_my_coop_website
+# 	* easy_my_coop_website
 #
 msgid ""
 msgstr ""
@@ -10,6 +10,7 @@ msgstr ""
 "PO-Revision-Date: 2020-06-29 15:46+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -96,16 +97,29 @@ msgid "Bruxelles"
 msgstr ""
 
 #. module: easy_my_coop_website
+#: model:ir.model.fields,field_description:easy_my_coop_website.field_res_company__captcha_type
+msgid "Captcha type or disabled"
+msgstr ""
+
+#. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "City"
 msgstr "Ville"
 
 #. module: easy_my_coop_website
+#: model:ir.model,name:easy_my_coop_website.model_res_company
+#, fuzzy
+msgid "Companies"
+msgstr "Nom de la société"
+
+#. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-msgid "Company\n"
+msgid ""
+"Company\n"
 "                                        Register Number"
-msgstr "Numéro\n"
+msgstr ""
+"Numéro\n"
 "                                        d'entreprise"
 
 #. module: easy_my_coop_website
@@ -158,10 +172,21 @@ msgid "Didier"
 msgstr ""
 
 #. module: easy_my_coop_website
+#: selection:res.company,captcha_type:0
+msgid "Disabled"
+msgstr ""
+
+#. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "Email"
 msgstr "Courriel"
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Financial Risk"
+msgstr ""
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
@@ -181,8 +206,21 @@ msgid "Gender"
 msgstr "Genre"
 
 #. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "Idendity\n"
+#, fuzzy
+msgid "Generic Rules"
+msgstr "Règlement intérieur"
+
+#. module: easy_my_coop_website
+#: selection:res.company,captcha_type:0
+msgid "Google Recaptcha"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid ""
+"Idendity\n"
 "                                        card scan"
 msgstr ""
 
@@ -252,9 +290,11 @@ msgstr "Téléphone"
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "Privacy\n"
+msgid ""
+"Privacy\n"
 "                                        Policy"
-msgstr "Politique de gestion \n"
+msgstr ""
+"Politique de gestion \n"
 "                                        des données personnelles"
 
 #. module: easy_my_coop_website
@@ -264,7 +304,7 @@ msgid "Send"
 msgstr "Envoyer"
 
 #. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:291
+#: code:addons/easy_my_coop_website/controllers/main.py:288
 #, python-format
 msgid "Some mandatory fields have not been filled"
 msgstr "Certains champs obligatoires sont vides."
@@ -275,16 +315,23 @@ msgid "Thanks!"
 msgstr "Merci !"
 
 #. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:314
+#: code:addons/easy_my_coop_website/controllers/main.py:309
 #, python-format
-msgid "The email and the confirmation email doesn't match.Please check the given mail addresses"
+msgid ""
+"The email and the confirmation email doesn't match.Please check the given "
+"mail addresses"
 msgstr "Le courriel ne correspond pas dans les deux champs de courriel."
 
 #. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:302
+#: code:addons/easy_my_coop_website/controllers/main.py:297
 #, python-format
-msgid "There is an existing account for this mail address. Please login before fill in the form"
-msgstr "Un login existe déjà pour ce courriel. Connectez-vous en cliquant sur \"Se Connecter\" en haut à droite avant de remplir le formulaire pour prendre de nouvelles parts."
+msgid ""
+"There is an existing account for this mail address. Please login before fill "
+"in the form"
+msgstr ""
+"Un login existe déjà pour ce courriel. Connectez-vous en cliquant sur \"Se "
+"Connecter\" en haut à droite avant de remplir le formulaire pour prendre de "
+"nouvelles parts."
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.cooperator_thanks
@@ -297,13 +344,13 @@ msgid "Website Cooperator contact Form"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:360
+#: code:addons/easy_my_coop_website/controllers/main.py:355
 #, python-format
 msgid "You can't subscribe for an amount that exceed "
 msgstr "Vous ne pouvez souscrire pour un montant supérieur à"
 
 #. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:350
+#: code:addons/easy_my_coop_website/controllers/main.py:346
 #, python-format
 msgid "You can't subscribe two different types of share"
 msgstr "Vous ne pouvez souscrire à des types de parts différents"
@@ -311,29 +358,35 @@ msgstr "Vous ne pouvez souscrire à des types de parts différents"
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "You have already an account?"
-msgstr "Vous avez déjà un compte ? Cliquer ici pour vous connecter avant de remplir le formulaire de prises de parts."
+msgstr ""
+"Vous avez déjà un compte ? Cliquer ici pour vous connecter avant de remplir "
+"le formulaire de prises de parts."
 
 #. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:337
+#: code:addons/easy_my_coop_website/controllers/main.py:333
 #, python-format
 msgid "You iban account number is not valid"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:326
+#: code:addons/easy_my_coop_website/controllers/main.py:324
 #, python-format
 msgid "You need to upload a scan of your id card"
 msgstr "Vous devez charger une copie de votre carte d'identité."
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "You want to\n"
+msgid ""
+"You want to\n"
 "                                        modify your personal information ?"
-msgstr "Vous voulez \n modifier vos informations personnelles ?"
+msgstr ""
+"Vous voulez \n"
+" modifier vos informations personnelles ?"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.cooperator_thanks
-msgid "Your subscription has been successfully\n"
+msgid ""
+"Your subscription has been successfully\n"
 "                                registered."
 msgstr "Votre souscription à bien été enregistrée."
 
@@ -361,9 +414,8 @@ msgid "rue Van Hove, 19"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:265
+#: code:addons/easy_my_coop_website/controllers/main.py:268
 #: code:addons/easy_my_coop_website/controllers/main.py:276
 #, python-format
 msgid "the captcha has not been validated, please fill in the captcha"
 msgstr "Le captcha n'a pas été validé. Veuillez le remplir svp."
-

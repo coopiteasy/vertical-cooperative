@@ -1,0 +1,118 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* easy_my_coop_ch
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: easy_my_coop_ch
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "ASBL"
+msgstr ""
+
+#. module: easy_my_coop_ch
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "Association"
+msgstr ""
+
+#. module: easy_my_coop_ch
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_ch.iban_template_ch
+msgid "Bank Account Number"
+msgstr ""
+
+#. module: easy_my_coop_ch
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_ch.iban_template_ch
+msgid "CH48523080767127"
+msgstr ""
+
+#. module: easy_my_coop_ch
+#: model:ir.model.fields,field_description:easy_my_coop_ch.field_subscription_request__company_type
+msgid "Company type"
+msgstr ""
+
+#. module: easy_my_coop_ch
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "Company under public law"
+msgstr ""
+
+#. module: easy_my_coop_ch
+#: model:ir.model,name:easy_my_coop_ch.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: easy_my_coop_ch
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "Cooperative"
+msgstr ""
+
+#. module: easy_my_coop_ch
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "EURL / Entreprise individuelle"
+msgstr ""
+
+#. module: easy_my_coop_ch
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "Foundation"
+msgstr ""
+
+#. module: easy_my_coop_ch
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "Individual company"
+msgstr ""
+
+#. module: easy_my_coop_ch
+#: model:ir.model.fields,field_description:easy_my_coop_ch.field_res_partner__legal_form
+#: model:ir.model.fields,field_description:easy_my_coop_ch.field_res_users__legal_form
+msgid "Legal form"
+msgstr ""
+
+#. module: easy_my_coop_ch
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "Partnership"
+msgstr ""
+
+#. module: easy_my_coop_ch
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "SA / SAS"
+msgstr ""
+
+#. module: easy_my_coop_ch
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "SARL"
+msgstr ""
+
+#. module: easy_my_coop_ch
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "SCRL"
+msgstr ""
+
+#. module: easy_my_coop_ch
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "SPRL"
+msgstr ""
+
+#. module: easy_my_coop_ch
+#: model:ir.model,name:easy_my_coop_ch.model_subscription_request
+msgid "Subscription Request"
+msgstr ""
+

@@ -1,0 +1,177 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* easy_my_coop_fr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: easy_my_coop_fr
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "ASBL"
+msgstr ""
+
+#. module: easy_my_coop_fr
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "Association"
+msgstr ""
+
+#. module: easy_my_coop_fr
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_fr.certificate_i18n_fr
+msgid "Ce document atteste d’une souscription en numéraire au\n"
+"                        capital d’une société, répondant à la définition\n"
+"                        communautaire de la Petite et Moyenne Entreprise, dont\n"
+"                        les titres ne sont pas admis aux négociations sur un\n"
+"                        marché d’instruments financiers français ou étranger en\n"
+"                        application de l’article 199 terdecies 0A du CGI.\n"
+"                        <br/>\n"
+"                        Conformément aux statuts, les souscriptions de parts\n"
+"                        sociales de type A et B n’ouvre pas droit à\n"
+"                        rémunération.\n"
+"                        <br/>\n"
+"                        La société remplit les conditions mentionnées aux c, d\n"
+"                        et e du 2° du I de l’article 199 terdecies-0 A du code\n"
+"                        général des impôts :\n"
+"                        <br/>\n"
+"                        c) La société est soumise à l’impôt sur les sociétés\n"
+"                        dans les conditions de droit commun ;\n"
+"                        <br/>\n"
+"                        <br/>\n"
+"                        c bis) La société compte au moins deux salariés à la\n"
+"                        clôture de son premier exercice ou un salarié si elle\n"
+"                        est soumise à l’obligation de s’inscrire à la chambre de\n"
+"                        métiers et de l’artisanat ;\n"
+"                        <br/>\n"
+"                        <br/>\n"
+"                        d) La société exerce une activité commerciale,\n"
+"                        industrielle, artisanale, libérale ou agricole, à\n"
+"                        l’exclusion des activités procurant des revenus garantis\n"
+"                        en raison de l’existence d’un tarif réglementé de rachat\n"
+"                        de la production, des activités financières, des\n"
+"                        activités de gestion de patrimoine mobilier définie à\n"
+"                        l’article 885 O quater et des activités immobilières.\n"
+"                        Toutefois, les exclusions relatives à l’exercice d’une\n"
+"                        activité financière ou immobilière ne sont pas\n"
+"                        applicables aux entreprises solidaires mentionnées à\n"
+"                        l’article L. 3332-17-1 du code du travail.\n"
+"                        <br/>\n"
+"                        La société n’exerce pas une activité de production\n"
+"                        d’électricité utilisant l’énergie radiative du soleil ;\n"
+"                        <br/>\n"
+"                        <br/>\n"
+"                        d bis) Les actifs de la société ne sont pas constitués\n"
+"                        de façon prépondérante de métaux précieux, d’œuvres\n"
+"                        d’art, d’objets de collection, d’antiquités, de chevaux\n"
+"                        de course ou de concours ou, sauf si l’objet même de son\n"
+"                        activité consiste en leur consommation ou en leur vente\n"
+"                        au détail, de vins ou d’alcools ;\n"
+"                        <br/>\n"
+"                        <br/>\n"
+"                        d ter) Les souscriptions au capital de la société\n"
+"                        confèrent aux souscripteurs les seuls droits résultant\n"
+"                        de la qualité d’actionnaire ou d’associé, à l’exclusion\n"
+"                        de toute autre contrepartie notamment sous la forme de\n"
+"                        tarifs préférentiels ou d’accès prioritaire aux biens\n"
+"                        produits ou aux services rendus par la société ;\n"
+"                        <br/>\n"
+"                        <br/>\n"
+"                        e) La société doit être une petite et moyenne entreprise\n"
+"                        qui satisfait à la définition des petites et moyennes\n"
+"                        entreprises qui figure à l’annexe I au règlement (CE) n°\n"
+"                        800/2008 de la Commission du 6 août 2008 déclarant\n"
+"                        certaines catégories d’aide compatibles avec le marché\n"
+"                        commun en application des articles 87 et 88 du traité\n"
+"                        (Règlement général d’exemption par catégorie) ;\n"
+"                        <br/>"
+msgstr ""
+
+#. module: easy_my_coop_fr
+#: model:ir.model.fields,field_description:easy_my_coop_fr.field_subscription_request__company_type
+msgid "Company type"
+msgstr ""
+
+#. module: easy_my_coop_fr
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "Company under public law"
+msgstr ""
+
+#. module: easy_my_coop_fr
+#: model:ir.model,name:easy_my_coop_fr.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: easy_my_coop_fr
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "Cooperative"
+msgstr ""
+
+#. module: easy_my_coop_fr
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "EURL / Entreprise individuelle"
+msgstr ""
+
+#. module: easy_my_coop_fr
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "Foundation"
+msgstr ""
+
+#. module: easy_my_coop_fr
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "Individual company"
+msgstr ""
+
+#. module: easy_my_coop_fr
+#: model:ir.model.fields,field_description:easy_my_coop_fr.field_res_partner__legal_form
+#: model:ir.model.fields,field_description:easy_my_coop_fr.field_res_users__legal_form
+msgid "Legal form"
+msgstr ""
+
+#. module: easy_my_coop_fr
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "Partnership"
+msgstr ""
+
+#. module: easy_my_coop_fr
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "SA / SAS"
+msgstr ""
+
+#. module: easy_my_coop_fr
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "SARL"
+msgstr ""
+
+#. module: easy_my_coop_fr
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "SCRL"
+msgstr ""
+
+#. module: easy_my_coop_fr
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "SPRL"
+msgstr ""
+
+#. module: easy_my_coop_fr
+#: model:ir.model,name:easy_my_coop_fr.model_subscription_request
+msgid "Subscription Request"
+msgstr ""
+

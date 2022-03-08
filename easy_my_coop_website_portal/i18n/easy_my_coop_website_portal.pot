@@ -1,0 +1,186 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* easy_my_coop_website_portal
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_home_menu_capital_request
+msgid "<em>Draft Request</em>"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_capital_releases
+msgid "<span class=\"badge badge-pill badge-info\">\n"
+"                                        <i class=\"fa fa-fw fa-clock-o\" aria-label=\"Opened\" title=\"Opened\" role=\"img\"/>\n"
+"                                        <span class=\"d-none d-md-inline\">Waiting\n"
+"                                            for Payment\n"
+"                                        </span>\n"
+"                                    </span>"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_capital_releases
+msgid "<span class=\"badge badge-pill badge-success\">\n"
+"                                        <i class=\"fa fa-fw fa-check\" aria-label=\"Paid\" title=\"Paid\" role=\"img\"/>\n"
+"                                        <span class=\"d-none d-md-inline\">Paid\n"
+"                                        </span>\n"
+"                                    </span>"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_capital_releases
+msgid "<span class=\"badge badge-pill badge-warning\">\n"
+"                                        <i class=\"fa fa-fw fa-remove\" aria-label=\"Cancelled\" title=\"Cancelled\" role=\"img\"/>\n"
+"                                        <span class=\"d-none d-md-inline\">\n"
+"                                            Cancelled\n"
+"                                        </span>\n"
+"                                    </span>"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_capital_releases
+msgid "Amount Due"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.website_portal_details_form
+msgid "Bank Account:"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_details_emc
+msgid "Birthdate"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_home_menu_capital_request
+msgid "Capital Request"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.website_portal_details_form
+msgid "Company Register Number:"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.website_portal_details_form
+msgid "Cooperator Certificate"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.website_portal_details_form
+msgid "Cooperator Entrance Date:"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.website_portal_details_form
+msgid "Cooperator Number:"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.website_portal_details_form
+msgid "Date of Birth:"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_capital_releases
+msgid "Draft Request"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_capital_releases
+msgid "Due Date"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_details_emc
+msgid "Gender"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.website_portal_details_form
+msgid "Gender:"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_details_emc
+msgid "Iban"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_details_emc
+msgid "Language"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.website_portal_details_form
+msgid "Legal Representative:"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_capital_releases
+msgid "My Capital Releases"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.website_portal_details_form
+msgid "Number of Share:"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_capital_releases
+msgid "Request #"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_capital_releases
+msgid "Request Date"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_capital_releases
+msgid "There are currently no capital release request for your\n"
+"                    account."
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.website_portal_details_form
+msgid "Total Value of Share:"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.website_portal_details_form
+msgid "You are an effective cooperator"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.website_portal_details_form
+msgid "You are not a cooperator"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: code:addons/easy_my_coop_website_portal/controllers/portal.py:87
+#, python-format
+msgid "You iban account number is not valid"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.website_portal_details_form
+msgid "Your Cooperator Details"
+msgstr ""
+
+#. module: easy_my_coop_website_portal
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website_portal.portal_my_home_capital_release
+msgid "Your Release Capital Requests"
+msgstr ""
+

@@ -1,0 +1,81 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* theme_light
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: theme_light
+#: model_terms:theme.ir.ui.view,arch:theme_light.invoice_footer
+msgid "-\n"
+"                            <span>VAT Number</span>\n"
+"                            :"
+msgstr ""
+
+#. module: theme_light
+#: model_terms:theme.ir.ui.view,arch:theme_light.style
+msgid "/* Montserrat */\n"
+"        @font-face {\n"
+"        font-family: 'Montserrat-Regular';\n"
+"        font-style: normal;\n"
+"        src: local('Montserrat Regular'),\n"
+"        url('/theme_light/static/font/Montserrat-Regular.ttf')\n"
+"        format('truetype');\n"
+"        }\n"
+"        /* Roboto Regular */\n"
+"        @font-face {\n"
+"        font-family: 'Roboto-Regular';\n"
+"        font-style: normal;\n"
+"        src: local('Roboto Regular'),\n"
+"        url('/theme_light/static/font/Roboto-Regular.ttf') format('truetype');\n"
+"        }\n"
+"        /* Roboto Bold */\n"
+"        @font-face {\n"
+"        font-family: 'Roboto-Bold';\n"
+"        font-style: normal;\n"
+"        src: local('Roboto Bold'),\n"
+"        url('/theme_light/static/font/Roboto-Bold.ttf') format('truetype');\n"
+"        }\n"
+"        /* BEBASNEUE Bold */\n"
+"        @font-face {\n"
+"        font-family: 'Bebasneue-Bold';\n"
+"        font-style: normal;\n"
+"        src: local('Bebasneue-Bold'),\n"
+"        url('/theme_light/static/font/BEBASNEUE_BOLD.ttf') format('truetype');\n"
+"        }"
+msgstr ""
+
+#. module: theme_light
+#: model_terms:theme.ir.ui.view,arch:theme_light.invoice_header_G002
+#: model_terms:theme.ir.ui.view,arch:theme_light.invoice_header_P002
+#: model_terms:theme.ir.ui.view,arch:theme_light.list_header_G002
+msgid "<span>Fax</span>"
+msgstr ""
+
+#. module: theme_light
+#: model_terms:theme.ir.ui.view,arch:theme_light.invoice_footer
+msgid "<span>N.Entr.</span>\n"
+"                            :"
+msgstr ""
+
+#. module: theme_light
+#: model_terms:theme.ir.ui.view,arch:theme_light.invoice_header_G002
+#: model_terms:theme.ir.ui.view,arch:theme_light.invoice_header_P002
+#: model_terms:theme.ir.ui.view,arch:theme_light.list_header_G002
+msgid "<span>Phone</span>"
+msgstr ""
+
+#. module: theme_light
+#: model_terms:theme.ir.ui.view,arch:theme_light.report_footer_002
+msgid "Page :\n"
+"                        <span class=\"page\"/>"
+msgstr ""
+
