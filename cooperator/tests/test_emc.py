@@ -2,7 +2,6 @@
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from unittest import expectedFailure
 
 from odoo.exceptions import AccessError
 from odoo.fields import Date
@@ -72,8 +71,6 @@ class EMCCase(EMCBaseCase):
         self.assertEquals(share.share_product_id, self.request.share_product_id)
         self.assertEquals(share.effective_date, Date.today())
 
-    # TODO: !!! Fix this test !!!
-    @expectedFailure
     def test_user_rights(self):
 
         request_values = {
@@ -165,8 +162,6 @@ class EMCCase(EMCBaseCase):
         share_type.list_price = 30
         share_type.unlink()
 
-    # TODO: !!! Fix this test !!!
-    @expectedFailure
     def test_compute_validated_lines_on_subscription_request(self):
         request = self.request
         request.iban = False
