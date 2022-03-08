@@ -33,6 +33,7 @@
                     name="vat"
                     placeholder="Y5643925S"
                     required="True"
+                    t-attf-value="#{vat or ''}"
                 />
         </div>
     </xpath>
