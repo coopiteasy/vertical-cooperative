@@ -14,7 +14,6 @@
         This is the french localization for the easy my coop module
     """,
     "data": [
-        "views/subscription_template.xml",
         "views/certificate_template.xml",
     ],
     "installable": True,

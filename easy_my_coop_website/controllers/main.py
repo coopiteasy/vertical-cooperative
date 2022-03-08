@@ -117,7 +117,7 @@ class WebsiteSubscription(http.Controller):
 
     def get_date_string(self, birthdate):
         if birthdate:
-            return datetime.strftime(birthdate, "%d/%m/%Y")
+            return datetime.strftime(birthdate, "%Y-%m-%d")
         return False
 
     def get_values_from_user(self, values, is_company):
@@ -324,14 +324,15 @@ class WebsiteSubscription(http.Controller):
                 values["error_msg"] = _("You need to upload a" " scan of your id card")
                 return request.render(redirect, values)
 
-        iban = kwargs.get("iban")
-        if iban.strip():
-            valid = sub_req_obj.check_iban(iban)
+        if "iban" in required_fields:
+            iban = kwargs.get("iban")
+            if iban.strip():
+                valid = sub_req_obj.check_iban(iban)
 
-            if not valid:
-                values = self.fill_values(values, is_company, logged)
-                values["error_msg"] = _("You iban account number is not valid")
-                return request.render(redirect, values)
+                if not valid:
+                    values = self.fill_values(values, is_company, logged)
+                    values["error_msg"] = _("Your IBAN is not valid.")
+                    return request.render(redirect, values)
 
         # check the subscription's amount
         max_amount = company.subscription_maximum_amount
@@ -438,7 +439,7 @@ class WebsiteSubscription(http.Controller):
         values["lastname"] = lastname
         values["firstname"] = firstname
         values["birthdate"] = datetime.strptime(
-            kwargs.get("birthdate"), "%d/%m/%Y"
+            kwargs.get("birthdate"), "%Y-%m-%d"
         ).date()
         values["source"] = "website"
 

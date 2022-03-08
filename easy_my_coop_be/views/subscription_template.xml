@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
-    <template id="iban_template_ch" inherit_id="easy_my_coop_website.iban_template">
+    <template id="iban_template_be" inherit_id="easy_my_coop_website.iban_template">
         <xpath expr="//div[@name='iban_template_container']" position="inside">
             <div
                 class="form-group field-bank_account"
@@ -17,7 +16,7 @@
                     required="True"
                     t-att-readonly="logged"
                     t-attf-value="#{iban or ''}"
-                    placeholder="CH48523080767127"
+                    placeholder="BE4852308076712"
                 />
 
             </div>
