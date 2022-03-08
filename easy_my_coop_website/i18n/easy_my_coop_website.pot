@@ -20,54 +20,37 @@ msgstr ""
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "05/03/1978"
-msgstr ""
-
-#. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "0647980091"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.address_template
 msgid "1030"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "25"
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.contact_template
+msgid "1978-03-05"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.address_template
 msgid "Address"
 msgstr ""
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "Already cooperator?"
+msgid "Are you already a cooperator?"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "BE48523080767127"
-msgstr ""
-
-#. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "Bank Account Number"
-msgstr ""
-
-#. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "Become Cooperator"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+msgid "Become Cooperator as Company"
 msgstr ""
 
 #. module: easy_my_coop_website
@@ -76,20 +59,12 @@ msgid "Become cooperator"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "Birthdate"
-msgstr ""
-
-#. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.contact_template
 msgid "Bourdon"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.address_template
 msgid "Bruxelles"
 msgstr ""
 
@@ -99,8 +74,7 @@ msgid "Captcha type or disabled"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.address_template
 msgid "City"
 msgstr ""
 
@@ -136,8 +110,12 @@ msgid "Company type"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Confirm E-mail"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "Confirm Email"
 msgstr ""
 
@@ -147,20 +125,22 @@ msgid "Contact Person"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.address_template
 msgid "Country"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.address_template
 msgid "Country..."
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.contact_template
+msgid "Date of birth"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.contact_template
 msgid "Didier"
 msgstr ""
 
@@ -170,20 +150,29 @@ msgid "Disabled"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "Email"
+msgid "Do you already have an account?"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "Do you want to\n"
+"                                            modify your personal information first?"
 msgstr ""
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+msgid "E-mail"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.rules_template
 msgid "Financial Risk"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.contact_template
 msgid "First Name"
 msgstr ""
 
@@ -193,14 +182,12 @@ msgid "Function"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.contact_template
 msgid "Gender"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.rules_template
 msgid "Generic Rules"
 msgstr ""
 
@@ -210,14 +197,13 @@ msgid "Google Recaptcha"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.rules_template
 msgid "Idendity\n"
-"                                        card scan"
+"            card scan"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.rules_template
 msgid "Internal Rules"
 msgstr ""
 
@@ -232,20 +218,12 @@ msgid "La super coopérative"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.contact_template
 msgid "Language"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "Language..."
-msgstr ""
-
-#. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.contact_template
 msgid "Last Name"
 msgstr ""
 
@@ -261,34 +239,30 @@ msgid "Main Address"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "Parts number"
-msgstr ""
-
-#. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "Parts type"
-msgstr ""
-
-#. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.contact_template
 msgid "Phone"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.rules_template
 msgid "Privacy\n"
-"                                        Policy"
+"            Policy"
 msgstr ""
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "Send"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.shares_template
+msgid "Share number"
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.shares_template
+msgid "Share type"
 msgstr ""
 
 #. module: easy_my_coop_website
@@ -315,6 +289,11 @@ msgid "There is an existing account for this mail address. Please login before f
 msgstr ""
 
 #. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.shares_template
+msgid "Total"
+msgstr ""
+
+#. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.cooperator_thanks
 msgid "We will get back to you shortly."
 msgstr ""
@@ -325,26 +304,15 @@ msgid "Website Cooperator contact Form"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:355
+#: code:addons/easy_my_coop_website/controllers/main.py:356
 #, python-format
 msgid "You can't subscribe for an amount that exceed "
 msgstr ""
 
 #. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:346
+#: code:addons/easy_my_coop_website/controllers/main.py:347
 #, python-format
 msgid "You can't subscribe two different types of share"
-msgstr ""
-
-#. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "You have already an account?"
-msgstr ""
-
-#. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:333
-#, python-format
-msgid "You iban account number is not valid"
 msgstr ""
 
 #. module: easy_my_coop_website
@@ -354,15 +322,20 @@ msgid "You need to upload a scan of your id card"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "You want to\n"
-"                                        modify your personal information ?"
+#: code:addons/easy_my_coop_website/controllers/main.py:334
+#, python-format
+msgid "Your IBAN is not valid."
 msgstr ""
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.cooperator_thanks
 msgid "Your subscription has been successfully\n"
 "                                registered."
+msgstr ""
+
+#. module: easy_my_coop_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.address_template
+msgid "Zip / Postal Code"
 msgstr ""
 
 #. module: easy_my_coop_website
@@ -377,15 +350,13 @@ msgid "didier.bourdon@bees-coop.be"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "e.g. (+32).81.81.37.00"
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.contact_template
+msgid "e.g. +32 456 926 5059"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "rue Van Hove, 19"
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.address_template
+msgid "rue Van Hove, 199"
 msgstr ""
 
 #. module: easy_my_coop_website
