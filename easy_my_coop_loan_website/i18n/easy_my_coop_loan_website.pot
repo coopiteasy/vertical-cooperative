@@ -1,0 +1,109 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* easy_my_coop_loan_website
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.loan_thanks
+msgid "&amp;times;"
+msgstr ""
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.subscribe_loan_issue_page_ir_ui_view
+#: model_terms:website.page,arch_db:easy_my_coop_loan_website.subscribe_loan_issue_page
+msgid "Action Type"
+msgstr ""
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.loanissuesubscription
+msgid "Amount"
+msgstr ""
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.subscribe_loan_issue_page_ir_ui_view
+#: model_terms:website.page,arch_db:easy_my_coop_loan_website.subscribe_loan_issue_page
+msgid "Group By"
+msgstr ""
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.loanissuesubscription
+msgid "Loan issue"
+msgstr ""
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.subscribe_loan_issue_page_ir_ui_view
+#: model_terms:website.page,arch_db:easy_my_coop_loan_website.subscribe_loan_issue_page
+msgid "Model"
+msgstr ""
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.loanissuesubscription
+msgid "Send"
+msgstr ""
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.subscribe_loan_issue_page_ir_ui_view
+#: model_terms:website.page,arch_db:easy_my_coop_loan_website.subscribe_loan_issue_page
+msgid "Server Action"
+msgstr ""
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.subscribe_loan_issue_page_ir_ui_view
+#: model_terms:website.page,arch_db:easy_my_coop_loan_website.subscribe_loan_issue_page
+msgid "Server Actions"
+msgstr ""
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.loanissuesubscription
+msgid "Subscribe to Loan Issue"
+msgstr ""
+
+#. module: easy_my_coop_loan_website
+#: model:website.menu,name:easy_my_coop_loan_website.menu_subscribeloanissue
+msgid "Subscribe to loan issue"
+msgstr ""
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.loan_thanks
+msgid "Thanks!"
+msgstr ""
+
+#. module: easy_my_coop_loan_website
+#: code:addons/easy_my_coop_loan_website/controllers/main.py:95
+#, python-format
+msgid "The amount should be of monetary type"
+msgstr ""
+
+#. module: easy_my_coop_loan_website
+#: code:addons/easy_my_coop_loan_website/controllers/main.py:92
+#, python-format
+msgid "The selected loan issue is not found"
+msgstr ""
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.subscribe_loan_issue_page_ir_ui_view
+#: model_terms:website.page,arch_db:easy_my_coop_loan_website.subscribe_loan_issue_page
+msgid "Usage"
+msgstr ""
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.loan_thanks
+msgid "We will get back to you shortly."
+msgstr ""
+
+#. module: easy_my_coop_loan_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_loan_website.loan_thanks
+msgid "Your loan subscription has been successfully\n"
+"                                registered."
+msgstr ""
+
