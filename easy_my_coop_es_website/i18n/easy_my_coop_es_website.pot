@@ -14,14 +14,22 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: easy_my_coop_es_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_es_website.become_company_cooperator_es
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_es_website.become_cooperator_es
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_es_website.iban_template_es
+msgid "Bank Account Number"
+msgstr ""
+
+#. module: easy_my_coop_es_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_es_website.iban_template_es
+msgid "ES9000246912501234567891"
+msgstr ""
+
+#. module: easy_my_coop_es_website
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_es_website.iban_template_es
 msgid "VAT"
 msgstr ""
 
 #. module: easy_my_coop_es_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_es_website.become_company_cooperator_es
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_es_website.become_cooperator_es
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_es_website.iban_template_es
 msgid "Y5643925S"
 msgstr ""
 
