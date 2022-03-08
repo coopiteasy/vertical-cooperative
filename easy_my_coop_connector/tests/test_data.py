@@ -45,7 +45,7 @@ SR_SEARCH_RESULT = {
             "gender": "male",
             "iban": "98765434567",
             "phone": None,
-            "skip_control_ng": True,
+            "skip_iban_control": True,
             "capital_release_request_date": None,
         }
     ],
@@ -76,7 +76,7 @@ SR_GET_RESULT = {
     "gender": "male",
     "iban": "98765434567",
     "phone": None,
-    "skip_control_ng": True,
+    "skip_iban_control": True,
     "capital_release_request_date": None,
 }
 
@@ -106,7 +106,7 @@ SR_VALIDATE_RESULT = {
     "gender": "male",
     "iban": "98765434567",
     "phone": None,
-    "skip_control_ng": True,
+    "skip_iban_control": True,
     "capital_release_request_date": None,
 }
 

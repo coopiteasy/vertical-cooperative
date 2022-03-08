@@ -133,12 +133,12 @@ class SubscriptionRequest(models.Model):
         return True
 
     def check_iban(self, iban):
+        if not iban:
+            return False
+
         try:
-            if iban:
-                validate_iban(iban)
-                return True
-            else:
-                return False
+            validate_iban(iban)
+            return True
         except ValidationError:
             return False
 
@@ -150,12 +150,14 @@ class SubscriptionRequest(models.Model):
                 part for part in (sub_request.firstname, sub_request.lastname) if part
             )
 
-    @api.multi
-    @api.depends("iban", "skip_control_ng")
-    def _compute_validated_lines(self):
+
+    @api.depends("iban", "skip_iban_control")
+    def _compute_is_valid_iban(self):
         for sub_request in self:
-            validated = sub_request.skip_control_ng or self.check_iban(sub_request.iban)
-            sub_request.validated = validated
+            if sub_request.skip_iban_control:
+                sub_request.is_valid_iban = True
+            else:
+                sub_request.is_valid_iban = self.check_iban(sub_request.iban)
 
     @api.multi
     @api.depends("share_product_id", "share_product_id.list_price", "ordered_parts")
@@ -309,19 +311,13 @@ class SubscriptionRequest(models.Model):
     )
     user_id = fields.Many2one("res.users", string="Responsible", readonly=True)
     # todo rename to valid_subscription_request
-    validated = fields.Boolean(
-        compute="_compute_validated_lines",
-        string="Valid Subscription request?",
+    is_valid_iban = fields.Boolean(
+        compute="_compute_is_valid_iban",
+        string="Valid IBAN?",
         readonly=True,
     )
-    skip_control_ng = fields.Boolean(
-        string="Skip control",
-        help="if this field is checked then no"
-        " control will be done on the national"
-        " register number and on the iban bank"
-        " account. To be done in case of the id"
-        " card is from abroad or in case of"
-        " a passport",
+    skip_iban_control = fields.Boolean(
+        string="Skip IBAN Control", help="Check to bypass iban format control."
     )
     lang = fields.Selection(
         _lang_get,
