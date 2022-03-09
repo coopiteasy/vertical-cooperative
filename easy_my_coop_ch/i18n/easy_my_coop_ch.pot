@@ -21,7 +21,6 @@ msgstr ""
 
 #. module: easy_my_coop_ch
 #: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
 msgid "Association"
 msgstr ""
 
@@ -42,7 +41,6 @@ msgstr ""
 
 #. module: easy_my_coop_ch
 #: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
 msgid "Company under public law"
 msgstr ""
 
@@ -53,25 +51,21 @@ msgstr ""
 
 #. module: easy_my_coop_ch
 #: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
 msgid "Cooperative"
 msgstr ""
 
 #. module: easy_my_coop_ch
 #: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
 msgid "EURL / Entreprise individuelle"
 msgstr ""
 
 #. module: easy_my_coop_ch
 #: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
 msgid "Foundation"
 msgstr ""
 
 #. module: easy_my_coop_ch
 #: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
 msgid "Individual company"
 msgstr ""
 
@@ -83,19 +77,17 @@ msgstr ""
 
 #. module: easy_my_coop_ch
 #: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
 msgid "Partnership"
 msgstr ""
 
 #. module: easy_my_coop_ch
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
-msgid "SA / SAS"
+msgid "SA"
 msgstr ""
 
 #. module: easy_my_coop_ch
 #: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
 msgid "SARL"
 msgstr ""
 
