@@ -3,7 +3,7 @@
 # - Houssine BAKKALI - <houssine@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).#
 {
-    "name": "Easy My Coop Fr",
+    "name": "Cooperators Fr",
     "version": "12.0.1.1.0",
     "depends": ["cooperator", "easy_my_coop_website", "l10n_fr"],
     "author": "Coop IT Easy SCRLfs",
@@ -11,7 +11,7 @@
     "website": "https://coopiteasy.be",
     "license": "AGPL-3",
     "summary": """
-        This is the french localization for the easy my coop module
+        This is the french localization for the Cooperators module
     """,
     "data": [
         "views/certificate_template.xml",
