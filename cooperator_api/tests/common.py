@@ -21,7 +21,7 @@ class BaseEMCRestCase(BaseRestCase):
     def setUpClass(cls, *args, **kwargs):
         super().setUpClass(*args, **kwargs)
         cls.AuthApiKey = cls.env["auth.api.key"]
-        cls.api_key_test = cls.env.ref("easy_my_coop_api.auth_api_key_manager_emc_demo")
+        cls.api_key_test = cls.env.ref("cooperator_api.auth_api_key_manager_emc_demo")
         cls._chart_template_create()
         cls._add_chart_of_accounts()
         cls._journals_setup()

@@ -11,7 +11,7 @@
     "website": "https://coopiteasy.be",
     "license": "AGPL-3",
     "summary": """
-        Helpers to log calls in and out of easy_my_coop_api.
+        Helpers to log calls in and out of cooperators_api.
     """,
     "data": [
         "security/ir.model.access.csv",

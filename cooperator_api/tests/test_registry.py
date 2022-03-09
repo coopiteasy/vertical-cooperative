@@ -12,12 +12,11 @@ from ..controllers.controllers import UserController
 
 class TestControllerRegistry(BaseRestCase):
     def test_controller_registry(self):
-        controllers = controllers_per_module["easy_my_coop_api"]
+        controllers = controllers_per_module["cooperator_api"]
         self.assertEqual(len(controllers), 1)
         self.assertIn(
             (
-                "odoo.addons.easy_my_coop_api"
-                ".controllers.controllers.UserController",
+                "odoo.addons.cooperator_api.controllers.controllers.UserController",
                 UserController,
             ),
             controllers,
