@@ -145,7 +145,7 @@
         <field name="iban">09898765454</field>
         <field name="birthdate">1990-12-21</field>
         <field name="generic_rules_approved" eval="True" />
-        <field name="skip_control_ng" eval="True" />
+        <field name="skip_iban_control" eval="True" />
     </record>
 
     <record id="subscription_request_waiting_demo" model="subscription.request">
@@ -165,7 +165,7 @@
             eval="obj(ref('product_template_share_type_1_demo')).product_variant_id.id"
         />
         <field name="lang">en_US</field>
-        <field name="skip_control_ng" eval="True" />
+        <field name="skip_iban_control" eval="True" />
         <field name="state">waiting</field>
         <field name="data_policy_approved" eval="True" />
         <field name="internal_rules_approved" eval="True" />

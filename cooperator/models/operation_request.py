@@ -271,7 +271,7 @@ class OperationRequest(models.Model):
             if (
                 self.receiver_not_member
                 and self.subscription_request
-                and not self.subscription_request.validated
+                and not self.subscription_request.is_valid_iban
             ):
                 raise ValidationError(
                     _(
