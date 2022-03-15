@@ -27,7 +27,7 @@
     "version": "12.0.0.0.1",
     "website": "https://coopiteasy.be",
     "category": "Cooperative Management",
-    "depends": ["easy_my_coop"],
+    "depends": ["cooperator"],
     "data": ["security/ir.model.access.csv", "views/dividend_views.xml"],
     "installable": False,
 }

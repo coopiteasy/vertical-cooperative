@@ -7,8 +7,8 @@
     <menuitem
         name="Loan Management"
         id="menu_easy_my_coop_main_loan_issue"
-        parent="easy_my_coop.menu_main_easy_my_coop"
-        groups="easy_my_coop.group_easy_my_coop_user"
+        parent="cooperator.menu_main_easy_my_coop"
+        groups="cooperator.group_easy_my_coop_user"
         sequence="15"
     />
     <menuitem
@@ -43,7 +43,7 @@
         name="Loaners"
         id="loaners_menu"
         action="action_loaners"
-        parent="easy_my_coop.menu_easy_my_coop_main_coop"
+        parent="cooperator.menu_easy_my_coop_main_coop"
         sequence="215"
     />
 

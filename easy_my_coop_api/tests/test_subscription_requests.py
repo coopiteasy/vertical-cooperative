@@ -28,9 +28,7 @@ class TestSRController(BaseEMCRestCase):
 
         self.sr_service = emc_services_env.component(usage="subscription-request")
 
-        self.demo_request_1 = self.browse_ref(
-            "easy_my_coop.subscription_request_1_demo"
-        )
+        self.demo_request_1 = self.browse_ref("cooperator.subscription_request_1_demo")
         self.demo_request_1.write(
             {
                 "_api_external_id": 1,
@@ -38,7 +36,7 @@ class TestSRController(BaseEMCRestCase):
             }
         )
         self.demo_request_2 = self.browse_ref(
-            "easy_my_coop.subscription_request_waiting_demo"
+            "cooperator.subscription_request_waiting_demo"
         )
         self.demo_request_2.write(
             {
@@ -78,7 +76,7 @@ class TestSRController(BaseEMCRestCase):
             "phone": None,
             "gender": "male",
             "iban": "09898765454",
-            "skip_control_ng": True,
+            "skip_iban_control": True,
             "capital_release_request_date": None,
         }
 
@@ -172,7 +170,7 @@ class TestSRController(BaseEMCRestCase):
             "birthdate": "1992-08-05",
             "gender": "other",
             "iban": "98765456789",
-            "skip_control_ng": True,
+            "skip_iban_control": True,
             "capital_release_request_date": None,
         }
 

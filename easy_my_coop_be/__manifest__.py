@@ -7,7 +7,7 @@
     "summary": "Easy My Coop Belgium Localization",
     "version": "12.0.1.2.0",
     "depends": [
-        "easy_my_coop",
+        "cooperator",
         "easy_my_coop_website",
         "l10n_be",
         "l10n_be_invoice_bba",

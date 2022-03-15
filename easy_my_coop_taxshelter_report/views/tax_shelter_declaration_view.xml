@@ -3,7 +3,7 @@
     <menuitem
         name="Declaration"
         id="menu_easy_my_coop_main_declaration"
-        parent="easy_my_coop.menu_main_easy_my_coop"
+        parent="cooperator.menu_main_easy_my_coop"
         sequence="10"
     />
 
@@ -19,21 +19,21 @@
                         type="object"
                         states="draft"
                         class="oe_highlight"
-                        groups="easy_my_coop.group_easy_my_coop_user"
+                        groups="cooperator.group_easy_my_coop_user"
                     />
                     <button
                         name="validate_declaration"
                         string="Validate Declaration"
                         type="object"
                         states="computed"
-                        groups="easy_my_coop.group_easy_my_coop_user"
+                        groups="cooperator.group_easy_my_coop_user"
                     />
                     <button
                         name="reset_declaration"
                         string="Reset Declaration"
                         type="object"
                         states="computed"
-                        groups="easy_my_coop.group_easy_my_coop_user"
+                        groups="cooperator.group_easy_my_coop_user"
                     />
                     <field name="state" widget="statusbar" />
                 </header>
@@ -107,7 +107,7 @@
         id="menu_tax_shelter_declaration"
         parent="menu_easy_my_coop_main_declaration"
         sequence="10"
-        groups="easy_my_coop.group_easy_my_coop_user"
+        groups="cooperator.group_easy_my_coop_user"
     />
 
     <record id="tax_shelter_certificate_form" model="ir.ui.view">
@@ -249,6 +249,6 @@
         id="menu_tax_shelter_certificate"
         parent="menu_easy_my_coop_main_declaration"
         sequence="20"
-        groups="easy_my_coop.group_easy_my_coop_user"
+        groups="cooperator.group_easy_my_coop_user"
     />
 </odoo>

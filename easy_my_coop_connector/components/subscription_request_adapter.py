@@ -124,7 +124,7 @@ class SubscriptionRequestAdapter(AbstractEMCAdapter):
             "internal_rules_approved": api_dict["internal_rules_approved"],
             "financial_risk_approved": api_dict["financial_risk_approved"],
             "capital_release_request": crr_tuples,
-            "skip_control_ng": api_dict["skip_control_ng"],
+            "skip_iban_control": api_dict["skip_iban_control"],
             "generic_rules_approved": api_dict["generic_rules_approved"],
             "source": "emc_api",
         }
