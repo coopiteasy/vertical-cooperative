@@ -19,6 +19,7 @@ renamed_modules = {
     # easy_my_coop_be
     "easy_my_coop_be": "l10n_be_cooperator",
     # easy_my_coop_ch
+    "easy_my_coop_ch": "l10n_ch_cooperator",
     # easy_my_coop_connector
     # easy_my_coop_dividend
     # easy_my_coop_es
