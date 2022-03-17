@@ -15,7 +15,7 @@ env = env  # noqa: F821
 renamed_modules = {
     "easy_my_coop": "cooperator",
     # easy_my_coop_api_logs
-    # easy_my_coop_be
+    "easy_my_coop_be": "i10n_be_cooperator",
     # easy_my_coop_ch
     # easy_my_coop_connector
     # easy_my_coop_dividend
