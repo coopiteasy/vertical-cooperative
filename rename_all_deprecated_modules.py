@@ -11,6 +11,7 @@ not work for you if your server is different.
 import datetime
 import logging
 import os
+import pathlib
 import subprocess
 
 _logger = logging.getLogger(__name__)
@@ -31,7 +32,7 @@ def now():
 
 
 def main():
-    os.chdir(os.path.dirname(__file__))
+    os.chdir(pathlib.Path(__file__).parent)
     logging.basicConfig(level=logging.INFO)
     databases = filter_databases(all_databases())
     for database in databases:
