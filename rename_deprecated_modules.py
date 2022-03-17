@@ -41,5 +41,5 @@ renamed_modules = {
 }
 
 _logger.info("rename easy_my_coop_x modules to cooperator_x")
-openupgrade.update_module_names(env.cr, renamed_modules.items())
+openupgrade.update_module_names(env.cr, renamed_modules.items(), merge_modules=True)
 env.cr.commit()
