@@ -10,9 +10,10 @@ _logger = logging.getLogger(__name__)
 # undefined name 'env'
 env = env  # noqa: F821
 
-# Comments are there to prevent merge conflicts. Replace the comment of the
-# module you want to rename with a dictionary entry.
+# Comments are there to prevent merge conflicts. Put the dictionary entry UNDER
+# the comment of the respective module.
 renamed_modules = {
+    # easy_my_coop
     "easy_my_coop": "cooperator",
     # easy_my_coop_api_logs
     # easy_my_coop_be
