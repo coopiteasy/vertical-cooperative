@@ -21,16 +21,17 @@ renamed_modules = {
     # easy_my_coop_ch
     "easy_my_coop_ch": "l10n_ch_cooperator",
     # easy_my_coop_connector
-    # easy_my_coop_dividend
-    # easy_my_coop_es
-    # easy_my_coop_es_website
-    # easy_my_coop_export_xlsx
+    # easy_my_coop_dividend     => do not move to oca, not installable
+    # easy_my_coop_es           => coopdevs
+    # easy_my_coop_es_website   => coopdevs
+    # easy_my_coop_export_xlsx  => do not move to oca, not installable
+    # easy_my_coop_fr
     "easy_my_coop_fr": "l10n_fr_cooperator",
-    # easy_my_coop_loan
-    # easy_my_coop_loan_account
-    # easy_my_coop_loan_account_be
-    # easy_my_coop_loan_bba
-    # easy_my_coop_loan_website
+    # easy_my_coop_loan         => do not move to oca, seldom used, not mature
+    # easy_my_coop_loan_account => idem
+    # easy_my_coop_loan_account_be => idem
+    # easy_my_coop_loan_bba     => idem
+    # easy_my_coop_loan_website => idem
     # easy_my_coop_payment_term
     # easy_my_coop_taxshelter_report
     "easy_my_coop_taxshelter_report": "l10n_be_cooperator",
@@ -38,9 +39,8 @@ renamed_modules = {
     # easy_my_coop_website_portal
     "easy_my_coop_website_portal": "cooperator_portal",
     # easy_my_coop_website_taxshelter
-    # partner_age
-    # setup
-    # theme_light
+    # partner_age               => move to addons
+    # theme_light               => remove from dependencies
     # website_recaptcha_reloaded
 }
 
