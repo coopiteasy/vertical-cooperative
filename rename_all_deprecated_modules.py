@@ -28,7 +28,7 @@ def filter_databases(databases):
 
 
 def now():
-    return datetime.datetime.now().strftime("%Y-%m-%dT%H-%m")
+    return datetime.datetime.now().strftime("%Y-%m-%dT%H-%M")
 
 
 def main():
