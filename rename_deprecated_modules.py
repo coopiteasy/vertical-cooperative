@@ -24,7 +24,7 @@ renamed_modules = {
     # easy_my_coop_es
     # easy_my_coop_es_website
     # easy_my_coop_export_xlsx
-    # easy_my_coop_fr
+    "easy_my_coop_fr": "l10n_fr_cooperator",
     # easy_my_coop_loan
     # easy_my_coop_loan_account
     # easy_my_coop_loan_account_be
