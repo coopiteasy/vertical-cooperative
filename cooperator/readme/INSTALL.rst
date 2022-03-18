@@ -17,7 +17,7 @@ And then pip-install them [from pypi](https://pypi.org/user/coopdevs/).
 
 ### Example
 
-For instance, for the addon `easy_my_coop_website_portal`
+For instance, for the addon `cooperator_portal`
 
 .. code-block:: shell
 

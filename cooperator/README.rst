@@ -17,7 +17,7 @@ Easy My Coop
     :target: https://github.com/coopiteasy/vertical-cooperative/tree/12.0/easy_my_coop
     :alt: coopiteasy/vertical-cooperative
 
-|badge1| |badge2| |badge3| 
+|badge1| |badge2| |badge3|
 
 Manage cooperators of a cooperative.
 
@@ -63,7 +63,7 @@ And then pip-install them [from pypi](https://pypi.org/user/coopdevs/).
 
 ### Example
 
-For instance, for the addon `easy_my_coop_website_portal`
+For instance, for the addon `cooperator_portal`
 ```shell
 pip install odoo12-addon-easy-my-coop-website-portal==12.0.1.0.0.99.dev9
 ```
