@@ -662,6 +662,12 @@ class SubscriptionRequest(models.Model):
         # To be overridden
         return True
 
+    def _get_partner_domain(self):
+        if self.email:
+            return [('email', '=', self.email)]
+        else:
+            return None
+
     @api.multi
     def validate_subscription_request(self):
         # todo rename to validate (careful with iwp dependencies)
@@ -695,8 +701,8 @@ class SubscriptionRequest(models.Model):
                         self.company_register_number,
                     )
                 ]  # noqa
-            elif not self.is_company and self.email:
-                domain = [("email", "=", self.email)]
+            elif not self.is_company:
+                domain = self._get_partner_domain()
 
             if domain:
                 partner = partner_obj.search(domain)
@@ -711,8 +717,8 @@ class SubscriptionRequest(models.Model):
 
         if self.is_company and not partner.has_representative():
             contact = False
-            if self.email:
-                domain = [("email", "=", self.email)]
+            domain = self._get_partner_domain()
+            if domain:
                 contact = partner_obj.search(domain)
                 if contact:
                     contact.type = "representative"
