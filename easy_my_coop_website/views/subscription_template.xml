@@ -799,11 +799,11 @@
         <xpath expr="." position="inside">
             <script
                 type="text/javascript"
-                src="/easy_my_coop/static/src/js/cooperator.js"
+                src="/cooperator/static/src/js/cooperator.js"
             />
             <script
                 type="text/javascript"
-                src="/easy_my_coop/static/src/js/jquery.inputmask.bundle.js"
+                src="/cooperator/static/src/js/jquery.inputmask.bundle.js"
             />
         </xpath>
     </template>
