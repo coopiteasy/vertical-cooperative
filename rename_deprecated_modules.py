@@ -32,6 +32,7 @@ renamed_modules = {
     # easy_my_coop_loan_website
     # easy_my_coop_payment_term
     # easy_my_coop_taxshelter_report
+    "easy_my_coop_taxshelter_report": "l10n_be_cooperator",
     # easy_my_coop_website
     # easy_my_coop_website_portal
     # easy_my_coop_website_taxshelter
