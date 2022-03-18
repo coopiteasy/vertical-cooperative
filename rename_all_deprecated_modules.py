@@ -8,7 +8,6 @@
 not work for you if your server is different.
 """
 
-import datetime
 import logging
 import os
 import pathlib
@@ -27,16 +26,14 @@ def filter_databases(databases):
     return [database for database in databases if database.endswith("-test")]
 
 
-def now():
-    return datetime.datetime.now().strftime("%Y-%m-%dT%H-%M")
-
-
 def main():
     os.chdir(pathlib.Path(__file__).parent)
     logging.basicConfig(level=logging.INFO)
     databases = filter_databases(all_databases())
     for database in databases:
-        new_database = f"{database}-renamedep-{now()}"
+        new_database = f"{database}-renamedep"
+        _logger.info(f"Removing {new_database} if it exists")
+        subprocess.run(["ociedoo", "drop-db", new_database])
         _logger.info(f"Creating {new_database} from {database}")
         subprocess.run(["ociedoo", "copy-db", database, new_database], check=True)
         _logger.info(f"Running renaming migration on {new_database}")
