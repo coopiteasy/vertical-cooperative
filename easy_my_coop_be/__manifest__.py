@@ -5,7 +5,7 @@
 {
     "name": "Easy My Coop Belgium",
     "summary": "Easy My Coop Belgium Localization",
-    "version": "12.0.1.2.0",
+    "version": "12.0.1.3.0",
     "depends": [
         "easy_my_coop",
         "easy_my_coop_website",
