@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).#
 {
     "name": "Easy My Coop Fr",
-    "version": "12.0.1.0.2",
+    "version": "12.0.1.1.0",
     "depends": ["easy_my_coop", "easy_my_coop_website", "l10n_fr"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
