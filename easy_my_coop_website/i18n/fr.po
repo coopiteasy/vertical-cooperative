@@ -79,9 +79,8 @@ msgid "Become cooperator"
 msgstr "Devenir coopérateur (personne physique)"
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "Birthdate"
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.contact_template
+msgid "Date of birth"
 msgstr "Date de naissance"
 
 #. module: easy_my_coop_website
@@ -268,9 +267,8 @@ msgid "Main Address"
 msgstr "Adresse de la société"
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "Parts number"
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.shares_template
+msgid "Share number"
 msgstr "Nombre de parts"
 
 #. module: easy_my_coop_website
