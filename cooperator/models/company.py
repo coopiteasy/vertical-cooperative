@@ -33,8 +33,7 @@ class ResCompany(models.Model):
     board_representative = fields.Char(string="Board representative name")
     signature_scan = fields.Binary(string="Board representative signature")
     property_cooperator_account = fields.Many2one(
-        "account.account",
-        company_dependent=True,
+        comodel_name="account.account",
         string="Cooperator Account",
         domain=[
             ("internal_type", "=", "receivable"),
@@ -44,7 +43,6 @@ class ResCompany(models.Model):
         " the default one as the"
         " receivable account for the"
         " cooperators",
-        required=True,
     )
     unmix_share_type = fields.Boolean(
         string="Unmix share type",
