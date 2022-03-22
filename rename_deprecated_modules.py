@@ -37,7 +37,7 @@ renamed_modules = {
     # easy_my_coop_loan_bba         => idem
     # easy_my_coop_loan_website     => idem
     # easy_my_coop_payment_term
-    # "easy_my_coop_payment_term": "cooperator_capital_release_payment_term",
+    "easy_my_coop_payment_term": "cooperator",
     # easy_my_coop_taxshelter_report => ok
     "easy_my_coop_taxshelter_report": "l10n_be_cooperator",
     # easy_my_coop_website
