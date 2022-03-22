@@ -13,11 +13,14 @@ class ResCompany(models.Model):
         base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         self.logo_url = base_url + "/logo.png"
 
-    coop_email_contact = fields.Char(
-        string="Contact email address for the" " cooperator"
-    )
+    coop_email_contact = fields.Char(string="Contact email address for the cooperator")
     subscription_maximum_amount = fields.Float(
-        string="Maximum authorised" " subscription amount"
+        string="Maximum authorised subscription amount"
+    )
+    default_capital_release_request_payment_term = fields.Many2one(
+        comodel_name="account.payment.term",
+        string="Default Payment Term",
+        help="Default payment term to use for capital release requests",
     )
     default_country_id = fields.Many2one(
         "res.country",
