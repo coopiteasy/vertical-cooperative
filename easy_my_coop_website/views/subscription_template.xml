@@ -61,7 +61,7 @@
                         required="True"
                         t-att-readonly="logged"
                     >
-                        <option value="male">
+                        <option value="">
                             <t t-foreach="genders or []" t-as="type">
                                 <option
                                     t-att-value="type[0]"
