@@ -45,7 +45,7 @@ renamed_modules = {
     # easy_my_coop_website_portal   => ok
     "easy_my_coop_website_portal": "cooperator_portal",
     # easy_my_coop_website_taxshelter
-    # "easy_my_coop_website_taxshelter": "l10n_be_cooperator_portal"
+    "easy_my_coop_website_taxshelter": "l10n_be_cooperator_portal",
     # partner_age                   => dependency removed, move to addons
     # theme_light                   => remove from dependencies
     # website_recaptcha_reloaded    => move to addons
