@@ -94,9 +94,7 @@ class PortalTaxShelter(CustomerPortal):
                 "default_url": "/my/tax_shelter_certificates",
             }
         )
-        return request.render(
-            "easy_my_coop_website_taxshelter.portal_my_tax_shelter", values
-        )
+        return request.render("l10n_be_cooperator_portal.portal_my_tax_shelter", values)
 
     # Black adds a trailing comma after last argument of function definition
     #  this syntax is invalid for python < 3.6
@@ -134,7 +132,7 @@ class PortalTaxShelter(CustomerPortal):
             "shares",
         ):
             report_ref = (
-                "easy_my_coop_taxshelter_report.action_tax_shelter_%s_report"
+                "l10n_be_cooperator.action_tax_shelter_%s_report"
                 % (query_string)
             )
             return self._show_report(
@@ -148,5 +146,5 @@ class PortalTaxShelter(CustomerPortal):
             taxshelter_certificate_sudo, access_token, **kw
         )
         return request.render(
-            "easy_my_coop_website_taxshelter.portal_taxshelter_page", values
+            "l10n_be_cooperator_portal.portal_taxshelter_page", values
         )
