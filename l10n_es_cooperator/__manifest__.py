@@ -1,5 +1,5 @@
 {
-    "name": "Easy My Coop Spain",
+    "name": "Cooperator Spain Localisation",
     "version": "12.0.0.0.16",
     "depends": ["cooperator"],
     "author": "Coop IT Easy SCRLfs, " "Coopdevs Treball SCCL",
@@ -7,7 +7,7 @@
     "website": "https://coopiteasy.be",
     "category": "Cooperative management",
     "summary": """
-    Easy My Coop localization for Spain
+    Cooperator localization for Spain
     """,
     "license": "AGPL-3",
     "data": [
