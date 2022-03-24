@@ -22,3 +22,7 @@ Features:
 - Send automatic mail to the future cooperator during the procedure
 - Can be used with multi-company configuration
 - Generate Cooperator Certificate and several reports about cooperators
+
+Configurations:
+
+- set on the company a default payment term for the capital release requests.

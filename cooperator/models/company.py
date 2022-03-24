@@ -13,11 +13,14 @@ class ResCompany(models.Model):
         base_url = self.env["ir.config_parameter"].sudo().get_param("web.base.url")
         self.logo_url = base_url + "/logo.png"
 
-    coop_email_contact = fields.Char(
-        string="Contact email address for the" " cooperator"
-    )
+    coop_email_contact = fields.Char(string="Contact email address for the cooperator")
     subscription_maximum_amount = fields.Float(
-        string="Maximum authorised" " subscription amount"
+        string="Maximum authorised subscription amount"
+    )
+    default_capital_release_request_payment_term = fields.Many2one(
+        comodel_name="account.payment.term",
+        string="Default Payment Term",
+        help="Default payment term to use for capital release requests",
     )
     default_country_id = fields.Many2one(
         "res.country",
@@ -30,8 +33,7 @@ class ResCompany(models.Model):
     board_representative = fields.Char(string="Board representative name")
     signature_scan = fields.Binary(string="Board representative signature")
     property_cooperator_account = fields.Many2one(
-        "account.account",
-        company_dependent=True,
+        comodel_name="account.account",
         string="Cooperator Account",
         domain=[
             ("internal_type", "=", "receivable"),
@@ -41,7 +43,6 @@ class ResCompany(models.Model):
         " the default one as the"
         " receivable account for the"
         " cooperators",
-        required=True,
     )
     unmix_share_type = fields.Boolean(
         string="Unmix share type",
