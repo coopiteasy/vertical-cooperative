@@ -26,7 +26,8 @@ renamed_modules = {
     # easy_my_coop_connector
     # "easy_my_coop_connector": "cooperator_connector",
     # easy_my_coop_dividend         => do not move to oca, not installable
-    # easy_my_coop_es               => coopdevs
+    # easy_my_coop_es
+    "easy_my_coop_es": "l10n_es_cooperator",
     # easy_my_coop_es_website       => coopdevs
     # easy_my_coop_export_xlsx      => do not move to oca, not installable
     # easy_my_coop_fr               => ok
