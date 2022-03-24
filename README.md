@@ -37,7 +37,6 @@ addon | version | maintainers | summary
 [cooperator_api_logs](cooperator_api_logs/) | 12.0.0.0.1 |  | Helpers to log calls in and out of cooperators_api.
 [cooperator_portal](cooperator_portal/) | 12.0.2.0.2 |  | Show cooperator information in the website portal.
 [easy_my_coop_connector](easy_my_coop_connector/) | 12.0.0.0.1 |  | Connect to Easy My Coop RESTful API.
-[easy_my_coop_es_website](easy_my_coop_es_website/) | 12.0.0.0.6 |  | Easy My Coop Website localization for Spain
 [easy_my_coop_loan](easy_my_coop_loan/) | 12.0.2.0.1 |  | This module allows to manage the bonds and subordinated loans subscription life cycle.
 [easy_my_coop_loan_account](easy_my_coop_loan_account/) | 12.0.1.0.0 |  | This module brings the accounting part of the loan issue. It has for purpose to generate all the accounting entries to the covered use cases.
 [easy_my_coop_loan_account_be](easy_my_coop_loan_account_be/) | 12.0.1.0.0 |  | This module install belgian localisation demo data for EMC loan account. It also trigger installation for the dependency module
