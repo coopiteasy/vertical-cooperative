@@ -67,8 +67,6 @@ class WebsiteSubscription(http.Controller):
     @http.route(
         ["/page/become_cooperator", "/become_cooperator"],
         type="http",
-        auth="public",
-        website=True,
     )
     def display_become_cooperator_page(self, **kwargs):
         values = {}
@@ -91,7 +89,6 @@ class WebsiteSubscription(http.Controller):
         ["/page/become_company_cooperator", "/become_company_cooperator"],
         type="http",
         auth="public",
-        website=True,
     )
     def display_become_company_cooperator_page(self, **kwargs):
         values = {}
@@ -165,7 +162,7 @@ class WebsiteSubscription(http.Controller):
 
     def fill_values(self, values, is_company, logged, load_from_user=False):
         sub_req_obj = request.env["subscription.request"]
-        company = request.website.company_id
+        company = request.env["res.company"].search([])
         products = self.get_products_share(is_company)
 
         if load_from_user:
@@ -258,7 +255,7 @@ class WebsiteSubscription(http.Controller):
             redirect = "easy_my_coop_website.becomecompanycooperator"
             email = kwargs.get("company_email")
         # TODO: Use a overloaded function with the captcha implementation
-        if request.website.company_id.captcha_type == "google":
+        if request.env["res.company"].captcha_type == "google":
             if (
                 "g-recaptcha-response" not in kwargs
                 or kwargs["g-recaptcha-response"] == ""
@@ -270,7 +267,9 @@ class WebsiteSubscription(http.Controller):
                 )
 
                 return request.render(redirect, values)
-            elif not request.website.is_captcha_valid(kwargs["g-recaptcha-response"]):
+            elif not request.env["portal.mixin"].is_captcha_valid(
+                kwargs["g-recaptcha-response"]
+            ):
                 values = self.fill_values(values, is_company, logged)
                 values.update(kwargs)
                 values["error_msg"] = _(
@@ -316,7 +315,7 @@ class WebsiteSubscription(http.Controller):
         # There's no issue with the email, so we can remember the confirmation email
         values["confirm_email"] = email
 
-        company = request.website.company_id
+        company = request.env["res.company"].search([])
         if company.allow_id_card_upload:
             if not post_file:
                 values = self.fill_values(values, is_company, logged)
@@ -365,7 +364,6 @@ class WebsiteSubscription(http.Controller):
         type="json",
         auth="public",
         methods=["POST"],
-        website=True,
     )
     def get_share_product(self, share_product_id, **kw):
         product_template = request.env["product.template"]
@@ -382,7 +380,6 @@ class WebsiteSubscription(http.Controller):
         ["/subscription/subscribe_share"],
         type="http",
         auth="public",
-        website=True,
     )  # noqa: C901 (method too complex)
     def share_subscription(self, **kwargs):  # noqa: C901 (method too complex)
         sub_req_obj = request.env["subscription.request"]
