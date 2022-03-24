@@ -8,8 +8,8 @@
     "version": "12.0.2.0.6",
     "depends": [
         "cooperator",
-        "website",
-        "website_recaptcha_reloaded",
+        "portal",
+        "website_recaptcha",
     ],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
