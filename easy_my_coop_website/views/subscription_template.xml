@@ -420,8 +420,8 @@
     <template id="captcha_template" name="captcha_template">
         <div
             class="g-recaptcha text-xs-center"
-            t-if="website.company_id.captcha_type == 'google'"
-            t-att-data-sitekey="website.recaptcha_key_site"
+            t-if="res_company.captcha_type == 'google'"
+            t-att-data-sitekey="request.env['ir.config_parameter'].sudo().get_param('recaptcha_key_site')"
             data-theme="green"
             name="recaptcha_key_site"
         />
@@ -442,7 +442,7 @@
     </template>
 
     <template id="becomecooperator" name="Become Cooperator">
-        <t t-call="website.layout">
+        <t t-call="portal.frontend_layout">
             <div id="wrap" class="o_portal_wrap">
                 <div class="container oe_easymy_coop">
                     <div class="row justify-content-center">
@@ -590,7 +590,7 @@
 
 
     <template id="becomecompanycooperator" name="Become Cooperator">
-        <t t-call="website.layout">
+        <t t-call="portal.frontend_layout">
             <div id="wrap" class="o_portal_wrap">
                 <div class="container oe_easymy_coop">
                     <div class="row justify-content-center">
@@ -808,7 +808,7 @@
         </xpath>
     </template>
 
-    <template
+    <!-- <template
         id="company_operational_offices"
         inherit_id="website.company_description"
         name="Company Description"
@@ -823,10 +823,10 @@
                 />
             </t>
         </address>
-    </template>
+    </template> -->
 
     <template id="cooperator_thanks" name="Cooperator contact us">
-        <t t-call="website.layout">
+        <t t-call="portal.frontend_layout">
             <div id="wrap">
                 <div class="oe_structure" />
                 <div class="container">
@@ -860,7 +860,7 @@
                             </ul>
                         </div>
                         <div class="col-md-4">
-                            <t t-call="website.company_description" />
+                            <!-- <t t-call="website.company_description" /> -->
                         </div>
                     </div>
                 </div>
@@ -870,20 +870,15 @@
     </template>
 
 
-    <record id="menu_becomecooperator" model="website.menu">
+    <!-- <record id="menu_becomecooperator" model="website.menu">
         <field name="name">Become cooperator</field>
         <field name="url">/page/become_cooperator</field>
         <field name="parent_id" ref="website.main_menu" />
         <field name="sequence" type="int">65</field>
-    </record>
+    </record> -->
 
-    <!--<template id="footer_coop_email_contact" inherit_id="website.footer_default" customize_show="True" name="Coop email contact">
-    <xpath expr="//span[@t-field='res_company.email']" position="replace">
-        <span t-field="res_company.coop_email_contact"></span>
-    </xpath>
-</template>-->
 
-    <template
+    <!-- <template
         id="company_description_coop_email_contact"
         inherit_id="website.company_description"
         name="Company Description Email Contact"
@@ -902,5 +897,5 @@
                 </li>
             </ul>
         </xpath>
-    </template>
+    </template> -->
 </odoo>
