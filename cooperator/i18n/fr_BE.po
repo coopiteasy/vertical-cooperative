@@ -972,7 +972,7 @@ msgstr "Peut-être souscrite par des personnes physiques?"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:cooperator.operation_request_form
-#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_form
+#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 #: model_terms:ir.ui.view,arch_db:cooperator.view_create_subscription
 #: model_terms:ir.ui.view,arch_db:cooperator.view_update_partner_info
 #: model_terms:ir.ui.view,arch_db:cooperator.view_update_share_line_info
@@ -994,7 +994,7 @@ msgstr "Facture annulée"
 #. module: easy_my_coop
 #: model:ir.actions.report,name:cooperator.action_cooperator_invoices
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__capital_release_request
-#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_form
+#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 msgid "Capital release request"
 msgstr "Demande de libération de capital"
 
@@ -1168,7 +1168,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__partner_id
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__partner_id
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_subscription_G001
-#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_form
+#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 #: model_terms:ir.ui.view,arch_db:cooperator.view_share_line_filter
 msgid "Cooperator"
 msgstr "Coopérateur"
@@ -1938,7 +1938,7 @@ msgid "Receiver is not a member"
 msgstr "Le receveur n'est pas un membre"
 
 #. module: easy_my_coop
-#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_form
+#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 msgid "Reference"
 msgstr "Référence"
 
@@ -2279,7 +2279,7 @@ msgstr "Demande de souscription"
 
 #. module: easy_my_coop
 #: model_terms:ir.ui.view,arch_db:cooperator.operation_request_form
-#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_form
+#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_tree
 msgid "Subscription Requests"
 msgstr "Demandes de souscription"
@@ -2567,7 +2567,7 @@ msgid "Valid Subscription request?"
 msgstr ""
 
 #. module: easy_my_coop
-#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_form
+#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_tree
 #: model_terms:ir.ui.view,arch_db:cooperator.view_validate_subscription_request
 msgid "Validate"
@@ -2606,7 +2606,7 @@ msgid "Waiting"
 msgstr "En attente"
 
 #. module: easy_my_coop
-#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_form
+#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 msgid "Waiting list"
 msgstr "Liste d'attente"
 

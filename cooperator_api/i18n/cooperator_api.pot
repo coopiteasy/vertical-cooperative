@@ -16,7 +16,7 @@ msgstr ""
 #. module: cooperator_api
 #: model_terms:ir.ui.view,arch_db:cooperator_api.invoice_form
 #: model_terms:ir.ui.view,arch_db:cooperator_api.product_template_form_view
-#: model_terms:ir.ui.view,arch_db:cooperator_api.subscription_request_form
+#: model_terms:ir.ui.view,arch_db:cooperator_api.subscription_request_view_form
 #: model_terms:ir.ui.view,arch_db:cooperator_api.view_account_form
 #: model_terms:ir.ui.view,arch_db:cooperator_api.view_account_journal_form
 #: model_terms:ir.ui.view,arch_db:cooperator_api.view_account_payment_form
@@ -146,7 +146,7 @@ msgstr ""
 #. module: cooperator_api
 #: model_terms:ir.ui.view,arch_db:cooperator_api.invoice_form
 #: model_terms:ir.ui.view,arch_db:cooperator_api.product_template_form_view
-#: model_terms:ir.ui.view,arch_db:cooperator_api.subscription_request_form
+#: model_terms:ir.ui.view,arch_db:cooperator_api.subscription_request_view_form
 #: model_terms:ir.ui.view,arch_db:cooperator_api.view_account_form
 #: model_terms:ir.ui.view,arch_db:cooperator_api.view_account_journal_form
 #: model_terms:ir.ui.view,arch_db:cooperator_api.view_account_payment_form
