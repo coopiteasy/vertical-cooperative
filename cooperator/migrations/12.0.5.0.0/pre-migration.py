@@ -23,6 +23,14 @@ renamed_xml_ids = (
         "cooperator.view_account_bank_journal_form_coop",
         "cooperator.view_account_bank_journal_form",
     ),
+    (
+        "cooperator.action_easy_my_coop_email_templates",
+        "cooperator.mail_template_action",
+    ),
+    (
+        "cooperator.email_template_form_emh",
+        "cooperator.email_template_form",
+    ),
 )
 
 
