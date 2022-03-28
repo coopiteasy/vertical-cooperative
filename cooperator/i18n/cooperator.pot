@@ -866,7 +866,7 @@ msgstr ""
 
 #. module: cooperator
 #: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_config
-#: model_terms:ir.ui.view,arch_db:cooperator.product_template_share_form_view
+#: model_terms:ir.ui.view,arch_db:cooperator.product_template_form_view
 msgid "Configuration"
 msgstr ""
 
@@ -1326,7 +1326,7 @@ msgid "Get general payments?"
 msgstr ""
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.share_product_filter
+#: model_terms:ir.ui.view,arch_db:cooperator.product_template_search_view
 #: model_terms:ir.ui.view,arch_db:cooperator.view_share_line_filter
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_register_filter
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_request_filter
@@ -1386,7 +1386,7 @@ msgid "Individual company"
 msgstr ""
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.product_template_share_form_view
+#: model_terms:ir.ui.view,arch_db:cooperator.product_template_form_view
 msgid "Info"
 msgstr ""
 
@@ -2056,7 +2056,7 @@ msgid "Share\n"
 msgstr ""
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.product_template_share_form_view
+#: model_terms:ir.ui.view,arch_db:cooperator.product_template_form_view
 msgid "Share Information"
 msgstr ""
 
