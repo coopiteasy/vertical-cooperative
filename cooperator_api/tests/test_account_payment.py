@@ -17,7 +17,7 @@ class TestAccountPaymentController(BaseEMCRestCase):
 
     def setUp(self):
         res = super().setUp()
-        collection = _PseudoCollection("emc.services", self.env)
+        collection = _PseudoCollection("cooperator.services", self.env)
         emc_services_env = WorkContext(
             model_name="rest.service.registration", collection=collection
         )

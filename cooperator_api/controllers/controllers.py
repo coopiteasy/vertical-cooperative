@@ -12,7 +12,7 @@ from odoo.addons.base_rest.controllers import main
 
 class UserController(main.RestController):
     _root_path = "/api/"
-    _collection_name = "emc.services"
+    _collection_name = "cooperator.services"
     _default_auth = "api_key"
 
     def _process_method(self, service_name, method_name, *args, params=None):
