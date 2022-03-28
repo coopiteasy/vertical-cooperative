@@ -5,8 +5,8 @@
 -->
 <odoo>
     <data>
-        <record id="view_partner_form_easy_my_coop" model="ir.ui.view">
-            <field name="name">res.partner.form.easy_my_coop</field>
+        <record id="view_partner_form" model="ir.ui.view">
+            <field name="name">view_partner_form</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form" />
             <field name="arch" type="xml">
@@ -137,8 +137,8 @@
             </field>
         </record>
 
-        <record id="view_partner_tree_easy_my_coop" model="ir.ui.view">
-            <field name="name">res.partner.tree.easy_my_coop</field>
+        <record id="view_partner_tree" model="ir.ui.view">
+            <field name="name">view_partner_tree</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_tree" />
             <field name="arch" type="xml">
@@ -150,7 +150,7 @@
             </field>
         </record>
 
-        <record id="view_res_partner_filter_coop" model="ir.ui.view">
+        <record id="view_res_partner_filter" model="ir.ui.view">
             <field name="name">res.partner.select</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_res_partner_filter" />
