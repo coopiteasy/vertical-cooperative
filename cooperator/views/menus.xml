@@ -28,8 +28,8 @@
     />
     <menuitem
         name="Register Payment"
-        id="menu_action_invoice_tree_coop"
-        action="action_invoice_tree_coop"
+        id="menu_account_invoice_action"
+        action="account_invoice_action"
         parent="menu_easy_my_coop_main_subscription"
         groups="cooperator.group_easy_my_coop_user"
         sequence="130"
