@@ -1162,18 +1162,13 @@ msgstr ""
 
 #. module: cooperator
 #: selection:subscription.request,source:0
-msgid "Easy My Coop API"
+msgid "Cooperator API"
 msgstr ""
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_email_template_preview__easy_my_coop
 #: model:ir.model.fields,field_description:cooperator.field_mail_template__easy_my_coop
-msgid "Easy my coop mail template"
-msgstr ""
-
-#. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.view_company_inherit_form2
-msgid "EasyMy Coop"
+msgid "Cooperator mail template"
 msgstr ""
 
 #. module: cooperator
