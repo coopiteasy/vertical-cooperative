@@ -43,6 +43,10 @@ renamed_xml_ids = (
         "cooperator.share_product_action",
         "cooperator.product_template_action",
     ),
+    (
+        "cooperator.view_company_inherit_form2",
+        "cooperator.view_company_form",
+    ),
 )
 
 
