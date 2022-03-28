@@ -11,7 +11,7 @@ from .common import BaseEMCRestCase
 
 class TestPing(BaseEMCRestCase):
     def test_public_service(self):
-        collection = _PseudoCollection("emc.services", self.env)
+        collection = _PseudoCollection("cooperator.services", self.env)
         emc_services_env = WorkContext(
             model_name="rest.service.registration", collection=collection
         )
