@@ -20,7 +20,7 @@ _logger = logging.getLogger(__name__)
 
 class AccountInvoiceService(Component):
     _name = "account.invoice.service"
-    _inherit = "emc.rest.service"
+    _inherit = "cooperator.rest.service"
     _usage = "invoice"
     _description = """
         Account Invoice Services
