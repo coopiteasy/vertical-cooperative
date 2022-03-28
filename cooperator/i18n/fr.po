@@ -1497,7 +1497,7 @@ msgstr "Compte Coopérateur"
 
 #. module: cooperator
 #: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_cooperator_candidate
-#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter
 msgid "Cooperator Candidates"
 msgstr "Candidats coopérateur"
 
@@ -1513,14 +1513,14 @@ msgid "Cooperator Number"
 msgstr "Numéro de coopérateur"
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter
 msgid "Cooperator Partners"
 msgstr ""
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__cooperator_type
 #: model:ir.model.fields,field_description:cooperator.field_res_users__cooperator_type
-#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter
 msgid "Cooperator Type"
 msgstr "Type de coopérateur"
 
@@ -1549,7 +1549,7 @@ msgstr "Registre des coopérateurs"
 #: model:account.account,name:cooperator.account_cooperator_demo
 #: model:ir.actions.act_window,name:cooperator.action_partner_cooperator_form
 #: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter
 msgid "Cooperators"
 msgstr "Coopérateurs"
 
@@ -1561,7 +1561,7 @@ msgstr "Pays"
 #. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.action_view_create_subscription
 #: model_terms:ir.ui.view,arch_db:cooperator.view_create_subscription
-#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form_easy_my_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form
 msgid "Create Subscription"
 msgstr "Créer une demande de souscription"
 
@@ -2273,7 +2273,7 @@ msgid "Number of unread messages"
 msgstr "Nombre de part(s)"
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter
 msgid "Old Cooperators"
 msgstr "Anciens coopérateurs"
 
@@ -2715,7 +2715,7 @@ msgid "Share price"
 msgstr "Prix de la part"
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form_easy_my_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form
 msgid "Share subscriptions"
 msgstr "Souscriptions de part"
 
@@ -2767,7 +2767,7 @@ msgid "Share update"
 msgstr "Mise à jour des parts"
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form_easy_my_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form
 msgid "Shares"
 msgstr "Parts"
 
@@ -3070,7 +3070,7 @@ msgid "Total amount line"
 msgstr "Montant total"
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form_easy_my_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form
 msgid "Total of shares"
 msgstr "Total des parts"
 
@@ -3085,7 +3085,7 @@ msgid "Total quantity"
 msgstr "Quantité totale"
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form_easy_my_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form
 msgid "Total subscribed amount"
 msgstr "Montant total souscrit"
 
@@ -3197,7 +3197,7 @@ msgstr "Mettre à jour depuis la demande de souscription"
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.share_line_form
-#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form_easy_my_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form
 msgid "Update info"
 msgstr "Mettre à jour les informations"
 
