@@ -7,7 +7,7 @@ from odoo import fields, models
 
 
 class EMCAPILog(models.Model):
-    _name = "emc.api.log"
+    _name = "cooperator.api.log"
     _description = "Logs call to EMC API"
     _order = "datetime desc"
 
