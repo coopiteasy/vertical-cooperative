@@ -29,7 +29,6 @@
     "license": "AGPL-3",
     "data": [
         "data/easy_my_coop_data.xml",
-        "data/paperformat.xml",
         "security/res_groups.xml",
         "security/ir.model.access.csv",
         "wizard/create_subscription_from_partner.xml",
