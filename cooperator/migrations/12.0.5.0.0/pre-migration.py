@@ -15,6 +15,14 @@ renamed_xml_ids = (
         "cooperator.action_invoice_tree_coop",
         "cooperator.account_invoice_action",
     ),
+    (
+        "cooperator.view_account_journal_form_coop",
+        "cooperator.view_account_journal_form",
+    ),
+    (
+        "cooperator.view_account_bank_journal_form_coop",
+        "cooperator.view_account_bank_journal_form",
+    ),
 )
 
 
