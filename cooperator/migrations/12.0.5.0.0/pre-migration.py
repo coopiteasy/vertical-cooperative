@@ -31,6 +31,18 @@ renamed_xml_ids = (
         "cooperator.email_template_form_emh",
         "cooperator.email_template_form",
     ),
+    (
+        "cooperator.product_template_share_form_view",
+        "cooperator.product_template_form_view",
+    ),
+    (
+        "cooperator.share_product_filter",
+        "cooperator.product_template_search_view",
+    ),
+    (
+        "cooperator.share_product_action",
+        "cooperator.product_template_action",
+    ),
 )
 
 

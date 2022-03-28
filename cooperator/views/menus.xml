@@ -98,7 +98,7 @@
     <menuitem
         name="Share type"
         id="menu_easy_my_coop_share_product"
-        action="share_product_action"
+        action="product_template_action"
         parent="menu_easy_my_coop_config"
         sequence="410"
     />
