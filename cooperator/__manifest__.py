@@ -38,7 +38,7 @@
         "wizard/validate_subscription_request.xml",
         "wizard/update_share_line.xml",
         "views/subscription_request_view.xml",
-        "views/email_template_view.xml",
+        "views/mail_template_view.xml",
         "views/res_partner_view.xml",
         "views/subscription_register_view.xml",
         "views/operation_request_view.xml",
