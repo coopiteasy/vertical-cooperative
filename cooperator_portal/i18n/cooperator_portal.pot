@@ -180,7 +180,7 @@ msgid "Your Cooperator Details"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_home_capital_release
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_home
 msgid "Your Release Capital Requests"
 msgstr ""
 
