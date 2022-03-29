@@ -79,8 +79,8 @@
         </field>
     </record>
 
-    <record id="tax_shelter_declaration_tree" model="ir.ui.view">
-        <field name="name">tax.shelter.declaration.tree</field>
+    <record id="tax_shelter_declaration_view_tree" model="ir.ui.view">
+        <field name="name">tax.shelter.declaration.view.tree</field>
         <field name="model">tax.shelter.declaration</field>
         <field name="arch" type="xml">
             <tree string="Tax shelter declaration">
@@ -98,7 +98,7 @@
         <field name="res_model">tax.shelter.declaration</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="tax_shelter_declaration_tree" />
+        <field name="view_id" ref="tax_shelter_declaration_view_tree" />
     </record>
 
     <menuitem
