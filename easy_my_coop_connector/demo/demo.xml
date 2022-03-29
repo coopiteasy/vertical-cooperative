@@ -14,7 +14,7 @@
     </data>
 
     <record id="cooperator.subscription_request_1_demo" model="subscription.request">
-        <field name="source">emc_api</field>
+        <field name="source">connector_api</field>
     </record>
 
     <record
