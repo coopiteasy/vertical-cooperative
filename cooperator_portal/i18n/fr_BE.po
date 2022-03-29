@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_home_menu_capital_request
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_breadcrumbs
 msgid "<em>Draft Request</em>"
 msgstr ""
 
@@ -74,7 +74,7 @@ msgid "Birthdate"
 msgstr "Date de naissance"
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_home_menu_capital_request
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_breadcrumbs
 msgid "Capital Request"
 msgstr ""
 
