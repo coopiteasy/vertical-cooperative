@@ -701,7 +701,7 @@ msgstr "Certificats Tax shelter"
 
 #. module: l10n_be_cooperator
 #: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_form
-#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_tree
+#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_view_tree
 msgid "Tax shelter declaration"
 msgstr "Déclaration Tax shelter"
 
