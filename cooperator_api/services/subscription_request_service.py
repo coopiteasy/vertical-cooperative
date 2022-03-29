@@ -166,7 +166,7 @@ class SubscriptionRequestService(Component):
             "phone": params.get("phone"),
             "skip_iban_control": params.get("skip_iban_control"),
             "capital_release_request_date": params.get("capital_release_request_date"),
-            "source": "emc_api",
+            "source": "cooperator_api",
         }
 
     def _prepare_update(self, params):

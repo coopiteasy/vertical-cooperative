@@ -10,8 +10,7 @@ class SubscriptionRequest(models.Model):
     _name = "subscription.request"
     _inherit = ["subscription.request", "external.id.mixin"]
 
-    # 'emc_api' is a legacy implementation detail.
-    source = fields.Selection(selection_add=[("emc_api", "Cooperators API")])
+    source = fields.Selection(selection_add=[("cooperator_api", "Cooperators API")])
 
     @api.multi
     def update_state(self, state):
