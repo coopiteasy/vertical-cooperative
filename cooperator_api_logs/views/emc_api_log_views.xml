@@ -39,8 +39,8 @@
         </field>
     </record>
 
-    <record id="emc_api_log_view_tree" model="ir.ui.view">
-        <field name="name">emc_api_log_view_tree</field>
+    <record id="cooperator_api_log_view_tree" model="ir.ui.view">
+        <field name="name">cooperator_api_log_view_tree</field>
         <field name="model">cooperator.api.log</field>
         <field name="arch" type="xml">
             <tree>
