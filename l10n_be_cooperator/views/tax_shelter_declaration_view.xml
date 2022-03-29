@@ -110,8 +110,8 @@
         groups="cooperator.group_easy_my_coop_user"
     />
 
-    <record id="tax_shelter_certificate_form" model="ir.ui.view">
-        <field name="name">tax.shelter.certificate.form</field>
+    <record id="tax_shelter_certificate_view_form" model="ir.ui.view">
+        <field name="name">tax.shelter.certificate.view.form</field>
         <field name="model">tax.shelter.certificate</field>
         <field name="arch" type="xml">
             <form string="Tax shelter certificate">
