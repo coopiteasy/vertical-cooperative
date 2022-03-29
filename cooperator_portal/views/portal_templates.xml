@@ -84,7 +84,7 @@
 
     <!-- Add cooperator information -->
     <template
-        id="website_portal_details_form"
+        id="portal_layout"
         name="Website Portal Details Form"
         inherit_id="portal.portal_layout"
     >
