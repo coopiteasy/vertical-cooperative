@@ -34,7 +34,7 @@ msgid "Display Name"
 msgstr ""
 
 #. module: cooperator_api_logs
-#: model:ir.actions.act_window,name:cooperator_api_logs.emc_api_log_action
+#: model:ir.actions.act_window,name:cooperator_api_logs.cooperator_api_log_action
 #: model:ir.ui.menu,name:cooperator_api_logs.emc_api_log_menu
 msgid "EMC API Logs"
 msgstr ""
