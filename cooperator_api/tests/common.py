@@ -16,7 +16,7 @@ HOST = "127.0.0.1"
 PORT = odoo.tools.config["http_port"]
 
 
-class BaseEMCRestCase(BaseRestCase):
+class BaseCooperatorRestCase(BaseRestCase):
     @classmethod
     def setUpClass(cls, *args, **kwargs):
         super().setUpClass(*args, **kwargs)

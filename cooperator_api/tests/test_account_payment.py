@@ -7,10 +7,10 @@ from odoo.fields import Date
 from odoo.addons.base_rest.controllers.main import _PseudoCollection
 from odoo.addons.component.core import WorkContext
 
-from .common import BaseEMCRestCase
+from .common import BaseCooperatorRestCase
 
 
-class TestAccountPaymentController(BaseEMCRestCase):
+class TestAccountPaymentController(BaseCooperatorRestCase):
     @classmethod
     def setUpClass(cls, *args, **kwargs):
         super().setUpClass(*args, **kwargs)
@@ -18,11 +18,11 @@ class TestAccountPaymentController(BaseEMCRestCase):
     def setUp(self):
         res = super().setUp()
         collection = _PseudoCollection("cooperator.services", self.env)
-        emc_services_env = WorkContext(
+        cooperator_services_env = WorkContext(
             model_name="rest.service.registration", collection=collection
         )
-        self.ap_service = emc_services_env.component(usage="payment")
-        self.ai_service = emc_services_env.component(usage="invoice")
+        self.ap_service = cooperator_services_env.component(usage="payment")
+        self.ai_service = cooperator_services_env.component(usage="invoice")
         self.demo_request_1 = self.browse_ref("cooperator.subscription_request_1_demo")
         self.demo_request_1.write(
             {
