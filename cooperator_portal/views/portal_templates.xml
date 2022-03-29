@@ -203,7 +203,7 @@
     </template>
 
     <template
-        id="portal_my_home_capital_release"
+        id="portal_my_home"
         name="Portal My Home : Cooperator Capital Release Requests"
         inherit_id="portal.portal_my_home"
         priority="30"

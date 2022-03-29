@@ -19,6 +19,10 @@ renamed_xml_ids = (
         "cooperator_portal.portal_my_home_menu_capital_request",
         "cooperator_portal.portal_breadcrumbs",
     ),
+    (
+        "cooperator_portal.portal_my_home_capital_release",
+        "cooperator_portal.portal_my_home",
+    ),
 )
 
 
