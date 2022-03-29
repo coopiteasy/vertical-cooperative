@@ -661,7 +661,7 @@ msgstr ""
 
 #. module: l10n_be_cooperator
 #: model:ir.actions.act_window,name:l10n_be_cooperator.tax_shelter_certificate_action
-#: model:ir.ui.menu,name:l10n_be_cooperator.menu_tax_shelter_certificate
+#: model:ir.ui.menu,name:l10n_be_cooperator.tax_shelter_certificate_menu
 msgid "Tax Shelter Certificates"
 msgstr "Attestations Tax Shelter"
 
