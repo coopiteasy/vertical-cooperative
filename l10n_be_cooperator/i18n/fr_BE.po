@@ -342,7 +342,7 @@ msgstr "Date de fin"
 #. module: l10n_be_cooperator
 #: model:ir.model.fields,field_description:l10n_be_cooperator.field_certificate_line__declaration_id
 #: model:ir.model.fields,field_description:l10n_be_cooperator.field_tax_shelter_certificate__declaration_id
-#: model:ir.ui.menu,name:l10n_be_cooperator.menu_easy_my_coop_main_declaration
+#: model:ir.ui.menu,name:l10n_be_cooperator.main_declaration_menu
 msgid "Declaration"
 msgstr "Déclaration"
 
