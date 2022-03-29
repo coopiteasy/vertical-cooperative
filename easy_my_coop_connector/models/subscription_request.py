@@ -15,7 +15,7 @@ _logger = logging.getLogger(__name__)
 class SubscriptionRequest(models.Model):
     _inherit = "subscription.request"
 
-    source = fields.Selection(selection_add=[("emc_api", "Easy My Coop API")])
+    source = fields.Selection(selection_add=[("connector_api", "Easy My Coop API")])
     binding_id = fields.One2many(
         comodel_name="emc.binding.subscription.request",
         inverse_name="internal_id",
@@ -96,7 +96,7 @@ class SubscriptionRequest(models.Model):
         self.ensure_one()
         invoice = super().validate_subscription_request()
 
-        if self.source == "emc_api":
+        if self.source == "connector_api":
             backend = self.env["emc.backend"].get_backend()
             sr_adapter = SubscriptionRequestAdapter(backend=backend, record=self)
             _, request_dict = sr_adapter.update({"state": "done"})
@@ -107,7 +107,7 @@ class SubscriptionRequest(models.Model):
     def block_subscription_request(self):
         self.ensure_one()
         super().block_subscription_request()
-        if self.source == "emc_api":
+        if self.source == "connector_api":
             backend = self.env["emc.backend"].get_backend()
             sr_adapter = SubscriptionRequestAdapter(backend=backend, record=self)
             _, request_dict = sr_adapter.update({"state": "block"})
@@ -116,7 +116,7 @@ class SubscriptionRequest(models.Model):
     def unblock_subscription_request(self):
         self.ensure_one()
         super().unblock_subscription_request()
-        if self.source == "emc_api":
+        if self.source == "connector_api":
             backend = self.env["emc.backend"].get_backend()
             sr_adapter = SubscriptionRequestAdapter(backend=backend, record=self)
             _, request_dict = sr_adapter.update({"state": "draft"})
@@ -125,7 +125,7 @@ class SubscriptionRequest(models.Model):
     def cancel_subscription_request(self):
         self.ensure_one()
         super().cancel_subscription_request()
-        if self.source == "emc_api":
+        if self.source == "connector_api":
             backend = self.env["emc.backend"].get_backend()
             sr_adapter = SubscriptionRequestAdapter(backend=backend, record=self)
             _, request_dict = sr_adapter.update({"state": "cancelled"})
@@ -134,7 +134,7 @@ class SubscriptionRequest(models.Model):
     def put_on_waiting_list(self):
         self.ensure_one()
         super().put_on_waiting_list()
-        if self.source == "emc_api":
+        if self.source == "connector_api":
             backend = self.env["emc.backend"].get_backend()
             sr_adapter = SubscriptionRequestAdapter(backend=backend, record=self)
             _, request_dict = sr_adapter.update({"state": "waiting"})
