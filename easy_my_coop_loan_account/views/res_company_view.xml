@@ -9,7 +9,7 @@
                 <group
                     name="coop_loan_grp"
                     string="EasyMy Coop Loan"
-                    groups="cooperator.group_easy_my_coop_user"
+                    groups="cooperator.cooperator_group_user"
                 >
                     <field name="days_ahead" />
                     <field name="awaiting_loan_payment_account" />

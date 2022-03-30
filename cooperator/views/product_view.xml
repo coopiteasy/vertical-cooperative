@@ -6,13 +6,13 @@
         <field name="inherit_id" ref="product.product_template_form_view" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='purchase_ok']/.." position="after">
-                <div groups="cooperator.group_easy_my_coop_manager">
+                <div groups="cooperator.cooperator_group_manager">
                     <field name="is_share" />
                     <label for="is_share" />
                 </div>
                 <div
                     attrs="{'invisible':[('is_share','=',False)]}"
-                    groups="cooperator.group_easy_my_coop_user"
+                    groups="cooperator.cooperator_group_user"
                 >
                     <field name="display_on_website" />
                     <label for="display_on_website" />
@@ -23,7 +23,7 @@
                     string="Share Information"
                     name="share_information"
                     attrs="{'invisible':[('is_share','=',False)]}"
-                    groups="cooperator.group_easy_my_coop_user"
+                    groups="cooperator.cooperator_group_user"
                 >
                     <group>
                         <group name="Info" string="Info">
