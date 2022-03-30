@@ -21,3 +21,8 @@ def migrate(env, version):
 
     _logger.info("renaming template xml_ids")
     openupgrade.rename_xmlids(env.cr, renamed_template_xml_ids)
+
+    _logger.info("renaming easy_my_coop field on mail.template")
+    openupgrade.rename_fields(
+        [("mail.template", "mail_template", "easy_my_coop", "is_cooperator_template")]
+    )
