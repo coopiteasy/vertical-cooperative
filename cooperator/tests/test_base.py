@@ -5,7 +5,7 @@
 import odoo.tests.common as common
 
 
-class EMCBaseCase(common.TransactionCase):
+class CooperatorBaseCase(common.TransactionCase):
     @classmethod
     def setUpClass(cls, *args, **kwargs):
         super().setUpClass(*args, **kwargs)
@@ -118,7 +118,7 @@ class EMCBaseCase(common.TransactionCase):
         return True
 
     def setUp(self):
-        super(EMCBaseCase, self).setUp()
+        super(CooperatorBaseCase, self).setUp()
         self._chart_template_create()
         self._add_chart_of_accounts()
         self._journals_setup()
@@ -126,8 +126,8 @@ class EMCBaseCase(common.TransactionCase):
     def as_user(self):
         self.uid = self.ref("base.user_demo")
 
-    def as_emc_user(self):
+    def as_cooperator_user(self):
         self.uid = self.ref("cooperator.res_users_user_cooperator_demo")
 
-    def as_emc_manager(self):
+    def as_cooperator_manager(self):
         self.uid = self.ref("cooperator.res_users_manager_cooperator_demo")
