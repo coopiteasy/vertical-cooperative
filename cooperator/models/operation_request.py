@@ -292,7 +292,7 @@ class OperationRequest(models.Model):
         self, sub_register_line
     ):  # fixme unused argument is used in synergie project. Do not remove.
         if self.company_id.send_share_transfer_email:
-            cert_email_template = self._get_share_transfert_mail_template()
+            cert_email_template = self._get_share_transfer_mail_template()
             cert_email_template.send_mail(self.partner_id_to.id, False)
 
     def _send_share_update_mail(
