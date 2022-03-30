@@ -2064,7 +2064,7 @@ msgid "Manage your cooperative."
 msgstr "Helps you manage your cooperator."
 
 #. module: cooperator
-#: model:res.groups,name:cooperator.group_easy_my_coop_manager
+#: model:res.groups,name:cooperator.cooperator_group_manager
 msgid "Manager"
 msgstr "Manager"
 
@@ -3150,7 +3150,7 @@ msgid "Update info"
 msgstr "Laatst bijgewerkt op"
 
 #. module: cooperator
-#: model:res.groups,name:cooperator.group_easy_my_coop_user
+#: model:res.groups,name:cooperator.cooperator_group_user
 msgid "User"
 msgstr "Gebruiker"
 

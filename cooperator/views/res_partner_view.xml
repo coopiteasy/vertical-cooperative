@@ -17,7 +17,7 @@
                             name="%(action_view_create_subscription)d"
                             type="action"
                             context="{'default_active_id': active_id}"
-                            groups="cooperator.group_easy_my_coop_user"
+                            groups="cooperator.cooperator_group_user"
                         />
                         <button
                             id="action_view_update_partner_info"
@@ -25,7 +25,7 @@
                             name="%(action_view_update_partner_info)d"
                             type="action"
                             context="{'default_active_id': active_id}"
-                            groups="cooperator.group_easy_my_coop_user"
+                            groups="cooperator.cooperator_group_user"
                         />
                     </header>
                 </sheet>
@@ -50,16 +50,16 @@
                             />
                             <field
                                 name="coop_candidate"
-                                groups="cooperator.group_easy_my_coop_user"
+                                groups="cooperator.cooperator_group_user"
                             />
                             <field
                                 name="cooperator"
                                 invisible="True"
-                                groups="cooperator.group_easy_my_coop_manager"
+                                groups="cooperator.cooperator_group_manager"
                             />
                             <field
                                 name="member"
-                                groups="cooperator.group_easy_my_coop_manager"
+                                groups="cooperator.cooperator_group_manager"
                             />
                             <field
                                 name="cooperator_type"
@@ -94,7 +94,7 @@
                         string="Shares"
                         name="share"
                         attrs="{'invisible':[('member','=',False)]}"
-                        groups="cooperator.group_easy_my_coop_user"
+                        groups="cooperator.cooperator_group_user"
                     >
                         <group>
                             <field name="number_of_share" />
@@ -117,7 +117,7 @@
                         string="Share subscriptions"
                         name="share_subscription"
                         attrs="{'invisible':[('cooperator','=',False)]}"
-                        groups="cooperator.group_easy_my_coop_user"
+                        groups="cooperator.cooperator_group_user"
                     >
                         <field name="subscription_request_ids">
                             <tree create="false" delete="false" edit="false">
