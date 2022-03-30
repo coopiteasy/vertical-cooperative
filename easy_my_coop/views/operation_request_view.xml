@@ -127,7 +127,8 @@
                             context="{'default_is_operation': True, 'default_ordered_parts':quantity,'default_share_product_id': share_product_id, 'default_source':'operation'}"
                         >
                             <tree>
-                                <field name="name" />
+                                <field name="firstname" />
+                                <field name="lastname" />
                                 <field name="birthdate" />
                                 <field name="phone" />
                                 <field name="email" />
@@ -138,7 +139,6 @@
                                 <sheet>
                                     <group>
                                         <group>
-                                            <field name="name" />
                                             <field name="firstname" />
                                             <field name="lastname" />
                                             <field name="birthdate" />
