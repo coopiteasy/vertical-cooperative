@@ -6,7 +6,7 @@
         <field name="res_model">mail.template</field>
         <field name="view_type">form</field>
         <field name="view_mode">form,tree</field>
-        <field name="domain">[('easy_my_coop','=',True)]</field>
+        <field name="domain">[('is_cooperator_template','=',True)]</field>
         <field name="view_id" ref="mail.email_template_tree" />
         <field name="search_view_id" ref="mail.view_email_template_search" />
     </record>
@@ -17,7 +17,7 @@
         <field name="inherit_id" ref="mail.email_template_form" />
         <field name="arch" type="xml">
             <field name="mail_server_id" position="after">
-                <field name="easy_my_coop" />
+                <field name="is_cooperator_template" />
             </field>
         </field>
     </record>
