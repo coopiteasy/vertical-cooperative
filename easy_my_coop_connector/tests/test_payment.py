@@ -9,12 +9,12 @@ import requests
 
 from odoo.fields import Date
 
-from odoo.addons.cooperator.tests.test_base import EMCBaseCase
+from odoo.addons.cooperator.tests.test_base import CooperatorBaseCase
 
 from .test_data import AP_CREATE_RESULT, SR_VALIDATE_RESULT, dict_to_dump
 
 
-class EMCPaymentConnectorCase(EMCBaseCase):
+class EMCPaymentConnectorCase(CooperatorBaseCase):
     def setUp(self):
         super().setUp()
         self.backend = self.browse_ref("easy_my_coop_connector.emc_backend_demo")
