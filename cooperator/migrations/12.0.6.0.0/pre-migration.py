@@ -4,6 +4,7 @@ import logging
 # openupgradelib
 from openupgradelib import openupgrade
 
+from .groups import renamed_group_xml_ids
 from .menus import renamed_menu_xml_ids
 
 _logger = logging.getLogger(__name__ + " 12.0.6.0.0")
@@ -15,4 +16,4 @@ def migrate(env, version):
     openupgrade.rename_xmlids(env.cr, renamed_menu_xml_ids)
 
     _logger.info("renaming group xml_ids")
-    openupgrade.rename_xmlids(env.cr, renamed_menu_xml_ids)
+    openupgrade.rename_xmlids(env.cr, renamed_group_xml_ids)
