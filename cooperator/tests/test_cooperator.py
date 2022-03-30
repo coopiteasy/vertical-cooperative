@@ -6,12 +6,12 @@
 from odoo.exceptions import AccessError
 from odoo.fields import Date
 
-from .test_base import EMCBaseCase
+from .test_base import CooperatorBaseCase
 
 
-class EMCCase(EMCBaseCase):
+class CooperatorCase(CooperatorBaseCase):
     def setUp(self):
-        super(EMCCase, self).setUp()
+        super(CooperatorCase, self).setUp()
 
         self.request = self.browse_ref("cooperator.subscription_request_1_demo")
         self.bank_journal_euro = self.env["account.journal"].create(
@@ -22,12 +22,12 @@ class EMCCase(EMCBaseCase):
         )
 
     def test_put_on_waiting_list(self):
-        self.as_emc_user()
+        self.as_cooperator_user()
         self.request.put_on_waiting_list()
         self.assertEquals(self.request.state, "waiting")
 
     def test_validate_subscription_request(self):
-        self.as_emc_user()
+        self.as_cooperator_user()
         # todo missing structure fails the rules?
         self.request.validate_subscription_request()
 
@@ -41,7 +41,7 @@ class EMCCase(EMCBaseCase):
         self.assertTrue(self.request.capital_release_request.sent)
 
     def test_register_payment_for_capital_release(self):
-        self.as_emc_user()
+        self.as_cooperator_user()
         self.request.validate_subscription_request()
         invoice = self.request.capital_release_request
 
@@ -105,7 +105,7 @@ class EMCCase(EMCBaseCase):
             share_line.share_number = 3
 
         # test ir model access for cooperator coop user
-        self.as_emc_user()
+        self.as_cooperator_user()
         read_request = self.browse_ref("cooperator.subscription_request_1_demo")
         read_request.name = "test write request"
         create_request = self.env["subscription.request"].create(request_values)
@@ -138,7 +138,7 @@ class EMCCase(EMCBaseCase):
             share_type.unlink()
 
         # test ir model access for cooperator manager
-        self.as_emc_manager()
+        self.as_cooperator_manager()
         read_request = self.browse_ref("cooperator.subscription_request_1_demo")
         read_request.name = "test write request"
         create_request = self.env["subscription.request"].create(request_values)
