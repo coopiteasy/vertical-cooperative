@@ -433,6 +433,7 @@ class SubscriptionRequest(models.Model):
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
+    # todo : check all these sources are used
     source = fields.Selection(
         [
             ("website", "Website"),
