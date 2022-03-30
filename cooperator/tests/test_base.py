@@ -127,7 +127,7 @@ class EMCBaseCase(common.TransactionCase):
         self.uid = self.ref("base.user_demo")
 
     def as_emc_user(self):
-        self.uid = self.ref("cooperator.res_users_user_emc_demo")
+        self.uid = self.ref("cooperator.res_users_user_cooperator_demo")
 
     def as_emc_manager(self):
-        self.uid = self.ref("cooperator.res_users_manager_emc_demo")
+        self.uid = self.ref("cooperator.res_users_manager_cooperator_demo")
