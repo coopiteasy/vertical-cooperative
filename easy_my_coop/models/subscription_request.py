@@ -34,7 +34,6 @@ class SubscriptionRequest(models.Model):
     _name = "subscription.request"
     _description = "Subscription Request"
     _inherit = ["mail.thread", "mail.activity.mixin"]
-    _rec_name = "lastname"
 
     def get_required_field(self):
         required_fields = _REQUIRED
@@ -144,6 +143,12 @@ class SubscriptionRequest(models.Model):
             return False
 
     @api.multi
+    @api.depends("firstname", "lastname")
+    def _compute_name(self):
+        for sub_request in self:
+            sub_request.name = " ".join([self.firstname, self.lastname])
+
+    @api.multi
     @api.depends("iban", "skip_control_ng")
     def _compute_validated_lines(self):
         for sub_request in self:
@@ -164,10 +169,12 @@ class SubscriptionRequest(models.Model):
         states={"draft": [("readonly", False)]},
     )
 
-    # deprecated, used to keep historic data
+    # previously, this was a normal field. it is now computed, and is used for
+    # the form title, and to allow for searching by any part of the full name.
     name = fields.Char(
         string="Name",
-        readonly=True,
+        compute="_compute_name",
+        store=True,
     )
     firstname = fields.Char(
         string="Firstname",
