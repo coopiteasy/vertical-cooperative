@@ -3,7 +3,7 @@
         <menuitem
             name="Dividend"
             id="menu_easy_my_coop_main_dividend"
-            parent="cooperator.menu_main_easy_my_coop"
+            parent="cooperator.menu_cooperator_main"
             groups="cooperator.group_easy_my_coop_user"
             sequence="30"
         />
