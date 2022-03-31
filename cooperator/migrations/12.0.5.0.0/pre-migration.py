@@ -6,7 +6,67 @@ from openupgradelib import openupgrade
 
 _logger = logging.getLogger(__name__ + " 12.0.5.0.0")
 
-renamed_xml_ids = (
+renamed_group_xml_ids = (
+    ("cooperator.group_easy_my_coop_user", "cooperator.cooperator_group_user"),
+    ("cooperator.group_easy_my_coop_manager", "cooperator.cooperator_group_manager"),
+)
+
+renamed_menu_xml_ids = (
+    (
+        "cooperator.menu_main_easy_my_coop",
+        "cooperator.menu_cooperator_main",
+    ),
+    (
+        "cooperator.menu_easy_my_coop_main_subscription",
+        "cooperator.menu_cooperator_main_subscription",
+    ),
+    (
+        "cooperator.menu_easy_my_coop_subscription_request",
+        "cooperator.menu_cooperator_subscription_request",
+    ),
+    (
+        "cooperator.menu_easy_my_coop_cooperator_candidate",
+        "cooperator.menu_cooperator_cooperator_candidate",
+    ),
+    (
+        "cooperator.menu_easy_my_coop_subscription_register",
+        "cooperator.menu_cooperator_subscription_register",
+    ),
+    (
+        "cooperator.menu_easy_my_coop_operation_request",
+        "cooperator.menu_cooperator_operation_request",
+    ),
+    (
+        "cooperator.menu_easy_my_coop_main_coop",
+        "cooperator.menu_cooperator_main_coop",
+    ),
+    (
+        "cooperator.menu_easy_my_coop_cooperator",
+        "cooperator.menu_cooperator_cooperator",
+    ),
+    (
+        "cooperator.menu_easy_my_coop_company_representative",
+        "cooperator.menu_cooperator_company_representative",
+    ),
+    (
+        "cooperator.menu_easy_my_coop_main_reporting",
+        "cooperator.menu_cooperator_main_reporting",
+    ),
+    (
+        "cooperator.menu_easy_my_coop_config",
+        "cooperator.menu_cooperator_config",
+    ),
+    (
+        "cooperator.menu_easy_my_coop_share_product",
+        "cooperator.menu_cooperator_share_product",
+    ),
+    (
+        "cooperator.menu_easy_my_coop_templates",
+        "cooperator.menu_cooperator_templates",
+    ),
+)
+
+renamed_view_xml_ids = (
     (
         "cooperator.subscription_request_form",
         "cooperator.subscription_request_view_form",
@@ -61,8 +121,27 @@ renamed_xml_ids = (
     ),
 )
 
+renamed_template_xml_ids = [
+    ("cooperator.emc_external_layout_standard", "cooperator.external_layout_standard")
+]
+
 
 @openupgrade.migrate()
 def migrate(env, version):
-    _logger.info("renaming xml_ids")
-    openupgrade.rename_xmlids(env.cr, renamed_xml_ids)
+    _logger.info("renaming view xml ids")
+    openupgrade.rename_xmlids(env.cr, renamed_view_xml_ids)
+
+    _logger.info("renaming menu xml ids")
+    openupgrade.rename_xmlids(env.cr, renamed_menu_xml_ids)
+
+    _logger.info("renaming group xml ids")
+    openupgrade.rename_xmlids(env.cr, renamed_group_xml_ids)
+
+    _logger.info("renaming template xml ids")
+    openupgrade.rename_xmlids(env.cr, renamed_template_xml_ids)
+
+    _logger.info("renaming easy_my_coop field on mail.template")
+    openupgrade.rename_fields(
+        env,
+        [("mail.template", "mail_template", "easy_my_coop", "is_cooperator_template")],
+    )
