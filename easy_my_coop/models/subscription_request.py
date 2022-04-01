@@ -146,7 +146,9 @@ class SubscriptionRequest(models.Model):
     @api.depends("firstname", "lastname")
     def _compute_name(self):
         for sub_request in self:
-            sub_request.name = " ".join([self.firstname, self.lastname])
+            sub_request.name = " ".join(
+                part for part in (self.firstname, self.lastname) if part
+            )
 
     @api.multi
     @api.depends("iban", "skip_control_ng")
