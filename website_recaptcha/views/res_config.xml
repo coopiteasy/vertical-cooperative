@@ -10,13 +10,6 @@
                 <xpath expr="//div[@name='integration']" position="after">
                     <h2>Portal reCaptcha2</h2>
                     <div class="row o_settings_container mt16">
-                    <!-- <div
-                        class="app_settings_block"
-                        data-string=""
-                        string="Shifts Management"
-                        data-key="beesdoo_shift"
-                        groups="group_cooperative_admin"
-                    >                     -->
                     <div
                             class="col-xs-12 col-md-6 o_setting_box"
                             id="reCaptcha_setting"
@@ -31,12 +24,6 @@
                                     class="mr-2"
                                     src="website_recaptcha/static/description/icon.png"
                                 />
-                            <!-- <label for="has_google_recaptcha" string="reCaptcha" />
-                            <span
-                                class="fa fa-lg fa-globe"
-                                title="Values set here are website-specific."
-                                groups="website.group_multi_website"
-                            /> -->
                             <div class="text-muted mt8">
                                 Protect your forms using reCaptcha control.
                             </div>

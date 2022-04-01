@@ -12,9 +12,6 @@ URL = "https://www.google.com/recaptcha/api/siteverify"
 class PortalMixin(models.AbstractModel):
     _inherit = "portal.mixin"
 
-    # recaptcha_key_site = fields.Char()
-    # recaptcha_key_secret = fields.Char()
-
     @api.model
     def _get_error_message(self, errorcode=None):
         mapping = {
