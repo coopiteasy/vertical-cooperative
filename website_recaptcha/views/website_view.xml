@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<openerp>
+<odoo>
     <data>
 
         <template
             id="assets_editor_recaptcha"
             name="GoogleRecaptcha"
-            inherit_id="website.layout"
+            inherit_id="portal.frontend_layout"
         >
             <xpath expr="//main" position="inside">
                 <script src="https://www.google.com/recaptcha/api.js" />
@@ -30,4 +30,4 @@
             </field>
         </record>-->
     </data>
-</openerp>
+</odoo>
