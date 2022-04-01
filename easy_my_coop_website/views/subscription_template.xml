@@ -243,7 +243,7 @@
             t-attf-class="form-group #{error and 'file' in error and 'has-error' or ''}"
             name="resume_container"
         >
-        <label for="Resume">Idendity
+        <label for="Resume">Identity
             card scan
         </label>
         <div class="col-md-7 col-sm-8">

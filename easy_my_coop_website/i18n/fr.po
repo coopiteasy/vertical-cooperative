@@ -217,7 +217,7 @@ msgstr ""
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid ""
-"Idendity\n"
+"Identity\n"
 "                                        card scan"
 msgstr ""
 
