@@ -266,7 +266,7 @@ class WebsiteSubscription(http.Controller):
             redirect = "easy_my_coop_website.becomecompanycooperator"
             email = kwargs.get("company_email")
         # TODO: Use a overloaded function with the captcha implementation
-        if request.website.company_id.captcha_type == "google":
+        if request.env["res.company"].captcha_type == "google":
             if (
                 "g-recaptcha-response" not in kwargs
                 or kwargs["g-recaptcha-response"] == ""
@@ -278,7 +278,9 @@ class WebsiteSubscription(http.Controller):
                 )
 
                 return request.render(redirect, values)
-            elif not request.website.is_captcha_valid(kwargs["g-recaptcha-response"]):
+            elif not request.env["portal.mixin"].is_captcha_valid(
+                kwargs["g-recaptcha-response"]
+            ):
                 values = self.fill_values(values, is_company, logged)
                 values.update(kwargs)
                 values["error_msg"] = _(
