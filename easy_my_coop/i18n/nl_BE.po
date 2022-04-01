@@ -1105,7 +1105,7 @@ msgstr "Become cooperator"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__birthdate
-msgid "Birthdate"
+msgid "Date of birth"
 msgstr "Geboortedatum"
 
 #. module: easy_my_coop
@@ -1745,8 +1745,8 @@ msgstr ""
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__firstname
-msgid "Firstname"
-msgstr "Firstname"
+msgid "First name"
+msgstr "Voornaam"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__message_follower_ids
@@ -2015,8 +2015,8 @@ msgstr "Laatst bijgewerkt op"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__lastname
-msgid "Lastname"
-msgstr "Lastname"
+msgid "Last name"
+msgstr "Achternaam"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_res_partner__representative
