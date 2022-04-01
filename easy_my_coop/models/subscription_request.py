@@ -179,19 +179,19 @@ class SubscriptionRequest(models.Model):
         store=True,
     )
     firstname = fields.Char(
-        string="Firstname",
+        string="First name",
         readonly=True,
         required=True,
         states={"draft": [("readonly", False)]},
     )
     lastname = fields.Char(
-        string="Lastname",
+        string="Last name",
         readonly=True,
         required=True,
         states={"draft": [("readonly", False)]},
     )
     birthdate = fields.Date(
-        string="Birthdate",
+        string="Date of birth",
         readonly=True,
         states={"draft": [("readonly", False)]},
     )

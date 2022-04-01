@@ -1092,7 +1092,7 @@ msgstr "Fes-te client/a"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__birthdate
-msgid "Birthdate"
+msgid "Date of birth"
 msgstr "Data de naixement"
 
 #. module: easy_my_coop
@@ -1704,7 +1704,7 @@ msgstr ""
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__firstname
-msgid "Firstname"
+msgid "First name"
 msgstr ""
 
 #. module: easy_my_coop
@@ -1968,7 +1968,7 @@ msgstr "Última actualització el"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__lastname
-msgid "Lastname"
+msgid "Last name"
 msgstr ""
 
 #. module: easy_my_coop
