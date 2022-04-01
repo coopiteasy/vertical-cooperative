@@ -355,7 +355,7 @@ msgstr "Vous ne pouvez souscrire à des types de parts différents"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "You have already an account?"
+msgid "Do you already have an account?"
 msgstr ""
 "Vous avez déjà un compte ? Cliquer ici pour vous connecter avant de remplir "
 "le formulaire de prises de parts."
@@ -371,6 +371,7 @@ msgstr ""
 #, python-format
 msgid "You need to upload a scan of your id card"
 msgstr "Vous devez charger une copie de votre carte d'identité."
+
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator

@@ -350,7 +350,7 @@ msgstr "Vous ne pouvez souscrire à des types de part différents."
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "You have already an account?"
+msgid "Do you already have an account?"
 msgstr "Vous avez déjà un compte?"
 
 #. module: easy_my_coop_website
