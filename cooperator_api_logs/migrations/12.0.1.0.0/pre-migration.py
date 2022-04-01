@@ -39,4 +39,4 @@ def migrate(env, version):
     _logger.info("renaming tables")
     openupgrade.rename_tables(env.cr, renamed_tables)
     _logger.info("renaming xmlids")
-    openupgrade.renamed_xmlids(env.cr, renamed_xmlids)
+    openupgrade.rename_xmlids(env.cr, renamed_xmlids)
