@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 {
-    "name": "Easy My Coop Connector",
+    "name": "Cooperators Connector",
     "version": "12.0.0.0.1",
     "depends": [
         "cooperator",
@@ -14,7 +14,7 @@
     "website": "https://coopiteasy.be",
     "license": "AGPL-3",
     "summary": """
-        Connect to Easy My Coop RESTful API.
+        Connect to Cooperators RESTful API.
     """,
     "data": [
         "security/ir.model.access.csv",
