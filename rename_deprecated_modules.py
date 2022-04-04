@@ -19,6 +19,7 @@ renamed_modules = {
     "easy_my_coop_be": "l10n_be_cooperator",
     "easy_my_coop_ch": "l10n_ch_cooperator",
     # easy_my_coop_connector        => waiting for financité
+    "easy_my_coop_connector": "cooperator_connector",
     # easy_my_coop_dividend         => do not move to oca, not installable
     "easy_my_coop_es": "l10n_es_cooperator",
     "easy_my_coop_es_website": "l10n_es_cooperator",
