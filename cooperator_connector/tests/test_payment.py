@@ -17,7 +17,7 @@ from .test_data import AP_CREATE_RESULT, SR_VALIDATE_RESULT, dict_to_dump
 class EMCPaymentConnectorCase(EMCBaseCase):
     def setUp(self):
         super().setUp()
-        self.backend = self.browse_ref("easy_my_coop_connector.emc_backend_demo")
+        self.backend = self.browse_ref("cooperator_connector.emc_backend_demo")
         self.env["emc.binding.account.journal"].create(
             {
                 "backend_id": self.backend.id,

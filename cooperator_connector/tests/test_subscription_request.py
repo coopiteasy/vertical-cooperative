@@ -16,7 +16,7 @@ from .test_data import SR_GET_RESULT, SR_SEARCH_RESULT, SR_VALIDATE_RESULT, dict
 class EMCSRConnectorCase(EMCBaseCase):
     def setUp(self):
         super().setUp()
-        self.backend = self.browse_ref("easy_my_coop_connector.emc_backend_demo")
+        self.backend = self.browse_ref("cooperator_connector.emc_backend_demo")
         self.share_type_B_pt = self.browse_ref(
             "cooperator.product_template_share_type_2_demo"
         )
