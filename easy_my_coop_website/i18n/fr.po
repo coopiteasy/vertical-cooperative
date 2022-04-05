@@ -113,13 +113,13 @@ msgstr "Structure juridique"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "Confirm E-mail"
-msgstr "Confirmer l'émail"
+msgid "Confirm Email"
+msgstr "Courriel (pour confirmation)"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 msgid "Confirm Email"
-msgstr "Confirmer l'émail"
+msgstr "Courriel (pour confirmation)"
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
@@ -166,7 +166,7 @@ msgstr "Vous voulez \n"
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "E-mail"
+msgid "Email"
 msgstr "Courriel"
 
 #. module: easy_my_coop_website
