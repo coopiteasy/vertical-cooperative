@@ -432,8 +432,8 @@ class WebsiteSubscription(http.Controller):
         if kwargs.get("generic_rules_approved", "off") == "on":
             values["generic_rules_approved"] = True
 
-        lastname = kwargs.get("lastname").upper()
-        firstname = kwargs.get("firstname").title()
+        lastname = kwargs.get("lastname")
+        firstname = kwargs.get("firstname")
 
         values["lastname"] = lastname
         values["firstname"] = firstname
