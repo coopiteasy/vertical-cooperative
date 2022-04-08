@@ -479,10 +479,16 @@
                                     t-attf-class="form-group"
                                     name="my_account_link_container"
                                 >
+                                <t t-if="redirect_url == null">
+                                    <t
+                                            t-set="redirect_url"
+                                            t-value="request.httprequest.url"
+                                        > </t>
+                                </t>
                                     <a
                                         class='btn btn-primary'
                                         t-if="not logged"
-                                        t-attf-href="/web/login?redirect=#{ request.httprequest.url }"
+                                        t-attf-href="/web/login?redirect=#{ redirect_url }"
                                         style="white-space: normal;"
                                     >
                                     Do you already have an account?

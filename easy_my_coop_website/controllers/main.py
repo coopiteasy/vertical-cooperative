@@ -85,6 +85,9 @@ class WebsiteSubscription(http.Controller):
                 values[field] = kwargs.pop(field)
 
         values.update(kwargs=kwargs.items())
+
+        # redirect url to fall back on become coopererator in template redirection
+        values["redirect_url"] = request.httprequest.url
         return request.render("easy_my_coop_website.becomecooperator", values)
 
     @http.route(
@@ -249,6 +252,8 @@ class WebsiteSubscription(http.Controller):
         sub_req_obj = request.env["subscription.request"]
 
         redirect = "easy_my_coop_website.becomecooperator"
+        # redirect url to fall back on become coopererator in template redirection
+        values["redirect_url"] = request.httprequest.host_url + "become_cooperator"
 
         email = kwargs.get("email")
         is_company = kwargs.get("is_company") == "on"
