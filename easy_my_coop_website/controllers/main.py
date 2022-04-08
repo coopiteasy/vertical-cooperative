@@ -1,6 +1,7 @@
 import base64
 import re
 from datetime import datetime
+from urllib.parse import urljoin
 
 from odoo import http
 from odoo.http import request
@@ -253,7 +254,9 @@ class WebsiteSubscription(http.Controller):
 
         redirect = "easy_my_coop_website.becomecooperator"
         # redirect url to fall back on become coopererator in template redirection
-        values["redirect_url"] = request.httprequest.host_url + "become_cooperator"
+        values["redirect_url"] = urljoin(
+            request.httprequest.host_url, "become_cooperator"
+        )
 
         email = kwargs.get("email")
         is_company = kwargs.get("is_company") == "on"
