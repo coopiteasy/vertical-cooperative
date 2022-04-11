@@ -1205,7 +1205,7 @@ msgstr "Devenir client"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__birthdate
-msgid "Birthdate"
+msgid "Date of birth"
 msgstr "Date de naissance"
 
 #. module: easy_my_coop
@@ -1835,7 +1835,7 @@ msgstr "Approbation de politique de gestion des données"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__firstname
-msgid "Firstname"
+msgid "First name"
 msgstr "Prénom"
 
 #. module: easy_my_coop
@@ -2106,7 +2106,7 @@ msgstr "Dernière mise à jour le"
 
 #. module: easy_my_coop
 #: model:ir.model.fields,field_description:easy_my_coop.field_subscription_request__lastname
-msgid "Lastname"
+msgid "Last name"
 msgstr "Nom"
 
 #. module: easy_my_coop
