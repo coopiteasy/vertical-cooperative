@@ -14,7 +14,11 @@
                         <field name="is_company" invisible="True" />
                         <field name="cooperator" invisible="True" />
                         <field
-                            name="representative_name"
+                            name="representative_firstname"
+                            attrs="{'invisible':[('is_company','=',False)],'required':[('is_company','=',True)]}"
+                        />
+                        <field
+                            name="representative_lastname"
                             attrs="{'invisible':[('is_company','=',False)],'required':[('is_company','=',True)]}"
                         />
                         <field
