@@ -92,49 +92,9 @@ class SubscriptionRequest(models.Model):
         _logger.info("fetch done.")
 
     @api.multi
-    def validate_subscription_request(self):
-        self.ensure_one()
-        invoice = super().validate_subscription_request()
-
+    def _set_state(self, state):
+        super()._set_state(state)
         if self.source == "emc_api":
             backend = self.env["emc.backend"].get_backend()
             sr_adapter = SubscriptionRequestAdapter(backend=backend, record=self)
-            _, request_dict = sr_adapter.update({"state": "done"})
-
-        return invoice
-
-    @api.multi
-    def block_subscription_request(self):
-        self.ensure_one()
-        super().block_subscription_request()
-        if self.source == "emc_api":
-            backend = self.env["emc.backend"].get_backend()
-            sr_adapter = SubscriptionRequestAdapter(backend=backend, record=self)
-            _, request_dict = sr_adapter.update({"state": "block"})
-
-    @api.multi
-    def unblock_subscription_request(self):
-        self.ensure_one()
-        super().unblock_subscription_request()
-        if self.source == "emc_api":
-            backend = self.env["emc.backend"].get_backend()
-            sr_adapter = SubscriptionRequestAdapter(backend=backend, record=self)
-            _, request_dict = sr_adapter.update({"state": "draft"})
-
-    @api.multi
-    def cancel_subscription_request(self):
-        self.ensure_one()
-        super().cancel_subscription_request()
-        if self.source == "emc_api":
-            backend = self.env["emc.backend"].get_backend()
-            sr_adapter = SubscriptionRequestAdapter(backend=backend, record=self)
-            _, request_dict = sr_adapter.update({"state": "cancelled"})
-
-    @api.multi
-    def put_on_waiting_list(self):
-        self.ensure_one()
-        super().put_on_waiting_list()
-        if self.source == "emc_api":
-            backend = self.env["emc.backend"].get_backend()
-            sr_adapter = SubscriptionRequestAdapter(backend=backend, record=self)
-            _, request_dict = sr_adapter.update({"state": "waiting"})
+            _, request_dict = sr_adapter.update({"state": state})

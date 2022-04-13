@@ -749,7 +749,7 @@ class SubscriptionRequest(models.Model):
                     contact.write({"parent_id": partner.id, "representative": True})
 
         invoice = self.create_invoice(partner)
-        self.write({"state": "done"})
+        self._set_state("done")
         self.set_membership()
 
         return invoice
@@ -759,21 +759,21 @@ class SubscriptionRequest(models.Model):
         self.ensure_one()
         if self.state != "draft":
             raise ValidationError(_("Only draft requests can be blocked."))
-        self.write({"state": "block"})
+        self._set_state("block")
 
     @api.multi
     def unblock_subscription_request(self):
         self.ensure_one()
         if self.state != "block":
             raise ValidationError(_("Only blocked requests can be unblocked."))
-        self.write({"state": "draft"})
+        self._set_state("draft")
 
     @api.multi
     def cancel_subscription_request(self):
         self.ensure_one()
         if self.state not in ("draft", "waiting", "done", "block"):
             raise ValidationError(_("You cannot cancel a request in this " "state."))
-        self.write({"state": "cancelled"})
+        self._set_state("cancelled")
 
     def _send_waiting_list_mail(self):
         if self.company_id.send_waiting_list_email:
@@ -790,4 +790,14 @@ class SubscriptionRequest(models.Model):
                 _("Only draft request can be put on the waiting list.")
             )
         self._send_waiting_list_mail()
-        self.write({"state": "waiting"})
+        self._set_state("waiting")
+
+    @api.multi
+    def _set_state(self, state):
+        """
+        Set the state of the subscription request.
+
+        No checks are done regarding whether this state transition is valid or
+        not. This function exists to allow subclasses to hook into this event.
+        """
+        self.write({"state": state})
