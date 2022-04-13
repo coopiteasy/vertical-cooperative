@@ -186,6 +186,7 @@ class ResPartner(models.Model):
             self.representative = True
         else:
             self.representative = False
+        return super().onchange_parent_id()
 
     @api.multi
     @api.depends("subscription_request_ids.state")
