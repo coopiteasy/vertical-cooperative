@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
-    <template id="iban_template_ch" inherit_id="easy_my_coop_website.iban_template">
+    <template id="iban_template_ch" inherit_id="cooperator_website.iban_template">
         <xpath expr="//div[@name='iban_template_container']" position="inside">
             <div
                 class="form-group field-bank_account"
