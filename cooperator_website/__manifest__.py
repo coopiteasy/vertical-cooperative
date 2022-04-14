@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 {
-    "name": "Easy My Coop Website",
+    "name": "Cooperator Website",
     "version": "12.0.2.0.6",
     "depends": [
         "cooperator",

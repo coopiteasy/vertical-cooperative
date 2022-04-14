@@ -85,7 +85,7 @@ class WebsiteSubscription(http.Controller):
                 values[field] = kwargs.pop(field)
 
         values.update(kwargs=kwargs.items())
-        return request.render("easy_my_coop_website.becomecooperator", values)
+        return request.render("cooperator_website.becomecooperator", values)
 
     @http.route(
         ["/page/become_company_cooperator", "/become_company_cooperator"],
@@ -105,7 +105,7 @@ class WebsiteSubscription(http.Controller):
             if kwargs.get(field):
                 values[field] = kwargs.pop(field)
         values.update(kwargs=kwargs.items())
-        return request.render("easy_my_coop_website.becomecompanycooperator", values)
+        return request.render("cooperator_website.becomecompanycooperator", values)
 
     def preRenderThanks(self, values, kwargs):
         """ Allow to be overrided """
@@ -113,7 +113,7 @@ class WebsiteSubscription(http.Controller):
 
     def get_subscription_response(self, values, kwargs):
         values = self.preRenderThanks(values, kwargs)
-        return request.render("easy_my_coop_website.cooperator_thanks", values)
+        return request.render("cooperator_website.cooperator_thanks", values)
 
     def get_date_string(self, birthdate):
         if birthdate:
@@ -248,14 +248,14 @@ class WebsiteSubscription(http.Controller):
         user_obj = request.env["res.users"]
         sub_req_obj = request.env["subscription.request"]
 
-        redirect = "easy_my_coop_website.becomecooperator"
+        redirect = "cooperator_website.becomecooperator"
 
         email = kwargs.get("email")
         is_company = kwargs.get("is_company") == "on"
 
         if is_company:
             is_company = True
-            redirect = "easy_my_coop_website.becomecompanycooperator"
+            redirect = "cooperator_website.becomecompanycooperator"
             email = kwargs.get("company_email")
         # TODO: Use a overloaded function with the captcha implementation
         if request.env["res.company"].captcha_type == "google":
