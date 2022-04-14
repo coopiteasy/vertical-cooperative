@@ -1,4 +1,4 @@
-This is the swiss localization for the easy my coop module
+This is the Swiss localization for the Cooperators module
 
 Features:
 
