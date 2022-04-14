@@ -2,13 +2,13 @@
 <odoo>
     <menuitem
         name="Declaration"
-        id="menu_easy_my_coop_main_declaration"
+        id="main_declaration_menu"
         parent="cooperator.menu_main_easy_my_coop"
         sequence="10"
     />
 
-    <record id="tax_shelter_declaration_form" model="ir.ui.view">
-        <field name="name">tax.shelter.declaration.form</field>
+    <record id="tax_shelter_declaration_view_form" model="ir.ui.view">
+        <field name="name">tax.shelter.declaration.view.form</field>
         <field name="model">tax.shelter.declaration</field>
         <field name="arch" type="xml">
             <form string="Tax shelter declaration">
@@ -79,8 +79,8 @@
         </field>
     </record>
 
-    <record id="tax_shelter_declaration_tree" model="ir.ui.view">
-        <field name="name">tax.shelter.declaration.tree</field>
+    <record id="tax_shelter_declaration_view_tree" model="ir.ui.view">
+        <field name="name">tax.shelter.declaration.view.tree</field>
         <field name="model">tax.shelter.declaration</field>
         <field name="arch" type="xml">
             <tree string="Tax shelter declaration">
@@ -98,20 +98,20 @@
         <field name="res_model">tax.shelter.declaration</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="tax_shelter_declaration_tree" />
+        <field name="view_id" ref="tax_shelter_declaration_view_tree" />
     </record>
 
     <menuitem
         action="tax_shelter_declaration_action"
         name="Tax Shelter Declaration"
-        id="menu_tax_shelter_declaration"
-        parent="menu_easy_my_coop_main_declaration"
+        id="tax_shelter_declaration_menu"
+        parent="main_declaration_menu"
         sequence="10"
         groups="cooperator.group_easy_my_coop_user"
     />
 
-    <record id="tax_shelter_certificate_form" model="ir.ui.view">
-        <field name="name">tax.shelter.certificate.form</field>
+    <record id="tax_shelter_certificate_view_form" model="ir.ui.view">
+        <field name="name">tax.shelter.certificate.view.form</field>
         <field name="model">tax.shelter.certificate</field>
         <field name="arch" type="xml">
             <form string="Tax shelter certificate">
@@ -246,8 +246,8 @@
     <menuitem
         action="tax_shelter_certificate_action"
         name="Tax Shelter Certificates"
-        id="menu_tax_shelter_certificate"
-        parent="menu_easy_my_coop_main_declaration"
+        id="tax_shelter_certificate_menu"
+        parent="main_declaration_menu"
         sequence="20"
         groups="cooperator.group_easy_my_coop_user"
     />

@@ -342,7 +342,7 @@ msgstr "Date de fin"
 #. module: l10n_be_cooperator
 #: model:ir.model.fields,field_description:l10n_be_cooperator.field_certificate_line__declaration_id
 #: model:ir.model.fields,field_description:l10n_be_cooperator.field_tax_shelter_certificate__declaration_id
-#: model:ir.ui.menu,name:l10n_be_cooperator.menu_easy_my_coop_main_declaration
+#: model:ir.ui.menu,name:l10n_be_cooperator.main_declaration_menu
 msgid "Declaration"
 msgstr "Déclaration"
 
@@ -380,7 +380,7 @@ msgid "Excluded cooperator"
 msgstr "Coopérateur exclus"
 
 #. module: l10n_be_cooperator
-#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_form
+#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_view_form
 msgid "Excluded from Tax shelter"
 msgstr "Exclu du Tax shelter"
 
@@ -552,27 +552,27 @@ msgid "Previously Subscribed lines"
 msgstr "Précédement souscrites"
 
 #. module: l10n_be_cooperator
-#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_certificate_form
+#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_certificate_view_form
 msgid "Previously subscribed"
 msgstr "Précédement souscrites"
 
 #. module: l10n_be_cooperator
-#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_certificate_form
+#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_certificate_view_form
 msgid "Print Shares Certificate"
 msgstr "Imprimer Attestation de Part"
 
 #. module: l10n_be_cooperator
-#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_certificate_form
+#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_certificate_view_form
 msgid "Print Subscription Certificate"
 msgstr "Imprimer Certificat de Souscription"
 
 #. module: l10n_be_cooperator
-#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_form
+#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_view_form
 msgid "Process Declaration"
 msgstr "Lancer la déclaration"
 
 #. module: l10n_be_cooperator
-#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_form
+#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_view_form
 msgid "Reset Declaration"
 msgstr "Réinitialiser la déclaration"
 
@@ -587,13 +587,13 @@ msgid "Security Token"
 msgstr ""
 
 #. module: l10n_be_cooperator
-#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_certificate_form
+#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_certificate_view_form
 msgid "Sell back"
 msgstr "Revente"
 
 #. module: l10n_be_cooperator
-#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_certificate_form
-#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_form
+#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_certificate_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_view_form
 msgid "Send Certificates"
 msgstr "Envoyer l'attestation"
 
@@ -644,7 +644,7 @@ msgid "Subscribed"
 msgstr "Souscrite"
 
 #. module: l10n_be_cooperator
-#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_certificate_form
+#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_certificate_view_form
 msgid "Subscription"
 msgstr "Souscription"
 
@@ -661,13 +661,13 @@ msgstr ""
 
 #. module: l10n_be_cooperator
 #: model:ir.actions.act_window,name:l10n_be_cooperator.tax_shelter_certificate_action
-#: model:ir.ui.menu,name:l10n_be_cooperator.menu_tax_shelter_certificate
+#: model:ir.ui.menu,name:l10n_be_cooperator.tax_shelter_certificate_menu
 msgid "Tax Shelter Certificates"
 msgstr "Attestations Tax Shelter"
 
 #. module: l10n_be_cooperator
 #: model:ir.model,name:l10n_be_cooperator.model_tax_shelter_declaration
-#: model:ir.ui.menu,name:l10n_be_cooperator.menu_tax_shelter_declaration
+#: model:ir.ui.menu,name:l10n_be_cooperator.tax_shelter_declaration_menu
 msgid "Tax Shelter Declaration"
 msgstr "Déclaration Tax Shelter"
 
@@ -688,20 +688,20 @@ msgstr "Limite de capital pour le Tax shelter"
 
 #. module: l10n_be_cooperator
 #: model:ir.model.fields,field_description:l10n_be_cooperator.field_certificate_line__tax_shelter_certificate
-#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_certificate_form
+#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_certificate_view_form
 msgid "Tax shelter certificate"
 msgstr "Certificat Tax shelter"
 
 #. module: l10n_be_cooperator
 #: model:ir.model.fields,field_description:l10n_be_cooperator.field_tax_shelter_declaration__tax_shelter_certificates
 #: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_certificate_tree
-#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_form
+#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_view_form
 msgid "Tax shelter certificates"
 msgstr "Certificats Tax shelter"
 
 #. module: l10n_be_cooperator
-#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_form
-#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_tree
+#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_view_tree
 msgid "Tax shelter declaration"
 msgstr "Déclaration Tax shelter"
 
@@ -735,7 +735,7 @@ msgid "Total"
 msgstr ""
 
 #. module: l10n_be_cooperator
-#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_form
+#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_view_form
 msgid "Total amount"
 msgstr "Montant total"
 
@@ -776,7 +776,7 @@ msgstr "Date de la transaction"
 
 #. module: l10n_be_cooperator
 #: selection:certificate.line,type:0
-#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_certificate_form
+#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_certificate_view_form
 msgid "Transfered"
 msgstr "Transféré"
 
@@ -788,7 +788,7 @@ msgid "Type"
 msgstr ""
 
 #. module: l10n_be_cooperator
-#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_form
+#: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_declaration_view_form
 msgid "Validate Declaration"
 msgstr "Valider Déclaration"
 
