@@ -12,16 +12,16 @@ from odoo.addons.base_rest.controllers import main
 
 class UserController(main.RestController):
     _root_path = "/api/"
-    _collection_name = "emc.services"
+    _collection_name = "cooperator.services"
     _default_auth = "api_key"
 
     def _process_method(self, service_name, method_name, *args, params=None):
         response = super()._process_method(
             service_name, method_name, *args, params=params
         )
-        # only admin can create emc.api.log
+        # only admin can create cooperator.api.log
         # only log successful calls
-        self.collection.env["emc.api.log"].sudo().create(
+        self.collection.env["cooperator.api.log"].sudo().create(
             {
                 "datetime": datetime.now(),
                 "method": request.httprequest.method,

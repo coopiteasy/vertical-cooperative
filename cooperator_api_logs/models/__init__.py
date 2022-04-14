@@ -1,1 +1,1 @@
-from . import emc_api_log
+from . import cooperator_api_log

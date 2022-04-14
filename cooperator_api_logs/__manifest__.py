@@ -4,7 +4,7 @@
 
 {
     "name": "Cooperators API Logs",
-    "version": "12.0.0.0.1",
+    "version": "12.0.1.0.0",
     "depends": [],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
@@ -15,7 +15,7 @@
     """,
     "data": [
         "security/ir.model.access.csv",
-        "views/emc_api_log_views.xml",
+        "views/api_log_views.xml",
     ],
     "installable": True,
     "application": False,

@@ -7,21 +7,21 @@ from odoo.fields import Date
 from odoo.addons.base_rest.controllers.main import _PseudoCollection
 from odoo.addons.component.core import WorkContext
 
-from .common import BaseEMCRestCase
+from .common import BaseCooperatorRestCase
 
 
-class TestAccountInvoiceController(BaseEMCRestCase):
+class TestAccountInvoiceController(BaseCooperatorRestCase):
     @classmethod
     def setUpClass(cls, *args, **kwargs):
         super().setUpClass(*args, **kwargs)
 
     def setUp(self):
         res = super().setUp()
-        collection = _PseudoCollection("emc.services", self.env)
-        emc_services_env = WorkContext(
+        collection = _PseudoCollection("cooperator.services", self.env)
+        cooperator_services_env = WorkContext(
             model_name="rest.service.registration", collection=collection
         )
-        self.ai_service = emc_services_env.component(usage="invoice")
+        self.ai_service = cooperator_services_env.component(usage="invoice")
 
         self.share_type_A = self.browse_ref(
             "cooperator.product_template_share_type_1_demo"

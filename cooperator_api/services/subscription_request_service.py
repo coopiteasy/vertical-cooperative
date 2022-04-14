@@ -20,7 +20,7 @@ _logger = logging.getLogger(__name__)
 
 
 class SubscriptionRequestService(Component):
-    _inherit = "emc.rest.service"
+    _inherit = "cooperator.rest.service"
     _name = "subscription.request.services"
     _usage = "subscription-request"
     _description = """
@@ -166,7 +166,7 @@ class SubscriptionRequestService(Component):
             "phone": params.get("phone"),
             "skip_iban_control": params.get("skip_iban_control"),
             "capital_release_request_date": params.get("capital_release_request_date"),
-            "source": "emc_api",
+            "source": "cooperator_api",
         }
 
     def _prepare_update(self, params):

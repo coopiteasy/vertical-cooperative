@@ -10,7 +10,7 @@ class SubscriptionRequest(models.Model):
     _name = "subscription.request"
     _inherit = ["subscription.request", "external.id.mixin"]
 
-    source = fields.Selection(selection_add=[("emc_api", "Easy My Coop API")])
+    source = fields.Selection(selection_add=[("cooperator_api", "Cooperators API")])
 
     @api.multi
     def update_state(self, state):

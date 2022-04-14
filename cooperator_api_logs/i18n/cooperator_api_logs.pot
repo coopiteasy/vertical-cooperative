@@ -34,8 +34,8 @@ msgid "Display Name"
 msgstr ""
 
 #. module: cooperator_api_logs
-#: model:ir.actions.act_window,name:cooperator_api_logs.emc_api_log_action
-#: model:ir.ui.menu,name:cooperator_api_logs.emc_api_log_menu
+#: model:ir.actions.act_window,name:cooperator_api_logs.cooperator_api_log_action
+#: model:ir.ui.menu,name:cooperator_api_logs.cooperator_api_log_menu
 msgid "EMC API Logs"
 msgstr ""
 
@@ -100,17 +100,17 @@ msgid "Status"
 msgstr ""
 
 #. module: cooperator_api_logs
-#: model_terms:ir.ui.view,arch_db:cooperator_api_logs.emc_api_log_view_form
+#: model_terms:ir.ui.view,arch_db:cooperator_api_logs.cooperator_api_log_view_form
 msgid "headers"
 msgstr ""
 
 #. module: cooperator_api_logs
-#: model_terms:ir.ui.view,arch_db:cooperator_api_logs.emc_api_log_view_form
+#: model_terms:ir.ui.view,arch_db:cooperator_api_logs.cooperator_api_log_view_form
 msgid "payload"
 msgstr ""
 
 #. module: cooperator_api_logs
-#: model_terms:ir.ui.view,arch_db:cooperator_api_logs.emc_api_log_view_form
+#: model_terms:ir.ui.view,arch_db:cooperator_api_logs.cooperator_api_log_view_form
 msgid "response"
 msgstr ""
 

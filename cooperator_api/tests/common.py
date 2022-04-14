@@ -16,12 +16,12 @@ HOST = "127.0.0.1"
 PORT = odoo.tools.config["http_port"]
 
 
-class BaseEMCRestCase(BaseRestCase):
+class BaseCooperatorRestCase(BaseRestCase):
     @classmethod
     def setUpClass(cls, *args, **kwargs):
         super().setUpClass(*args, **kwargs)
         cls.AuthApiKey = cls.env["auth.api.key"]
-        cls.api_key_test = cls.env.ref("cooperator_api.auth_api_key_manager_emc_demo")
+        cls.api_key_test = cls.env.ref("cooperator_api.auth_api_key_manager_demo")
         cls._chart_template_create()
         cls._add_chart_of_accounts()
         cls._journals_setup()

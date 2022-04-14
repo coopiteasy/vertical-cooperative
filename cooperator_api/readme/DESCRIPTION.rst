@@ -1,1 +1,1 @@
-Open Easy My Coop to the world: RESTful API.
+Open Cooperators to the world: RESTful API.
