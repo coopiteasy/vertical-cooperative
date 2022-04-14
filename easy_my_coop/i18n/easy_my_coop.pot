@@ -1678,7 +1678,7 @@ msgid "Number of share"
 msgstr ""
 
 #. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:686
+#: code:addons/easy_my_coop/models/subscription_request.py:692
 #, python-format
 msgid "Number of share must be greater than 0."
 msgstr ""
@@ -1705,19 +1705,19 @@ msgid "Old cooperator"
 msgstr ""
 
 #. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:768
+#: code:addons/easy_my_coop/models/subscription_request.py:774
 #, python-format
 msgid "Only blocked requests can be unblocked."
 msgstr ""
 
 #. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:790
+#: code:addons/easy_my_coop/models/subscription_request.py:796
 #, python-format
 msgid "Only draft request can be put on the waiting list."
 msgstr ""
 
 #. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:761
+#: code:addons/easy_my_coop/models/subscription_request.py:767
 #, python-format
 msgid "Only draft requests can be blocked."
 msgstr ""
@@ -2335,7 +2335,7 @@ msgid "Text to display aside the checkbox to approve the generic rules."
 msgstr ""
 
 #. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:694
+#: code:addons/easy_my_coop/models/subscription_request.py:700
 #, python-format
 msgid "The checkbox already cooperator is checked please select a cooperator."
 msgstr ""
@@ -2365,13 +2365,13 @@ msgid "The information of the receiver are not correct. Please correct the infor
 msgstr ""
 
 #. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:680
+#: code:addons/easy_my_coop/models/subscription_request.py:686
 #, python-format
 msgid "The request must be in draft or on waiting list to be validated"
 msgstr ""
 
 #. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:734
+#: code:addons/easy_my_coop/models/subscription_request.py:740
 #: code:addons/easy_my_coop/wizard/create_subscription_from_partner.py:181
 #, python-format
 msgid "There is two different persons with the same national register number. Please proceed to a merge before to continue"
@@ -2383,7 +2383,7 @@ msgid "This account will be the default one as the receivable account for the co
 msgstr ""
 
 #. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:742
+#: code:addons/easy_my_coop/models/subscription_request.py:748
 #, python-format
 msgid "This contact person is already defined for another company. Please select another contact"
 msgstr ""
@@ -2658,7 +2658,7 @@ msgid "You can't convert the share to the same share type."
 msgstr ""
 
 #. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:775
+#: code:addons/easy_my_coop/models/subscription_request.py:781
 #, python-format
 msgid "You cannot cancel a request in this state."
 msgstr ""
