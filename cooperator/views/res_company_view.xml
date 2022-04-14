@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record model="ir.ui.view" id="view_company_inherit_form2">
+    <record model="ir.ui.view" id="view_company_form">
         <field name="name">res.company.form.easymy.coop</field>
         <field name="inherit_id" ref="base.view_company_form" />
         <field name="model">res.company</field>
@@ -8,8 +8,8 @@
             <group name="social_media" position="before">
                 <group
                     name="coop_grp"
-                    string="EasyMy Coop"
-                    groups="cooperator.group_easy_my_coop_user"
+                    string="Cooperative"
+                    groups="cooperator.cooperator_group_user"
                 >
                     <field name="unmix_share_type" />
                     <field name="allow_id_card_upload" />

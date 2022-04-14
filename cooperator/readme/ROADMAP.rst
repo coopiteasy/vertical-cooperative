@@ -1,1 +1,1 @@
-Gather and consolidate all easy_my_coop settings in the application parameters.
+Gather and consolidate all cooperator settings in the application parameters.
