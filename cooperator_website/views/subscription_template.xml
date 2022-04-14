@@ -456,11 +456,9 @@
                                 class="form-horizontal mt32 oe_subscription_request_form"
                                 enctype="multipart/form-data"
                             >
-                                <t
-                                    t-call="easy_my_coop_website.error_message_template"
-                                />
+                                <t t-call="cooperator_website.error_message_template" />
 
-                                <t t-call="easy_my_coop_website.csrf_template" />
+                                <t t-call="cooperator_website.csrf_template" />
 
                                 <div
                                     class="text-center"
@@ -561,20 +559,20 @@
                                     />
 
                                 </div>
-                                <t t-call="easy_my_coop_website.contact_template" />
+                                <t t-call="cooperator_website.contact_template" />
 
-                                <t t-call="easy_my_coop_website.iban_template" />
+                                <t t-call="cooperator_website.iban_template" />
 
-                                <t t-call="easy_my_coop_website.address_template" />
+                                <t t-call="cooperator_website.address_template" />
 
-                                <t t-call="easy_my_coop_website.shares_template" />
+                                <t t-call="cooperator_website.shares_template" />
 
-                                <t t-call="easy_my_coop_website.rules_template" />
+                                <t t-call="cooperator_website.rules_template" />
 
                                 <!-- </div> -->
                                 <!-- </div> -->
                                 <!-- TODO: Use a overloaded function with the captcha implementation !-->
-                                <t t-call="easy_my_coop_website.captcha_template" />
+                                <t t-call="cooperator_website.captcha_template" />
 
                                 <div class="text-center">
                                     <button
@@ -610,11 +608,9 @@
                                 class="form-horizontal mt32 oe_subscription_request_form"
                                 enctype="multipart/form-data"
                             >
-                                <t
-                                    t-call="easy_my_coop_website.error_message_template"
-                                />
+                                <t t-call="cooperator_website.error_message_template" />
 
-                                <t t-call="easy_my_coop_website.csrf_template" />
+                                <t t-call="cooperator_website.csrf_template" />
 
                                 <div
                                     t-attf-class="form-group"
@@ -734,10 +730,10 @@
                                     />
                                 </div>
 
-                                <t t-call="easy_my_coop_website.iban_template" />
+                                <t t-call="cooperator_website.iban_template" />
 
                                 <h2 class="text-center">Main Address</h2>
-                                <t t-call="easy_my_coop_website.address_template" />
+                                <t t-call="cooperator_website.address_template" />
 
                                 <h2 class="text-center">Contact Person</h2>
                                 <div class="form-group field-login">
@@ -755,7 +751,7 @@
                                     />
 
                                 </div>
-                                <t t-call="easy_my_coop_website.contact_template" />
+                                <t t-call="cooperator_website.contact_template" />
 
 
                                 <div
@@ -777,11 +773,11 @@
                                     />
                                 </div>
 
-                                <t t-call="easy_my_coop_website.shares_template" />
+                                <t t-call="cooperator_website.shares_template" />
 
-                                <t t-call="easy_my_coop_website.rules_template" />
+                                <t t-call="cooperator_website.rules_template" />
 
-                                <t t-call="easy_my_coop_website.captcha_template" />
+                                <t t-call="cooperator_website.captcha_template" />
 
                                 <div class="text-center">
                                     <button

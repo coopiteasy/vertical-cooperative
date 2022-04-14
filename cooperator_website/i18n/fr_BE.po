@@ -1,0 +1,419 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* cooperator_website
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-29 15:46+0000\n"
+"PO-Revision-Date: 2020-06-29 15:46+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.cooperator_thanks
+msgid "&amp;times;"
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "05/03/1978"
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+msgid "0647980091"
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "1030"
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "25"
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Address"
+msgstr "Adresse"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Already cooperator?"
+msgstr "Déjà coopérateur ?"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "BE48523080767127"
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Bank Account Number"
+msgstr "Numéro de Compte Bancaire"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Become Cooperator"
+msgstr "Devenir coopérateur (personne physique)"
+
+#. module: cooperator_website
+#: model:website.menu,name:cooperator_website.menu_becomecooperator
+msgid "Become cooperator"
+msgstr "Devenir coopérateur (personne physique)"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.contact_template
+msgid "Date of birth"
+msgstr "Date de naissance"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Bourdon"
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Bruxelles"
+msgstr ""
+
+#. module: cooperator_website
+#: model:ir.model.fields,field_description:cooperator_website.field_res_company__captcha_type
+msgid "Captcha type or disabled"
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "City"
+msgstr "Ville"
+
+#. module: cooperator_website
+#: model:ir.model,name:cooperator_website.model_res_company
+#, fuzzy
+msgid "Companies"
+msgstr "Nom de la société"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+msgid ""
+"Company\n"
+"                                        Register Number"
+msgstr ""
+"Numéro\n"
+"                                        d'entreprise"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+msgid "Company Info"
+msgstr "Informations de la société"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+msgid "Company email"
+msgstr "Email de la société"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+msgid "Company name"
+msgstr "Nom de la société"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+msgid "Company type"
+msgstr "Type de société"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Confirm Email"
+msgstr "Courriel (pour confirmation)"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+msgid "Contact Person"
+msgstr "Personne de contact"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Country"
+msgstr "Pays"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Country..."
+msgstr "Pays..."
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Didier"
+msgstr ""
+
+#. module: cooperator_website
+#: selection:res.company,captcha_type:0
+msgid "Disabled"
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Email"
+msgstr "Courriel"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Financial Risk"
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "First Name"
+msgstr "Prénom"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+msgid "Function"
+msgstr "Fonction"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Gender"
+msgstr "Genre"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+#, fuzzy
+msgid "Generic Rules"
+msgstr "Règlement intérieur"
+
+#. module: cooperator_website
+#: selection:res.company,captcha_type:0
+msgid "Google Recaptcha"
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid ""
+"Idendity\n"
+"                                        card scan"
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Internal Rules"
+msgstr "Règlement intérieur"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+msgid "Is a company?"
+msgstr "C'est une entreprise ?"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+msgid "La super coopérative"
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Language"
+msgstr "Langue"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Language..."
+msgstr "Langue..."
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Last Name"
+msgstr "Nom de famille"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Logged"
+msgstr "Connecté"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+msgid "Main Address"
+msgstr "Adresse"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.shares_template
+msgid "Share number"
+msgstr "Nombre de parts"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Parts type"
+msgstr "Type de part"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Phone"
+msgstr "Téléphone"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid ""
+"Privacy\n"
+"                                        Policy"
+msgstr ""
+"Politique de gestion \n"
+"                                        des données personnelles"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Send"
+msgstr "Envoyer"
+
+#. module: cooperator_website
+#: code:addons/cooperator_website/controllers/main.py:288
+#, python-format
+msgid "Some mandatory fields have not been filled"
+msgstr "Certains champs obligatoires sont vides."
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.cooperator_thanks
+msgid "Thanks!"
+msgstr "Merci !"
+
+#. module: cooperator_website
+#: code:addons/cooperator_website/controllers/main.py:309
+#, python-format
+msgid ""
+"The email and the confirmation email doesn't match.Please check the given "
+"mail addresses"
+msgstr "Le courriel ne correspond pas dans les deux champs de courriel."
+
+#. module: cooperator_website
+#: code:addons/cooperator_website/controllers/main.py:297
+#, python-format
+msgid ""
+"There is an existing account for this mail address. Please login before fill "
+"in the form"
+msgstr ""
+"Un login existe déjà pour ce courriel. Connectez-vous en cliquant sur \"Se "
+"Connecter\" en haut à droite avant de remplir le formulaire pour prendre de "
+"nouvelles parts."
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.cooperator_thanks
+msgid "We will get back to you shortly."
+msgstr "Nous reviendrons vers vous rapidement."
+
+#. module: cooperator_website
+#: model:ir.actions.act_url,name:cooperator_website.action_open_website
+msgid "Website Cooperator contact Form"
+msgstr ""
+
+#. module: cooperator_website
+#: code:addons/cooperator_website/controllers/main.py:355
+#, python-format
+msgid "You can't subscribe for an amount that exceed "
+msgstr "Vous ne pouvez souscrire pour un montant supérieur à"
+
+#. module: cooperator_website
+#: code:addons/cooperator_website/controllers/main.py:346
+#, python-format
+msgid "You can't subscribe two different types of share"
+msgstr "Vous ne pouvez souscrire à des types de parts différents"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "You have already an account?"
+msgstr ""
+"Vous avez déjà un compte ? Cliquer ici pour vous connecter avant de remplir "
+"le formulaire de prises de parts."
+
+#. module: cooperator_website
+#: code:addons/cooperator_website/controllers/main.py:333
+#, python-format
+msgid "You iban account number is not valid"
+msgstr ""
+
+#. module: cooperator_website
+#: code:addons/cooperator_website/controllers/main.py:324
+#, python-format
+msgid "You need to upload a scan of your id card"
+msgstr "Vous devez charger une copie de votre carte d'identité."
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid ""
+"You want to\n"
+"                                        modify your personal information ?"
+msgstr ""
+"Vous voulez \n"
+" modifier vos informations personnelles ?"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.cooperator_thanks
+msgid ""
+"Your subscription has been successfully\n"
+"                                registered."
+msgstr "Votre souscription à bien été enregistrée."
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+msgid "administration@beescoop.be"
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "didier.bourdon@bees-coop.be"
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "e.g. (+32).81.81.37.00"
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "rue Van Hove, 19"
+msgstr ""
+
+#. module: cooperator_website
+#: code:addons/cooperator_website/controllers/main.py:268
+#: code:addons/cooperator_website/controllers/main.py:276
+#, python-format
+msgid "the captcha has not been validated, please fill in the captcha"
+msgstr "Le captcha n'a pas été validé. Veuillez le remplir svp."
