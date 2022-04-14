@@ -45,10 +45,17 @@ class PartnerCreateSubscription(models.TransientModel):
         return False
 
     @api.model
-    def _get_representative_name(self):
+    def _get_representative_firstname(self):
         representative = self._get_representative()
         if representative:
-            return representative.name
+            return representative.firstname
+        return False
+
+    @api.model
+    def _get_representative_lastname(self):
+        representative = self._get_representative()
+        if representative:
+            return representative.lastname
         return False
 
     @api.model
@@ -124,8 +131,13 @@ class PartnerCreateSubscription(models.TransientModel):
         digits=dp.get_precision("Account"),
         readonly=True,
     )
-    representative_name = fields.Char(
-        string="Representative name", default=_get_representative_name
+    representative_firstname = fields.Char(
+        string="Representative first name",
+        default=_get_representative_firstname,
+    )
+    representative_lastname = fields.Char(
+        string="Representative last name",
+        default=_get_representative_lastname,
     )
     representative_email = fields.Char(
         string="Representative email", default=_get_representative_email
@@ -144,21 +156,24 @@ class PartnerCreateSubscription(models.TransientModel):
             "user_id": self.env.uid,
             "email": self.email,
             "source": "crm",
-            "address": self.cooperator.street,
-            "zip_code": self.cooperator.zip,
-            "city": self.cooperator.city,
-            "country_id": self.cooperator.country_id.id,
+            "address": cooperator.street,
+            "zip_code": cooperator.zip,
+            "city": cooperator.city,
+            "country_id": cooperator.country_id.id,
+            "lang": cooperator.lang,
         }
 
         if self.is_company:
             vals["company_name"] = cooperator.name
             vals["company_email"] = cooperator.email
+            vals["firstname"] = self.representative_firstname
+            vals["lastname"] = self.representative_lastname
             vals["email"] = self.representative_email
-            vals["name"] = "/"
             vals["company_register_number"] = self.register_number
             vals["is_company"] = True
         else:
-            vals["name"] = cooperator.name
+            vals["firstname"] = cooperator.firstname
+            vals["lastname"] = cooperator.lastname
 
         coop_vals = {}
         if not self._get_email():
@@ -196,7 +211,8 @@ class PartnerCreateSubscription(models.TransientModel):
             else:
                 if self.representative_email:
                     represent_vals = {
-                        "name": self.representative_name,
+                        "firstname": self.representative_firstname,
+                        "lastname": self.representative_lastname,
                         "cooperator": True,
                         "email": self.representative_email,
                         "parent_id": cooperator.id,
