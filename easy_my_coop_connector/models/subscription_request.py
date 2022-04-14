@@ -64,6 +64,8 @@ class SubscriptionRequest(models.Model):
 
         if sr_binding:  # update request
             srequest = sr_binding.internal_id
+            # do not call _set_state : it would
+            # send a request to the backend.
             srequest.write(request_values)
         else:
             srequest = self.env["subscription.request"].create(request_values)
