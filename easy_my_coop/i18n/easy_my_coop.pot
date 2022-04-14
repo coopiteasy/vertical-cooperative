@@ -515,7 +515,7 @@ msgid "<strong>Your Contact:</strong>"
 msgstr ""
 
 #. module: easy_my_coop
-#: code:addons/easy_my_coop/wizard/create_subscription_from_partner.py:190
+#: code:addons/easy_my_coop/wizard/create_subscription_from_partner.py:205
 #, python-format
 msgid "A person can't be representative of two different companies."
 msgstr ""
@@ -1928,8 +1928,13 @@ msgid "Representative email"
 msgstr ""
 
 #. module: easy_my_coop
-#: model:ir.model.fields,field_description:easy_my_coop.field_partner_create_subscription__representative_name
-msgid "Representative name"
+#: model:ir.model.fields,field_description:easy_my_coop.field_partner_create_subscription__representative_firstname
+msgid "Representative first name"
+msgstr ""
+
+#. module: easy_my_coop
+#: model:ir.model.fields,field_description:easy_my_coop.field_partner_create_subscription__representative_lastname
+msgid "Representative last name"
 msgstr ""
 
 #. module: easy_my_coop
@@ -2372,7 +2377,7 @@ msgstr ""
 
 #. module: easy_my_coop
 #: code:addons/easy_my_coop/models/subscription_request.py:740
-#: code:addons/easy_my_coop/wizard/create_subscription_from_partner.py:181
+#: code:addons/easy_my_coop/wizard/create_subscription_from_partner.py:196
 #, python-format
 msgid "There is two different persons with the same national register number. Please proceed to a merge before to continue"
 msgstr ""
