@@ -22,3 +22,9 @@ class SubscriptionRequest(models.Model):
         req_fields.append("vat")
 
         return req_fields
+
+    def _get_partner_domain(self):
+        if self.vat:
+            return [('vat', '=', self.vat)]
+        else:
+            return None
