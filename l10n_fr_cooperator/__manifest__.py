@@ -11,7 +11,7 @@
     "website": "https://coopiteasy.be",
     "license": "AGPL-3",
     "summary": """
-        This is the french localization for the Cooperators module
+        This is the French localization for the Cooperators module
     """,
     "data": [
         "views/certificate_template.xml",
