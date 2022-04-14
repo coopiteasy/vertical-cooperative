@@ -37,7 +37,7 @@ renamed_modules = {
     "easy_my_coop_website_taxshelter": "l10n_be_cooperator_portal",
     # partner_age                   => dependency removed, move to addons
     # theme_light                   => removed from dependencies
-    # website_recaptcha_reloaded    => moved to addons
+    "website_recaptcha_reloaded": "website_recaptcha",  # => moved to addons
 }
 
 _logger.info("rename easy_my_coop_x modules to cooperator_x")
