@@ -11,7 +11,7 @@
     "version": "12.0.2.0.0",
     "depends": [
         "cooperator",
-        "easy_my_coop_website",
+        "cooperator_website",
         "l10n_be",
         "l10n_be_invoice_bba",
     ],

@@ -3,7 +3,7 @@
     <data>
         <template
             id="become_company_cooperator_es"
-            inherit_id="easy_my_coop_website.becomecompanycooperator"
+            inherit_id="cooperator_website.becomecompanycooperator"
             name="Become company cooperator"
         >
             <xpath
@@ -14,7 +14,7 @@
             <xpath expr="//label[@for='company_type']/.." position="replace" />
         </template>
 
-        <template id="iban_template_es" inherit_id="easy_my_coop_website.iban_template">
+        <template id="iban_template_es" inherit_id="cooperator_website.iban_template">
             <xpath expr="//div[@name='iban_template_container']" position="inside">
 
                 <div
@@ -55,7 +55,7 @@
 
         <template
             id="become_cooperator_es_share_div"
-            inherit_id="easy_my_coop_website.shares_template"
+            inherit_id="cooperator_website.shares_template"
             name="Removing Share div"
         >
             <xpath expr="//div[@name='share_div']" position="attributes">

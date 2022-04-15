@@ -5,7 +5,7 @@
 {
     "name": "Cooperator France Localization",
     "version": "12.0.1.0.2",
-    "depends": ["cooperator", "easy_my_coop_website", "l10n_fr"],
+    "depends": ["cooperator", "cooperator_website", "l10n_fr"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
     "website": "https://coopiteasy.be",
