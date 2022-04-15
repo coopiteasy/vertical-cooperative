@@ -417,16 +417,6 @@
         </div>
     </template>
 
-    <template id="captcha_template" name="captcha_template">
-        <div
-            class="g-recaptcha text-xs-center"
-            t-if="res_company.captcha_type == 'google'"
-            t-att-data-sitekey="request.env['ir.config_parameter'].sudo().get_param('portal_recaptcha.recaptcha_key_site')"
-            data-theme="green"
-            name="recaptcha_key_site"
-        />
-    </template>
-
     <template id="error_message_template" name="error_message_template">
         <p style="color:red;">
             <!-- <t t-debug="ipdb"></t>                     -->
@@ -568,11 +558,6 @@
                                 <t t-call="cooperator_website.shares_template" />
 
                                 <t t-call="cooperator_website.rules_template" />
-
-                                <!-- </div> -->
-                                <!-- </div> -->
-                                <!-- TODO: Use a overloaded function with the captcha implementation !-->
-                                <t t-call="cooperator_website.captcha_template" />
 
                                 <div class="text-center">
                                     <button
@@ -776,8 +761,6 @@
                                 <t t-call="cooperator_website.shares_template" />
 
                                 <t t-call="cooperator_website.rules_template" />
-
-                                <t t-call="cooperator_website.captcha_template" />
 
                                 <div class="text-center">
                                     <button
