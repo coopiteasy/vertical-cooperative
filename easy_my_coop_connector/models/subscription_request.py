@@ -96,7 +96,10 @@ class SubscriptionRequest(models.Model):
     @api.multi
     def _set_state(self, state):
         super()._set_state(state)
-        if self.source == "emc_api":
+
+        api_subscription_requests = self.filtered(lambda sr: sr.source == "emc_api")
+        if api_subscription_requests:
             backend = self.env["emc.backend"].get_backend()
-            sr_adapter = SubscriptionRequestAdapter(backend=backend, record=self)
-            _, request_dict = sr_adapter.update({"state": state})
+            for sr in api_subscription_requests:
+                sr_adapter = SubscriptionRequestAdapter(backend=backend, record=sr)
+                sr_adapter.update({"state": state})
