@@ -34,6 +34,7 @@ class AccountPayment(models.Model):
                         )
                     )
 
+                # todo send via job queue
                 backend = self.env["emc.backend"].get_backend()
                 adapter = AccountPaymentAdapter(backend=backend)
                 external_id, external_record = adapter.create(payment)

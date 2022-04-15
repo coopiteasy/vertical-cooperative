@@ -99,7 +99,18 @@ class SubscriptionRequest(models.Model):
 
         api_subscription_requests = self.filtered(lambda sr: sr.source == "emc_api")
         if api_subscription_requests:
-            backend = self.env["emc.backend"].get_backend()
             for sr in api_subscription_requests:
-                sr_adapter = SubscriptionRequestAdapter(backend=backend, record=sr)
-                sr_adapter.update({"state": state})
+                sr.with_delay()._set_state_on_backend(state)
+
+    def _set_state_on_backend(self, state):
+        self.ensure_one()
+        _logger.info(
+            "connector: set state = {state} for ({id}, {sr_name}".format(
+                state=state,
+                id=self.id,
+                sr_name=self.name,
+            )
+        )
+        backend = self.env["emc.backend"].get_backend()
+        sr_adapter = SubscriptionRequestAdapter(backend=backend, record=self)
+        _, request_dict = sr_adapter.update({"state": state})

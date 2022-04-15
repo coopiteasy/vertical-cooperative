@@ -8,6 +8,7 @@
     "depends": [
         "easy_my_coop",
         "easy_my_coop_api_logs",
+        "queue_job",
     ],
     "author": "Coop IT Easy SCRLfs",
     "category": "Connector",

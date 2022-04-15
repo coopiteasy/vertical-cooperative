@@ -20,3 +20,19 @@ The models are heavily influenced by the odoo connector:
 The <model> is responsible for the orchestration of these components.
 
 In the current implementation, only one backend is allowed.
+
+## Queue Jobs
+
+This module uses `queue_jobs` module, refer to the configuration
+documentation `here <https://github.com/OCA/queue/tree/12.0/queue_job>`.
+
+Most importantly :
+
+[options]
+(...)
+workers = x # greater than one
+server_wide_modules = web,queue_job
+
+(...)
+[queue_job]
+channels = root:2
