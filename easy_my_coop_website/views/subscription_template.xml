@@ -520,7 +520,7 @@
                                     </label>
                                 </div>
                                 <div class="form-group field-login">
-                                    <label for="email">E-mail</label>
+                                    <label for="email">Email</label>
                                     <input
                                         class="form-control form-control-sm"
                                         autocapitalize="off"
@@ -541,7 +541,7 @@
                                     name="confirm_email_container"
                                     t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}"
                                 >
-                                    <label for="confirm_email">Confirm E-mail</label>
+                                    <label for="confirm_email">Confirm Email</label>
                                     <input
                                         class="form-control form-control-sm"
                                         autocapitalize="off"
@@ -735,7 +735,7 @@
 
                                 <h2 class="text-center">Contact Person</h2>
                                 <div class="form-group field-login">
-                                    <label for="email">E-mail</label>
+                                    <label for="email">Email</label>
                                     <input
                                         class="form-control form-control-sm"
                                         autocapitalize="off"
