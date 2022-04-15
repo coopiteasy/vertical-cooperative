@@ -1,7 +1,7 @@
 from odoo.http import request
 from odoo.tools.translate import _
 
-from odoo.addons.cooperator_website.controllers.portal import WebsiteSubscription
+from odoo.addons.cooperator_website.controllers.main import WebsiteSubscription
 
 
 class RecaptchaWebsiteSubscription(WebsiteSubscription):
