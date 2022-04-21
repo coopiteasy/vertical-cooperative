@@ -1,0 +1,4 @@
+When no cooperator account is defined on the company, this module previously
+defaulted to the account with code '416000'. This behaviour has been removed
+because the code is Belgian-only. The functionality has been moved to
+``l10n_be_cooperator``.
