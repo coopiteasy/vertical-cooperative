@@ -25,4 +25,5 @@ Features:
 
 Configurations:
 
-- set on the company a default payment term for the capital release requests.
+- on the company, set a default payment term for the capital release requests.
+- on the company, set the cooperator account.
