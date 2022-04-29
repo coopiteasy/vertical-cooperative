@@ -26,6 +26,6 @@
         "data/cron.xml",
     ],
     "demo": ["demo/demo.xml"],
-    "installable": True,
+    "installable": False,
     "application": False,
 }

@@ -1,6 +1,7 @@
 exclude: |
   (?x)
   # NOT INSTALLABLE ADDONS
+  ^easy_my_coop_connector/|
   ^easy_my_coop_dividend/|
   ^easy_my_coop_export_xlsx/|
   # END NOT INSTALLABLE ADDONS

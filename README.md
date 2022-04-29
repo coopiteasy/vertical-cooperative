@@ -37,7 +37,6 @@ addon | version | maintainers | summary
 [easy_my_coop_api_logs](easy_my_coop_api_logs/) | 12.0.0.0.1 |  | Helpers to log calls in and out of easy_my_coop_api.
 [easy_my_coop_be](easy_my_coop_be/) | 12.0.1.3.0 |  | Easy My Coop Belgium Localization
 [easy_my_coop_ch](easy_my_coop_ch/) | 12.0.1.2.0 |  | Easy My Coop Switzerland localization
-[easy_my_coop_connector](easy_my_coop_connector/) | 12.0.0.0.1 |  | Connect to Easy My Coop RESTful API.
 [easy_my_coop_es](easy_my_coop_es/) | 12.0.0.0.16 |  | Easy My Coop localization for Spain
 [easy_my_coop_es_website](easy_my_coop_es_website/) | 12.0.0.1.0 |  | Easy My Coop Website localization for Spain
 [easy_my_coop_fr](easy_my_coop_fr/) | 12.0.1.1.0 |  | This is the french localization for the easy my coop module
@@ -60,6 +59,7 @@ Unported addons
 ---------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[easy_my_coop_connector](easy_my_coop_connector/) | 12.0.0.0.1 (unported) |  | Connect to Easy My Coop RESTful API.
 [easy_my_coop_dividend](easy_my_coop_dividend/) | 12.0.0.0.1 (unported) |  | Manage the dividend computation for a fiscal year.
 [easy_my_coop_export_xlsx](easy_my_coop_export_xlsx/) | 12.0.0.0.1 (unported) |  | Generate a xlsx file with information on current state of subscription request, cooperators and capital release request.
 
