@@ -673,7 +673,7 @@ class SubscriptionRequest(models.Model):
 
     def _get_partner_domain(self):
         if self.email:
-            return [('email', '=', self.email)]
+            return [("email", "=", self.email)]
         else:
             return None
 

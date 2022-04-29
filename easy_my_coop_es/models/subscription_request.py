@@ -25,6 +25,6 @@ class SubscriptionRequest(models.Model):
 
     def _get_partner_domain(self):
         if self.vat:
-            return [('vat', '=', self.vat)]
+            return [("vat", "=", self.vat)]
         else:
             return None
