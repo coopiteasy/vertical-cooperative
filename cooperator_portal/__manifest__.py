@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Cooperator Portal",
-    "version": "12.0.2.0.2",
+    "version": "12.0.3.0.0",
     "depends": ["cooperator", "website", "account", "portal"],
     "summary": """
         Show cooperator information in the website portal.

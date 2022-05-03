@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_home_menu_capital_request
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_breadcrumbs
 msgid "<em>Draft Request</em>"
 msgstr ""
 
@@ -53,42 +53,42 @@ msgid "Amount Due"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.website_portal_details_form
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_layout
 msgid "Bank Account:"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_details_emc
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_details
 msgid "Birthdate"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_home_menu_capital_request
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_breadcrumbs
 msgid "Capital Request"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.website_portal_details_form
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_layout
 msgid "Company Register Number:"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.website_portal_details_form
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_layout
 msgid "Cooperator Certificate"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.website_portal_details_form
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_layout
 msgid "Cooperator Entrance Date:"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.website_portal_details_form
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_layout
 msgid "Cooperator Number:"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.website_portal_details_form
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_layout
 msgid "Date of Birth:"
 msgstr ""
 
@@ -103,27 +103,27 @@ msgid "Due Date"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_details_emc
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_details
 msgid "Gender"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.website_portal_details_form
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_layout
 msgid "Gender:"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_details_emc
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_details
 msgid "Iban"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_details_emc
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_details
 msgid "Language"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.website_portal_details_form
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_layout
 msgid "Legal Representative:"
 msgstr ""
 
@@ -133,7 +133,7 @@ msgid "My Capital Releases"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.website_portal_details_form
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_layout
 msgid "Number of Share:"
 msgstr ""
 
@@ -154,17 +154,17 @@ msgid "There are currently no capital release request for your\n"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.website_portal_details_form
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_layout
 msgid "Total Value of Share:"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.website_portal_details_form
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_layout
 msgid "You are an effective cooperator"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.website_portal_details_form
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_layout
 msgid "You are not a cooperator"
 msgstr ""
 
@@ -175,12 +175,12 @@ msgid "You iban account number is not valid"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.website_portal_details_form
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_layout
 msgid "Your Cooperator Details"
 msgstr ""
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_home_capital_release
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_home
 msgid "Your Release Capital Requests"
 msgstr ""
 
