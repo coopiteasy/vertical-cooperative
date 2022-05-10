@@ -17,7 +17,7 @@
         name="Become Cooperator"
     >
         <xpath expr="//t[@t-call='cooperator_website.rules_template']" position="after">
-            <t t-call="cooperator_website.captcha_template" />
+            <t t-call="cooperator_website_recaptcha.captcha_template" />
         </xpath>
     </template>
 
@@ -27,7 +27,7 @@
         name="Become Cooperator"
     >
         <xpath expr="//t[@t-call='cooperator_website.rules_template']" position="after">
-            <t t-call="cooperator_website.captcha_template" />
+            <t t-call="cooperator_website_recaptcha.captcha_template" />
         </xpath>
     </template>
 
