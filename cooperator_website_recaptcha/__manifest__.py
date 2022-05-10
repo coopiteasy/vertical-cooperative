@@ -4,7 +4,7 @@
 {
     "name": "Cooperators Website Recaptcha",
     "summary": """
-        TODO""",
+        Add Google Recaptcha to Subscription Request Form""",
     "version": "12.0.1.0.0",
     "category": "Cooperative management",
     "website": "https://coopiteasy.be",
