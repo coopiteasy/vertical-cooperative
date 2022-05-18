@@ -14,6 +14,7 @@
             </t>
             <div class="page mt32" style="font-size: 10px !important;">
 
+                <!-- TODO: Translate below to English -->
                 <h2 style="font-size: 3em;">
                     <span>Déclaration Tax Shelter</span>
                     <br />
@@ -70,8 +71,8 @@
                                 <span t-field="l.capital_after_sub" />
                             </td>
                             <td>
-                                <span t-if="l.tax_shelter">Oui</span>
-                                <span t-else="">Non</span>
+                                <span t-if="l.tax_shelter">Yes</span>
+                                <span t-else="">No</span>
                             </td>
                             <td>
                                 <span t-field="l.transaction_date" />
@@ -94,8 +95,8 @@
                                 <span t-field="l.capital_after_sub" />
                             </td>
                             <td>
-                                <span t-if="l.tax_shelter">Oui</span>
-                                <span t-else="">Non</span>
+                                <span t-if="l.tax_shelter">Yes</span>
+                                <span t-else="">No</span>
                             </td>
                             <td>
                                 <span t-field="l.transaction_date" />
@@ -140,6 +141,7 @@
                     </tbody>
                 </table>
 
+                <!-- TODO: Translate below to English -->
                 <p>
                     L' Article 145/26, CIR 92 sur les revenus<span
                         t-field="o.declaration_id.fiscal_year"
