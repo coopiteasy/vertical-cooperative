@@ -69,23 +69,14 @@ msgid "Bruxelles"
 msgstr ""
 
 #. module: cooperator_website
-#: model:ir.model.fields,field_description:cooperator_website.field_res_company__captcha_type
-msgid "Captcha type or disabled"
-msgstr ""
-
-#. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.address_template
 msgid "City"
 msgstr ""
 
 #. module: cooperator_website
-#: model:ir.model,name:cooperator_website.model_res_company
-msgid "Companies"
-msgstr ""
-
-#. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-msgid "Company\n"
+msgid ""
+"Company\n"
 "                                        Register Number"
 msgstr ""
 
@@ -145,19 +136,16 @@ msgid "Didier"
 msgstr ""
 
 #. module: cooperator_website
-#: selection:res.company,captcha_type:0
-msgid "Disabled"
-msgstr ""
-
-#. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
 msgid "Do you already have an account?"
 msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid "Do you want to\n"
-"                                            modify your personal information first?"
+msgid ""
+"Do you want to\n"
+"                                            modify your personal information "
+"first?"
 msgstr ""
 
 #. module: cooperator_website
@@ -192,13 +180,9 @@ msgid "Generic Rules"
 msgstr ""
 
 #. module: cooperator_website
-#: selection:res.company,captcha_type:0
-msgid "Google Recaptcha"
-msgstr ""
-
-#. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.rules_template
-msgid "Idendity\n"
+msgid ""
+"Idendity\n"
 "            card scan"
 msgstr ""
 
@@ -214,7 +198,7 @@ msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-msgid "La super coopérative"
+msgid "La super cooprative"
 msgstr ""
 
 #. module: cooperator_website
@@ -245,7 +229,8 @@ msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.rules_template
-msgid "Privacy\n"
+msgid ""
+"Privacy\n"
 "            Policy"
 msgstr ""
 
@@ -266,7 +251,8 @@ msgid "Share type"
 msgstr ""
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:288
+#: code:addons/cooperator_website/controllers/main.py:266
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:266
 #, python-format
 msgid "Some mandatory fields have not been filled"
 msgstr ""
@@ -277,15 +263,21 @@ msgid "Thanks!"
 msgstr ""
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:309
+#: code:addons/cooperator_website/controllers/main.py:287
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:287
 #, python-format
-msgid "The email and the confirmation email doesn't match.Please check the given mail addresses"
+msgid ""
+"The email and the confirmation email doesn't match.Please check the given "
+"mail addresses"
 msgstr ""
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:297
+#: code:addons/cooperator_website/controllers/main.py:275
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:275
 #, python-format
-msgid "There is an existing account for this mail address. Please login before fill in the form"
+msgid ""
+"There is an existing account for this mail address. Please login before fill "
+"in the form"
 msgstr ""
 
 #. module: cooperator_website
@@ -304,32 +296,37 @@ msgid "Website Cooperator contact Form"
 msgstr ""
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:356
+#: code:addons/cooperator_website/controllers/main.py:334
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:334
 #, python-format
 msgid "You can't subscribe for an amount that exceed "
 msgstr ""
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:347
+#: code:addons/cooperator_website/controllers/main.py:325
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:325
 #, python-format
 msgid "You can't subscribe two different types of share"
 msgstr ""
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:324
+#: code:addons/cooperator_website/controllers/main.py:302
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:302
 #, python-format
 msgid "You need to upload a scan of your id card"
 msgstr ""
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:334
+#: code:addons/cooperator_website/controllers/main.py:312
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:312
 #, python-format
 msgid "Your IBAN is not valid."
 msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.cooperator_thanks
-msgid "Your subscription has been successfully\n"
+msgid ""
+"Your subscription has been successfully\n"
 "                                registered."
 msgstr ""
 
@@ -358,11 +355,3 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:cooperator_website.address_template
 msgid "rue Van Hove, 199"
 msgstr ""
-
-#. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:268
-#: code:addons/cooperator_website/controllers/main.py:276
-#, python-format
-msgid "the captcha has not been validated, please fill in the captcha"
-msgstr ""
-

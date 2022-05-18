@@ -1,16 +1,15 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* cooperator_website
+#	* cooperator_website
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-29 15:48+0000\n"
-"PO-Revision-Date: 2020-06-29 15:48+0000\n"
+"POT-Creation-Date: 2022-05-18 14:56+0000\n"
+"PO-Revision-Date: 2022-05-18 14:56+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -23,55 +22,38 @@ msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid "05/03/1978"
-msgstr ""
-
-#. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
 msgid "0647980091"
 msgstr ""
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.address_template
 msgid "1030"
 msgstr ""
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid "25"
+#: model_terms:ir.ui.view,arch_db:cooperator_website.contact_template
+msgid "1978-03-05"
 msgstr ""
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.address_template
 msgid "Address"
 msgstr "Adresse"
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid "Already cooperator?"
-msgstr "Déjà coopérateur ?"
-
-#. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid "BE48523080767127"
+msgid "Are you already a cooperator?"
 msgstr ""
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid "Bank Account Number"
-msgstr "Numéro de Compte Bancaire"
-
-#. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
 msgid "Become Cooperator"
 msgstr "Devenir coopérateur (personne physique)"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+msgid "Become Cooperator as Company"
+msgstr ""
 
 #. module: cooperator_website
 #: model:website.menu,name:cooperator_website.menu_becomecooperator
@@ -80,44 +62,25 @@ msgstr "Devenir coopérateur (personne physique)"
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.contact_template
-msgid "Date of birth"
-msgstr "Date de naissance"
-
-#. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
 msgid "Bourdon"
 msgstr ""
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.address_template
 msgid "Bruxelles"
 msgstr ""
 
 #. module: cooperator_website
-#: model:ir.model.fields,field_description:cooperator_website.field_res_company__captcha_type
-msgid "Captcha type or disabled"
-msgstr ""
-
-#. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.address_template
 msgid "City"
 msgstr "Ville"
 
 #. module: cooperator_website
-#: model:ir.model,name:cooperator_website.model_res_company
-#, fuzzy
-msgid "Companies"
-msgstr "Nom de la société"
-
-#. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-msgid ""
-"Company\n"
+msgid "Company\n"
 "                                        Register Number"
-msgstr ""
+msgstr "Numéro\n"
+"                                        d'entreprise"
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
@@ -127,7 +90,7 @@ msgstr "Informations de la société"
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
 msgid "Company email"
-msgstr "Email de contact de la société"
+msgstr "Email de la société"
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
@@ -140,10 +103,14 @@ msgid "Company type"
 msgstr "Structure juridique"
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Confirm E-mail"
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
 msgid "Confirm Email"
-msgstr "Confirmer l'émail"
+msgstr "Courriel (pour confirmation)"
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
@@ -151,45 +118,51 @@ msgid "Contact Person"
 msgstr "Personne de contact"
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.address_template
 msgid "Country"
 msgstr "Pays"
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.address_template
 msgid "Country..."
 msgstr "Pays..."
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.contact_template
+msgid "Date of birth"
+msgstr "Date de naissance"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.contact_template
 msgid "Didier"
 msgstr ""
 
 #. module: cooperator_website
-#: selection:res.company,captcha_type:0
-msgid "Disabled"
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Do you already have an account?"
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+msgid "Do you want to\n"
+"                                            modify your personal information first?"
 msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid "Email"
+msgid "E-mail"
 msgstr "Courriel"
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.rules_template
 msgid "Financial Risk"
 msgstr ""
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.contact_template
 msgid "First Name"
-msgstr "Prénom"
+msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
@@ -197,35 +170,25 @@ msgid "Function"
 msgstr "Fonction"
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.contact_template
 msgid "Gender"
-msgstr "Genre"
+msgstr ""
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-#, fuzzy
+#: model_terms:ir.ui.view,arch_db:cooperator_website.rules_template
 msgid "Generic Rules"
-msgstr "Notre règlement intérieur"
-
-#. module: cooperator_website
-#: selection:res.company,captcha_type:0
-msgid "Google Recaptcha"
 msgstr ""
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid ""
-"Idendity\n"
-"                                        card scan"
+#: model_terms:ir.ui.view,arch_db:cooperator_website.rules_template
+msgid "Idendity\n"
+"            card scan"
 msgstr ""
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.rules_template
 msgid "Internal Rules"
-msgstr "Notre règlement intérieur"
+msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
@@ -238,22 +201,14 @@ msgid "La super coopérative"
 msgstr ""
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.contact_template
 msgid "Language"
 msgstr "Langue"
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid "Language..."
-msgstr "Langue..."
-
-#. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.contact_template
 msgid "Last Name"
-msgstr "Nom de famille"
+msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
@@ -264,31 +219,17 @@ msgstr "Connecté"
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
 msgid "Main Address"
-msgstr "Adresse de la société"
+msgstr "Adresse"
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.shares_template
-msgid "Share number"
-msgstr "Nombre de parts"
-
-#. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid "Parts type"
-msgstr "Type de part"
-
-#. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.contact_template
 msgid "Phone"
 msgstr "Téléphone"
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid ""
-"Privacy\n"
-"                                        Policy"
+#: model_terms:ir.ui.view,arch_db:cooperator_website.rules_template
+msgid "Privacy\n"
+"            Policy"
 msgstr ""
 
 #. module: cooperator_website
@@ -298,38 +239,50 @@ msgid "Send"
 msgstr "Envoyer"
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:288
+#: model_terms:ir.ui.view,arch_db:cooperator_website.shares_template
+msgid "Share number"
+msgstr "Nombre de parts"
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.shares_template
+msgid "Share type"
+msgstr "Type de part"
+
+#. module: cooperator_website
+#: code:addons/cooperator_website/controllers/main.py:266
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:266
 #, python-format
 msgid "Some mandatory fields have not been filled"
-msgstr "Des champs obligatoires n'ont pas été remplis."
+msgstr "Certains champs obligatoires sont vides."
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.cooperator_thanks
 msgid "Thanks!"
-msgstr "Merci!"
+msgstr "Merci !"
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:309
+#: code:addons/cooperator_website/controllers/main.py:287
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:287
 #, python-format
-msgid ""
-"The email and the confirmation email doesn't match.Please check the given "
-"mail addresses"
+msgid "The email and the confirmation email doesn't match.Please check the given mail addresses"
 msgstr "Le courriel et le courriel de confirmation ne sont pas identiques."
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:297
+#: code:addons/cooperator_website/controllers/main.py:275
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:275
 #, python-format
-msgid ""
-"There is an existing account for this mail address. Please login before fill "
-"in the form"
+msgid "There is an existing account for this mail address. Please login before fill in the form"
+msgstr "Il y a déjà un compte utilisateur pour ce courriel. Connectez vous avant de remplir le formulaire."
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.shares_template
+msgid "Total"
 msgstr ""
-"Il y a déjà un compte utilisateur pour ce courriel. Connectez vous avant de "
-"remplir le formulaire."
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.cooperator_thanks
 msgid "We will get back to you shortly."
-msgstr ""
+msgstr "Nous reviendrons vers vous rapidement."
 
 #. module: cooperator_website
 #: model:ir.actions.act_url,name:cooperator_website.action_open_website
@@ -337,49 +290,43 @@ msgid "Website Cooperator contact Form"
 msgstr "Formulaire en ligne pour coopérateur"
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:355
+#: code:addons/cooperator_website/controllers/main.py:334
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:334
 #, python-format
 msgid "You can't subscribe for an amount that exceed "
 msgstr "Vous ne pouvez souscrire à un montant supérieur à"
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:346
+#: code:addons/cooperator_website/controllers/main.py:325
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:325
 #, python-format
 msgid "You can't subscribe two different types of share"
-msgstr "Vous ne pouvez souscrire à des types de part différents."
+msgstr "Vous ne pouvez souscrire à des types de parts différents"
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid "You have already an account?"
-msgstr "Vous avez déjà un compte?"
-
-#. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:333
-#, python-format
-msgid "You iban account number is not valid"
-msgstr ""
-
-#. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:324
+#: code:addons/cooperator_website/controllers/main.py:302
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:302
 #, python-format
 msgid "You need to upload a scan of your id card"
-msgstr "Vous devez télécharger un scan de votre carte d'identité."
+msgstr "Vous devez charger une copie de votre carte d'identité."
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid ""
-"You want to\n"
-"                                        modify your personal information ?"
+#: code:addons/cooperator_website/controllers/main.py:312
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:312
+#, python-format
+msgid "Your IBAN is not valid."
 msgstr ""
-"Vous voulez \n"
-" modifier vos informations personnelles ?"
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.cooperator_thanks
-msgid ""
-"Your subscription has been successfully\n"
+msgid "Your subscription has been successfully\n"
 "                                registered."
 msgstr "Votre souscription à bien été enregistrée."
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.address_template
+msgid "Zip / Postal Code"
+msgstr "Code postal"
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
@@ -393,20 +340,12 @@ msgid "didier.bourdon@bees-coop.be"
 msgstr ""
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid "e.g. (+32).81.81.37.00"
+#: model_terms:ir.ui.view,arch_db:cooperator_website.contact_template
+msgid "e.g. +32 456 926 5059"
 msgstr ""
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid "rue Van Hove, 19"
+#: model_terms:ir.ui.view,arch_db:cooperator_website.address_template
+msgid "rue Van Hove, 199"
 msgstr ""
 
-#. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:268
-#: code:addons/cooperator_website/controllers/main.py:276
-#, python-format
-msgid "the captcha has not been validated, please fill in the captcha"
-msgstr "Le recaptcha n'a pas été validé. Remplissez-le svp."
