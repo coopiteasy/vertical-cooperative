@@ -1610,11 +1610,6 @@ msgid "Cooperator mail template"
 msgstr ""
 
 #. module: cooperator
-#: model:ir.ui.menu,name:cooperator.menu_cooperator_main
-msgid "Cooperator"
-msgstr ""
-
-#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_register_G001
 msgid ""
 "Effective\n"
