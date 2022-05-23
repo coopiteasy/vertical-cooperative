@@ -14,89 +14,14 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: cooperator_api_logs
-#: model:ir.model.fields,field_description:cooperator_api_logs.field_emc_api_log__create_uid
-msgid "Created by"
-msgstr ""
-
-#. module: cooperator_api_logs
-#: model:ir.model.fields,field_description:cooperator_api_logs.field_emc_api_log__create_date
-msgid "Created on"
-msgstr ""
-
-#. module: cooperator_api_logs
-#: model:ir.model.fields,field_description:cooperator_api_logs.field_emc_api_log__datetime
-msgid "Datetime"
-msgstr ""
-
-#. module: cooperator_api_logs
-#: model:ir.model.fields,field_description:cooperator_api_logs.field_emc_api_log__display_name
-msgid "Display Name"
-msgstr ""
-
-#. module: cooperator_api_logs
 #: model:ir.actions.act_window,name:cooperator_api_logs.cooperator_api_log_action
 #: model:ir.ui.menu,name:cooperator_api_logs.cooperator_api_log_menu
-msgid "EMC API Logs"
+msgid "Cooperators API Logs"
 msgstr ""
 
 #. module: cooperator_api_logs
-#: model:ir.model.fields,field_description:cooperator_api_logs.field_emc_api_log__headers
-msgid "Headers"
-msgstr ""
-
-#. module: cooperator_api_logs
-#: model:ir.model.fields,field_description:cooperator_api_logs.field_emc_api_log__id
-msgid "ID"
-msgstr ""
-
-#. module: cooperator_api_logs
-#: model:ir.model.fields,field_description:cooperator_api_logs.field_emc_api_log__ip
-msgid "IP"
-msgstr ""
-
-#. module: cooperator_api_logs
-#: model:ir.model.fields,field_description:cooperator_api_logs.field_emc_api_log____last_update
-msgid "Last Modified on"
-msgstr ""
-
-#. module: cooperator_api_logs
-#: model:ir.model.fields,field_description:cooperator_api_logs.field_emc_api_log__write_uid
-msgid "Last Updated by"
-msgstr ""
-
-#. module: cooperator_api_logs
-#: model:ir.model.fields,field_description:cooperator_api_logs.field_emc_api_log__write_date
-msgid "Last Updated on"
-msgstr ""
-
-#. module: cooperator_api_logs
-#: model:ir.model,name:cooperator_api_logs.model_emc_api_log
+#: model:ir.model,name:cooperator_api_logs.model_cooperator_api_log
 msgid "Logs call to EMC API"
-msgstr ""
-
-#. module: cooperator_api_logs
-#: model:ir.model.fields,field_description:cooperator_api_logs.field_emc_api_log__method
-msgid "Method"
-msgstr ""
-
-#. module: cooperator_api_logs
-#: model:ir.model.fields,field_description:cooperator_api_logs.field_emc_api_log__path
-msgid "Path"
-msgstr ""
-
-#. module: cooperator_api_logs
-#: model:ir.model.fields,field_description:cooperator_api_logs.field_emc_api_log__payload
-msgid "Payload"
-msgstr ""
-
-#. module: cooperator_api_logs
-#: model:ir.model.fields,field_description:cooperator_api_logs.field_emc_api_log__response
-msgid "Response"
-msgstr ""
-
-#. module: cooperator_api_logs
-#: model:ir.model.fields,field_description:cooperator_api_logs.field_emc_api_log__status
-msgid "Status"
 msgstr ""
 
 #. module: cooperator_api_logs
