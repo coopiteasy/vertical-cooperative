@@ -14,39 +14,6 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: l10n_es_cooperator
-#: model:ir.model.fields,help:l10n_es_cooperator.field_subscription_request__vat
-msgid "\n"
-"        The Tax Identification Number. Complete it if the contact is subjected to\n"
-"        government taxes. Used in some legal statements.\"\n"
-"        "
-msgstr ""
-
-#. module: l10n_es_cooperator
-#: model:ir.model,name:l10n_es_cooperator.model_res_company
-msgid "Companies"
-msgstr ""
-
-#. module: l10n_es_cooperator
-#: model:ir.model.fields,field_description:l10n_es_cooperator.field_res_company__property_cooperator_account
-msgid "Cooperator Account"
-msgstr ""
-
-#. module: l10n_es_cooperator
-#: model:ir.model,name:l10n_es_cooperator.model_subscription_request
-msgid "Subscription Request"
-msgstr ""
-
-#. module: l10n_es_cooperator
-#: model:ir.model.fields,field_description:l10n_es_cooperator.field_subscription_request__vat
-msgid "Tax ID"
-msgstr ""
-
-#. module: l10n_es_cooperator
-#: model:ir.model.fields,help:l10n_es_cooperator.field_res_company__property_cooperator_account
-msgid "This account will be the default one as the receivable account for the cooperators"
-msgstr ""
-
-#. module: l10n_es_cooperator
 #: model_terms:ir.ui.view,arch_db:l10n_es_cooperator.iban_template_es
 msgid "Bank Account Number"
 msgstr ""
@@ -54,6 +21,11 @@ msgstr ""
 #. module: l10n_es_cooperator
 #: model_terms:ir.ui.view,arch_db:l10n_es_cooperator.iban_template_es
 msgid "ES9000246912501234567891"
+msgstr ""
+
+#. module: l10n_es_cooperator
+#: model:ir.model,name:l10n_es_cooperator.model_subscription_request
+msgid "Subscription Request"
 msgstr ""
 
 #. module: l10n_es_cooperator
