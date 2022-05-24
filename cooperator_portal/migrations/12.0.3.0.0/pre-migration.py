@@ -30,3 +30,7 @@ renamed_xml_ids = (
 def migrate(env, version):
     _logger.info("renaming xml_ids")
     openupgrade.rename_xmlids(env.cr, renamed_xml_ids)
+
+    env.cr.execute(
+        "delete from ir_ui_view where key ilike '%website_portal_details_form';"
+    )
