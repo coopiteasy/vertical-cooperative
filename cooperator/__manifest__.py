@@ -56,4 +56,5 @@
     "demo": ["demo/coop.xml", "demo/users.xml"],
     "installable": True,
     "application": True,
+    "post_init_hook": "uninstall_previous_version",
 }
