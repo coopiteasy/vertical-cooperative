@@ -110,12 +110,8 @@ msgid "Company type"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
-msgid "Confirm Email"
-msgstr ""
-
-#. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:easy_my_coop_website.becomecooperator
 msgid "Confirm Email"
 msgstr ""
 
@@ -198,7 +194,7 @@ msgstr ""
 
 #. module: easy_my_coop_website
 #: model_terms:ir.ui.view,arch_db:easy_my_coop_website.rules_template
-msgid "Idendity\n"
+msgid "Identity\n"
 "            card scan"
 msgstr ""
 
