@@ -155,14 +155,13 @@ def rename_xml_ids(cr):
             "easy_my_coop.account.action_invoice_refund_out_tree",
         ],
     )
-
-
-def uninstall_previous_version(cr):
-    env = api.Environment(cr, SUPERUSER_ID, {})
-
     # uninstall the previous version of the module
     module_ids = env["ir.module.module"].search(
         [("name", "=", "easy_my_coop"), ("state", "=", "installed")]
     )
     if module_ids:
         module_ids.button_uninstall()
+
+
+# def uninstall_previous_version(cr, registry):
+#     env = api.Environment(cr, SUPERUSER_ID, {})
