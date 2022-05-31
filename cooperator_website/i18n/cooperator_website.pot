@@ -69,18 +69,8 @@ msgid "Bruxelles"
 msgstr ""
 
 #. module: cooperator_website
-#: model:ir.model.fields,field_description:cooperator_website.field_res_company__captcha_type
-msgid "Captcha type or disabled"
-msgstr ""
-
-#. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.address_template
 msgid "City"
-msgstr ""
-
-#. module: cooperator_website
-#: model:ir.model,name:cooperator_website.model_res_company
-msgid "Companies"
 msgstr ""
 
 #. module: cooperator_website
@@ -145,11 +135,6 @@ msgid "Didier"
 msgstr ""
 
 #. module: cooperator_website
-#: selection:res.company,captcha_type:0
-msgid "Disabled"
-msgstr ""
-
-#. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
 msgid "Do you already have an account?"
 msgstr ""
@@ -189,11 +174,6 @@ msgstr ""
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.rules_template
 msgid "Generic Rules"
-msgstr ""
-
-#. module: cooperator_website
-#: selection:res.company,captcha_type:0
-msgid "Google Recaptcha"
 msgstr ""
 
 #. module: cooperator_website
@@ -266,26 +246,8 @@ msgid "Share type"
 msgstr ""
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:288
-#, python-format
-msgid "Some mandatory fields have not been filled"
-msgstr ""
-
-#. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.cooperator_thanks
 msgid "Thanks!"
-msgstr ""
-
-#. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:309
-#, python-format
-msgid "The email and the confirmation email doesn't match.Please check the given mail addresses"
-msgstr ""
-
-#. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:297
-#, python-format
-msgid "There is an existing account for this mail address. Please login before fill in the form"
 msgstr ""
 
 #. module: cooperator_website
@@ -301,30 +263,6 @@ msgstr ""
 #. module: cooperator_website
 #: model:ir.actions.act_url,name:cooperator_website.action_open_website
 msgid "Website Cooperator contact Form"
-msgstr ""
-
-#. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:356
-#, python-format
-msgid "You can't subscribe for an amount that exceed "
-msgstr ""
-
-#. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:347
-#, python-format
-msgid "You can't subscribe two different types of share"
-msgstr ""
-
-#. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:324
-#, python-format
-msgid "You need to upload a scan of your id card"
-msgstr ""
-
-#. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:334
-#, python-format
-msgid "Your IBAN is not valid."
 msgstr ""
 
 #. module: cooperator_website
@@ -357,12 +295,5 @@ msgstr ""
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.address_template
 msgid "rue Van Hove, 199"
-msgstr ""
-
-#. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:268
-#: code:addons/cooperator_website/controllers/main.py:276
-#, python-format
-msgid "the captcha has not been validated, please fill in the captcha"
 msgstr ""
 
