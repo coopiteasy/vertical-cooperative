@@ -262,7 +262,7 @@ msgid "Share type"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:288
+#: code:addons/easy_my_coop_website/controllers/main.py:296
 #, python-format
 msgid "Some mandatory fields have not been filled"
 msgstr ""
@@ -273,13 +273,13 @@ msgid "Thanks!"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:309
+#: code:addons/easy_my_coop_website/controllers/main.py:317
 #, python-format
 msgid "The email and the confirmation email doesn't match.Please check the given mail addresses"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:297
+#: code:addons/easy_my_coop_website/controllers/main.py:305
 #, python-format
 msgid "There is an existing account for this mail address. Please login before fill in the form"
 msgstr ""
@@ -300,25 +300,25 @@ msgid "Website Cooperator contact Form"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:356
+#: code:addons/easy_my_coop_website/controllers/main.py:364
 #, python-format
 msgid "You can't subscribe for an amount that exceed "
 msgstr ""
 
 #. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:347
+#: code:addons/easy_my_coop_website/controllers/main.py:355
 #, python-format
 msgid "You can't subscribe two different types of share"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:324
+#: code:addons/easy_my_coop_website/controllers/main.py:332
 #, python-format
 msgid "You need to upload a scan of your id card"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:334
+#: code:addons/easy_my_coop_website/controllers/main.py:342
 #, python-format
 msgid "Your IBAN is not valid."
 msgstr ""
@@ -356,8 +356,8 @@ msgid "rue Van Hove, 199"
 msgstr ""
 
 #. module: easy_my_coop_website
-#: code:addons/easy_my_coop_website/controllers/main.py:268
 #: code:addons/easy_my_coop_website/controllers/main.py:276
+#: code:addons/easy_my_coop_website/controllers/main.py:284
 #, python-format
 msgid "the captcha has not been validated, please fill in the captcha"
 msgstr ""
