@@ -7,10 +7,10 @@ from datetime import timedelta
 from odoo.exceptions import AccessError
 from odoo.fields import Date
 
-from odoo.addons.cooperator.tests.test_base import EMCBaseCase
+from odoo.addons.cooperator.tests.test_base import CooperatorBaseCase
 
 
-class EMCLoanCase(EMCBaseCase):
+class EMCLoanCase(CooperatorBaseCase):
     def test_complete_loan_flow(self):
 
         loan_issue_values = {
@@ -32,7 +32,7 @@ class EMCLoanCase(EMCBaseCase):
             "loan_term": 12,
         }
 
-        self.as_emc_manager()
+        self.as_cooperator_manager()
         loan_issue = self.env["loan.issue"].create(loan_issue_values)
         loan_issue.action_confirm()
         loan_issue.action_open()
@@ -41,7 +41,7 @@ class EMCLoanCase(EMCBaseCase):
         loan_issue.action_open()
 
     def test_emc_user_cannot_manage_loan_issue(self):
-        self.as_emc_user()
+        self.as_cooperator_user()
 
         loan_issue_values = {
             "name": "test loan issue",
@@ -79,12 +79,12 @@ class EMCLoanCase(EMCBaseCase):
         with self.assertRaises(AccessError):
             loan_issue.action_open()
 
-        self.as_emc_manager()
+        self.as_cooperator_manager()
         loan_issue_manager = self.browse_ref("easy_my_coop_loan.loan_issue_1_demo")
         loan_issue_manager.action_confirm()
         loan_issue_manager.action_open()
 
-        self.as_emc_user()
+        self.as_cooperator_user()
         line = self.env["loan.issue.line"].create(
             {
                 "loan_issue_id": loan_issue.id,

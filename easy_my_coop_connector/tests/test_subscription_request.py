@@ -8,12 +8,12 @@ from unittest.mock import Mock, patch
 
 import requests
 
-from odoo.addons.cooperator.tests.test_base import EMCBaseCase
+from odoo.addons.cooperator.tests.test_base import CooperatorBaseCase
 
 from .test_data import SR_GET_RESULT, SR_SEARCH_RESULT, SR_VALIDATE_RESULT, dict_to_dump
 
 
-class EMCSRConnectorCase(EMCBaseCase):
+class EMCSRConnectorCase(CooperatorBaseCase):
     def setUp(self):
         super().setUp()
         self.backend = self.browse_ref("easy_my_coop_connector.emc_backend_demo")
