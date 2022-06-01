@@ -56,7 +56,7 @@
             <field name="target">new</field>
             <field
                 name="groups_id"
-                eval="[(4,ref('cooperator.group_easy_my_coop_user'))]"
+                eval="[(4,ref('cooperator.cooperator_group_user'))]"
             />
         </record>
 

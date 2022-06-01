@@ -8,7 +8,7 @@
             <field name="bank_id" position="after">
                 <field
                     name="get_cooperator_payment"
-                    groups="cooperator.group_easy_my_coop_manager"
+                    groups="cooperator.cooperator_group_manager"
                 />
                 <field name="get_general_payment" />
             </field>
@@ -23,7 +23,7 @@
             <field name="currency_id" position="after">
                 <field
                     name="get_cooperator_payment"
-                    groups="cooperator.group_easy_my_coop_manager"
+                    groups="cooperator.cooperator_group_manager"
                 />
                 <field name="get_general_payment" />
             </field>
