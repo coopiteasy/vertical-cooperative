@@ -667,7 +667,7 @@ msgstr "Attestations Tax Shelter"
 
 #. module: l10n_be_cooperator
 #: model:ir.model,name:l10n_be_cooperator.model_tax_shelter_declaration
-#: model:ir.ui.menu,name:l10n_be_cooperator.menu_tax_shelter_declaration
+#: model:ir.ui.menu,name:l10n_be_cooperator.tax_shelter_declaration_menu
 msgid "Tax Shelter Declaration"
 msgstr "Déclaration Tax Shelter"
 
