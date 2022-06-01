@@ -31,5 +31,5 @@ class EMCHistoryImportSR(models.TransientModel):
             date_from=self.date_from, date_to=self.date_to
         )
 
-        action = self.env.ref("easy_my_coop.subscription_request_action")
+        action = self.env.ref("cooperator.subscription_request_action")
         return action.read()[0]
