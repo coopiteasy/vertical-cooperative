@@ -1725,8 +1725,8 @@ msgid "Cooperator API"
 msgstr ""
 
 #. module: cooperator
-#: model:ir.model.fields,field_description:cooperator.field_email_template_preview__easy_my_coop
-#: model:ir.model.fields,field_description:cooperator.field_mail_template__easy_my_coop
+#: model:ir.model.fields,field_description:cooperator.field_email_template_preview__is_cooperator_template
+#: model:ir.model.fields,field_description:cooperator.field_mail_template__is_cooperator_template
 msgid "Cooperator mail template"
 msgstr ""
 
