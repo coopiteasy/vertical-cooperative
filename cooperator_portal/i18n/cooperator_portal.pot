@@ -169,6 +169,12 @@ msgid "You are not a cooperator"
 msgstr ""
 
 #. module: cooperator_portal
+#: code:addons/cooperator_portal/controllers/portal.py:87
+#, python-format
+msgid "You iban account number is not valid"
+msgstr ""
+
+#. module: cooperator_portal
 #: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_layout
 msgid "Your Cooperator Details"
 msgstr ""
