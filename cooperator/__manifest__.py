@@ -40,7 +40,7 @@
         "views/subscription_request_view.xml",
         "views/email_template_view.xml",
         "views/res_partner_view.xml",
-        "views/cooperator_register_view.xml",
+        "views/subscription_register_view.xml",
         "views/operation_request_view.xml",
         "views/account_invoice_view.xml",
         "views/product_view.xml",
