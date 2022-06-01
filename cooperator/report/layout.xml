@@ -2,7 +2,7 @@
 <odoo>
 
     <template
-        id="emc_external_layout_standard"
+        id="external_layout_standard"
         inherit_id="web.external_layout_standard"
         primary="True"
     >
@@ -10,7 +10,7 @@
             <attribute name="style">display: none;</attribute>
         </xpath>
         <xpath expr="//div[hasclass('footer', 'o_standard_footer')]" position="before">
-            <div class="footer o_emc_footer" name="footer" style="font-size: 0.8em;">
+            <div class="footer" name="footer" style="font-size: 0.8em;">
                 <div class="row">
                     <div
                         t-att-class="'text-center col-10' if company.display_logo1 or company.display_logo2 else 'text-center col'"
@@ -69,20 +69,4 @@
             </div>
         </xpath>
     </template>
-
-    <template
-        id="emc_external_layout_larger_logo"
-        inherit_id="cooperator.emc_external_layout_standard"
-        primary="True"
-    >
-        <!--
-        This template should be used with the special paperformat
-        that extend margin. See paperformat in data.
-        -->
-        <xpath expr="//div[hasclass('header')]//div//img" position="attributes">
-            <attribute name="style">min-height: 75px; max-height: 75px;
-            </attribute>
-        </xpath>
-    </template>
-
 </odoo>
