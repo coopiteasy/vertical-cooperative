@@ -420,8 +420,8 @@
     <template id="captcha_template" name="captcha_template">
         <div
             class="g-recaptcha text-xs-center"
-            t-if="website.company_id.captcha_type == 'google'"
-            t-att-data-sitekey="website.recaptcha_key_site"
+            t-if="res_company.captcha_type == 'google'"
+            t-att-data-sitekey="request.env['ir.config_parameter'].sudo().get_param('recaptcha_key_site')"
             data-theme="green"
             name="recaptcha_key_site"
         />
