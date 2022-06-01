@@ -1253,7 +1253,7 @@ msgid "Click to add a contact in your address book."
 msgstr "Klik om een contact toe te voegen in uw adresboek."
 
 #. module: cooperator
-#: model_terms:ir.actions.act_window,help:cooperator.share_product_action
+#: model_terms:ir.actions.act_window,help:cooperator.product_template_action
 msgid "Click to define a new share product."
 msgstr "Click to define a new share product."
 
@@ -2692,7 +2692,7 @@ msgid "Share transfer"
 msgstr "Share number"
 
 #. module: cooperator
-#: model:ir.actions.act_window,name:cooperator.share_product_action
+#: model:ir.actions.act_window,name:cooperator.product_template_action
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__share_product_id
 #: model:ir.model.fields,field_description:cooperator.field_share_line__share_product_id
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__share_product_id
