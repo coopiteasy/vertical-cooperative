@@ -1,30 +1,34 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* cooperator
+# 	* cooperator
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-18 10:19+0000\n"
-"PO-Revision-Date: 2022-05-18 10:19+0000\n"
+"PO-Revision-Date: 2022-05-19 10:45+0200\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
+"Language: fr_BE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. module: cooperator
 #: model:mail.template,report_name:cooperator.email_template_release_capital
-msgid "\n"
+msgid ""
+"\n"
 "                ${(object.number or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}\n"
 "            "
 msgstr ""
 
 #. module: cooperator
 #: model:mail.template,body_html:cooperator.email_template_waiting_list
-msgid "\n"
+msgid ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hello ${object.firstname},</p>\n"
@@ -71,7 +75,8 @@ msgstr ""
 
 #. module: cooperator
 #: model:mail.template,body_html:cooperator.email_template_certificat_increase
-msgid "\n"
+msgid ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hello ${object.firstname},</p>\n"
@@ -116,7 +121,8 @@ msgstr ""
 
 #. module: cooperator
 #: model:mail.template,body_html:cooperator.email_template_certificat
-msgid "\n"
+msgid ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hello ${object.firstname},</p>\n"
@@ -161,7 +167,8 @@ msgstr ""
 
 #. module: cooperator
 #: model:mail.template,body_html:cooperator.email_template_share_update
-msgid "\n"
+msgid ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hello ${object.firstname},</p>\n"
@@ -206,7 +213,8 @@ msgstr ""
 
 #. module: cooperator
 #: model:mail.template,body_html:cooperator.email_template_share_transfer
-msgid "\n"
+msgid ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hello ${object.firstname},</p>\n"
@@ -251,7 +259,8 @@ msgstr ""
 
 #. module: cooperator
 #: model:mail.template,body_html:cooperator.email_template_confirmation_company
-msgid "\n"
+msgid ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hello ${object.firstname},</p>\n"
@@ -298,7 +307,8 @@ msgstr ""
 
 #. module: cooperator
 #: model:mail.template,body_html:cooperator.email_template_confirmation
-msgid "\n"
+msgid ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hello ${object.firstname},</p>\n"
@@ -343,7 +353,8 @@ msgstr ""
 
 #. module: cooperator
 #: model:mail.template,body_html:cooperator.email_template_release_capital
-msgid "\n"
+msgid ""
+"\n"
 "<div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
 "\n"
 "    <p>Hello ${object.partner_id.firstname},</p>\n"
@@ -386,7 +397,8 @@ msgstr ""
 
 #. module: cooperator
 #: model:mail.template,subject:cooperator.email_template_release_capital
-msgid "${object.company_id.name} Request to Release\n"
+msgid ""
+"${object.company_id.name} Request to Release\n"
 "                Capital (Ref ${object.number or 'n/a'})\n"
 "            "
 msgstr ""
@@ -407,13 +419,15 @@ msgstr ""
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
-msgid "<span groups=\"account.group_show_line_subtotals_tax_excluded\">\n"
+msgid ""
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">\n"
 "                                    Amount\n"
 "                                </span>\n"
 "                                <span groups=\"account.group_show_line_subtotals_tax_included\">\n"
 "                                    Total Price\n"
 "                                </span>"
-msgstr "<span groups=\"account.group_show_line_subtotals_tax_excluded\">Montant</span>\n"
+msgstr ""
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Montant</span>\n"
 "                                <span groups=\"account.group_show_line_subtotals_tax_included\">Prix total</span>"
 
 #. module: cooperator
@@ -473,7 +487,8 @@ msgstr "<strong class=\"mr16\">Sous-total</strong>"
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
-msgid "<strong class=\"text-center\">Scan me with your banking\n"
+msgid ""
+"<strong class=\"text-center\">Scan me with your banking\n"
 "                            app.\n"
 "                        </strong>\n"
 "                        <br/>\n"
@@ -482,7 +497,8 @@ msgstr "<strong class=\"text-center\">Scannez-moi avec votre application bancair
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
-msgid "<strong class=\"text-center\">The SEPA QR Code\n"
+msgid ""
+"<strong class=\"text-center\">The SEPA QR Code\n"
 "                            informations are not set correctly.\n"
 "                        </strong>\n"
 "                        <br/>"
@@ -606,7 +622,7 @@ msgstr "Approbation de politique de gestion des données"
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__financial_risk_approved
 #: model:ir.model.fields,field_description:cooperator.field_res_users__financial_risk_approved
 msgid "Approved Financial Risk"
-msgstr ""
+msgstr "Approbation des risques financiers"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__internal_rules_approved
@@ -619,7 +635,7 @@ msgstr "Approbation du règlement intérieur"
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__generic_rules_approved
 #: model:ir.model.fields,field_description:cooperator.field_res_users__generic_rules_approved
 msgid "Approved generic rules"
-msgstr ""
+msgstr "Approbation du règlement intérieur"
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_request_filter
@@ -715,8 +731,7 @@ msgid "Cancel"
 msgstr "Annuler"
 
 #. module: cooperator
-#: selection:operation.request,state:0
-#: selection:subscription.request,state:0
+#: selection:operation.request,state:0 selection:subscription.request,state:0
 msgid "Cancelled"
 msgstr "Annulé"
 
@@ -737,7 +752,8 @@ msgstr "Demande de libération de capital"
 #: model:mail.template,report_name:cooperator.email_template_certificat_increase
 #: model:mail.template,report_name:cooperator.email_template_share_transfer
 #: model:mail.template,report_name:cooperator.email_template_share_update
-msgid "Certificat\n"
+msgid ""
+"Certificat\n"
 "                ${(object.cooperator_register_number or '')}\n"
 "            "
 msgstr ""
@@ -863,12 +879,12 @@ msgstr "Structure juridique"
 #: model:ir.ui.menu,name:cooperator.menu_cooperator_config
 #: model_terms:ir.ui.view,arch_db:cooperator.product_template_form_view
 msgid "Configuration"
-msgstr ""
+msgstr "Configuration"
 
 #. module: cooperator
 #: model:ir.model,name:cooperator.model_res_partner
 msgid "Contact"
-msgstr ""
+msgstr "Contact"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__coop_email_contact
@@ -878,13 +894,13 @@ msgstr "Email du coopérateur"
 #. module: cooperator
 #: model:ir.ui.menu,name:cooperator.menu_cooperator_main_coop
 msgid "Contacts"
-msgstr ""
+msgstr "Contacts"
 
 #. module: cooperator
 #: selection:operation.request,operation_type:0
 #: selection:subscription.register,type:0
 msgid "Conversion"
-msgstr ""
+msgstr "Conversion"
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_register_filter
@@ -908,12 +924,12 @@ msgstr "La conversion partielle des parts n'est pas implémentée à ce jour"
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_company_form
 msgid "Cooperative"
-msgstr ""
+msgstr "Coopérative"
 
 #. module: cooperator
 #: model:ir.module.category,name:cooperator.module_category_cooperator_management
 msgid "Cooperative Management"
-msgstr ""
+msgstr "Gestion de la coopérative"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__partner_id
@@ -985,7 +1001,7 @@ msgstr "Certificat de coopérateur"
 #: model:ir.model.fields,field_description:cooperator.field_email_template_preview__is_cooperator_template
 #: model:ir.model.fields,field_description:cooperator.field_mail_template__is_cooperator_template
 msgid "Cooperator mail template"
-msgstr ""
+msgstr "Modèle d'email coopérateurs"
 
 #. module: cooperator
 #: model:ir.actions.report,name:cooperator.action_report_cooperator_register
@@ -1024,7 +1040,8 @@ msgstr "Créer une facture client"
 
 #. module: cooperator
 #: model_terms:ir.actions.act_window,help:cooperator.account_invoice_action
-msgid "Create invoices, register payments and keep track of the\n"
+msgid ""
+"Create invoices, register payments and keep track of the\n"
 "                discussions with your customers."
 msgstr "Créez des factures, enregistrez des paiements et gardez une trace de vos discussions avec vos clients."
 
@@ -1076,7 +1093,7 @@ msgstr "Approbation de politique de gestion des données"
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__default_capital_release_request_payment_term
 msgid "Default Payment Term"
-msgstr ""
+msgstr "Délai de paiement par défaut"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__default_country_id
@@ -1091,7 +1108,7 @@ msgstr "Langue par défaut"
 #. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_company__default_capital_release_request_payment_term
 msgid "Default payment term to use for capital release requests"
-msgstr ""
+msgstr "Délai de paiement par défaut pour les demandes de libération de capital"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_product_product__default_share_product
@@ -1107,12 +1124,12 @@ msgstr "Afficher la demande d'approbation de la politique de données"
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__display_financial_risk_approval
 msgid "Display Financial Risk Approval"
-msgstr ""
+msgstr "Afficher l'approbation des risques financiers"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__display_generic_rules_approval
 msgid "Display Generic Rules Approval"
-msgstr ""
+msgstr "Afficher l'approbation du règlement intérieur"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__display_internal_rules_approval
@@ -1149,16 +1166,14 @@ msgstr "Afficher sur le site web"
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_request_filter
-#: selection:operation.request,state:0
-#: selection:subscription.request,state:0
+#: selection:operation.request,state:0 selection:subscription.request,state:0
 msgid "Done"
 msgstr "Fait"
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.operation_request_form
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_request_filter
-#: selection:operation.request,state:0
-#: selection:subscription.request,state:0
+#: selection:operation.request,state:0 selection:subscription.request,state:0
 msgid "Draft"
 msgstr "Brouillon"
 
@@ -1169,9 +1184,11 @@ msgstr "Facture en brouillon"
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_register_G001
-msgid "Effective\n"
+msgid ""
+"Effective\n"
 "                            date"
-msgstr "Date\n"
+msgstr ""
+"Date\n"
 "                            effective"
 
 #. module: cooperator
@@ -1238,12 +1255,12 @@ msgstr "Féminin"
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__financial_risk_approval_text
 msgid "Financial Risk Approval Text"
-msgstr ""
+msgstr "Texte d'approbation des risques financiers"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__financial_risk_approved
 msgid "Financial Risk Approved"
-msgstr ""
+msgstr "Approbation des risques financiers"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__firstname
@@ -1299,12 +1316,12 @@ msgstr "Genre"
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__generic_rules_approval_text
 msgid "Generic Rules Approval Text"
-msgstr ""
+msgstr "Texte d'approbation du règlement intérieur"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__generic_rules_approved
 msgid "Generic Rules Approved"
-msgstr ""
+msgstr "Approbation du règlement intérieur"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_account_bank_statement_import_journal_creation__get_cooperator_payment
@@ -1386,7 +1403,7 @@ msgstr "Texte d'approbation du règlement intérieur"
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_request_filter
 msgid "Invalid IBAN"
-msgstr ""
+msgstr "IBAN invalide"
 
 #. module: cooperator
 #: model:ir.model,name:cooperator.model_account_invoice
@@ -1433,12 +1450,12 @@ msgstr "L'approbation de la politique de gestion des données est-elle obligatoi
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__financial_risk_approval_required
 msgid "Is financial risk approval required?"
-msgstr ""
+msgstr "L'approbation des risques financiers est-elle obligatoire ?"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__generic_rules_approval_required
 msgid "Is generic rules approval required?"
-msgstr ""
+msgstr "L'approbation du règlement intérieur est-elle obligatoire?"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__internal_rules_approval_required
@@ -1517,7 +1534,7 @@ msgstr "Représentant légal"
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__representative_of_member_company
 #: model:ir.model.fields,field_description:cooperator.field_res_users__representative_of_member_company
 msgid "Legal Representative of Member Company"
-msgstr ""
+msgstr "Représentant de personne morale"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__legal_form
@@ -1552,7 +1569,7 @@ msgstr "Masculin"
 #. module: cooperator
 #: model:ir.module.category,description:cooperator.module_category_cooperator_management
 msgid "Manage your cooperative."
-msgstr ""
+msgstr "Gestion de votre coopérative"
 
 #. module: cooperator
 #: model:res.groups,name:cooperator.cooperator_group_manager
@@ -1713,7 +1730,8 @@ msgstr ""
 #: model_terms:ir.actions.act_window,help:cooperator.action_company_representative_form
 #: model_terms:ir.actions.act_window,help:cooperator.action_partner_cooperator_candidate_form
 #: model_terms:ir.actions.act_window,help:cooperator.action_partner_cooperator_form
-msgid "OpenERP helps you easily track all activities related to\n"
+msgid ""
+"OpenERP helps you easily track all activities related to\n"
 "                    a cooperator: discussions, history of business\n"
 "                    opportunities,\n"
 "                    documents, etc."
@@ -1726,13 +1744,15 @@ msgstr "Opération"
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_subscription_G001
-msgid "Operation\n"
+msgid ""
+"Operation\n"
 "                            number"
 msgstr ""
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_subscription_G001
-msgid "Operation\n"
+msgid ""
+"Operation\n"
 "                            type"
 msgstr ""
 
@@ -1779,7 +1799,8 @@ msgstr ""
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.external_layout_standard
-msgid "Page:\n"
+msgid ""
+"Page:\n"
 "                            <span class=\"page\"/>\n"
 "                            /\n"
 "                            <span class=\"topage\"/>"
@@ -1927,7 +1948,8 @@ msgstr "Date de la demande"
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
-msgid "Request to Release\n"
+msgid ""
+"Request to Release\n"
 "                        Capital"
 msgstr ""
 
@@ -1982,32 +2004,32 @@ msgstr "Revendre"
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__send_capital_release_email
 msgid "Send Capital Release email"
-msgstr ""
+msgstr "Envoyer le courriel de demande de libération de capital"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__send_share_transfer_email
 msgid "Send Share Transfer Email"
-msgstr ""
+msgstr "Envoyer le courriel de transfert de part"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__send_share_update_email
 msgid "Send Share Update Email"
-msgstr ""
+msgstr "Envoyer le courriel de mise à jour de part"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__send_waiting_list_email
 msgid "Send Waiting List email"
-msgstr ""
+msgstr "Envoyer le courriel de liste d'attente"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__send_certificate_email
 msgid "Send certificate email"
-msgstr ""
+msgstr "Envoyer le certificat par courriel"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__send_confirmation_email
 msgid "Send confirmation email"
-msgstr ""
+msgstr "Envoyer le courriel de confirmation"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info__representative_function
@@ -2021,14 +2043,15 @@ msgstr "Définir la forme légale"
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_subscription_G001
-msgid "Share\n"
+msgid ""
+"Share\n"
 "                            number"
 msgstr ""
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.product_template_form_view
 msgid "Share Information"
-msgstr ""
+msgstr "Information sur la part"
 
 #. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.share_line_action
@@ -2104,7 +2127,7 @@ msgstr "Nom du type de part après conversion"
 #. module: cooperator
 #: model:mail.template,subject:cooperator.email_template_share_transfer
 msgid "Share transfer"
-msgstr ""
+msgstr "Transfert de part"
 
 #. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.product_template_action
@@ -2144,7 +2167,7 @@ msgstr "Nom court"
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__skip_iban_control
 msgid "Skip IBAN Control"
-msgstr ""
+msgstr "Passer le contrôle de l'IBAN"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__source
@@ -2159,11 +2182,13 @@ msgstr "État"
 
 #. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_subscription_request__activity_state
-msgid "Status based on activities\n"
+msgid ""
+"Status based on activities\n"
 "Overdue: Due date is already passed\n"
 "Today: Activity date is today\n"
 "Planned: Future activities."
-msgstr "Statut basé sur les activités\n"
+msgstr ""
+"Statut basé sur les activités\n"
 "En retard : la date d'échéance est déjà dépassée\n"
 "Aujourd'hui : la date d'activité est aujourd'hui\n"
 "Planifiée : activités futures"
@@ -2176,14 +2201,14 @@ msgstr "Soumettre"
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_register_filter
 #: selection:operation.request,operation_type:0
-#: selection:subscription.register,type:0
-#: selection:subscription.request,type:0
+#: selection:subscription.register,type:0 selection:subscription.request,type:0
 msgid "Subscription"
 msgstr "Souscription"
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_subscription_G001
-msgid "Subscription\n"
+msgid ""
+"Subscription\n"
 "                            date"
 msgstr ""
 
@@ -2243,7 +2268,8 @@ msgstr "Demande de souscription"
 
 #. module: cooperator
 #: model:mail.template,subject:cooperator.email_template_waiting_list
-msgid "Subscription request added on waiting list.\n"
+msgid ""
+"Subscription request added on waiting list.\n"
 "            "
 msgstr ""
 
@@ -2255,7 +2281,8 @@ msgstr "Confirmation de la demande de souscription"
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_create_subscription
-msgid "Subscription request will be created with data from the\n"
+msgid ""
+"Subscription request will be created with data from the\n"
 "                        partner."
 msgstr "La demande de souscription sera créée sur base des données du partenaire."
 
@@ -2278,7 +2305,7 @@ msgstr "Texte à afficher à côté de la case à cocher pour approuver la polit
 #. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_company__financial_risk_approval_text
 msgid "Text to display aside the checkbox to approve financial risk."
-msgstr ""
+msgstr "Texte à afficher à côté de la case à cocher pour approuver les risques financiers."
 
 #. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_company__internal_rules_approval_text
@@ -2288,7 +2315,7 @@ msgstr "Texte à afficher à côté de la case à cocher pour approuver le règl
 #. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_company__generic_rules_approval_text
 msgid "Text to display aside the checkbox to approve the generic rules."
-msgstr ""
+msgstr "Texte à afficher à côté de la case à cocher pour approuver le règlement intérieur"
 
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:702
@@ -2316,7 +2343,7 @@ msgstr "Le coopérateur ne possède pas ce type de part. Choisissez le bon type 
 #: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/operation_request.py:127
 #, python-format
 msgid "The effective date can not be in the future."
-msgstr ""
+msgstr "La date effective ne peut pas être dans le futur."
 
 #. module: cooperator
 #: code:addons/cooperator/models/operation_request.py:277
@@ -2330,7 +2357,7 @@ msgstr "Les informations du receveur ne sont pas correctes."
 #: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/subscription_request.py:688
 #, python-format
 msgid "The request must be in draft or on waiting list to be validated"
-msgstr ""
+msgstr "La demande doit être en brouillon ou en attente pour être validée"
 
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:742
@@ -2398,7 +2425,7 @@ msgstr "Ce type de part ne peut pas être transféré à"
 #. module: cooperator
 #: selection:subscription.request,activity_state:0
 msgid "Today"
-msgstr ""
+msgstr "Aujourd'hui"
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_certificat_G001_document
@@ -2530,12 +2557,12 @@ msgstr "Mettre à jour les infos de la ligne de part"
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info__all
 msgid "Update all info"
-msgstr ""
+msgstr "Mettre à jour les informations"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info__birthdate
 msgid "Update birth date"
-msgstr ""
+msgstr "Mettre à jour la date de naissance"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info__from_sub_req
@@ -2556,7 +2583,7 @@ msgstr "Utilisateur"
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__is_valid_iban
 msgid "Valid IBAN?"
-msgstr ""
+msgstr "IBAN valide ?"
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_tree
@@ -2592,8 +2619,7 @@ msgid "Vendor Credit Note"
 msgstr "Avoir de fournisseur"
 
 #. module: cooperator
-#: selection:operation.request,state:0
-#: selection:subscription.request,state:0
+#: selection:operation.request,state:0 selection:subscription.request,state:0
 msgid "Waiting"
 msgstr "En attente"
 
@@ -2634,7 +2660,7 @@ msgstr "Vous ne pouvez pas convertir un type de part dans le même type de part.
 #: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/subscription_request.py:783
 #, python-format
 msgid "You cannot cancel a request in this state."
-msgstr ""
+msgstr "Vous ne pouvez pas annuler une demande à cette étape."
 
 #. module: cooperator
 #: code:addons/cooperator/models/operation_request.py:234
@@ -2680,4 +2706,3 @@ msgstr "url du logo"
 #: selection:subscription.request,state:0
 msgid "paid"
 msgstr "payé"
-
