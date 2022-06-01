@@ -3,7 +3,7 @@
     <menuitem
         name="Declaration"
         id="main_declaration_menu"
-        parent="cooperator.menu_main_easy_my_coop"
+        parent="cooperator.menu_cooperator_main"
         sequence="10"
     />
 
