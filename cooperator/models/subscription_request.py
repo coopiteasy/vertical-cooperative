@@ -150,7 +150,6 @@ class SubscriptionRequest(models.Model):
                 part for part in (sub_request.firstname, sub_request.lastname) if part
             )
 
-
     @api.depends("iban", "skip_iban_control")
     def _compute_is_valid_iban(self):
         for sub_request in self:
