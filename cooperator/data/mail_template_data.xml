@@ -24,7 +24,7 @@
                 ${(object.number or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}
             </field>
             <field name="lang">${object.partner_id.lang}</field>
-            <field name="easy_my_coop" eval="True" />
+            <field name="is_cooperator_template" eval="True" />
             <field
                 name="body_html"
             ><![CDATA[
@@ -81,7 +81,7 @@
             <field name="model_id" ref="model_subscription_request" />
             <field name="auto_delete" eval="True" />
             <field name="lang">${object.lang}</field>
-            <field name="easy_my_coop" eval="True" />
+            <field name="is_cooperator_template" eval="True" />
             <field
                 name="body_html"
             ><![CDATA[
@@ -141,7 +141,7 @@
             <field name="model_id" ref="model_subscription_request" />
             <field name="auto_delete" eval="True" />
             <field name="lang">${object.lang}</field>
-            <field name="easy_my_coop" eval="True" />
+            <field name="is_cooperator_template" eval="True" />
             <field
                 name="body_html"
             ><![CDATA[
@@ -203,7 +203,7 @@
             <field name="model_id" ref="model_subscription_request" />
             <field name="auto_delete" eval="True" />
             <field name="lang">${object.lang}</field>
-            <field name="easy_my_coop" eval="True" />
+            <field name="is_cooperator_template" eval="True" />
             <field
                 name="body_html"
             ><![CDATA[
@@ -269,7 +269,7 @@
                 ${(object.cooperator_register_number or '')}
             </field>
             <field name="lang">${object.lang}</field>
-            <field name="easy_my_coop" eval="True" />
+            <field name="is_cooperator_template" eval="True" />
             <field
                 name="body_html"
             ><![CDATA[
@@ -334,7 +334,7 @@
                 ${(object.cooperator_register_number or '')}
             </field>
             <field name="lang">${object.lang}</field>
-            <field name="easy_my_coop" eval="True" />
+            <field name="is_cooperator_template" eval="True" />
             <field
                 name="body_html"
             ><![CDATA[
@@ -397,7 +397,7 @@
                 ${(object.cooperator_register_number or '')}
             </field>
             <field name="lang">${object.lang}</field>
-            <field name="easy_my_coop" eval="True" />
+            <field name="is_cooperator_template" eval="True" />
             <field
                 name="body_html"
             ><![CDATA[
@@ -460,7 +460,7 @@
                 ${(object.cooperator_register_number or '')}
             </field>
             <field name="lang">${object.lang}</field>
-            <field name="easy_my_coop" eval="True" />
+            <field name="is_cooperator_template" eval="True" />
             <field
                 name="body_html"
             ><![CDATA[
