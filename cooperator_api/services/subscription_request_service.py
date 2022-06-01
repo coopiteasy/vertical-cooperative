@@ -20,7 +20,7 @@ _logger = logging.getLogger(__name__)
 
 
 class SubscriptionRequestService(Component):
-    _inherit = "emc.rest.service"
+    _inherit = "cooperator.rest.service"
     _name = "subscription.request.services"
     _usage = "subscription-request"
     _description = """
