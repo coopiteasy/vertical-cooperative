@@ -8,12 +8,13 @@
                     t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'
                 />
                 <div t-if="o.partner_id.cooperator_register_number">
-                    Numéro de coopérateur :
+                    Cooperator number:
                     <span t-field="o.partner_id.cooperator_register_number" />
                 </div>
             </t>
             <div class="page mt32" style="font-size: 10px !important;">
 
+                <!-- TODO: Translate below to English -->
                 <h2 style="font-size: 3em;">
                     <span>Déclaration Tax Shelter</span>
                 </h2>
@@ -52,7 +53,7 @@
                             <th>Tax shelter eligible</th>
                             <th>Date</th>
                             <th>Amount</th>
-                            <th>Amount ligible</th>
+                            <th>Amount eligible</th>
                         </tr>
                     </thead>
                     <tbody class="invoice_tbody">
@@ -67,8 +68,8 @@
                                 <span t-field="l.capital_after_sub" />
                             </td>
                             <td>
-                                <span t-if="l.tax_shelter">Oui</span>
-                                <span t-else="">Non</span>
+                                <span t-if="l.tax_shelter">Yes</span>
+                                <span t-else="">No</span>
                             </td>
                             <td>
                                 <span t-field="l.transaction_date" />
@@ -91,8 +92,8 @@
                                 <span t-field="l.capital_after_sub" />
                             </td>
                             <td>
-                                <span t-if="l.tax_shelter">Oui</span>
-                                <span t-else="">Non</span>
+                                <span t-if="l.tax_shelter">Yes</span>
+                                <span t-else="">No</span>
                             </td>
                             <td>
                                 <span t-field="l.transaction_date" />
@@ -107,6 +108,7 @@
                     </tbody>
                 </table>
 
+                <!-- TODO: Translate below to English -->
                 <p>
                     L' Article 145/26, CIR 92 sur les revenus<span
                         t-field="o.declaration_id.fiscal_year"
