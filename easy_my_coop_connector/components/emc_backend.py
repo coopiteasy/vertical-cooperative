@@ -115,8 +115,8 @@ class EMCBackend(models.Model):
 
     def _log_emc_api_call(self, response):
         request = response.request
-        # only admin can create emc.api.log
-        self.env["emc.api.log"].create(
+        # only admin can create cooperator.api.log
+        self.env["cooperator.api.log"].create(
             {
                 "datetime": fields.datetime.now(),
                 "method": request.method,
