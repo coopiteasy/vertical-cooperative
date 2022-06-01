@@ -60,8 +60,8 @@
     </record>
 
     <menuitem
-        id="emc_api_log_menu"
-        name="EMC API Logs"
+        id="cooperator_api_log_menu"
+        name="Cooperators API Logs"
         parent="base.menu_custom"
         action="cooperator_api_log_action"
         sequence="101"
