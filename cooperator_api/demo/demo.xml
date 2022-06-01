@@ -4,7 +4,7 @@
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
 <odoo>
-    <record id="auth_api_key_manager_emc_demo" model="auth.api.key">
+    <record id="auth_api_key_manager_demo" model="auth.api.key">
         <field name="user_id" ref="cooperator.res_users_manager_emc_demo" />
         <field name="key">cbd07f57-c903-43b4-b668-436b3bec5f15</field>
     </record>
