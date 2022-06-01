@@ -52,8 +52,8 @@
         </field>
     </record>
 
-    <record id="emc_api_log_action" model="ir.actions.act_window">
-        <field name="name">EMC API Logs</field>
+    <record id="cooperator_api_log_action" model="ir.actions.act_window">
+        <field name="name">Cooperators API Logs</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">cooperator.api.log</field>
         <field name="view_mode">tree,form</field>
@@ -63,7 +63,7 @@
         id="emc_api_log_menu"
         name="EMC API Logs"
         parent="base.menu_custom"
-        action="emc_api_log_action"
+        action="cooperator_api_log_action"
         sequence="101"
     />
 </odoo>
