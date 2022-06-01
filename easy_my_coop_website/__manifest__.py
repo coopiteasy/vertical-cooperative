@@ -5,9 +5,9 @@
 
 {
     "name": "Easy My Coop Website",
-    "version": "12.0.1.2.0",
+    "version": "12.0.2.0.6",
     "depends": [
-        "easy_my_coop",
+        "cooperator",
         "website",
         "website_recaptcha_reloaded",
     ],
