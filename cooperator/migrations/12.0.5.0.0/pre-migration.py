@@ -11,6 +11,10 @@ renamed_xml_ids = (
         "cooperator.subscription_request_form",
         "cooperator.subscription_request_view_form",
     ),
+    (
+        "cooperator.action_invoice_tree_coop",
+        "cooperator.account_invoice_action",
+    ),
 )
 
 

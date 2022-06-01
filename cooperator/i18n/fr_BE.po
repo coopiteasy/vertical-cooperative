@@ -1509,7 +1509,7 @@ msgid "Cooperator Candidates"
 msgstr "Candidats coopérateur"
 
 #. module: cooperator
-#: model:ir.actions.act_window,name:cooperator.action_invoice_tree_coop
+#: model:ir.actions.act_window,name:cooperator.account_invoice_action
 msgid "Cooperator Invoices"
 msgstr "Demande de libération de capital"
 
@@ -1578,12 +1578,12 @@ msgid "Create Subscription From Partner"
 msgstr "Créer demande de soucription depuis le partenaire"
 
 #. module: cooperator
-#: model_terms:ir.actions.act_window,help:cooperator.action_invoice_tree_coop
+#: model_terms:ir.actions.act_window,help:cooperator.account_invoice_action
 msgid "Create a customer invoice"
 msgstr "Créer une facture client"
 
 #. module: cooperator
-#: model_terms:ir.actions.act_window,help:cooperator.action_invoice_tree_coop
+#: model_terms:ir.actions.act_window,help:cooperator.account_invoice_action
 msgid ""
 "Create invoices, register payments and keep track of the\n"
 "                discussions with your customers."
@@ -2493,7 +2493,7 @@ msgid "Register Number Operation"
 msgstr "Numéro d'opération"
 
 #. module: cooperator
-#: model:ir.ui.menu,name:cooperator.menu_action_invoice_tree_coop
+#: model:ir.ui.menu,name:cooperator.menu_account_invoice_action
 msgid "Register Payment"
 msgstr "Demandes de libération de capital"
 
