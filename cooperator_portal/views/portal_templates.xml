@@ -175,7 +175,7 @@
 
 
     <template
-        id="portal_my_home_menu_capital_request"
+        id="portal_breadcrumbs"
         name="Portal layout : capital request menu entries"
         inherit_id="portal.portal_breadcrumbs"
         priority="30"
