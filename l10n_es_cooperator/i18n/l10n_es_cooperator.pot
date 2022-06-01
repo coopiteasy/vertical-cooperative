@@ -46,3 +46,23 @@ msgstr ""
 msgid "This account will be the default one as the receivable account for the cooperators"
 msgstr ""
 
+#. module: l10n_es_cooperator
+#: model_terms:ir.ui.view,arch_db:l10n_es_cooperator.iban_template_es
+msgid "Bank Account Number"
+msgstr ""
+
+#. module: l10n_es_cooperator
+#: model_terms:ir.ui.view,arch_db:l10n_es_cooperator.iban_template_es
+msgid "ES9000246912501234567891"
+msgstr ""
+
+#. module: l10n_es_cooperator
+#: model_terms:ir.ui.view,arch_db:l10n_es_cooperator.iban_template_es
+msgid "VAT"
+msgstr ""
+
+#. module: l10n_es_cooperator
+#: model_terms:ir.ui.view,arch_db:l10n_es_cooperator.iban_template_es
+msgid "Y5643925S"
+msgstr ""
+
