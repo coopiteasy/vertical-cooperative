@@ -628,7 +628,6 @@ msgstr ""
 
 #. module: cooperator
 #: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
 msgid "Association"
 msgstr ""
 
@@ -862,7 +861,6 @@ msgstr ""
 
 #. module: cooperator
 #: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
 msgid "Company under public law"
 msgstr ""
 
@@ -912,7 +910,6 @@ msgstr ""
 
 #. module: cooperator
 #: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
 msgid "Cooperative"
 msgstr ""
 
@@ -1160,7 +1157,6 @@ msgstr ""
 
 #. module: cooperator
 #: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
 msgid "EURL / Entreprise individuelle"
 msgstr ""
 
@@ -1299,7 +1295,6 @@ msgstr ""
 
 #. module: cooperator
 #: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
 msgid "Foundation"
 msgstr ""
 
@@ -1392,7 +1387,6 @@ msgstr ""
 
 #. module: cooperator
 #: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
 msgid "Individual company"
 msgstr ""
 
@@ -1816,7 +1810,6 @@ msgstr ""
 
 #. module: cooperator
 #: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
 msgid "Partnership"
 msgstr ""
 
@@ -1970,12 +1963,11 @@ msgstr ""
 #. module: cooperator
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
-msgid "SA / SAS"
+msgid "SA"
 msgstr ""
 
 #. module: cooperator
 #: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
 msgid "SARL"
 msgstr ""
 
