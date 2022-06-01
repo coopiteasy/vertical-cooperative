@@ -47,6 +47,18 @@ renamed_xml_ids = (
         "cooperator.view_company_inherit_form2",
         "cooperator.view_company_form",
     ),
+    (
+        "cooperator.view_partner_form_easy_my_coop",
+        "cooperator.view_partner_form",
+    ),
+    (
+        "cooperator.view_partner_tree_easy_my_coop",
+        "cooperator.view_partner_tree",
+    ),
+    (
+        "cooperator.view_res_partner_filter_coop",
+        "cooperator.view_res_partner_filter",
+    ),
 )
 
 
