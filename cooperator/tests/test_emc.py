@@ -104,7 +104,7 @@ class EMCCase(EMCBaseCase):
         with self.assertRaises(AccessError):
             share_line.share_number = 3
 
-        # test ir model access for easy my coop user
+        # test ir model access for cooperator coop user
         self.as_emc_user()
         read_request = self.browse_ref("cooperator.subscription_request_1_demo")
         read_request.name = "test write request"
@@ -137,7 +137,7 @@ class EMCCase(EMCBaseCase):
         with self.assertRaises(AccessError):
             share_type.unlink()
 
-        # test ir model access for easy my coop manager
+        # test ir model access for cooperator manager
         self.as_emc_manager()
         read_request = self.browse_ref("cooperator.subscription_request_1_demo")
         read_request.name = "test write request"
