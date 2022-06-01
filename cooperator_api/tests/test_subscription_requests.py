@@ -14,19 +14,21 @@ from odoo.fields import Date
 from odoo.addons.base_rest.controllers.main import _PseudoCollection
 from odoo.addons.component.core import WorkContext
 
-from .common import BaseEMCRestCase
+from .common import BaseCooperatorRestCase
 
 
-class TestSRController(BaseEMCRestCase):
+class TestSRController(BaseCooperatorRestCase):
     def setUp(self):
         super().setUp()
         self.maxDiff = None
         collection = _PseudoCollection("cooperator.services", self.env)
-        emc_services_env = WorkContext(
+        cooperator_services_env = WorkContext(
             model_name="rest.service.registration", collection=collection
         )
 
-        self.sr_service = emc_services_env.component(usage="subscription-request")
+        self.sr_service = cooperator_services_env.component(
+            usage="subscription-request"
+        )
 
         self.demo_request_1 = self.browse_ref("cooperator.subscription_request_1_demo")
         self.demo_request_1.write(

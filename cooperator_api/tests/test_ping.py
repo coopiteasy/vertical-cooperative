@@ -6,17 +6,17 @@
 from odoo.addons.base_rest.controllers.main import _PseudoCollection
 from odoo.addons.component.core import WorkContext
 
-from .common import BaseEMCRestCase
+from .common import BaseCooperatorRestCase
 
 
-class TestPing(BaseEMCRestCase):
+class TestPing(BaseCooperatorRestCase):
     def test_public_service(self):
         collection = _PseudoCollection("cooperator.services", self.env)
-        emc_services_env = WorkContext(
+        cooperator_services_env = WorkContext(
             model_name="rest.service.registration", collection=collection
         )
 
-        service = emc_services_env.component(usage="ping")
+        service = cooperator_services_env.component(usage="ping")
         result = service.test()
 
         self.assertTrue("message" in result)
