@@ -41,7 +41,7 @@
                     aria-label="Block"
                     name="block_subscription_request"
                     states="draft"
-                    groups="cooperator.group_easy_my_coop_user"
+                    groups="cooperator.cooperator_group_user"
                 />
                 <button
                     type="object"
@@ -49,7 +49,7 @@
                     aria-label="Unblock"
                     name="unblock_subscription_request"
                     states="block"
-                    groups="cooperator.group_easy_my_coop_user"
+                    groups="cooperator.cooperator_group_user"
                 />
             </tree>
         </field>
@@ -78,7 +78,7 @@
                         type="object"
                         name="cancel_subscription_request"
                         states="draft,waiting,done,block"
-                        groups="cooperator.group_easy_my_coop_user"
+                        groups="cooperator.cooperator_group_user"
                     />
                     <field
                         name="state"
@@ -108,7 +108,7 @@
                             <field name="already_cooperator" />
                             <field
                                 name="is_company"
-                                groups="cooperator.group_easy_my_coop_manager"
+                                groups="cooperator.cooperator_group_manager"
                             />
                             <field name="is_operation" invisible="True" />
                             <field
@@ -147,7 +147,7 @@
                         <group>
                             <field
                                 name="capital_release_request_date"
-                                groups="cooperator.group_easy_my_coop_manager"
+                                groups="cooperator.cooperator_group_manager"
                             />
                             <field name="date" />
                             <field name="source" />
@@ -266,7 +266,7 @@
                         name="%(action_view_update_share_line_info)d"
                         type="action"
                         context="{'default_active_id': active_id}"
-                        groups="cooperator.group_easy_my_coop_manager"
+                        groups="cooperator.cooperator_group_manager"
                     />
                 </header>
                 <sheet>

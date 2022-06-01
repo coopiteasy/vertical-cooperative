@@ -4,7 +4,7 @@
             name="Dividend"
             id="menu_easy_my_coop_main_dividend"
             parent="cooperator.menu_cooperator_main"
-            groups="cooperator.group_easy_my_coop_user"
+            groups="cooperator.cooperator_group_user"
             sequence="30"
         />
 
