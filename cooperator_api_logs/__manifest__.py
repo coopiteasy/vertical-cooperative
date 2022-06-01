@@ -4,7 +4,7 @@
 
 {
     "name": "Cooperators API Logs",
-    "version": "12.0.0.0.1",
+    "version": "12.0.1.0.0",
     "depends": [],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
