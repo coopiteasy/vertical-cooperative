@@ -194,6 +194,6 @@ msgid "Your Cooperator Details"
 msgstr "Vos données de coopérateur"
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_home_capital_release
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_home
 msgid "Your Release Capital Requests"
 msgstr "Vos demandes de libération de capital"
