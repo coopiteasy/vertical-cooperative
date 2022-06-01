@@ -4,7 +4,7 @@
 {
     "name": "Easy My Coop Default Payment Term",
     "version": "12.0.1.0.0",
-    "depends": ["easy_my_coop"],
+    "depends": ["cooperator"],
     "author": "Coop IT Easy SCRLfs",
     "license": "AGPL-3",
     "category": "Invoice",
