@@ -544,7 +544,7 @@ class SubscriptionRequest(models.Model):
         return account
 
     def get_invoice_vals(self, partner):
-        return {
+        invoice_vals = {
             "partner_id": partner.id,
             "journal_id": self.get_journal().id,
             "account_id": self.get_accounting_account().id,
@@ -552,6 +552,19 @@ class SubscriptionRequest(models.Model):
             "release_capital_request": True,
             "subscription_request": self.id,
         }
+
+        payment_term_id = (
+            self.env["res.company"]
+            ._company_default_get()
+            .default_capital_release_request_payment_term
+        )
+
+        if payment_term_id:
+            # if none configured, let the default invoice payment
+            # term
+            invoice_vals["payment_term_id"] = payment_term_id.id
+
+        return invoice_vals
 
     def create_invoice(self, partner):
         # creating invoice and invoice lines
