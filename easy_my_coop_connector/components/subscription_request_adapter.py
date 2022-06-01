@@ -126,6 +126,6 @@ class SubscriptionRequestAdapter(AbstractEMCAdapter):
             "capital_release_request": crr_tuples,
             "skip_iban_control": api_dict["skip_iban_control"],
             "generic_rules_approved": api_dict["generic_rules_approved"],
-            "source": "emc_api",
+            "source": "connector_api",
         }
         return external_id, writable_dict
