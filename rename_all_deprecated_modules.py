@@ -29,13 +29,16 @@ def filter_databases(databases):
 def main():
     os.chdir(pathlib.Path(__file__).parent)
     logging.basicConfig(level=logging.INFO)
+    # don't filter databases
+    # databases = filter_databases(all_databases())
     databases = filter_databases(all_databases())
     for database in databases:
-        new_database = f"{database}-renamedep"
-        _logger.info(f"Removing {new_database} if it exists")
-        subprocess.run(["ociedoo", "drop-db", new_database])
-        _logger.info(f"Creating {new_database} from {database}")
-        subprocess.run(["ociedoo", "copy-db", database, new_database], check=True)
+        # don't create new DB
+        new_database = database
+        # _logger.info(f"Removing {new_database} if it exists")
+        # subprocess.run(["ociedoo", "drop-db", new_database])
+        # _logger.info(f"Creating {new_database} from {database}")
+        # subprocess.run(["ociedoo", "copy-db", database, new_database], check=True)
         _logger.info(f"Running renaming migration on {new_database}")
         subprocess.run(["./rename_deprecated_modules.sh", new_database], check=True)
         _logger.info(f"Done with renaming migration of {new_database}")
