@@ -2,7 +2,7 @@
 <odoo>
     <menuitem
         name="Declaration"
-        id="menu_easy_my_coop_main_declaration"
+        id="main_declaration_menu"
         parent="cooperator.menu_main_easy_my_coop"
         sequence="10"
     />
@@ -105,7 +105,7 @@
         action="tax_shelter_declaration_action"
         name="Tax Shelter Declaration"
         id="menu_tax_shelter_declaration"
-        parent="menu_easy_my_coop_main_declaration"
+        parent="main_declaration_menu"
         sequence="10"
         groups="cooperator.group_easy_my_coop_user"
     />
@@ -247,7 +247,7 @@
         action="tax_shelter_certificate_action"
         name="Tax Shelter Certificates"
         id="menu_tax_shelter_certificate"
-        parent="menu_easy_my_coop_main_declaration"
+        parent="main_declaration_menu"
         sequence="20"
         groups="cooperator.group_easy_my_coop_user"
     />
