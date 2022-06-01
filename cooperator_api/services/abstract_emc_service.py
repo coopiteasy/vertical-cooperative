@@ -7,7 +7,7 @@ from odoo.addons.component.core import AbstractComponent
 
 
 class BaseRestService(AbstractComponent):
-    _name = "emc.rest.service"
+    _name = "cooperator.rest.service"
     _inherit = "base.rest.service"
     _collection = "cooperator.services"
     _description = """
