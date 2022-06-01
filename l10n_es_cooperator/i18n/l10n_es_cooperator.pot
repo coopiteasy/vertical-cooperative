@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* easy_my_coop_es
+#	* l10n_es_cooperator
 #
 msgid ""
 msgstr ""
@@ -13,36 +13,36 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: easy_my_coop_es
-#: model:ir.model.fields,help:easy_my_coop_es.field_subscription_request__vat
+#. module: l10n_es_cooperator
+#: model:ir.model.fields,help:l10n_es_cooperator.field_subscription_request__vat
 msgid "\n"
 "        The Tax Identification Number. Complete it if the contact is subjected to\n"
 "        government taxes. Used in some legal statements.\"\n"
 "        "
 msgstr ""
 
-#. module: easy_my_coop_es
-#: model:ir.model,name:easy_my_coop_es.model_res_company
+#. module: l10n_es_cooperator
+#: model:ir.model,name:l10n_es_cooperator.model_res_company
 msgid "Companies"
 msgstr ""
 
-#. module: easy_my_coop_es
-#: model:ir.model.fields,field_description:easy_my_coop_es.field_res_company__property_cooperator_account
+#. module: l10n_es_cooperator
+#: model:ir.model.fields,field_description:l10n_es_cooperator.field_res_company__property_cooperator_account
 msgid "Cooperator Account"
 msgstr ""
 
-#. module: easy_my_coop_es
-#: model:ir.model,name:easy_my_coop_es.model_subscription_request
+#. module: l10n_es_cooperator
+#: model:ir.model,name:l10n_es_cooperator.model_subscription_request
 msgid "Subscription Request"
 msgstr ""
 
-#. module: easy_my_coop_es
-#: model:ir.model.fields,field_description:easy_my_coop_es.field_subscription_request__vat
+#. module: l10n_es_cooperator
+#: model:ir.model.fields,field_description:l10n_es_cooperator.field_subscription_request__vat
 msgid "Tax ID"
 msgstr ""
 
-#. module: easy_my_coop_es
-#: model:ir.model.fields,help:easy_my_coop_es.field_res_company__property_cooperator_account
+#. module: l10n_es_cooperator
+#: model:ir.model.fields,help:l10n_es_cooperator.field_res_company__property_cooperator_account
 msgid "This account will be the default one as the receivable account for the cooperators"
 msgstr ""
 
