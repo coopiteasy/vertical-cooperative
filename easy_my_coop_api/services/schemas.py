@@ -59,7 +59,7 @@ S_SUBSCRIPTION_REQUEST_RETURN_GET = {
         "nullable": True,
     },
     "generic_rules_approved": {"type": "boolean", "required": True},
-    "skip_control_ng": {"type": "boolean", "required": True},
+    "skip_iban_control": {"type": "boolean", "required": True},
     "data_policy_approved": {"type": "boolean", "required": True},
     "internal_rules_approved": {"type": "boolean", "required": True},
     "financial_risk_approved": {"type": "boolean", "required": True},
@@ -111,7 +111,7 @@ S_SUBSCRIPTION_REQUEST_CREATE = {
     "internal_rules_approved": {"type": "boolean", "required": True},
     "financial_risk_approved": {"type": "boolean", "required": True},
     "generic_rules_approved": {"type": "boolean", "required": True},
-    "skip_control_ng": {"type": "boolean"},
+    "skip_iban_control": {"type": "boolean"},
 }
 
 S_SUBSCRIPTION_REQUEST_UPDATE = {
@@ -141,7 +141,7 @@ S_SUBSCRIPTION_REQUEST_UPDATE = {
     "data_policy_approved": {"type": "boolean"},
     "internal_rules_approved": {"type": "boolean"},
     "financial_risk_approved": {"type": "boolean"},
-    "skip_control_ng": {"type": "boolean"},
+    "skip_iban_control": {"type": "boolean"},
 }
 
 S_INVOICE_GET = {"_id": {"type": "integer"}}

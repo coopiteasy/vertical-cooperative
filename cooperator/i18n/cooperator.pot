@@ -762,6 +762,11 @@ msgid "Check this box if this cooperator is no more an effective member."
 msgstr ""
 
 #. module: cooperator
+#: model:ir.model.fields,help:cooperator.field_subscription_request__skip_iban_control
+msgid "Check to bypass iban format control."
+msgstr ""
+
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_company__display_data_policy_approval
 msgid "Choose to display a data policy checkbox on the cooperator website form."
 msgstr ""
@@ -1240,7 +1245,7 @@ msgid "Execute"
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:190
+#: code:addons/cooperator/models/subscription_request.py:192
 #: selection:subscription.request,gender:0
 #, python-format
 msgid "Female"
@@ -1402,6 +1407,11 @@ msgid "Internal Rules Approval Text"
 msgstr ""
 
 #. module: cooperator
+#: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_request_filter
+msgid "Invalid IBAN"
+msgstr ""
+
+#. module: cooperator
 #: model:ir.model,name:cooperator.model_account_invoice
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__invoice
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
@@ -1556,7 +1566,7 @@ msgid "Main Attachment"
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:190
+#: code:addons/cooperator/models/subscription_request.py:192
 #: selection:subscription.request,gender:0
 #, python-format
 msgid "Male"
@@ -1625,11 +1635,6 @@ msgid "Next Activity Type"
 msgstr ""
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_request_filter
-msgid "Not Validated"
-msgstr ""
-
-#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_register_G001
 msgid "Number"
 msgstr ""
@@ -1674,7 +1679,7 @@ msgid "Number of share"
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:677
+#: code:addons/cooperator/models/subscription_request.py:673
 #, python-format
 msgid "Number of share must be greater than 0."
 msgstr ""
@@ -1701,19 +1706,19 @@ msgid "Old cooperator"
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:759
+#: code:addons/cooperator/models/subscription_request.py:755
 #, python-format
 msgid "Only blocked requests can be unblocked."
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:781
+#: code:addons/cooperator/models/subscription_request.py:777
 #, python-format
 msgid "Only draft request can be put on the waiting list."
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:752
+#: code:addons/cooperator/models/subscription_request.py:748
 #, python-format
 msgid "Only draft requests can be blocked."
 msgstr ""
@@ -1775,7 +1780,7 @@ msgid "Operation requests"
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:190
+#: code:addons/cooperator/models/subscription_request.py:192
 #: selection:subscription.request,gender:0
 #, python-format
 msgid "Other"
@@ -1837,7 +1842,7 @@ msgid "Planned"
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:505
+#: code:addons/cooperator/models/subscription_request.py:501
 #, python-format
 msgid "Please define income account for this product: \"%s\" (id:%d) - or for its category: \"%s\"."
 msgstr ""
@@ -2180,7 +2185,7 @@ msgid "Short name"
 msgstr ""
 
 #. module: cooperator
-#: model:ir.model.fields,field_description:cooperator.field_subscription_request__skip_control_ng
+#: model:ir.model.fields,field_description:cooperator.field_subscription_request__skip_iban_control
 msgid "Skip control"
 msgstr ""
 
@@ -2331,7 +2336,7 @@ msgid "Text to display aside the checkbox to approve the generic rules."
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:685
+#: code:addons/cooperator/models/subscription_request.py:681
 #, python-format
 msgid "The checkbox already cooperator is checked please select a cooperator."
 msgstr ""
@@ -2361,13 +2366,13 @@ msgid "The information of the receiver are not correct. Please correct the infor
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:671
+#: code:addons/cooperator/models/subscription_request.py:667
 #, python-format
 msgid "The request must be in draft or on waiting list to be validated"
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:725
+#: code:addons/cooperator/models/subscription_request.py:721
 #: code:addons/cooperator/wizard/create_subscription_from_partner.py:181
 #, python-format
 msgid "There is two different persons with the same national register number. Please proceed to a merge before to continue"
@@ -2379,7 +2384,7 @@ msgid "This account will be the default one as the receivable account for the co
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:733
+#: code:addons/cooperator/models/subscription_request.py:729
 #, python-format
 msgid "This contact person is already defined for another company. Please select another contact"
 msgstr ""
@@ -2579,7 +2584,7 @@ msgid "User"
 msgstr ""
 
 #. module: cooperator
-#: model:ir.model.fields,field_description:cooperator.field_subscription_request__validated
+#: model:ir.model.fields,field_description:cooperator.field_subscription_request__is_valid_iban
 msgid "Valid Subscription request?"
 msgstr ""
 
@@ -2654,7 +2659,7 @@ msgid "You can't convert the share to the same share type."
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:766
+#: code:addons/cooperator/models/subscription_request.py:762
 #, python-format
 msgid "You cannot cancel a request in this state."
 msgstr ""
@@ -2666,7 +2671,7 @@ msgid "You must convert all the shares to the selected type."
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:538
+#: code:addons/cooperator/models/subscription_request.py:534
 #, python-format
 msgid "You must set a cooperator account on you company."
 msgstr ""
@@ -2679,11 +2684,6 @@ msgstr ""
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_share_line_update_info__effective_date
 msgid "effective date"
-msgstr ""
-
-#. module: cooperator
-#: model:ir.model.fields,help:cooperator.field_subscription_request__skip_control_ng
-msgid "if this field is checked then no control will be done on the national register number and on the iban bank account. To be done in case of the id card is from abroad or in case of a passport"
 msgstr ""
 
 #. module: cooperator
