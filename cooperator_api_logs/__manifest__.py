@@ -15,7 +15,7 @@
     """,
     "data": [
         "security/ir.model.access.csv",
-        "views/emc_api_log_views.xml",
+        "views/api_log_views.xml",
     ],
     "installable": True,
     "application": False,
