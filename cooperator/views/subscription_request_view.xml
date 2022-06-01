@@ -8,7 +8,7 @@
             <!-- fixme no colors in v12 ? -->
             <tree
                 string="Subscription Requests"
-                colors="red:validated == False; blue:state in ('draft'); grey: state in ('done')"
+                colors="red:is_valid_iban == False; blue:state in ('draft'); grey: state in ('done')"
             >
                 <field name="firstname" />
                 <field name="lastname" />
@@ -27,13 +27,13 @@
                 <field name="partner_id" />
                 <field name="source" />
                 <field name="state" />
-                <field name="validated" invisible="True" />
+                <field name="is_valid_iban" invisible="True" />
                 <button
                     type="object"
                     string="Validate"
                     aria-label="Validate"
                     name="validate_subscription_request"
-                    attrs="{'invisible':['|',('state','not in',['draft','waiting']),('validated','=',False)]}"
+                    attrs="{'invisible':['|',('state','not in',['draft','waiting']),('is_valid_iban','=',False)]}"
                 />
                 <button
                     type="object"
@@ -65,7 +65,7 @@
                         string="Validate"
                         type="object"
                         name="validate_subscription_request"
-                        attrs="{'invisible':['|',('state','not in',['draft','waiting']),('validated','=',False)]}"
+                        attrs="{'invisible':['|',('state','not in',['draft','waiting']),('is_valid_iban','=',False)]}"
                     />
                     <button
                         string="Waiting list"
@@ -104,7 +104,7 @@
                     </div>
                     <group>
                         <group>
-                            <field name="validated" invisible="True" />
+                            <field name="is_valid_iban" invisible="True" />
                             <field name="already_cooperator" />
                             <field
                                 name="is_company"
@@ -159,7 +159,7 @@
                             <field name="partner_id" options="{'no_create':True}" />
                             <field name="type" />
                             <field name="lang" />
-                            <field name="skip_control_ng" />
+                            <field name="skip_iban_control" />
                             <field name="internal_rules_approved" />
                             <field name="data_policy_approved" />
                             <field name="financial_risk_approved" />
@@ -220,9 +220,9 @@
                 />
                 <separator />
                 <filter
-                    string="Not Validated"
-                    name="Not Validated"
-                    domain="[('validated', '=', False)]"
+                    string="Invalid IBAN"
+                    name="is_valid_iban"
+                    domain="[('is_valid_iban', '=', False)]"
                 />
                 <group expand="0" name="group_by" string="Group By">
                     <filter

@@ -76,7 +76,7 @@ class TestSRController(BaseEMCRestCase):
             "phone": None,
             "gender": "male",
             "iban": "09898765454",
-            "skip_control_ng": True,
+            "skip_iban_control": True,
             "capital_release_request_date": None,
         }
 
@@ -170,7 +170,7 @@ class TestSRController(BaseEMCRestCase):
             "birthdate": "1992-08-05",
             "gender": "other",
             "iban": "98765456789",
-            "skip_control_ng": True,
+            "skip_iban_control": True,
             "capital_release_request_date": None,
         }
 

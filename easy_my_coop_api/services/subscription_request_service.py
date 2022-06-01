@@ -118,7 +118,7 @@ class SubscriptionRequestService(Component):
             "internal_rules_approved": sr.internal_rules_approved,
             "financial_risk_approved": sr.financial_risk_approved,
             "generic_rules_approved": sr.generic_rules_approved,
-            "skip_control_ng": sr.skip_control_ng,
+            "skip_iban_control": sr.skip_iban_control,
         }
 
     def _get_country(self, code):
@@ -164,7 +164,7 @@ class SubscriptionRequestService(Component):
             "gender": params.get("gender"),
             "iban": params.get("iban"),
             "phone": params.get("phone"),
-            "skip_control_ng": params.get("skip_control_ng"),
+            "skip_iban_control": params.get("skip_iban_control"),
             "capital_release_request_date": params.get("capital_release_request_date"),
             "source": "emc_api",
         }
@@ -203,7 +203,7 @@ class SubscriptionRequestService(Component):
             "gender": params.get("gender"),
             "iban": params.get("iban"),
             "phone": params.get("phone"),
-            "skip_control_ng": params.get("skip_control_ng"),
+            "skip_iban_control": params.get("skip_iban_control"),
             "capital_release_request_date": params.get("capital_release_request_date"),
         }
         params = {k: v for k, v in params.items() if v is not None}
