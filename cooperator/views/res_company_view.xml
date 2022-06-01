@@ -20,6 +20,7 @@
                     <field name="bottom_logo2" />
                     <field name="coop_email_contact" />
                     <field name="subscription_maximum_amount" />
+                    <field name="default_capital_release_request_payment_term" />
                     <field name="property_cooperator_account" />
                     <field name="default_country_id" />
                     <field name="default_lang_id" />
