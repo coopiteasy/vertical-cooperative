@@ -62,6 +62,7 @@ renamed_xml_ids = (
 )
 
 
-def migrate(cr, version):
+@openupgrade.migrate()
+def migrate(env, version):
     _logger.info("renaming xml_ids")
-    openupgrade.rename_xmlids(cr, renamed_xml_ids)
+    openupgrade.rename_xmlids(env.cr, renamed_xml_ids)
