@@ -37,7 +37,7 @@
         <menuitem
             id="menu_export_global_report_wizard"
             name="Global report export"
-            parent="cooperator.menu_easy_my_coop_main_reporting"
+            parent="cooperator.menu_cooperator_main_reporting"
             action="action_export_global_report_wizard"
             sequence="10"
         />

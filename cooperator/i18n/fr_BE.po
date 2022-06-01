@@ -1410,7 +1410,7 @@ msgstr "Numéro d'Entreprise"
 
 #. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.action_company_representative_form
-#: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_company_representative
+#: model:ir.ui.menu,name:cooperator.menu_cooperator_company_representative
 msgid "Company representative"
 msgstr "Représentant de personne morale"
 
@@ -1426,7 +1426,7 @@ msgid "Company under public law"
 msgstr ""
 
 #. module: cooperator
-#: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_config
+#: model:ir.ui.menu,name:cooperator.menu_cooperator_config
 #: model_terms:ir.ui.view,arch_db:cooperator.product_template_share_form_view
 msgid "Configuration"
 msgstr ""
@@ -1442,7 +1442,7 @@ msgid "Contact email address for the cooperator"
 msgstr "Email du coopérateur"
 
 #. module: cooperator
-#: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_main_coop
+#: model:ir.ui.menu,name:cooperator.menu_cooperator_main_coop
 msgid "Contacts"
 msgstr ""
 
@@ -1503,7 +1503,7 @@ msgid "Cooperator Account"
 msgstr "Compte Coopérateur"
 
 #. module: cooperator
-#: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_cooperator_candidate
+#: model:ir.ui.menu,name:cooperator.menu_cooperator_cooperator_candidate
 #: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter
 msgid "Cooperator Candidates"
 msgstr "Candidats coopérateur"
@@ -1555,7 +1555,7 @@ msgstr "Registre des coopérateurs"
 #. module: cooperator
 #: model:account.account,name:cooperator.account_cooperator_demo
 #: model:ir.actions.act_window,name:cooperator.action_partner_cooperator_form
-#: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_cooperator
+#: model:ir.ui.menu,name:cooperator.menu_cooperator_cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter
 msgid "Cooperators"
 msgstr "Coopérateurs"
@@ -1738,7 +1738,7 @@ msgid "Cooperator mail template"
 msgstr ""
 
 #. module: cooperator
-#: model:ir.ui.menu,name:cooperator.menu_main_easy_my_coop
+#: model:ir.ui.menu,name:cooperator.menu_cooperator_main
 msgid "Easy-My Coop"
 msgstr ""
 
@@ -2125,7 +2125,7 @@ msgstr ""
 
 #. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.mail_template_action
-#: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_templates
+#: model:ir.ui.menu,name:cooperator.menu_cooperator_templates
 msgid "Mail Templates"
 msgstr "Modèle d'email"
 
@@ -2355,7 +2355,7 @@ msgstr "Montant de l'opération"
 #. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.operation_request_action
 #: model:ir.model,name:cooperator.model_operation_request
-#: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_operation_request
+#: model:ir.ui.menu,name:cooperator.menu_cooperator_operation_request
 #: model_terms:ir.ui.view,arch_db:cooperator.operation_request_form
 msgid "Operation request"
 msgstr "Demande de transaction"
@@ -2508,7 +2508,7 @@ msgid "Release of capital request"
 msgstr "Demande de libération de capital"
 
 #. module: cooperator
-#: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_main_reporting
+#: model:ir.ui.menu,name:cooperator.menu_cooperator_main_reporting
 msgid "Reporting"
 msgstr "Analyse"
 
@@ -2678,7 +2678,7 @@ msgid "Share Lines"
 msgstr "Lignes de part"
 
 #. module: cooperator
-#: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_main_subscription
+#: model:ir.ui.menu,name:cooperator.menu_cooperator_main_subscription
 msgid "Share Management"
 msgstr "Gestion des parts"
 
@@ -2753,7 +2753,7 @@ msgstr "Transfert de part"
 #: model:ir.model.fields,field_description:cooperator.field_share_line__share_product_id
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__share_product_id
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__share_product_id
-#: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_share_product
+#: model:ir.ui.menu,name:cooperator.menu_cooperator_share_product
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_certificat_G001_document
 msgid "Share type"
 msgstr "Type de part"
@@ -2839,7 +2839,7 @@ msgstr "Journal de souscription"
 
 #. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.subscription_register_action
-#: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_subscription_register
+#: model:ir.ui.menu,name:cooperator.menu_cooperator_subscription_register
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_register_form
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_register_tree
 msgid "Subscription Register"
@@ -2909,7 +2909,7 @@ msgstr ""
 
 #. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.subscription_request_action
-#: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_subscription_request
+#: model:ir.ui.menu,name:cooperator.menu_cooperator_subscription_request
 msgid "Subscriptions"
 msgstr "Demandes de parts"
 
