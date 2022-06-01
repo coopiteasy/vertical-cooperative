@@ -1,4 +1,4 @@
-This is the french localization for the easy my coop module
+This is the French localization for the Cooperators module.
 
 Features:
 
