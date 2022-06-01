@@ -45,7 +45,7 @@
         "views/res_company_view.xml",
         "views/account_journal_view.xml",
         "views/menus.xml",
-        "report/easy_my_coop_report.xml",
+        "report/reports.xml",
         "report/layout.xml",
         "report/cooperator_invoice_G002.xml",
         "report/cooperator_certificat_G001.xml",
