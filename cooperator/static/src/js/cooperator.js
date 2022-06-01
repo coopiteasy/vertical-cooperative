@@ -1,10 +1,10 @@
-odoo.define("cooperator.oe_easymy_coop", function (require) {
+odoo.define("cooperator.oe_cooperator", function (require) {
     $(document).ready(function () {
         "use strict";
         var ajax = require("web.ajax");
 
-        $(".oe_easymy_coop").each(function () {
-            var oe_easymy_coop = this;
+        $(".oe_cooperator").each(function () {
+            var oe_cooperator = this;
 
             $("#share_product_id").change(function () {
                 var share_product_id = $("#share_product_id").val();
@@ -25,7 +25,7 @@ odoo.define("cooperator.oe_easymy_coop", function (require) {
                 });
             });
 
-            $(oe_easymy_coop).on("change", "#ordered_parts", function (ev) {
+            $(oe_cooperator).on("change", "#ordered_parts", function (ev) {
                 var $share_price = $("#share_price").text();
                 var $link = $(ev.currentTarget);
                 var quantity = $link[0].value;
@@ -34,7 +34,7 @@ odoo.define("cooperator.oe_easymy_coop", function (require) {
                 return false;
             });
 
-            $(oe_easymy_coop).on("focusout", "input.js_quantity", function (ev) {
+            $(oe_cooperator).on("focusout", "input.js_quantity", function (ev) {
                 $("a.js_add_cart_json").trigger("click");
             });
 

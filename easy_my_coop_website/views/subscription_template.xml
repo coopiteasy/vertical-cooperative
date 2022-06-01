@@ -444,7 +444,7 @@
     <template id="becomecooperator" name="Become Cooperator">
         <t t-call="website.layout">
             <div id="wrap" class="o_portal_wrap">
-                <div class="container oe_easymy_coop">
+                <div class="container oe_cooperator">
                     <div class="row justify-content-center">
                         <div class="col-xs-12 col-sm-10  col-md-8 col-lg-6">
                             <h1 class="mt-4 text-center">
@@ -598,7 +598,7 @@
     <template id="becomecompanycooperator" name="Become Cooperator">
         <t t-call="website.layout">
             <div id="wrap" class="o_portal_wrap">
-                <div class="container oe_easymy_coop">
+                <div class="container oe_cooperator">
                     <div class="row justify-content-center">
                         <div class="col-xs-12 col-sm-10  col-md-8 col-lg-6">
                             <h1 class="mt-4 text-center">
