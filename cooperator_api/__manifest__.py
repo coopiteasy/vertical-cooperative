@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 {
-    "name": "Easy My Coop API",
+    "name": "Cooperators API",
     "version": "12.0.1.0.1",
     "depends": [
         "base_rest",
@@ -16,7 +16,7 @@
     "website": "https://coopiteasy.be",
     "license": "AGPL-3",
     "summary": """
-        Open Easy My Coop to the world: RESTful API.
+        Open Cooperators to the world: RESTful API.
     """,
     "data": [
         "security/ir_rule.xml",
