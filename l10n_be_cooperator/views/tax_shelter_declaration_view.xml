@@ -64,7 +64,7 @@
                                     <button
                                         type="object"
                                         name="send_certificates"
-                                        icon="STOCK_MEDIA_PLAY"
+                                        icon="fa-play"
                                         string="Send Certificates"
                                     />
                                 </tree>
