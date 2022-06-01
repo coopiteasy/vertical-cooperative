@@ -801,7 +801,7 @@
         <xpath expr="." position="inside">
             <script
                 type="text/javascript"
-                src="/easy_my_coop_website/static/src/js/cooperator.js"
+                src="/cooperator_website/static/src/js/cooperator.js"
             />
             <script
                 type="text/javascript"
