@@ -14,7 +14,29 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: cooperator_website_recaptcha
+#: model:ir.model.fields,field_description:cooperator_website_recaptcha.field_res_company__captcha_type
+msgid "Captcha type or disabled"
+msgstr ""
+
+#. module: cooperator_website_recaptcha
 #: model:ir.model,name:cooperator_website_recaptcha.model_res_company
 msgid "Companies"
+msgstr ""
+
+#. module: cooperator_website_recaptcha
+#: selection:res.company,captcha_type:0
+msgid "Disabled"
+msgstr ""
+
+#. module: cooperator_website_recaptcha
+#: selection:res.company,captcha_type:0
+msgid "Google Recaptcha"
+msgstr ""
+
+#. module: cooperator_website_recaptcha
+#: code:addons/cooperator_website_recaptcha/controllers/main.py:27
+#: code:addons/cooperator_website_recaptcha/controllers/main.py:37
+#, python-format
+msgid "the captcha has not been validated, please fill in the captcha"
 msgstr ""
 
