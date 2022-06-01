@@ -69,7 +69,7 @@ msgid "Bank Account:"
 msgstr "Numéro de compte :"
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_details_emc
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_details
 msgid "Birthdate"
 msgstr "Date de naissance"
 
@@ -114,7 +114,7 @@ msgid "Due Date"
 msgstr "Date d'échéance"
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_details_emc
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_details
 msgid "Gender"
 msgstr "Genre"
 
@@ -124,12 +124,12 @@ msgid "Gender:"
 msgstr "Genre :"
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_details_emc
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_details
 msgid "Iban"
 msgstr "IBAN"
 
 #. module: cooperator_portal
-#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_details_emc
+#: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_details
 msgid "Language"
 msgstr ""
 
