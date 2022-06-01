@@ -187,9 +187,7 @@ class CooperatorPortalAccount(CustomerPortal):
                 "default_url": "/my/release_capital_request",
             }
         )
-        return request.render(
-            "easy_my_coop_website_portal.portal_my_capital_releases", values
-        )
+        return request.render("cooperator_portal.portal_my_capital_releases", values)
 
     @route(
         ["/my/invoices/<int:invoice_id>"],
