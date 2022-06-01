@@ -7,7 +7,7 @@
     "version": "12.0.1.0.0",
     "depends": [
         "cooperator",
-        "easy_my_coop_be",
+        "l10n_be_cooperator",
         "easy_my_coop_loan_bba",
         "easy_my_coop_loan_account",
     ],
