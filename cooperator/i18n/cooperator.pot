@@ -2186,7 +2186,7 @@ msgstr ""
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__skip_iban_control
-msgid "Skip control"
+msgid "Skip IBAN Control"
 msgstr ""
 
 #. module: cooperator
@@ -2585,7 +2585,7 @@ msgstr ""
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__is_valid_iban
-msgid "Valid Subscription request?"
+msgid "Valid IBAN?"
 msgstr ""
 
 #. module: cooperator
