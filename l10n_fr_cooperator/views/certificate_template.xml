@@ -9,6 +9,7 @@
 
 
             <xpath expr="//div[@name='total_table']" position="after">
+                <!-- TODO: English source text -->
                 <p name="legal_text">
                     Ce document atteste d’une souscription en numéraire au
                         capital d’une société, répondant à la définition
