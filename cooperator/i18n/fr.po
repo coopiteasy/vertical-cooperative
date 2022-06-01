@@ -2119,7 +2119,7 @@ msgid "Legal form"
 msgstr "Forme légale"
 
 #. module: cooperator
-#: model:ir.actions.act_window,name:cooperator.action_easy_my_coop_email_templates
+#: model:ir.actions.act_window,name:cooperator.mail_template_action
 #: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_templates
 msgid "Mail Templates"
 msgstr "Modèles d'email"
