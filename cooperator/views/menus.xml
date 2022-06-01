@@ -28,8 +28,8 @@
     />
     <menuitem
         name="Register Payment"
-        id="menu_action_invoice_tree_coop"
-        action="action_invoice_tree_coop"
+        id="menu_account_invoice_action"
+        action="account_invoice_action"
         parent="menu_easy_my_coop_main_subscription"
         groups="cooperator.group_easy_my_coop_user"
         sequence="130"
@@ -98,14 +98,14 @@
     <menuitem
         name="Share type"
         id="menu_easy_my_coop_share_product"
-        action="share_product_action"
+        action="product_template_action"
         parent="menu_easy_my_coop_config"
         sequence="410"
     />
     <menuitem
         name="Mail Templates"
         id="menu_easy_my_coop_templates"
-        action="action_easy_my_coop_email_templates"
+        action="mail_template_action"
         parent="menu_easy_my_coop_config"
         sequence="430"
     />

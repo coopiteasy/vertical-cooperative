@@ -55,8 +55,8 @@
         </field>
     </record>
 
-    <record id="subscription_request_form" model="ir.ui.view">
-        <field name="name">subscription.request.form</field>
+    <record id="subscription_request_view_form" model="ir.ui.view">
+        <field name="name">subscription.request.view.form</field>
         <field name="model">subscription.request</field>
         <field name="arch" type="xml">
             <form string="Subscription Requests">
