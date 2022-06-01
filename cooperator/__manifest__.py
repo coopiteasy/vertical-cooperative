@@ -7,7 +7,7 @@
 {
     "name": "Cooperators",
     "summary": "Manage your cooperators",
-    "version": "12.0.4.1.1",
+    "version": "12.0.5.0.0",
     "depends": [
         "base",
         "web",
@@ -37,9 +37,9 @@
         "wizard/validate_subscription_request.xml",
         "wizard/update_share_line.xml",
         "views/subscription_request_view.xml",
-        "views/email_template_view.xml",
+        "views/mail_template_view.xml",
         "views/res_partner_view.xml",
-        "views/cooperator_register_view.xml",
+        "views/subscription_register_view.xml",
         "views/operation_request_view.xml",
         "views/account_invoice_view.xml",
         "views/product_view.xml",

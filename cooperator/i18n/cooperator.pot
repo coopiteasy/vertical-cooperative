@@ -706,7 +706,7 @@ msgstr ""
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.operation_request_form
-#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_form
+#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 #: model_terms:ir.ui.view,arch_db:cooperator.view_create_subscription
 #: model_terms:ir.ui.view,arch_db:cooperator.view_update_partner_info
 #: model_terms:ir.ui.view,arch_db:cooperator.view_update_share_line_info
@@ -728,7 +728,7 @@ msgstr ""
 #. module: cooperator
 #: model:ir.actions.report,name:cooperator.action_cooperator_invoices
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__capital_release_request
-#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_form
+#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 msgid "Capital release request"
 msgstr ""
 
@@ -798,7 +798,7 @@ msgid "Click to add a contact in your address book."
 msgstr ""
 
 #. module: cooperator
-#: model_terms:ir.actions.act_window,help:cooperator.share_product_action
+#: model_terms:ir.actions.act_window,help:cooperator.product_template_action
 msgid "Click to define a new share product."
 msgstr ""
 
@@ -929,7 +929,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__partner_id
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__partner_id
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_subscription_G001
-#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_form
+#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 #: model_terms:ir.ui.view,arch_db:cooperator.view_share_line_filter
 msgid "Cooperator"
 msgstr ""
@@ -941,12 +941,12 @@ msgstr ""
 
 #. module: cooperator
 #: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_cooperator_candidate
-#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter
 msgid "Cooperator Candidates"
 msgstr ""
 
 #. module: cooperator
-#: model:ir.actions.act_window,name:cooperator.action_invoice_tree_coop
+#: model:ir.actions.act_window,name:cooperator.account_invoice_action
 msgid "Cooperator Invoices"
 msgstr ""
 
@@ -957,14 +957,14 @@ msgid "Cooperator Number"
 msgstr ""
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter
 msgid "Cooperator Partners"
 msgstr ""
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__cooperator_type
 #: model:ir.model.fields,field_description:cooperator.field_res_users__cooperator_type
-#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter
 msgid "Cooperator Type"
 msgstr ""
 
@@ -994,7 +994,7 @@ msgstr ""
 #: model:ir.actions.act_window,name:cooperator.action_partner_cooperator_form
 #: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_cooperator
 #: model:ir.ui.menu,name:cooperator.menu_main_easy_my_coop
-#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter
 msgid "Cooperators"
 msgstr ""
 
@@ -1006,7 +1006,7 @@ msgstr ""
 #. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.action_view_create_subscription
 #: model_terms:ir.ui.view,arch_db:cooperator.view_create_subscription
-#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form_easy_my_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form
 msgid "Create Subscription"
 msgstr ""
 
@@ -1016,12 +1016,12 @@ msgid "Create Subscription From Partner"
 msgstr ""
 
 #. module: cooperator
-#: model_terms:ir.actions.act_window,help:cooperator.action_invoice_tree_coop
+#: model_terms:ir.actions.act_window,help:cooperator.account_invoice_action
 msgid "Create a customer invoice"
 msgstr ""
 
 #. module: cooperator
-#: model_terms:ir.actions.act_window,help:cooperator.action_invoice_tree_coop
+#: model_terms:ir.actions.act_window,help:cooperator.account_invoice_action
 msgid "Create invoices, register payments and keep track of the\n"
 "                discussions with your customers."
 msgstr ""
@@ -1162,18 +1162,13 @@ msgstr ""
 
 #. module: cooperator
 #: selection:subscription.request,source:0
-msgid "Easy My Coop API"
+msgid "Cooperator API"
 msgstr ""
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_email_template_preview__easy_my_coop
 #: model:ir.model.fields,field_description:cooperator.field_mail_template__easy_my_coop
-msgid "Easy my coop mail template"
-msgstr ""
-
-#. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.view_company_inherit_form2
-msgid "EasyMy Coop"
+msgid "Cooperator mail template"
 msgstr ""
 
 #. module: cooperator
@@ -1543,7 +1538,7 @@ msgid "Legal form"
 msgstr ""
 
 #. module: cooperator
-#: model:ir.actions.act_window,name:cooperator.action_easy_my_coop_email_templates
+#: model:ir.actions.act_window,name:cooperator.mail_template_action
 #: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_templates
 msgid "Mail Templates"
 msgstr ""
@@ -1689,7 +1684,7 @@ msgid "Number of unread messages"
 msgstr ""
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter
 msgid "Old Cooperators"
 msgstr ""
 
@@ -1871,7 +1866,7 @@ msgid "Receiver is not a member"
 msgstr ""
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_form
+#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 msgid "Reference"
 msgstr ""
 
@@ -1897,7 +1892,7 @@ msgid "Register Number Operation"
 msgstr ""
 
 #. module: cooperator
-#: model:ir.ui.menu,name:cooperator.menu_action_invoice_tree_coop
+#: model:ir.ui.menu,name:cooperator.menu_account_invoice_action
 msgid "Register Payment"
 msgstr ""
 
@@ -2115,7 +2110,7 @@ msgid "Share price"
 msgstr ""
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form_easy_my_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form
 msgid "Share subscriptions"
 msgstr ""
 
@@ -2142,7 +2137,7 @@ msgid "Share transfer"
 msgstr ""
 
 #. module: cooperator
-#: model:ir.actions.act_window,name:cooperator.share_product_action
+#: model:ir.actions.act_window,name:cooperator.product_template_action
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__share_product_id
 #: model:ir.model.fields,field_description:cooperator.field_share_line__share_product_id
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__share_product_id
@@ -2166,7 +2161,7 @@ msgid "Share update"
 msgstr ""
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form_easy_my_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form
 msgid "Shares"
 msgstr ""
 
@@ -2250,7 +2245,7 @@ msgstr ""
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.operation_request_form
-#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_form
+#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_tree
 msgid "Subscription Requests"
 msgstr ""
@@ -2441,7 +2436,7 @@ msgid "Total amount line"
 msgstr ""
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form_easy_my_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form
 msgid "Total of shares"
 msgstr ""
 
@@ -2456,7 +2451,7 @@ msgid "Total quantity"
 msgstr ""
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form_easy_my_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form
 msgid "Total subscribed amount"
 msgstr ""
 
@@ -2566,7 +2561,7 @@ msgstr ""
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.share_line_form
-#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form_easy_my_coop
+#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form
 msgid "Update info"
 msgstr ""
 
@@ -2581,7 +2576,7 @@ msgid "Valid IBAN?"
 msgstr ""
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_form
+#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_tree
 #: model_terms:ir.ui.view,arch_db:cooperator.view_validate_subscription_request
 msgid "Validate"
@@ -2620,7 +2615,7 @@ msgid "Waiting"
 msgstr ""
 
 #. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_form
+#: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 msgid "Waiting list"
 msgstr ""
 
