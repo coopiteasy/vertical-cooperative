@@ -108,13 +108,10 @@ msgstr "Structure juridique"
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
 msgid "Confirm E-mail"
 msgstr "Courriel (pour confirmation)"
 
-#. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-msgid "Confirm Email"
-msgstr "Courriel (pour confirmation)"
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
