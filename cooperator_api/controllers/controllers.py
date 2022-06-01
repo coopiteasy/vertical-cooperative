@@ -19,9 +19,9 @@ class UserController(main.RestController):
         response = super()._process_method(
             service_name, method_name, *args, params=params
         )
-        # only admin can create emc.api.log
+        # only admin can create cooperator.api.log
         # only log successful calls
-        self.collection.env["emc.api.log"].sudo().create(
+        self.collection.env["cooperator.api.log"].sudo().create(
             {
                 "datetime": datetime.now(),
                 "method": request.httprequest.method,
