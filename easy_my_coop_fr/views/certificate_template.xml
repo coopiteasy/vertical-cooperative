@@ -3,7 +3,7 @@
     <data>
         <template
             id="certificate_i18n_fr"
-            inherit_id="easy_my_coop.cooperator_certificat_G001_document"
+            inherit_id="cooperator.cooperator_certificat_G001_document"
             name="French Layout Certificate"
         >
 
