@@ -3,12 +3,12 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 
-from odoo.addons.cooperator.tests.test_base import EMCBaseCase
+from odoo.addons.cooperator.tests.test_base import CooperatorBaseCase
 
 from ..components.abstract_emc_adapter import AbstractEMCAdapter
 
 
-class EMCAdapterCase(EMCBaseCase):
+class EMCAdapterCase(CooperatorBaseCase):
     def test_get_url(self):
         adapter = AbstractEMCAdapter(backend=None, record=None)
         adapter._service = "test-service"
