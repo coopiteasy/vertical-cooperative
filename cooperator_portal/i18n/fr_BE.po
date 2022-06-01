@@ -1,16 +1,15 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* cooperator_portal
+#	* cooperator_portal
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-29 15:47+0000\n"
-"PO-Revision-Date: 2020-06-29 15:47+0000\n"
+"POT-Creation-Date: 2022-05-19 07:33+0000\n"
+"PO-Revision-Date: 2022-05-19 07:33+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -19,16 +18,13 @@ msgstr ""
 #. module: cooperator_portal
 #: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_breadcrumbs
 msgid "<em>Draft Request</em>"
-msgstr ""
+msgstr "<em> Projet de demande </em>"
 
 #. module: cooperator_portal
 #: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_capital_releases
-msgid ""
-"<span class=\"badge badge-pill badge-info\">\n"
-"                                        <i class=\"fa fa-fw fa-clock-o\" "
-"aria-label=\"Opened\" title=\"Opened\" role=\"img\"/>\n"
-"                                        <span class=\"d-none d-md-inline"
-"\">Waiting\n"
+msgid "<span class=\"badge badge-pill badge-info\">\n"
+"                                        <i class=\"fa fa-fw fa-clock-o\" aria-label=\"Opened\" title=\"Opened\" role=\"img\"/>\n"
+"                                        <span class=\"d-none d-md-inline\">Waiting\n"
 "                                            for Payment\n"
 "                                        </span>\n"
 "                                    </span>"
@@ -36,22 +32,17 @@ msgstr ""
 
 #. module: cooperator_portal
 #: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_capital_releases
-msgid ""
-"<span class=\"badge badge-pill badge-success\">\n"
-"                                        <i class=\"fa fa-fw fa-check\" aria-"
-"label=\"Paid\" title=\"Paid\" role=\"img\"/>\n"
-"                                        <span class=\"d-none d-md-inline"
-"\">Paid\n"
+msgid "<span class=\"badge badge-pill badge-success\">\n"
+"                                        <i class=\"fa fa-fw fa-check\" aria-label=\"Paid\" title=\"Paid\" role=\"img\"/>\n"
+"                                        <span class=\"d-none d-md-inline\">Paid\n"
 "                                        </span>\n"
 "                                    </span>"
 msgstr ""
 
 #. module: cooperator_portal
 #: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_capital_releases
-msgid ""
-"<span class=\"badge badge-pill badge-warning\">\n"
-"                                        <i class=\"fa fa-fw fa-remove\" aria-"
-"label=\"Cancelled\" title=\"Cancelled\" role=\"img\"/>\n"
+msgid "<span class=\"badge badge-pill badge-warning\">\n"
+"                                        <i class=\"fa fa-fw fa-remove\" aria-label=\"Cancelled\" title=\"Cancelled\" role=\"img\"/>\n"
 "                                        <span class=\"d-none d-md-inline\">\n"
 "                                            Cancelled\n"
 "                                        </span>\n"
@@ -76,7 +67,7 @@ msgstr "Date de naissance"
 #. module: cooperator_portal
 #: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_breadcrumbs
 msgid "Capital Request"
-msgstr ""
+msgstr "Demande de Capital"
 
 #. module: cooperator_portal
 #: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_layout
@@ -106,7 +97,7 @@ msgstr "Date de naissance :"
 #. module: cooperator_portal
 #: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_capital_releases
 msgid "Draft Request"
-msgstr ""
+msgstr "Demande brouillon"
 
 #. module: cooperator_portal
 #: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_capital_releases
@@ -131,7 +122,7 @@ msgstr "IBAN"
 #. module: cooperator_portal
 #: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_details
 msgid "Language"
-msgstr ""
+msgstr "Langue"
 
 #. module: cooperator_portal
 #: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_layout
@@ -141,7 +132,7 @@ msgstr "Représentant légal :"
 #. module: cooperator_portal
 #: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_capital_releases
 msgid "My Capital Releases"
-msgstr ""
+msgstr "Mes demandes de libération de capital"
 
 #. module: cooperator_portal
 #: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_layout
@@ -160,11 +151,9 @@ msgstr "Date de la demande"
 
 #. module: cooperator_portal
 #: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_capital_releases
-msgid ""
-"There are currently no capital release request for your\n"
+msgid "There are currently no capital release request for your\n"
 "                    account."
-msgstr ""
-"Il n'y a actuellement aucune demande de libération de capital pour votre\n"
+msgstr "Il n'y a actuellement aucune demande de libération de capital pour votre\n"
 "                     compte."
 
 #. module: cooperator_portal
@@ -184,6 +173,7 @@ msgstr "Vous n'êtes pas coopérateur."
 
 #. module: cooperator_portal
 #: code:addons/cooperator_portal/controllers/portal.py:87
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_portal/controllers/portal.py:87
 #, python-format
 msgid "You iban account number is not valid"
 msgstr "Votre numéro de compte IBAN n'est pas valide."
@@ -197,3 +187,4 @@ msgstr "Vos données de coopérateur"
 #: model_terms:ir.ui.view,arch_db:cooperator_portal.portal_my_home
 msgid "Your Release Capital Requests"
 msgstr "Vos demandes de libération de capital"
+
