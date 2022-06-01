@@ -13,7 +13,7 @@
                 <page
                     string="Loan issue lines"
                     name="loan_issue_lines"
-                    groups="cooperator.group_easy_my_coop_user"
+                    groups="cooperator.cooperator_group_user"
                 >
                     <group>
                         <field name="is_loaner" />

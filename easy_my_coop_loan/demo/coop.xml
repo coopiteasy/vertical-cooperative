@@ -15,7 +15,7 @@
             eval="datetime.today() + timedelta(days=60)"
         />
         <field name="term_date" eval="datetime.today() + timedelta(days=600)" />
-        <field name="user_id" ref="cooperator.res_users_manager_emc_demo" />
+        <field name="user_id" ref="cooperator.res_users_manager_cooperator_demo" />
         <field name="gross_rate">3</field>
         <field name="face_value">100</field>
         <field name="minimum_amount">4000</field>
@@ -41,7 +41,7 @@
             eval="datetime.today() + timedelta(days=60)"
         />
         <field name="term_date" eval="datetime.today() + timedelta(days=600)" />
-        <field name="user_id" ref="cooperator.res_users_manager_emc_demo" />
+        <field name="user_id" ref="cooperator.res_users_manager_cooperator_demo" />
         <field name="gross_rate">3</field>
         <field name="face_value">100</field>
         <field name="minimum_amount">4000</field>
@@ -67,7 +67,7 @@
             eval="datetime.today() + timedelta(days=60)"
         />
         <field name="term_date" eval="datetime.today() + timedelta(days=600)" />
-        <field name="user_id" ref="cooperator.res_users_manager_emc_demo" />
+        <field name="user_id" ref="cooperator.res_users_manager_cooperator_demo" />
         <field name="gross_rate">3</field>
         <field name="face_value">100</field>
         <field name="minimum_amount">4000</field>
@@ -93,7 +93,7 @@
             eval="datetime.today() + timedelta(days=60)"
         />
         <field name="term_date" eval="datetime.today() + timedelta(days=600)" />
-        <field name="user_id" ref="cooperator.res_users_manager_emc_demo" />
+        <field name="user_id" ref="cooperator.res_users_manager_cooperator_demo" />
         <field name="gross_rate">3</field>
         <field name="face_value">100</field>
         <field name="minimum_amount">1000</field>
