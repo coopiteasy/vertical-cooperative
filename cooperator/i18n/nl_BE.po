@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* easy_my_coop
+# 	* cooperator
 #
 msgid ""
 msgstr ""
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: \n"
 "X-Generator: Poedit 1.6.5\n"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:mail.template,report_name:cooperator.email_template_release_capital
 #, fuzzy
 msgid ""
@@ -29,7 +29,7 @@ msgstr ""
 "${(object.number or '').replace('/','_')}_${object.state == 'draft' and "
 "'draft' or ''}"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:mail.template,body_html:cooperator.email_template_waiting_list
 #, fuzzy
 msgid ""
@@ -129,7 +129,7 @@ msgstr ""
 "</div>\n"
 "            "
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:mail.template,body_html:cooperator.email_template_certificat_increase
 #, fuzzy
 msgid ""
@@ -224,7 +224,7 @@ msgstr ""
 "</div>\n"
 "            "
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:mail.template,body_html:cooperator.email_template_certificat
 #, fuzzy
 msgid ""
@@ -320,7 +320,7 @@ msgstr ""
 "</div>\n"
 "            "
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:mail.template,body_html:cooperator.email_template_share_update
 #, fuzzy
 msgid ""
@@ -417,7 +417,7 @@ msgstr ""
 "</div>\n"
 "            "
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:mail.template,body_html:cooperator.email_template_share_transfer
 #, fuzzy
 msgid ""
@@ -513,7 +513,7 @@ msgstr ""
 "</div>\n"
 "            "
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:mail.template,body_html:cooperator.email_template_confirmation_company
 #, fuzzy
 msgid ""
@@ -614,7 +614,7 @@ msgstr ""
 "</div>\n"
 "            "
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:mail.template,body_html:cooperator.email_template_confirmation
 #, fuzzy
 msgid ""
@@ -712,7 +712,7 @@ msgstr ""
 "</div>\n"
 "            "
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:mail.template,body_html:cooperator.email_template_release_capital
 #, fuzzy
 msgid ""
@@ -808,7 +808,7 @@ msgstr ""
 "</div>\n"
 "            "
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:mail.template,subject:cooperator.email_template_release_capital
 #, fuzzy
 msgid ""
@@ -819,19 +819,19 @@ msgstr ""
 "${object.company_id.name} Request to Release Capital (Ref ${object.number or "
 "'n/a'})"
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:70
+#. module: cooperator
+#: code:addons/cooperator/models/subscription_request.py:70
 #, python-format
 msgid "%s is not available to companies"
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:75
+#. module: cooperator
+#: code:addons/cooperator/models/subscription_request.py:75
 #, python-format
 msgid "%s is not available to individuals"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 msgid ""
 "<span groups=\"account.group_show_line_subtotals_tax_excluded\">\n"
@@ -843,71 +843,71 @@ msgid ""
 "                                </span>"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_register_G001
 msgid "<span>COOPERATOR REGISTER</span>"
 msgstr "<span>COOPERATOR REGISTER</span>"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_certificat_G001_document
 #, fuzzy
 msgid "<span>Certificate generated on</span>"
 msgstr "<span> Certificate generated on </span>"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_certificat_G001_document
 #, fuzzy
 msgid "<span>Cooperator Certificate</span>"
 msgstr "Cooperator certificat"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 #, fuzzy
 msgid "<span>Description</span>"
 msgstr "<strong>Omschrijving:</strong>"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 #, fuzzy
 msgid "<span>Part Type</span>"
 msgstr "<span> share(s) </span>"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 #, fuzzy
 msgid "<span>Quantity</span>"
 msgstr "<span> share(s) </span>"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_subscription_G001
 msgid "<span>SUBSCRIPTION REGISTER</span>"
 msgstr "<span>SUBSCRIPTION REGISTER</span>"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 #, fuzzy
 msgid "<span>Source Document</span>"
 msgstr "<span> share(s) </span>"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 #, fuzzy
 msgid "<span>Unit Price</span>"
 msgstr "<span> share(s) </span>"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_certificat_G001_document
 #, fuzzy
 msgid "<span>share(s)</span>"
 msgstr "<span> share(s) </span>"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 #, fuzzy
 msgid "<strong class=\"mr16\">Subtotal</strong>"
 msgstr "<strong>Subtotaal</strong>"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 msgid ""
 "<strong class=\"text-center\">Scan me with your banking\n"
@@ -917,7 +917,7 @@ msgid ""
 "                        <br/>"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 msgid ""
 "<strong class=\"text-center\">The SEPA QR Code\n"
@@ -926,236 +926,236 @@ msgid ""
 "                        <br/>"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 #, fuzzy
 msgid "<strong>Account Number:</strong>"
 msgstr "<strong>Bron</strong>"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 msgid "<strong>Description:</strong>"
 msgstr "<strong>Omschrijving:</strong>"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 msgid "<strong>Request Date:</strong>"
 msgstr "<strong>Request Date:</strong>"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 msgid "<strong>Structured Communication:</strong>"
 msgstr "<strong>Structured Communication:</strong>"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_certificat_G001_document
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 msgid "<strong>Total</strong>"
 msgstr "<strong>Totaal</strong>"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 #, fuzzy
 msgid "<strong>Your Contact:</strong>"
 msgstr "<strong>Bron</strong>"
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/wizard/create_subscription_from_partner.py:190
+#. module: cooperator
+#: code:addons/cooperator/wizard/create_subscription_from_partner.py:190
 #, python-format
 msgid "A person can't be representative of two different companies."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
 msgid "ASBL"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__iban
 msgid "Account Number"
 msgstr "Rekeningnummer"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: sql_constraint:res.partner.bank:0
 #, fuzzy
 msgid "Account Number must be unique!"
 msgstr "Rekeningnummer"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__message_needaction
 msgid "Action Needed"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__active
 msgid "Active"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__activity_ids
 msgid "Activities"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__activities_address
 msgid "Activities address"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__activities_city
 msgid "Activities city"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__activities_country_id
 msgid "Activities country"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__activities_zip_code
 msgid "Activities zip Code"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__activity_state
 msgid "Activity State"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__address
 msgid "Address"
 msgstr "Adres"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__allow_id_card_upload
 msgid "Allow ID Card upload"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.operation_request_form
 msgid "Approve"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:operation.request,state:0
 msgid "Approved"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__data_policy_approved
 #: model:ir.model.fields,field_description:cooperator.field_res_users__data_policy_approved
 msgid "Approved Data Policy"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__financial_risk_approved
 #: model:ir.model.fields,field_description:cooperator.field_res_users__financial_risk_approved
 msgid "Approved Financial Risk"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__internal_rules_approved
 #: model:ir.model.fields,field_description:cooperator.field_res_users__internal_rules_approved
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__internal_rules_approved
 msgid "Approved Internal Rules"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__generic_rules_approved
 #: model:ir.model.fields,field_description:cooperator.field_res_users__generic_rules_approved
 msgid "Approved generic rules"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_request_filter
 msgid "Archived"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
 #, fuzzy
 msgid "Association"
 msgstr "Omschrijving"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__message_attachment_count
 msgid "Attachment Count"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model,name:cooperator.model_res_partner_bank
 #, fuzzy
 msgid "Bank Accounts"
 msgstr "Bank Account Number"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__bank_account
 #, fuzzy
 msgid "Bank account"
 msgstr "Bank Account Number"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_product_product__customer
 #: model:ir.model.fields,field_description:cooperator.field_product_template__customer
 #, fuzzy
 msgid "Become customer"
 msgstr "Become cooperator"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__birthdate
 msgid "Birthdate"
 msgstr "Geboortedatum"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_tree
 msgid "Block"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:subscription.request,state:0
 msgid "Blocked"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__board_representative
 msgid "Board representative name"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__signature_scan
 msgid "Board representative signature"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__bottom_logo1
 msgid "Bottom logo 1"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__bottom_logo2
 msgid "Bottom logo 2"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:subscription.request,source:0
 msgid "CRM"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_product_product__by_company
 #: model:ir.model.fields,field_description:cooperator.field_product_template__by_company
 msgid "Can be subscribed by companies?"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_product_product__by_individual
 #: model:ir.model.fields,field_description:cooperator.field_product_template__by_individual
 msgid "Can be subscribed by individuals?"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.operation_request_form
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 #: model_terms:ir.ui.view,arch_db:cooperator.view_create_subscription
@@ -1166,24 +1166,24 @@ msgstr ""
 msgid "Cancel"
 msgstr "Cancelled"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:operation.request,state:0 selection:subscription.request,state:0
 msgid "Cancelled"
 msgstr "Cancelled"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 msgid "Cancelled Invoice"
 msgstr "Geannuleerde factuur"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.actions.report,name:cooperator.action_cooperator_invoices
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__capital_release_request
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 msgid "Capital release request"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:mail.template,report_name:cooperator.email_template_certificat
 #: model:mail.template,report_name:cooperator.email_template_certificat_increase
 #: model:mail.template,report_name:cooperator.email_template_share_transfer
@@ -1195,74 +1195,74 @@ msgid ""
 "            "
 msgstr "Energiris Certificat ${(object.cooperator_register_number or '')}"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_partner__cooperator
 #: model:ir.model.fields,help:cooperator.field_res_users__cooperator
 #, fuzzy
 msgid "Check this box if this contact is a cooperator (effective or not)."
 msgstr "Check this box if this contact is a cooperator."
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_partner__member
 #: model:ir.model.fields,help:cooperator.field_res_users__member
 #, fuzzy
 msgid "Check this box if this cooperator is an effective member."
 msgstr "Check this box if this cooperator is a effective member."
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_partner__old_member
 #: model:ir.model.fields,help:cooperator.field_res_users__old_member
 #, fuzzy
 msgid "Check this box if this cooperator is no more an effective member."
 msgstr "Check this box if this cooperator is a effective member."
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_company__display_data_policy_approval
 msgid ""
 "Choose to display a data policy checkbox on the cooperator website form."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_company__display_financial_risk_approval
 msgid ""
 "Choose to display a financial risk checkbox on the cooperator website form."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_company__display_internal_rules_approval
 msgid ""
 "Choose to display an internal rules checkbox on the cooperator website form."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_company__display_generic_rules_approval
 msgid ""
 "Choose to display generic rules checkbox on the cooperator website form."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__city
 msgid "City"
 msgstr "Plaats"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.actions.act_window,help:cooperator.action_company_representative_form
 #: model_terms:ir.actions.act_window,help:cooperator.action_partner_cooperator_candidate_form
 #: model_terms:ir.actions.act_window,help:cooperator.action_partner_cooperator_form
 msgid "Click to add a contact in your address book."
 msgstr "Klik om een contact toe te voegen in uw adresboek."
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.actions.act_window,help:cooperator.share_product_action
 msgid "Click to define a new share product."
 msgstr "Click to define a new share product."
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model,name:cooperator.model_res_company
 msgid "Companies"
 msgstr "Bedrijven"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__company_id
 #: model:ir.model.fields,field_description:cooperator.field_share_line__company_id
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__company_id
@@ -1270,7 +1270,7 @@ msgstr "Bedrijven"
 msgid "Company"
 msgstr "Bedrijf"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_share_line__company_currency_id
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__company_currency_id
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__company_currency_id
@@ -1278,112 +1278,112 @@ msgstr "Bedrijf"
 msgid "Company Currency"
 msgstr "Company Share"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__company_register_number
 #: model:ir.model.fields,field_description:cooperator.field_res_users__company_register_number
 #, fuzzy
 msgid "Company Register Number"
 msgstr "Cooperator Register Number"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:product.category,name:cooperator.product_category_company_share
 msgid "Company Share"
 msgstr "Company Share"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__company_email
 #, fuzzy
 msgid "Company email"
 msgstr "Bedrijf"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__company_name
 #, fuzzy
 msgid "Company name"
 msgstr "Company Share"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__company_register_number
 #, fuzzy
 msgid "Company register number"
 msgstr "Cooperator Register Number"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.action_company_representative_form
 #: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_company_representative
 msgid "Company representative"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__company_type
 #, fuzzy
 msgid "Company type"
 msgstr "Bedrijf"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
 msgid "Company under public law"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_config
 #: model_terms:ir.ui.view,arch_db:cooperator.product_template_share_form_view
 msgid "Configuration"
 msgstr "Instellingen"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model,name:cooperator.model_res_partner
 msgid "Contact"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__coop_email_contact
 msgid "Contact email address for the cooperator"
 msgstr "Contact email address for the cooperator"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_main_coop
 msgid "Contacts"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:operation.request,operation_type:0
 #: selection:subscription.register,type:0
 msgid "Conversion"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_register_filter
 msgid "Convert"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__share_to_product_id
 msgid "Convert to this share type"
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/operation_request.py:239
-#: code:addons/easy_my_coop/models/operation_request.py:359
+#. module: cooperator
+#: code:addons/cooperator/models/operation_request.py:239
+#: code:addons/cooperator/models/operation_request.py:359
 #, python-format
 msgid "Converting just part of the shares is not yet implemented"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
 #, fuzzy
 msgid "Cooperative"
 msgstr "Cooperator"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.module.category,name:cooperator.module_category_cooperator_management
 #, fuzzy
 msgid "Cooperative Management"
 msgstr "Cooperator Candidates"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__partner_id
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info__cooperator
@@ -1399,36 +1399,36 @@ msgstr "Cooperator Candidates"
 msgid "Cooperator"
 msgstr "Cooperator"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__property_cooperator_account
 #, fuzzy
 msgid "Cooperator Account"
 msgstr "Cooperator certificat"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_cooperator_candidate
 #: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter_coop
 msgid "Cooperator Candidates"
 msgstr "Cooperator Candidates"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.action_invoice_tree_coop
 msgid "Cooperator Invoices"
 msgstr "Cooperator Invoices"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__cooperator_register_number
 #: model:ir.model.fields,field_description:cooperator.field_res_users__cooperator_register_number
 #, fuzzy
 msgid "Cooperator Number"
 msgstr "Cooperator Register Number"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter_coop
 msgid "Cooperator Partners"
 msgstr "Cooperator Partners"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__cooperator_type
 #: model:ir.model.fields,field_description:cooperator.field_res_users__cooperator_type
 #: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter_coop
@@ -1436,30 +1436,30 @@ msgstr "Cooperator Partners"
 msgid "Cooperator Type"
 msgstr "Cooperator"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__coop_candidate
 #: model:ir.model.fields,field_description:cooperator.field_res_users__coop_candidate
 #, fuzzy
 msgid "Cooperator candidate"
 msgstr "Cooperator Candidates"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.action_partner_cooperator_candidate_form
 #, fuzzy
 msgid "Cooperator candidates"
 msgstr "Cooperator Candidates"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.actions.report,name:cooperator.action_cooperator_report_certificat
 msgid "Cooperator certificat"
 msgstr "Cooperator certificat"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.actions.report,name:cooperator.action_report_cooperator_register
 msgid "Cooperator register"
 msgstr "Cooperator register"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:account.account,name:cooperator.account_cooperator_demo
 #: model:ir.actions.act_window,name:cooperator.action_partner_cooperator_form
 #: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_cooperator
@@ -1467,12 +1467,12 @@ msgstr "Cooperator register"
 msgid "Cooperators"
 msgstr "Cooperators"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__country_id
 msgid "Country"
 msgstr "Land"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.action_view_create_subscription
 #: model_terms:ir.ui.view,arch_db:cooperator.view_create_subscription
 #: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form_easy_my_coop
@@ -1480,32 +1480,32 @@ msgstr "Land"
 msgid "Create Subscription"
 msgstr "Cooperator Subscription"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model,name:cooperator.model_partner_create_subscription
 #, fuzzy
 msgid "Create Subscription From Partner"
 msgstr "Subscription Date"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.actions.act_window,help:cooperator.action_invoice_tree_coop
 #, fuzzy
 msgid "Create a customer invoice"
 msgstr "Click to create a cooperator invoice."
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.actions.act_window,help:cooperator.action_invoice_tree_coop
 msgid ""
 "Create invoices, register payments and keep track of the\n"
 "                discussions with your customers."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__create_user
 #, fuzzy
 msgid "Create user for cooperator"
 msgstr "Contact email address for the cooperator"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__create_uid
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__create_uid
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info__create_uid
@@ -1517,7 +1517,7 @@ msgstr "Contact email address for the cooperator"
 msgid "Created by"
 msgstr "Gemaakt door"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__create_date
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__create_date
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info__create_date
@@ -1529,59 +1529,59 @@ msgstr "Gemaakt door"
 msgid "Created on"
 msgstr "Gemaakt op"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model,name:cooperator.model_account_invoice_refund
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 msgid "Credit Note"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__data_policy_approval_text
 msgid "Data Policy Approval Text"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__data_policy_approved
 msgid "Data Policy Approved"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__default_country_id
 msgid "Default country"
 msgstr "Default country"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__default_lang_id
 msgid "Default lang"
 msgstr "Default lang"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_product_product__default_share_product
 #: model:ir.model.fields,field_description:cooperator.field_product_template__default_share_product
 msgid "Default share product"
 msgstr "Default share product"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__display_data_policy_approval
 msgid "Display Data Policy Approval"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__display_financial_risk_approval
 msgid "Display Financial Risk Approval"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__display_generic_rules_approval
 msgid "Display Generic Rules Approval"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__display_internal_rules_approval
 msgid "Display Internal Rules Approval"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__display_name
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__display_name
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info__display_name
@@ -1593,235 +1593,231 @@ msgstr ""
 msgid "Display Name"
 msgstr "Schermnaam"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__display_logo1
 #, fuzzy
 msgid "Display logo 1"
 msgstr "Display on website"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__display_logo2
 #, fuzzy
 msgid "Display logo 2"
 msgstr "Display on website"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_product_product__display_on_website
 #: model:ir.model.fields,field_description:cooperator.field_product_template__display_on_website
 msgid "Display on website"
 msgstr "Display on website"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_request_filter
 #: selection:operation.request,state:0 selection:subscription.request,state:0
 msgid "Done"
 msgstr "Done"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.operation_request_form
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_request_filter
 #: selection:operation.request,state:0 selection:subscription.request,state:0
 msgid "Draft"
 msgstr "Draft"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 msgid "Draft Invoice"
 msgstr "Voorlopige factuur"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
 msgid "EURL / Entreprise individuelle"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:subscription.request,source:0
 #, fuzzy
-msgid "Easy My Coop API"
-msgstr "EasyMy Coop"
+msgid "Cooperator API"
+msgstr "Cooperator API"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_email_template_preview__easy_my_coop
 #: model:ir.model.fields,field_description:cooperator.field_mail_template__easy_my_coop
-msgid "Easy my coop mail template"
+msgid "Cooperator mail template"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.ui.menu,name:cooperator.menu_main_easy_my_coop
 msgid "Easy-My Coop"
 msgstr "Easy-My Coop"
 
-#. module: easy_my_coop
-#: model_terms:ir.ui.view,arch_db:cooperator.view_company_inherit_form2
-msgid "EasyMy Coop"
-msgstr "EasyMy Coop"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_register_G001
 msgid ""
 "Effective\n"
 "                            date"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__effective_date
 #: model:ir.model.fields,field_description:cooperator.field_res_users__effective_date
 #: model:ir.model.fields,field_description:cooperator.field_share_line__effective_date
 msgid "Effective Date"
 msgstr "Effective Date"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__member
 #: model:ir.model.fields,field_description:cooperator.field_res_users__member
 #, fuzzy
 msgid "Effective cooperator"
 msgstr "Become cooperator"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__effective_date
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_certificat_G001_document
 #: model_terms:ir.ui.view,arch_db:cooperator.view_share_line_filter
 msgid "Effective date"
 msgstr "Effective date"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__email
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__email
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_register_G001
 msgid "Email"
 msgstr "E-mail"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model,name:cooperator.model_mail_template
 #, fuzzy
 msgid "Email Templates"
 msgstr "Mail Templates"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.emc_external_layout_standard
 #, fuzzy
 msgid "Email:"
 msgstr "E-mail"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_register_filter
 #, fuzzy
 msgid "Entry type"
 msgstr "Share type"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:account.account,name:cooperator.account_equity_demo
 msgid "Equity"
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/wizard/update_share_line.py:45
+#. module: cooperator
+#: code:addons/cooperator/wizard/update_share_line.py:45
 #, python-format
 msgid "Error the update return more than one subscription register lines."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.operation_request_form
 msgid "Execute"
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:190
+#. module: cooperator
+#: code:addons/cooperator/models/subscription_request.py:190
 #: selection:subscription.request,gender:0
 #, python-format
 msgid "Female"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__financial_risk_approval_text
 msgid "Financial Risk Approval Text"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__financial_risk_approved
 msgid "Financial Risk Approved"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__firstname
 msgid "Firstname"
 msgstr "Firstname"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__message_follower_ids
 msgid "Followers"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__message_channel_ids
 msgid "Followers (Channels)"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__message_partner_ids
 #, fuzzy
 msgid "Followers (Partners)"
 msgstr "Cooperator Partners"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_certificat_G001_document
 msgid "For the board of"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_product_product__force_min_qty
 #: model:ir.model.fields,field_description:cooperator.field_product_template__force_min_qty
 msgid "Force Min Qty"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__capital_release_request_date
 msgid "Force the capital release request date"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
 #, fuzzy
 msgid "Foundation"
 msgstr "Instellingen"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__contact_person_function
 #, fuzzy
 msgid "Function"
 msgstr "Subscription"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__gender
 msgid "Gender"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__generic_rules_approval_text
 msgid "Generic Rules Approval Text"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__generic_rules_approved
 msgid "Generic Rules Approved"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_account_bank_statement_import_journal_creation__get_cooperator_payment
 #: model:ir.model.fields,field_description:cooperator.field_account_journal__get_cooperator_payment
 #, fuzzy
 msgid "Get cooperator payments?"
 msgstr "Cooperator Candidates"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_account_bank_statement_import_journal_creation__get_general_payment
 #: model:ir.model.fields,field_description:cooperator.field_account_journal__get_general_payment
 msgid "Get general payments?"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.share_product_filter
 #: model_terms:ir.ui.view,arch_db:cooperator.view_share_line_filter
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_register_filter
@@ -1829,13 +1825,13 @@ msgstr ""
 msgid "Group By"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__already_cooperator
 #, fuzzy
 msgid "I'm already cooperator"
 msgstr "Become cooperator"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__id
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__id
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info__id
@@ -1847,137 +1843,137 @@ msgstr "Become cooperator"
 msgid "ID"
 msgstr "ID"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_subscription_request__message_unread
 msgid "If checked new messages require your attention."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_company__unmix_share_type
 msgid ""
 "If checked, A cooperator will be authorised to have only one type of share"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_subscription_request__message_needaction
 msgid "If checked, new messages require your attention."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_subscription_request__message_has_error
 msgid "If checked, some messages have a delivery error."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_operation_request__subscription_request
 msgid ""
 "In case on a transfer of share. If the share receiver isn't a effective "
 "member then a subscription form should be filled."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:subscription.request,type:0
 msgid "Increase number of share"
 msgstr "Increase number of share"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
 msgid "Individual company"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.product_template_share_form_view
 msgid "Info"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__internal_rules_approval_text
 msgid "Internal Rules Approval Text"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model,name:cooperator.model_account_invoice
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__invoice
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 msgid "Invoice"
 msgstr "Factuur"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model,name:cooperator.model_account_invoice_report
 msgid "Invoices Statistics"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__is_company
 #, fuzzy
 msgid "Is Company"
 msgstr "Bedrijf"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__message_is_follower
 msgid "Is Follower"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__is_company
 #, fuzzy
 msgid "Is a company"
 msgstr "Bedrijf"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__is_operation
 msgid "Is an operation"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info__is_company
 #, fuzzy
 msgid "Is company"
 msgstr "Bedrijf"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__data_policy_approval_required
 msgid "Is data policy approval required?"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__financial_risk_approval_required
 msgid "Is financial risk approval required?"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__generic_rules_approval_required
 msgid "Is generic rules approval required?"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__internal_rules_approval_required
 msgid "Is internal rules approval required?"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_product_product__is_share
 #: model:ir.model.fields,field_description:cooperator.field_product_template__is_share
 msgid "Is share?"
 msgstr "Is share?"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model,name:cooperator.model_account_journal
 msgid "Journal"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_subscription_request__capital_release_request_date
 msgid "Keep empty to use the current date"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__lang
 msgid "Language"
 msgstr "Taal"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request____last_update
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription____last_update
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info____last_update
@@ -1989,7 +1985,7 @@ msgstr "Taal"
 msgid "Last Modified on"
 msgstr "Laatst Aangepast op"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__write_uid
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__write_uid
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info__write_uid
@@ -2001,7 +1997,7 @@ msgstr "Laatst Aangepast op"
 msgid "Last Updated by"
 msgstr "Laatst bijgewerkt door"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__write_date
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__write_date
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info__write_date
@@ -2013,164 +2009,164 @@ msgstr "Laatst bijgewerkt door"
 msgid "Last Updated on"
 msgstr "Laatst bijgewerkt op"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__lastname
 msgid "Lastname"
 msgstr "Lastname"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__representative
 #: model:ir.model.fields,field_description:cooperator.field_res_users__representative
 msgid "Legal Representative"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__representative_of_member_company
 #: model:ir.model.fields,field_description:cooperator.field_res_users__representative_of_member_company
 msgid "Legal Representative of Member Company"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__legal_form
 #: model:ir.model.fields,field_description:cooperator.field_res_users__legal_form
 msgid "Legal form"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.action_easy_my_coop_email_templates
 #: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_templates
 msgid "Mail Templates"
 msgstr "Mail Templates"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_product_product__mail_template
 #: model:ir.model.fields,field_description:cooperator.field_product_template__mail_template
 #, fuzzy
 msgid "Mail template"
 msgstr "Mail Templates"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__message_main_attachment_id
 msgid "Main Attachment"
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:190
+#. module: cooperator
+#: code:addons/cooperator/models/subscription_request.py:190
 #: selection:subscription.request,gender:0
 #, python-format
 msgid "Male"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.module.category,description:cooperator.module_category_cooperator_management
 #, fuzzy
 msgid "Manage your cooperative."
 msgstr "Helps you manage your cooperator."
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:res.groups,name:cooperator.group_easy_my_coop_manager
 msgid "Manager"
 msgstr "Manager"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:subscription.request,source:0
 msgid "Manual"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__subscription_maximum_amount
 #, fuzzy
 msgid "Maximum authorised subscription amount"
 msgstr "Maximum authorized subscription amount"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__message_has_error
 msgid "Message Delivery error"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__message_ids
 #, fuzzy
 msgid "Messages"
 msgstr "Websiteberichten"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_product_product__minimum_quantity
 #: model:ir.model.fields,field_description:cooperator.field_product_template__minimum_quantity
 msgid "Minimum quantity"
 msgstr "Minimum quantity"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__name
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_register_G001
 msgid "Name"
 msgstr "Naam:"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:subscription.request,type:0
 msgid "New Cooperator"
 msgstr "New Cooperator"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__activity_date_deadline
 msgid "Next Activity Deadline"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__activity_summary
 msgid "Next Activity Summary"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__activity_type_id
 msgid "Next Activity Type"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_request_filter
 msgid "Not Validated"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_register_G001
 msgid "Number"
 msgstr "Number"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__name
 #, fuzzy
 msgid "Number Operation"
 msgstr "Register Number Operation"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__message_needaction_counter
 #, fuzzy
 msgid "Number of Actions"
 msgstr "Number of share"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_share_line__share_number
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__ordered_parts
 msgid "Number of Share"
 msgstr "Number of Share"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__message_has_error_counter
 #, fuzzy
 msgid "Number of error"
 msgstr "Number of Share"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_subscription_request__message_needaction_counter
 msgid "Number of messages which requires an action"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_subscription_request__message_has_error_counter
 msgid "Number of messages with delivery error"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__quantity
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__number_of_share
 #: model:ir.model.fields,field_description:cooperator.field_res_users__number_of_share
@@ -2178,56 +2174,56 @@ msgstr ""
 msgid "Number of share"
 msgstr "Number of share"
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:677
+#. module: cooperator
+#: code:addons/cooperator/models/subscription_request.py:677
 #, python-format
 msgid "Number of share must be greater than 0."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__quantity_to
 #, fuzzy
 msgid "Number of share to"
 msgstr "Number of share"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_subscription_request__message_unread_counter
 #, fuzzy
 msgid "Number of unread messages"
 msgstr "Number of share"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter_coop
 #, fuzzy
 msgid "Old Cooperators"
 msgstr "Cooperators"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__old_member
 #: model:ir.model.fields,field_description:cooperator.field_res_users__old_member
 #, fuzzy
 msgid "Old cooperator"
 msgstr "Cooperator"
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:759
+#. module: cooperator
+#: code:addons/cooperator/models/subscription_request.py:759
 #, python-format
 msgid "Only blocked requests can be unblocked."
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:781
+#. module: cooperator
+#: code:addons/cooperator/models/subscription_request.py:781
 #, python-format
 msgid "Only draft request can be put on the waiting list."
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:752
+#. module: cooperator
+#: code:addons/cooperator/models/subscription_request.py:752
 #, python-format
 msgid "Only draft requests can be blocked."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.actions.act_window,help:cooperator.action_company_representative_form
 #: model_terms:ir.actions.act_window,help:cooperator.action_partner_cooperator_candidate_form
 #: model_terms:ir.actions.act_window,help:cooperator.action_partner_cooperator_form
@@ -2243,45 +2239,45 @@ msgstr ""
 "opportunities,\n"
 "                documents, etc."
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:subscription.request,source:0
 #, fuzzy
 msgid "Operation"
 msgstr "Operation Type"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_subscription_G001
 msgid ""
 "Operation\n"
 "                            number"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_subscription_G001
 msgid ""
 "Operation\n"
 "                            type"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__operation_request_id
 #, fuzzy
 msgid "Operation Request"
 msgstr "Operation number"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__operation_type
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__type
 msgid "Operation Type"
 msgstr "Operation Type"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__subscription_amount
 #, fuzzy
 msgid "Operation amount"
 msgstr "Operation type"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.operation_request_action
 #: model:ir.model,name:cooperator.model_operation_request
 #: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_operation_request
@@ -2290,25 +2286,25 @@ msgstr "Operation type"
 msgid "Operation request"
 msgstr "Operation number"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.operation_request_tree
 #, fuzzy
 msgid "Operation requests"
 msgstr "Operation number"
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:190
+#. module: cooperator
+#: code:addons/cooperator/models/subscription_request.py:190
 #: selection:subscription.request,gender:0
 #, python-format
 msgid "Other"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:subscription.request,activity_state:0
 msgid "Overdue"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.emc_external_layout_standard
 msgid ""
 "Page:\n"
@@ -2317,53 +2313,53 @@ msgid ""
 "                            <span class=\"topage\"/>"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_request_filter
 msgid "Paid"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:product.template,name:cooperator.product_template_share_type_1_demo
 #, fuzzy
 msgid "Part A - Founder"
 msgstr "Relatie"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:product.template,name:cooperator.product_template_share_type_2_demo
 msgid "Part B - Worker"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
 #, fuzzy
 msgid "Partnership"
 msgstr "Relatie"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:mail.template,subject:cooperator.email_template_certificat
 #: model:mail.template,subject:cooperator.email_template_certificat_increase
 msgid "Payment Received Confirmation"
 msgstr "Payment Received Confirmation"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__phone
 msgid "Phone"
 msgstr "Tel."
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.emc_external_layout_standard
 #, fuzzy
 msgid "Phone:"
 msgstr "Tel."
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:subscription.request,activity_state:0
 msgid "Planned"
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:505
+#. module: cooperator
+#: code:addons/cooperator/models/subscription_request.py:505
 #, python-format
 msgid ""
 "Please define income account for this product: \"%s\" (id:%d) - or for its "
@@ -2372,12 +2368,12 @@ msgstr ""
 "Please define income account for this product: \"%s\" (id:%d) - or for its "
 "category: \"%s\"."
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 msgid "Please use the following communication for your payment :"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_operation_request__share_to_unit_price
 #: model:ir.model.fields,help:cooperator.field_operation_request__share_unit_price
 #: model:ir.model.fields,help:cooperator.field_partner_create_subscription__share_unit_price
@@ -2385,263 +2381,263 @@ msgstr ""
 msgid "Price at which the product is sold to customers."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model,name:cooperator.model_product_template
 msgid "Product Template"
 msgstr "Productsjabloon"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_certificat_G001_document
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_register_G001
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_tree
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__receiver_not_member
 msgid "Receiver is not a member"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 msgid "Reference"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.operation_request_form
 #, fuzzy
 msgid "Refuse"
 msgstr "Creditering"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:operation.request,state:0
 #, fuzzy
 msgid "Refused"
 msgstr "Creditering"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__register_number
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info__register_number
 #, fuzzy
 msgid "Register Company Number"
 msgstr "National Register Number"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__register_number_operation
 msgid "Register Number Operation"
 msgstr "Register Number Operation"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.ui.menu,name:cooperator.menu_action_invoice_tree_coop
 msgid "Register Payment"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_account_invoice_report__release_capital_request
 #, fuzzy
 msgid "Release capital request"
 msgstr "Release of capital request"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_account_invoice__release_capital_request
 msgid "Release of capital request"
 msgstr "Release of capital request"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_main_reporting
 msgid "Reporting"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__representative_email
 msgid "Representative email"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__representative_name
 msgid "Representative name"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_tree
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_request_filter
 msgid "Request Date"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__request_date
 msgid "Request date"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 msgid ""
 "Request to Release\n"
 "                        Capital"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_request_filter
 msgid "Request type"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__user_id
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__user_id
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__user_id
 msgid "Responsible"
 msgstr "Verantwoordelijke"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__activity_user_id
 #, fuzzy
 msgid "Responsible User"
 msgstr "Verantwoordelijke"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
 msgid "SA / SAS"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
 msgid "SARL"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
 msgid "SCRL"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
 msgid "SPRL"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__same_address
 #, fuzzy
 msgid "Same address"
 msgstr "Adres"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_share_line_filter
 #, fuzzy
 msgid "Search Share Line"
 msgstr "Share Lines"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_register_filter
 #, fuzzy
 msgid "Search Subscription Register"
 msgstr "Subscription Register"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_request_filter
 #, fuzzy
 msgid "Search Subscription Request"
 msgstr "Subscription Request"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:operation.request,operation_type:0
 #: selection:subscription.register,type:0
 msgid "Sell Back"
 msgstr "Sell Back"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_register_filter
 #, fuzzy
 msgid "Sell back"
 msgstr "Sell Back"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__send_capital_release_email
 msgid "Send Capital Release email"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__send_share_transfer_email
 msgid "Send Share Transfer Email"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__send_share_update_email
 msgid "Send Share Update Email"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__send_waiting_list_email
 msgid "Send Waiting List email"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__send_certificate_email
 msgid "Send certificate email"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__send_confirmation_email
 msgid "Send confirmation email"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info__representative_function
 msgid "Set function"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info__legal_form
 msgid "Set legal form"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_subscription_G001
 msgid ""
 "Share\n"
 "                            number"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.product_template_share_form_view
 msgid "Share Information"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.share_line_action
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__share_ids
 #: model:ir.model.fields,field_description:cooperator.field_res_users__share_ids
 msgid "Share Lines"
 msgstr "Share Lines"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_main_subscription
 #, fuzzy
 msgid "Share Management"
 msgstr "Share type name"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__share_qty
 #, fuzzy
 msgid "Share Quantity"
 msgstr "Hoeveelheid"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__subscription_request
 msgid "Share Receiver Info"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__share_product
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_tree
 #, fuzzy
 msgid "Share Type"
 msgstr "Share type"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model,name:cooperator.model_share_line
 #: model:ir.model.fields,field_description:cooperator.field_share_line_update_info__share_line
 #: model_terms:ir.ui.view,arch_db:cooperator.share_line_form
@@ -2649,12 +2645,12 @@ msgstr "Share type"
 msgid "Share line"
 msgstr "Share Lines"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model,name:cooperator.model_share_line_update_info
 msgid "Share line update info"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__share_unit_price
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__share_unit_price
 #: model:ir.model.fields,field_description:cooperator.field_share_line__share_unit_price
@@ -2663,39 +2659,39 @@ msgstr ""
 msgid "Share price"
 msgstr "Share price"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form_easy_my_coop
 #, fuzzy
 msgid "Share subscriptions"
 msgstr "Subscription"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__share_to_unit_price
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__share_to_unit_price
 #, fuzzy
 msgid "Share to price"
 msgstr "Share price"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__share_to_product_id
 #, fuzzy
 msgid "Share to type"
 msgstr "Share type"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__share_to_short_name
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__share_to_short_name
 #, fuzzy
 msgid "Share to type name"
 msgstr "Share type name"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:mail.template,subject:cooperator.email_template_share_transfer
 #, fuzzy
 msgid "Share transfer"
 msgstr "Share number"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.share_product_action
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__share_product_id
 #: model:ir.model.fields,field_description:cooperator.field_share_line__share_product_id
@@ -2706,7 +2702,7 @@ msgstr "Share number"
 msgid "Share type"
 msgstr "Share type"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__share_short_name
 #: model:ir.model.fields,field_description:cooperator.field_share_line__share_short_name
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__share_short_name
@@ -2714,40 +2710,40 @@ msgstr "Share type"
 msgid "Share type name"
 msgstr "Share type name"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:mail.template,subject:cooperator.email_template_share_update
 #, fuzzy
 msgid "Share update"
 msgstr "Share type"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form_easy_my_coop
 msgid "Shares"
 msgstr "Shares"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_product_product__short_name
 #: model:ir.model.fields,field_description:cooperator.field_product_template__short_name
 msgid "Short name"
 msgstr "Short name"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__skip_control_ng
 msgid "Skip control"
 msgstr "Skip control"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__source
 msgid "Source"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__state
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__state
 msgid "State"
 msgstr "Staat/Provincie"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_subscription_request__activity_state
 msgid ""
 "Status based on activities\n"
@@ -2756,37 +2752,37 @@ msgid ""
 "Planned: Future activities."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.operation_request_form
 msgid "Submit"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_register_filter
 #: selection:operation.request,operation_type:0
 #: selection:subscription.register,type:0 selection:subscription.request,type:0
 msgid "Subscription"
 msgstr "Subscription"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_subscription_G001
 msgid ""
 "Subscription\n"
 "                            date"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__date
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_register_filter
 msgid "Subscription Date"
 msgstr "Subscription Date"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:account.journal,name:cooperator.subscription_journal
 msgid "Subscription Journal"
 msgstr "Subscription Journal"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.subscription_register_action
 #: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_subscription_register
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_register_form
@@ -2794,41 +2790,41 @@ msgstr "Subscription Journal"
 msgid "Subscription Register"
 msgstr "Subscription Register"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.actions.report,name:cooperator.action_cooperator_subscription_report
 msgid "Subscription Register Report"
 msgstr "Subscription Register Report"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model,name:cooperator.model_subscription_request
 msgid "Subscription Request"
 msgstr "Subscription Request"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.operation_request_form
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_tree
 msgid "Subscription Requests"
 msgstr "Subscription Requests"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__subscription_amount
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__subscription_amount
 msgid "Subscription amount"
 msgstr "Subscription amount"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__date
 msgid "Subscription date request"
 msgstr "Subscription date request"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model,name:cooperator.model_subscription_register
 #, fuzzy
 msgid "Subscription register"
 msgstr "Subscription Register"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_account_invoice__subscription_request
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__subscription_request_ids
 #: model:ir.model.fields,field_description:cooperator.field_res_users__subscription_request_ids
@@ -2836,7 +2832,7 @@ msgstr "Subscription Register"
 msgid "Subscription request"
 msgstr "Subscription Request"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:mail.template,subject:cooperator.email_template_waiting_list
 #, fuzzy
 msgid ""
@@ -2844,202 +2840,202 @@ msgid ""
 "            "
 msgstr "Subscription request confirmation"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:mail.template,subject:cooperator.email_template_confirmation
 #: model:mail.template,subject:cooperator.email_template_confirmation_company
 msgid "Subscription request confirmation"
 msgstr "Subscription request confirmation"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_create_subscription
 msgid ""
 "Subscription request will be created with data from the\n"
 "                        partner."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.subscription_request_action
 #: model:ir.ui.menu,name:cooperator.menu_easy_my_coop_subscription_request
 #, fuzzy
 msgid "Subscriptions"
 msgstr "Subscription"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_subscription_G001
 msgid "TOTAL :"
 msgstr "TOTAL :"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_company__data_policy_approval_text
 msgid "Text to display aside the checkbox to approve data policy."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_company__financial_risk_approval_text
 msgid "Text to display aside the checkbox to approve financial risk."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_company__internal_rules_approval_text
 msgid "Text to display aside the checkbox to approve internal rules."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_company__generic_rules_approval_text
 msgid "Text to display aside the checkbox to approve the generic rules."
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:685
+#. module: cooperator
+#: code:addons/cooperator/models/subscription_request.py:685
 #, python-format
 msgid "The checkbox already cooperator is checked please select a cooperator."
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/operation_request.py:223
+#. module: cooperator
+#: code:addons/cooperator/models/operation_request.py:223
 #, python-format
 msgid "The cooperator can't hand over more shares that he/she owns."
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/operation_request.py:211
+#. module: cooperator
+#: code:addons/cooperator/models/operation_request.py:211
 #, python-format
 msgid ""
 "The cooperator doesn't own this share type. Please choose the appropriate "
 "share type."
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/operation_request.py:127
+#. module: cooperator
+#: code:addons/cooperator/models/operation_request.py:127
 #, python-format
 msgid "The effective date can not be in the future."
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/operation_request.py:277
+#. module: cooperator
+#: code:addons/cooperator/models/operation_request.py:277
 #, python-format
 msgid ""
 "The information of the receiver are not correct. Please correct the "
 "information before submitting"
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:671
+#. module: cooperator
+#: code:addons/cooperator/models/subscription_request.py:671
 #, python-format
 msgid "The request must be in draft or on waiting list to be validated"
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:725
-#: code:addons/easy_my_coop/wizard/create_subscription_from_partner.py:181
+#. module: cooperator
+#: code:addons/cooperator/models/subscription_request.py:725
+#: code:addons/cooperator/wizard/create_subscription_from_partner.py:181
 #, python-format
 msgid ""
 "There is two different persons with the same national register number. "
 "Please proceed to a merge before to continue"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_company__property_cooperator_account
 msgid ""
 "This account will be the default one as the receivable account for the "
 "cooperators"
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:733
+#. module: cooperator
+#: code:addons/cooperator/models/subscription_request.py:733
 #, python-format
 msgid ""
 "This contact person is already defined for another company. Please select "
 "another contact"
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/operation_request.py:172
+#. module: cooperator
+#: code:addons/cooperator/models/operation_request.py:172
 #, fuzzy, python-format
 msgid ""
 "This operation can't be executed if the cooperator is not an effective member"
 msgstr "Check this box if this cooperator is a effective member."
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/operation_request.py:401
+#. module: cooperator
+#: code:addons/cooperator/models/operation_request.py:401
 #, python-format
 msgid "This operation is not yet implemented."
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/operation_request.py:330
+#. module: cooperator
+#: code:addons/cooperator/models/operation_request.py:330
 #, python-format
 msgid "This operation must be approved before to be executed"
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/operation_request.py:269
+#. module: cooperator
+#: code:addons/cooperator/models/operation_request.py:269
 #, python-format
 msgid "This share can not be subscribed an individual"
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/operation_request.py:262
+#. module: cooperator
+#: code:addons/cooperator/models/operation_request.py:262
 #, python-format
 msgid "This share can not be subscribed by a company"
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/operation_request.py:255
+#. module: cooperator
+#: code:addons/cooperator/models/operation_request.py:255
 #, python-format
 msgid "This share type could not be transfered to "
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:subscription.request,activity_state:0
 msgid "Today"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_certificat_G001_document
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_register_G001
 msgid "Total"
 msgstr "Totaal"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_register_tree
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_tree
 msgid "Total amount"
 msgstr "Totaalbedrag"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_share_line__total_amount_line
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__total_amount_line
 msgid "Total amount line"
 msgstr "Total amount line"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form_easy_my_coop
 msgid "Total of shares"
 msgstr "Total of shares"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_tree
 msgid "Total ordered parts"
 msgstr "Total ordered parts"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_register_tree
 msgid "Total quantity"
 msgstr "Total quantity"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form_easy_my_coop
 msgid "Total subscribed amount"
 msgstr "Total subscribed amount"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__total_value
 #: model:ir.model.fields,field_description:cooperator.field_res_users__total_value
 msgid "Total value of shares"
 msgstr "Total value of shares"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_register_filter
 #: selection:operation.request,operation_type:0
 #: selection:subscription.register,type:0
@@ -3047,124 +3043,124 @@ msgstr "Total value of shares"
 msgid "Transfer"
 msgstr "Transfer"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__partner_id_to
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__partner_id_to
 #, fuzzy
 msgid "Transfered to"
 msgstr "Transfer"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__type
 msgid "Type"
 msgstr "Type"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_tree
 msgid "Unblock"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_certificat_G001_document
 msgid "Unit Price"
 msgstr "Eenheidsprijs"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:product.template,uom_name:cooperator.product_template_share_type_1_demo
 #: model:product.template,uom_name:cooperator.product_template_share_type_2_demo
 msgid "Unit(s)"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__unmix_share_type
 #, fuzzy
 msgid "Unmix share type"
 msgstr "Share type"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__message_unread
 #, fuzzy
 msgid "Unread Messages"
 msgstr "Websiteberichten"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__message_unread_counter
 msgid "Unread Messages Counter"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.action_view_update_partner_info
 #: model_terms:ir.ui.view,arch_db:cooperator.view_update_partner_info
 #, fuzzy
 msgid "Update Cooperator Info"
 msgstr "Cooperator Invoices"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_update_partner_info
 #, fuzzy
 msgid "Update Cooperator Info."
 msgstr "Cooperator Invoices"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_update_partner_info
 #: model_terms:ir.ui.view,arch_db:cooperator.view_update_share_line_info
 #, fuzzy
 msgid "Update Info"
 msgstr "Laatst bijgewerkt op"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model,name:cooperator.model_partner_update_info
 msgid "Update Partner Info"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.action_view_update_share_line_info
 #: model_terms:ir.ui.view,arch_db:cooperator.view_update_share_line_info
 #, fuzzy
 msgid "Update Share Line Info"
 msgstr "Share Lines"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_update_share_line_info
 msgid "Update Share Line Info."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info__all
 msgid "Update all info"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info__birthdate
 #, fuzzy
 msgid "Update birth date"
 msgstr "Geboortedatum"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_update_info__from_sub_req
 #, fuzzy
 msgid "Update from subscription request"
 msgstr "Cooperator Subscriptions Request"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.share_line_form
 #: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form_easy_my_coop
 #, fuzzy
 msgid "Update info"
 msgstr "Laatst bijgewerkt op"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:res.groups,name:cooperator.group_easy_my_coop_user
 msgid "User"
 msgstr "Gebruiker"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__validated
 #, fuzzy
 msgid "Valid Subscription request?"
 msgstr "Subscription Request"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_tree
 #: model_terms:ir.ui.view,arch_db:cooperator.view_validate_subscription_request
@@ -3172,101 +3168,101 @@ msgstr "Subscription Request"
 msgid "Validate"
 msgstr "Valid Line?"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.actions.act_window,name:cooperator.action_account_invoice_confirm
 #: model:ir.model,name:cooperator.model_validate_subscription_request
 #, fuzzy
 msgid "Validate subscription request"
 msgstr "Subscription Request"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_validate_subscription_request
 #, fuzzy
 msgid "Validate the subscription request"
 msgstr "Subscription Request"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_validate_subscription_request
 #, fuzzy
 msgid "Validate the subscription request."
 msgstr "Subscription Request"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 msgid "Vendor Bill"
 msgstr "Leveranciersfactuur"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
 msgid "Vendor Credit Note"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:operation.request,state:0 selection:subscription.request,state:0
 msgid "Waiting"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 msgid "Waiting list"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.emc_external_layout_standard
 msgid "Web:"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:subscription.request,source:0
 msgid "Website"
 msgstr "Website"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__website_message_ids
 msgid "Website Messages"
 msgstr "Websiteberichten"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_subscription_request__website_message_ids
 msgid "Website communication history"
 msgstr "Websitecommunicatiehistoriek"
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/operation_request.py:230
+#. module: cooperator
+#: code:addons/cooperator/models/operation_request.py:230
 #, python-format
 msgid "You can't convert the share to the same share type."
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:766
+#. module: cooperator
+#: code:addons/cooperator/models/subscription_request.py:766
 #, python-format
 msgid "You cannot cancel a request in this state."
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/operation_request.py:234
+#. module: cooperator
+#: code:addons/cooperator/models/operation_request.py:234
 #, python-format
 msgid "You must convert all the shares to the selected type."
 msgstr ""
 
-#. module: easy_my_coop
-#: code:addons/easy_my_coop/models/subscription_request.py:538
+#. module: cooperator
+#: code:addons/cooperator/models/subscription_request.py:538
 #, python-format
 msgid "You must set a cooperator account on you company."
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__zip_code
 msgid "Zip Code"
 msgstr "Zip Code"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_share_line_update_info__effective_date
 #, fuzzy
 msgid "effective date"
 msgstr "Effective date"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_subscription_request__skip_control_ng
 msgid ""
 "if this field is checked then no control will be done on the national "
@@ -3277,24 +3273,24 @@ msgstr ""
 "register number and on the iban bank account. To be done in case of the id "
 "card is from abroad or in case of a passport"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_certificat_G001_document
 #, fuzzy
 msgid "is recorded in the register of cooperators under number"
 msgstr "<span> is recorded in the register of cooperators under number </span>"
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:product.template,weight_uom_name:cooperator.product_template_share_type_1_demo
 #: model:product.template,weight_uom_name:cooperator.product_template_share_type_2_demo
 msgid "kg"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__logo_url
 msgid "logo url"
 msgstr ""
 
-#. module: easy_my_coop
+#. module: cooperator
 #: selection:subscription.request,state:0
 msgid "paid"
 msgstr ""
