@@ -6,7 +6,7 @@
     "name": "Easy My Coop Loan Account Belgium",
     "version": "12.0.1.0.0",
     "depends": [
-        "easy_my_coop",
+        "cooperator",
         "easy_my_coop_be",
         "easy_my_coop_loan_bba",
         "easy_my_coop_loan_account",
