@@ -1,7 +1,7 @@
 {
     "name": "Cooperator Spain Localisation",
     "version": "12.0.0.0.16",
-    "depends": ["cooperator", "easy_my_coop_website"],
+    "depends": ["cooperator", "cooperator_website"],
     "author": "Coop IT Easy SCRLfs, Coopdevs Treball SCCL",
     "mantainer": "Coopdevs Treball SCCL",
     "website": "https://coopiteasy.be",
