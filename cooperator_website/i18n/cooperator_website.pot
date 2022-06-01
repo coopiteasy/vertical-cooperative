@@ -100,12 +100,8 @@ msgid "Company type"
 msgstr ""
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid "Confirm E-mail"
-msgstr ""
-
-#. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
 msgid "Confirm Email"
 msgstr ""
 
@@ -148,7 +144,7 @@ msgstr ""
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid "E-mail"
+msgid "Email"
 msgstr ""
 
 #. module: cooperator_website
@@ -178,7 +174,7 @@ msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.rules_template
-msgid "Idendity\n"
+msgid "Identity\n"
 "            card scan"
 msgstr ""
 
@@ -246,7 +242,7 @@ msgid "Share type"
 msgstr ""
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:266
+#: code:addons/cooperator_website/controllers/main.py:273
 #, python-format
 msgid "Some mandatory fields have not been filled"
 msgstr ""
@@ -257,13 +253,13 @@ msgid "Thanks!"
 msgstr ""
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:287
+#: code:addons/cooperator_website/controllers/main.py:294
 #, python-format
 msgid "The email and the confirmation email doesn't match.Please check the given mail addresses"
 msgstr ""
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:275
+#: code:addons/cooperator_website/controllers/main.py:282
 #, python-format
 msgid "There is an existing account for this mail address. Please login before fill in the form"
 msgstr ""
@@ -284,25 +280,25 @@ msgid "Website Cooperator contact Form"
 msgstr ""
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:334
+#: code:addons/cooperator_website/controllers/main.py:341
 #, python-format
 msgid "You can't subscribe for an amount that exceed "
 msgstr ""
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:325
+#: code:addons/cooperator_website/controllers/main.py:332
 #, python-format
 msgid "You can't subscribe two different types of share"
 msgstr ""
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:302
+#: code:addons/cooperator_website/controllers/main.py:309
 #, python-format
 msgid "You need to upload a scan of your id card"
 msgstr ""
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:312
+#: code:addons/cooperator_website/controllers/main.py:319
 #, python-format
 msgid "Your IBAN is not valid."
 msgstr ""
