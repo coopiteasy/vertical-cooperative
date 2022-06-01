@@ -11,6 +11,10 @@ renamed_xml_ids = (
         "cooperator_portal.portal_my_details_emc",
         "cooperator_portal.portal_my_details",
     ),
+    (
+        "cooperator_portal.website_portal_details_form",
+        "cooperator_portal.portal_layout",
+    ),
 )
 
 
