@@ -1,8 +1,8 @@
 {
     "name": "Cooperator Spain Localisation",
     "version": "12.0.0.0.16",
-    "depends": ["cooperator"],
-    "author": "Coop IT Easy SCRLfs, " "Coopdevs Treball SCCL",
+    "depends": ["cooperator", "easy_my_coop_website"],
+    "author": "Coop IT Easy SCRLfs, Coopdevs Treball SCCL",
     "mantainer": "Coopdevs Treball SCCL",
     "website": "https://coopiteasy.be",
     "category": "Cooperative management",
@@ -12,6 +12,7 @@
     "license": "AGPL-3",
     "data": [
         "views/subscription_request_view.xml",
+        "views/subscription_templates.xml",
     ],
     "installable": True,
 }
