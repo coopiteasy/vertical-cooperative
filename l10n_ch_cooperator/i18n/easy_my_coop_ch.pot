@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* easy_my_coop_ch
+#	* l10n_ch_cooperator
 #
 msgid ""
 msgstr ""
@@ -13,98 +13,98 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: easy_my_coop_ch
+#. module: l10n_ch_cooperator
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
 msgid "ASBL"
 msgstr ""
 
-#. module: easy_my_coop_ch
+#. module: l10n_ch_cooperator
 #: selection:res.partner,legal_form:0
 msgid "Association"
 msgstr ""
 
-#. module: easy_my_coop_ch
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_ch.iban_template_ch
+#. module: l10n_ch_cooperator
+#: model_terms:ir.ui.view,arch_db:l10n_ch_cooperator.iban_template_ch
 msgid "Bank Account Number"
 msgstr ""
 
-#. module: easy_my_coop_ch
-#: model_terms:ir.ui.view,arch_db:easy_my_coop_ch.iban_template_ch
+#. module: l10n_ch_cooperator
+#: model_terms:ir.ui.view,arch_db:l10n_ch_cooperator.iban_template_ch
 msgid "CH48523080767127"
 msgstr ""
 
-#. module: easy_my_coop_ch
-#: model:ir.model.fields,field_description:easy_my_coop_ch.field_subscription_request__company_type
+#. module: l10n_ch_cooperator
+#: model:ir.model.fields,field_description:l10n_ch_cooperator.field_subscription_request__company_type
 msgid "Company type"
 msgstr ""
 
-#. module: easy_my_coop_ch
+#. module: l10n_ch_cooperator
 #: selection:res.partner,legal_form:0
 msgid "Company under public law"
 msgstr ""
 
-#. module: easy_my_coop_ch
-#: model:ir.model,name:easy_my_coop_ch.model_res_partner
+#. module: l10n_ch_cooperator
+#: model:ir.model,name:l10n_ch_cooperator.model_res_partner
 msgid "Contact"
 msgstr ""
 
-#. module: easy_my_coop_ch
+#. module: l10n_ch_cooperator
 #: selection:res.partner,legal_form:0
 msgid "Cooperative"
 msgstr ""
 
-#. module: easy_my_coop_ch
+#. module: l10n_ch_cooperator
 #: selection:res.partner,legal_form:0
 msgid "EURL / Entreprise individuelle"
 msgstr ""
 
-#. module: easy_my_coop_ch
+#. module: l10n_ch_cooperator
 #: selection:res.partner,legal_form:0
 msgid "Foundation"
 msgstr ""
 
-#. module: easy_my_coop_ch
+#. module: l10n_ch_cooperator
 #: selection:res.partner,legal_form:0
 msgid "Individual company"
 msgstr ""
 
-#. module: easy_my_coop_ch
-#: model:ir.model.fields,field_description:easy_my_coop_ch.field_res_partner__legal_form
-#: model:ir.model.fields,field_description:easy_my_coop_ch.field_res_users__legal_form
+#. module: l10n_ch_cooperator
+#: model:ir.model.fields,field_description:l10n_ch_cooperator.field_res_partner__legal_form
+#: model:ir.model.fields,field_description:l10n_ch_cooperator.field_res_users__legal_form
 msgid "Legal form"
 msgstr ""
 
-#. module: easy_my_coop_ch
+#. module: l10n_ch_cooperator
 #: selection:res.partner,legal_form:0
 msgid "Partnership"
 msgstr ""
 
-#. module: easy_my_coop_ch
+#. module: l10n_ch_cooperator
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
 msgid "SA"
 msgstr ""
 
-#. module: easy_my_coop_ch
+#. module: l10n_ch_cooperator
 #: selection:res.partner,legal_form:0
 msgid "SARL"
 msgstr ""
 
-#. module: easy_my_coop_ch
+#. module: l10n_ch_cooperator
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
 msgid "SCRL"
 msgstr ""
 
-#. module: easy_my_coop_ch
+#. module: l10n_ch_cooperator
 #: selection:res.partner,legal_form:0
 #: selection:subscription.request,company_type:0
 msgid "SPRL"
 msgstr ""
 
-#. module: easy_my_coop_ch
-#: model:ir.model,name:easy_my_coop_ch.model_subscription_request
+#. module: l10n_ch_cooperator
+#: model:ir.model,name:l10n_ch_cooperator.model_subscription_request
 msgid "Subscription Request"
 msgstr ""
 
