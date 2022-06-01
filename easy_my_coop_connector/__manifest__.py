@@ -7,7 +7,7 @@
     "version": "12.0.0.0.1",
     "depends": [
         "cooperator",
-        "easy_my_coop_api_logs",
+        "cooperator_api_logs",
     ],
     "author": "Coop IT Easy SCRLfs",
     "category": "Connector",
