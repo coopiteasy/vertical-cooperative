@@ -4,7 +4,7 @@
     <!-- Tax Shelter Certificate in the menu -->
     <template
         id="portal_my_home_menu_tax_shelter"
-        name="Portal layout: Easy My Coop Tax Shelter Certificate Menu Entries"
+        name="Portal layout: Cooperators Tax Shelter Certificate Menu Entries"
         inherit_id="portal.portal_breadcrumbs"
         priority="25"
     >
@@ -31,7 +31,7 @@
     <!-- Tax Shelter Certificate on the main page -->
     <template
         id="portal_my_home_tax_shelter"
-        name="Portal My Home : Easy My Coop Tax Shelter Certificate Entries"
+        name="Portal My Home: Cooperators Tax Shelter Certificate Entries"
         inherit_id="portal.portal_my_home"
         priority="25"
     >
