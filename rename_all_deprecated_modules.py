@@ -36,7 +36,9 @@ def main():
         new_database = f"{database}-renamedep-{now()}"
         _logger.info(f"Creating {new_database} from {database}")
         subprocess.run(["ociedoo", "copy-db", database, new_database], check=True)
+        _logger.info(f"Running renaming migration on {new_database}")
         subprocess.run(["./rename_deprecated_modules.sh", new_database], check=True)
+        _logger.info(f"Done with renaming migration of {new_database}")
 
 
 if __name__ == "__main__":
