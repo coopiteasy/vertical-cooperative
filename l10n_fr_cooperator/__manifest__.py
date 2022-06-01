@@ -3,9 +3,9 @@
 # - Houssine BAKKALI - <houssine@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).#
 {
-    "name": "Cooperators Fr",
+    "name": "Cooperator France Localization",
     "version": "12.0.1.1.0",
-    "depends": ["cooperator", "easy_my_coop_website", "l10n_fr"],
+    "depends": ["cooperator", "cooperator_website", "l10n_fr"],
     "author": "Coop IT Easy SCRLfs",
     "category": "Cooperative management",
     "website": "https://coopiteasy.be",
