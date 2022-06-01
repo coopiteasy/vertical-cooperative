@@ -7,12 +7,13 @@ from openupgradelib import openupgrade
 
 _logger = logging.getLogger(__name__)
 
-env = env  # noqa F821 undefined name 'env'
+# undefined name 'env'
+env = env  # noqa: F821
 
 renamed_modules = {
     "easy_my_coop": "cooperator",
 }
 
-logging.info("rename easy_my_coop_x modules to cooperator_x")
+_logger.info("rename easy_my_coop_x modules to cooperator_x")
 openupgrade.update_module_names(env.cr, renamed_modules.items())
 env.cr.commit()
