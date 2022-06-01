@@ -4,10 +4,10 @@
 
 {
     "name": "Easy My Coop API",
-    "version": "12.0.0.0.1",
+    "version": "12.0.1.0.1",
     "depends": [
         "base_rest",
-        "easy_my_coop",
+        "cooperator",
         "easy_my_coop_api_logs",
         "auth_api_key",  # todo conf running_env = dev
     ],

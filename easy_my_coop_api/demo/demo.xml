@@ -5,32 +5,37 @@
 -->
 <odoo>
     <record id="auth_api_key_manager_emc_demo" model="auth.api.key">
-        <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo" />
+        <field name="user_id" ref="cooperator.res_users_manager_emc_demo" />
         <field name="key">cbd07f57-c903-43b4-b668-436b3bec5f15</field>
     </record>
 
+    <record id="cooperator.subscription_request_1_demo" model="subscription.request">
+        <field name="_api_external_id">1</field>
+    </record>
+
     <record
-        id="easy_my_coop.product_template_share_type_1_demo"
-        model="product.template"
+        id="cooperator.subscription_request_waiting_demo"
+        model="subscription.request"
     >
+        <field name="_api_external_id">2</field>
+    </record>
+
+    <record id="cooperator.product_template_share_type_1_demo" model="product.template">
         <field name="_api_external_id">1</field>
         <field name="external_id_generated" eval="True" />
     </record>
 
-    <record
-        id="easy_my_coop.product_template_share_type_2_demo"
-        model="product.template"
-    >
+    <record id="cooperator.product_template_share_type_2_demo" model="product.template">
         <field name="_api_external_id">2</field>
         <field name="external_id_generated" eval="True" />
     </record>
 
-    <record id="easy_my_coop.subscription_journal" model="account.journal">
+    <record id="cooperator.subscription_journal" model="account.journal">
         <field name="_api_external_id">1</field>
         <field name="external_id_generated" eval="True" />
     </record>
 
-    <record id="easy_my_coop.account_equity_demo" model="account.account">
+    <record id="cooperator.account_equity_demo" model="account.account">
         <field name="_api_external_id">1</field>
         <field name="external_id_generated" eval="True" />
     </record>

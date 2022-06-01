@@ -23,7 +23,7 @@ class TestExternalIdMixin(TransactionCase):
 
     def test_subscription_request_api_external_id(self):
         share_type = self.browse_ref(
-            "easy_my_coop.product_template_share_type_2_demo"
+            "cooperator.product_template_share_type_2_demo"
         ).product_variant_id
         sr = self.env["subscription.request"].create(
             {
