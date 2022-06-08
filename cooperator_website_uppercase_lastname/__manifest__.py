@@ -11,5 +11,5 @@
     "author": "Coop IT Easy SCRLfs",
     "license": "AGPL-3",
     "application": False,
-    "depends": ["easy_my_coop_website"],
+    "depends": ["cooperator_website"],
 }

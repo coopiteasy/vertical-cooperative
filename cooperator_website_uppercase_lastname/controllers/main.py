@@ -4,7 +4,7 @@
 
 from odoo import http
 
-from odoo.addons.easy_my_coop_website.controllers.main import WebsiteSubscription
+from odoo.addons.cooperator_website.controllers.main import WebsiteSubscription
 
 
 class WebsiteSubscriptionUppercase(WebsiteSubscription):
