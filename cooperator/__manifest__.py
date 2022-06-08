@@ -15,7 +15,6 @@
         "account",
         "base_iban",
         "product",
-        "partner_contact_birthdate",
         "partner_firstname",
         "partner_contact_birthdate",
         "partner_contact_address",
