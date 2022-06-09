@@ -5,11 +5,19 @@
 
 from odoo.exceptions import AccessError
 from odoo.fields import Date
+from odoo.tests.common import TransactionCase
 
-from .test_base import CooperatorBaseCase
 
+class CooperatorCase(TransactionCase):
+    def as_user(self):
+        self.uid = self.ref("base.user_demo")
 
-class CooperatorCase(CooperatorBaseCase):
+    def as_cooperator_user(self):
+        self.uid = self.ref("cooperator.res_users_user_cooperator_demo")
+
+    def as_cooperator_manager(self):
+        self.uid = self.ref("cooperator.res_users_manager_cooperator_demo")
+
     def setUp(self):
         super(CooperatorCase, self).setUp()
 
