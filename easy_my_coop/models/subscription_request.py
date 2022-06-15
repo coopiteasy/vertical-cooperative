@@ -147,7 +147,7 @@ class SubscriptionRequest(models.Model):
     def _compute_name(self):
         for sub_request in self:
             sub_request.name = " ".join(
-                part for part in (self.firstname, self.lastname) if part
+                part for part in (sub_request.firstname, sub_request.lastname) if part
             )
 
     @api.multi
