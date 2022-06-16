@@ -532,16 +532,11 @@ class SubscriptionRequest(models.Model):
         return self.env.ref("cooperator.subscription_journal")
 
     def get_accounting_account(self):
-        account_obj = self.env["account.account"]
-        if self.company_id.property_cooperator_account:
-            account = self.company_id.property_cooperator_account
+        account = self.company_id.property_cooperator_account
+        if account:
+            return account
         else:
-            accounts = account_obj.search([("code", "=", "416000")])
-            if accounts:
-                account = accounts[0]
-            else:
-                raise UserError(_("You must set a cooperator account on you company."))
-        return account
+            raise UserError(_("You must set a cooperator account on your company."))
 
     def get_invoice_vals(self, partner):
         invoice_vals = {
