@@ -33,7 +33,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [cooperator_website_uppercase_lastname](cooperator_website_uppercase_lastname/) | 12.0.1.0.0 |  | This module UPPERCASES the last names of submitted requests
-[easy_my_coop](easy_my_coop/) | 12.0.3.3.1 |  | Manage your cooperative shares
+[easy_my_coop](easy_my_coop/) | 12.0.3.3.2 |  | Manage your cooperative shares
 [easy_my_coop_api](easy_my_coop_api/) | 12.0.0.0.1 |  | Open Easy My Coop to the world: RESTful API.
 [easy_my_coop_api_logs](easy_my_coop_api_logs/) | 12.0.0.0.1 |  | Helpers to log calls in and out of easy_my_coop_api.
 [easy_my_coop_be](easy_my_coop_be/) | 12.0.1.3.0 |  | Easy My Coop Belgium Localization
