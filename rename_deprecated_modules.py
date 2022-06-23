@@ -49,4 +49,9 @@ modules_to_uninstall = [
 ]
 for module in modules_to_uninstall:
     _logger.info("uninstall %s" % module)
-    env["ir.module.module"].search([("name", "=", module)]).button_immediate_uninstall()
+    try:
+        env["ir.module.module"].search(
+            [("name", "=", module)]
+        ).button_immediate_uninstall()
+    except Exception:
+        _logger.exception("failed to uninstall %s", module)
