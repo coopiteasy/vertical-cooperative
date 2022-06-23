@@ -46,7 +46,8 @@ Features:
 
 Configurations:
 
-- set on the company a default payment term for the capital release requests.
+- on the company, set a default payment term for the capital release requests.
+- on the company, set the cooperator account.
 
 **Table of contents**
 
@@ -86,15 +87,7 @@ Beware that for word separation, pypi uses dashes `-` and odoo underscores `_`.
 Known issues / Roadmap
 ======================
 
-Gather and consolidate all easy_my_coop settings in the application parameters.
-
-Changelog
-=========
-
-12.0.3.3.2 (2022-06-20)
-**Bugfixes**
-
-- Fix name computation crash (`#330 <https://github.com/coopiteasy/vertical-cooperative/issues/330>`_)
+Gather and consolidate all cooperator settings in the application parameters.
 
 Bug Tracker
 ===========
