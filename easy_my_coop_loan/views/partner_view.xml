@@ -7,13 +7,13 @@
     <record id="view_partner_form_loan_issue" model="ir.ui.view">
         <field name="name">res.partner.form.loan.issue</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="easy_my_coop.view_partner_form_easy_my_coop" />
+        <field name="inherit_id" ref="cooperator.view_partner_form" />
         <field name="arch" type="xml">
             <page name="share_subscription" position="after">
                 <page
                     string="Loan issue lines"
                     name="loan_issue_lines"
-                    groups="easy_my_coop.group_easy_my_coop_user"
+                    groups="cooperator.cooperator_group_user"
                 >
                     <group>
                         <field name="is_loaner" />

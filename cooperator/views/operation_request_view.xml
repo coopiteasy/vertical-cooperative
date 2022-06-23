@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="operation_request_tree" model="ir.ui.view">
+        <field name="name">operation.request.tree</field>
+        <field name="model">operation.request</field>
+        <field name="arch" type="xml">
+            <tree
+                string="Operation requests"
+                colors="green:state in ('approved'); blue:state in ('draft');grey: state in ('done')"
+            >
+                <field name="request_date" />
+                <field name="effective_date" />
+                <field name="partner_id" />
+                <field name="operation_type" />
+                <field name="quantity" />
+                <field name="user_id" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="operation_request_form" model="ir.ui.view">
+        <field name="name">operation.request.form</field>
+        <field name="model">operation.request</field>
+        <field name="arch" type="xml">
+            <form string="Operation request">
+                <header>
+                    <button
+                        string="Submit"
+                        type="object"
+                        name="submit_operation"
+                        states="draft"
+                    />
+                    <button
+                        string="Approve"
+                        type="object"
+                        name="approve_operation"
+                        states="waiting"
+                    />
+                    <button
+                        string="Refuse"
+                        type="object"
+                        name="refuse_operation"
+                        states="waiting"
+                    />
+                    <button
+                        string="Cancel"
+                        type="object"
+                        name="cancel_operation"
+                        states="draft,waiting,approved"
+                    />
+                    <button
+                        string="Draft"
+                        type="object"
+                        name="reset_to_draft"
+                        states="waiting,cancelled"
+                    />
+                    <button
+                        string="Execute"
+                        type="object"
+                        name="execute_operation"
+                        states="approved"
+                    />
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,done,cancelled,refused"
+                        statusbar_colors='{"draft":"grey","done":"green","cancelled":"orange","refused":"red"}'
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field
+                                name="request_date"
+                                attrs="{'readonly':[('state','!=','draft')]}"
+                            />
+                            <field
+                                name="effective_date"
+                                attrs="{'readonly':[('state','!=','draft')]}"
+                            />
+                            <field
+                                name="operation_type"
+                                attrs="{'readonly':[('state','!=','draft')]}"
+                            />
+                            <field
+                                name="receiver_not_member"
+                                attrs="{'invisible':[('operation_type','!=','transfer')], 'readonly':[('state','!=','draft')]}"
+                            />
+                            <field
+                                name="partner_id"
+                                options="{'no_create':True}"
+                                attrs="{'readonly':[('state','!=','draft')]}"
+                            />
+                            <field
+                                name="partner_id_to"
+                                options="{'no_create':True}"
+                                attrs="{'invisible':['|',('operation_type','!=','transfer'), ('receiver_not_member','=',True)], 'readonly':[('state','!=','draft')]}"
+                            />
+                        </group>
+                        <group>
+                            <field name="user_id" />
+                            <field
+                                name="share_product_id"
+                                attrs="{'readonly':[('state','!=','draft')]}"
+                                widget="selection"
+                            />
+                            <field name="share_short_name" readonly="True" />
+                            <field
+                                name="share_to_product_id"
+                                attrs="{'invisible':[('operation_type','!=','convert')],'required':[('operation_type','=','convert')],'readonly':[('state','!=','draft')]}"
+                                widget="selection"
+                            />
+                            <field name="share_to_short_name" readonly="True" />
+                            <field
+                                name="quantity"
+                                attrs="{'readonly':[('state','!=','draft')]}"
+                            />
+                            <field name="share_unit_price" readonly="True" />
+                            <field name="subscription_amount" readonly="True" />
+                        </group>
+                    </group>
+                    <group>
+                        <field
+                            name="subscription_request"
+                            attrs="{'invisible':['|',('operation_type','!=','transfer'),('receiver_not_member','=',False)]}"
+                            context="{'default_is_operation': True, 'default_ordered_parts':quantity,'default_share_product_id': share_product_id, 'default_source':'operation'}"
+                        >
+                            <tree>
+                                <field name="firstname" />
+                                <field name="lastname" />
+                                <field name="birthdate" />
+                                <field name="phone" />
+                                <field name="email" />
+                                <field name="iban" />
+                                <field name="state" invisible="True" />
+                            </tree>
+                            <form string="Subscription Requests">
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="firstname" />
+                                            <field name="lastname" />
+                                            <field name="birthdate" />
+                                            <field name="gender" />
+                                            <field name="email" />
+                                            <field name="phone" />
+                                            <field name="iban" />
+                                        </group>
+                                        <group>
+                                            <field name="address" />
+                                            <field name="zip_code" />
+                                            <field name="city" />
+                                            <field name="country_id" />
+                                            <field name="lang" />
+                                            <field name="is_valid_iban" />
+                                            <field name="skip_iban_control" />
+                                            <field
+                                                name="ordered_parts"
+                                                invisible="True"
+                                            />
+                                            <field name="source" invisible="True" />
+                                            <field name="state" invisible="True" />
+                                            <field
+                                                name="share_product_id"
+                                                invisible="True"
+                                            />
+                                        </group>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="operation_request_action" model="ir.actions.act_window">
+        <field name="name">Operation request</field>
+        <field name="res_model">operation.request</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="operation_request_tree" />
+    </record>
+
+</odoo>

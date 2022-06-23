@@ -6,8 +6,8 @@
     "name": "Easy My Coop Connector",
     "version": "12.0.0.0.1",
     "depends": [
-        "easy_my_coop",
-        "easy_my_coop_api_logs",
+        "cooperator",
+        "cooperator_api_logs",
     ],
     "author": "Coop IT Easy SCRLfs",
     "category": "Connector",

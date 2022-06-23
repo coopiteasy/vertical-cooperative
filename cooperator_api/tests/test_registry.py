@@ -1,0 +1,23 @@
+# Copyright 2020 Coop IT Easy SCRL fs
+#   Robin Keunen <robin@coopiteasy.be>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+
+
+from odoo.http import controllers_per_module
+
+from odoo.addons.base_rest.tests.common import BaseRestCase
+
+from ..controllers.controllers import UserController
+
+
+class TestControllerRegistry(BaseRestCase):
+    def test_controller_registry(self):
+        controllers = controllers_per_module["cooperator_api"]
+        self.assertEqual(len(controllers), 1)
+        self.assertIn(
+            (
+                "odoo.addons.cooperator_api.controllers.controllers.UserController",
+                UserController,
+            ),
+            controllers,
+        )

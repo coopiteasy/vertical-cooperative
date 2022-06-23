@@ -52,9 +52,9 @@
         <record id="base.main_company" model="res.company">
             <field
                 name="awaiting_loan_payment_account"
-                ref="easy_my_coop.account_cooperator_demo"
+                ref="cooperator.account_cooperator_demo"
             />
-            <field name="loaner_account" ref="easy_my_coop.account_cooperator_demo" />
+            <field name="loaner_account" ref="cooperator.account_cooperator_demo" />
             <field name="debt_long_term_account" ref="account_loan_1_demo" />
             <field name="debt_long_term_fy_account" ref="account_loan_2_demo" />
             <field name="debt_long_term_due_account" ref="account_loan_3_demo" />

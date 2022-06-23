@@ -9,7 +9,7 @@
     <menuitem
         id="emc_connector_menu_menu"
         name="EMC Connector Configuration"
-        parent="easy_my_coop.menu_easy_my_coop_config"
+        parent="cooperator.menu_cooperator_config"
         groups="base.group_user"
         sequence="1000"
     />

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem
+        name="Declaration"
+        id="main_declaration_menu"
+        parent="cooperator.menu_cooperator_main"
+        sequence="10"
+    />
+
+    <record id="tax_shelter_declaration_view_form" model="ir.ui.view">
+        <field name="name">tax.shelter.declaration.view.form</field>
+        <field name="model">tax.shelter.declaration</field>
+        <field name="arch" type="xml">
+            <form string="Tax shelter declaration">
+                <header>
+                    <button
+                        name="compute_declaration"
+                        string="Process Declaration"
+                        type="object"
+                        states="draft"
+                        class="oe_highlight"
+                        groups="cooperator.cooperator_group_user"
+                    />
+                    <button
+                        name="validate_declaration"
+                        string="Validate Declaration"
+                        type="object"
+                        states="computed"
+                        groups="cooperator.cooperator_group_user"
+                    />
+                    <button
+                        name="reset_declaration"
+                        string="Reset Declaration"
+                        type="object"
+                        states="computed"
+                        groups="cooperator.cooperator_group_user"
+                    />
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="fiscal_year" />
+                            <field name="tax_shelter_percentage" />
+                            <field name="tax_shelter_capital_limit" />
+                            <field name="previously_subscribed_capital" />
+                        </group>
+                        <group>
+                            <field name="date_from" />
+                            <field name="date_to" />
+                            <field name="month_from" />
+                            <field name="month_to" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Tax shelter certificates">
+                            <field name="tax_shelter_certificates">
+                                <tree>
+                                    <field name="partner_id" />
+                                    <field name="cooperator_number" />
+                                    <field name="total_amount" sum="Total amount" />
+                                    <field name="state" />
+                                    <button
+                                        type="object"
+                                        name="send_certificates"
+                                        icon="fa-play"
+                                        string="Send Certificates"
+                                    />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Excluded from Tax shelter">
+                            <field name="excluded_cooperator" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="tax_shelter_declaration_view_tree" model="ir.ui.view">
+        <field name="name">tax.shelter.declaration.view.tree</field>
+        <field name="model">tax.shelter.declaration</field>
+        <field name="arch" type="xml">
+            <tree string="Tax shelter declaration">
+                <field name="name" />
+                <field name="date_from" />
+                <field name="date_to" />
+                <field name="tax_shelter_percentage" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="tax_shelter_declaration_action" model="ir.actions.act_window">
+        <field name="name">Tax Shelter Declarations</field>
+        <field name="res_model">tax.shelter.declaration</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="tax_shelter_declaration_view_tree" />
+    </record>
+
+    <menuitem
+        action="tax_shelter_declaration_action"
+        name="Tax Shelter Declaration"
+        id="tax_shelter_declaration_menu"
+        parent="main_declaration_menu"
+        sequence="10"
+        groups="cooperator.cooperator_group_user"
+    />
+
+    <record id="tax_shelter_certificate_view_form" model="ir.ui.view">
+        <field name="name">tax.shelter.certificate.view.form</field>
+        <field name="model">tax.shelter.certificate</field>
+        <field name="arch" type="xml">
+            <form string="Tax shelter certificate">
+                <header>
+                    <button
+                        type="object"
+                        name="print_subscription_certificate"
+                        string="Print Subscription Certificate"
+                    />
+                    <button
+                        type="object"
+                        name="print_shares_certificate"
+                        string="Print Shares Certificate"
+                    />
+                    <button
+                        type="object"
+                        name="send_certificates"
+                        string="Send Certificates"
+                    />
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="cooperator_number" />
+                            <field name="partner_id" />
+                            <field name="declaration_id" />
+                        </group>
+                        <group>
+                            <field name="total_amount_previously_subscribed" />
+                            <field name="total_amount_eligible_previously_subscribed" />
+                            <field name="total_amount_subscribed" />
+                            <field name="total_amount_eligible" />
+                            <field name="total_amount_resold" />
+                            <field name="total_amount_transfered" />
+                            <field name="total_amount" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Subscription">
+                            <field name="subscribed_lines">
+                                <tree>
+                                    <field name="capital_before_sub" />
+                                    <field name="capital_after_sub" />
+                                    <field name="tax_shelter" />
+                                    <field name="transaction_date" />
+                                    <field name="share_type" />
+                                    <field name="share_short_name" />
+                                    <field name="quantity" />
+                                    <field name="share_unit_price" />
+                                    <field name="type" />
+                                    <field name="amount_subscribed" />
+                                    <field name="amount_subscribed_eligible" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Sell back">
+                            <field name="resold_lines">
+                                <tree>
+                                    <field name="transaction_date" />
+                                    <field name="share_type" />
+                                    <field name="share_short_name" />
+                                    <field name="quantity" />
+                                    <field name="share_unit_price" />
+                                    <field name="type" />
+                                    <field name="amount_resold" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Transfered">
+                            <field name="transfered_lines">
+                                <tree>
+                                    <field name="transaction_date" />
+                                    <field name="share_type" />
+                                    <field name="share_short_name" />
+                                    <field name="quantity" />
+                                    <field name="share_unit_price" />
+                                    <field name="type" />
+                                    <field name="amount_transfered" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Previously subscribed">
+                            <field name="previously_subscribed_lines">
+                                <tree>
+                                    <field name="capital_before_sub" />
+                                    <field name="capital_after_sub" />
+                                    <field name="tax_shelter" />
+                                    <field name="transaction_date" />
+                                    <field name="share_type" />
+                                    <field name="share_short_name" />
+                                    <field name="quantity" />
+                                    <field name="share_unit_price" />
+                                    <field name="type" />
+                                    <field name="amount_subscribed" />
+                                    <field name="amount_subscribed_eligible" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="tax_shelter_certificate_tree" model="ir.ui.view">
+        <field name="name">tax.shelter.certificate.tree</field>
+        <field name="model">tax.shelter.certificate</field>
+        <field name="arch" type="xml">
+            <tree string="Tax shelter certificates">
+                <field name="declaration_id" />
+                <field name="partner_id" />
+                <field name="cooperator_number" />
+                <field name="total_amount_subscribed" />
+                <field name="total_amount_eligible" />
+                <field name="total_amount_resold" />
+                <field name="total_amount_transfered" />
+                <field name="total_amount" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="tax_shelter_certificate_action" model="ir.actions.act_window">
+        <field name="name">Tax Shelter Certificates</field>
+        <field name="res_model">tax.shelter.certificate</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="tax_shelter_certificate_tree" />
+    </record>
+
+    <menuitem
+        action="tax_shelter_certificate_action"
+        name="Tax Shelter Certificates"
+        id="tax_shelter_certificate_menu"
+        parent="main_declaration_menu"
+        sequence="20"
+        groups="cooperator.cooperator_group_user"
+    />
+</odoo>
