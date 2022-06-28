@@ -43,23 +43,3 @@ renamed_modules = {
 _logger.info("rename easy_my_coop_x modules to cooperator_x")
 openupgrade.update_module_names(env.cr, renamed_modules.items(), merge_modules=True)
 env.cr.commit()
-
-module_to_uninstall_names = [
-    "partner_age",
-]
-modules_to_uninstall = env["ir.module.module"].search(
-    [
-        (
-            "name",
-            "in",
-            module_to_uninstall_names,
-        ),
-        ("state", "=", "installed"),
-    ]
-)
-for module in modules_to_uninstall:
-    _logger.info("uninstall %s", module.name)
-    try:
-        module.button_immediate_uninstall()
-    except Exception:
-        _logger.exception("failed to uninstall %s", module.name)
