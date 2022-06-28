@@ -47,7 +47,7 @@ class CooperatorPortalAccount(CustomerPortal):
         capital_request_count = account_move_model.search_count(
             [
                 ("state", "!=", "draft"),
-                ("type", "in", account_move_model.get_invoice_types()),
+                ("move_type", "in", account_move_model.get_invoice_types()),
                 # Get only the release capital request
                 ("release_capital_request", "=", True),
             ]
@@ -55,7 +55,7 @@ class CooperatorPortalAccount(CustomerPortal):
 
         invoice_count = account_move_model.search_count(
             [
-                ("type", "in", account_move_model.get_invoice_types()),
+                ("move_type", "in", account_move_model.get_invoice_types()),
                 ("release_capital_request", "=", False),
             ]
         )
@@ -122,7 +122,7 @@ class CooperatorPortalAccount(CustomerPortal):
         if qcontext:
             invoices = account_move_model.search(
                 [
-                    ("type", "in", account_move_model.get_invoice_types()),
+                    ("move_type", "in", account_move_model.get_invoice_types()),
                     ("release_capital_request", "=", False),
                 ]
             )
