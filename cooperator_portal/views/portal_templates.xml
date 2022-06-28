@@ -194,7 +194,7 @@
                 <t t-else="">Capital Request</t>
             </li>
             <li t-if="capital_request" class="breadcrumb-item active">
-                <t t-esc="capital_request.number" t-if="capital_request.number" />
+                <t t-esc="capital_request.name" t-if="capital_request.name" />
                 <t t-else="">
                     <em>Draft Request</em>
                 </t>
@@ -255,10 +255,10 @@
                                 </a>
                             </td>
                             <td>
-                                <span t-field="capital_request.date_invoice" />
+                                <span t-field="capital_request.invoice_date" />
                             </td>
                             <td class='d-none d-md-table-cell'>
-                                <span t-field="capital_request.date_due" />
+                                <span t-field="capital_request.invoice_date_due" />
                             </td>
                             <td class="tx_status">
                                 <t t-if="capital_request.state == 'open'">
@@ -302,7 +302,7 @@
                             </td>
                             <td class="text-right">
                                 <span
-                                    t-esc="-capital_request.residual if capital_request.type == 'out_refund' else capital_request.residual"
+                                    t-esc="-capital_request.amount_residual if capital_request.type == 'out_refund' else capital_request.amount_residual"
                                     t-options='{"widget": "monetary", "display_currency": capital_request.currency_id}'
                                 />
                             </td>
