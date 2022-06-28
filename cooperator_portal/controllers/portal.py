@@ -31,7 +31,7 @@ class CooperatorPortalAccount(CustomerPortal):
         )
 
     def _prepare_portal_layout_values(self):
-        values = super(CooperatorPortalAccount, self)._prepare_portal_layout_values()
+        values = super()._prepare_portal_layout_values()
         # We assume that commercial_partner_id always point to the
         # partner itself or to the linked partner. So there is no
         # need to check if the partner is a "contact" or not.
@@ -43,17 +43,21 @@ class CooperatorPortalAccount(CustomerPortal):
             .sudo()
             .search([("partner_id", "in", [coop.id])], limit=1)
         )
-        invoice_mgr = request.env["account.invoice"]
-        capital_request_count = invoice_mgr.search_count(
+        account_move_model = request.env["account.move"]
+        capital_request_count = account_move_model.search_count(
             [
-                ("state", "in", ["open", "paid", "cancelled"]),
+                ("state", "!=", "draft"),
+                ("type", "in", account_move_model.get_invoice_types()),
                 # Get only the release capital request
                 ("release_capital_request", "=", True),
             ]
         )
 
-        invoice_count = invoice_mgr.search_count(
-            [("release_capital_request", "=", False)]
+        invoice_count = account_move_model.search_count(
+            [
+                ("type", "in", account_move_model.get_invoice_types()),
+                ("release_capital_request", "=", False),
+            ]
         )
         iban = ""
         if partner.bank_ids:
@@ -75,9 +79,7 @@ class CooperatorPortalAccount(CustomerPortal):
         return values
 
     def details_form_validate(self, data):
-        error, error_message = super(
-            CooperatorPortalAccount, self
-        ).details_form_validate(data)
+        error, error_message = super().details_form_validate(data)
         sub_req_obj = request.env["subscription.request"]
         iban = data.get("iban")
         valid = sub_req_obj.check_iban(iban)
@@ -91,7 +93,7 @@ class CooperatorPortalAccount(CustomerPortal):
     def account(self, redirect=None, **post):
         partner = request.env.user.partner_id
 
-        res = super(CooperatorPortalAccount, self).account(redirect, **post)
+        res = super().account(redirect, **post)
         if not res.qcontext.get("error"):
             partner_bank = request.env["res.partner.bank"]
             iban = post.get("iban")
@@ -114,13 +116,16 @@ class CooperatorPortalAccount(CustomerPortal):
     def portal_my_invoices(
         self, page=1, date_begin=None, date_end=None, sortby=None, **kw
     ):
-        res = super(CooperatorPortalAccount, self).portal_my_invoices(
-            page, date_begin, date_end, sortby, **kw
-        )
-        invoice_obj = request.env["account.invoice"]
+        res = super().portal_my_invoices(page, date_begin, date_end, sortby, **kw)
+        account_move_model = request.env["account.move"]
         qcontext = res.qcontext
         if qcontext:
-            invoices = invoice_obj.search([("release_capital_request", "=", False)])
+            invoices = account_move_model.search(
+                [
+                    ("type", "in", account_move_model.get_invoice_types()),
+                    ("release_capital_request", "=", False),
+                ]
+            )
             invoice_count = len(invoices)
             qcontext["invoices"] = invoices
             qcontext["pager"]["invoice_count"] = invoice_count
@@ -144,7 +149,7 @@ class CooperatorPortalAccount(CustomerPortal):
         """
         values = self._prepare_portal_layout_values()
         partner = request.env.user.partner_id
-        invoice_mgr = request.env["account.invoice"]
+        account_move_model = request.env["account.move"]
 
         domain = [
             ("partner_id", "in", [partner.commercial_partner_id.id]),
@@ -152,7 +157,7 @@ class CooperatorPortalAccount(CustomerPortal):
             # Get only the release capital request
             ("release_capital_request", "=", True),
         ]
-        archive_groups = self._get_archive_groups_sudo("account.invoice", domain)
+        archive_groups = self._get_archive_groups_sudo("account.move", domain)
         if date_begin and date_end:
             domain += [
                 ("create_date", ">=", date_begin),
@@ -160,7 +165,7 @@ class CooperatorPortalAccount(CustomerPortal):
             ]
 
         # count for pager
-        capital_request_count = invoice_mgr.sudo().search_count(domain)
+        capital_request_count = account_move_model.sudo().search_count(domain)
         # pager
         pager = portal_pager(
             url="/my/release_capital_request",
@@ -174,7 +179,7 @@ class CooperatorPortalAccount(CustomerPortal):
             step=self._items_per_page,
         )
         # content according to pager and archive selected
-        invoices = invoice_mgr.sudo().search(
+        invoices = account_move_model.sudo().search(
             domain, limit=self._items_per_page, offset=pager["offset"]
         )
         values.update(
@@ -190,7 +195,7 @@ class CooperatorPortalAccount(CustomerPortal):
         return request.render("cooperator_portal.portal_my_capital_releases", values)
 
     @route(
-        ["/my/invoices/<int:invoice_id>"],
+        ["/my/invoices/<int:move_id>"],
         type="http",
         auth="public",
         website=True,
@@ -198,7 +203,7 @@ class CooperatorPortalAccount(CustomerPortal):
     # fmt: off
     def portal_my_invoice_detail(
         self,
-        invoice_id,
+        move_id,
         access_token=None,
         report_type=None,
         download=False,
@@ -207,28 +212,28 @@ class CooperatorPortalAccount(CustomerPortal):
         # fmt: on
         # override in order to not retrieve release capital request as invoices
         try:
-            invoice_sudo = self._document_check_access(
-                "account.invoice", invoice_id, access_token
+            move_sudo = self._document_check_access(
+                "account.move", move_id, access_token
             )
         except (AccessError, MissingError):
             return request.redirect("/my")
-        if invoice_sudo.release_capital_request:
+        if move_sudo.release_capital_request:
             report_ref = "cooperator.action_cooperator_invoices"
         else:
             report_ref = "account.account_invoices"
         if report_type in ("html", "pdf", "text"):
             return self._show_report(
-                model=invoice_sudo,
+                model=move_sudo,
                 report_type=report_type,
                 report_ref=report_ref,
                 download=download,
             )
 
         values = self._invoice_get_page_view_values(
-            invoice_sudo, access_token, **kw
+            move_sudo, access_token, **kw
         )
         PaymentProcessing.remove_payment_transaction(
-            invoice_sudo.transaction_ids
+            move_sudo.transaction_ids
         )
         return request.render("account.portal_invoice_page", values)
 
