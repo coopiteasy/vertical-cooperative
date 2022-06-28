@@ -11,6 +11,5 @@
     "website": "https://coopiteasy.be",
     "license": "AGPL-3",
     "summary": "This module computes the age of the partner.",
-    "data": ["view/partner_view.xml"],
     "installable": True,
 }
