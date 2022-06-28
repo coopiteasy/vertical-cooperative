@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+     Copyright 2020 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="view_partner_from_age" model="ir.ui.view">
+        <field name="name">res.partner.form.age</field>
+        <field name="model">res.partner</field>
+        <field
+            name="inherit_id"
+            ref="partner_contact_birthdate.view_personal_information_birthdate_date"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='birthdate_date']" position='after'>
+                <field name="age" attrs="{'invisible':[('is_company','=',True)]}" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
