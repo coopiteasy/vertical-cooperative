@@ -1,4 +1,4 @@
-# Copyright 2018 Coop IT Easy SCRLfs (<http://www.coopiteasy.be>)
+# Copyright 2018 Coop IT Easy SC (<http://www.coopiteasy.be>)
 # - Rémy Taymans <remy@coopiteasy.be>
 # - Houssine Bakkali <houssine@coopiteasy.be>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
@@ -9,7 +9,7 @@
     "summary": """
         Show cooperator information in the website portal.
     """,
-    "author": "Coop IT Easy SCRLfs",
+    "author": "Coop IT Easy SC",
     "license": "AGPL-3",
     "category": "Cooperative Management",
     "website": "https://coopiteasy.be",
