@@ -1,5 +1,5 @@
 # Copyright 2013-2018 Open Architects Consulting SPRL.
-# Copyright 2018 Coop IT Easy SCRLfs (<http://www.coopiteasy.be>)
+# Copyright 2018 Coop IT Easy SC (<http://www.coopiteasy.be>)
 # - Houssine Bakkali <houssine@coopiteasy.be>
 # - Elouan Le Bars <elouan@coopiteasy.be>
 # - Rémy Taymans <remy@coopiteasy.be>
@@ -15,7 +15,7 @@
         "l10n_be",
         "l10n_be_invoice_bba",
     ],
-    "author": "Coop IT Easy SCRLfs",
+    "author": "Coop IT Easy SC",
     "category": "Cooperative management",
     "website": "https://coopiteasy.be",
     "license": "AGPL-3",

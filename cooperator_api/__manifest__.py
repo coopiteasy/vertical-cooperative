@@ -11,7 +11,7 @@
         "cooperator_api_logs",
         "auth_api_key",  # todo conf running_env = dev
     ],
-    "author": "Coop IT Easy SCRLfs",
+    "author": "Coop IT Easy SC",
     "category": "Cooperative management",
     "website": "https://coopiteasy.be",
     "license": "AGPL-3",
