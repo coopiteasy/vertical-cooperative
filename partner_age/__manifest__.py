@@ -6,7 +6,7 @@
     "name": "Partner Age",
     "version": "12.0.2.0.0",
     "depends": ["partner_contact_birthdate"],
-    "author": "Coop IT Easy SCRLfs",
+    "author": "Coop IT Easy SC",
     "category": "Cooperative management",
     "website": "https://coopiteasy.be",
     "license": "AGPL-3",
