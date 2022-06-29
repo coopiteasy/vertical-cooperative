@@ -49,6 +49,7 @@ addon | version | maintainers | summary
 [l10n_ch_cooperator](l10n_ch_cooperator/) | 12.0.1.2.0 |  | Cooperators Switzerland localization
 [l10n_es_cooperator](l10n_es_cooperator/) | 12.0.0.0.16 |  | Cooperator localization for Spain
 [l10n_fr_cooperator](l10n_fr_cooperator/) | 12.0.1.1.0 |  | This is the French localization for the Cooperators module
+[partner_age](partner_age/) | 12.0.2.0.0 |  | This module computes the age of the partner.
 [portal_recaptcha](portal_recaptcha/) | 12.0.1.0.1 |  | Add google recaptcha to forms.
 [theme_light](theme_light/) | 12.0.1.0.0 |  | extract of the theme zen
 
