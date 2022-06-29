@@ -6,7 +6,7 @@
     "name": "Cooperators API Logs",
     "version": "12.0.1.0.0",
     "depends": [],
-    "author": "Coop IT Easy SCRLfs",
+    "author": "Coop IT Easy SC",
     "category": "Cooperative management",
     "website": "https://coopiteasy.be",
     "license": "AGPL-3",

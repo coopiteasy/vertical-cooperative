@@ -9,7 +9,7 @@
         "cooperator",
         "cooperator_api_logs",
     ],
-    "author": "Coop IT Easy SCRLfs",
+    "author": "Coop IT Easy SC",
     "category": "Connector",
     "website": "https://coopiteasy.be",
     "license": "AGPL-3",

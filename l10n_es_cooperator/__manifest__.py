@@ -2,7 +2,7 @@
     "name": "Cooperator Spain Localisation",
     "version": "12.0.0.0.16",
     "depends": ["cooperator", "cooperator_website"],
-    "author": "Coop IT Easy SCRLfs, Coopdevs Treball SCCL",
+    "author": "Coop IT Easy SC, Coopdevs Treball SCCL",
     "mantainer": "Coopdevs Treball SCCL",
     "website": "https://coopiteasy.be",
     "category": "Cooperative management",
