@@ -21,15 +21,13 @@
         </field>
     </record>
 
-    <act_window
-        id="action_account_invoice_confirm"
-        multi="True"
-        key2="client_action_multi"
-        name="Validate subscription request"
-        res_model="validate.subscription.request"
-        src_model="subscription.request"
-        view_mode="form"
-        target="new"
-    />
+    <record model="ir.actions.act_window" id="action_account_invoice_confirm">
+        <field name="name">Validate subscription request</field>
+        <field name="res_model">validate.subscription.request</field>
+        <field name="binding_model_id" ref="model_subscription_request" />
+        <field name="binding_type">action</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
 
 </odoo>

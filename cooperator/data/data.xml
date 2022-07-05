@@ -23,7 +23,6 @@
             <field name="name">Subscription Journal</field>
             <field name="code">SUBJ</field>
             <field name="type">sale</field>
-            <field name="sequence_id" ref="sequence_subscription_journal" />
         </record>
 
         <record id="sequence_subscription" model="ir.sequence">

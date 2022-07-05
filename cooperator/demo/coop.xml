@@ -87,8 +87,8 @@
     </record>
 
     <record id="subscription_journal" model="account.journal">
-        <field name="default_credit_account_id" ref="account_equity_demo" />
-        <field name="default_debit_account_id" ref="account_equity_demo" />
+        <field name="payment_credit_account_id" ref="account_equity_demo" />
+        <field name="payment_debit_account_id" ref="account_equity_demo" />
     </record>
 
     <record id="product_template_share_type_1_demo" model="product.template">

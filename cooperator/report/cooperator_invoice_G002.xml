@@ -21,19 +21,25 @@
                         Capital
                     </span>
                     <span t-else="">
-                        <span t-if="o.type == 'out_invoice' and o.state == 'posted'">
+                        <span
+                            t-if="o.move_type == 'out_invoice' and o.state == 'posted'"
+                        >
                             Invoice
                         </span>
-                        <span t-if="o.type == 'out_invoice' and o.state == 'draft'">
+                        <span
+                            t-if="o.move_type == 'out_invoice' and o.state == 'draft'"
+                        >
                             Draft Invoice
                         </span>
-                        <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">
+                        <span
+                            t-if="o.move_type == 'out_invoice' and o.state == 'cancel'"
+                        >
                             Cancelled Invoice
                         </span>
-                        <span t-if="o.type == 'out_refund'">Credit Note</span>
-                        <span t-if="o.type == 'in_refund'">Vendor Credit Note
+                        <span t-if="o.move_type == 'out_refund'">Credit Note</span>
+                        <span t-if="o.move_type == 'in_refund'">Vendor Credit Note
                         </span>
-                        <span t-if="o.type == 'in_invoice'">Vendor Bill</span>
+                        <span t-if="o.move_type == 'in_invoice'">Vendor Bill</span>
                     </span>
                     <span t-field="o.name" />
                 </h2>
@@ -54,10 +60,10 @@
                     <div
                         name="reference"
                         class="col-auto mw-100 mb-2"
-                        t-if="o.invoice_payment_ref"
+                        t-if="o.payment_reference"
                     >
                         <strong>Structured Communication:</strong>
-                        <p class="m-0" t-field="o.invoice_payment_ref" />
+                        <p class="m-0" t-field="o.payment_reference" />
                     </div>
                     <div name="account_number" class="col-auto mw-100 mb-2">
                         <strong>Account Number:</strong>
@@ -225,10 +231,10 @@
                         </div>
                     </div>
                 </div>
-                <p t-if="o.invoice_payment_ref">
+                <p t-if="o.payment_reference">
                     Please use the following communication for your payment :
                     <b>
-                        <span t-field="o.invoice_payment_ref" />
+                        <span t-field="o.payment_reference" />
                     </b>
                 </p>
                 <p t-if="o.narration" name="narration">
@@ -252,7 +258,7 @@
                         <br />
                         <img
                             class="border border-dark rounded"
-                            t-att-src="o.partner_bank_id.build_qr_code_url(o.residual,(o.invoice_payment_ref) if (o.invoice_payment_ref) else o.name)"
+                            t-att-src="o.partner_bank_id.build_qr_code_url(o.residual,(o.payment_reference) if (o.payment_reference) else o.name)"
                         />
                     </p>
                     <p t-if="(o.partner_bank_id.qr_code_valid == False)">
