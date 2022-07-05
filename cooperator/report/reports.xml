@@ -2,12 +2,12 @@
 <odoo>
     <report
         id="action_cooperator_invoices"
-        model="account.invoice"
+        model="account.move"
         string="Capital release request"
         report_type="qweb-pdf"
         name="cooperator.theme_invoice_G002"
         file="cooperator_invoice_G002.xml"
-        attachment="(object.state in ('open','paid')) and ('SUBJ'+(object.number or '').replace('/','')+'.pdf')"
+        attachment="(object.state == 'posted') and ('SUBJ'+(object.name or '').replace('/','')+'.pdf')"
     />
 
     <report

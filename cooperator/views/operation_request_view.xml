@@ -4,10 +4,7 @@
         <field name="name">operation.request.tree</field>
         <field name="model">operation.request</field>
         <field name="arch" type="xml">
-            <tree
-                string="Operation requests"
-                colors="green:state in ('approved'); blue:state in ('draft');grey: state in ('done')"
-            >
+            <tree string="Operation requests">
                 <field name="request_date" />
                 <field name="effective_date" />
                 <field name="partner_id" />
@@ -179,7 +176,6 @@
     <record id="operation_request_action" model="ir.actions.act_window">
         <field name="name">Operation request</field>
         <field name="res_model">operation.request</field>
-        <field name="view_type">form</field>
         <field name="view_id" ref="operation_request_tree" />
     </record>
 

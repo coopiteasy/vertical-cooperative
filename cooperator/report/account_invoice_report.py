@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class AccountInvoiceReport(models.Model):
@@ -8,12 +8,14 @@ class AccountInvoiceReport(models.Model):
 
     def _select(self):
         return (
-            super(AccountInvoiceReport, self)._select()
-            + ", sub.release_capital_request as release_capital_request"
+            super()._select()
+            + ", move.release_capital_request as release_capital_request"
         )
 
-    def _sub_select(self):
-        return (
-            super(AccountInvoiceReport, self)._sub_select()
-            + ", ai.release_capital_request as release_capital_request"
-        )
+    @api.model
+    def _where_calc(self, domain, active_test=True):
+        # capital release requests should be excluded from reports. this is also used by
+        # res.partner._invoice_total().
+        domain = domain.copy()
+        domain.append(("release_capital_request", "=", False))
+        return super()._where_calc(domain, active_test)

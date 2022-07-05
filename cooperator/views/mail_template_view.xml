@@ -4,7 +4,6 @@
     <record id="mail_template_action" model="ir.actions.act_window">
         <field name="name">Mail Templates</field>
         <field name="res_model">mail.template</field>
-        <field name="view_type">form</field>
         <field name="view_mode">form,tree</field>
         <field name="domain">[('is_cooperator_template','=',True)]</field>
         <field name="view_id" ref="mail.email_template_tree" />

@@ -30,7 +30,6 @@
         src_model="subscription.request"
         view_mode="form"
         target="new"
-        view_type="form"
     />
 
 </odoo>

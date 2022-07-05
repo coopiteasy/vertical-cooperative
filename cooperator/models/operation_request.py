@@ -17,7 +17,6 @@ class OperationRequest(models.Model):
         # fixme odoo 12 uses date types
         return datetime.strftime(datetime.now(), "%Y-%m-%d")
 
-    @api.multi
     @api.depends("share_product_id", "share_product_id.list_price", "quantity")
     def _compute_subscription_amount(self):
         for operation_request in self:
@@ -114,40 +113,34 @@ class OperationRequest(models.Model):
         required=True,
         change_default=True,
         readonly=True,
-        default=lambda self: self.env["res.company"]._company_default_get(),
+        default=lambda self: self.env.company,
     )
 
-    invoice = fields.Many2one("account.invoice", string="Invoice")
+    invoice = fields.Many2one("account.move", string="Invoice")
 
-    @api.multi
     @api.constrains("effective_date")
     def _constrain_effective_date(self):
         for obj in self:
             if obj.effective_date and obj.effective_date > fields.Date.today():
                 raise ValidationError(_("The effective date can not be in the future."))
 
-    @api.multi
     def approve_operation(self):
         for rec in self:
             rec.write({"state": "approved"})
 
-    @api.multi
     def refuse_operation(self):
         for rec in self:
             rec.write({"state": "refused"})
 
-    @api.multi
     def submit_operation(self):
         for rec in self:
             rec.validate()
             rec.write({"state": "waiting"})
 
-    @api.multi
     def cancel_operation(self):
         for rec in self:
             rec.write({"state": "cancelled"})
 
-    @api.multi
     def reset_to_draft(self):
         for rec in self:
             rec.write({"state": "draft"})
@@ -312,7 +305,6 @@ class OperationRequest(models.Model):
             "date": effective_date,
         }
 
-    @api.multi
     def execute_operation(self):
         self.ensure_one()
 

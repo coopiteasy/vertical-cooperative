@@ -25,7 +25,6 @@ class ShareLineUpdateInfo(models.TransientModel):
         "share.line", string="Share line", default=_get_share_line
     )
 
-    @api.multi
     def update(self):
 
         line = self.share_line

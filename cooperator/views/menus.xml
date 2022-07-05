@@ -28,8 +28,8 @@
     />
     <menuitem
         name="Register Payment"
-        id="menu_account_invoice_action"
-        action="account_invoice_action"
+        id="menu_move_out_invoice_type"
+        action="action_move_out_invoice_type"
         parent="menu_cooperator_main_subscription"
         groups="cooperator.cooperator_group_user"
         sequence="130"

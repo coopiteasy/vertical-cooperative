@@ -188,7 +188,6 @@
         <record id="action_partner_cooperator_form" model="ir.actions.act_window">
             <field name="name">Cooperators</field>
             <field name="res_model">res.partner</field>
-            <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
             <field
                 name="domain"
@@ -214,7 +213,6 @@
             <field name="name">Cooperator candidates</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">res.partner</field>
-            <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
             <field name="domain">[('coop_candidate', '=',True)]</field>
             <field name="context">{'create':False}</field>
@@ -236,7 +234,6 @@
             <field name="name">Company representative</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">res.partner</field>
-            <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
             <field name="domain">[('representative_of_member_company','=',True)]</field>
             <field name="filter" eval="True" />

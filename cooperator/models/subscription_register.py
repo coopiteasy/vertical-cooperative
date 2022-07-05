@@ -16,7 +16,6 @@ class SubscriptionRegister(models.Model):
     _name = "subscription.register"
     _description = "Subscription register"
 
-    @api.multi
     def _compute_total_line(self):
         for line in self:
             line.total_amount_line = line.share_unit_price * line.quantity
@@ -88,7 +87,7 @@ class SubscriptionRegister(models.Model):
         required=True,
         change_default=True,
         readonly=True,
-        default=lambda self: self.env["res.company"]._company_default_get(),
+        default=lambda self: self.env.company,
     )
     company_currency_id = fields.Many2one(
         "res.currency",
@@ -120,7 +119,7 @@ class SubscriptionRegister(models.Model):
             fields.remove("share_unit_price")
         if "register_number_operation" in fields:
             fields.remove("register_number_operation")
-        res = super(SubscriptionRegister, self).read_group(
+        res = super().read_group(
             domain,
             fields,
             groupby,

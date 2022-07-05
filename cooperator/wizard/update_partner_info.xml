@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<openerp>
-    <data>
+<odoo>
         <record id="view_update_partner_info" model="ir.ui.view">
             <field name="name">Update Cooperator Info</field>
             <field name="model">partner.update.info</field>
@@ -51,7 +50,6 @@
             <field name="name">Update Cooperator Info</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">partner.update.info</field>
-            <field name="view_type">form</field>
             <field name="view_mode">form</field>
             <field name="target">new</field>
             <field
@@ -60,5 +58,4 @@
             />
         </record>
 
-    </data>
-</openerp>
+</odoo>
