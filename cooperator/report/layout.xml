@@ -6,11 +6,11 @@
         inherit_id="web.external_layout_standard"
         primary="True"
     >
-        <xpath expr="//div[hasclass('o_standard_footer')]" position="attributes">
-            <attribute name="style">display: none;</attribute>
-        </xpath>
-        <xpath expr="//div[hasclass('footer', 'o_standard_footer')]" position="before">
-            <div class="footer" name="footer" style="font-size: 0.8em;">
+        <xpath
+            expr="//div[@t-attf-class='footer o_standard_footer o_company_#{company.id}_layout']"
+            position="replace"
+        >
+            <div t-att-class="footer" name="footer" style="font-size: 0.8em;">
                 <div class="row">
                     <div
                         t-att-class="'text-center col-10' if company.display_logo1 or company.display_logo2 else 'text-center col'"

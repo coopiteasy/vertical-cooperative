@@ -1,4 +1,4 @@
-from odoo import api, models
+from odoo import models
 
 
 # no need for a wizard here, a server action would do the trick
@@ -6,7 +6,6 @@ class ValidateSubscriptionRequest(models.TransientModel):
     _name = "validate.subscription.request"
     _description = "Validate subscription request"
 
-    @api.multi
     def validate(self):
         selected_requests = self.env["subscription.request"].browse(
             self._context.get("active_ids")

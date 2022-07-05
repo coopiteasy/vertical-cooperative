@@ -2,6 +2,7 @@
 #   Robin Keunen <robin@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+import datetime
 
 from odoo.exceptions import AccessError
 from odoo.fields import Date
@@ -11,7 +12,7 @@ from .test_base import CooperatorBaseCase
 
 class CooperatorCase(CooperatorBaseCase):
     def setUp(self):
-        super(CooperatorCase, self).setUp()
+        super().setUp()
 
         self.request = self.browse_ref("cooperator.subscription_request_1_demo")
         self.bank_journal_euro = self.env["account.journal"].create(
@@ -24,52 +25,68 @@ class CooperatorCase(CooperatorBaseCase):
     def test_put_on_waiting_list(self):
         self.as_cooperator_user()
         self.request.put_on_waiting_list()
-        self.assertEquals(self.request.state, "waiting")
+        self.assertEqual(self.request.state, "waiting")
 
     def test_validate_subscription_request(self):
         self.as_cooperator_user()
         # todo missing structure fails the rules?
         self.request.validate_subscription_request()
 
-        self.assertEquals(self.request.state, "done")
+        self.assertEqual(self.request.state, "done")
         self.assertTrue(self.request.partner_id)
         self.assertTrue(self.request.partner_id.coop_candidate)
         self.assertFalse(self.request.partner_id.member)
-        self.assertEquals(self.request.type, "new")
+        self.assertEqual(self.request.type, "new")
         self.assertTrue(len(self.request.capital_release_request) >= 1)
-        self.assertEquals(self.request.capital_release_request.state, "open")
-        self.assertTrue(self.request.capital_release_request.sent)
+        self.assertEqual(self.request.capital_release_request.state, "posted")
+        self.assertEqual(
+            self.request.capital_release_request.invoice_payment_state, "not_paid"
+        )
+
+    def _pay_invoice(self, invoice, payment_date=None):
+        ctx = {"active_model": "account.move", "active_ids": [invoice.id]}
+        register_payment_vals = {
+            "journal_id": self.bank_journal_euro.id,
+            "payment_method_id": self.payment_method_manual_in.id,
+        }
+        if payment_date is not None:
+            register_payment_vals["payment_date"] = payment_date
+        register_payment = (
+            self.env["account.payment.register"]
+            .with_context(ctx)
+            .create(register_payment_vals)
+        )
+        register_payment.create_payments()
 
     def test_register_payment_for_capital_release(self):
         self.as_cooperator_user()
         self.request.validate_subscription_request()
         invoice = self.request.capital_release_request
 
-        ctx = {"active_model": "account.invoice", "active_ids": [invoice.id]}
-        register_payments = (
-            self.env["account.register.payments"]
-            .with_context(ctx)
-            .create(
-                {
-                    "payment_date": Date.today(),
-                    "journal_id": self.bank_journal_euro.id,
-                    "payment_method_id": self.payment_method_manual_in.id,
-                }
-            )
+        self._pay_invoice(invoice)
+        self.assertEqual(
+            self.request.capital_release_request.invoice_payment_state, "paid"
         )
-        register_payments.create_payments()
-        self.assertEquals(self.request.capital_release_request.state, "paid")
 
         partner = self.request.partner_id
         self.assertFalse(partner.coop_candidate)
         self.assertTrue(partner.member)
         self.assertTrue(partner.share_ids)
-        self.assertEquals(self.request.partner_id.effective_date, Date.today())
+        self.assertEqual(partner.effective_date, Date.today())
 
         share = partner.share_ids[0]
-        self.assertEquals(share.share_number, self.request.ordered_parts)
-        self.assertEquals(share.share_product_id, self.request.share_product_id)
-        self.assertEquals(share.effective_date, Date.today())
+        self.assertEqual(share.share_number, self.request.ordered_parts)
+        self.assertEqual(share.share_product_id, self.request.share_product_id)
+        self.assertEqual(share.effective_date, Date.today())
+
+    def test_effective_date_from_payment_date(self):
+        self.as_cooperator_user()
+        self.request.validate_subscription_request()
+        invoice = self.request.capital_release_request
+        self._pay_invoice(invoice, datetime.date(2022, 6, 21))
+
+        partner = self.request.partner_id
+        self.assertEqual(partner.effective_date, datetime.date(2022, 6, 21))
 
     def test_user_rights(self):
 

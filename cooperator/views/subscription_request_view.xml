@@ -5,11 +5,7 @@
         <field name="name">subscription.request.tree</field>
         <field name="model">subscription.request</field>
         <field name="arch" type="xml">
-            <!-- fixme no colors in v12 ? -->
-            <tree
-                string="Subscription Requests"
-                colors="red:is_valid_iban == False; blue:state in ('draft'); grey: state in ('done')"
-            >
+            <tree string="Subscription Requests">
                 <field name="firstname" />
                 <field name="lastname" />
                 <field name="company_name" />
@@ -87,21 +83,13 @@
                     />
                 </header>
                 <sheet>
+                    <widget
+                        name="web_ribbon"
+                        text="Archived"
+                        bg_color="bg-danger"
+                        attrs="{'invisible': [('active', '=', True)]}"
+                    />
                     <field name="active" invisible="True" />
-                    <div class="oe_button_box" name="button_box">
-                        <button
-                            name="toggle_active"
-                            type="object"
-                            class="oe_stat_button"
-                            icon="fa-archive"
-                        >
-                                        <field
-                                name="active"
-                                widget="boolean_button"
-                                options="{'terminology': 'archive'}"
-                            />
-                        </button>
-                    </div>
                     <group>
                         <group>
                             <field name="is_valid_iban" invisible="True" />
@@ -173,14 +161,18 @@
                         >
                             <field name="capital_release_request">
                                 <tree options="{'no_create':True}">
+                                    <field name="state" invisible="True" />
                                     <field string="Cooperator" name="partner_id" />
-                                    <field name="date_invoice" />
-                                    <field name="number" />
-                                    <field string="Reference" name="reference" />
-                                    <field name="date_due" />
+                                    <field name="invoice_date" />
+                                    <field name="name" />
+                                    <field
+                                        string="Reference"
+                                        name="invoice_payment_ref"
+                                    />
+                                    <field name="invoice_date_due" />
                                     <field name="amount_total_signed" />
-                                    <field name="residual_signed" />
-                                    <field name="state" />
+                                    <field name="amount_residual_signed" />
+                                    <field name="invoice_payment_state" />
                                 </tree>
                             </field>
                         </page>
@@ -248,7 +240,6 @@
     <record id="subscription_request_action" model="ir.actions.act_window">
         <field name="name">Subscriptions</field>
         <field name="res_model">subscription.request</field>
-        <field name="view_type">form</field>
         <field name="domain">[('is_operation','=',False)]</field>
         <field name="context">{'default_source':'manual'}</field>
         <field name="view_id" ref="subscription_request_tree" />
@@ -331,7 +322,6 @@
     <record id="share_line_action" model="ir.actions.act_window">
         <field name="name">Share Lines</field>
         <field name="res_model">share.line</field>
-        <field name="view_type">form</field>
     </record>
 
 </odoo>

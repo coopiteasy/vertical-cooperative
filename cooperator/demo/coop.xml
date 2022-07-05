@@ -9,7 +9,6 @@
     <!-- todo remove this data since it has not been through the complete flow -->
     <record id="res_partner_cooperator_1_demo" model="res.partner">
         <field name="name">Virginie Leloup</field>
-        <field name="customer" eval="True" />
         <field name="is_company" eval="False" />
         <field name="email">virginie@demo.net</field>
         <field name="street">Avenue des Dessus-de-Livres, 2</field>
@@ -28,7 +27,6 @@
     <!-- todo remove this data since it has not been through the complete flow -->
     <record id="res_partner_cooperator_2_demo" model="res.partner">
         <field name="name">Houssine Intégrale</field>
-        <field name="customer" eval="True" />
         <field name="is_company" eval="False" />
         <field name="email">houssine@demo.net</field>
         <field name="street">Avenue des Dessous-de-Livres, 3</field>
@@ -46,7 +44,6 @@
 
     <record id="res_partner_cooperator_3_demo" model="res.partner">
         <field name="name">Vincent Bixolon 2000</field>
-        <field name="customer" eval="True" />
         <field name="is_company" eval="False" />
         <field name="email">vincent@demo.net</field>
         <field name="street">Rue de la colocation, 23</field>
@@ -63,7 +60,6 @@
 
     <record id="res_partner_cooperator_4_demo" model="res.partner">
         <field name="name">Rémy Commit</field>
-        <field name="customer" eval="True" />
         <field name="is_company" eval="False" />
         <field name="email">remy@demo.net</field>
         <field name="street">Rue Guido Van Rossum, 2</field>

@@ -37,7 +37,7 @@ class SubscriptionRequest(models.Model):
 
     def get_required_field(self):
         required_fields = _REQUIRED
-        company = self.env["res.company"]._company_default_get()
+        company = self.env.company
         if company.data_policy_approval_required:
             required_fields.append("data_policy_approved")
         if company.internal_rules_approval_required:
@@ -108,7 +108,7 @@ class SubscriptionRequest(models.Model):
         if not cooperator.cooperator:
             cooperator.write({"cooperator": True})
 
-        subscription_request = super(SubscriptionRequest, self).create(vals)
+        subscription_request = super().create(vals)
         subscription_request._send_confirmation_mail()
         return subscription_request
 
@@ -123,7 +123,7 @@ class SubscriptionRequest(models.Model):
                 vals["type"] = "subscription"
                 vals = self.is_member(vals, cooperator)
                 vals["partner_id"] = cooperator.id
-        subscription_request = super(SubscriptionRequest, self).create(vals)
+        subscription_request = super().create(vals)
         subscription_request._send_confirmation_mail()
         return subscription_request
 
@@ -142,7 +142,6 @@ class SubscriptionRequest(models.Model):
         except ValidationError:
             return False
 
-    @api.multi
     @api.depends("firstname", "lastname")
     def _compute_name(self):
         for sub_request in self:
@@ -158,7 +157,6 @@ class SubscriptionRequest(models.Model):
             else:
                 sub_request.is_valid_iban = self.check_iban(sub_request.iban)
 
-    @api.multi
     @api.depends("share_product_id", "share_product_id.list_price", "ordered_parts")
     def _compute_subscription_amount(self):
         for sub_request in self:
@@ -226,7 +224,7 @@ class SubscriptionRequest(models.Model):
         string="State",
         required=True,
         default="draft",
-        track_visibility=True,
+        tracking=True,
     )
     email = fields.Char(
         string="Email",
@@ -313,6 +311,7 @@ class SubscriptionRequest(models.Model):
     is_valid_iban = fields.Boolean(
         compute="_compute_is_valid_iban",
         string="Valid IBAN?",
+        store=True,
         readonly=True,
     )
     skip_iban_control = fields.Boolean(
@@ -324,9 +323,7 @@ class SubscriptionRequest(models.Model):
         required=True,
         readonly=True,
         states={"draft": [("readonly", False)]},
-        default=lambda self: self.env["res.company"]
-        ._company_default_get()
-        .default_lang_id.code,
+        default=lambda self: self.env.company.default_lang_id.code,
     )
     date = fields.Date(
         string="Subscription date request",
@@ -341,7 +338,7 @@ class SubscriptionRequest(models.Model):
         required=True,
         change_default=True,
         readonly=True,
-        default=lambda self: self.env["res.company"]._company_default_get(),
+        default=lambda self: self.env.company,
     )
     company_currency_id = fields.Many2one(
         "res.currency",
@@ -421,7 +418,7 @@ class SubscriptionRequest(models.Model):
         states={"draft": [("readonly", False)]},
     )
     capital_release_request = fields.One2many(
-        "account.invoice",
+        "account.move",
         "subscription_request",
         string="Capital release request",
         readonly=True,
@@ -523,7 +520,7 @@ class SubscriptionRequest(models.Model):
             "account_id": account.id,
             "price_unit": product.lst_price,
             "quantity": qty,
-            "uom_id": product.uom_id.id,
+            "product_uom_id": product.uom_id.id,
             "product_id": product.id or False,
         }
         return res
@@ -542,22 +539,17 @@ class SubscriptionRequest(models.Model):
         invoice_vals = {
             "partner_id": partner.id,
             "journal_id": self.get_journal().id,
-            "account_id": self.get_accounting_account().id,
             "type": "out_invoice",
             "release_capital_request": True,
             "subscription_request": self.id,
         }
 
-        payment_term_id = (
-            self.env["res.company"]
-            ._company_default_get()
-            .default_capital_release_request_payment_term
-        )
+        payment_term_id = self.env.company.default_capital_release_request_payment_term
 
         if payment_term_id:
             # if none configured, let the default invoice payment
             # term
-            invoice_vals["payment_term_id"] = payment_term_id.id
+            invoice_vals["invoice_payment_term_id"] = payment_term_id.id
 
         return invoice_vals
 
@@ -565,22 +557,24 @@ class SubscriptionRequest(models.Model):
         # creating invoice and invoice lines
         invoice_vals = self.get_invoice_vals(partner)
         if self.capital_release_request_date:
-            invoice_vals["date_invoice"] = self.capital_release_request_date
-        invoice = self.env["account.invoice"].create(invoice_vals)
+            invoice_vals["invoice_date"] = self.capital_release_request_date
+        invoice = self.env["account.move"].create(invoice_vals)
         vals = self._prepare_invoice_line(
             self.share_product_id, partner, self.ordered_parts
         )
-        vals["invoice_id"] = invoice.id
-        self.env["account.invoice.line"].create(vals)
+        vals["move_id"] = invoice.id
+        self.env["account.move.line"].with_context(check_move_validity=False).create(
+            vals
+        )
+        invoice.with_context(check_move_validity=False)._onchange_invoice_line_ids()
 
         # validate the capital release request
-        invoice.action_invoice_open()
+        invoice.action_post()
         invoice.send_capital_release_request_mail()
 
         return invoice
 
     def get_partner_company_vals(self):
-        # fixme out_inv_comm_type was removed from v12
         partner_vals = {
             "name": self.company_name,
             "last_name": self.company_name,
@@ -591,8 +585,6 @@ class SubscriptionRequest(models.Model):
             "zip": self.zip_code,
             "city": self.city,
             "email": self.company_email,
-            "out_inv_comm_type": "bba",
-            "customer": self.share_product_id.customer,
             "country_id": self.country_id.id,
             "lang": self.lang,
             "data_policy_approved": self.data_policy_approved,
@@ -617,7 +609,6 @@ class SubscriptionRequest(models.Model):
             "country_id": self.country_id.id,
             "lang": self.lang,
             "birthdate_date": self.birthdate,
-            "customer": self.share_product_id.customer,
             "data_policy_approved": self.data_policy_approved,
             "internal_rules_approved": self.internal_rules_approved,
             "financial_risk_approved": self.financial_risk_approved,
@@ -626,12 +617,10 @@ class SubscriptionRequest(models.Model):
         return partner_vals
 
     def get_representative_vals(self):
-        # fixme out_inv_comm_type was removed from v12
         contact_vals = {
             "name": self.name,
             "firstname": self.firstname,
             "lastname": self.lastname,
-            "customer": False,
             "is_company": False,
             "cooperator": True,
             "street": self.address,
@@ -641,7 +630,6 @@ class SubscriptionRequest(models.Model):
             "phone": self.phone,
             "email": self.email,
             "country_id": self.country_id.id,
-            "out_inv_comm_type": "bba",
             "out_inv_comm_algorithm": "random",
             "lang": self.lang,
             "birthdate_date": self.birthdate,
@@ -681,7 +669,6 @@ class SubscriptionRequest(models.Model):
         else:
             return None
 
-    @api.multi
     def validate_subscription_request(self):
         # todo rename to validate (careful with iwp dependencies)
         self.ensure_one()
@@ -764,21 +751,18 @@ class SubscriptionRequest(models.Model):
 
         return invoice
 
-    @api.multi
     def block_subscription_request(self):
         self.ensure_one()
         if self.state != "draft":
             raise ValidationError(_("Only draft requests can be blocked."))
         self.write({"state": "block"})
 
-    @api.multi
     def unblock_subscription_request(self):
         self.ensure_one()
         if self.state != "block":
             raise ValidationError(_("Only blocked requests can be unblocked."))
         self.write({"state": "draft"})
 
-    @api.multi
     def cancel_subscription_request(self):
         self.ensure_one()
         if self.state not in ("draft", "waiting", "done", "block"):
@@ -792,7 +776,6 @@ class SubscriptionRequest(models.Model):
             )
             waiting_list_mail_template.send_mail(self.id, True)
 
-    @api.multi
     def put_on_waiting_list(self):
         self.ensure_one()
         if self.state != "draft":

@@ -7,7 +7,6 @@
 
     <record id="res_partner_user_cooperator_demo" model="res.partner">
         <field name="name">User cooperator</field>
-        <field name="customer" eval="False" />
         <field name="is_company" eval="False" />
         <field name="email">user.cooperator@coop.coop</field>
         <field name="street">Rue de la colocation, 23</field>
@@ -25,7 +24,6 @@
 
     <record id="res_partner_manager_cooperator_demo" model="res.partner">
         <field name="name">Manager cooperator</field>
-        <field name="customer" eval="False" />
         <field name="is_company" eval="False" />
         <field name="email">manager.cooperator@coop.coop</field>
         <field name="street">Rue de la colocation, 24</field>

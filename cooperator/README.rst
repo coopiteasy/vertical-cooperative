@@ -14,7 +14,7 @@ Cooperators
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-coopiteasy%2Fvertical--cooperative-lightgray.png?logo=github
-    :target: https://github.com/coopiteasy/vertical-cooperative/tree/12.0/cooperator
+    :target: https://github.com/coopiteasy/vertical-cooperative/tree/13.0/cooperator
     :alt: coopiteasy/vertical-cooperative
 
 |badge1| |badge2| |badge3| 
@@ -24,7 +24,8 @@ Manage cooperators of a cooperative.
 A basic flow can be the following:
 
 - Create subscription request for a person (moral or physical)
-- Validate subscription sequest, a capital release request (`account.invoice`). This invoice is sent to the future cooperator.
+- Validate subscription request, a capital release request (an invoice: `account.move`).
+  This invoice is sent to the future cooperator.
 - Payment of the cooperator is registered and the capital Release
   request is marked as paid.
 - A new cooperator (a special partner) is created, and the right type
@@ -80,7 +81,7 @@ For instance, for the addon `cooperator_portal`
 
 .. code-block:: shell
 
-  pip install odoo12-addon-easy-my-coop-website-portal==12.0.1.0.0.99.dev9
+  pip install odoo13-addon-cooperator-portal==13.0.1.0.0.99.dev9
 
 Beware that for word separation, pypi uses dashes `-` and odoo underscores `_`.
 
@@ -89,13 +90,30 @@ Known issues / Roadmap
 
 Gather and consolidate all cooperator settings in the application parameters.
 
+Changelog
+=========
+
+12.0.5.0.0 (2022-06-23)
+**Deprecations and Removals**
+
+- When no cooperator account is defined on the company, this module previously
+  defaulted to the account with code '416000'. This behaviour has been removed
+  because the code is Belgian-only. The functionality has been moved to
+  ``l10n_be_cooperator``. (`#314 <https://github.com/coopiteasy/vertical-cooperative/issues/314>`_)
+
+
+12.0.3.3.2 (2022-06-20)
+**Bugfixes**
+
+- Fix name computation crash (`#330 <https://github.com/coopiteasy/vertical-cooperative/issues/330>`_)
+
 Bug Tracker
 ===========
 
 Bugs are tracked on `GitHub Issues <https://github.com/coopiteasy/vertical-cooperative/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/coopiteasy/vertical-cooperative/issues/new?body=module:%20cooperator%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/coopiteasy/vertical-cooperative/issues/new?body=module:%20cooperator%0Aversion:%2013.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -119,11 +137,11 @@ Contributors
   * Vincent Van Rossem
   * Manuel Claeys Bouuaert
   * Carmen Bianca Bakker
-  * hugues dekeyzer
+  * hugues de keyzer
 
 Maintainers
 ~~~~~~~~~~~
 
-This module is part of the `coopiteasy/vertical-cooperative <https://github.com/coopiteasy/vertical-cooperative/tree/12.0/cooperator>`_ project on GitHub.
+This module is part of the `coopiteasy/vertical-cooperative <https://github.com/coopiteasy/vertical-cooperative/tree/13.0/cooperator>`_ project on GitHub.
 
 You are welcome to contribute.

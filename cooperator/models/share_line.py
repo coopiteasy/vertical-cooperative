@@ -2,14 +2,13 @@
 #   Houssine Bakkali <houssine@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class ShareLine(models.Model):
     _name = "share.line"
     _description = "Share line"
 
-    @api.multi
     def _compute_total_line(self):
         res = {}
         for line in self:
@@ -51,7 +50,7 @@ class ShareLine(models.Model):
         required=True,
         change_default=True,
         readonly=True,
-        default=lambda self: self.env["res.company"]._company_default_get(),
+        default=lambda self: self.env.company,
     )
     company_currency_id = fields.Many2one(
         "res.currency",

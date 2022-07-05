@@ -7,7 +7,7 @@
 {
     "name": "Cooperators",
     "summary": "Manage your cooperators",
-    "version": "12.0.5.0.0",
+    "version": "13.0.1.0.0",
     "depends": [
         "base",
         "web",
@@ -39,10 +39,10 @@
         "views/res_partner_view.xml",
         "views/subscription_register_view.xml",
         "views/operation_request_view.xml",
-        "views/account_invoice_view.xml",
+        "views/account_move_views.xml",
         "views/product_view.xml",
         "views/res_company_view.xml",
-        "views/account_journal_view.xml",
+        "views/account_journal_views.xml",
         "views/menus.xml",
         "report/reports.xml",
         "report/layout.xml",
@@ -52,7 +52,9 @@
         "report/cooperator_register_G001.xml",
         "data/mail_template_data.xml",  # Must be loaded after reports
     ],
-    "demo": ["demo/coop.xml", "demo/users.xml"],
-    "installable": True,
+    "demo": [
+        "demo/coop.xml",
+        "demo/users.xml",
+    ],
     "application": True,
 }

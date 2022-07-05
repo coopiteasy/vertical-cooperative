@@ -33,7 +33,6 @@ class PartnerUpdateInfo(models.TransientModel):
     legal_form = fields.Boolean(string="Set legal form")
     representative_function = fields.Boolean(string="Set function")
 
-    @api.multi
     def update(self):
         partner_obj = self.env["res.partner"]
         cooperator = self.cooperator

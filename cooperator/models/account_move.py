@@ -5,32 +5,36 @@
 
 from datetime import datetime
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
-class AccountInvoice(models.Model):
-    _inherit = "account.invoice"
+class AccountMove(models.Model):
+    _inherit = "account.move"
 
     subscription_request = fields.Many2one(
         "subscription.request", string="Subscription request"
     )
     release_capital_request = fields.Boolean(string="Release of capital request")
 
-    @api.model
-    def _prepare_refund(
-        self,
-        invoice,
-        date_invoice=None,
-        date=None,
-        description=None,
-        journal_id=None,
-    ):
-        values = super(AccountInvoice, self)._prepare_refund(
-            invoice, date_invoice, date, description, journal_id
-        )
+    def _reverse_move_vals(self, default_values, cancel=True):
+        values = super()._reverse_move_vals(default_values, cancel)
         values["release_capital_request"] = self.release_capital_request
 
         return values
+
+    def _recompute_payment_terms_lines(self):
+        super()._recompute_payment_terms_lines()
+        subscription_request = self.subscription_request
+        if not subscription_request:
+            return
+        # ensure payment terms lines use the account for subscription requests.
+        payment_terms_lines = self.line_ids.filtered(
+            lambda line: line.account_id.user_type_id.type in ("receivable", "payable")
+        )
+        account = subscription_request.get_accounting_account()
+        for line in payment_terms_lines:
+            if line.account_id != account:
+                line.account_id = account
 
     def create_user(self, partner):
         user_obj = self.env["res.users"]
@@ -147,12 +151,11 @@ class AccountInvoice(models.Model):
     def get_refund_domain(self, invoice):
         return [
             ("type", "=", "out_refund"),
-            ("origin", "=", invoice.move_name),
+            ("invoice_origin", "=", invoice.name),
         ]
 
-    @api.multi
     def action_invoice_paid(self):
-        super(AccountInvoice, self).action_invoice_paid()
+        super().action_invoice_paid()
         for invoice in self:
             # we check if there is an open refund for this invoice. in this
             # case we don't run the process_subscription function as the
@@ -170,9 +173,10 @@ class AccountInvoice(models.Model):
                 # by default the confirmation date is the payment date
                 effective_date = datetime.now()
 
-                if invoice.payment_move_line_ids:
-                    move_line = invoice.payment_move_line_ids[0]
-                    effective_date = move_line.date
+                payments = [p for p in self._get_reconciled_payments()]
+                if payments:
+                    payments.sort(key=lambda p: p.date)
+                    effective_date = payments[-1].date
 
                 invoice.subscription_request.state = "paid"
                 invoice.post_process_confirm_paid(effective_date)
@@ -195,4 +199,3 @@ class AccountInvoice(models.Model):
             # we send the email with the capital release request in attachment
             # TODO remove sudo() and give necessary access right
             email_template.sudo().send_mail(self.id, True)
-            self.sent = True

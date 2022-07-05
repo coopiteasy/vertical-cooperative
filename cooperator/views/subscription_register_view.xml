@@ -98,7 +98,6 @@
     <record id="subscription_register_action" model="ir.actions.act_window">
         <field name="name">Subscription Register</field>
         <field name="res_model">subscription.register</field>
-        <field name="view_type">form</field>
         <field name="view_id" ref="subscription_register_tree" />
         <field name="search_view_id" ref="view_subscription_register_filter" />
     </record>

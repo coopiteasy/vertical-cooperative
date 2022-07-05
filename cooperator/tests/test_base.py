@@ -20,7 +20,7 @@ class CooperatorBaseCase(common.TransactionCase):
                 "reconcile": True,
             }
         )
-        data_name = "demo %s data" % name
+        data_name = ("demo %s data" % name).replace(" ", "_")
         self.env["ir.model.data"].create(
             {"res_id": act.id, "model": act._name, "name": data_name}
         )
@@ -81,8 +81,8 @@ class CooperatorBaseCase(common.TransactionCase):
         )
 
     def _add_chart_of_accounts(self):
-        self.company = self.env.user.company_id
-        self.chart.try_loading_for_current_company()
+        self.company = self.env.company
+        self.chart.try_loading()
         account_obj = self.env["account.account"]
         self.expense = account_obj.search(
             [("code", "=", "0010")],
@@ -105,7 +105,7 @@ class CooperatorBaseCase(common.TransactionCase):
     def _journals_setup(self):
         self.subscription_journal = self.env["account.journal"].create(
             {
-                "name": "Subscription Journal",
+                "name": "Subscription Journal (test)",
                 "code": "SUBR",
                 "type": "sale",
                 "default_debit_account_id": self.equity_account.id,
@@ -118,7 +118,7 @@ class CooperatorBaseCase(common.TransactionCase):
         return True
 
     def setUp(self):
-        super(CooperatorBaseCase, self).setUp()
+        super().setUp()
         self._chart_template_create()
         self._add_chart_of_accounts()
         self._journals_setup()

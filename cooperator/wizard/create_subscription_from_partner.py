@@ -1,14 +1,11 @@
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
-import odoo.addons.decimal_precision as dp
-
 
 class PartnerCreateSubscription(models.TransientModel):
     _name = "partner.create.subscription"
     _description = "Create Subscription From Partner"
 
-    @api.multi
     @api.onchange("share_product")
     def on_change_share_type(self):
         self.share_qty = self.share_product.minimum_quantity
@@ -95,7 +92,6 @@ class PartnerCreateSubscription(models.TransientModel):
 
         return domain
 
-    @api.multi
     @api.depends("share_product", "share_qty")
     def _compute_subscription_amount(self):
         for sub_request in self:
@@ -103,7 +99,7 @@ class PartnerCreateSubscription(models.TransientModel):
                 sub_request.share_product.list_price * sub_request.share_qty
             )
 
-    is_company = fields.Boolean(String="Is company?", default=_get_is_company)
+    is_company = fields.Boolean(string="Is company?", default=_get_is_company)
     cooperator = fields.Many2one(
         "res.partner", string="Cooperator", default=_get_partner
     )
@@ -128,7 +124,7 @@ class PartnerCreateSubscription(models.TransientModel):
     subscription_amount = fields.Float(
         compute="_compute_subscription_amount",
         string="Subscription amount",
-        digits=dp.get_precision("Account"),
+        digits="Account",
         readonly=True,
     )
     representative_firstname = fields.Char(
@@ -143,7 +139,6 @@ class PartnerCreateSubscription(models.TransientModel):
         string="Representative email", default=_get_representative_email
     )
 
-    @api.multi
     def create_subscription(self):
         sub_req = self.env["subscription.request"]
         partner_obj = self.env["res.partner"]
@@ -237,8 +232,7 @@ class PartnerCreateSubscription(models.TransientModel):
 
         return {
             "type": "ir.actions.act_window",
-            "view_type": "form, tree",
-            "view_mode": "form",
+            "view_mode": "form,tree",
             "res_model": "subscription.request",
             "res_id": new_sub_req.id,
             "target": "current",
