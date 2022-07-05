@@ -108,8 +108,8 @@ class CooperatorBaseCase(common.TransactionCase):
                 "name": "Subscription Journal (test)",
                 "code": "SUBR",
                 "type": "sale",
-                "default_debit_account_id": self.equity_account.id,
-                "default_credit_account_id": self.equity_account.id,
+                "payment_debit_account_id": self.equity_account.id,
+                "payment_credit_account_id": self.equity_account.id,
             }
         )
         self.bank_journal = self.env["account.journal"].search(

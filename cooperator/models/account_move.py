@@ -150,7 +150,7 @@ class AccountMove(models.Model):
 
     def get_refund_domain(self, invoice):
         return [
-            ("type", "=", "out_refund"),
+            ("move_type", "=", "out_refund"),
             ("invoice_origin", "=", invoice.name),
         ]
 
@@ -166,7 +166,7 @@ class AccountMove(models.Model):
             if (
                 invoice.partner_id.cooperator
                 and invoice.release_capital_request
-                and invoice.type == "out_invoice"
+                and invoice.move_type == "out_invoice"
                 and not refund
             ):
                 # take the effective date from the payment.
@@ -184,7 +184,7 @@ class AccountMove(models.Model):
             elif (
                 invoice.partner_id.cooperator
                 and invoice.release_capital_request
-                and invoice.type == "out_invoice"
+                and invoice.move_type == "out_invoice"
                 and refund
             ):
                 invoice.subscription_request.state = "cancelled"

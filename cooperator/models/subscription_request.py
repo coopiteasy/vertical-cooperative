@@ -539,7 +539,7 @@ class SubscriptionRequest(models.Model):
         invoice_vals = {
             "partner_id": partner.id,
             "journal_id": self.get_journal().id,
-            "type": "out_invoice",
+            "move_type": "out_invoice",
             "release_capital_request": True,
             "subscription_request": self.id,
         }

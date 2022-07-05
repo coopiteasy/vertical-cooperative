@@ -39,8 +39,14 @@ class CooperatorCase(CooperatorBaseCase):
         self.assertEqual(self.request.type, "new")
         self.assertTrue(len(self.request.capital_release_request) >= 1)
         self.assertEqual(self.request.capital_release_request.state, "posted")
+        self.assertEqual(self.request.capital_release_request.payment_state, "not_paid")
+
+    def test_capital_release_request_name(self):
+        self.as_cooperator_user()
+        self.request.validate_subscription_request()
         self.assertEqual(
-            self.request.capital_release_request.invoice_payment_state, "not_paid"
+            self.request.capital_release_request.name,
+            "SUBJ/{year}/001".format(year=datetime.date.today().year),
         )
 
     def _pay_invoice(self, invoice, payment_date=None):
@@ -56,7 +62,7 @@ class CooperatorCase(CooperatorBaseCase):
             .with_context(ctx)
             .create(register_payment_vals)
         )
-        register_payment.create_payments()
+        register_payment.action_create_payments()
 
     def test_register_payment_for_capital_release(self):
         self.as_cooperator_user()
@@ -64,9 +70,7 @@ class CooperatorCase(CooperatorBaseCase):
         invoice = self.request.capital_release_request
 
         self._pay_invoice(invoice)
-        self.assertEqual(
-            self.request.capital_release_request.invoice_payment_state, "paid"
-        )
+        self.assertEqual(self.request.capital_release_request.payment_state, "paid")
 
         partner = self.request.partner_id
         self.assertFalse(partner.coop_candidate)

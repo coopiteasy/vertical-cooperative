@@ -169,7 +169,7 @@
                                     <field name="invoice_date_due" />
                                     <field name="amount_total_signed" />
                                     <field name="amount_residual_signed" />
-                                    <field name="invoice_payment_state" />
+                                    <field name="payment_state" />
                                 </tree>
                             </field>
                         </page>
