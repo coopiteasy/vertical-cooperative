@@ -1,61 +1,57 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-        <record id="view_update_partner_info" model="ir.ui.view">
-            <field name="name">Update Cooperator Info</field>
-            <field name="model">partner.update.info</field>
-            <field name="arch" type="xml">
-                <form string="Update Cooperator Info">
-                    <p class="oe_grey">
-                        Update Cooperator Info.
-                    </p>
-                    <group>
-                        <field name="is_company" invisible="True" />
-                        <field name="from_sub_req" />
-                        <field
-                            name="all"
-                            attrs="{'invisible':[('from_sub_req', '=', False)]}"
-                        />
-                        <field
-                            name="birthdate"
-                            attrs="{'invisible':['|', '|',('from_sub_req', '=', False), ('all', '=', True), ('is_company', '=', True)]}"
-                        />
-                        <field
-                            name="legal_form"
-                            attrs="{'invisible':['|', '|',('from_sub_req', '=', False), ('all', '=', True), ('is_company', '=', False)]}"
-                        />
-                        <field
-                            name="representative_function"
-                            attrs="{'invisible':['|', '|',('from_sub_req', '=', False), ('all', '=', True),('is_company', '=', False)]}"
-                        />
-                        <field name="cooperator" readonly="True" />
-                        <field
-                            name="register_number"
-                            attrs="{'required':['|', ('is_company', '=', True), ('all', '=', False)], 'invisible':[('is_company', '=', False)]}"
-                        />
-                    </group>
-                    <footer>
-                        <button
-                            name="update"
-                            string="Update Info"
-                            type="object"
-                            class="btn-primary"
-                        />
-                        <button string="Cancel" class="btn-default" special="cancel" />
-                    </footer>
-                </form>
-            </field>
-        </record>
+    <record id="view_update_partner_info" model="ir.ui.view">
+        <field name="name">Update Cooperator Info</field>
+        <field name="model">partner.update.info</field>
+        <field name="arch" type="xml">
+            <form string="Update Cooperator Info">
+                <p class="oe_grey">
+                    Update Cooperator Info.
+                </p>
+                <group>
+                    <field name="is_company" invisible="True" />
+                    <field name="from_sub_req" />
+                    <field
+                        name="all"
+                        attrs="{'invisible':[('from_sub_req', '=', False)]}"
+                    />
+                    <field
+                        name="birthdate"
+                        attrs="{'invisible':['|', '|',('from_sub_req', '=', False), ('all', '=', True), ('is_company', '=', True)]}"
+                    />
+                    <field
+                        name="legal_form"
+                        attrs="{'invisible':['|', '|',('from_sub_req', '=', False), ('all', '=', True), ('is_company', '=', False)]}"
+                    />
+                    <field
+                        name="representative_function"
+                        attrs="{'invisible':['|', '|',('from_sub_req', '=', False), ('all', '=', True),('is_company', '=', False)]}"
+                    />
+                    <field name="cooperator" readonly="True" />
+                    <field
+                        name="register_number"
+                        attrs="{'required':['|', ('is_company', '=', True), ('all', '=', False)], 'invisible':[('is_company', '=', False)]}"
+                    />
+                </group>
+                <footer>
+                    <button
+                        name="update"
+                        string="Update Info"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
 
-        <record id="action_view_update_partner_info" model="ir.actions.act_window">
-            <field name="name">Update Cooperator Info</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">partner.update.info</field>
-            <field name="view_mode">form</field>
-            <field name="target">new</field>
-            <field
-                name="groups_id"
-                eval="[(4,ref('cooperator.cooperator_group_user'))]"
-            />
-        </record>
-
+    <record id="action_view_update_partner_info" model="ir.actions.act_window">
+        <field name="name">Update Cooperator Info</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">partner.update.info</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="groups_id" eval="[(4,ref('cooperator.cooperator_group_user'))]" />
+    </record>
 </odoo>
