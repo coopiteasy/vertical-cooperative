@@ -577,7 +577,7 @@ class SubscriptionRequest(models.Model):
     def get_partner_company_vals(self):
         partner_vals = {
             "name": self.company_name,
-            "last_name": self.company_name,
+            "lastname": self.company_name,
             "is_company": self.is_company,
             "company_register_number": self.company_register_number,  # noqa
             "cooperator": True,
@@ -630,7 +630,6 @@ class SubscriptionRequest(models.Model):
             "phone": self.phone,
             "email": self.email,
             "country_id": self.country_id.id,
-            "out_inv_comm_algorithm": "random",
             "lang": self.lang,
             "birthdate_date": self.birthdate,
             "parent_id": self.partner_id.id,
