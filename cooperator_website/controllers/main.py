@@ -111,7 +111,7 @@ class WebsiteSubscription(http.Controller):
         return request.render("cooperator_website.becomecompanycooperator", values)
 
     def preRenderThanks(self, values, kwargs):
-        """ Allow to be overrided """
+        """Allow to be overrided"""
         return {"_values": values, "_kwargs": kwargs}
 
     def get_subscription_response(self, values, kwargs):
