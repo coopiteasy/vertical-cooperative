@@ -21,6 +21,8 @@ _REQUIRED = [
     "city",
     "iban",
     "gender",
+    "country_id",
+    "lang",
 ]
 
 
