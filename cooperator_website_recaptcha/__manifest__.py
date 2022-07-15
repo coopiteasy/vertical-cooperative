@@ -5,7 +5,7 @@
     "name": "Cooperators Website Recaptcha",
     "summary": """
         Add Google Recaptcha to Subscription Request Form""",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.0",
     "category": "Cooperative management",
     "website": "https://coopiteasy.be",
     "author": "Coop IT Easy SC",
