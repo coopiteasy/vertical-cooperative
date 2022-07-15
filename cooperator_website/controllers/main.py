@@ -8,6 +8,7 @@ from odoo.http import request
 from odoo.tools.translate import _
 
 # Only use for behavior, don't stock it
+# Used to filter the session dict to keep only the form fields
 _TECHNICAL = ["view_from", "view_callback"]
 # Allow in description
 _BLACKLIST = [
@@ -86,7 +87,7 @@ class WebsiteSubscription(http.Controller):
                 values[field] = kwargs.pop(field)
 
         values.update(kwargs=kwargs.items())
-        # redirect url to fall back on become coopererator in template redirection
+        # redirect url to fall back on become cooperator in template redirection
         values["redirect_url"] = request.httprequest.url
         return request.render("cooperator_website.becomecooperator", values)
 
@@ -252,7 +253,10 @@ class WebsiteSubscription(http.Controller):
         sub_req_obj = request.env["subscription.request"]
 
         redirect = "cooperator_website.becomecooperator"
-        # redirect url to fall back on become coopererator in template redirection
+
+        # url to use for "already have an account button" to go to become cooperator
+        # rather than subscribe share after a failed validation
+        # it is deleted at the end of the validation
         values["redirect_url"] = urljoin(
             request.httprequest.host_url, "become_cooperator"
         )
@@ -343,6 +347,10 @@ class WebsiteSubscription(http.Controller):
                 + company.currency_id.symbol
             )
             return request.render(redirect, values)
+
+        if "redirect_url" in values:
+            del values["redirect_url"]
+
         return True
 
     @http.route(
@@ -428,6 +436,9 @@ class WebsiteSubscription(http.Controller):
         values["source"] = "website"
 
         values["share_product_id"] = self.get_selected_share(kwargs).id
+
+        if "confirm_email" in values:
+            del values["confirm_email"]
 
         if is_company:
             if kwargs.get("company_register_number"):
