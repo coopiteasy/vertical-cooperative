@@ -249,7 +249,7 @@
         <div class="col-md-7 col-sm-8">
             <input
                     type="file"
-                    class="form-control"
+                    class="form-control form-control-sm"
                     name="Resume"
                     t-attf-value="#{file or ''}"
                 />
@@ -406,7 +406,7 @@
                     <input
                         type="text"
                         id="total_parts"
-                        class="form-control total"
+                        class="form-control form-control-sm total"
                         name="total_parts"
                         t-att-data-max="company.subscription_maximum_amount"
                         t-att-readonly="'readonly'"
@@ -632,7 +632,7 @@
                                     </label>
                                     <input
                                         type="text"
-                                        class="form-control mandatory-field"
+                                        class="form-control form-control-sm mandatory-field"
                                         name="company_register_number"
                                         required="True"
                                         t-att-readonly="logged"
@@ -649,7 +649,7 @@
                                     </label>
                                     <input
                                         type="text"
-                                        class="form-control mandatory-field"
+                                        class="form-control form-control-sm mandatory-field"
                                         name="company_name"
                                         required="True"
                                         t-att-readonly="logged"
@@ -666,7 +666,7 @@
                                     </label>
                                     <select
                                         name="company_type"
-                                        class="form-control"
+                                        class="form-control form-control-sm"
                                         required="True"
                                         t-att-readonly="logged"
                                     >
@@ -690,7 +690,7 @@
                                     </label>
                                     <input
                                         type="text"
-                                        class="form-control mandatory-field"
+                                        class="form-control form-control-sm mandatory-field"
                                         name="company_email"
                                         required="True"
                                         t-attf-value="#{company_email or ''}"
@@ -706,7 +706,7 @@
                                     </label>
                                     <input
                                         type="confirm_email"
-                                        class="form-control mandatory-field"
+                                        class="form-control form-control-sm mandatory-field"
                                         name="confirm_email"
                                         t-att-required="not logged"
                                         t-att-readonly="logged"
