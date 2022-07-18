@@ -39,6 +39,10 @@
                                 attrs="{'invisible':['|',('parent_id','=',False),('is_company','=',True)]}"
                             />
                             <field
+                                name="legal_form"
+                                attrs="{'invisible':[('is_company','=',False)]}"
+                            />
+                            <field
                                 name="cooperator_register_number"
                                 readonly="True"
                                 attrs="{'invisible':[('member','=',False)]}"
