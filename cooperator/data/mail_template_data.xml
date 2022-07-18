@@ -255,12 +255,12 @@
             <field name="name">Payment Received Confirmation - Send By Email
             </field>
             <field name="email_from">
-                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+                ${(object.env.company.coop_email_contact or object.user_id.email)|safe}
             </field>
             <field name="subject">Payment Received Confirmation</field>
             <field name="partner_to">${object.id}</field>
             <field name="reply_to">
-                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+                ${(object.env.company.coop_email_contact or object.user_id.email)|safe}
             </field>
             <field name="model_id" ref="model_res_partner" />
             <field name="auto_delete" eval="True" />
@@ -280,36 +280,36 @@
     <p>We confirm the reception of you payment. You are now shareholder of our cooperative</p>
 
     <br/>
-    <p>Find in attachment your ${object.company_id.name} certificate.</p>
-    <p>Thank you for choosing ${object.company_id.name or 'us'}!</p>
+    <p>Find in attachment your ${object.env.company.name} certificate.</p>
+    <p>Thank you for choosing ${object.env.company.name or 'us'}!</p>
     <br/>
     <p>Sustainably your,</p>
-    <p>${object.company_id.name}.</p>
+    <p>${object.env.company.name}.</p>
 
-    % if object.company_id.street:
-        ${object.company_id.street}
+    % if object.env.company.street:
+        ${object.env.company.street}
     % endif
-    % if object.company_id.street2:
-        ${object.company_id.street2}<br/>
+    % if object.env.company.street2:
+        ${object.env.company.street2}<br/>
     % endif
-    % if object.company_id.city or object.company_id.zip:
-        ${object.company_id.zip} ${object.company_id.city}<br/>
+    % if object.env.company.city or object.env.company.zip:
+        ${object.env.company.zip} ${object.env.company.city}<br/>
     % endif
-    % if object.company_id.country_id:
-        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>
+    % if object.env.company.country_id:
+        ${object.env.company.state_id and ('%s, ' % object.env.company.state_id.name) or ''} ${object.env.company.country_id.name or ''}<br/>
     % endif
-    % if object.company_id.phone:
-        Phone:&nbsp; ${object.company_id.phone}
+    % if object.env.company.phone:
+        Phone:&nbsp; ${object.env.company.phone}
     % endif
 
-    % if object.company_id.website:
+    % if object.env.company.website:
         <div>
-            Web :&nbsp;<a href="${object.company_id.website}">${object.company_id.website}</a>
+            Web :&nbsp;<a href="${object.env.company.website}">${object.env.company.website}</a>
         </div>
     %endif
 
     <div>
-        <img src=${object.company_id.logo_url}>
+        <img src=${object.env.company.logo_url}>
     </div>
 </div>
             ]]></field>
@@ -320,12 +320,12 @@
                 Send By Email
             </field>
             <field name="email_from">
-                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+                ${(object.env.company.coop_email_contact or object.user_id.email)|safe}
             </field>
             <field name="subject">Payment Received Confirmation</field>
             <field name="partner_to">${object.id}</field>
             <field name="reply_to">
-                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+                ${(object.env.company.coop_email_contact or object.user_id.email)|safe}
             </field>
             <field name="model_id" ref="model_res_partner" />
             <field name="auto_delete" eval="True" />
@@ -345,36 +345,36 @@
     <p>We confirm the reception of you payment for the new share(s) you have taken.</p>
 
     <br/>
-    <p>Find in attachment your ${object.company_id.name} certificate.</p>
-    <p>Thank you for trusting ${object.company_id.name or 'us'}!</p>
+    <p>Find in attachment your ${object.env.company.name} certificate.</p>
+    <p>Thank you for trusting ${object.env.company.name or 'us'}!</p>
     <br/>
     <p>Sustainably your,</p>
-    <p>${object.company_id.name}.</p>
+    <p>${object.env.company.name}.</p>
 
-    % if object.company_id.street:
-        ${object.company_id.street}
+    % if object.env.company.street:
+        ${object.env.company.street}
     % endif
-    % if object.company_id.street2:
-        ${object.company_id.street2}<br/>
+    % if object.env.company.street2:
+        ${object.env.company.street2}<br/>
     % endif
-    % if object.company_id.city or object.company_id.zip:
-        ${object.company_id.zip} ${object.company_id.city}<br/>
+    % if object.env.company.city or object.env.company.zip:
+        ${object.env.company.zip} ${object.env.company.city}<br/>
     % endif
-    % if object.company_id.country_id:
-        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>
+    % if object.env.company.country_id:
+        ${object.env.company.state_id and ('%s, ' % object.env.company.state_id.name) or ''} ${object.env.company.country_id.name or ''}<br/>
     % endif
-    % if object.company_id.phone:
-        Phone:&nbsp; ${object.company_id.phone}
+    % if object.env.company.phone:
+        Phone:&nbsp; ${object.env.company.phone}
     % endif
 
-    % if object.company_id.website:
+    % if object.env.company.website:
         <div>
-            Web :&nbsp;<a href="${object.company_id.website}">${object.company_id.website}</a>
+            Web :&nbsp;<a href="${object.env.company.website}">${object.env.company.website}</a>
         </div>
     %endif
 
     <div>
-        <img src=${object.company_id.logo_url}>
+        <img src=${object.env.company.logo_url}>
     </div>
 </div>
             ]]></field>
@@ -383,12 +383,12 @@
         <record id="email_template_share_transfer" model="mail.template">
             <field name="name">Share transfer - Send By Email</field>
             <field name="email_from">
-                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+                ${(object.env.company.coop_email_contact or object.user_id.email)|safe}
             </field>
             <field name="subject">Share transfer</field>
             <field name="partner_to">${object.id}</field>
             <field name="reply_to">
-                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+                ${(object.env.company.coop_email_contact or object.user_id.email)|safe}
             </field>
             <field name="model_id" ref="model_res_partner" />
             <field name="auto_delete" eval="True" />
@@ -408,36 +408,36 @@
     <p>We confirm you that the shares have been transfered to you. If you was not already cooperator, you are now shareholder of our cooperative</p>
 
     <br/>
-    <p>Find in attachment your ${object.company_id.name} certificate.</p>
-    <p>Thank you for choosing ${object.company_id.name or 'us'}!</p>
+    <p>Find in attachment your ${object.env.company.name} certificate.</p>
+    <p>Thank you for choosing ${object.env.company.name or 'us'}!</p>
     <br/>
     <p>Sustainably your,</p>
-    <p>${object.company_id.name}.</p>
+    <p>${object.env.company.name}.</p>
 
-    % if object.company_id.street:
-        ${object.company_id.street}
+    % if object.env.company.street:
+        ${object.env.company.street}
     % endif
-    % if object.company_id.street2:
-        ${object.company_id.street2}<br/>
+    % if object.env.company.street2:
+        ${object.env.company.street2}<br/>
     % endif
-    % if object.company_id.city or object.company_id.zip:
-        ${object.company_id.zip} ${object.company_id.city}<br/>
+    % if object.env.company.city or object.env.company.zip:
+        ${object.env.company.zip} ${object.env.company.city}<br/>
     % endif
-    % if object.company_id.country_id:
-        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>
+    % if object.env.company.country_id:
+        ${object.env.company.state_id and ('%s, ' % object.env.company.state_id.name) or ''} ${object.env.company.country_id.name or ''}<br/>
     % endif
-    % if object.company_id.phone:
-        Phone:&nbsp; ${object.company_id.phone}
+    % if object.env.company.phone:
+        Phone:&nbsp; ${object.env.company.phone}
     % endif
 
-    % if object.company_id.website:
+    % if object.env.company.website:
         <div>
-            Web :&nbsp;<a href="${object.company_id.website}">${object.company_id.website}</a>
+            Web :&nbsp;<a href="${object.env.company.website}">${object.env.company.website}</a>
         </div>
     %endif
 
     <div>
-        <img src=${object.company_id.logo_url}>
+        <img src=${object.env.company.logo_url}>
     </div>
 </div>
             ]]></field>
@@ -446,12 +446,12 @@
         <record id="email_template_share_update" model="mail.template">
             <field name="name">Share update - Send By Email</field>
             <field name="email_from">
-                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+                ${(object.env.company.coop_email_contact or object.user_id.email)|safe}
             </field>
             <field name="subject">Share update</field>
             <field name="partner_to">${object.id}</field>
             <field name="reply_to">
-                ${(object.company_id.coop_email_contact or object.user_id.email)|safe}
+                ${(object.env.company.coop_email_contact or object.user_id.email)|safe}
             </field>
             <field name="model_id" ref="model_res_partner" />
             <field name="auto_delete" eval="True" />
@@ -471,36 +471,36 @@
     <p>We confirm you that the adaptation on shares portfolio has been succesfully performed. Your cooperator certificate has been adapted accordingly</p>
 
     <br/>
-    <p>Find in attachment your ${object.company_id.name} certificate.</p>
-    <p>Thank you for choosing ${object.company_id.name or 'us'}!</p>
+    <p>Find in attachment your ${object.env.company.name} certificate.</p>
+    <p>Thank you for choosing ${object.env.company.name or 'us'}!</p>
     <br/>
     <p>Sustainably your,</p>
-    <p>${object.company_id.name}.</p>
+    <p>${object.env.company.name}.</p>
 
-    % if object.company_id.street:
-        ${object.company_id.street}
+    % if object.env.company.street:
+        ${object.env.company.street}
     % endif
-    % if object.company_id.street2:
-        ${object.company_id.street2}<br/>
+    % if object.env.company.street2:
+        ${object.env.company.street2}<br/>
     % endif
-    % if object.company_id.city or object.company_id.zip:
-        ${object.company_id.zip} ${object.company_id.city}<br/>
+    % if object.env.company.city or object.env.company.zip:
+        ${object.env.company.zip} ${object.env.company.city}<br/>
     % endif
-    % if object.company_id.country_id:
-        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>
+    % if object.env.company.country_id:
+        ${object.env.company.state_id and ('%s, ' % object.env.company.state_id.name) or ''} ${object.env.company.country_id.name or ''}<br/>
     % endif
-    % if object.company_id.phone:
-        Phone:&nbsp; ${object.company_id.phone}
+    % if object.env.company.phone:
+        Phone:&nbsp; ${object.env.company.phone}
     % endif
 
-    % if object.company_id.website:
+    % if object.env.company.website:
         <div>
-            Web :&nbsp;<a href="${object.company_id.website}">${object.company_id.website}</a>
+            Web :&nbsp;<a href="${object.env.company.website}">${object.env.company.website}</a>
         </div>
     %endif
 
      <div>
-         <img src=${object.company_id.logo_url}>
+         <img src=${object.env.company.logo_url}>
      </div>
 </div>
             ]]></field>
