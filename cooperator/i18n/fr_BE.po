@@ -635,7 +635,7 @@ msgstr "Approbation du règlement intérieur"
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__generic_rules_approved
 #: model:ir.model.fields,field_description:cooperator.field_res_users__generic_rules_approved
 msgid "Approved generic rules"
-msgstr "Approbation du règlement intérieur"
+msgstr "Approbation des règles générales"
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_request_filter
@@ -1129,7 +1129,7 @@ msgstr "Afficher l'approbation des risques financiers"
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__display_generic_rules_approval
 msgid "Display Generic Rules Approval"
-msgstr "Afficher l'approbation du règlement intérieur"
+msgstr "Afficher l'approbation des règles générales"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__display_internal_rules_approval
@@ -1316,7 +1316,7 @@ msgstr "Genre"
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__generic_rules_approval_text
 msgid "Generic Rules Approval Text"
-msgstr "Texte d'approbation du règlement intérieur"
+msgstr "Texte d'approbation des règles générales"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__generic_rules_approved
@@ -1455,7 +1455,7 @@ msgstr "L'approbation des risques financiers est-elle obligatoire ?"
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__generic_rules_approval_required
 msgid "Is generic rules approval required?"
-msgstr "L'approbation du règlement intérieur est-elle obligatoire?"
+msgstr "L'approbation des règles générales est-elle obligatoire?"
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__internal_rules_approval_required
@@ -2315,7 +2315,7 @@ msgstr "Texte à afficher à côté de la case à cocher pour approuver le règl
 #. module: cooperator
 #: model:ir.model.fields,help:cooperator.field_res_company__generic_rules_approval_text
 msgid "Text to display aside the checkbox to approve the generic rules."
-msgstr "Texte à afficher à côté de la case à cocher pour approuver le règlement intérieur"
+msgstr "Texte à afficher à côté de la case à cocher pour approuver les règles générales"
 
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:702
