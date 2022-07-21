@@ -18,6 +18,7 @@
         "partner_firstname",
         "partner_contact_birthdate",
         "partner_contact_gender",
+        "partner_contact_address",
         "mail",
     ],
     "author": "Coop IT Easy SC",
