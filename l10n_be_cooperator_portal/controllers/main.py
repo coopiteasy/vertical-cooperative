@@ -27,6 +27,7 @@ class PortalTaxShelter(CustomerPortal):
         self, taxshelter_certificate, access_token, **kwargs
     ):
         values = {
+            "company_id": self.env.company,
             "page_name": "taxshelter",
             "taxshelter": taxshelter_certificate,
         }
@@ -87,6 +88,7 @@ class PortalTaxShelter(CustomerPortal):
 
         values.update(
             {
+                "company_id": self.env.company,
                 "date": date_begin,
                 "tax_shelters": tax_shelters,
                 "page_name": "taxshelter",
