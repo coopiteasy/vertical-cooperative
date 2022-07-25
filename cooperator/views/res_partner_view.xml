@@ -19,14 +19,7 @@
                             context="{'default_active_id': active_id}"
                             groups="cooperator.cooperator_group_user"
                         />
-                        <button
-                            id="action_view_update_partner_info"
-                            string="Update info"
-                            name="%(action_view_update_partner_info)d"
-                            type="action"
-                            context="{'default_active_id': active_id}"
-                            groups="cooperator.cooperator_group_user"
-                        />
+
                     </header>
                 </sheet>
 
