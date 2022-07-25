@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tax_shelter_declaration_user,tax.shelter.declaration,model_tax_shelter_declaration,cooperator.cooperator_group_user,1,0,0,0
+access_tax_shelter_declaration_manager,tax.shelter.declaration,model_tax_shelter_declaration,cooperator.cooperator_group_manager,1,1,1,1
+access_tax_shelter_certificate_user,tax.shelter.certificate,model_tax_shelter_certificate,cooperator.cooperator_group_user,1,0,0,0
+access_tax_shelter_certificate_manager,tax.shelter.certificate,model_tax_shelter_certificate,cooperator.cooperator_group_manager,1,1,1,1
+access_certificate_line_user,certificate.line,model_certificate_line,cooperator.cooperator_group_user,1,0,0,0
+access_certificate_line_manager,certificate.line,model_certificate_line,cooperator.cooperator_group_manager,1,1,1,1

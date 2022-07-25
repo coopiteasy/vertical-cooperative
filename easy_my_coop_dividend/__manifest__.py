@@ -1,5 +1,5 @@
 #    Copyright (C) 2013-2018 Open Architects Consulting SPRL.
-#    Copyright (C) 2013-2018 Coop IT Easy SCRLfs.
+#    Copyright (C) 2013-2018 Coop IT Easy SC.
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -27,7 +27,7 @@
     "version": "12.0.0.0.1",
     "website": "https://coopiteasy.be",
     "category": "Cooperative Management",
-    "depends": ["easy_my_coop"],
+    "depends": ["cooperator"],
     "data": ["security/ir.model.access.csv", "views/dividend_views.xml"],
     "installable": False,
 }

@@ -6,9 +6,10 @@ dependency_installation_mode: OCA
 generate_requirements_txt: true
 include_wkhtmltopdf: false
 odoo_version: 12.0
-org_name: Coop IT Easy SCRLfs
+org_name: Coop IT Easy SC
 org_slug: coopiteasy
-rebel_module_groups: []
+rebel_module_groups:
+- easy_my_coop_connector
 repo_description: This project aim to deal with modules related to cooperatives management.
 repo_name: Vertical Cooperative
 repo_slug: vertical-cooperative

@@ -1,4 +1,4 @@
-#    Copyright (C) 2018- Coop IT Easy SCRLfs.
+#    Copyright (C) 2018- Coop IT Easy SC.
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -22,12 +22,12 @@
     Generate a xlsx file with information on current state of subscription
     request, cooperators and capital release request.
     """,
-    "author": "Coop IT Easy SCRLfs",
+    "author": "Coop IT Easy SC",
     "license": "AGPL-3",
     "version": "12.0.0.0.1",
     "website": "https://coopiteasy.be",
     "category": "Cooperative Management",
-    "depends": ["easy_my_coop"],
+    "depends": ["cooperator"],
     "external_dependencies": {"python": ["xlsxwriter"]},
     "data": ["wizard/export_global_wizard.xml"],
     "installable": False,

@@ -6,10 +6,10 @@
     "name": "Easy My Coop Connector",
     "version": "12.0.0.0.1",
     "depends": [
-        "easy_my_coop",
-        "easy_my_coop_api_logs",
+        "cooperator",
+        "cooperator_api_logs",
     ],
-    "author": "Coop IT Easy SCRLfs",
+    "author": "Coop IT Easy SC",
     "category": "Connector",
     "website": "https://coopiteasy.be",
     "license": "AGPL-3",
@@ -26,6 +26,6 @@
         "data/cron.xml",
     ],
     "demo": ["demo/demo.xml"],
-    "installable": True,
+    "installable": False,
     "application": False,
 }

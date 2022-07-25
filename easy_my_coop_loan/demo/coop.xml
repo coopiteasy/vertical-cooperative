@@ -15,7 +15,7 @@
             eval="datetime.today() + timedelta(days=60)"
         />
         <field name="term_date" eval="datetime.today() + timedelta(days=600)" />
-        <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo" />
+        <field name="user_id" ref="cooperator.res_users_manager_cooperator_demo" />
         <field name="gross_rate">3</field>
         <field name="face_value">100</field>
         <field name="minimum_amount">4000</field>
@@ -41,7 +41,7 @@
             eval="datetime.today() + timedelta(days=60)"
         />
         <field name="term_date" eval="datetime.today() + timedelta(days=600)" />
-        <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo" />
+        <field name="user_id" ref="cooperator.res_users_manager_cooperator_demo" />
         <field name="gross_rate">3</field>
         <field name="face_value">100</field>
         <field name="minimum_amount">4000</field>
@@ -67,7 +67,7 @@
             eval="datetime.today() + timedelta(days=60)"
         />
         <field name="term_date" eval="datetime.today() + timedelta(days=600)" />
-        <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo" />
+        <field name="user_id" ref="cooperator.res_users_manager_cooperator_demo" />
         <field name="gross_rate">3</field>
         <field name="face_value">100</field>
         <field name="minimum_amount">4000</field>
@@ -93,7 +93,7 @@
             eval="datetime.today() + timedelta(days=60)"
         />
         <field name="term_date" eval="datetime.today() + timedelta(days=600)" />
-        <field name="user_id" ref="easy_my_coop.res_users_manager_emc_demo" />
+        <field name="user_id" ref="cooperator.res_users_manager_cooperator_demo" />
         <field name="gross_rate">3</field>
         <field name="face_value">100</field>
         <field name="minimum_amount">1000</field>
@@ -111,66 +111,66 @@
     <record id="loan_issue_line_1_demo" model="loan.issue.line">
         <field name="loan_issue_id" ref="loan_issue_1_demo" />
         <field name="quantity">50</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_1_demo" />
+        <field name="partner_id" ref="cooperator.res_partner_cooperator_1_demo" />
     </record>
 
     <record id="loan_issue_line_2_demo" model="loan.issue.line">
         <field name="loan_issue_id" ref="loan_issue_1_demo" />
         <field name="quantity">20</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_2_demo" />
+        <field name="partner_id" ref="cooperator.res_partner_cooperator_2_demo" />
     </record>
 
     <record id="loan_issue_line_3_demo" model="loan.issue.line">
         <field name="loan_issue_id" ref="loan_issue_1_demo" />
         <field name="quantity">40</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_4_demo" />
+        <field name="partner_id" ref="cooperator.res_partner_cooperator_4_demo" />
     </record>
 
     <record id="loan_issue_line_4_demo" model="loan.issue.line">
         <field name="loan_issue_id" ref="loan_issue_2_demo" />
         <field name="quantity">50</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_2_demo" />
+        <field name="partner_id" ref="cooperator.res_partner_cooperator_2_demo" />
     </record>
 
     <record id="loan_issue_line_5_demo" model="loan.issue.line">
         <field name="loan_issue_id" ref="loan_issue_2_demo" />
         <field name="quantity">10</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_3_demo" />
+        <field name="partner_id" ref="cooperator.res_partner_cooperator_3_demo" />
     </record>
 
     <record id="loan_issue_line_6_demo" model="loan.issue.line">
         <field name="loan_issue_id" ref="loan_issue_2_demo" />
         <field name="quantity">25</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_4_demo" />
+        <field name="partner_id" ref="cooperator.res_partner_cooperator_4_demo" />
     </record>
 
     <record id="loan_issue_line_7_demo" model="loan.issue.line">
         <field name="loan_issue_id" ref="loan_issue_3_demo" />
         <field name="quantity">50</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_1_demo" />
+        <field name="partner_id" ref="cooperator.res_partner_cooperator_1_demo" />
     </record>
 
     <record id="loan_issue_line_8_demo" model="loan.issue.line">
         <field name="loan_issue_id" ref="loan_issue_3_demo" />
         <field name="quantity">15</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_3_demo" />
+        <field name="partner_id" ref="cooperator.res_partner_cooperator_3_demo" />
     </record>
 
     <record id="loan_issue_line_9_demo" model="loan.issue.line">
         <field name="loan_issue_id" ref="loan_issue_4_demo" />
         <field name="quantity">25</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_2_demo" />
+        <field name="partner_id" ref="cooperator.res_partner_cooperator_2_demo" />
     </record>
 
     <record id="loan_issue_line_10_demo" model="loan.issue.line">
         <field name="loan_issue_id" ref="loan_issue_4_demo" />
         <field name="quantity">50</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_1_demo" />
+        <field name="partner_id" ref="cooperator.res_partner_cooperator_1_demo" />
     </record>
 
     <record id="loan_issue_line_11_demo" model="loan.issue.line">
         <field name="loan_issue_id" ref="loan_issue_4_demo" />
         <field name="quantity">100</field>
-        <field name="partner_id" ref="easy_my_coop.res_partner_cooperator_4_demo" />
+        <field name="partner_id" ref="cooperator.res_partner_cooperator_4_demo" />
     </record>
 </odoo>

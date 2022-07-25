@@ -35,7 +35,7 @@
                         string="Confirm"
                         type="object"
                         states="draft"
-                        groups="easy_my_coop.group_easy_my_coop_manager"
+                        groups="cooperator.cooperator_group_manager"
                     />
                     <button
                         name="action_cancel"
@@ -43,14 +43,14 @@
                         type="object"
                         states="draft,ongoing"
                         confirm="Are you sure you want to cancel this loan issue?"
-                        groups="easy_my_coop.group_easy_my_coop_manager"
+                        groups="cooperator.cooperator_group_manager"
                     />
                     <button
                         name="action_open"
                         string="Open"
                         type="object"
                         states="confirmed"
-                        groups="easy_my_coop.group_easy_my_coop_manager"
+                        groups="cooperator.cooperator_group_manager"
                     />
                     <button
                         name="action_close"
@@ -58,21 +58,21 @@
                         type="object"
                         states="ongoing"
                         confirm="Are you sure you want to close this loan issue?"
-                        groups="easy_my_coop.group_easy_my_coop_manager"
+                        groups="cooperator.cooperator_group_manager"
                     />
                     <button
                         name="action_draft"
                         string="Set to draft"
                         type="object"
                         states="confirmed,cancelled"
-                        groups="easy_my_coop.group_easy_my_coop_manager"
+                        groups="cooperator.cooperator_group_manager"
                     />
                     <button
                         name="compute_loan_interest"
                         string="Compute interest"
                         type="object"
                         states="closed,ongoing"
-                        groups="easy_my_coop.group_easy_my_coop_manager"
+                        groups="cooperator.cooperator_group_manager"
                     />
 
                     <field

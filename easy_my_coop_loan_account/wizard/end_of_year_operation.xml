@@ -34,6 +34,6 @@
         view_mode="form"
         view_type="form"
         target="new"
-        groups="easy_my_coop.group_easy_my_coop_manager"
+        groups="cooperator.cooperator_group_manager"
     />
 </odoo>

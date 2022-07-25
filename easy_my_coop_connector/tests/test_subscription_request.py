@@ -8,17 +8,17 @@ from unittest.mock import Mock, patch
 
 import requests
 
-from odoo.addons.easy_my_coop.tests.test_base import EMCBaseCase
+from odoo.addons.cooperator.tests.test_base import CooperatorBaseCase
 
 from .test_data import SR_GET_RESULT, SR_SEARCH_RESULT, SR_VALIDATE_RESULT, dict_to_dump
 
 
-class EMCSRConnectorCase(EMCBaseCase):
+class EMCSRConnectorCase(CooperatorBaseCase):
     def setUp(self):
         super().setUp()
         self.backend = self.browse_ref("easy_my_coop_connector.emc_backend_demo")
         self.share_type_B_pt = self.browse_ref(
-            "easy_my_coop.product_template_share_type_2_demo"
+            "cooperator.product_template_share_type_2_demo"
         )
         self.share_type_B_pp = self.share_type_B_pt.product_variant_id
 
@@ -66,7 +66,7 @@ class EMCSRConnectorCase(EMCBaseCase):
         self.assertEquals(srequest.iban, "98765434567")
 
     def test_validate_request(self):
-        srequest = self.browse_ref("easy_my_coop.subscription_request_1_demo")
+        srequest = self.browse_ref("cooperator.subscription_request_1_demo")
         with patch.object(requests, "put") as mock_get:
             mock_get.return_value = mock_response = Mock()
             mock_response.status_code = 200
@@ -85,7 +85,7 @@ class EMCSRConnectorCase(EMCBaseCase):
         )
 
     def test_block_subscription_request(self):
-        srequest = self.browse_ref("easy_my_coop.subscription_request_1_demo")
+        srequest = self.browse_ref("cooperator.subscription_request_1_demo")
         with patch.object(requests, "put") as mock_get:
             mock_get.return_value = mock_response = Mock()
             mock_response.status_code = 200
@@ -98,7 +98,7 @@ class EMCSRConnectorCase(EMCBaseCase):
         self.assertEquals(srequest.state, "block")
 
     def test_unblock_subscription_request(self):
-        srequest = self.browse_ref("easy_my_coop.subscription_request_1_demo")
+        srequest = self.browse_ref("cooperator.subscription_request_1_demo")
         srequest.state = "block"
         with patch.object(requests, "put") as mock_get:
             mock_get.return_value = mock_response = Mock()
@@ -111,7 +111,7 @@ class EMCSRConnectorCase(EMCBaseCase):
         self.assertEquals(srequest.state, "draft")
 
     def test_cancel_subscription_request(self):
-        srequest = self.browse_ref("easy_my_coop.subscription_request_1_demo")
+        srequest = self.browse_ref("cooperator.subscription_request_1_demo")
         with patch.object(requests, "put") as mock_get:
             mock_get.return_value = mock_response = Mock()
             mock_response.status_code = 200
@@ -123,7 +123,7 @@ class EMCSRConnectorCase(EMCBaseCase):
         self.assertEquals(srequest.state, "cancelled")
 
     def test_put_on_waiting_list(self):
-        srequest = self.browse_ref("easy_my_coop.subscription_request_1_demo")
+        srequest = self.browse_ref("cooperator.subscription_request_1_demo")
         with patch.object(requests, "put") as mock_get:
             mock_get.return_value = mock_response = Mock()
             mock_response.status_code = 200
