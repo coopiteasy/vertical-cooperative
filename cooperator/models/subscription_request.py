@@ -110,10 +110,7 @@ class SubscriptionRequest(models.Model):
         if not cooperator.cooperator:
             cooperator.write({"cooperator": True})
 
-        # keep only values related to partner
-        partner_vals = {key: value for (key, value) in vals.items() if key in _REQUIRED}
-
-        subscription_request = super().create(partner_vals)
+        subscription_request = super().create(vals)
         subscription_request._send_confirmation_mail()
         return subscription_request
 
