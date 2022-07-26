@@ -57,7 +57,6 @@ class SubscriptionRequest(models.Model):
 
     def is_member(self, vals, cooperator):
         if cooperator.member:
-            vals["type"] = "increase"
             vals["already_cooperator"] = True
         return vals
 
@@ -97,12 +96,13 @@ class SubscriptionRequest(models.Model):
             if vals.get("email"):
                 cooperator = partner_obj.get_cooperator_from_email(vals.get("email"))
             if cooperator:
-                vals["type"] = "subscription"
+                vals["type"] = "increase"
                 vals = self.is_member(vals, cooperator)
                 vals["partner_id"] = cooperator.id
         else:
             cooperator_id = vals.get("partner_id")
             cooperator = partner_obj.browse(cooperator_id)
+            vals["type"] = "increase"
             vals = self.is_member(vals, cooperator)
 
         if not cooperator.cooperator:
@@ -120,7 +120,7 @@ class SubscriptionRequest(models.Model):
                 vals.get("company_register_number")
             )
             if cooperator:
-                vals["type"] = "subscription"
+                vals["type"] = "increase"
                 vals = self.is_member(vals, cooperator)
                 vals["partner_id"] = cooperator.id
         subscription_request = super().create(vals)
@@ -203,7 +203,6 @@ class SubscriptionRequest(models.Model):
     type = fields.Selection(
         [
             ("new", "New Cooperator"),
-            ("subscription", "Subscription"),
             ("increase", "Increase number of share"),
         ],
         string="Type",
