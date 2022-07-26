@@ -1,9 +1,11 @@
 odoo.define("cooperator.oe_cooperator", function (require) {
     $(document).ready(function () {
-        "use strict";
+        // "use strict";
         var ajax = require("web.ajax");
 
         $(".oe_cooperator").each(function () {
+            "use strict";
+
             var oe_cooperator = this;
 
             $("#share_product_id").change(function () {
