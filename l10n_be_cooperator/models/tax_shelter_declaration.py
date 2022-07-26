@@ -26,7 +26,7 @@ class TaxShelterDeclaration(models.Model):
     _description = "Tax Shelter Declaration"
 
     name = fields.Char(string="Declaration year", required=True)
-    fiscal_year = fields.Char(String="Fiscal year", required=True)
+    fiscal_year = fields.Char(string="Fiscal year", required=True)
     tax_shelter_certificates = fields.One2many(
         "tax.shelter.certificate",
         "declaration_id",
@@ -35,8 +35,8 @@ class TaxShelterDeclaration(models.Model):
     )
     date_from = fields.Date(string="Date from", required=True)
     date_to = fields.Date(string="Date to", required=True)
-    month_from = fields.Char(String="Month from", required=True)
-    month_to = fields.Char(String="Month to", required=True)
+    month_from = fields.Char(string="Month from", required=True)
+    month_to = fields.Char(string="Month to", required=True)
     tax_shelter_percentage = fields.Selection(
         [("30", "30%"), ("45", "45%")],
         string="Tax Shelter percentage",
@@ -64,7 +64,7 @@ class TaxShelterDeclaration(models.Model):
         string="Tax shelter capital limit", required=True
     )
     previously_subscribed_capital = fields.Float(
-        String="Capital previously subscribed", readonly=True
+        string="Capital previously subscribed", readonly=True
     )
     excluded_cooperator = fields.Many2many(
         "res.partner",
