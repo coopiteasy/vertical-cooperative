@@ -10,5 +10,11 @@ class ResPartner(models.Model):
             ("asbl", "ASBL"),
             ("sprl", "SPRL"),
             ("sa", "SA"),
-        ]
+        ],
+        ondelete={
+            "scrl": "set null",
+            "asbl": "set null",
+            "sprl": "set null",
+            "sa": "set null",
+        },
     )
