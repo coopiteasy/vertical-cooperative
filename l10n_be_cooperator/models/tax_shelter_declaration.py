@@ -138,7 +138,6 @@ class TaxShelterDeclaration(models.Model):
 
         return partner_certificate
 
-    @api.multi
     def compute_declaration(self):
         self.ensure_one()
         entries = self.env["subscription.register"].search(
@@ -164,13 +163,11 @@ class TaxShelterDeclaration(models.Model):
 
         self.state = "computed"
 
-    @api.multi
     def validate_declaration(self):
         self.ensure_one()
         self.tax_shelter_certificates.write({"state": "validated"})
         self.state = "validated"
 
-    @api.multi
     def reset_declaration(self):
         self.ensure_one()
         if not self.state == "validated":
@@ -296,7 +293,6 @@ class TaxShelterCertificate(models.Model):
         # TODO
         return attachments
 
-    @api.multi
     def send_certificates(self):
         tax_shelter_mail_template = self.env.ref(
             "l10n_be_cooperator.email_template_tax_shelter_certificate",
@@ -331,19 +327,16 @@ class TaxShelterCertificate(models.Model):
             # du statut de la déclaration tax shelter dont elle dépend
             self.env.cr.commit()
 
-    @api.multi
     def print_subscription_certificate(self):
         self.ensure_one()
         report, name = REPORT_DIC["subscription"]
         return self.env.ref(report).report_action(self)
 
-    @api.multi
     def print_shares_certificate(self):
         self.ensure_one()
         report, name = REPORT_DIC["shares"]
         return self.env.ref(report).report_action(self)
 
-    @api.multi
     def _compute_amounts(self):
         for certificate in self:
             total_amount_previously_subscribed = 0
@@ -473,7 +466,6 @@ class TaxShelterCertificateLine(models.Model):
     capital_after_sub = fields.Float(string="Capital after subscription", readonly=True)
     capital_limit = fields.Float(string="Capital limit", readonly=True)
 
-    @api.multi
     @api.depends("quantity", "share_unit_price")
     def _compute_totals(self):
         for line in self:

@@ -1,10 +1,9 @@
-from odoo import api, models
+from odoo import models
 
 
 class MailTemplate(models.Model):
     _inherit = "mail.template"
 
-    @api.multi
     def send_mail_with_multiple_attachments(
         self,
         res_id,
@@ -58,3 +57,4 @@ class MailTemplate(models.Model):
         if force_send:
             mail.send(raise_exception=raise_exception)
         return mail.id  # TDE CLEANME: return mail + api.returns ?
+        # migration note : no api.returns in 13.0
