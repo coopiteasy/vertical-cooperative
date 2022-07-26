@@ -275,7 +275,7 @@ class TaxShelterCertificate(models.Model):
 
     def generate_pdf_report(self, report_type):
         report, name = REPORT_DIC[report_type]
-        report = self.env.ref(report).render_qweb_pdf(self.id)[0]
+        report = self.env.ref(report)._render_qweb_pdf(self.id)[0]
         report = base64.b64encode(report)
         report_name = (
             self.partner_id.name + " " + name + " " + self.declaration_id.name + ".pdf"
