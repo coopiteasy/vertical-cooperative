@@ -8,14 +8,14 @@
 {
     "name": "Cooperators Belgium",
     "summary": "Cooperators Belgium Localization",
-    "version": "12.0.2.0.0",
+    "version": "13.0.1.0.0",
     "depends": [
         "cooperator",
         "cooperator_website",
         "l10n_be",
         "l10n_be_invoice_bba",
     ],
-    "author": "Coop IT Easy SCRLfs",
+    "author": "Coop IT Easy SC",
     "category": "Cooperative management",
     "website": "https://coopiteasy.be",
     "license": "AGPL-3",
