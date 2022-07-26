@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="0">
+        <report
+            id="action_tax_shelter_subscription_report"
+            model="tax.shelter.certificate"
+            string="Tax shelter subscription report"
+            report_type="qweb-pdf"
+            name="easy_my_coop_taxshelter_report.tax_shelter_subscription_report"
+            file="easy_my_coop_taxshelter_report.tax_shelter_subscription_report.xml"
+            multi="True"
+            menu="True"
+        />
+        <report
+            id="action_tax_shelter_shares_report"
+            model="tax.shelter.certificate"
+            string="Tax shelter shares report"
+            report_type="qweb-pdf"
+            name="easy_my_coop_taxshelter_report.tax_shelter_shares_report"
+            file="easy_my_coop_taxshelter_report.tax_shelter_shares_report.xml"
+            multi="True"
+            menu="True"
+        />
+    </data>
+</odoo>
