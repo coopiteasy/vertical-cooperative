@@ -200,7 +200,17 @@ class SubscriptionRequest(models.Model):
         readonly=True,
         states={"draft": [("readonly", False)]},
     )
-
+    type = fields.Selection(
+        [
+            ("new", "New Cooperator"),
+            ("subscription", "Subscription"),
+            ("increase", "Increase number of share"),
+        ],
+        string="Type",
+        default="new",
+        readonly=True,
+        states={"draft": [("readonly", False)]},
+    )
     state = fields.Selection(
         [
             ("draft", "Draft"),
@@ -470,6 +480,8 @@ class SubscriptionRequest(models.Model):
             self.already_cooperator = partner.member
             if partner.bank_ids:
                 self.iban = partner.bank_ids[0].acc_number
+            if partner.member:
+                self.type = "increase"
             if partner.is_company:
                 self.company_name = partner.name
                 self.company_email = partner.email

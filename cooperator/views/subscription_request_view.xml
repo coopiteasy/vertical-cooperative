@@ -10,6 +10,7 @@
                 <field name="lastname" />
                 <field name="company_name" />
                 <field name="date" string="Request Date" />
+                <field name="type" />
                 <field name="share_short_name" string="Share Type" />
                 <field
                     name="ordered_parts"
@@ -144,6 +145,7 @@
                             <field name="share_unit_price" />
                             <field name="subscription_amount" />
                             <field name="partner_id" options="{'no_create':True}" />
+                            <field name="type" />
                             <field name="lang" />
                             <field name="skip_iban_control" />
                             <field name="internal_rules_approved" />
@@ -212,6 +214,11 @@
                     domain="[('is_valid_iban', '=', False)]"
                 />
                 <group expand="0" name="group_by" string="Group By">
+                    <filter
+                        name="request_type"
+                        string="Request type"
+                        context="{'group_by' : 'type'}"
+                    />
                     <filter
                         name="date"
                         string="Request Date"

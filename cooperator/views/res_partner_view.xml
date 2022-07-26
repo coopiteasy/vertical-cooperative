@@ -125,6 +125,7 @@
                                     name="subscription_amount"
                                     sum="Total subscribed amount"
                                 />
+                                <field name="type" />
                                 <field name="state" />
                             </tree>
                         </field>
