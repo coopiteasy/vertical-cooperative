@@ -246,7 +246,7 @@
     <menuitem
         action="tax_shelter_certificate_action"
         name="Tax Shelter Certificates"
-        id="menu_tax_shelter_certificate"
+        id="tax_shelter_certificate_menu"
         parent="main_declaration_menu"
         sequence="20"
         groups="cooperator.group_easy_my_coop_user"
