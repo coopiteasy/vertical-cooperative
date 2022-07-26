@@ -10,11 +10,11 @@ TYPE_MAP = {
 
 REPORT_DIC = {
     "subscription": (
-        "easy_my_coop_taxshelter_report.action_tax_shelter_subscription_report",
+        "l10n_be_cooperator.action_tax_shelter_subscription_report",
         "Tax Shelter Subscription",
     ),
     "shares": (
-        "easy_my_coop_taxshelter_report.action_tax_shelter_shares_report",
+        "l10n_be_cooperator.action_tax_shelter_shares_report",
         "Tax Shelter Shares",
     ),
 }
@@ -299,7 +299,7 @@ class TaxShelterCertificate(models.Model):
     @api.multi
     def send_certificates(self):
         tax_shelter_mail_template = self.env.ref(
-            "easy_my_coop_taxshelter_report.email_template_tax_shelter_certificate",
+            "l10n_be_cooperator.email_template_tax_shelter_certificate",
             False,
         )
         for certificate in self:

@@ -22,7 +22,7 @@
         <field name="partner_id" ref="cooperator.res_partner_cooperator_1_demo" />
         <field
             name="declaration_id"
-            ref="easy_my_coop_taxshelter_report.tax_shelter_declaration_1_demo"
+            ref="l10n_be_cooperator.tax_shelter_declaration_1_demo"
         />
         <field name="state">sent</field>
     </record>
@@ -30,7 +30,7 @@
     <record id="certificate_line_1_demo" model="certificate.line">
         <field
             name="tax_shelter_certificate"
-            ref="easy_my_coop_taxshelter_report.tax_shelter_certificate_1_demo"
+            ref="l10n_be_cooperator.tax_shelter_certificate_1_demo"
         />
         <field
             name="share_type"

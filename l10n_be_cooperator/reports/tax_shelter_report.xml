@@ -6,8 +6,8 @@
             model="tax.shelter.certificate"
             string="Tax shelter subscription report"
             report_type="qweb-pdf"
-            name="easy_my_coop_taxshelter_report.tax_shelter_subscription_report"
-            file="easy_my_coop_taxshelter_report.tax_shelter_subscription_report.xml"
+            name="l10n_be_cooperator.tax_shelter_subscription_report"
+            file="l10n_be_cooperator.tax_shelter_subscription_report.xml"
             multi="True"
             menu="True"
         />
@@ -16,8 +16,8 @@
             model="tax.shelter.certificate"
             string="Tax shelter shares report"
             report_type="qweb-pdf"
-            name="easy_my_coop_taxshelter_report.tax_shelter_shares_report"
-            file="easy_my_coop_taxshelter_report.tax_shelter_shares_report.xml"
+            name="l10n_be_cooperator.tax_shelter_shares_report"
+            file="l10n_be_cooperator.tax_shelter_shares_report.xml"
             multi="True"
             menu="True"
         />
