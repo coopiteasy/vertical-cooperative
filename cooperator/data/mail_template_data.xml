@@ -89,7 +89,7 @@
 
     <p>Hello ${object.firstname},</p>
 
-    <p>Your request will be soon processed by our team. If all the provided info are correct you will soon receive the payment information in another email</p>
+    <p>Your request will be soon processed by our team. If all the provided info are correct you will soon receive the payment information in another email.</p>
 
     <br/>
     <p>If you have any question, do not hesitate to contact us.</p>
@@ -213,7 +213,7 @@
 
     <p>We have received your subscription request for ${object.company_id.name}. Thank you for your support.</p>
 
-    <p>Your request will be soon processed by our team "gestion et participation des membres". If all the provided info are correct you will soon receive the payment information in another email</p>
+    <p>Your request will be soon processed by our team. If all the provided info are correct you will soon receive the payment information in another email.</p>
 
     <br/>
     <p>If you have any question, do not hesitate to contact us.</p>
@@ -277,7 +277,7 @@
 
     <p>Hello ${object.firstname},</p>
 
-    <p>We confirm the reception of you payment. You are now shareholder of our cooperative</p>
+    <p>We confirm the reception of you payment. You are now shareholder of our cooperative.</p>
 
     <br/>
     <p>Find in attachment your ${object.env.company.name} certificate.</p>
@@ -405,7 +405,7 @@
 
     <p>Hello ${object.firstname},</p>
 
-    <p>We confirm you that the shares have been transfered to you. If you was not already cooperator, you are now shareholder of our cooperative</p>
+    <p>We confirm you that the shares have been transfered to you. If you was not already cooperator, you are now shareholder of our cooperative.</p>
 
     <br/>
     <p>Find in attachment your ${object.env.company.name} certificate.</p>
@@ -468,7 +468,7 @@
 
     <p>Hello ${object.firstname},</p>
 
-    <p>We confirm you that the adaptation on shares portfolio has been succesfully performed. Your cooperator certificate has been adapted accordingly</p>
+    <p>We confirm you that the adaptation on shares portfolio has been succesfully performed. Your cooperator certificate has been adapted accordingly.</p>
 
     <br/>
     <p>Find in attachment your ${object.env.company.name} certificate.</p>
