@@ -57,7 +57,6 @@ class MailTemplate(models.Model):
         for attachment in attachments:
             attachment_data = {
                 "name": attachment[0],
-                "datas_fname": attachment[0],
                 "datas": attachment[1],
                 "res_model": "mail.message",
                 "res_id": mail.mail_message_id.id,
