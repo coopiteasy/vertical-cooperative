@@ -28,7 +28,7 @@
     For this you will find in attachments the documents certifying that you've suscribed to ${object.company_id.name} shares</p>
     <p>A dedicated FAQ is coming soon on ${object.company_id.website}.</p>
     <p>For any additional questions, please contact ${object.company_id.coop_email_contact}</p>
-    <p>Sustainably your,</p>
+    <p>Sustainably yours,</p>
     <p>${object.company_id.name}.</p>
 
     % if object.company_id.street:
