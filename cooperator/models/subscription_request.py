@@ -62,6 +62,12 @@ class SubscriptionRequest(models.Model):
             vals["already_cooperator"] = True
         return vals
 
+    def get_company_type_selection(self):
+        # This is meant to be overridden.
+        return [
+            ("", ""),
+        ]
+
     @api.constrains("share_product_id", "is_company")
     def _check_share_available_to_user(self):
         for request in self:
@@ -373,7 +379,7 @@ class SubscriptionRequest(models.Model):
         states={"draft": [("readonly", False)]},
     )
     company_type = fields.Selection(
-        [("", "")],
+        selection="get_company_type_selection",
         string="Company type",
         readonly=True,
         states={"draft": [("readonly", False)]},
