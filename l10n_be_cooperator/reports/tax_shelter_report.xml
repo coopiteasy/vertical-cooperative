@@ -12,7 +12,6 @@
                 name="report_file"
             >l10n_be_cooperator.tax_shelter_subscription_report.xml</field>
             <field name="multi">True</field>
-            <field name="menu">True</field>
         </record>
         <record model="ir.actions.report" id="action_tax_shelter_shares_report">
             <field name="model">tax.shelter.certificate</field>
@@ -25,7 +24,6 @@
                 name="report_file"
             >l10n_be_cooperator.tax_shelter_shares_report.xml</field>
             <field name="multi">True</field>
-            <field name="menu">True</field>
         </record>
     </data>
 </odoo>
