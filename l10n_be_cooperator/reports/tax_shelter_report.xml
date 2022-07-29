@@ -3,10 +3,10 @@
     <data noupdate="0">
         <record model="ir.actions.report" id="action_tax_shelter_subscription_report">
             <field name="model">tax.shelter.certificate</field>
-            <field name="string">Tax shelter subscription report</field>
+            <field name="name">Tax shelter subscription report</field>
             <field name="report_type">qweb-pdf</field>
             <field
-                name="name"
+                name="report_name"
             >l10n_be_cooperator.tax_shelter_subscription_report</field>
             <field
                 name="file"
@@ -16,9 +16,11 @@
         </record>
         <record model="ir.actions.report" id="action_tax_shelter_shares_report">
             <field name="model">tax.shelter.certificate</field>
-            <field name="string">Tax shelter shares report</field>
+            <field name="name">Tax shelter shares report</field>
             <field name="report_type">qweb-pdf</field>
-            <field name="name">l10n_be_cooperator.tax_shelter_shares_report</field>
+            <field
+                name="report_name"
+            >l10n_be_cooperator.tax_shelter_shares_report</field>
             <field name="file">l10n_be_cooperator.tax_shelter_shares_report.xml</field>
             <field name="multi">True</field>
             <field name="menu">True</field>
