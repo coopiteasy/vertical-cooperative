@@ -28,7 +28,20 @@ class MailTemplate(models.Model):
         Attachment = self.env["ir.attachment"]
 
         # create a mail_mail based on values, without attachments
-        values = self.generate_email(res_id)
+        values = self.generate_email(
+            res_id,
+            # same list as used in send_mail in mail.mail.
+            [
+                "subject",
+                "body_html",
+                "email_from",
+                "email_to",
+                "partner_to",
+                "email_cc",
+                "reply_to",
+                "scheduled_date",
+            ],
+        )
         values["recipient_ids"] = [
             (4, pid) for pid in values.get("partner_ids", list())
         ]
