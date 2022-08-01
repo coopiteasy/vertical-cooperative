@@ -123,7 +123,7 @@ msgid ""
 "\n"
 "    <p>Hello ${object.firstname},</p>\n"
 "\n"
-"    <p>We confirm the reception of you payment. You are now shareholder of our cooperative</p>\n"
+"    <p>We confirm the reception of you payment. You are now shareholder of our cooperative.</p>\n"
 "\n"
 "    <br/>\n"
 "    <p>Find in attachment your  ${object.env.company.name} certificate.</p>\n"
@@ -169,7 +169,7 @@ msgid ""
 "\n"
 "    <p>Hello ${object.firstname},</p>\n"
 "\n"
-"    <p>We confirm you that the adaptation on shares portfolio has been succesfully performed. Your cooperator certificate has been adapted accordingly</p>\n"
+"    <p>We confirm you that the adaptation on shares portfolio has been succesfully performed. Your cooperator certificate has been adapted accordingly.</p>\n"
 "\n"
 "    <br/>\n"
 "    <p>Find in attachment your ${object.env.company.name} certificate.</p>\n"
@@ -215,7 +215,7 @@ msgid ""
 "\n"
 "    <p>Hello ${object.firstname},</p>\n"
 "\n"
-"    <p>We confirm you that the shares have been transfered to you. If you was not already cooperator, you are now shareholder of our cooperative</p>\n"
+"    <p>We confirm you that the shares have been transfered to you. If you was not already cooperator, you are now shareholder of our cooperative.</p>\n"
 "\n"
 "    <br/>\n"
 "    <p>Find in attachment your ${object.env.company.name} certificate.</p>\n"
@@ -263,7 +263,7 @@ msgid ""
 "\n"
 "    <p>We have received your subscription request for ${object.company_id.name}. Thank you for your support.</p>\n"
 "\n"
-"    <p>Your request will be soon processed by our team \"gestion et participation des membres\". If all the provided info are correct you will soon receive the payment information in another email</p>\n"
+"    <p>Your request will be soon processed by our team. If all the provided info are correct you will soon receive the payment information in another email.</p>\n"
 "\n"
 "    <br/>\n"
 "    <p>If you have any question, do not hesitate to contact us.</p>\n"
@@ -309,7 +309,7 @@ msgid ""
 "\n"
 "    <p>Hello ${object.firstname},</p>\n"
 "\n"
-"    <p>Your request will be soon processed by our team. If all the provided info are correct you will soon receive the payment information in another email</p>\n"
+"    <p>Your request will be soon processed by our team. If all the provided info are correct you will soon receive the payment information in another email.</p>\n"
 "\n"
 "    <br/>\n"
 "    <p>If you have any question, do not hesitate to contact us.</p>\n"
@@ -401,14 +401,12 @@ msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/subscription_request.py:0
 #, python-format
 msgid "%s is not available to companies"
 msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/subscription_request.py:0
 #, python-format
 msgid "%s is not available to individuals"
 msgstr ""
@@ -531,7 +529,6 @@ msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/wizard/create_subscription_from_partner.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/wizard/create_subscription_from_partner.py:0
 #, python-format
 msgid "A person can't be representative of two different companies."
 msgstr ""
@@ -902,8 +899,6 @@ msgstr ""
 #. module: cooperator
 #: code:addons/cooperator/models/operation_request.py:0
 #: code:addons/cooperator/models/operation_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/operation_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/operation_request.py:0
 #, python-format
 msgid "Converting just part of the shares is not yet implemented"
 msgstr ""
@@ -1229,7 +1224,6 @@ msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/wizard/update_share_line.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/wizard/update_share_line.py:0
 #, python-format
 msgid "Error the update return more than one subscription register lines."
 msgstr ""
@@ -1241,7 +1235,6 @@ msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/subscription_request.py:0
 #: model:ir.model.fields.selection,name:cooperator.selection__subscription_request__gender__female
 #, python-format
 msgid "Female"
@@ -1574,7 +1567,6 @@ msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/subscription_request.py:0
 #: model:ir.model.fields.selection,name:cooperator.selection__subscription_request__gender__male
 #, python-format
 msgid "Male"
@@ -1693,7 +1685,6 @@ msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/subscription_request.py:0
 #, python-format
 msgid "Number of share must be greater than 0."
 msgstr ""
@@ -1721,21 +1712,18 @@ msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/subscription_request.py:0
 #, python-format
 msgid "Only blocked requests can be unblocked."
 msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/subscription_request.py:0
 #, python-format
 msgid "Only draft request can be put on the waiting list."
 msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/subscription_request.py:0
 #, python-format
 msgid "Only draft requests can be blocked."
 msgstr ""
@@ -1801,7 +1789,6 @@ msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/subscription_request.py:0
 #: model:ir.model.fields.selection,name:cooperator.selection__subscription_request__gender__other
 #, python-format
 msgid "Other"
@@ -1849,7 +1836,6 @@ msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/subscription_request.py:0
 #, python-format
 msgid ""
 "Please define income account for this product: \"%s\" (id:%d) - or for its "
@@ -2320,21 +2306,18 @@ msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/subscription_request.py:0
 #, python-format
 msgid "The checkbox already cooperator is checked please select a cooperator."
 msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/operation_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/operation_request.py:0
 #, python-format
 msgid "The cooperator can't hand over more shares that he/she owns."
 msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/operation_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/operation_request.py:0
 #, python-format
 msgid ""
 "The cooperator doesn't own this share type. Please choose the appropriate "
@@ -2343,14 +2326,12 @@ msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/operation_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/operation_request.py:0
 #, python-format
 msgid "The effective date can not be in the future."
 msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/operation_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/operation_request.py:0
 #, python-format
 msgid ""
 "The information of the receiver are not correct. Please correct the "
@@ -2359,7 +2340,6 @@ msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/subscription_request.py:0
 #, python-format
 msgid "The request must be in draft or on waiting list to be validated"
 msgstr ""
@@ -2367,8 +2347,6 @@ msgstr ""
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:0
 #: code:addons/cooperator/wizard/create_subscription_from_partner.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/subscription_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/wizard/create_subscription_from_partner.py:0
 #, python-format
 msgid ""
 "There is two different persons with the same national register number. "
@@ -2384,7 +2362,6 @@ msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/subscription_request.py:0
 #, python-format
 msgid ""
 "This contact person is already defined for another company. Please select "
@@ -2393,7 +2370,6 @@ msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/operation_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/operation_request.py:0
 #, python-format
 msgid ""
 "This operation can't be executed if the cooperator is not an effective "
@@ -2402,35 +2378,30 @@ msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/operation_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/operation_request.py:0
 #, python-format
 msgid "This operation is not yet implemented."
 msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/operation_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/operation_request.py:0
 #, python-format
 msgid "This operation must be approved before to be executed"
 msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/operation_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/operation_request.py:0
 #, python-format
 msgid "This share can not be subscribed an individual"
 msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/operation_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/operation_request.py:0
 #, python-format
 msgid "This share can not be subscribed by a company"
 msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/operation_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/operation_request.py:0
 #, python-format
 msgid "This share type could not be transfered to "
 msgstr ""
@@ -2631,28 +2602,24 @@ msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/operation_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/operation_request.py:0
 #, python-format
 msgid "You can't convert the share to the same share type."
 msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/subscription_request.py:0
 #, python-format
 msgid "You cannot cancel a request in this state."
 msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/operation_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/operation_request.py:0
 #, python-format
 msgid "You must convert all the shares to the selected type."
 msgstr ""
 
 #. module: cooperator
 #: code:addons/cooperator/models/subscription_request.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator/models/subscription_request.py:0
 #, python-format
 msgid "You must set a cooperator account on your company."
 msgstr ""
