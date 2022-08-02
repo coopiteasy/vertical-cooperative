@@ -9,6 +9,8 @@
         <field
             name="attachment"
         >(object.state == 'posted') and ('SUBJ'+(object.name or '').replace('/','')+'.pdf')</field>
+        <field name="binding_model_id" ref="model_account_move" />
+        <field name="binding_type">report</field>
     </record>
 
     <record model="ir.actions.report" id="action_cooperator_subscription_report">
