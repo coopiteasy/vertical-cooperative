@@ -2274,7 +2274,7 @@ msgstr "Date de la demande"
 msgid ""
 "Request to Release\n"
 "                        Capital"
-msgstr ""
+msgstr "Demande de libération de capital"
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_request_filter
