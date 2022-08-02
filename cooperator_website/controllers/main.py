@@ -274,7 +274,7 @@ class WebsiteSubscription(http.Controller):
 
         if error:
             values = self.fill_values(values, is_company, logged)
-            values["error_msg"] = _("Some mandatory fields have not " "been filled")
+            values["error_msg"] = _("Some mandatory fields have not been filled.")
             values = dict(values, error=error, kwargs=kwargs.items())
             return request.render(redirect, values)
 
@@ -284,9 +284,8 @@ class WebsiteSubscription(http.Controller):
                 values = self.fill_values(values, is_company, logged)
                 values.update(kwargs)
                 values["error_msg"] = _(
-                    "There is an existing account for this"
-                    " mail address. Please login before "
-                    "fill in the form"
+                    "An account already exists for this email address. "
+                    "Please log in before filling in the form."
                 )
 
                 return request.render(redirect, values)
@@ -296,9 +295,7 @@ class WebsiteSubscription(http.Controller):
                     values = self.fill_values(values, is_company, logged)
                     values.update(kwargs)
                     values["error_msg"] = _(
-                        "The email and the confirmation "
-                        "email doesn't match.Please check "
-                        "the given mail addresses"
+                        "Email and confirmation email addresses don't match."
                     )
                     return request.render(redirect, values)
 
@@ -310,7 +307,7 @@ class WebsiteSubscription(http.Controller):
             if not post_file:
                 values = self.fill_values(values, is_company, logged)
                 values.update(kwargs)
-                values["error_msg"] = _("You need to upload a" " scan of your id card")
+                values["error_msg"] = _("Please upload a scan of your ID card.")
                 return request.render(redirect, values)
 
         if "iban" in required_fields:
@@ -320,7 +317,7 @@ class WebsiteSubscription(http.Controller):
 
                 if not valid:
                     values = self.fill_values(values, is_company, logged)
-                    values["error_msg"] = _("Your IBAN is not valid.")
+                    values["error_msg"] = _("Provided IBAN is not valid.")
                     return request.render(redirect, values)
 
         # check the subscription's amount
@@ -334,18 +331,17 @@ class WebsiteSubscription(http.Controller):
                     if partner.cooperator_type != share.default_code:
                         values = self.fill_values(values, is_company, logged)
                         values["error_msg"] = _(
-                            "You can't subscribe two " "different types of share"
+                            "You can't subscribe to two different types of share."
                         )
                         return request.render(redirect, values)
         total_amount = float(kwargs.get("total_parts"))
 
         if max_amount > 0 and total_amount > max_amount:
             values = self.fill_values(values, is_company, logged)
-            values["error_msg"] = (
-                _("You can't subscribe for an amount that " "exceed ")
-                + str(max_amount)
-                + company.currency_id.symbol
-            )
+            values["error_msg"] = _(
+                "You can't subscribe for an amount that exceeds "
+                "{amount}{currency_symbol}."
+            ).format(amount=max_amount, currency_symbol=company.currency_id.symbol)
             return request.render(redirect, values)
 
         if "redirect_url" in values:

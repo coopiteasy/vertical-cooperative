@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* cooperator_website
+# 	* cooperator_website
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: <>\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,6 +36,14 @@ msgstr ""
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.address_template
 msgid "Address"
+msgstr ""
+
+#. module: cooperator_website
+#: code:addons/cooperator_website/controllers/main.py:0
+#, python-format
+msgid ""
+"An account already exists for this email address. Please log in before "
+"filling in the form."
 msgstr ""
 
 #. module: cooperator_website
@@ -75,13 +83,12 @@ msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-msgid "Company\n"
-"                                        Register Number"
+msgid "Company Info"
 msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-msgid "Company Info"
+msgid "Company Register Number"
 msgstr ""
 
 #. module: cooperator_website
@@ -137,14 +144,19 @@ msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid "Do you want to\n"
-"                                            modify your personal information first?"
+msgid "Do you want to modify your personal information first?"
 msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
 msgid "Email"
+msgstr ""
+
+#. module: cooperator_website
+#: code:addons/cooperator_website/controllers/main.py:0
+#, python-format
+msgid "Email and confirmation email addresses don't match."
 msgstr ""
 
 #. module: cooperator_website
@@ -174,8 +186,7 @@ msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.rules_template
-msgid "Identity\n"
-"            card scan"
+msgid "Identity card scan"
 msgstr ""
 
 #. module: cooperator_website
@@ -190,7 +201,7 @@ msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-msgid "La super coopérative"
+msgid "Super Cooperative"
 msgstr ""
 
 #. module: cooperator_website
@@ -220,9 +231,20 @@ msgid "Phone"
 msgstr ""
 
 #. module: cooperator_website
+#: code:addons/cooperator_website/controllers/main.py:0
+#, python-format
+msgid "Please upload a scan of your ID card."
+msgstr ""
+
+#. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.rules_template
-msgid "Privacy\n"
-"            Policy"
+msgid "Privacy Policy"
+msgstr ""
+
+#. module: cooperator_website
+#: code:addons/cooperator_website/controllers/main.py:0
+#, python-format
+msgid "Provided IBAN is not valid."
 msgstr ""
 
 #. module: cooperator_website
@@ -242,26 +264,14 @@ msgid "Share type"
 msgstr ""
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:273
+#: code:addons/cooperator_website/controllers/main.py:0
 #, python-format
-msgid "Some mandatory fields have not been filled"
+msgid "Some mandatory fields have not been filled."
 msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.cooperator_thanks
 msgid "Thanks!"
-msgstr ""
-
-#. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:294
-#, python-format
-msgid "The email and the confirmation email doesn't match.Please check the given mail addresses"
-msgstr ""
-
-#. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:282
-#, python-format
-msgid "There is an existing account for this mail address. Please login before fill in the form"
 msgstr ""
 
 #. module: cooperator_website
@@ -276,37 +286,25 @@ msgstr ""
 
 #. module: cooperator_website
 #: model:ir.actions.act_url,name:cooperator_website.action_open_website
-msgid "Website Cooperator contact Form"
+msgid "Website Cooperator Contact Form"
 msgstr ""
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:341
+#: code:addons/cooperator_website/controllers/main.py:0
 #, python-format
-msgid "You can't subscribe for an amount that exceed "
+msgid ""
+"You can't subscribe for an amount that exceeds {amount}{currency_symbol}."
 msgstr ""
 
 #. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:332
+#: code:addons/cooperator_website/controllers/main.py:0
 #, python-format
-msgid "You can't subscribe two different types of share"
-msgstr ""
-
-#. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:309
-#, python-format
-msgid "You need to upload a scan of your id card"
-msgstr ""
-
-#. module: cooperator_website
-#: code:addons/cooperator_website/controllers/main.py:319
-#, python-format
-msgid "Your IBAN is not valid."
+msgid "You can't subscribe to two different types of share."
 msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.cooperator_thanks
-msgid "Your subscription has been successfully\n"
-"                                registered."
+msgid "Your subscription has been successfully registered."
 msgstr ""
 
 #. module: cooperator_website
@@ -316,22 +314,21 @@ msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-msgid "administration@beescoop.be"
+msgid "administration@mycoop.be"
 msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid "didier.bourdon@bees-coop.be"
+msgid "didier.bourdon@mycoop.be"
 msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.contact_template
-msgid "e.g. +32 456 926 5059"
+msgid "+32 456 926 5059"
 msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.address_template
-msgid "rue Van Hove, 199"
+msgid "rue Van Hove 199"
 msgstr ""
-

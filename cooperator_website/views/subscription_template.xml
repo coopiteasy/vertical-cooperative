@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <template id="contact_template" name="contact_template">
-
-
         <div class="row">
             <div class="col-md-6">
                 <div
@@ -112,7 +109,7 @@
                 required="True"
                 t-att-readonly="logged"
                 t-attf-value="#{phone or ''}"
-                placeholder="e.g. +32 456 926 5059"
+                placeholder="+32 456 926 5059"
             />
 
 
@@ -164,7 +161,7 @@
                 required="True"
                 t-att-readonly="logged"
                 t-attf-value="#{address or ''}"
-                placeholder="rue Van Hove, 199"
+                placeholder="rue Van Hove 199"
             />
 
         </div>
@@ -236,35 +233,28 @@
     </template>
 
     <template id="rules_template" name="rules_template">
-
-
         <div
             t-if="res_company.allow_id_card_upload"
             t-attf-class="form-group #{error and 'file' in error and 'has-error' or ''}"
             name="resume_container"
         >
-        <label for="Resume">Identity
-            card scan
-        </label>
-        <div class="col-md-7 col-sm-8">
-            <input
+            <label for="Resume">Identity card scan</label>
+            <div class="col-md-7 col-sm-8">
+                <input
                     type="file"
                     class="form-control form-control-sm"
                     name="Resume"
                     t-attf-value="#{file or ''}"
                 />
+            </div>
         </div>
-    </div>
-
         <div
             id="generic_rules_approved"
             name="generic_rules_approved_container"
             t-if="display_generic_rules"
             t-attf-class="form-group"
         >
-            <label for="generic_rules_approved">
-            Generic Rules
-        </label>
+            <label for="generic_rules_approved">Generic Rules</label>
             <div class="form-check">
                 <input
                     type="checkbox"
@@ -285,9 +275,7 @@
             t-if="display_data_policy"
             t-attf-class="form-group"
         >
-            <label for="data_policy_approved">Privacy
-            Policy
-        </label>
+            <label for="data_policy_approved">Privacy Policy</label>
             <div class="form-check">
                 <input
                     type="checkbox"
@@ -308,9 +296,7 @@
             t-if="display_internal_rules"
             t-attf-class="form-group"
         >
-            <label for="internal_rules_approved">
-            Internal Rules
-        </label>
+            <label for="internal_rules_approved">Internal Rules</label>
             <div class="form-check">
                 <input
                     type="checkbox"
@@ -331,9 +317,7 @@
             t-if="display_financial_risk"
             t-attf-class="form-group"
         >
-            <label for="financial_risk_approved">
-            Financial Risk
-        </label>
+            <label for="financial_risk_approved">Financial Risk</label>
             <div class="form-check">
                 <input
                     type="checkbox"
@@ -376,9 +360,7 @@
                 </div>
             </div>
             <div class="col-md-4 col-6">
-                <label for="ordered_parts">
-                                            Share number
-                                        </label>
+                <label for="ordered_parts">Share number</label>
                 <div t-attf-class="form-group" name="share_number_container">
                     <input
                         type="number"
@@ -393,9 +375,7 @@
             </div>
             <div class="col-md-3 col-6" name="total_parts_container">
                 <div id="share_price" style="display: none;" />
-                <label for="total_parts">
-                Total
-            </label>
+                <label for="total_parts">Total</label>
                 <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
                         <span
@@ -437,9 +417,7 @@
                 <div class="container oe_cooperator">
                     <div class="row justify-content-center">
                         <div class="col-xs-12 col-sm-10  col-md-8 col-lg-6">
-                            <h1 class="mt-4 text-center">
-                            Become Cooperator
-                            </h1>
+                            <h1 class="mt-4 text-center">Become Cooperator</h1>
                             <form
                                 action="/subscription/subscribe_share"
                                 method="post"
@@ -459,9 +437,7 @@
                                         t-if="logged"
                                         t-attf-href="/my/account"
                                         style="white-space: normal;"
-                                    >Do you want to
-                                            modify your personal information first?
-                                        </a>
+                                    >Do you want to modify your personal information first?</a>
                                 </div>
                                 <div
                                     t-attf-class="form-group"
@@ -478,9 +454,7 @@
                                         t-if="not logged"
                                         t-attf-href="/web/login?redirect=#{ redirect_url }"
                                         style="white-space: normal;"
-                                    >
-                                    Do you already have an account?
-                                </a>
+                                    >Do you already have an account?</a>
                                     <br />
                                 </div>
 
@@ -510,7 +484,7 @@
                                             t-att-checked="already_cooperator"
                                             name="already_cooperator"
                                         />
-                                            Are you already a cooperator?
+                                        Are you already a cooperator?
                                     </label>
                                 </div>
                                 <div class="form-group field-login">
@@ -562,9 +536,7 @@
                                 <div class="text-center">
                                     <button
                                         class="btn btn-primary mt-3 mb-3 text-center"
-                                    >
-                                        Send
-                                    </button>
+                                    >Send</button>
                                 </div>
                             </form>
                         </div>
@@ -627,8 +599,8 @@
                                     t-attf-class="form-group #{error and 'company_register_number' in error and 'has-error' or ''}"
                                     name="company_register_number_container"
                                 >
-                                    <label for="company_register_number">Company
-                                        Register Number
+                                    <label for="company_register_number">
+                                        Company Register Number
                                     </label>
                                     <input
                                         type="text"
@@ -645,8 +617,7 @@
                                     t-attf-class="form-group #{error and 'company_name' in error and 'has-error' or ''}"
                                     name="company_name_container"
                                 >
-                                    <label for="company_name">Company name
-                                    </label>
+                                    <label for="company_name">Company name</label>
                                     <input
                                         type="text"
                                         class="form-control form-control-sm mandatory-field"
@@ -654,7 +625,7 @@
                                         required="True"
                                         t-att-readonly="logged"
                                         t-attf-value="#{company_name or ''}"
-                                        placeholder="La super coopérative"
+                                        placeholder="Super Cooperative"
                                     />
                                 </div>
 
@@ -662,8 +633,7 @@
                                     t-attf-class="form-group #{error and 'company_type' in error and 'has-error' or ''}"
                                     name="company_type_container"
                                 >
-                                    <label for="company_type">Company type
-                                    </label>
+                                    <label for="company_type">Company type</label>
                                     <select
                                         name="company_type"
                                         class="form-control form-control-sm"
@@ -686,8 +656,7 @@
                                     t-attf-class="form-group #{error and 'company_email' in error and 'has-error' or ''}"
                                     name="company_email_container"
                                 >
-                                    <label for="company_email">Company email
-                                    </label>
+                                    <label for="company_email">Company email</label>
                                     <input
                                         type="text"
                                         class="form-control form-control-sm mandatory-field"
@@ -702,8 +671,7 @@
                                     t-attf-class="form-group #{error and 'email_from' in error and 'has-error' or ''}"
                                     name="confirm_email_container"
                                 >
-                                    <label for="confirm_email">Confirm Email
-                                    </label>
+                                    <label for="confirm_email">Confirm Email</label>
                                     <input
                                         type="confirm_email"
                                         class="form-control form-control-sm mandatory-field"
@@ -765,9 +733,7 @@
                                 <div class="text-center">
                                     <button
                                         class="btn btn-primary mt-3 mb-3 text-center"
-                                    >
-                                            Send
-                                        </button>
+                                    >Send</button>
                                 </div>
                             </form>
                         </div>
@@ -819,14 +785,12 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="alert alert-success">
-                                Your subscription has been successfully
-                                registered.
+                                Your subscription has been successfully registered.
                                 <button
                                     type="button"
                                     class="close"
                                     data-dismiss="alert"
-                                >&amp;times;
-                                </button>
+                                >&amp;times;</button>
                             </div>
                             <p>
                                 We will get back to you shortly.
