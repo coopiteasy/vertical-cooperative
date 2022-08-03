@@ -207,21 +207,20 @@ class WebsiteSubscription(http.Controller):
             if company.default_lang_id:
                 values["lang"] = company.default_lang_id.code
 
-        comp = request.env["res.company"]._company_default_get()
         values.update(
             {
-                "display_data_policy": comp.display_data_policy_approval,
-                "data_policy_required": comp.data_policy_approval_required,
-                "data_policy_text": comp.data_policy_approval_text,
-                "display_internal_rules": comp.display_internal_rules_approval,
-                "internal_rules_required": comp.internal_rules_approval_required,
-                "internal_rules_text": comp.internal_rules_approval_text,
-                "display_financial_risk": comp.display_financial_risk_approval,
-                "financial_risk_required": comp.financial_risk_approval_required,
-                "financial_risk_text": comp.financial_risk_approval_text,
-                "display_generic_rules": comp.display_generic_rules_approval,
-                "generic_rules_required": comp.generic_rules_approval_required,
-                "generic_rules_text": comp.generic_rules_approval_text,
+                "display_data_policy": company.display_data_policy_approval,
+                "data_policy_required": company.data_policy_approval_required,
+                "data_policy_text": company.data_policy_approval_text,
+                "display_internal_rules": company.display_internal_rules_approval,
+                "internal_rules_required": company.internal_rules_approval_required,
+                "internal_rules_text": company.internal_rules_approval_text,
+                "display_financial_risk": company.display_financial_risk_approval,
+                "financial_risk_required": company.financial_risk_approval_required,
+                "financial_risk_text": company.financial_risk_approval_text,
+                "display_generic_rules": company.display_generic_rules_approval,
+                "generic_rules_required": company.generic_rules_approval_required,
+                "generic_rules_text": company.generic_rules_approval_text,
             }
         )
         return values
