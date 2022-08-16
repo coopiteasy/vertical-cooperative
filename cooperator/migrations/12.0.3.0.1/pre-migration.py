@@ -2,12 +2,12 @@ from openupgradelib import openupgrade
 
 xmlid_renames = [
     (
-        "easy_my_coop.group_energiris_user",
-        "easy_my_coop.group_easy_my_coop_user",
+        "cooperator.group_energiris_user",
+        "cooperator.group_easy_my_coop_user",
     ),
     (
-        "easy_my_coop.group_energiris_manager",
-        "easy_my_coop.group_easy_my_coop_manager",
+        "cooperator.group_energiris_manager",
+        "cooperator.group_easy_my_coop_manager",
     ),
 ]
 

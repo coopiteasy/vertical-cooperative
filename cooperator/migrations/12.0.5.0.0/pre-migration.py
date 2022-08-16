@@ -128,6 +128,13 @@ renamed_template_xml_ids = [
 
 @openupgrade.migrate()
 def migrate(env, version):
+    # delete obsolete view in case it still exists (in case of update from a
+    # version before 12.0), because it conflicts with a renamed xml id, and
+    # data from xml files are not yet updated at this point.
+    openupgrade.delete_records_safely_by_xml_id(
+        env, ("cooperator.product_template_form_view",)
+    )
+
     _logger.info("renaming view xml ids")
     openupgrade.rename_xmlids(env.cr, renamed_view_xml_ids)
 
