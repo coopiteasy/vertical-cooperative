@@ -58,7 +58,7 @@ class TaxShelterDeclaration(models.Model):
         required=True,
         change_default=True,
         readonly=True,
-        default=lambda self: self.env["res.company"]._company_default_get(),
+        default=lambda self: self.env.company,
     )
     tax_shelter_capital_limit = fields.Float(
         string="Tax shelter capital limit", required=True
