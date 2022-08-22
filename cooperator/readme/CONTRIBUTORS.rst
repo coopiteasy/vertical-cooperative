@@ -7,4 +7,4 @@
   * Vincent Van Rossem
   * Manuel Claeys Bouuaert
   * Carmen Bianca Bakker
-  * hugues dekeyzer
+  * hugues de keyzer
