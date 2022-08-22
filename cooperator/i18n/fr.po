@@ -18,14 +18,6 @@ msgstr ""
 "X-Generator: Poedit 3.1.1\n"
 
 #. module: cooperator
-#: model:mail.template,report_name:cooperator.email_template_release_capital
-msgid ""
-"\n"
-"                ${(object.name or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}\n"
-"            "
-msgstr ""
-
-#. module: cooperator
 #: model:mail.template,body_html:cooperator.email_template_waiting_list
 msgid ""
 "\n"
@@ -724,11 +716,13 @@ msgstr ""
 "            "
 
 #. module: cooperator
+#: model:mail.template,report_name:cooperator.email_template_release_capital
+msgid "${(object.name or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}"
+msgstr ""
+
+#. module: cooperator
 #: model:mail.template,subject:cooperator.email_template_release_capital
-msgid ""
-"${object.company_id.name} Request to Release\n"
-"                Capital (Ref ${object.name or 'n/a'})\n"
-"            "
+msgid "${object.company_id.name} Request to Release Capital (Ref ${object.name or 'n/a'})"
 msgstr "${object.company_id.name} Demande de libération de capital (réf. ${object.name or '(non disponible)'})"
 
 #. module: cooperator
@@ -1071,10 +1065,7 @@ msgstr "Demande de libération de capital"
 #: model:mail.template,report_name:cooperator.email_template_certificat_increase
 #: model:mail.template,report_name:cooperator.email_template_share_transfer
 #: model:mail.template,report_name:cooperator.email_template_share_update
-msgid ""
-"Certificat\n"
-"                ${(object.cooperator_register_number or '')}\n"
-"            "
+msgid "Certificate ${(object.cooperator_register_number or '')}"
 msgstr ""
 
 #. module: cooperator
@@ -2583,10 +2574,8 @@ msgstr "Demande de souscription"
 
 #. module: cooperator
 #: model:mail.template,subject:cooperator.email_template_waiting_list
-msgid ""
-"Subscription request added on waiting list.\n"
-"            "
-msgstr "Demande de souscription ajoutée sur liste d'attente."
+msgid "Subscription request added on waiting list"
+msgstr "Demande de souscription ajoutée sur liste d'attente"
 
 #. module: cooperator
 #: model:mail.template,subject:cooperator.email_template_confirmation

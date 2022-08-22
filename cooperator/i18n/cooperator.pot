@@ -14,14 +14,6 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: cooperator
-#: model:mail.template,report_name:cooperator.email_template_release_capital
-msgid ""
-"\n"
-"                ${(object.name or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}\n"
-"            "
-msgstr ""
-
-#. module: cooperator
 #: model:mail.template,body_html:cooperator.email_template_waiting_list
 msgid ""
 "\n"
@@ -392,11 +384,17 @@ msgid ""
 msgstr ""
 
 #. module: cooperator
+#: model:mail.template,report_name:cooperator.email_template_release_capital
+msgid ""
+"${(object.name or '').replace('/','_')}_${object.state == 'draft' and "
+"'draft' or ''}"
+msgstr ""
+
+#. module: cooperator
 #: model:mail.template,subject:cooperator.email_template_release_capital
 msgid ""
-"${object.company_id.name} Request to Release\n"
-"                Capital (Ref ${object.name or 'n/a'})\n"
-"            "
+"${object.company_id.name} Request to Release Capital (Ref ${object.name or "
+"'n/a'})"
 msgstr ""
 
 #. module: cooperator
@@ -737,10 +735,7 @@ msgstr ""
 #: model:mail.template,report_name:cooperator.email_template_certificat_increase
 #: model:mail.template,report_name:cooperator.email_template_share_transfer
 #: model:mail.template,report_name:cooperator.email_template_share_update
-msgid ""
-"Certificat\n"
-"                ${(object.cooperator_register_number or '')}\n"
-"            "
+msgid "Certificate ${(object.cooperator_register_number or '')}"
 msgstr ""
 
 #. module: cooperator
@@ -2255,9 +2250,7 @@ msgstr ""
 
 #. module: cooperator
 #: model:mail.template,subject:cooperator.email_template_waiting_list
-msgid ""
-"Subscription request added on waiting list.\n"
-"            "
+msgid "Subscription request added on waiting list"
 msgstr ""
 
 #. module: cooperator
