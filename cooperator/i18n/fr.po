@@ -2159,7 +2159,7 @@ msgstr "Veuillez définir un compte de revenu pour ce produit: \"%s\" (id:%d) - 
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
-msgid "Please use the following communication for your payment :"
+msgid "Please use the following communication for your payment:"
 msgstr "Merci d'utiliser la communication suivante pour votre paiement :"
 
 #. module: cooperator
@@ -2262,9 +2262,7 @@ msgstr "Date de la demande"
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
-msgid ""
-"Request to Release\n"
-"                        Capital"
+msgid "Request to Release Capital"
 msgstr "Demande de libération de capital"
 
 #. module: cooperator

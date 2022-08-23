@@ -1839,7 +1839,7 @@ msgstr ""
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
-msgid "Please use the following communication for your payment :"
+msgid "Please use the following communication for your payment:"
 msgstr ""
 
 #. module: cooperator
@@ -1942,9 +1942,7 @@ msgstr ""
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.theme_invoice_G002_document
-msgid ""
-"Request to Release\n"
-"                        Capital"
+msgid "Request to Release Capital"
 msgstr ""
 
 #. module: cooperator
