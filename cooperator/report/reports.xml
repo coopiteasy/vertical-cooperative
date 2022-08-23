@@ -6,9 +6,10 @@
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">cooperator.theme_invoice_G002</field>
         <field name="report_file">cooperator_invoice_G002.xml</field>
+        <field name="print_report_name">object._get_report_base_filename()</field>
         <field
             name="attachment"
-        >(object.state == 'posted') and ('SUBJ'+(object.name or '').replace('/','')+'.pdf')</field>
+        >(object.state == "posted") and ((object.name or "SUBJ").replace("/", "_") + ".pdf")</field>
         <field name="binding_model_id" ref="model_account_move" />
         <field name="binding_type">report</field>
     </record>

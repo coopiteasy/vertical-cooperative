@@ -3,7 +3,7 @@
     <!-- Mail template are declared in a NOUPDATE block
          so users can freely customize/delete them -->
     <data noupdate="1">
-        <!--Request to release capital Email template -->
+        <!-- Request to release capital Email template -->
         <record id="email_template_release_capital" model="mail.template">
             <field name="name">Request to Release Capital - Send by Email</field>
             <field
@@ -21,7 +21,7 @@
             <field name="report_template" ref="action_cooperator_invoices" />
             <field
                 name="report_name"
-            >${(object.name or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}</field>
+            >${(object.name or "capital_release_request").replace("/", "_")}${object.state == "draft" and "_draft" or ""}</field>
             <field name="lang">${object.partner_id.lang}</field>
             <field name="is_cooperator_template" eval="True" />
             <field
