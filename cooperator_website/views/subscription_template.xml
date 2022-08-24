@@ -820,7 +820,7 @@
 
 
     <record id="menu_becomecooperator" model="website.menu">
-        <field name="name">Become cooperator</field>
+        <field name="name">Become Cooperator</field>
         <field name="url">/page/become_cooperator</field>
         <field name="parent_id" ref="website.main_menu" />
         <field name="sequence" type="int">65</field>

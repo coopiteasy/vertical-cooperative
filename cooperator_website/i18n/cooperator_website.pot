@@ -19,6 +19,11 @@ msgid "&amp;times;"
 msgstr ""
 
 #. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.contact_template
+msgid "+32 456 926 5059"
+msgstr ""
+
+#. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
 msgid "0647980091"
 msgstr ""
@@ -40,6 +45,8 @@ msgstr ""
 
 #. module: cooperator_website
 #: code:addons/cooperator_website/controllers/main.py:0
+#: code:addons/cooperator_website/controllers/main.py:0
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:0
 #, python-format
 msgid ""
 "An account already exists for this email address. Please log in before "
@@ -52,6 +59,7 @@ msgid "Are you already a cooperator?"
 msgstr ""
 
 #. module: cooperator_website
+#: model:website.menu,name:cooperator_website.menu_becomecooperator
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
 msgid "Become Cooperator"
 msgstr ""
@@ -59,11 +67,6 @@ msgstr ""
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
 msgid "Become Cooperator as Company"
-msgstr ""
-
-#. module: cooperator_website
-#: model:website.menu,name:cooperator_website.menu_becomecooperator
-msgid "Become cooperator"
 msgstr ""
 
 #. module: cooperator_website
@@ -155,6 +158,8 @@ msgstr ""
 
 #. module: cooperator_website
 #: code:addons/cooperator_website/controllers/main.py:0
+#: code:addons/cooperator_website/controllers/main.py:0
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:0
 #, python-format
 msgid "Email and confirmation email addresses don't match."
 msgstr ""
@@ -200,11 +205,6 @@ msgid "Is a company?"
 msgstr ""
 
 #. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-msgid "Super Cooperative"
-msgstr ""
-
-#. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.contact_template
 msgid "Language"
 msgstr ""
@@ -232,6 +232,8 @@ msgstr ""
 
 #. module: cooperator_website
 #: code:addons/cooperator_website/controllers/main.py:0
+#: code:addons/cooperator_website/controllers/main.py:0
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:0
 #, python-format
 msgid "Please upload a scan of your ID card."
 msgstr ""
@@ -243,6 +245,8 @@ msgstr ""
 
 #. module: cooperator_website
 #: code:addons/cooperator_website/controllers/main.py:0
+#: code:addons/cooperator_website/controllers/main.py:0
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:0
 #, python-format
 msgid "Provided IBAN is not valid."
 msgstr ""
@@ -265,8 +269,15 @@ msgstr ""
 
 #. module: cooperator_website
 #: code:addons/cooperator_website/controllers/main.py:0
+#: code:addons/cooperator_website/controllers/main.py:0
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:0
 #, python-format
 msgid "Some mandatory fields have not been filled."
+msgstr ""
+
+#. module: cooperator_website
+#: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
+msgid "Super Cooperative"
 msgstr ""
 
 #. module: cooperator_website
@@ -291,6 +302,8 @@ msgstr ""
 
 #. module: cooperator_website
 #: code:addons/cooperator_website/controllers/main.py:0
+#: code:addons/cooperator_website/controllers/main.py:0
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:0
 #, python-format
 msgid ""
 "You can't subscribe for an amount that exceeds {amount}{currency_symbol}."
@@ -298,6 +311,8 @@ msgstr ""
 
 #. module: cooperator_website
 #: code:addons/cooperator_website/controllers/main.py:0
+#: code:addons/cooperator_website/controllers/main.py:0
+#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:0
 #, python-format
 msgid "You can't subscribe to two different types of share."
 msgstr ""
@@ -321,11 +336,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
 msgid "didier.bourdon@mycoop.be"
-msgstr ""
-
-#. module: cooperator_website
-#: model_terms:ir.ui.view,arch_db:cooperator_website.contact_template
-msgid "+32 456 926 5059"
 msgstr ""
 
 #. module: cooperator_website
