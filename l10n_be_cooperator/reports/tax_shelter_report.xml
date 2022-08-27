@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.actions.report" id="action_tax_shelter_subscription_report">
+        <field name="model">tax.shelter.certificate</field>
+        <field name="name">Tax shelter subscription report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field
+            name="report_name"
+        >l10n_be_cooperator.tax_shelter_subscription_report</field>
+        <field
+            name="report_file"
+        >l10n_be_cooperator.tax_shelter_subscription_report.xml</field>
+        <field name="multi">True</field>
+    </record>
+    <record model="ir.actions.report" id="action_tax_shelter_shares_report">
+        <field name="model">tax.shelter.certificate</field>
+        <field name="name">Tax shelter shares report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">l10n_be_cooperator.tax_shelter_shares_report</field>
+        <field
+            name="report_file"
+        >l10n_be_cooperator.tax_shelter_shares_report.xml</field>
+        <field name="multi">True</field>
+    </record>
+</odoo>

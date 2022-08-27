@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="tax_shelter_declaration_1_demo" model="tax.shelter.declaration">
+        <field name="name">2019</field>
+        <field name="fiscal_year">2018</field>
+        <field name="date_from">2018-01-01</field>
+        <field name="date_to">2018-12-31</field>
+        <field name="month_from">January</field>
+        <field name="month_to">December</field>
+        <field name="tax_shelter_percentage">45</field>
+        <field name="state">validated</field>
+        <field name="tax_shelter_capital_limit">143875.00</field>
+        <field name="previously_subscribed_capital">0.00</field>
+    </record>
+
+    <record id="tax_shelter_certificate_1_demo" model="tax.shelter.certificate">
+        <field name="cooperator_number">1</field>
+        <field name="partner_id" ref="cooperator.res_partner_cooperator_1_demo" />
+        <field
+            name="declaration_id"
+            ref="l10n_be_cooperator.tax_shelter_declaration_1_demo"
+        />
+        <field name="state">sent</field>
+    </record>
+
+    <record id="certificate_line_1_demo" model="certificate.line">
+        <field
+            name="tax_shelter_certificate"
+            ref="l10n_be_cooperator.tax_shelter_certificate_1_demo"
+        />
+        <field
+            name="share_type"
+            model="product.template"
+            eval="obj(ref('cooperator.product_template_share_type_1_demo')).product_variant_id.id"
+        />
+        <field name="share_unit_price">25</field>
+        <field name="quantity">12</field>
+        <field name="transaction_date" eval="datetime.now() - timedelta(days=45)" />
+        <field name="tax_shelter" eval="True" />
+        <field name="type">subscribed</field>
+    </record>
+
+</odoo>
