@@ -386,8 +386,8 @@ msgstr ""
 #. module: cooperator
 #: model:mail.template,report_name:cooperator.email_template_release_capital
 msgid ""
-"${(object.name or '').replace('/','_')}_${object.state == 'draft' and "
-"'draft' or ''}"
+"${(object.name or \"capital_release_request\").replace(\"/\", "
+"\"_\")}${object.state == \"draft\" and \"_draft\" or \"\"}"
 msgstr ""
 
 #. module: cooperator
@@ -2633,6 +2633,11 @@ msgstr ""
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__logo_url
 msgid "logo url"
+msgstr ""
+
+#. module: cooperator
+#: model:ir.actions.report,print_report_name:cooperator.action_cooperator_invoices
+msgid "object._get_report_base_filename()"
 msgstr ""
 
 #. module: cooperator
