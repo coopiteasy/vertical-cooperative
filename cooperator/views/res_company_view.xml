@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="view_company_form">
+        <field name="name">res.company.form.easymy.coop</field>
+        <field name="inherit_id" ref="base.view_company_form" />
+        <field name="model">res.company</field>
+        <field name="arch" type="xml">
+            <group name="social_media" position="before">
+                <group
+                    name="coop_grp"
+                    string="Cooperative"
+                    groups="cooperator.cooperator_group_user"
+                >
+                    <field name="unmix_share_type" />
+                    <field name="allow_id_card_upload" />
+                    <field name="create_user" />
+                    <field name="display_logo1" />
+                    <field name="bottom_logo1" />
+                    <field name="display_logo2" />
+                    <field name="bottom_logo2" />
+                    <field name="coop_email_contact" />
+                    <field name="subscription_maximum_amount" />
+                    <field name="default_capital_release_request_payment_term" />
+                    <field name="property_cooperator_account" />
+                    <field name="default_country_id" />
+                    <field name="default_lang_id" />
+                    <field name="board_representative" />
+                    <field name="signature_scan" />
+                    <field name="display_internal_rules_approval" />
+                    <field name="internal_rules_approval_required" />
+                    <field name="internal_rules_approval_text" />
+                    <field name="display_data_policy_approval" />
+                    <field name="data_policy_approval_required" />
+                    <field name="data_policy_approval_text" />
+                    <field name="display_financial_risk_approval" />
+                    <field name="financial_risk_approval_required" />
+                    <field name="financial_risk_approval_text" />
+                    <field name="display_generic_rules_approval" />
+                    <field name="generic_rules_approval_required" />
+                    <field name="generic_rules_approval_text" />
+                    <field name="send_confirmation_email" />
+                    <field name="send_capital_release_email" />
+                    <field name="send_certificate_email" />
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>

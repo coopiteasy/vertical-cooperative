@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="mail_template_action" model="ir.actions.act_window">
+        <field name="name">Mail Templates</field>
+        <field name="res_model">mail.template</field>
+        <field name="view_mode">form,tree</field>
+        <field name="domain">[('is_cooperator_template','=',True)]</field>
+        <field name="view_id" ref="mail.email_template_tree" />
+        <field name="search_view_id" ref="mail.view_email_template_search" />
+    </record>
+
+    <record id="email_template_form" model="ir.ui.view">
+        <field name="name">email.template.form</field>
+        <field name="model">mail.template</field>
+        <field name="inherit_id" ref="mail.email_template_form" />
+        <field name="arch" type="xml">
+            <field name="mail_server_id" position="after">
+                <field name="is_cooperator_template" />
+            </field>
+        </field>
+    </record>
+</odoo>

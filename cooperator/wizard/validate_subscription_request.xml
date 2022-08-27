@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_validate_subscription_request" model="ir.ui.view">
+        <field name="name">Validate subscription request</field>
+        <field name="model">validate.subscription.request</field>
+        <field name="arch" type="xml">
+            <form string="Validate the subscription request">
+                <p class="oe_grey">
+                    Validate the subscription request.
+                </p>
+                <footer>
+                    <button
+                        name="validate"
+                        string="Validate"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_account_invoice_confirm">
+        <field name="name">Validate subscription request</field>
+        <field name="res_model">validate.subscription.request</field>
+        <field name="binding_model_id" ref="model_subscription_request" />
+        <field name="binding_type">action</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

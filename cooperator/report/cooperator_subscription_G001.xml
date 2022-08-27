@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="cooperator_subscription_G001">
+        <t t-call="web.html_container">
+
+            <t t-set="data_report_margin_top" t-value="5" />
+            <t t-set="data_report_header_spacing" t-value="0" />
+            <t t-set="data_report_dpi" t-value="110" />
+
+            <!--<t t-call="theme_light.report_layout_002">-->
+
+            <div class="page">
+                <head>
+                    <!--<link href="/theme_light/static/css/invoice_G002.css" rel="stylesheet"/>-->
+                </head>
+
+                <!--<t t-call="theme_light.list_header_G002"/>-->
+
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+
+                <table class="title_table">
+                    <tr>
+                        <td>
+                            <span
+                                class="color_text"
+                                t-esc="time.strftime('%Y-%m-%d')"
+                            />
+                        </td>
+                        <td>
+                            <div class="title_doc" style="font-size:16px">
+                                <span>SUBSCRIPTION REGISTER</span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+
+                <table class="list_line_table_head" width="100%">
+                    <br />
+                    <tr>
+                        <th width="15%" style="text-align: center;">Operation
+                            number
+                        </th>
+                        <th
+                            width="30%"
+                            style="text-align: left;text-indent:15px"
+                        >Cooperator
+                        </th>
+                        <th width="15%" style="text-align: center;">Subscription
+                            date
+                        </th>
+                        <th width="25%" style="text-align: center;">Operation
+                            type
+                        </th>
+                        <th width="15%" style="text-align: center;">Share
+                            number
+                        </th>
+                    </tr>
+                    <t t-set="nb_ligne" t-value="0" />
+
+                    <p t-foreach="docs" t-as="transaction">
+                        <t t-set="nb_ligne" t-value="nb_ligne+1" />
+                        <tr height="40px">
+                            <div t-if="(nb_ligne%2)==1">
+                                <td
+                                    class="lgn_impair"
+                                    style="text-align:left;text-indent:10px"
+                                >
+                                    <span
+                                        t-field="transaction.register_number_operation"
+                                    />
+                                </td>
+                                <td style="text-align:left;text-indent:15px">
+                                    <span t-field="transaction.partner_id.name" />
+                                </td>
+                                <td style="text-align:center">
+                                    <span t-field="transaction.date" />
+                                </td>
+                                <td style="text-align:center">
+                                    <span t-field="transaction.type" />
+                                </td>
+                                <td style="text-align:center">
+                                    <span t-field="transaction.quantity" />
+                                </td>
+
+                            </div>
+                            <div t-if="(nb_ligne%2)==0">
+                                <td
+                                    class="lgn_pair"
+                                    style="text-align:left;text-indent:10px;background-color:#ffffff"
+                                >
+                                    <span
+                                        t-field="transaction.register_number_operation"
+                                    />
+                                </td>
+                                <td
+                                    class="lgn_pair"
+                                    style="text-align:left;text-indent:15px;background-color:#ffffff"
+                                >
+                                    <span t-field="transaction.partner_id.name" />
+                                </td>
+                                <td style="text-align:center;background-color:#ffffff">
+                                    <span t-field="transaction.date" />
+                                </td>
+                                <td style="text-align:center;background-color:#ffffff">
+                                    <span t-field="transaction.type" />
+                                </td>
+                                <td style="text-align:center;background-color:#ffffff">
+                                    <span t-field="transaction.quantity" />
+                                </td>
+                            </div>
+                        </tr>
+                    </p>
+                </table>
+
+                <table width="100%">
+                    <br />
+                    <tr height="40px">
+                        <th width="15%" />
+                        <th width="30%" />
+                        <th width="15%" />
+                        <th class="total_table color_text" width="25%">TOTAL :
+                        </th>
+
+                        <th class="total_table" style="text-align:center" width="15%">
+                            <span t-esc="sum(t.quantity for t in docs)" />
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </t>
+        <!--</t>-->
+    </template>
+</odoo>

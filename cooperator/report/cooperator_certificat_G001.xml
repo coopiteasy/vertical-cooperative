@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="cooperator_certificat_G001_document">
+
+        <t t-call="web.external_layout">
+            <t t-set="address">
+                <address
+                    t-field="o.commercial_partner_id"
+                    t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'
+                />
+            </t>
+            <div class="page mt32">
+                <h2>
+                    <span>Cooperator Certificate</span>
+                </h2>
+
+                <p name="certificate_generation_date" class="mt16">
+                    <span>Certificate generated on</span>
+                    <span
+                        t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"
+                    />
+                </p>
+
+                <p name="label_coop_number" class="mt16">
+                    <span t-field="o.name" />
+                    is recorded in the register of cooperators under number
+                    <span t-field="o.cooperator_register_number" />.
+                </p>
+
+
+                <table
+                    class="table table-sm o_main_table mt16"
+                    name="invoice_line_table"
+                >
+                    <thead>
+                        <tr>
+                            <t t-set="colspan" t-value="5" />
+                            <th class="text-left">Effective date</th>
+                            <th class="text-right">Share type</th>
+                            <th class="text-right">Quantity</th>
+                            <th class="text-right">Unit Price</th>
+                            <th class="text-right">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="invoice_tbody">
+                        <t t-set="nb_ligne" t-value="0" />
+                        <t t-foreach="o.share_ids" t-as="line">
+                            <tr>
+                                <td class="text-left" name="effective_date">
+                                    <span t-field="line.effective_date" />
+                                </td>
+                                <td class="text-right" name="share_short_name">
+                                    <span t-field="line.share_short_name" />
+                                </td>
+                                <td class="text-right" name="share_number">
+                                    <span t-field="line.share_number" />
+                                </td>
+                                <td
+                                    t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}"
+                                    name="share_unit_price"
+                                >
+                                    <span
+                                        t-field="line.share_unit_price"
+                                        t-options='{"widget": "monetary", "display_currency": o.currency_id}'
+                                    />
+                                </td>
+                                <td class="text-right" name="total_amount_line">
+                                    <span
+                                        t-field="line.total_amount_line"
+                                        t-options='{"widget": "monetary", "display_currency": o.currency_id}'
+                                    />
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+
+                <div class="clearfix">
+                    <div name="total_table" id="total" class="row">
+                        <div
+                            t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto"
+                        >
+                            <table class="table table-sm">
+                                <tr class="border-black o_total">
+                                    <td>
+                                        <strong>Total</strong>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="o.number_of_share" />
+                                        <span>share(s)</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <span
+                                            t-field="o.total_value"
+                                            t-options='{"widget": "monetary", "display_currency": o.currency_id}'
+                                        />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt32">
+                    <div name="board_commitee" class="col-sm-6">
+                        <p>
+                            For the board of <span t-field="o.env.company.name" />,
+                        </p>
+                        <p>
+                            <strong>
+                                <span t-field="o.env.company.board_representative" />
+                            </strong>
+                        </p>
+                        <img
+                            t-if="o.env.company.signature_scan"
+                            t-attf-class="mt16 w-50"
+                            t-attf-style="{{ 'min-width: 100px; max-width: 250px' if report_type == 'pdf' else '' }}"
+                            t-att-src="'data:image/png;base64,%s' % o.env.company.signature_scan.decode()"
+                        />
+                    </div>
+                </div>
+
+            </div>
+        </t>
+    </template>
+
+
+    <template id="cooperator_certificat_G001">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t
+                    t-call="cooperator.cooperator_certificat_G001_document"
+                    t-lang="o.lang"
+                />
+            </t>
+        </t>
+    </template>
+
+</odoo>

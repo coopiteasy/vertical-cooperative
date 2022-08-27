@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+     Copyright 2019 Coop IT Easy
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+    <record id="res_partner_user_cooperator_demo" model="res.partner">
+        <field name="name">User cooperator</field>
+        <field name="is_company" eval="False" />
+        <field name="email">user.cooperator@coop.coop</field>
+        <field name="street">Rue de la colocation, 23</field>
+        <field name="city">Bruxelles</field>
+        <field name="zip">1030</field>
+        <field name="country_id" ref="base.be" />
+    </record>
+
+    <record id="res_users_user_cooperator_demo" model="res.users">
+        <field name="partner_id" ref="res_partner_user_cooperator_demo" />
+        <field name="login">user-cooperator</field>
+        <field name="password">demo</field>
+        <field name="groups_id" eval="[(4, ref('cooperator.cooperator_group_user'))]" />
+    </record>
+
+    <record id="res_partner_manager_cooperator_demo" model="res.partner">
+        <field name="name">Manager cooperator</field>
+        <field name="is_company" eval="False" />
+        <field name="email">manager.cooperator@coop.coop</field>
+        <field name="street">Rue de la colocation, 24</field>
+        <field name="city">Liège</field>
+        <field name="zip">4100</field>
+        <field name="country_id" ref="base.be" />
+    </record>
+
+    <record id="res_users_manager_cooperator_demo" model="res.users">
+        <field name="partner_id" ref="res_partner_manager_cooperator_demo" />
+        <field name="login">manager-cooperator</field>
+        <field name="password">demo</field>
+        <field
+            name="groups_id"
+            eval="[(4, ref('cooperator.cooperator_group_manager'))]"
+        />
+    </record>
+
+</odoo>
