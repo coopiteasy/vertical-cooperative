@@ -343,8 +343,10 @@ class WebsiteSubscription(http.Controller):
             ).format(amount=max_amount, currency_symbol=company.currency_id.symbol)
             return request.render(redirect, values)
 
-        if "redirect_url" in values:
-            del values["redirect_url"]
+        # remove non-model attributes (used internally when re-rendering the
+        # form in case of a validation error)
+        del values["redirect_url"]
+        del values["confirm_email"]
 
         return True
 
@@ -431,9 +433,6 @@ class WebsiteSubscription(http.Controller):
         values["source"] = "website"
 
         values["share_product_id"] = self.get_selected_share(kwargs).id
-
-        if "confirm_email" in values:
-            del values["confirm_email"]
 
         if is_company:
             if kwargs.get("company_register_number"):
