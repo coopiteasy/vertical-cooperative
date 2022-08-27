@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* cooperator_website_recaptcha
+# 	* cooperator_website_recaptcha
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: <>\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,19 +24,33 @@ msgid "Companies"
 msgstr ""
 
 #. module: cooperator_website_recaptcha
-#: selection:res.company,captcha_type:0
+#: model:ir.model.fields.selection,name:cooperator_website_recaptcha.selection__res_company__captcha_type__none
 msgid "Disabled"
 msgstr ""
 
 #. module: cooperator_website_recaptcha
-#: selection:res.company,captcha_type:0
+#: model:ir.model.fields,field_description:cooperator_website_recaptcha.field_res_company__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: cooperator_website_recaptcha
+#: model:ir.model.fields.selection,name:cooperator_website_recaptcha.selection__res_company__captcha_type__google
 msgid "Google Recaptcha"
 msgstr ""
 
 #. module: cooperator_website_recaptcha
-#: code:addons/cooperator_website_recaptcha/controllers/main.py:27
-#: code:addons/cooperator_website_recaptcha/controllers/main.py:37
+#: model:ir.model.fields,field_description:cooperator_website_recaptcha.field_res_company__id
+msgid "ID"
+msgstr ""
+
+#. module: cooperator_website_recaptcha
+#: model:ir.model.fields,field_description:cooperator_website_recaptcha.field_res_company____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: cooperator_website_recaptcha
+#: code:addons/cooperator_website_recaptcha/controllers/main.py:0
+#: code:addons/cooperator_website_recaptcha/controllers/main.py:0
 #, python-format
 msgid "the captcha has not been validated, please fill in the captcha"
 msgstr ""
-
