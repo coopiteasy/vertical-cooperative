@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+     Copyright 2016 Jairo Llopis <jairo.llopis@tecnativa.com>
+     Copyright 2018 Rémy Taymans <remy@cooptieasy.be>
+     Copyright 2019 Houssine Bakkali <houssine@cooptieasy.be>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <template
+        id="portal_my_details"
+        inherit_id="portal.portal_my_details"
+        name="Portal user details"
+    >
+        <input name="name" position="attributes">
+            <attribute name="t-att-readonly">True</attribute>
+        </input>
+        <input name="email" position="attributes">
+            <attribute name="t-att-readonly">True</attribute>
+        </input>
+        <xpath expr="//input[@name='phone']/.." position="after">
+            <div
+                t-attf-class="form-group #{error.get('gender') and 'o_has_error' or ''} col-xl-6"
+            >
+                <label class="col-form-label" for="gender">Gender</label>
+                <select
+                    name="gender"
+                    t-attf-class="form-control #{error.get('gender') or ''}"
+                >
+                    <option value="" />
+                    <t t-foreach="genders or []" t-as="item">
+                        <option
+                            t-att-value="item[0]"
+                            t-att-selected="item[0] == partner.gender"
+                        >
+                            <t t-esc="item[1]" />
+                        </option>
+                    </t>
+                </select>
+            </div>
+            <div
+                t-attf-class="form-group #{error.get('lang') and 'has-error' or ''} col-xl-6"
+            >
+                <label class="col-form-label" for="lang">Language</label>
+                <select
+                    name="lang"
+                    t-attf-class="form-control #{error.get('lang') or ''}"
+                >
+                    <option value="" />
+                    <t t-foreach="langs or []" t-as="langue">
+                        <option
+                            t-att-value="langue.code"
+                            t-att-selected="langue.code == partner.lang"
+                        >
+                            <t t-esc="langue.name" />
+                        </option>
+                    </t>
+                </select>
+            </div>
+            <div
+                t-attf-class="form-group #{error.get('birthdate_date') and 'o_has_error' or ''} col-xl-6"
+            >
+                <label class="col-form-label" for="birthdate_date">
+                    Date of Birth
+                </label>
+                <input
+                    type="date"
+                    name="birthdate_date"
+                    t-attf-class="form-control #{error.get('birthdate_date') or ''}"
+                    t-att-value="birthdate_date or partner.birthdate_date"
+                />
+            </div>
+            <div
+                t-attf-class="form-group #{error.get('iban') and 'o_has_error' or ''} col-xl-6"
+            >
+                <label class="col-form-label" for="iban">Bank Account Number</label>
+                <input
+                    type="input"
+                    name="iban"
+                    t-attf-class="form-control #{error.get('iban') or ''}"
+                    t-att-value="iban"
+                />
+            </div>
+        </xpath>
+    </template>
+
+    <!-- Add cooperator information -->
+    <template
+        id="portal_layout"
+        name="Website Portal Details Form"
+        inherit_id="portal.portal_layout"
+    >
+        <xpath expr="//div[hasclass('o_portal_my_details')]" position="after">
+            <div class="o_my_details_coop" t-if="coop.member">
+                <h3 class="page-header">Your Cooperator Details</h3>
+                <p class="text-center">
+                    <span t-if="coop.member">
+                        You are an effective cooperator.
+                    </span>
+                    <span t-if="not coop.member">
+                        You are not a cooperator.
+                    </span>
+                </p>
+                <p t-if="coop.cooperator_register_number">
+                    <label>Cooperator Number:</label>
+                    <t t-esc="coop.cooperator_register_number" />
+                </p>
+                <p t-if="coop.effective_date">
+                    <label>Cooperator Entrance Date:</label>
+                    <span t-field="coop.effective_date" />
+                </p>
+                <p t-if="coop.number_of_share">
+                    <label>Number of Shares:</label>
+                    <t t-esc="coop.number_of_share" />
+                </p>
+                <p t-if="coop.share_ids">
+                    <div t-foreach="coop.share_ids" t-as="share">
+                        <span t-field="share.effective_date" />:
+                        <t t-esc="share.share_number" />
+                        x
+                        <t t-esc="share.share_short_name" />
+                        (<span
+                            t-field="share.share_unit_price"
+                            t-field-options='{
+                "widget": "monetary",
+                "display_currency": "coop.company_id.currency_id"
+              }'
+                        />) -
+                        <span
+                            t-field="share.total_amount_line"
+                            t-field-options='{
+                "widget": "monetary",
+                "display_currency": "coop.company_id.currency_id"
+              }'
+                        />
+                    </div>
+                </p>
+                <p t-if="coop.total_value">
+                    <label>Total Value of Shares:</label>
+                    <span
+                        t-field="coop.total_value"
+                        t-field-options='{
+              "widget": "monetary",
+              "display_currency": "coop.company_id.currency_id"
+            }'
+                    />
+                </p>
+
+                <p t-if="coop.gender">
+                    <label>Gender:</label>
+                    <span t-field="coop.gender" />
+                </p>
+                <p t-if="coop.birthdate_date">
+                    <label>Date of Birth:</label>
+                    <t t-esc="coop.birthdate_date" />
+                </p>
+                <p t-if="coop_bank and coop_bank.acc_number">
+                    <label>Bank Account Number:</label>
+                    <t t-esc="coop_bank.acc_number" />
+                </p>
+                <p t-if="coop.is_company and coop.company_register_number">
+                    <label>Company Register Number:</label>
+                    <t t-esc="coop.company_register_number" />
+                </p>
+                <p t-if="coop.is_company and coop.representative">
+                    <label>Legal Representative:</label>
+                    <t t-esc="coop.representative" />
+                </p>
+                <p class="text-center">
+                    <a href="/my/cooperator_certificate/pdf" class="btn btn-default">
+                        Cooperator Certificate
+                    </a>
+                </p>
+            </div>
+        </xpath>
+    </template>
+
+
+    <template
+        id="portal_breadcrumbs"
+        name="Portal layout : capital request menu entries"
+        inherit_id="portal.portal_breadcrumbs"
+        priority="30"
+    >
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li
+                t-if="page_name == 'capital request'"
+                t-attf-class="breadcrumb-item #{'active ' if not capital_requests else ''}"
+            >
+                <a
+                    t-if="capital_request"
+                    t-attf-href="/my/release_capital_request?{{ keep_query() }}"
+                >
+                    Capital Request
+                </a>
+                <t t-else="">Capital Request</t>
+            </li>
+            <li t-if="capital_request" class="breadcrumb-item active">
+                <t t-esc="capital_request.name" t-if="capital_request.name" />
+                <t t-else="">
+                    <em>Draft Request</em>
+                </t>
+            </li>
+        </xpath>
+    </template>
+
+    <template
+        id="portal_my_home"
+        name="Portal My Home : Cooperator Capital Release Requests"
+        inherit_id="portal.portal_my_home"
+        priority="30"
+    >
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-if="capital_request_count" t-call="portal.portal_docs_entry">
+                <t t-set="title">Your Release Capital Requests</t>
+                <t t-set="url" t-value="'/my/release_capital_request'" />
+                <t t-set="count" t-value="capital_request_count" />
+            </t>
+        </xpath>
+    </template>
+
+    <template id="portal_my_capital_releases" name="My Capital Releases">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True" />
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">My Capital Releases</t>
+            </t>
+            <t t-if="not capital_requests">
+                <p>There are currently no capital release requests for your account.</p>
+            </t>
+            <t t-if="capital_requests" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Request #</th>
+                        <th>Request Date</th>
+                        <th class='d-none d-md-table-cell'>Due Date</th>
+                        <th />
+                        <th class="text-right">Amount Due</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="capital_requests" t-as="capital_request">
+                        <tr>
+                            <td>
+                                <a
+                                    t-att-href="capital_request.get_portal_url()"
+                                    t-att-title="capital_request.number"
+                                >
+                                    <t
+                                        t-esc="capital_request.number"
+                                        t-if="capital_request.number"
+                                    />
+                                    <em t-else="">Draft Request</em>
+                                </a>
+                            </td>
+                            <td>
+                                <span t-field="capital_request.invoice_date" />
+                            </td>
+                            <td class='d-none d-md-table-cell'>
+                                <span t-field="capital_request.invoice_date_due" />
+                            </td>
+                            <td class="tx_status">
+                                <t t-if="capital_request.state == 'open'">
+                                    <span class="badge badge-pill badge-info">
+                                        <i
+                                            class="fa fa-fw fa-clock-o"
+                                            aria-label="Opened"
+                                            title="Opened"
+                                            role="img"
+                                        />
+                                        <span class="d-none d-md-inline">
+                                            Waiting for Payment
+                                        </span>
+                                    </span>
+                                </t>
+                                <t t-if="capital_request.state == 'paid'">
+                                    <span class="badge badge-pill badge-success">
+                                        <i
+                                            class="fa fa-fw fa-check"
+                                            aria-label="Paid"
+                                            title="Paid"
+                                            role="img"
+                                        />
+                                        <span class="d-none d-md-inline">
+                                            Paid
+                                        </span>
+                                    </span>
+                                </t>
+                                <t t-if="capital_request.state == 'cancel'">
+                                    <span class="badge badge-pill badge-warning">
+                                        <i
+                                            class="fa fa-fw fa-remove"
+                                            aria-label="Cancelled"
+                                            title="Cancelled"
+                                            role="img"
+                                        />
+                                        <span class="d-none d-md-inline">
+                                            Cancelled
+                                        </span>
+                                    </span>
+                                </t>
+                            </td>
+                            <td class="text-right">
+                                <span
+                                    t-esc="-capital_request.amount_residual if capital_request.type == 'out_refund' else capital_request.amount_residual"
+                                    t-options='{"widget": "monetary", "display_currency": capital_request.currency_id}'
+                                />
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </t>
+        </t>
+    </template>
+</odoo>
