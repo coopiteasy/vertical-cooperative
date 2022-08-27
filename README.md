@@ -35,6 +35,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [cooperator](cooperator/) | 14.0.1.0.0 |  | Manage your cooperators
+[portal_recaptcha](portal_recaptcha/) | 14.0.1.0.0 |  | Add google recaptcha to forms.
 
 [//]: # (end addons)
 
