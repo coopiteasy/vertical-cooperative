@@ -984,6 +984,7 @@ msgid "Cooperator register"
 msgstr ""
 
 #. module: cooperator
+#: model:account.account,name:cooperator.account_cooperator_demo
 #: model:ir.actions.act_window,name:cooperator.action_partner_cooperator_form
 #: model:ir.ui.menu,name:cooperator.menu_cooperator_cooperator
 #: model:ir.ui.menu,name:cooperator.menu_cooperator_main
@@ -1215,6 +1216,11 @@ msgstr ""
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_register_filter
 msgid "Entry type"
+msgstr ""
+
+#. module: cooperator
+#: model:account.account,name:cooperator.account_equity_demo
+msgid "Equity"
 msgstr ""
 
 #. module: cooperator
@@ -2194,6 +2200,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__date
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_register_filter
 msgid "Subscription Date"
+msgstr ""
+
+#. module: cooperator
+#: model:account.journal,name:cooperator.subscription_journal
+msgid "Subscription Journal"
 msgstr ""
 
 #. module: cooperator
