@@ -86,7 +86,7 @@ class CooperatorPortalAccount(CustomerPortal):
 
         if not valid:
             error["iban"] = "error"
-            error_message.append(_("You iban account number is not valid"))
+            error_message.append(_("The IBAN account number is not valid."))
         return error, error_message
 
     @route(["/my/account"], type="http", auth="user", website=True)
