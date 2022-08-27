@@ -35,6 +35,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [cooperator](cooperator/) | 14.0.1.0.0 |  | Manage your cooperators
+[cooperator_website](cooperator_website/) | 14.0.1.0.0 |  | This module adds the cooperator subscription form allowing to subscribe for shares online.
 [portal_recaptcha](portal_recaptcha/) | 14.0.1.0.0 |  | Add google recaptcha to forms.
 
 [//]: # (end addons)
