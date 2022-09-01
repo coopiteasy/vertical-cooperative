@@ -17,4 +17,5 @@
         "views/certificate_template.xml",
     ],
     "installable": True,
+    "auto-install": True,
 }
