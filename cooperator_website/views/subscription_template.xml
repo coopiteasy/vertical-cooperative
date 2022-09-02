@@ -524,7 +524,7 @@
                                         required="True"
                                         t-att-readonly="logged"
                                         t-attf-value="#{email or ''}"
-                                        placeholder="didier.bourdon@bees-coop.be"
+                                        placeholder="didier.bourdon@mycoop.be"
                                     />
 
                                 </div>
@@ -545,7 +545,7 @@
                                         required="True"
                                         t-att-readonly="logged"
                                         t-attf-value="#{confirm_email or ''}"
-                                        placeholder="didier.bourdon@bees-coop.be"
+                                        placeholder="didier.bourdon@mycoop.be"
                                     />
 
                                 </div>
@@ -694,7 +694,7 @@
                                         name="company_email"
                                         required="True"
                                         t-attf-value="#{company_email or ''}"
-                                        placeholder="administration@beescoop.be"
+                                        placeholder="administration@mycoop.be"
                                     />
                                 </div>
                                 <div
@@ -711,7 +711,7 @@
                                         t-att-required="not logged"
                                         t-att-readonly="logged"
                                         t-attf-value="#{confirm_email or ''}"
-                                        placeholder="administration@beescoop.be"
+                                        placeholder="administration@mycoop.be"
                                     />
                                 </div>
 
@@ -732,7 +732,7 @@
                                         required="True"
                                         t-att-readonly="logged"
                                         t-attf-value="#{email or ''}"
-                                        placeholder="didier.bourdon@bees-coop.be"
+                                        placeholder="didier.bourdon@mycoop.be"
                                     />
 
                                 </div>
