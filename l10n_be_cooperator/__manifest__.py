@@ -13,7 +13,6 @@
         "cooperator",
         "cooperator_website",
         "l10n_be",
-        "l10n_be_invoice_bba",
     ],
     "author": "Coop IT Easy SC",
     "category": "Cooperative management",
@@ -35,4 +34,5 @@
     ],
     "installable": True,
     "application": False,
+    "auto-install": True,
 }
