@@ -3,7 +3,7 @@
         <field name="name">subscription.register.tree</field>
         <field name="model">subscription.register</field>
         <field name="arch" type="xml">
-            <tree string="Subscription Register">
+            <tree string="Subscription Register" create="false">
                 <field name="register_number_operation" />
                 <field name="date" />
                 <field name="partner_id" />
