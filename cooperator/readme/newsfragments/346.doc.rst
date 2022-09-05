@@ -1,1 +1,0 @@
-Adding USAGE.rst to inform that localization modules are necessary.
