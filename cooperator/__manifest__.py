@@ -30,7 +30,6 @@
         "security/res_groups.xml",
         "security/ir.model.access.csv",
         "wizard/create_subscription_from_partner.xml",
-        "wizard/update_partner_info.xml",
         "wizard/validate_subscription_request.xml",
         "wizard/update_share_line.xml",
         "views/subscription_request_view.xml",
