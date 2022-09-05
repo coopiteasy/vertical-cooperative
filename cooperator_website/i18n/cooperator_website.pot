@@ -316,13 +316,13 @@ msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
-msgid "administration@beescoop.be"
+msgid "administration@mycoop.be"
 msgstr ""
 
 #. module: cooperator_website
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecompanycooperator
 #: model_terms:ir.ui.view,arch_db:cooperator_website.becomecooperator
-msgid "didier.bourdon@bees-coop.be"
+msgid "didier.bourdon@mycoop.be"
 msgstr ""
 
 #. module: cooperator_website
