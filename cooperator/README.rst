@@ -84,13 +84,30 @@ For instance, for the addon `cooperator_portal`
 
 Beware that for word separation, pypi uses dashes `-` and odoo underscores `_`.
 
+Usage
+=====
+
+See the [documentation](https://doc.it4socialeconomy.org/books/application-cooperators) (not available in english ATM).
+
+A localization module is needed with this module.
+
 Known issues / Roadmap
 ======================
 
 Gather and consolidate all cooperator settings in the application parameters.
 
+known_caveats: the cooperator localization modules will have to be splitted in order to install the `cooperator` module without the `cooperator_website` module.
+
 Changelog
 =========
+
+12.0.5.3.0 (2022-09-05)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+**Improved Documentation**
+
+- Adding USAGE.rst to inform that localization modules are necessary. (`#346 <https://github.com/coopiteasy/vertical-cooperative/issues/346>`_)
+
 
 12.0.5.0.0 (2022-06-23)
 ~~~~~~~~~~~~~~~~~~~~~~~
