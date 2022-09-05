@@ -704,7 +704,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:cooperator.operation_request_form
 #: model_terms:ir.ui.view,arch_db:cooperator.subscription_request_view_form
 #: model_terms:ir.ui.view,arch_db:cooperator.view_create_subscription
-#: model_terms:ir.ui.view,arch_db:cooperator.view_update_partner_info
 #: model_terms:ir.ui.view,arch_db:cooperator.view_update_share_line_info
 #: model_terms:ir.ui.view,arch_db:cooperator.view_validate_subscription_request
 msgid "Cancel"
@@ -920,7 +919,6 @@ msgstr ""
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__partner_id
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__cooperator
-#: model:ir.model.fields,field_description:cooperator.field_partner_update_info__cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_partner__cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_users__cooperator
 #: model:ir.model.fields,field_description:cooperator.field_share_line__partner_id
@@ -1044,7 +1042,6 @@ msgstr ""
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__create_uid
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__create_uid
-#: model:ir.model.fields,field_description:cooperator.field_partner_update_info__create_uid
 #: model:ir.model.fields,field_description:cooperator.field_share_line__create_uid
 #: model:ir.model.fields,field_description:cooperator.field_share_line_update_info__create_uid
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__create_uid
@@ -1056,7 +1053,6 @@ msgstr ""
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__create_date
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__create_date
-#: model:ir.model.fields,field_description:cooperator.field_partner_update_info__create_date
 #: model:ir.model.fields,field_description:cooperator.field_share_line__create_date
 #: model:ir.model.fields,field_description:cooperator.field_share_line_update_info__create_date
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__create_date
@@ -1135,7 +1131,6 @@ msgstr ""
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__display_name
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__display_name
-#: model:ir.model.fields,field_description:cooperator.field_partner_update_info__display_name
 #: model:ir.model.fields,field_description:cooperator.field_share_line__display_name
 #: model:ir.model.fields,field_description:cooperator.field_share_line_update_info__display_name
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__display_name
@@ -1357,7 +1352,6 @@ msgstr ""
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__id
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__id
-#: model:ir.model.fields,field_description:cooperator.field_partner_update_info__id
 #: model:ir.model.fields,field_description:cooperator.field_share_line__id
 #: model:ir.model.fields,field_description:cooperator.field_share_line_update_info__id
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__id
@@ -1450,11 +1444,6 @@ msgid "Is an operation"
 msgstr ""
 
 #. module: cooperator
-#: model:ir.model.fields,field_description:cooperator.field_partner_update_info__is_company
-msgid "Is company"
-msgstr ""
-
-#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__data_policy_approval_required
 msgid "Is data policy approval required?"
 msgstr ""
@@ -1498,7 +1487,6 @@ msgstr ""
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request____last_update
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription____last_update
-#: model:ir.model.fields,field_description:cooperator.field_partner_update_info____last_update
 #: model:ir.model.fields,field_description:cooperator.field_share_line____last_update
 #: model:ir.model.fields,field_description:cooperator.field_share_line_update_info____last_update
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register____last_update
@@ -1510,7 +1498,6 @@ msgstr ""
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__write_uid
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__write_uid
-#: model:ir.model.fields,field_description:cooperator.field_partner_update_info__write_uid
 #: model:ir.model.fields,field_description:cooperator.field_share_line__write_uid
 #: model:ir.model.fields,field_description:cooperator.field_share_line_update_info__write_uid
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__write_uid
@@ -1522,7 +1509,6 @@ msgstr ""
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_operation_request__write_date
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__write_date
-#: model:ir.model.fields,field_description:cooperator.field_partner_update_info__write_date
 #: model:ir.model.fields,field_description:cooperator.field_share_line__write_date
 #: model:ir.model.fields,field_description:cooperator.field_share_line_update_info__write_date
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__write_date
@@ -1900,7 +1886,6 @@ msgstr ""
 
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_partner_create_subscription__register_number
-#: model:ir.model.fields,field_description:cooperator.field_partner_update_info__register_number
 msgid "Register Company Number"
 msgstr ""
 
@@ -2061,16 +2046,6 @@ msgstr ""
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__send_confirmation_email
 msgid "Send confirmation email"
-msgstr ""
-
-#. module: cooperator
-#: model:ir.model.fields,field_description:cooperator.field_partner_update_info__representative_function
-msgid "Set function"
-msgstr ""
-
-#. module: cooperator
-#: model:ir.model.fields,field_description:cooperator.field_partner_update_info__legal_form
-msgid "Set legal form"
 msgstr ""
 
 #. module: cooperator
@@ -2536,25 +2511,8 @@ msgid "Unread Messages Counter"
 msgstr ""
 
 #. module: cooperator
-#: model:ir.actions.act_window,name:cooperator.action_view_update_partner_info
-#: model_terms:ir.ui.view,arch_db:cooperator.view_update_partner_info
-msgid "Update Cooperator Info"
-msgstr ""
-
-#. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.view_update_partner_info
-msgid "Update Cooperator Info."
-msgstr ""
-
-#. module: cooperator
-#: model_terms:ir.ui.view,arch_db:cooperator.view_update_partner_info
 #: model_terms:ir.ui.view,arch_db:cooperator.view_update_share_line_info
 msgid "Update Info"
-msgstr ""
-
-#. module: cooperator
-#: model:ir.model,name:cooperator.model_partner_update_info
-msgid "Update Partner Info"
 msgstr ""
 
 #. module: cooperator
@@ -2569,23 +2527,7 @@ msgid "Update Share Line Info."
 msgstr ""
 
 #. module: cooperator
-#: model:ir.model.fields,field_description:cooperator.field_partner_update_info__all
-msgid "Update all info"
-msgstr ""
-
-#. module: cooperator
-#: model:ir.model.fields,field_description:cooperator.field_partner_update_info__birthdate
-msgid "Update birth date"
-msgstr ""
-
-#. module: cooperator
-#: model:ir.model.fields,field_description:cooperator.field_partner_update_info__from_sub_req
-msgid "Update from subscription request"
-msgstr ""
-
-#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.share_line_form
-#: model_terms:ir.ui.view,arch_db:cooperator.view_partner_form
 msgid "Update info"
 msgstr ""
 
