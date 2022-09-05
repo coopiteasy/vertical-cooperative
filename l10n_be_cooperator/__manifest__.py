@@ -35,4 +35,5 @@
     ],
     "installable": True,
     "application": False,
+    "auto-install": True,
 }

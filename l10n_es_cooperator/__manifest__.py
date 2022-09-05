@@ -1,7 +1,7 @@
 {
     "name": "Cooperator Spain Localisation",
     "version": "12.0.0.0.16",
-    "depends": ["cooperator", "cooperator_website"],
+    "depends": ["cooperator", "cooperator_website", "l10n_es"],
     "author": "Coop IT Easy SC, Coopdevs Treball SCCL",
     "mantainer": "Coopdevs Treball SCCL",
     "website": "https://coopiteasy.be",
@@ -15,4 +15,5 @@
         "views/subscription_templates.xml",
     ],
     "installable": True,
+    "auto-install": True,
 }

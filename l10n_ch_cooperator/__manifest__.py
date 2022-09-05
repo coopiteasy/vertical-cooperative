@@ -16,4 +16,5 @@
         # "views/subscription_request_view.xml",
     ],
     "installable": True,
+    "auto-install": True,
 }
