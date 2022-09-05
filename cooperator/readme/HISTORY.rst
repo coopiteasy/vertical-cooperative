@@ -1,3 +1,11 @@
+12.0.5.3.0 (2022-09-05)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+**Improved Documentation**
+
+- Adding USAGE.rst to inform that localization modules are necessary. (`#346 <https://github.com/coopiteasy/vertical-cooperative/issues/346>`_)
+
+
 12.0.5.0.0 (2022-06-23)
 ~~~~~~~~~~~~~~~~~~~~~~~
 
