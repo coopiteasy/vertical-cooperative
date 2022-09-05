@@ -39,7 +39,7 @@ addon | version | maintainers | summary
 [cooperator_website](cooperator_website/) | 14.0.1.0.0 |  | This module adds the cooperator subscription form allowing to subscribe for shares online.
 [cooperator_website_recaptcha](cooperator_website_recaptcha/) | 14.0.1.0.0 |  | Add Google Recaptcha to Subscription Request Form
 [cooperator_website_uppercase_lastname](cooperator_website_uppercase_lastname/) | 14.0.1.0.0 |  | This module UPPERCASES the last names of submitted requests
-[l10n_be_cooperator](l10n_be_cooperator/) | 14.0.1.0.0 |  | Cooperators Belgium Localization
+[l10n_be_cooperator](l10n_be_cooperator/) | 14.0.1.1.0 |  | Cooperators Belgium Localization
 [l10n_be_cooperator_portal](l10n_be_cooperator_portal/) | 14.0.1.0.0 |  | Give access to Tax Shelter Report in the portal.
 [portal_recaptcha](portal_recaptcha/) | 14.0.1.0.0 |  | Add google recaptcha to forms.
 
