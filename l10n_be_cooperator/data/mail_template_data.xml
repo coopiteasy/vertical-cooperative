@@ -16,7 +16,7 @@
             <field name="model_id" ref="model_tax_shelter_certificate" />
             <field name="auto_delete" eval="True" />
             <field name="lang">${object.partner_id.lang}</field>
-            <field name="easy_my_coop" eval="True" />
+            <field name="is_cooperator_template" eval="True" />
             <field
                 name="body_html"
             ><![CDATA[
