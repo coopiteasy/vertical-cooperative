@@ -17,6 +17,7 @@ class ProductTemplate(models.Model):
     force_min_qty = fields.Boolean(String="Force minimum quantity?")
     by_company = fields.Boolean(string="Can be subscribed by companies?")
     by_individual = fields.Boolean(string="Can be subscribed by individuals?")
+    # fixme belongs to cooperative supermarket domain
     customer = fields.Boolean(string="Become customer")
     mail_template = fields.Many2one("mail.template", string="Mail template")
 
