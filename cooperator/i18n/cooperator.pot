@@ -1671,7 +1671,7 @@ msgid "Number of share"
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:696
+#: code:addons/cooperator/models/subscription_request.py:697
 #, python-format
 msgid "Number of share must be greater than 0."
 msgstr ""
@@ -1698,19 +1698,19 @@ msgid "Old cooperator"
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:778
+#: code:addons/cooperator/models/subscription_request.py:779
 #, python-format
 msgid "Only blocked requests can be unblocked."
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:800
+#: code:addons/cooperator/models/subscription_request.py:801
 #, python-format
 msgid "Only draft request can be put on the waiting list."
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:771
+#: code:addons/cooperator/models/subscription_request.py:772
 #, python-format
 msgid "Only draft requests can be blocked."
 msgstr ""
@@ -1834,7 +1834,7 @@ msgid "Planned"
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:510
+#: code:addons/cooperator/models/subscription_request.py:511
 #, python-format
 msgid "Please define income account for this product: \"%s\" (id:%d) - or for its category: \"%s\"."
 msgstr ""
@@ -2322,7 +2322,7 @@ msgid "Text to display aside the checkbox to approve the generic rules."
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:704
+#: code:addons/cooperator/models/subscription_request.py:705
 #, python-format
 msgid "The checkbox already cooperator is checked please select a cooperator."
 msgstr ""
@@ -2352,13 +2352,13 @@ msgid "The information of the receiver are not correct. Please correct the infor
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:690
+#: code:addons/cooperator/models/subscription_request.py:691
 #, python-format
 msgid "The request must be in draft or on waiting list to be validated"
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:744
+#: code:addons/cooperator/models/subscription_request.py:745
 #: code:addons/cooperator/wizard/create_subscription_from_partner.py:196
 #, python-format
 msgid "There is two different persons with the same national register number. Please proceed to a merge before to continue"
@@ -2370,7 +2370,7 @@ msgid "This account will be the default one as the receivable account for the co
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:752
+#: code:addons/cooperator/models/subscription_request.py:753
 #, python-format
 msgid "This contact person is already defined for another company. Please select another contact"
 msgstr ""
@@ -2612,7 +2612,7 @@ msgid "You can't convert the share to the same share type."
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:785
+#: code:addons/cooperator/models/subscription_request.py:786
 #, python-format
 msgid "You cannot cancel a request in this state."
 msgstr ""
@@ -2624,7 +2624,7 @@ msgid "You must convert all the shares to the selected type."
 msgstr ""
 
 #. module: cooperator
-#: code:addons/cooperator/models/subscription_request.py:539
+#: code:addons/cooperator/models/subscription_request.py:540
 #, python-format
 msgid "You must set a cooperator account on your company."
 msgstr ""
