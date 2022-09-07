@@ -496,6 +496,7 @@ class SubscriptionRequest(models.Model):
                 self.get_person_info(partner)
 
     # declare this function in order to be overriden
+    # fixme there should be no mention of eaters in cooperators
     def get_eater_vals(self, partner, share_product_id):  # noqa
         return {}
 
