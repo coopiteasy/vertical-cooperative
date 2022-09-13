@@ -17,7 +17,6 @@
         "product",
         "partner_firstname",
         "partner_contact_birthdate",
-        "partner_contact_address",
         "partner_contact_gender",
         "mail",
     ],
