@@ -1,6 +1,6 @@
 odoo.define("cooperator.oe_cooperator", function (require) {
+    "use strict";
     $(document).ready(function () {
-        "use strict";
         var ajax = require("web.ajax");
 
         $(".oe_cooperator").each(function () {
@@ -13,7 +13,7 @@ odoo.define("cooperator.oe_cooperator", function (require) {
                 }).then(function (data) {
                     $("#share_price").text(data[share_product_id].list_price);
                     $("#ordered_parts").val(data[share_product_id].min_qty);
-                    if (data[share_product_id].force_min_qty == true) {
+                    if (data[share_product_id].force_min_qty === true) {
                         $("#ordered_parts").data("min", data[share_product_id].min_qty);
                     }
                     $("#ordered_parts").change();
@@ -34,7 +34,7 @@ odoo.define("cooperator.oe_cooperator", function (require) {
                 return false;
             });
 
-            $(oe_cooperator).on("focusout", "input.js_quantity", function (ev) {
+            $(oe_cooperator).on("focusout", "input.js_quantity", function () {
                 $("a.js_add_cart_json").trigger("click");
             });
 
