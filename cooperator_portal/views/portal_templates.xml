@@ -59,7 +59,8 @@
             <div
                 t-attf-class="form-group #{error.get('birthdate_date') and 'o_has_error' or ''} col-xl-6"
             >
-                <label class="col-form-label" for="birthdate_date">Birthdate
+                <label class="col-form-label" for="birthdate_date">
+                    Date of Birth
                 </label>
                 <input
                     type="date"
@@ -71,7 +72,7 @@
             <div
                 t-attf-class="form-group #{error.get('iban') and 'o_has_error' or ''} col-xl-6"
             >
-                <label class="col-form-label" for="iban">Iban</label>
+                <label class="col-form-label" for="iban">Bank Account Number</label>
                 <input
                     type="input"
                     name="iban"
@@ -93,10 +94,10 @@
                 <h3 class="page-header">Your Cooperator Details</h3>
                 <p class="text-center">
                     <span t-if="coop.member">
-                        You are an effective cooperator
+                        You are an effective cooperator.
                     </span>
                     <span t-if="not coop.member">
-                        You are not a cooperator
+                        You are not a cooperator.
                     </span>
                 </p>
                 <p t-if="coop.cooperator_register_number">
@@ -108,7 +109,7 @@
                     <span t-field="coop.effective_date" />
                 </p>
                 <p t-if="coop.number_of_share">
-                    <label>Number of Share:</label>
+                    <label>Number of Shares:</label>
                     <t t-esc="coop.number_of_share" />
                 </p>
                 <p t-if="coop.share_ids">
@@ -134,7 +135,7 @@
                     </div>
                 </p>
                 <p t-if="coop.total_value">
-                    <label>Total Value of Share:</label>
+                    <label>Total Value of Shares:</label>
                     <span
                         t-field="coop.total_value"
                         t-field-options='{
@@ -153,7 +154,7 @@
                     <t t-esc="coop.birthdate_date" />
                 </p>
                 <p t-if="coop_bank and coop_bank.acc_number">
-                    <label>Bank Account:</label>
+                    <label>Bank Account Number:</label>
                     <t t-esc="coop_bank.acc_number" />
                 </p>
                 <p t-if="coop.is_company and coop.company_register_number">
@@ -225,9 +226,7 @@
                 <t t-set="title">My Capital Releases</t>
             </t>
             <t t-if="not capital_requests">
-                <p>There are currently no capital release request for your
-                    account.
-                </p>
+                <p>There are currently no capital release requests for your account.</p>
             </t>
             <t t-if="capital_requests" t-call="portal.portal_table">
                 <thead>
@@ -269,8 +268,8 @@
                                             title="Opened"
                                             role="img"
                                         />
-                                        <span class="d-none d-md-inline">Waiting
-                                            for Payment
+                                        <span class="d-none d-md-inline">
+                                            Waiting for Payment
                                         </span>
                                     </span>
                                 </t>
@@ -282,7 +281,8 @@
                                             title="Paid"
                                             role="img"
                                         />
-                                        <span class="d-none d-md-inline">Paid
+                                        <span class="d-none d-md-inline">
+                                            Paid
                                         </span>
                                     </span>
                                 </t>
