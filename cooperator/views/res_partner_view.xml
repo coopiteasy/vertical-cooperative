@@ -19,7 +19,6 @@
                             context="{'default_active_id': active_id}"
                             groups="cooperator.cooperator_group_user"
                         />
-
                     </header>
                 </sheet>
 
