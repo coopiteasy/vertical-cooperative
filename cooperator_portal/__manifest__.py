@@ -5,14 +5,18 @@
 {
     "name": "Cooperator Portal",
     "version": "14.0.1.0.0",
-    "depends": ["cooperator", "website", "account", "portal"],
-    "summary": """
-        Show cooperator information in the website portal.
-    """,
+    "depends": [
+        "account",
+        "cooperator",
+        "portal",
+        "website",
+    ],
+    "summary": "Show cooperator information in the website portal",
     "author": "Coop IT Easy SC",
     "license": "AGPL-3",
     "category": "Cooperative Management",
     "website": "https://coopiteasy.be",
-    "data": ["views/portal_templates.xml"],
-    "installable": True,
+    "data": [
+        "views/portal_templates.xml",
+    ],
 }

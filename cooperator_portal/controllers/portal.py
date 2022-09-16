@@ -37,7 +37,7 @@ class CooperatorPortalAccount(CustomerPortal):
         # need to check if the partner is a "contact" or not.
         partner = request.env.user.partner_id
         coop = partner.commercial_partner_id
-        partner_obj = request.env["res.partner"]
+        partner_model = request.env["res.partner"]
         coop_bank = (
             request.env["res.partner.bank"]
             .sudo()
@@ -63,7 +63,7 @@ class CooperatorPortalAccount(CustomerPortal):
         if partner.bank_ids:
             iban = partner.bank_ids[0].acc_number
 
-        fields_desc = partner_obj.sudo().fields_get(["gender"])
+        fields_desc = partner_model.sudo().fields_get(["gender"])
 
         values.update(
             {
@@ -80,9 +80,9 @@ class CooperatorPortalAccount(CustomerPortal):
 
     def details_form_validate(self, data):
         error, error_message = super().details_form_validate(data)
-        sub_req_obj = request.env["subscription.request"]
+        sub_req_model = request.env["subscription.request"]
         iban = data.get("iban")
-        valid = sub_req_obj.check_iban(iban)
+        valid = sub_req_model.check_iban(iban)
 
         if not valid:
             error["iban"] = "error"
