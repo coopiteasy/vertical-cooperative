@@ -24,9 +24,8 @@ class MailTemplate(models.Model):
         :returns: id of the mail.message that was created
         """
         self.ensure_one()
-        Mail = self.env["mail.mail"]
         # TDE FIXME: should remove dfeault_type from context
-        Attachment = self.env["ir.attachment"]
+        attachment_model = self.env["ir.attachment"]
 
         # create a mail_mail based on values, without attachments
         values = self.generate_email(res_id)
@@ -38,7 +37,7 @@ class MailTemplate(models.Model):
         # add a protection against void email_from
         if "email_from" in values and not values.get("email_from"):
             values.pop("email_from")
-        mail = Mail.create(values)
+        mail = self.env["mail.mail"].create(values)
 
         # manage attachments
         attachments.extend(additional_attachments)
@@ -50,7 +49,7 @@ class MailTemplate(models.Model):
                 "res_model": "mail.message",
                 "res_id": mail.mail_message_id.id,
             }
-            attachment_ids.append(Attachment.create(attachment_data).id)
+            attachment_ids.append(attachment_model.create(attachment_data).id)
         if attachment_ids:
             values["attachment_ids"] = [(6, 0, attachment_ids)]
             mail.write({"attachment_ids": [(6, 0, attachment_ids)]})
