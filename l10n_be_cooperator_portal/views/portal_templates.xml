@@ -80,7 +80,7 @@
                         <td class="text-right">
                             <span
                                 t-field="tax_shelter.total_amount"
-                                t-options='{"widget": "monetary", "display_currency":tax_shelter.partner_id.company_id.currency_id}'
+                                t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'
                             />
                         </td>
                     </tr>
@@ -105,7 +105,7 @@
                         <h2 class="mb-0"><b
                                 t-field="taxshelter.total_amount"
                                 data-id="total_amount"
-                                t-options='{"widget": "monetary", "display_currency":taxshelter.partner_id.company_id.currency_id}'
+                                t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'
                             /> </h2>
                     </t>
 
