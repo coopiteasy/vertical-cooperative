@@ -1,13 +1,9 @@
-from odoo import models
+from odoo import fields, models
+
+from . import partner
 
 
 class SubscriptionRequest(models.Model):
     _inherit = "subscription.request"
 
-    def get_company_type_selection(self):
-        return [
-            ("scrl", "SCRL"),
-            ("asbl", "ASBL"),
-            ("sprl", "SPRL"),
-            ("sa", "SA"),
-        ]
+    company_type = fields.Selection(selection_add=partner.get_company_type_selection())
