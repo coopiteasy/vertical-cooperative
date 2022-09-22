@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+    <record id="subscription_request_view_form" model="ir.ui.view">
+        <field name="name">subscription.request.view.form</field>
+        <field name="model">subscription.request</field>
+        <field name="inherit_id" ref="cooperator.subscription_request_view_form" />
+        <field name="arch" type="xml">
+            <field name="generic_rules_approved" position="after">
+                <field name="referral_source_id" />
+            </field>
+        </field>
+    </record>
+
+</odoo>

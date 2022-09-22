@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
-    <template id="referral_source_question" name="referral_source_question">
-        <div class="g-recaptcha text-xs-center" name="recaptcha_key_site" />
+    <template id="referral_source_template" name="referral_source_template">
+        <div
+            class="form-group field-referral_source_id"
+            t-attf-class="form-group #{error and 'referral_source_id' in error and 'has-error' or ''}"
+            name="referral_source_id_container"
+        >
+            <label for="referral_source_id">How did you know about us?</label>
+            <select
+                class="form-control form-control-sm"
+                id="referral_source_id"
+                name="referral_source_id"
+                required="True"
+                t-att-readonly="logged"
+            >
+                <option value="">Please select an option...</option>
+                <t t-foreach="referral_sources or []" t-as="referral_source">
+                    <option t-att-value="referral_source.id">
+                        <t t-esc="referral_source.name" />
+                    </option>
+                </t>
+            </select>
+        </div>
     </template>
 
     <template
@@ -11,7 +31,7 @@
         name="Become Cooperator"
     >
         <xpath expr="//t[@t-call='cooperator_website.rules_template']" position="after">
-            <t t-call="cooperator_website_recaptcha.referral_source_question" />
+            <t t-call="cooperator_website_referral_source.referral_source_template" />
         </xpath>
     </template>
 
@@ -21,7 +41,7 @@
         name="Become Cooperator"
     >
         <xpath expr="//t[@t-call='cooperator_website.rules_template']" position="after">
-            <t t-call="cooperator_website_recaptcha.referral_source_question" />
+            <t t-call="cooperator_website_referral_source.referral_source_template" />
         </xpath>
     </template>
 

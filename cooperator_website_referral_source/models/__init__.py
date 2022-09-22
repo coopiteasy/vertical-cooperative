@@ -1,2 +1,3 @@
-from . import res_company
-from . import referral_source_selection
+from . import referral_source
+from . import subscription_request
+from . import res_partner

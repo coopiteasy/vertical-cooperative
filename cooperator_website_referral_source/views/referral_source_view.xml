@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="referral_source_selection_action" model="ir.actions.act_window">
-        <field name="name">referral_source_action</field>
+    <record id="referral_source_action" model="ir.actions.act_window">
+        <field name="name">How did you know about us?</field>
         <field name="res_model">referral.source</field>
         <field name="view_mode">tree,form</field>
     </record>
@@ -12,6 +12,7 @@
         name="Referral Source"
         action="referral_source_action"
         parent="cooperator.menu_cooperator_config"
+        sequence="999"
     />
 
     <record id="referral_source_view_tree" model="ir.ui.view">
