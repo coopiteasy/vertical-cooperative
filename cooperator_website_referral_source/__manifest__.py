@@ -17,8 +17,10 @@
     "depends": ["cooperator_website"],
     "excludes": [],
     "data": [
+        "security/ir.model.access.csv",
         "views/referral_source_view.xml",
-        "views/res_company_views.xml",
+        "views/subscription_request_view.xml",
+        "views/res_partner_view.xml",
         "views/subscription_template.xml",
     ],
     "demo": [],
