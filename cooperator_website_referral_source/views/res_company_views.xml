@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <record model="ir.ui.view" id="view_company_inherit_captcha">
+    <field name="name">res.company.form.captcha</field>
+    <field name="inherit_id" ref="cooperator.view_company_form" />
+    <field name="model">res.company</field>
+    <field name="arch" type="xml">
+      <field name="internal_rules_approval_text">
+        <field name="activate_referral_source" />
+      </field>
+    </field>
+  </record>
+</odoo>

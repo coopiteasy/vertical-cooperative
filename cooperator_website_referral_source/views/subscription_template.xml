@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="referral_source_question" name="referral_source_question">
+        <div
+            class="g-recaptcha text-xs-center"
+            t-if="res_company.activate_referral_source == True"
+            name="recaptcha_key_site"
+        />
+    </template>
+
+    <template
+        id="becomecooperator"
+        inherit_id="cooperator_website.becomecooperator"
+        name="Become Cooperator"
+    >
+        <xpath expr="//t[@t-call='cooperator_website.rules_template']" position="after">
+            <t t-call="cooperator_website_recaptcha.referral_source_question" />
+        </xpath>
+    </template>
+
+    <template
+        id="becomecompanycooperator"
+        inherit_id="cooperator_website.becomecompanycooperator"
+        name="Become Cooperator"
+    >
+        <xpath expr="//t[@t-call='cooperator_website.rules_template']" position="after">
+            <t t-call="cooperator_website_recaptcha.referral_source_question" />
+        </xpath>
+    </template>
+
+</odoo>

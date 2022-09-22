@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="referral_source_selection_action" model="ir.actions.act_window">
+        <field name="name">referral_source_action</field>
+        <field name="res_model">referral.source</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem
+        id="referral_source_menu"
+        name="Referral Source"
+        action="referral_source_action"
+        parent="cooperator.menu_cooperator_config"
+    />
+
+    <record id="referral_source_view_tree" model="ir.ui.view">
+        <field name="name">view_referral_source_tree</field>
+        <field name="model">referral.source</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+</odoo>
