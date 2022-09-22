@@ -25,9 +25,9 @@ odoo.define("cooperator.oe_cooperator", function (require) {
                 });
             });
 
-            $(oe_cooperator).on("change", "#ordered_parts", function (ev) {
+            $(oe_cooperator).on("change", "#ordered_parts", function (event) {
                 var $share_price = $("#share_price").text();
-                var $link = $(ev.currentTarget);
+                var $link = $(event.currentTarget);
                 var quantity = $link[0].value;
                 var total_part = quantity * $share_price;
                 $("#total_parts").val(total_part);
@@ -39,8 +39,6 @@ odoo.define("cooperator.oe_cooperator", function (require) {
             });
 
             $("#share_product_id").trigger("change");
-
-            $("[name='birthdate']").inputmask();
         });
     });
 });
