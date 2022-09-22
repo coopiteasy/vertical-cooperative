@@ -2,11 +2,7 @@
 <odoo>
 
     <template id="referral_source_question" name="referral_source_question">
-        <div
-            class="g-recaptcha text-xs-center"
-            t-if="res_company.activate_referral_source == True"
-            name="recaptcha_key_site"
-        />
+        <div class="g-recaptcha text-xs-center" name="recaptcha_key_site" />
     </template>
 
     <template
