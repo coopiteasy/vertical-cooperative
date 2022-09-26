@@ -57,11 +57,6 @@ class SubscriptionRequest(models.Model):
             mail_template = "cooperator.email_template_confirmation"
         return self.env.ref(mail_template, False)
 
-    def is_member(self, vals, cooperator):
-        if cooperator.member:
-            vals["already_cooperator"] = True
-        return vals
-
     def get_company_type_selection(self):
         # This is meant to be overridden.
         return [
@@ -85,55 +80,60 @@ class SubscriptionRequest(models.Model):
     def _send_confirmation_mail(self):
         if self.company_id.send_confirmation_email:
             mail_template_notif = self.get_mail_template_notif(
-                is_company=self.partner_id.is_company
+                is_company=self.is_company
             )
             # sudo is needed to change state of invoice linked to a request
             #  sent through the api
             mail_template_notif.sudo().send_mail(self.id)
 
-    # todo code this in a more pythonic way
-    #  - do not bypass self.create in create_comp_sub_req
-    #  - use "not in" where applicable
-    #  - sanitize declaration and assignation of cooperator
-    #  beware if usage in investor_wallet_platform
-    @api.model
-    def create(self, vals):
-        partner_obj = self.env["res.partner"]
-        if not vals.get("partner_id"):
-            cooperator = False
-            if vals.get("email"):
-                cooperator = partner_obj.get_cooperator_from_email(vals.get("email"))
-            if cooperator:
-                vals["type"] = "increase"
-                vals = self.is_member(vals, cooperator)
-                vals["partner_id"] = cooperator.id
-        else:
-            cooperator_id = vals.get("partner_id")
-            cooperator = partner_obj.browse(cooperator_id)
-            vals["type"] = "increase"
-            vals = self.is_member(vals, cooperator)
+    def _find_partner_from_create_vals(self, vals):
+        """
+        Find the partner corresponding to the vals dict.
 
-        if not cooperator.cooperator:
-            cooperator.write({"cooperator": True})
-
-        subscription_request = super().create(vals)
-        subscription_request._send_confirmation_mail()
-        return subscription_request
-
-    @api.model
-    def create_comp_sub_req(self, vals):
-        vals["name"] = vals["company_name"]
-        if not vals.get("partner_id"):
-            cooperator = self.env["res.partner"].get_cooperator_from_crn(
+        If partner_id is present in the dict, use it to find the partner.
+        Otherwise, search companies by register number and individuals by
+        email address. If a match is found, add partner_id in the dict.
+        """
+        partner_model = self.env["res.partner"]
+        partner_id = vals.get("partner_id")
+        if partner_id:
+            return partner_model.browse(partner_id)
+        if vals.get("is_company"):
+            partner = partner_model.get_cooperator_from_crn(
                 vals.get("company_register_number")
             )
-            if cooperator:
+        else:
+            partner = partner_model.get_cooperator_from_email(vals.get("email"))
+        if partner:
+            vals["partner_id"] = partner.id
+        return partner
+
+    @api.model
+    def create(self, vals):
+        partner = self._find_partner_from_create_vals(vals)
+        if partner:
+            pending_requests_domain = [
+                ("partner_id", "=", partner.id),
+                ("state", "in", ("draft", "waiting", "done")),
+            ]
+            # we don't use partner.coop_candidate because we want to also
+            # handle draft and waiting requests.
+            if partner.member or self.search(pending_requests_domain):
                 vals["type"] = "increase"
-                vals = self.is_member(vals, cooperator)
-                vals["partner_id"] = cooperator.id
+            if partner.member:
+                vals["already_cooperator"] = True
+            if not partner.cooperator:
+                partner.cooperator = True
+
         subscription_request = super().create(vals)
         subscription_request._send_confirmation_mail()
         return subscription_request
+
+    # todo: remove this and use create() instead. must stay in 12.0 (as
+    # deprecated) but be removed in 14.0.
+    @api.model
+    def create_comp_sub_req(self, vals):
+        return self.create(vals)
 
     def check_empty_string(self, value):
         if value is None or value is False or value == "":
@@ -150,12 +150,17 @@ class SubscriptionRequest(models.Model):
         except ValidationError:
             return False
 
-    @api.depends("firstname", "lastname")
+    @api.depends("firstname", "lastname", "company_name")
     def _compute_name(self):
         for sub_request in self:
-            sub_request.name = " ".join(
-                part for part in (sub_request.firstname, sub_request.lastname) if part
-            )
+            if sub_request.is_company:
+                sub_request.name = self.company_name
+            else:
+                sub_request.name = " ".join(
+                    part
+                    for part in (sub_request.firstname, sub_request.lastname)
+                    if part
+                )
 
     @api.depends("iban", "skip_iban_control")
     def _compute_is_valid_iban(self):
@@ -584,7 +589,6 @@ class SubscriptionRequest(models.Model):
     def get_partner_company_vals(self):
         partner_vals = {
             "name": self.company_name,
-            "lastname": self.company_name,
             "is_company": self.is_company,
             "company_register_number": self.company_register_number,  # noqa
             "cooperator": True,
