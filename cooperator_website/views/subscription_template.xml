@@ -752,10 +752,6 @@
                 type="text/javascript"
                 src="/cooperator_website/static/src/js/cooperator.js"
             />
-            <script
-                type="text/javascript"
-                src="/cooperator_website/static/src/js/jquery.inputmask.bundle.js"
-            />
         </xpath>
     </template>
 
