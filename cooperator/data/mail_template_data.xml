@@ -29,7 +29,7 @@
             ><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
-    <p>Hello ${object.partner_id.firstname},</p>
+    <p>Hello ${object.subscription_request.firstname},</p>
 
     <p>You will find in attachment all the necessary information for the payment. We kindly remind you that your subscription will be effective only once we received the payment.</p>
 
@@ -271,7 +271,7 @@
             ><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
-    <p>Hello ${object.firstname},</p>
+    <p>Hello ${object.subscription_request_ids[0].firstname},</p>
 
     <p>We confirm the reception of you payment. You are now shareholder of our cooperative.</p>
 
@@ -336,7 +336,7 @@
             ><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
-    <p>Hello ${object.firstname},</p>
+    <p>Hello ${object.subscription_request_ids[0].firstname},</p>
 
     <p>We confirm the reception of you payment for the new share(s) you have taken.</p>
 
@@ -399,7 +399,7 @@
             ><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
-    <p>Hello ${object.firstname},</p>
+    <p>Hello ${object.subscription_request_ids[0].firstname},</p>
 
     <p>We confirm you that the shares have been transfered to you. If you was not already cooperator, you are now shareholder of our cooperative.</p>
 
@@ -462,7 +462,7 @@
             ><![CDATA[
 <div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
 
-    <p>Hello ${object.firstname},</p>
+    <p>Hello ${object.subscription_request_ids[0].firstname},</p>
 
     <p>We confirm you that the adaptation on shares portfolio has been succesfully performed. Your cooperator certificate has been adapted accordingly.</p>
 

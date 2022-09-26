@@ -58,12 +58,12 @@ class ResPartner(models.Model):
 
     cooperator = fields.Boolean(
         string="Cooperator",
-        help="Check this box if this contact is a" " cooperator (effective or not).",
+        help="Check this box if this contact is a cooperator (effective or not).",
         copy=False,
     )
     member = fields.Boolean(
         string="Effective cooperator",
-        help="Check this box if this cooperator" " is an effective member.",
+        help="Check this box if this cooperator is an effective member.",
         readonly=True,
         copy=False,
     )
@@ -75,7 +75,7 @@ class ResPartner(models.Model):
     )
     old_member = fields.Boolean(
         string="Old cooperator",
-        help="Check this box if this cooperator is" " no more an effective member.",
+        help="Check this box if this cooperator is no more an effective member.",
     )
     share_ids = fields.One2many("share.line", "partner_id", string="Share Lines")
     cooperator_register_number = fields.Integer(string="Cooperator Number", copy=False)
@@ -157,6 +157,11 @@ class ResPartner(models.Model):
         return self.child_ids.filtered("representative")
 
     def get_cooperator_from_email(self, email):
+        if email:
+            email = email.strip()
+        # email could be falsy or be only made of whitespace.
+        if not email:
+            return self.browse()
         partner = self.search(
             [("cooperator", "=", True), ("email", "=", email)], limit=1
         )
@@ -165,9 +170,11 @@ class ResPartner(models.Model):
         return partner
 
     def get_cooperator_from_crn(self, company_register_number):
+        if company_register_number:
+            company_register_number = company_register_number.strip()
+        # company_register_number could be falsy or be only made of whitespace.
         if not company_register_number:
-            company_register_number = ""
-        company_register_number = company_register_number.strip()
+            return self.browse()
         partner = self.search(
             [
                 ("cooperator", "=", True),
