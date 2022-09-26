@@ -152,7 +152,7 @@ class AccountInvoice(models.Model):
 
     @api.multi
     def action_invoice_paid(self):
-        super(AccountInvoice, self).action_invoice_paid()
+        super().action_invoice_paid()
         for invoice in self:
             # we check if there is an open refund for this invoice. in this
             # case we don't run the process_subscription function as the

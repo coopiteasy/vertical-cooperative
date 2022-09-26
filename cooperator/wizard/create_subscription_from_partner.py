@@ -103,7 +103,7 @@ class PartnerCreateSubscription(models.TransientModel):
                 sub_request.share_product.list_price * sub_request.share_qty
             )
 
-    is_company = fields.Boolean(String="Is company?", default=_get_is_company)
+    is_company = fields.Boolean(string="Is company?", default=_get_is_company)
     cooperator = fields.Many2one(
         "res.partner", string="Cooperator", default=_get_partner
     )
@@ -237,8 +237,8 @@ class PartnerCreateSubscription(models.TransientModel):
 
         return {
             "type": "ir.actions.act_window",
-            "view_type": "form, tree",
-            "view_mode": "form",
+            "view_mode": "form,tree",
+            "view_type": "form",
             "res_model": "subscription.request",
             "res_id": new_sub_req.id,
             "target": "current",

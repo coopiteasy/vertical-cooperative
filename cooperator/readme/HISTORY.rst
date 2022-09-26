@@ -1,3 +1,33 @@
+12.0.6.0.0 (2022-09-27)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+backport changes from migration to 14.0.
+
+**Features**
+
+- remove subscription request ``subscription`` state (use ``new`` instead)
+  (was used when creating a subscription request from a partner).
+- refactor subscription request ``.create()`` method to handle both people
+  and companies.
+- add several subscription request tests.
+- make country and language fields mandatory on the web form.
+- some code refactoring and cleanup.
+- improve ``fr`` and ``fr_be`` translations.
+
+
+**Bugfixes**
+
+- improve email and report templates: correct some strings, clean up
+  some whitespace, and fix references to first name for companies
+  (instead of displaying "false").
+- fix partner matching by email or company register number when creating
+  a subscription request.
+- fix subscription request name for companies: use company name (like
+  previously) instead of representative name. the name is displayed in
+  the title of the form, and can be used to search.
+- fix name of reports and attachments.
+
+
 12.0.5.3.0 (2022-09-05)
 ~~~~~~~~~~~~~~~~~~~~~~~
 
