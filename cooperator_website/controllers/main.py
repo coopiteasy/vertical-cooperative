@@ -442,9 +442,8 @@ class WebsiteSubscription(http.Controller):
                 values["company_register_number"] = re.sub(
                     "[^0-9a-zA-Z]+", "", kwargs.get("company_register_number")
                 )
-            subscription_id = sub_req_obj.sudo().create_comp_sub_req(values)
-        else:
-            subscription_id = sub_req_obj.sudo().create(values)
+
+        subscription_id = sub_req_obj.sudo().create(values)
 
         if subscription_id:
             for field_value in post_file:
