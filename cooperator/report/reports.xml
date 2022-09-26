@@ -7,7 +7,8 @@
         report_type="qweb-pdf"
         name="cooperator.theme_invoice_G002"
         file="cooperator_invoice_G002.xml"
-        attachment="(object.state in ('open','paid')) and ('SUBJ'+(object.number or '').replace('/','')+'.pdf')"
+        attachment="(object.state in ('open', 'paid')) and ((object.number or 'SUBJ').replace('/', '_') + '.pdf')"
+        print_report_name="(object.number or 'SUBJ').replace('/', '_')"
     />
 
     <report

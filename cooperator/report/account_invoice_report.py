@@ -8,12 +8,12 @@ class AccountInvoiceReport(models.Model):
 
     def _select(self):
         return (
-            super(AccountInvoiceReport, self)._select()
+            super()._select()
             + ", sub.release_capital_request as release_capital_request"
         )
 
     def _sub_select(self):
         return (
-            super(AccountInvoiceReport, self)._sub_select()
+            super()._sub_select()
             + ", ai.release_capital_request as release_capital_request"
         )

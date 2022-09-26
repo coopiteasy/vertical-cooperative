@@ -120,7 +120,7 @@ class SubscriptionRegister(models.Model):
             fields.remove("share_unit_price")
         if "register_number_operation" in fields:
             fields.remove("register_number_operation")
-        res = super(SubscriptionRegister, self).read_group(
+        res = super().read_group(
             domain,
             fields,
             groupby,

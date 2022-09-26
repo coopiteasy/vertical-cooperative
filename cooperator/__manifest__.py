@@ -50,7 +50,9 @@
         "report/cooperator_register_G001.xml",
         "data/mail_template_data.xml",  # Must be loaded after reports
     ],
-    "demo": ["demo/coop.xml", "demo/users.xml"],
-    "installable": True,
+    "demo": [
+        "demo/coop.xml",
+        "demo/users.xml",
+    ],
     "application": True,
 }

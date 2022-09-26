@@ -105,7 +105,7 @@
                 <div class="row mt32">
                     <div name="board_commitee" class="col-sm-6">
                         <p>
-                            For the board of<span t-field="o.company_id.name" />.
+                            For the board of <span t-field="o.company_id.name" />,
                         </p>
                         <p>
                             <strong>
