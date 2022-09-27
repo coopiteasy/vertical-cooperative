@@ -105,6 +105,9 @@ class ResPartner(models.Model):
         store=True,
         compute="_compute_representative_of_member_company",
     )
+    # allows for representative to have their own address
+    # see https://github.com/coopiteasy/vertical-cooperative/issues/350
+    type = fields.Selection(selection_add=[("representative", "Representative")])
     subscription_request_ids = fields.One2many(
         "subscription.request", "partner_id", string="Subscription request"
     )
