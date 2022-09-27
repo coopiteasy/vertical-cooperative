@@ -17,8 +17,8 @@
             </t>
             <div class="page mt32">
                 <h2>
-                    <span t-if="o.release_capital_request">Request to Release
-                        Capital
+                    <span t-if="o.release_capital_request">
+                        Request to Release Capital
                     </span>
                     <span t-else="">
                         <span
@@ -33,7 +33,8 @@
                             Cancelled Invoice
                         </span>
                         <span t-if="o.type == 'out_refund'">Credit Note</span>
-                        <span t-if="o.type == 'in_refund'">Vendor Credit Note
+                        <span t-if="o.type == 'in_refund'">
+                            Vendor Credit Note
                         </span>
                         <span t-if="o.type == 'in_invoice'">Vendor Bill</span>
                     </span>
@@ -228,7 +229,7 @@
                     </div>
                 </div>
                 <p t-if="o.reference">
-                    Please use the following communication for your payment :
+                    Please use the following communication for your payment:
                     <b>
                         <span t-field="o.reference" />
                     </b>

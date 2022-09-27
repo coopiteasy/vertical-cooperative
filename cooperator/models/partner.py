@@ -85,6 +85,8 @@ class ResPartner(models.Model):
         for partner in self:
             if partner.share_ids:
                 partner.effective_date = partner.share_ids[0].effective_date
+            else:
+                partner.effective_date = False
 
     @api.multi
     def _get_share_type(self):
@@ -122,12 +124,12 @@ class ResPartner(models.Model):
 
     cooperator = fields.Boolean(
         string="Cooperator",
-        help="Check this box if this contact is a" " cooperator (effective or not).",
+        help="Check this box if this contact is a cooperator (effective or not).",
         copy=False,
     )
     member = fields.Boolean(
         string="Effective cooperator",
-        help="Check this box if this cooperator" " is an effective member.",
+        help="Check this box if this cooperator is an effective member.",
         readonly=True,
         copy=False,
     )
@@ -139,7 +141,7 @@ class ResPartner(models.Model):
     )
     old_member = fields.Boolean(
         string="Old cooperator",
-        help="Check this box if this cooperator is" " no more an effective member.",
+        help="Check this box if this cooperator is no more an effective member.",
     )
     share_ids = fields.One2many("share.line", "partner_id", string="Share Lines")
     cooperator_register_number = fields.Integer(string="Cooperator Number", copy=False)
@@ -163,7 +165,7 @@ class ResPartner(models.Model):
         store=True,
     )
     effective_date = fields.Date(
-        sting="Effective Date", compute=_compute_effective_date, store=True
+        string="Effective Date", compute=_compute_effective_date, store=True
     )
     representative = fields.Boolean(string="Legal Representative")
     representative_of_member_company = fields.Boolean(
@@ -174,7 +176,7 @@ class ResPartner(models.Model):
     subscription_request_ids = fields.One2many(
         "subscription.request", "partner_id", string="Subscription request"
     )
-    legal_form = fields.Selection([("", "")], string="Legal form")
+    legal_form = fields.Selection([], string="Legal form")
     data_policy_approved = fields.Boolean(string="Approved Data Policy")
     internal_rules_approved = fields.Boolean(string="Approved Internal Rules")
     financial_risk_approved = fields.Boolean(string="Approved Financial Risk")
@@ -227,6 +229,11 @@ class ResPartner(models.Model):
         return self.child_ids.filtered("representative")
 
     def get_cooperator_from_email(self, email):
+        if email:
+            email = email.strip()
+        # email could be falsy or be only made of whitespace.
+        if not email:
+            return self.browse()
         partner = self.search(
             [("cooperator", "=", True), ("email", "=", email)], limit=1
         )
@@ -235,9 +242,11 @@ class ResPartner(models.Model):
         return partner
 
     def get_cooperator_from_crn(self, company_register_number):
+        if company_register_number:
+            company_register_number = company_register_number.strip()
+        # company_register_number could be falsy or be only made of whitespace.
         if not company_register_number:
-            company_register_number = ""
-        company_register_number = company_register_number.strip()
+            return self.browse()
         partner = self.search(
             [
                 ("cooperator", "=", True),
