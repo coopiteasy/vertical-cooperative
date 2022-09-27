@@ -597,6 +597,12 @@ msgid "Address"
 msgstr ""
 
 #. module: cooperator
+#: model:ir.model.fields,field_description:cooperator.field_res_partner__type
+#: model:ir.model.fields,field_description:cooperator.field_res_users__type
+msgid "Address Type"
+msgstr ""
+
+#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_res_company__allow_id_card_upload
 msgid "Allow ID Card upload"
 msgstr ""
@@ -1415,6 +1421,14 @@ msgid "Invoice"
 msgstr ""
 
 #. module: cooperator
+#: model:ir.model.fields,help:cooperator.field_res_partner__type
+#: model:ir.model.fields,help:cooperator.field_res_users__type
+msgid ""
+"Invoice & Delivery addresses are used in sales orders. Private addresses are"
+" only visible by authorized users."
+msgstr ""
+
+#. module: cooperator
 #: model:ir.model,name:cooperator.model_account_invoice_report
 msgid "Invoices Statistics"
 msgstr ""
@@ -1918,6 +1932,11 @@ msgstr ""
 #. module: cooperator
 #: model:ir.ui.menu,name:cooperator.menu_cooperator_main_reporting
 msgid "Reporting"
+msgstr ""
+
+#. module: cooperator
+#: model:ir.model.fields.selection,name:cooperator.selection__res_partner__type__representative
+msgid "Representative"
 msgstr ""
 
 #. module: cooperator
