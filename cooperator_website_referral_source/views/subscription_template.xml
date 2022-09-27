@@ -30,7 +30,7 @@
         inherit_id="cooperator_website.rules_template"
         name="rules_template"
     >
-        <xpath expr="//div[@id='data_policy_approved']" position="after">
+        <xpath expr="//div[@id='data_policy_approved']" position="before">
             <t t-call="cooperator_website_referral_source.referral_source_template" />
         </xpath>
     </template>
