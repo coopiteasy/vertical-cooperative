@@ -26,21 +26,11 @@
     </template>
 
     <template
-        id="becomecooperator"
-        inherit_id="cooperator_website.becomecooperator"
-        name="Become Cooperator"
+        id="rules_template"
+        inherit_id="cooperator_website.rules_template"
+        name="rules_template"
     >
-        <xpath expr="//t[@t-call='cooperator_website.rules_template']" position="after">
-            <t t-call="cooperator_website_referral_source.referral_source_template" />
-        </xpath>
-    </template>
-
-    <template
-        id="becomecompanycooperator"
-        inherit_id="cooperator_website.becomecompanycooperator"
-        name="Become Cooperator"
-    >
-        <xpath expr="//t[@t-call='cooperator_website.rules_template']" position="after">
+        <xpath expr="//div[@id='data_policy_approved']" position="after">
             <t t-call="cooperator_website_referral_source.referral_source_template" />
         </xpath>
     </template>
