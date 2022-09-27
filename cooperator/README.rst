@@ -24,7 +24,8 @@ Manage cooperators of a cooperative.
 A basic flow can be the following:
 
 - Create subscription request for a person (moral or physical)
-- Validate subscription sequest, a capital release request (`account.invoice`). This invoice is sent to the future cooperator.
+- Validate subscription request, a capital release request (`account.invoice`).
+  This invoice is sent to the future cooperator.
 - Payment of the cooperator is registered and the capital Release
   request is marked as paid.
 - A new cooperator (a special partner) is created, and the right type
@@ -80,7 +81,7 @@ For instance, for the addon `cooperator_portal`
 
 .. code-block:: shell
 
-  pip install odoo12-addon-easy-my-coop-website-portal==12.0.1.0.0.99.dev9
+  pip install odoo12-addon-cooperator-portal==12.0.1.0.0.99.dev9
 
 Beware that for word separation, pypi uses dashes `-` and odoo underscores `_`.
 
@@ -100,6 +101,36 @@ known_caveats: the cooperator localization modules will have to be splitted in o
 
 Changelog
 =========
+
+12.0.6.0.0 (2022-09-27)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+backport changes from migration to 14.0.
+
+**Features**
+
+- remove subscription request ``subscription`` state (use ``new`` instead)
+  (was used when creating a subscription request from a partner).
+- refactor subscription request ``.create()`` method to handle both people
+  and companies.
+- add several subscription request tests.
+- make country and language fields mandatory on the web form.
+- some code refactoring and cleanup.
+- improve ``fr`` and ``fr_be`` translations.
+
+
+**Bugfixes**
+
+- improve email and report templates: correct some strings, clean up
+  some whitespace, and fix references to first name for companies
+  (instead of displaying "false").
+- fix partner matching by email or company register number when creating
+  a subscription request.
+- fix subscription request name for companies: use company name (like
+  previously) instead of representative name. the name is displayed in
+  the title of the form, and can be used to search.
+- fix name of reports and attachments.
+
 
 12.0.5.3.0 (2022-09-05)
 ~~~~~~~~~~~~~~~~~~~~~~~
