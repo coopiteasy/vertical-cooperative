@@ -2,6 +2,7 @@
 #   Houssine Bakkali <houssine@coopiteasy.be>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+import warnings
 from datetime import datetime
 
 from odoo import _, api, fields, models
@@ -123,10 +124,13 @@ class SubscriptionRequest(models.Model):
         subscription_request._send_confirmation_mail()
         return subscription_request
 
-    # todo: remove this and use create() instead. must stay in 12.0 (as
-    # deprecated) but be removed in 14.0.
     @api.model
     def create_comp_sub_req(self, vals):
+        warnings.warn(
+            "subscription.request.create_comp_sub_req() is deprecated. "
+            "please use .create() instead.",
+            DeprecationWarning,
+        )
         return self.create(vals)
 
     def check_empty_string(self, value):
