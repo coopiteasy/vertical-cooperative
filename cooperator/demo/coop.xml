@@ -90,11 +90,6 @@
         <field name="property_cooperator_account" ref="account_cooperator_demo" />
     </record>
 
-    <record id="subscription_journal" model="account.journal">
-        <field name="default_credit_account_id" ref="account_equity_demo" />
-        <field name="default_debit_account_id" ref="account_equity_demo" />
-    </record>
-
     <record id="product_template_share_type_1_demo" model="product.template">
         <field name="name">Part A - Founder</field>
         <field name="short_name">Part A</field>

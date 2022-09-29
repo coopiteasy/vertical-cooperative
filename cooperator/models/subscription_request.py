@@ -344,7 +344,7 @@ class SubscriptionRequest(models.Model):
         required=True,
         readonly=True,
         states={"draft": [("readonly", False)]},
-        default=lambda self: datetime.strftime(datetime.now(), "%Y-%m-%d"),
+        default=lambda self: datetime.strftime(datetime.now(), "%Y-%m-%d"),  # fixme
     )
     company_id = fields.Many2one(
         "res.company",
