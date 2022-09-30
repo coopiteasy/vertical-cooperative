@@ -1,5 +1,6 @@
 import base64
 import re
+import warnings
 from datetime import datetime
 from urllib.parse import urljoin
 
@@ -8,6 +9,7 @@ from odoo.http import request
 from odoo.tools.translate import _
 
 # Only use for behavior, don't stock it
+# Used to filter the session dict to keep only the form fields
 _TECHNICAL = ["view_from", "view_callback"]
 # Allow in description
 _BLACKLIST = [
@@ -86,7 +88,7 @@ class WebsiteSubscription(http.Controller):
                 values[field] = kwargs.pop(field)
 
         values.update(kwargs=kwargs.items())
-        # redirect url to fall back on become coopererator in template redirection
+        # redirect url to fall back on become cooperator in template redirection
         values["redirect_url"] = request.httprequest.url
         return request.render("cooperator_website.becomecooperator", values)
 
@@ -110,12 +112,23 @@ class WebsiteSubscription(http.Controller):
         values.update(kwargs=kwargs.items())
         return request.render("cooperator_website.becomecompanycooperator", values)
 
-    def preRenderThanks(self, values, kwargs):
-        """ Allow to be overrided """
+    def pre_render_thanks(self, values, kwargs):
+        """
+        Allows to modify values passed to the "thanks" template by overriding
+        this method.
+        """
         return {"_values": values, "_kwargs": kwargs}
 
+    def preRenderThanks(self, values, kwargs):
+        warnings.warn(
+            "WebsiteSubscription.preRenderThanks() is deprecated. "
+            "please use .pre_render_thanks() instead.",
+            DeprecationWarning,
+        )
+        return self.pre_render_thanks(values, kwargs)
+
     def get_subscription_response(self, values, kwargs):
-        values = self.preRenderThanks(values, kwargs)
+        values = self.pre_render_thanks(values, kwargs)
         return request.render("cooperator_website.cooperator_thanks", values)
 
     def get_date_string(self, birthdate):
@@ -206,21 +219,20 @@ class WebsiteSubscription(http.Controller):
             if company.default_lang_id:
                 values["lang"] = company.default_lang_id.code
 
-        comp = request.env["res.company"]._company_default_get()
         values.update(
             {
-                "display_data_policy": comp.display_data_policy_approval,
-                "data_policy_required": comp.data_policy_approval_required,
-                "data_policy_text": comp.data_policy_approval_text,
-                "display_internal_rules": comp.display_internal_rules_approval,
-                "internal_rules_required": comp.internal_rules_approval_required,
-                "internal_rules_text": comp.internal_rules_approval_text,
-                "display_financial_risk": comp.display_financial_risk_approval,
-                "financial_risk_required": comp.financial_risk_approval_required,
-                "financial_risk_text": comp.financial_risk_approval_text,
-                "display_generic_rules": comp.display_generic_rules_approval,
-                "generic_rules_required": comp.generic_rules_approval_required,
-                "generic_rules_text": comp.generic_rules_approval_text,
+                "display_data_policy": company.display_data_policy_approval,
+                "data_policy_required": company.data_policy_approval_required,
+                "data_policy_text": company.data_policy_approval_text,
+                "display_internal_rules": company.display_internal_rules_approval,
+                "internal_rules_required": company.internal_rules_approval_required,
+                "internal_rules_text": company.internal_rules_approval_text,
+                "display_financial_risk": company.display_financial_risk_approval,
+                "financial_risk_required": company.financial_risk_approval_required,
+                "financial_risk_text": company.financial_risk_approval_text,
+                "display_generic_rules": company.display_generic_rules_approval,
+                "generic_rules_required": company.generic_rules_approval_required,
+                "generic_rules_text": company.generic_rules_approval_text,
             }
         )
         return values
@@ -252,7 +264,10 @@ class WebsiteSubscription(http.Controller):
         sub_req_obj = request.env["subscription.request"]
 
         redirect = "cooperator_website.becomecooperator"
-        # redirect url to fall back on become coopererator in template redirection
+
+        # url to use for "already have an account button" to go to become cooperator
+        # rather than subscribe share after a failed validation
+        # it is deleted at the end of the validation
         values["redirect_url"] = urljoin(
             request.httprequest.host_url, "become_cooperator"
         )
@@ -270,7 +285,7 @@ class WebsiteSubscription(http.Controller):
 
         if error:
             values = self.fill_values(values, is_company, logged)
-            values["error_msg"] = _("Some mandatory fields have not " "been filled")
+            values["error_msg"] = _("Some mandatory fields have not been filled.")
             values = dict(values, error=error, kwargs=kwargs.items())
             return request.render(redirect, values)
 
@@ -280,9 +295,8 @@ class WebsiteSubscription(http.Controller):
                 values = self.fill_values(values, is_company, logged)
                 values.update(kwargs)
                 values["error_msg"] = _(
-                    "There is an existing account for this"
-                    " mail address. Please login before "
-                    "fill in the form"
+                    "An account already exists for this email address. "
+                    "Please log in before filling in the form."
                 )
 
                 return request.render(redirect, values)
@@ -292,9 +306,7 @@ class WebsiteSubscription(http.Controller):
                     values = self.fill_values(values, is_company, logged)
                     values.update(kwargs)
                     values["error_msg"] = _(
-                        "The email and the confirmation "
-                        "email doesn't match.Please check "
-                        "the given mail addresses"
+                        "Email and confirmation email addresses don't match."
                     )
                     return request.render(redirect, values)
 
@@ -306,7 +318,7 @@ class WebsiteSubscription(http.Controller):
             if not post_file:
                 values = self.fill_values(values, is_company, logged)
                 values.update(kwargs)
-                values["error_msg"] = _("You need to upload a" " scan of your id card")
+                values["error_msg"] = _("Please upload a scan of your ID card.")
                 return request.render(redirect, values)
 
         if "iban" in required_fields:
@@ -316,7 +328,7 @@ class WebsiteSubscription(http.Controller):
 
                 if not valid:
                     values = self.fill_values(values, is_company, logged)
-                    values["error_msg"] = _("Your IBAN is not valid.")
+                    values["error_msg"] = _("Provided IBAN is not valid.")
                     return request.render(redirect, values)
 
         # check the subscription's amount
@@ -330,19 +342,24 @@ class WebsiteSubscription(http.Controller):
                     if partner.cooperator_type != share.default_code:
                         values = self.fill_values(values, is_company, logged)
                         values["error_msg"] = _(
-                            "You can't subscribe two " "different types of share"
+                            "You can't subscribe to two different types of share."
                         )
                         return request.render(redirect, values)
         total_amount = float(kwargs.get("total_parts"))
 
         if max_amount > 0 and total_amount > max_amount:
             values = self.fill_values(values, is_company, logged)
-            values["error_msg"] = (
-                _("You can't subscribe for an amount that " "exceed ")
-                + str(max_amount)
-                + company.currency_id.symbol
-            )
+            values["error_msg"] = _(
+                "You can't subscribe for an amount that exceeds "
+                "{amount}{currency_symbol}."
+            ).format(amount=max_amount, currency_symbol=company.currency_id.symbol)
             return request.render(redirect, values)
+
+        # remove non-model attributes (used internally when re-rendering the
+        # form in case of a validation error)
+        del values["redirect_url"]
+        del values["confirm_email"]
+
         return True
 
     @http.route(
@@ -434,9 +451,8 @@ class WebsiteSubscription(http.Controller):
                 values["company_register_number"] = re.sub(
                     "[^0-9a-zA-Z]+", "", kwargs.get("company_register_number")
                 )
-            subscription_id = sub_req_obj.sudo().create_comp_sub_req(values)
-        else:
-            subscription_id = sub_req_obj.sudo().create(values)
+
+        subscription_id = sub_req_obj.sudo().create(values)
 
         if subscription_id:
             for field_value in post_file:

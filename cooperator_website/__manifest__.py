@@ -22,6 +22,5 @@
         "views/subscription_template.xml",
         "data/website_cooperator_data.xml",
     ],
-    "installable": True,
     "application": True,
 }
