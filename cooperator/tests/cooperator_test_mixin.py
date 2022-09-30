@@ -149,12 +149,3 @@ class CooperatorTestMixin:
                     "value_reference": value_reference,
                 }
             )
-
-    def as_user(self):
-        self.uid = self.ref("base.user_demo")
-
-    def as_cooperator_user(self):
-        self.uid = self.ref("cooperator.res_users_user_cooperator_demo")
-
-    def as_cooperator_manager(self):
-        self.uid = self.ref("cooperator.res_users_manager_cooperator_demo")
