@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-18 14:59+0000\n"
 "PO-Revision-Date: 2022-05-19 10:53+0200\n"
@@ -49,7 +49,6 @@ msgstr "Adresse"
 
 #. module: cooperator_website
 #: code:addons/cooperator_website/controllers/main.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:0
 #, python-format
 msgid "An account already exists for this email address. Please log in before filling in the form."
 msgstr "Il y a déjà un compte utilisateur pour ce courriel. Connectez-vous avant de remplir le formulaire."
@@ -159,7 +158,6 @@ msgstr "Courriel"
 
 #. module: cooperator_website
 #: code:addons/cooperator_website/controllers/main.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:0
 #, python-format
 msgid "Email and confirmation email addresses don't match."
 msgstr "Le courriel et le courriel de confirmation ne sont pas identiques."
@@ -232,7 +230,6 @@ msgstr "Téléphone"
 
 #. module: cooperator_website
 #: code:addons/cooperator_website/controllers/main.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:0
 #, python-format
 msgid "Please upload a scan of your ID card."
 msgstr "Veuillez charger une copie de votre carte d'identité."
@@ -244,7 +241,6 @@ msgstr "Politique de gestion des données"
 
 #. module: cooperator_website
 #: code:addons/cooperator_website/controllers/main.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:0
 #, python-format
 msgid "Provided IBAN is not valid."
 msgstr "L'IBAN fourni n'est pas valide."
@@ -267,7 +263,6 @@ msgstr "Type de part"
 
 #. module: cooperator_website
 #: code:addons/cooperator_website/controllers/main.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:0
 #, python-format
 msgid "Some mandatory fields have not been filled."
 msgstr "Certains champs obligatoires sont vides."
@@ -299,14 +294,12 @@ msgstr "Formulaire en ligne pour coopérateur"
 
 #. module: cooperator_website
 #: code:addons/cooperator_website/controllers/main.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:0
 #, python-format
 msgid "You can't subscribe for an amount that exceeds {amount}{currency_symbol}."
 msgstr "Vous ne pouvez souscrire à un montant supérieur à {amount} {currency_symbol}."
 
 #. module: cooperator_website
 #: code:addons/cooperator_website/controllers/main.py:0
-#: code:addons/src/coopiteasy/vertical-cooperative/cooperator_website/controllers/main.py:0
 #, python-format
 msgid "You can't subscribe to two different types of share."
 msgstr "Vous ne pouvez souscrire à des types de parts différents."

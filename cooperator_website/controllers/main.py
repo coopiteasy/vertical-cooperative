@@ -1,5 +1,6 @@
 import base64
 import re
+import warnings
 from datetime import datetime
 from urllib.parse import urljoin
 
@@ -111,12 +112,23 @@ class WebsiteSubscription(http.Controller):
         values.update(kwargs=kwargs.items())
         return request.render("cooperator_website.becomecompanycooperator", values)
 
-    def preRenderThanks(self, values, kwargs):
-        """Allow to be overrided"""
+    def pre_render_thanks(self, values, kwargs):
+        """
+        Allows to modify values passed to the "thanks" template by overriding
+        this method.
+        """
         return {"_values": values, "_kwargs": kwargs}
 
+    def preRenderThanks(self, values, kwargs):
+        warnings.warn(
+            "WebsiteSubscription.preRenderThanks() is deprecated. "
+            "please use .pre_render_thanks() instead.",
+            DeprecationWarning,
+        )
+        return self.pre_render_thanks(values, kwargs)
+
     def get_subscription_response(self, values, kwargs):
-        values = self.preRenderThanks(values, kwargs)
+        values = self.pre_render_thanks(values, kwargs)
         return request.render("cooperator_website.cooperator_thanks", values)
 
     def get_date_string(self, birthdate):
@@ -439,9 +451,8 @@ class WebsiteSubscription(http.Controller):
                 values["company_register_number"] = re.sub(
                     "[^0-9a-zA-Z]+", "", kwargs.get("company_register_number")
                 )
-            subscription_id = sub_req_obj.sudo().create_comp_sub_req(values)
-        else:
-            subscription_id = sub_req_obj.sudo().create(values)
+
+        subscription_id = sub_req_obj.sudo().create(values)
 
         if subscription_id:
             for field_value in post_file:
