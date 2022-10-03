@@ -32,7 +32,5 @@
     "demo": [
         "demo/tax_shelter_demo.xml",
     ],
-    "installable": True,
-    "application": False,
     "auto-install": True,
 }
