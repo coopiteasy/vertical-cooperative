@@ -18,8 +18,9 @@
                 <h2 style="font-size: 3em;">
                     <span>Déclaration Tax Shelter</span>
                     <br />
-                    <small>Attestation concernant une des quatre années suivant
-                        l’acquisition de parts
+                    <small>
+                        Attestation concernant une des quatre années suivant
+                        l'acquisition de parts
                     </small>
                 </h2>
 
@@ -28,22 +29,23 @@
                 </p>
 
                 <p>
-                    A la date du<span t-field="o.partner_id.effective_date" />,
-                    vous êtes devenu coopérateur de<span t-field="o.company_id.name" />.
+                    À la date du
+                    <span t-field="o.partner_id.effective_date" />,
+                    vous êtes devenu coopérateur de
+                    <span t-field="o.company_id.name" />.
                 </p>
 
                 <p>
-                    Cette lettre confirme qu’en date du<span
-                        t-field="o.declaration_id.date_to"
-                    />, vous êtes toujours
-                    en possession de parts de
+                    Cette lettre confirme qu'en date du
+                    <span t-field="o.declaration_id.date_to" />,
+                    vous êtes toujours en possession de parts de
                     <span t-field="o.company_id.name" />
                     pour un montant total de
                     <span
                         t-field="o.partner_id.total_value"
                         t-field-options='{"widget": "monetary", "display_currency": "res_company.currency_id"}'
                     />
-                    euros et que la condition prévue à l’article 145(26), $3,
+                    euros et que la condition prévue à l'article 145(26), §3,
                     alinéa 2, CIR92 est remplie.
                 </p>
 
@@ -56,7 +58,7 @@
                             <th>Tax shelter eligible</th>
                             <th>Date</th>
                             <th>Amount</th>
-                            <th>Amount ligible</th>
+                            <th>Eligible amount</th>
                         </tr>
                     </thead>
                     <tbody class="invoice_tbody">
@@ -143,20 +145,17 @@
 
                 <!-- TODO: Translate below to English -->
                 <p>
-                    L' Article 145/26, CIR 92 sur les revenus<span
-                        t-field="o.declaration_id.fiscal_year"
-                    />, connu aussi
+                    L'Article 145/26, CIR 92 sur les revenus
+                    <span t-field="o.declaration_id.fiscal_year" />, connu aussi
                     comme normative Tax Shelter, donnent droit à une réduction
-                    d’impôt à hauteur de &#160;<span
-                        t-field="o.declaration_id.tax_shelter_percentage"
-                    />
+                    d'impôt à hauteur de
+                    <span t-field="o.declaration_id.tax_shelter_percentage" />
                     du montant de la valeur des parts souscrites depuis
                     <span t-field="o.declaration_id.month_from" />
                     (et avant
                     <span t-field="o.declaration_id.month_to" />
-                    pour la déclaration des revenus &#160;<span
-                        t-field="o.declaration_id.fiscal_year"
-                    />).
+                    pour la déclaration des revenus
+                    <span t-field="o.declaration_id.fiscal_year" />).
                 </p>
 
                 <p>
@@ -164,57 +163,56 @@
                     <span t-field="o.company_id.name" />
                     remplit en effet tous les critères permettant un tel
                     avantage fiscal. Dans les grandes lignes il faut être une
-                    micro-entreprise n’ayant encore jamais distribué de
-                    dividende et qui n'est pas issue d’une fusion ou scission de
+                    micro-entreprise n'ayant encore jamais distribué de
+                    dividende et qui n'est pas issue d'une fusion ou scission de
                     sociétés et qui répond à au moins deux des trois critères
-                    suivants :
+                    suivants :
                     <ul>
                         <li>le total du bilan est inférieur ou égal à 350.000
-                            euros ;
+                            euros ;
                         </li>
-                        <li>le chiffre d’affaires, hors taxe sur la valeur
-                            ajoutée, est inférieur ou égal à 700.000 euros ;
+                        <li>le chiffre d'affaires, hors taxe sur la valeur
+                            ajoutée, est inférieur ou égal à 700.000 euros ;
                         </li>
-                        <li>la moyenne des travailleurs occupés pendant l’année
+                        <li>la moyenne des travailleurs occupés pendant l'année
                             est inférieure ou égale à 10.
                         </li>
                     </ul>
                 </p>
 
                 <p>
-                    Le maintien de la réduction d’impôt n’est possible que si
+                    Le maintien de la réduction d'impôt n'est possible que si
                     l'investisseur conserve les parts de la coopérative pendant
                     4 ans au minimum, sauf si la sortie est imposée par des
                     conditions extérieures (telles que la faillite, par
                     exemple). En cas de sortie volontaire avant la période de 4
-                    ans, l’avantage fiscal devra être remboursé au prorata du
+                    ans, l'avantage fiscal devra être remboursé au prorata du
                     nombre de mois entre la sortie et les 4 ans. La coopérative
-                    s’engage à fournir pour chacune des quatre années suivant
-                    l’année d’acquisition une attestation certifiant que ces
+                    s'engage à fournir pour chacune des quatre années suivant
+                    l'année d'acquisition une attestation certifiant que ces
                     parts sont toujours en possession du souscripteur.
                 </p>
 
                 <p>
-                    L’apport de capitaux par le chef d’entreprise lui-même ou
+                    L'apport de capitaux par le chef d'entreprise lui-même ou
                     par des administrateurs existants de la société ne permet
                     pas de bénéficier du tax shelter.
                 </p>
 
                 <p>
-                    Pour bénéficier de la réduction d’impôts, vous pouvez
+                    Pour bénéficier de la réduction d'impôts, vous pouvez
                     joindre cette lettre à votre déclaration fiscale pour les
-                    revenus<span t-field="o.declaration_id.fiscal_year" />.
+                    revenus <span t-field="o.declaration_id.fiscal_year" />.
                 </p>
 
                 <p>
                     Pour toute information complémentaire, consultez le texte de
-                    l’Arrêté Royale.
+                    l'Arrêté Royal.
                 </p>
 
                 <p>
-                    Pour le Conseil d'administration de<span
-                        t-field="o.company_id.name"
-                    />,
+                    Pour le Conseil d'administration de
+                    <span t-field="o.company_id.name" />,
                     <br />
                     <strong t-field="o.company_id.board_representative" />
                     <br />
@@ -225,7 +223,6 @@
                         t-att-src="'data:image/png;base64,%s' % o.company_id.signature_scan.decode()"
                     />
                 </p>
-
             </div>
         </t>
     </template>

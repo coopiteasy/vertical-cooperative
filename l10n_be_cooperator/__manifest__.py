@@ -13,7 +13,6 @@
         "cooperator",
         "cooperator_website",
         "l10n_be",
-        "l10n_be_invoice_bba",
     ],
     "author": "Coop IT Easy SC",
     "category": "Cooperative management",
@@ -33,7 +32,5 @@
     "demo": [
         "demo/tax_shelter_demo.xml",
     ],
-    "installable": True,
-    "application": False,
     "auto-install": True,
 }
