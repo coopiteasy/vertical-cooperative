@@ -44,7 +44,7 @@ addon | version | maintainers | summary
 [easy_my_coop_loan_account_be](easy_my_coop_loan_account_be/) | 12.0.1.0.0 |  | This module install belgian localisation demo data for EMC loan account. It also trigger installation for the dependency module
 [easy_my_coop_loan_bba](easy_my_coop_loan_bba/) | 12.0.1.0.0 |  | This module implements the bba structured communication on the loan line.
 [easy_my_coop_loan_website](easy_my_coop_loan_website/) | 12.0.1.1.0 |  | This module implements the subscription page for bonds and subordinated loans.
-[l10n_be_cooperator](l10n_be_cooperator/) | 12.0.2.3.0 |  | Cooperators Belgium Localization
+[l10n_be_cooperator](l10n_be_cooperator/) | 12.0.2.4.0 |  | Cooperators Belgium Localization
 [l10n_be_cooperator_portal](l10n_be_cooperator_portal/) | 12.0.1.0.0 |  | Give access to Tax Shelter Report in the portal.
 [l10n_ch_cooperator](l10n_ch_cooperator/) | 12.0.1.3.0 |  | Cooperators Switzerland localization
 [l10n_es_cooperator](l10n_es_cooperator/) | 12.0.0.1.0 |  | Cooperator localization for Spain
