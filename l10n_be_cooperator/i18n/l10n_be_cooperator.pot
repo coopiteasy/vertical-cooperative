@@ -109,6 +109,7 @@ msgstr ""
 
 #. module: l10n_be_cooperator
 #: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
 msgid "ASBL"
 msgstr ""
 
@@ -141,6 +142,12 @@ msgstr ""
 #. module: l10n_be_cooperator
 #: model:ir.model.fields,field_description:l10n_be_cooperator.field_certificate_line__amount_transfered
 msgid "Amount transfered"
+msgstr ""
+
+#. module: l10n_be_cooperator
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "Association"
 msgstr ""
 
 #. module: l10n_be_cooperator
@@ -214,6 +221,17 @@ msgid "Company"
 msgstr ""
 
 #. module: l10n_be_cooperator
+#: model:ir.model.fields,field_description:l10n_be_cooperator.field_subscription_request__company_type
+msgid "Company type"
+msgstr ""
+
+#. module: l10n_be_cooperator
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "Company under public law"
+msgstr ""
+
+#. module: l10n_be_cooperator
 #: selection:tax.shelter.declaration,state:0
 msgid "Computed"
 msgstr ""
@@ -221,6 +239,12 @@ msgstr ""
 #. module: l10n_be_cooperator
 #: model:ir.model,name:l10n_be_cooperator.model_res_partner
 msgid "Contact"
+msgstr ""
+
+#. module: l10n_be_cooperator
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "Cooperative"
 msgstr ""
 
 #. module: l10n_be_cooperator
@@ -304,6 +328,12 @@ msgid "Durant l'année"
 msgstr ""
 
 #. module: l10n_be_cooperator
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "EURL / Entreprise individuelle"
+msgstr ""
+
+#. module: l10n_be_cooperator
 #: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_report_shares_document
 #: model_terms:ir.ui.view,arch_db:l10n_be_cooperator.tax_shelter_report_subscription_document
 msgid "Eligible amount"
@@ -330,6 +360,12 @@ msgid "Fiscal year"
 msgstr ""
 
 #. module: l10n_be_cooperator
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "Foundation"
+msgstr ""
+
+#. module: l10n_be_cooperator
 #: model:ir.model.fields,field_description:l10n_be_cooperator.field_certificate_line__id
 #: model:ir.model.fields,field_description:l10n_be_cooperator.field_tax_shelter_certificate__id
 #: model:ir.model.fields,field_description:l10n_be_cooperator.field_tax_shelter_declaration__id
@@ -339,6 +375,12 @@ msgstr ""
 #. module: l10n_be_cooperator
 #: model:ir.model.fields,help:l10n_be_cooperator.field_tax_shelter_declaration__excluded_cooperator
 msgid "If these cooperator have subscribed share during the time frame of this Tax Shelter Declaration. They will be marked as non eligible"
+msgstr ""
+
+#. module: l10n_be_cooperator
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "Individual company"
 msgstr ""
 
 #. module: l10n_be_cooperator
@@ -434,6 +476,12 @@ msgid "Numéro de coopérateur :"
 msgstr ""
 
 #. module: l10n_be_cooperator
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "Partnership"
+msgstr ""
+
+#. module: l10n_be_cooperator
 #: model:ir.model.fields,field_description:l10n_be_cooperator.field_tax_shelter_certificate__access_url
 msgid "Portal Access URL"
 msgstr ""
@@ -501,16 +549,25 @@ msgstr ""
 
 #. module: l10n_be_cooperator
 #: selection:res.partner,legal_form:0
-msgid "SA"
+#: selection:subscription.request,company_type:0
+msgid "SA / SAS"
 msgstr ""
 
 #. module: l10n_be_cooperator
 #: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
+msgid "SARL"
+msgstr ""
+
+#. module: l10n_be_cooperator
+#: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
 msgid "SCRL"
 msgstr ""
 
 #. module: l10n_be_cooperator
 #: selection:res.partner,legal_form:0
+#: selection:subscription.request,company_type:0
 msgid "SPRL"
 msgstr ""
 
