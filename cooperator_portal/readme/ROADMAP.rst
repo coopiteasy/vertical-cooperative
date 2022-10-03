@@ -1,2 +1,2 @@
 Use module website_portal_restrict_modification to modify readonly attributes on
-portal mage /my/account .
+portal page /my/account.

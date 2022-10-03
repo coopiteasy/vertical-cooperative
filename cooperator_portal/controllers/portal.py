@@ -31,20 +31,20 @@ class CooperatorPortalAccount(CustomerPortal):
         )
 
     def _prepare_portal_layout_values(self):
-        values = super(CooperatorPortalAccount, self)._prepare_portal_layout_values()
+        values = super()._prepare_portal_layout_values()
         # We assume that commercial_partner_id always point to the
         # partner itself or to the linked partner. So there is no
         # need to check if the partner is a "contact" or not.
         partner = request.env.user.partner_id
         coop = partner.commercial_partner_id
-        partner_obj = request.env["res.partner"]
+        partner_model = request.env["res.partner"]
         coop_bank = (
             request.env["res.partner.bank"]
             .sudo()
             .search([("partner_id", "in", [coop.id])], limit=1)
         )
-        invoice_mgr = request.env["account.invoice"]
-        capital_request_count = invoice_mgr.search_count(
+        invoice_model = request.env["account.invoice"]
+        capital_request_count = invoice_model.search_count(
             [
                 ("state", "in", ["open", "paid", "cancelled"]),
                 # Get only the release capital request
@@ -52,14 +52,14 @@ class CooperatorPortalAccount(CustomerPortal):
             ]
         )
 
-        invoice_count = invoice_mgr.search_count(
+        invoice_count = invoice_model.search_count(
             [("release_capital_request", "=", False)]
         )
         iban = ""
         if partner.bank_ids:
             iban = partner.bank_ids[0].acc_number
 
-        fields_desc = partner_obj.sudo().fields_get(["gender"])
+        fields_desc = partner_model.sudo().fields_get(["gender"])
 
         values.update(
             {
@@ -75,23 +75,21 @@ class CooperatorPortalAccount(CustomerPortal):
         return values
 
     def details_form_validate(self, data):
-        error, error_message = super(
-            CooperatorPortalAccount, self
-        ).details_form_validate(data)
-        sub_req_obj = request.env["subscription.request"]
+        error, error_message = super().details_form_validate(data)
+        sub_req_model = request.env["subscription.request"]
         iban = data.get("iban")
-        valid = sub_req_obj.check_iban(iban)
+        valid = sub_req_model.check_iban(iban)
 
         if not valid:
             error["iban"] = "error"
-            error_message.append(_("You iban account number is not valid"))
+            error_message.append(_("The IBAN account number is not valid."))
         return error, error_message
 
     @route(["/my/account"], type="http", auth="user", website=True)
     def account(self, redirect=None, **post):
         partner = request.env.user.partner_id
 
-        res = super(CooperatorPortalAccount, self).account(redirect, **post)
+        res = super().account(redirect, **post)
         if not res.qcontext.get("error"):
             partner_bank = request.env["res.partner.bank"]
             iban = post.get("iban")
@@ -114,13 +112,11 @@ class CooperatorPortalAccount(CustomerPortal):
     def portal_my_invoices(
         self, page=1, date_begin=None, date_end=None, sortby=None, **kw
     ):
-        res = super(CooperatorPortalAccount, self).portal_my_invoices(
-            page, date_begin, date_end, sortby, **kw
-        )
-        invoice_obj = request.env["account.invoice"]
+        res = super().portal_my_invoices(page, date_begin, date_end, sortby, **kw)
+        invoice_model = request.env["account.invoice"]
         qcontext = res.qcontext
         if qcontext:
-            invoices = invoice_obj.search([("release_capital_request", "=", False)])
+            invoices = invoice_model.search([("release_capital_request", "=", False)])
             invoice_count = len(invoices)
             qcontext["invoices"] = invoices
             qcontext["pager"]["invoice_count"] = invoice_count
@@ -144,7 +140,7 @@ class CooperatorPortalAccount(CustomerPortal):
         """
         values = self._prepare_portal_layout_values()
         partner = request.env.user.partner_id
-        invoice_mgr = request.env["account.invoice"]
+        invoice_model = request.env["account.invoice"]
 
         domain = [
             ("partner_id", "in", [partner.commercial_partner_id.id]),
@@ -160,7 +156,7 @@ class CooperatorPortalAccount(CustomerPortal):
             ]
 
         # count for pager
-        capital_request_count = invoice_mgr.sudo().search_count(domain)
+        capital_request_count = invoice_model.sudo().search_count(domain)
         # pager
         pager = portal_pager(
             url="/my/release_capital_request",
@@ -174,7 +170,7 @@ class CooperatorPortalAccount(CustomerPortal):
             step=self._items_per_page,
         )
         # content according to pager and archive selected
-        invoices = invoice_mgr.sudo().search(
+        invoices = invoice_model.sudo().search(
             domain, limit=self._items_per_page, offset=pager["offset"]
         )
         values.update(
