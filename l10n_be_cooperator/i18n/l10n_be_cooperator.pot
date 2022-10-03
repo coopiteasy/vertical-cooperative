@@ -114,6 +114,7 @@ msgstr ""
 
 #. module: l10n_be_cooperator
 #: model:ir.model.fields.selection,name:l10n_be_cooperator.selection__res_partner__legal_form__asbl
+#: model:ir.model.fields.selection,name:l10n_be_cooperator.selection__subscription_request__company_type__asbl
 msgid "ASBL"
 msgstr ""
 
@@ -216,6 +217,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_be_cooperator.field_tax_shelter_certificate__company_id
 #: model:ir.model.fields,field_description:l10n_be_cooperator.field_tax_shelter_declaration__company_id
 msgid "Company"
+msgstr ""
+
+#. module: l10n_be_cooperator
+#: model:ir.model.fields,field_description:l10n_be_cooperator.field_subscription_request__company_type
+msgid "Company type"
 msgstr ""
 
 #. module: l10n_be_cooperator
@@ -521,16 +527,19 @@ msgstr ""
 
 #. module: l10n_be_cooperator
 #: model:ir.model.fields.selection,name:l10n_be_cooperator.selection__res_partner__legal_form__sa
+#: model:ir.model.fields.selection,name:l10n_be_cooperator.selection__subscription_request__company_type__sa
 msgid "SA"
 msgstr ""
 
 #. module: l10n_be_cooperator
 #: model:ir.model.fields.selection,name:l10n_be_cooperator.selection__res_partner__legal_form__scrl
+#: model:ir.model.fields.selection,name:l10n_be_cooperator.selection__subscription_request__company_type__scrl
 msgid "SCRL"
 msgstr ""
 
 #. module: l10n_be_cooperator
 #: model:ir.model.fields.selection,name:l10n_be_cooperator.selection__res_partner__legal_form__sprl
+#: model:ir.model.fields.selection,name:l10n_be_cooperator.selection__subscription_request__company_type__sprl
 msgid "SPRL"
 msgstr ""
 
