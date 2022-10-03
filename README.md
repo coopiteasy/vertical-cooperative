@@ -37,7 +37,7 @@ addon | version | maintainers | summary
 [cooperator_api_logs](cooperator_api_logs/) | 12.0.1.0.0 |  | Helpers to log calls in and out of cooperators_api.
 [cooperator_portal](cooperator_portal/) | 12.0.3.0.0 |  | Show cooperator information in the website portal.
 [cooperator_website](cooperator_website/) | 12.0.3.2.0 |  | This module adds the cooperator subscription form allowing to subscribe for shares online.
-[cooperator_website_recaptcha](cooperator_website_recaptcha/) | 12.0.1.0.0 |  | Add Google Recaptcha to Subscription Request Form
+[cooperator_website_recaptcha](cooperator_website_recaptcha/) | 12.0.1.0.1 |  | Add Google Recaptcha to Subscription Request Form
 [cooperator_website_uppercase_lastname](cooperator_website_uppercase_lastname/) | 12.0.1.0.0 |  | This module UPPERCASES the last names of submitted requests
 [easy_my_coop_loan](easy_my_coop_loan/) | 12.0.2.0.1 |  | This module allows to manage the bonds and subordinated loans subscription life cycle.
 [easy_my_coop_loan_account](easy_my_coop_loan_account/) | 12.0.1.0.0 |  | This module brings the accounting part of the loan issue. It has for purpose to generate all the accounting entries to the covered use cases.
