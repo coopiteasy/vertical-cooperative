@@ -11,7 +11,7 @@
     "depends": [
         "base",
         "web",
-        # "sale",
+        "sale",
         "account",
         "base_iban",
         "product",
