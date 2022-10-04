@@ -13,11 +13,14 @@ Cooperators
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-coopiteasy%2Fvertical--cooperative-lightgray.png?logo=github
-    :target: https://github.com/coopiteasy/vertical-cooperative/tree/12.0/cooperator
-    :alt: coopiteasy/vertical-cooperative
+.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fcooperative-lightgray.png?logo=github
+    :target: https://github.com/OCA/cooperative/tree/12.0/cooperator
+    :alt: OCA/cooperative
+.. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
+    :target: https://translation.odoo-community.org/projects/cooperative-12-0/cooperative-12-0-cooperator
+    :alt: Translate me on Weblate
 
-|badge1| |badge2| |badge3| 
+|badge1| |badge2| |badge3| |badge4| 
 
 Manage cooperators of a cooperative.
 
@@ -166,10 +169,10 @@ backport changes from migration to 14.0.
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/coopiteasy/vertical-cooperative/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/OCA/cooperative/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/coopiteasy/vertical-cooperative/issues/new?body=module:%20cooperator%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/cooperative/issues/new?body=module:%20cooperator%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -198,6 +201,16 @@ Contributors
 Maintainers
 ~~~~~~~~~~~
 
-This module is part of the `coopiteasy/vertical-cooperative <https://github.com/coopiteasy/vertical-cooperative/tree/12.0/cooperator>`_ project on GitHub.
+This module is maintained by the OCA.
 
-You are welcome to contribute.
+.. image:: https://odoo-community.org/logo.png
+   :alt: Odoo Community Association
+   :target: https://odoo-community.org
+
+OCA, or the Odoo Community Association, is a nonprofit organization whose
+mission is to support the collaborative development of Odoo features and
+promote its widespread use.
+
+This module is part of the `OCA/cooperative <https://github.com/OCA/cooperative/tree/12.0/cooperator>`_ project on GitHub.
+
+You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
