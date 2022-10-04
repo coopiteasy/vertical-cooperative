@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <report
+        id="action_cooperator_invoices"
+        model="account.invoice"
+        string="Capital release request"
+        report_type="qweb-pdf"
+        name="cooperator.theme_invoice_G002"
+        file="cooperator_invoice_G002.xml"
+        attachment="(object.state in ('open', 'paid')) and ((object.number or 'SUBJ').replace('/', '_') + '.pdf')"
+        print_report_name="(object.number or 'SUBJ').replace('/', '_')"
+    />
+
+    <report
+        id="action_cooperator_subscription_report"
+        model="subscription.register"
+        string="Subscription Register Report"
+        report_type="qweb-pdf"
+        name="cooperator.cooperator_subscription_G001"
+        file="cooperator_subscription_G001.xml"
+        multi="True"
+        menu="True"
+    />
+
+    <report
+        id="action_cooperator_report_certificat"
+        model="res.partner"
+        string="Cooperator certificat"
+        report_type="qweb-pdf"
+        name="cooperator.cooperator_certificat_G001"
+        file="cooperator_certificat_G001.xml"
+        multi="True"
+        menu="True"
+    />
+
+    <report
+        id="action_report_cooperator_register"
+        model="res.partner"
+        string="Cooperator register"
+        report_type="qweb-pdf"
+        name="cooperator.cooperator_register_G001"
+        file="cooperator_register_G001.xml"
+        multi="True"
+        menu="True"
+    />
+</odoo>

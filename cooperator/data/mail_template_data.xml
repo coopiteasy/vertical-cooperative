@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Mail template are declared in a NOUPDATE block
+         so users can freely customize/delete them -->
+    <data noupdate="1">
+        <!-- Request to release capital Email template -->
+        <record id="email_template_release_capital" model="mail.template">
+            <field name="name">Request to Release Capital - Send by Email</field>
+            <field
+                name="email_from"
+            >${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field
+                name="subject"
+            >${object.company_id.name} Request to Release Capital (Ref ${object.number or 'n/a'})</field>
+            <field name="partner_to">${object.partner_id.id}</field>
+            <field
+                name="reply_to"
+            >${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="model_id" ref="account.model_account_invoice" />
+            <field name="auto_delete" eval="True" />
+            <field name="report_template" ref="action_cooperator_invoices" />
+            <field
+                name="report_name"
+            >${(object.number or "capital_release_request").replace("/", "_")}${object.state == "draft" and "_draft" or ""}</field>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="is_cooperator_template" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello ${object.subscription_request.firstname},</p>
+
+    <p>You will find in attachment all the necessary information for the payment. We kindly remind you that your subscription will be effective only once we received the payment.</p>
+
+    <p>Do not forget to add the structured communication to the payment.</p>
+
+    <p>Sustainably your,</p>
+    <p>${object.company_id.name}.</p>
+
+    % if object.company_id.street:
+        ${object.company_id.street}
+    % endif
+    % if object.company_id.street2:
+        ${object.company_id.street2}<br/>
+    % endif
+    % if object.company_id.city or object.company_id.zip:
+        ${object.company_id.zip} ${object.company_id.city}<br/>
+    % endif
+    % if object.company_id.country_id:
+        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>
+    % endif
+    % if object.company_id.phone:
+        Phone:&nbsp; ${object.company_id.phone}
+    % endif
+
+    % if object.company_id.website:
+        <div>
+            Web :&nbsp;<a href="${object.company_id.website}">${object.company_id.website}</a>
+        </div>
+    %endif
+
+    <div>
+        <img src=${object.company_id.logo_url}>
+    </div>
+</div>
+            ]]></field>
+        </record>
+
+        <record id="email_template_confirmation" model="mail.template">
+            <field name="name">Confirmation Email</field>
+            <field
+                name="email_from"
+            >${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="subject">Subscription request confirmation</field>
+            <field name="email_to">${object.email}</field>
+            <field
+                name="reply_to"
+            >${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="model_id" ref="model_subscription_request" />
+            <field name="auto_delete" eval="True" />
+            <field name="lang">${object.lang}</field>
+            <field name="is_cooperator_template" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello ${object.firstname},</p>
+
+    <p>Your request will be soon processed by our team. If all the provided info are correct you will soon receive the payment information in another email.</p>
+
+    <br/>
+    <p>If you have any question, do not hesitate to contact us.</p>
+    <br/>
+
+    <p>Sustainably your,</p>
+    <p>${object.company_id.name}.</p>
+
+    % if object.company_id.street:
+        ${object.company_id.street}
+    % endif
+    % if object.company_id.street2:
+        ${object.company_id.street2}<br/>
+    % endif
+    % if object.company_id.city or object.company_id.zip:
+        ${object.company_id.zip} ${object.company_id.city}<br/>
+    % endif
+    % if object.company_id.country_id:
+        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>
+    % endif
+    % if object.company_id.phone:
+        Phone:&nbsp; ${object.company_id.phone}
+    % endif
+
+    % if object.company_id.website:
+        <div>
+            Web :&nbsp;<a href="${object.company_id.website}">${object.company_id.website}</a>
+        </div>
+    %endif
+
+    <div>
+        <img src=${object.company_id.logo_url}>
+    </div>
+</div>
+            ]]></field>
+        </record>
+
+        <record id="email_template_waiting_list" model="mail.template">
+            <field name="name">Waiting List Email</field>
+            <field
+                name="email_from"
+            >${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="subject">Subscription request added on waiting list</field>
+            <field name="email_to">${object.email}</field>
+            <field
+                name="reply_to"
+            >${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="model_id" ref="model_subscription_request" />
+            <field name="auto_delete" eval="True" />
+            <field name="lang">${object.lang}</field>
+            <field name="is_cooperator_template" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello ${object.firstname},</p>
+
+    <p>Thank you for your subscription request. There are currently no project to raise funds for, thus we added it on waiting list.
+        We will contact you as soon as the subscription requests are re-opened.
+     </p>
+
+    <br/>
+    <p>If you have any question, do not hesitate to contact us.</p>
+    <br/>
+
+    <p>Sustainably yours,</p>
+    <p>${object.company_id.name}.</p>
+
+    % if object.company_id.street:
+        ${object.company_id.street}
+    % endif
+    % if object.company_id.street2:
+        ${object.company_id.street2}<br/>
+    % endif
+    % if object.company_id.city or object.company_id.zip:
+        ${object.company_id.zip} ${object.company_id.city}<br/>
+    % endif
+    % if object.company_id.country_id:
+        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>
+    % endif
+    % if object.company_id.phone:
+        Phone:&nbsp; ${object.company_id.phone}
+    % endif
+
+    % if object.company_id.website:
+        <div>
+            Web :&nbsp;<a href="${object.company_id.website}">${object.company_id.website}</a>
+        </div>
+    %endif
+
+    <div>
+        <img src=${object.company_id.logo_url}>
+    </div>
+</div>
+            ]]></field>
+        </record>
+
+        <record id="email_template_confirmation_company" model="mail.template">
+            <field name="name">Company Confirmation Email</field>
+            <field
+                name="email_from"
+            >${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="subject">Subscription request confirmation</field>
+            <field name="email_to">${object.email},${object.company_email}</field>
+            <field
+                name="reply_to"
+            >${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="model_id" ref="model_subscription_request" />
+            <field name="auto_delete" eval="True" />
+            <field name="lang">${object.lang}</field>
+            <field name="is_cooperator_template" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello ${object.firstname},</p>
+
+    <p>We have received your subscription request for ${object.company_id.name}. Thank you for your support.</p>
+
+    <p>Your request will be soon processed by our team. If all the provided info are correct you will soon receive the payment information in another email.</p>
+
+    <br/>
+    <p>If you have any question, do not hesitate to contact us.</p>
+    <br/>
+
+    <p>Sustainably your,</p>
+    <p>${object.company_id.name}.</p>
+
+    % if object.company_id.street:
+        ${object.company_id.street}
+    % endif
+    % if object.company_id.street2:
+        ${object.company_id.street2}<br/>
+    % endif
+    % if object.company_id.city or object.company_id.zip:
+        ${object.company_id.zip} ${object.company_id.city}<br/>
+    % endif
+    % if object.company_id.country_id:
+        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>
+    % endif
+    % if object.company_id.phone:
+        Phone:&nbsp; ${object.company_id.phone}
+    % endif
+
+    % if object.company_id.website:
+        <div>
+            Web :&nbsp;<a href="${object.company_id.website}">${object.company_id.website}</a>
+        </div>
+    %endif
+
+    <div>
+        <img src=${object.company_id.logo_url}>
+    </div>
+</div>
+            ]]></field>
+        </record>
+
+        <record id="email_template_certificat" model="mail.template">
+            <field name="name">Payment Received Confirmation - Send By Email</field>
+            <field
+                name="email_from"
+            >${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="subject">Payment Received Confirmation</field>
+            <field name="partner_to">${object.id}</field>
+            <field
+                name="reply_to"
+            >${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="model_id" ref="model_res_partner" />
+            <field name="auto_delete" eval="True" />
+            <field name="report_template" ref="action_cooperator_report_certificat" />
+            <field
+                name="report_name"
+            >Certificate ${(object.cooperator_register_number or '')}</field>
+            <field name="lang">${object.lang}</field>
+            <field name="is_cooperator_template" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello ${object.subscription_request_ids[0].firstname},</p>
+
+    <p>We confirm the reception of you payment. You are now shareholder of our cooperative.</p>
+
+    <br/>
+    <p>Find in attachment your ${object.company_id.name} certificate.</p>
+    <p>Thank you for choosing ${object.company_id.name or 'us'}!</p>
+    <br/>
+    <p>Sustainably your,</p>
+    <p>${object.company_id.name}.</p>
+
+    % if object.company_id.street:
+        ${object.company_id.street}
+    % endif
+    % if object.company_id.street2:
+        ${object.company_id.street2}<br/>
+    % endif
+    % if object.company_id.city or object.company_id.zip:
+        ${object.company_id.zip} ${object.company_id.city}<br/>
+    % endif
+    % if object.company_id.country_id:
+        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>
+    % endif
+    % if object.company_id.phone:
+        Phone:&nbsp; ${object.company_id.phone}
+    % endif
+
+    % if object.company_id.website:
+        <div>
+            Web :&nbsp;<a href="${object.company_id.website}">${object.company_id.website}</a>
+        </div>
+    %endif
+
+    <div>
+        <img src=${object.company_id.logo_url}>
+    </div>
+</div>
+            ]]></field>
+        </record>
+
+        <record id="email_template_certificat_increase" model="mail.template">
+            <field
+                name="name"
+            >Share Increase - Payment Received Confirmation - Send By Email</field>
+            <field
+                name="email_from"
+            >${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="subject">Payment Received Confirmation</field>
+            <field name="partner_to">${object.id}</field>
+            <field
+                name="reply_to"
+            >${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="model_id" ref="model_res_partner" />
+            <field name="auto_delete" eval="True" />
+            <field name="report_template" ref="action_cooperator_report_certificat" />
+            <field
+                name="report_name"
+            >Certificate ${(object.cooperator_register_number or '')}</field>
+            <field name="lang">${object.lang}</field>
+            <field name="is_cooperator_template" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello ${object.subscription_request_ids[0].firstname},</p>
+
+    <p>We confirm the reception of you payment for the new share(s) you have taken.</p>
+
+    <br/>
+    <p>Find in attachment your ${object.company_id.name} certificate.</p>
+    <p>Thank you for trusting ${object.company_id.name or 'us'}!</p>
+    <br/>
+    <p>Sustainably your,</p>
+    <p>${object.company_id.name}.</p>
+
+    % if object.company_id.street:
+        ${object.company_id.street}
+    % endif
+    % if object.company_id.street2:
+        ${object.company_id.street2}<br/>
+    % endif
+    % if object.company_id.city or object.company_id.zip:
+        ${object.company_id.zip} ${object.company_id.city}<br/>
+    % endif
+    % if object.company_id.country_id:
+        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>
+    % endif
+    % if object.company_id.phone:
+        Phone:&nbsp; ${object.company_id.phone}
+    % endif
+
+    % if object.company_id.website:
+        <div>
+            Web :&nbsp;<a href="${object.company_id.website}">${object.company_id.website}</a>
+        </div>
+    %endif
+
+    <div>
+        <img src=${object.company_id.logo_url}>
+    </div>
+</div>
+            ]]></field>
+        </record>
+
+        <record id="email_template_share_transfer" model="mail.template">
+            <field name="name">Share transfer - Send By Email</field>
+            <field
+                name="email_from"
+            >${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="subject">Share transfer</field>
+            <field name="partner_to">${object.id}</field>
+            <field
+                name="reply_to"
+            >${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="model_id" ref="model_res_partner" />
+            <field name="auto_delete" eval="True" />
+            <field name="report_template" ref="action_cooperator_report_certificat" />
+            <field
+                name="report_name"
+            >Certificate ${(object.cooperator_register_number or '')}</field>
+            <field name="lang">${object.lang}</field>
+            <field name="is_cooperator_template" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello ${object.subscription_request_ids[0].firstname},</p>
+
+    <p>We confirm you that the shares have been transfered to you. If you was not already cooperator, you are now shareholder of our cooperative.</p>
+
+    <br/>
+    <p>Find in attachment your ${object.company_id.name} certificate.</p>
+    <p>Thank you for choosing ${object.company_id.name or 'us'}!</p>
+    <br/>
+    <p>Sustainably your,</p>
+    <p>${object.company_id.name}.</p>
+
+    % if object.company_id.street:
+        ${object.company_id.street}
+    % endif
+    % if object.company_id.street2:
+        ${object.company_id.street2}<br/>
+    % endif
+    % if object.company_id.city or object.company_id.zip:
+        ${object.company_id.zip} ${object.company_id.city}<br/>
+    % endif
+    % if object.company_id.country_id:
+        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>
+    % endif
+    % if object.company_id.phone:
+        Phone:&nbsp; ${object.company_id.phone}
+    % endif
+
+    % if object.company_id.website:
+        <div>
+            Web :&nbsp;<a href="${object.company_id.website}">${object.company_id.website}</a>
+        </div>
+    %endif
+
+    <div>
+        <img src=${object.company_id.logo_url}>
+    </div>
+</div>
+            ]]></field>
+        </record>
+
+        <record id="email_template_share_update" model="mail.template">
+            <field name="name">Share update - Send By Email</field>
+            <field
+                name="email_from"
+            >${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="subject">Share update</field>
+            <field name="partner_to">${object.id}</field>
+            <field
+                name="reply_to"
+            >${(object.company_id.coop_email_contact or object.user_id.email)|safe}</field>
+            <field name="model_id" ref="model_res_partner" />
+            <field name="auto_delete" eval="True" />
+            <field name="report_template" ref="action_cooperator_report_certificat" />
+            <field
+                name="report_name"
+            >Certificate ${(object.cooperator_register_number or '')}</field>
+            <field name="lang">${object.lang}</field>
+            <field name="is_cooperator_template" eval="True" />
+            <field
+                name="body_html"
+            ><![CDATA[
+<div style="font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
+
+    <p>Hello ${object.subscription_request_ids[0].firstname},</p>
+
+    <p>We confirm you that the adaptation on shares portfolio has been succesfully performed. Your cooperator certificate has been adapted accordingly.</p>
+
+    <br/>
+    <p>Find in attachment your ${object.company_id.name} certificate.</p>
+    <p>Thank you for choosing ${object.company_id.name or 'us'}!</p>
+    <br/>
+    <p>Sustainably your,</p>
+    <p>${object.company_id.name}.</p>
+
+    % if object.company_id.street:
+        ${object.company_id.street}
+    % endif
+    % if object.company_id.street2:
+        ${object.company_id.street2}<br/>
+    % endif
+    % if object.company_id.city or object.company_id.zip:
+        ${object.company_id.zip} ${object.company_id.city}<br/>
+    % endif
+    % if object.company_id.country_id:
+        ${object.company_id.state_id and ('%s, ' % object.company_id.state_id.name) or ''} ${object.company_id.country_id.name or ''}<br/>
+    % endif
+    % if object.company_id.phone:
+        Phone:&nbsp; ${object.company_id.phone}
+    % endif
+
+    % if object.company_id.website:
+        <div>
+            Web :&nbsp;<a href="${object.company_id.website}">${object.company_id.website}</a>
+        </div>
+    %endif
+
+     <div>
+         <img src=${object.company_id.logo_url}>
+     </div>
+</div>
+            ]]></field>
+        </record>
+    </data>
+</odoo>

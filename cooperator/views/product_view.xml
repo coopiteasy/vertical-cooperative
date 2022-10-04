@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="product_template_form_view" model="ir.ui.view">
+        <field name="name">product_template_form_view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='purchase_ok']/.." position="after">
+                <div groups="cooperator.cooperator_group_manager">
+                    <field name="is_share" />
+                    <label for="is_share" />
+                </div>
+                <div
+                    attrs="{'invisible':[('is_share','=',False)]}"
+                    groups="cooperator.cooperator_group_user"
+                >
+                    <field name="display_on_website" />
+                    <label for="display_on_website" />
+                </div>
+            </xpath>
+            <page name="general_information" position="after">
+                <page
+                    string="Share Information"
+                    name="share_information"
+                    attrs="{'invisible':[('is_share','=',False)]}"
+                    groups="cooperator.cooperator_group_user"
+                >
+                    <group>
+                        <group name="Info" string="Info">
+                            <field name="short_name" />
+                            <field name="default_share_product" />
+                            <field name="mail_template" />
+                        </group>
+                        <group name="configuration" string="Configuration">
+                            <field name="force_min_qty" />
+                            <field name="minimum_quantity" />
+                            <field
+                                name="customer"
+                                attrs="{'invisible':[('is_share','=',False)]}"
+                            />
+                            <field name="by_company" />
+                            <field name="by_individual" />
+                        </group>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="product_template_search_view" model="ir.ui.view">
+        <field name="name">product_template_search_view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view" />
+        <field name="arch" type="xml">
+            <xpath expr="." position="inside">
+                <group expand="0" name="group_by" string="Group By">
+                    <filter
+                        name="Creation Date"
+                        context="{'group_by': 'create_date'}"
+                    />
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_only_form_view" model="ir.ui.view">
+        <field name="name">product.template.product.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
+        <field name="arch" type="xml">
+            <field name="default_code" position="attributes">
+                <attribute name="attrs">{'required': [('is_share', '=',
+                    True)]}
+                </attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="product_template_action" model="ir.actions.act_window">
+        <field name="name">Share type</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="search_view_id" eval="False" /> <!-- Force empty -->
+        <field name="view_id" eval="False" /> <!-- Force empty -->
+        <field name="domain">[('is_share','=',True)]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new share product.
+            </p>
+        </field>
+    </record>
+
+
+    <!-- overriding product views to not display share product in the purchase and sale views-->
+
+    <record id="product.product_normal_action" model="ir.actions.act_window">
+        <field name="name">Product</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_type">form</field>
+        <field name="search_view_id" ref="product.product_search_form_view" />
+        <field name="view_id" eval="False" /> <!-- Force empty -->
+        <field name="domain">[('is_share','=',False)]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new product.
+            </p>
+            <p>
+                You must define a product for everything you sell, whether it's
+                a physical product, a consumable or a service you offer to
+                customers.
+            </p>
+            <p>
+                The product form contains information to simplify the sale
+                process: price, notes in the quotation, accounting data,
+                procurement methods, etc.
+            </p>
+        </field>
+    </record>
+
+    <record id="product.product_template_action" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="product.product_template_kanban_view" />
+        <field name="context">{"search_default_filter_to_sell":1}</field>
+        <field name="domain">[('is_share','=',False)]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new product.
+            </p>
+            <p>
+                You must define a product for everything you sell, whether it's
+                a physical product, a consumable or a service you offer to
+                customers.
+            </p>
+            <p>
+                The product form contains information to simplify the sale
+                process: price, notes in the quotation, accounting data,
+                procurement methods, etc.
+            </p>
+        </field>
+    </record>
+
+    <!-- move this action to another module cause the original action has been
+         moved to purchase module. So we want to avoid make purchase module installed
+     <record id="product.product_normal_action_puchased" model="ir.actions.act_window">
+     <field name="name">Products</field>
+     <field name="type">ir.actions.act_window</field>
+     <field name="res_model">product.template</field>
+     <field name="view_type">form</field>
+     <field name="view_mode">kanban,tree,form</field>
+     <field name="context">{"search_default_filter_to_purchase":1}</field>
+     <field name="search_view_id" eval="False"/> Force empty
+     <field name="view_id" eval="False"/> Force empty
+     <field name="domain">[('is_share','=',False)]</field>
+     <field name="help" type="html">
+       <p class="oe_view_nocontent_create">
+         Click to define a new product.
+       </p><p>
+         You must define a product for everything you purchase, whether
+         it's a physical product, a consumable or services you buy to
+         subcontractants.
+       </p><p>
+         The product form contains detailed information to improve the
+         purchase process: prices, procurement logistics, accounting data,
+         available vendors, etc.
+       </p>
+     </field>
+ </record> -->
+</odoo>

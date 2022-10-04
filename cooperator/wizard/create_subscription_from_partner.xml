@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_create_subscription" model="ir.ui.view">
+        <field name="name">Create Subscription</field>
+        <field name="model">partner.create.subscription</field>
+        <field name="arch" type="xml">
+            <form string="Create Subscription">
+                <p class="oe_grey">
+                    Subscription request will be created with data from the
+                    partner.
+                </p>
+                <group>
+                    <field name="is_company" invisible="True" />
+                    <field name="cooperator" invisible="True" />
+                    <field
+                        name="representative_firstname"
+                        attrs="{'invisible':[('is_company','=',False)],'required':[('is_company','=',True)]}"
+                    />
+                    <field
+                        name="representative_lastname"
+                        attrs="{'invisible':[('is_company','=',False)],'required':[('is_company','=',True)]}"
+                    />
+                    <field
+                        name="representative_email"
+                        attrs="{'invisible':[('is_company','=',False)],'required':[('is_company','=',True)]}"
+                    />
+                    <field name="email" />
+                    <field
+                        name="register_number"
+                        attrs="{'invisible':[('is_company','=',False)],'required':[('is_company','=',True)]}"
+                    />
+                    <field name="bank_account" />
+                    <field name="share_product" widget="selection" />
+                    <field name="share_qty" />
+                    <field name="share_unit_price" />
+                    <field name="subscription_amount" />
+                </group>
+                <footer>
+                    <button
+                        name="create_subscription"
+                        string="Create Subscription"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-default" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_view_create_subscription" model="ir.actions.act_window">
+        <field name="name">Create Subscription</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">partner.create.subscription</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="groups_id" eval="[(4,ref('cooperator.cooperator_group_user'))]" />
+    </record>
+</odoo>

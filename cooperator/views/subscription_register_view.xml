@@ -1,0 +1,106 @@
+<odoo>
+    <record id="subscription_register_tree" model="ir.ui.view">
+        <field name="name">subscription.register.tree</field>
+        <field name="model">subscription.register</field>
+        <field name="arch" type="xml">
+            <tree string="Subscription Register" create="false">
+                <field name="register_number_operation" />
+                <field name="date" />
+                <field name="partner_id" />
+                <field name="share_short_name" />
+                <field name="quantity" sum="Total quantity" />
+                <field name="share_unit_price" />
+                <field name="total_amount_line" sum="Total amount" />
+                <field name="type" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="subscription_register_form" model="ir.ui.view">
+        <field name="name">subscription.register.form</field>
+        <field name="model">subscription.register</field>
+        <field name="arch" type="xml">
+            <form string="Subscription Register">
+                <group>
+                    <group>
+                        <field name="register_number_operation" />
+                        <field name="date" />
+                        <field name="partner_id" />
+                        <field name="share_short_name" />
+                        <field name="quantity" />
+                        <field name="share_unit_price" />
+                        <field name="total_amount_line" />
+                    </group>
+                    <group>
+                        <field
+                            name="partner_id_to"
+                            attrs="{'invisible':[('type','!=','transfer')]}"
+                        />
+                        <field name="type" />
+                        <field name="share_to_short_name" />
+                        <field name="quantity_to" />
+                        <field name="share_to_unit_price" />
+                        <field name="user_id" invisible="True" />
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_subscription_register_filter" model="ir.ui.view">
+        <field name="name">Subscription Register Search</field>
+        <field name="model">subscription.register</field>
+        <field name="arch" type="xml">
+            <search string="Search Subscription Register">
+                <field
+                    name="partner_id"
+                    filter_domain="[('partner_id','ilike',self)]"
+                />
+                <field name="register_number_operation" />
+                <separator />
+                <filter
+                    string="Subscription"
+                    name="type_subscription"
+                    domain="[('type','=','subscription')]"
+                />
+                <filter
+                    string="Transfer"
+                    name="type_transfer"
+                    domain="[('type','=','transfer')]"
+                />
+                <filter
+                    string="Sell back"
+                    name="type_sell_back"
+                    domain="[('type','=','sell_back')]"
+                />
+                <filter
+                    string="Convert"
+                    name="type_convert"
+                    domain="[('type','=','convert')]"
+                />
+                <separator />
+                <group expand="0" name="group_by" string="Group By">
+                    <filter
+                        name="entry_type"
+                        string="Entry type"
+                        context="{'group_by' : 'type'}"
+                    />
+                    <filter
+                        name="subscription_date"
+                        string="Subscription Date"
+                        context="{'group_by': 'date'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="subscription_register_action" model="ir.actions.act_window">
+        <field name="name">Subscription Register</field>
+        <field name="res_model">subscription.register</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="subscription_register_tree" />
+        <field name="search_view_id" ref="view_subscription_register_filter" />
+    </record>
+
+</odoo>
