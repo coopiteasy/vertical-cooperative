@@ -17,7 +17,11 @@ Modules related to a cooperative registry (subscription requests, share transfer
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[cooperator](cooperator/) | 12.0.6.2.0 |  | Manage your cooperators
 
 [//]: # (end addons)
 
