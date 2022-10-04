@@ -517,12 +517,6 @@ msgid "A person can't be representative of two different companies."
 msgstr ""
 
 #. module: cooperator
-#: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
-msgid "ASBL"
-msgstr ""
-
-#. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__iban
 msgid "Account Number"
 msgstr ""
@@ -626,12 +620,6 @@ msgstr ""
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_request_filter
 msgid "Archived"
-msgstr ""
-
-#. module: cooperator
-#: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
-msgid "Association"
 msgstr ""
 
 #. module: cooperator
@@ -855,12 +843,6 @@ msgid "Company type"
 msgstr ""
 
 #. module: cooperator
-#: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
-msgid "Company under public law"
-msgstr ""
-
-#. module: cooperator
 #: model:ir.ui.menu,name:cooperator.menu_cooperator_config
 #: model_terms:ir.ui.view,arch_db:cooperator.product_template_form_view
 msgid "Configuration"
@@ -907,8 +889,6 @@ msgstr ""
 
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_company_form
-#: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
 msgid "Cooperative"
 msgstr ""
 
@@ -994,17 +974,11 @@ msgid "Cooperator register"
 msgstr ""
 
 #. module: cooperator
-#: model:account.account,name:cooperator.account_cooperator_demo
 #: model:ir.actions.act_window,name:cooperator.action_partner_cooperator_form
 #: model:ir.ui.menu,name:cooperator.menu_cooperator_cooperator
 #: model:ir.ui.menu,name:cooperator.menu_cooperator_main
 #: model_terms:ir.ui.view,arch_db:cooperator.view_res_partner_filter
 msgid "Cooperators"
-msgstr ""
-
-#. module: cooperator
-#: selection:subscription.request,source:0
-msgid "Cooperators API"
 msgstr ""
 
 #. module: cooperator
@@ -1176,12 +1150,6 @@ msgid "Draft Invoice"
 msgstr ""
 
 #. module: cooperator
-#: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
-msgid "EURL / Entreprise individuelle"
-msgstr ""
-
-#. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.cooperator_register_G001
 msgid "Effective\n"
 "                            date"
@@ -1227,11 +1195,6 @@ msgstr ""
 #. module: cooperator
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_register_filter
 msgid "Entry type"
-msgstr ""
-
-#. module: cooperator
-#: model:account.account,name:cooperator.account_equity_demo
-msgid "Equity"
 msgstr ""
 
 #. module: cooperator
@@ -1296,12 +1259,6 @@ msgstr ""
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__capital_release_request_date
 msgid "Force the capital release request date"
-msgstr ""
-
-#. module: cooperator
-#: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
-msgid "Foundation"
 msgstr ""
 
 #. module: cooperator
@@ -1388,12 +1345,6 @@ msgstr ""
 #. module: cooperator
 #: selection:subscription.request,type:0
 msgid "Increase number of share"
-msgstr ""
-
-#. module: cooperator
-#: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
-msgid "Individual company"
 msgstr ""
 
 #. module: cooperator
@@ -1817,12 +1768,6 @@ msgid "Part B - Worker"
 msgstr ""
 
 #. module: cooperator
-#: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
-msgid "Partnership"
-msgstr ""
-
-#. module: cooperator
 #: model:mail.template,subject:cooperator.email_template_certificat
 #: model:mail.template,subject:cooperator.email_template_certificat_increase
 msgid "Payment Received Confirmation"
@@ -1980,30 +1925,6 @@ msgstr ""
 #. module: cooperator
 #: model:ir.model.fields,field_description:cooperator.field_subscription_request__activity_user_id
 msgid "Responsible User"
-msgstr ""
-
-#. module: cooperator
-#: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
-msgid "SA / SAS"
-msgstr ""
-
-#. module: cooperator
-#: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
-msgid "SARL"
-msgstr ""
-
-#. module: cooperator
-#: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
-msgid "SCRL"
-msgstr ""
-
-#. module: cooperator
-#: selection:res.partner,legal_form:0
-#: selection:subscription.request,company_type:0
-msgid "SPRL"
 msgstr ""
 
 #. module: cooperator
@@ -2240,11 +2161,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:cooperator.field_subscription_register__date
 #: model_terms:ir.ui.view,arch_db:cooperator.view_subscription_register_filter
 msgid "Subscription Date"
-msgstr ""
-
-#. module: cooperator
-#: model:account.journal,name:cooperator.subscription_journal
-msgid "Subscription Journal"
 msgstr ""
 
 #. module: cooperator
