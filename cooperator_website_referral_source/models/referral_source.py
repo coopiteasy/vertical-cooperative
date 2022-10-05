@@ -3,6 +3,6 @@ from odoo import fields, models
 
 class ReferralSource(models.Model):
     _name = "referral.source"
-    _description = "How did you know about us?"
+    _description = "How did you hear about us?"
 
-    name = fields.Char(string="How did you know about us?", translate=True)
+    name = fields.Char(string="How did you hear about us?", translate=True)

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="referral_source_action" model="ir.actions.act_window">
-        <field name="name">How did you know about us?</field>
+        <field name="name">How did you hear about us?</field>
         <field name="res_model">referral.source</field>
         <field name="view_mode">tree,form</field>
     </record>

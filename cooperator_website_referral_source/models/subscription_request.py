@@ -6,7 +6,7 @@ class SubscriptionRequest(models.Model):
 
     referral_source_id = fields.Many2one(
         comodel_name="referral.source",
-        string="How did you know about us?",
+        string="How did you hear about us?",
     )
 
     def get_partner_company_vals(self):

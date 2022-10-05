@@ -7,7 +7,7 @@
             t-attf-class="form-group #{error and 'referral_source_id' in error and 'has-error' or ''}"
             name="referral_source_id_container"
         >
-            <label for="referral_source_id">How did you know about us?</label>
+            <label for="referral_source_id">How did you hear about us?</label>
             <select
                 class="form-control form-control-sm"
                 id="referral_source_id"
