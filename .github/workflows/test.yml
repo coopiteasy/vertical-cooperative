@@ -21,6 +21,7 @@ jobs:
         include:
           - container: ghcr.io/oca/oca-ci/py3.6-ocb12.0:latest
             include: "easy_my_coop_connector"
+            makepot: "true"
             name: test with OCB
           - container: ghcr.io/oca/oca-ci/py3.6-ocb12.0:latest
             exclude: "easy_my_coop_connector"
