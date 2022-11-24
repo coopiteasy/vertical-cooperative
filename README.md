@@ -36,7 +36,6 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[cooperator](cooperator/) | 12.0.6.2.0 |  | Manage your cooperators
 [cooperator_api](cooperator_api/) | 12.0.2.0.0 |  | Open Cooperators to the world: RESTful API.
 [cooperator_api_logs](cooperator_api_logs/) | 12.0.1.0.0 |  | Helpers to log calls in and out of cooperators_api.
 [cooperator_portal](cooperator_portal/) | 12.0.3.1.0 |  | Show cooperator information in the website portal
