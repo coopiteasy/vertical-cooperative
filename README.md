@@ -7,6 +7,10 @@
 
 <!-- /!\ do not modify above this line -->
 
+## ⚠️ Important Notice
+
+**Please note that the main modules from this repository are being moved to the [`cooperative` repository of the OCA](https://github.com/OCA/cooperative).**
+
 # Vertical Cooperative
 
 This project aims to deal with modules related to the management of cooperatives.
