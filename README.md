@@ -38,7 +38,6 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[cooperator](cooperator/) | 14.0.1.3.1 |  | Manage your cooperators
 [cooperator_website_recaptcha](cooperator_website_recaptcha/) | 14.0.1.0.0 |  | Add Google Recaptcha to Subscription Request Form
 [cooperator_website_uppercase_lastname](cooperator_website_uppercase_lastname/) | 14.0.1.0.0 |  | This module UPPERCASES the last names of submitted requests
 [l10n_be_cooperator_portal](l10n_be_cooperator_portal/) | 14.0.1.0.0 |  | Give access to Tax Shelter Report in the portal.
