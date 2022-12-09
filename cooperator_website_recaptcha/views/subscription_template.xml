@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
-    <template id="captcha_template" name="captcha_template">
-        <div
-            class="g-recaptcha text-xs-center"
-            t-if="res_company.captcha_type == 'google'"
-            t-att-data-sitekey="request.env['ir.config_parameter'].sudo().get_param('portal_recaptcha.recaptcha_key_site')"
-            data-theme="green"
-            name="recaptcha_key_site"
-        />
-    </template>
-
     <template
         id="becomecooperator"
         inherit_id="cooperator_website.becomecooperator"
         name="Become Cooperator"
     >
         <xpath expr="//t[@t-call='cooperator_website.rules_template']" position="after">
-            <t t-call="cooperator_website_recaptcha.captcha_template" />
+            <t t-call="portal_recaptcha.recaptcha_widget" />
         </xpath>
     </template>
 
@@ -27,8 +16,7 @@
         name="Become Cooperator"
     >
         <xpath expr="//t[@t-call='cooperator_website.rules_template']" position="after">
-            <t t-call="cooperator_website_recaptcha.captcha_template" />
+            <t t-call="portal_recaptcha.recaptcha_widget" />
         </xpath>
     </template>
-
 </odoo>
