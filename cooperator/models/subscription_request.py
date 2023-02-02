@@ -61,6 +61,11 @@ class SubscriptionRequest(models.Model):
             vals["already_cooperator"] = True
         return vals
 
+    def update_partner_info(self):
+        # To be overiden to update specific partner information based
+        # on subscription request
+        return True
+
     @api.constrains("share_product_id", "is_company")
     def _check_share_available_to_user(self):
         for request in self:
@@ -696,6 +701,7 @@ class SubscriptionRequest(models.Model):
             raise UserError(_("Number of share must be greater than 0."))
         if self.partner_id:
             partner = self.partner_id
+            self.update_partner_info()
         else:
             partner = None
             domain = []
