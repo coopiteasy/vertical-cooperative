@@ -105,9 +105,12 @@ class ResPartner(models.Model):
     cooperator = fields.Boolean(string='Easy My Coop',
                                 help="Check this box if this contact is a"
                                 " cooperator(effective or not).")
-    member = fields.Boolean(string='Effective cooperator',
-                            help="Check this box if this cooperator"
-                            " is an effective member.")
+    member = fields.Boolean(
+        string='Effective cooperator',
+        help="Check this box if this cooperator is an effective member.",
+        readonly=True,
+        copy=False,
+    )
     coop_candidate = fields.Boolean(string="Cooperator candidate",
                                     compute="_compute_coop_candidate",
                                     store=True,
