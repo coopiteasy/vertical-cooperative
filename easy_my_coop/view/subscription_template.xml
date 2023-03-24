@@ -22,7 +22,7 @@
         <div class="container">
             <h1>Thanks!</h1>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="alert alert-success">
                         Your subscription has been successfully registered.
                         <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
@@ -35,16 +35,13 @@
                         <li><i class="fa fa-envelope"></i> : <span t-field="res_company.email"/></li>
                     </ul>
                 </div>
-                <div class="col-md-4">
-                    <t t-call="website.company_description"/>
-                </div>
             </div>
         </div>
         <div class="oe_structure"/>
       </div>
     </t>
 </template>
-		
+
 
 <template id="easy_my_coop.becomecooperator" name="Become Cooperator" page="True">
 	 <t t-call="website.layout">
