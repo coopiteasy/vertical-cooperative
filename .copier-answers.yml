@@ -2,7 +2,7 @@
 _commit: v2.1.10
 _src_path: https://github.com/coopiteasy/oca-addons-repo-template.git
 ci: GitHub
-dependency_installation_mode: OCA
+dependency_installation_mode: PIP
 generate_requirements_txt: true
 github_check_license: true
 github_ci_extra_env: {}
@@ -17,7 +17,7 @@ org_name: Coop IT Easy SC
 org_slug: coopiteasy
 rebel_module_groups:
 - easy_my_coop_connector
-repo_description: This project aim to deal with modules related to cooperatives management.
+repo_description: This project aims to deal with modules related to cooperative management.
 repo_name: Vertical Cooperative
 repo_slug: vertical-cooperative
 repo_website: https://coopiteasy.be
