@@ -7,7 +7,6 @@ on:
   push:
     branches:
       - "12.0"
-      - "12.0-komunigi" # push translations
       - "12.0-ocabot-*"
 
 jobs:
