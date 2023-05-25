@@ -40,7 +40,7 @@ addon | version | maintainers | summary
 [cooperator_api_logs](cooperator_api_logs/) | 12.0.1.0.0 |  | Helpers to log calls in and out of cooperators_api.
 [cooperator_website_recaptcha](cooperator_website_recaptcha/) | 12.0.1.0.1 |  | Add Google Recaptcha to Subscription Request Form
 [cooperator_website_uppercase_lastname](cooperator_website_uppercase_lastname/) | 12.0.1.0.0 |  | This module UPPERCASES the last names of submitted requests
-[easy_my_coop_loan](easy_my_coop_loan/) | 12.0.2.0.1 |  | This module allows to manage the bonds and subordinated loans subscription life cycle.
+[easy_my_coop_loan](easy_my_coop_loan/) | 12.0.2.0.2 |  | This module allows to manage the bonds and subordinated loans subscription life cycle.
 [easy_my_coop_loan_account](easy_my_coop_loan_account/) | 12.0.1.0.0 |  | This module brings the accounting part of the loan issue. It has for purpose to generate all the accounting entries to the covered use cases.
 [easy_my_coop_loan_account_be](easy_my_coop_loan_account_be/) | 12.0.1.0.0 |  | This module install belgian localisation demo data for EMC loan account. It also trigger installation for the dependency module
 [easy_my_coop_loan_bba](easy_my_coop_loan_bba/) | 12.0.1.0.0 |  | This module implements the bba structured communication on the loan line.
