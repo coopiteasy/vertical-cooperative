@@ -19,11 +19,6 @@ jobs:
       matrix:
         include:
           - container: ghcr.io/oca/oca-ci/py3.6-ocb12.0:latest
-            include: "easy_my_coop_connector"
-            name: test with OCB
-            makepot: "true"
-          - container: ghcr.io/oca/oca-ci/py3.6-ocb12.0:latest
-            exclude: "easy_my_coop_connector"
             name: test with OCB
             makepot: "true"
     services:
@@ -35,9 +30,6 @@ jobs:
           POSTGRES_DB: odoo
         ports:
           - 5432:5432
-    env:
-      INCLUDE: "${{ matrix.include }}"
-      EXCLUDE: "${{ matrix.exclude }}"
     steps:
       - uses: actions/checkout@v2
         with:
