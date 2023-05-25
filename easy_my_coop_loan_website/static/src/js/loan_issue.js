@@ -1,14 +1,14 @@
-odoo.define("easy_my_coop_loan_website.oe_easymy_coop_loan", function (require) {
+odoo.define("easy_my_coop_loan_website.oe_easymy_coop_loan", function(require) {
     "use strict";
-    $(document).ready(function () {
+    $(document).ready(function() {
         var ajax = require("web.ajax");
 
-        $(".oe_easymy_coop_loan").each(function () {
-            $("#loan_issue").change(function () {
+        $(".oe_easymy_coop_loan").each(function() {
+            $("#loan_issue").change(function() {
                 var loan_issue_id = $("#loan_issue").val();
                 ajax.jsonRpc("/subscription/get_loan_issue", "call", {
                     loan_issue_id: loan_issue_id,
-                }).then(function (data) {
+                }).then(function(data) {
                     if (data !== false) {
                         $("#subscription_amount").prop(
                             "max",
