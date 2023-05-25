@@ -4,7 +4,7 @@
 
 {
     "name": "Easy My Coop Loan Issues Management",
-    "version": "12.0.2.0.1",
+    "version": "12.0.2.0.2",
     "depends": ["cooperator"],
     "author": "Coop IT Easy SC",
     "category": "Cooperative management",
