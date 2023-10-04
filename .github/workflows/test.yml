@@ -11,7 +11,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     container: ${{ matrix.container }}
     name: ${{ matrix.name }}
     strategy:
@@ -19,8 +19,8 @@ jobs:
       matrix:
         include:
           - container: ghcr.io/oca/oca-ci/py3.6-ocb14.0:latest
-            makepot: "true"
             name: test with OCB
+            makepot: "true"
     services:
       postgres:
         image: postgres:9.6

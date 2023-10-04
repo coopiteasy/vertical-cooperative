@@ -1,1 +1,0 @@
-git+https://github.com/coopiteasy/addons@14.0#subdirectory=setup/partner_contact_address
