@@ -108,41 +108,7 @@
         </field>
     </record>
 
-    <record id="invoice_form" model="ir.ui.view">
-        <field name="name">invoice_form</field>
-        <field name="model">account.invoice</field>
-        <field name="inherit_id" ref="account.invoice_form" />
-        <field name="arch" type="xml">
-            <xpath expr="//page[@name='other_info']" position="after">
-                <page name="api_page" string="API">
-                    <group>
-                        <field name="external_id_generated" invisible="1" />
-                        <field
-                            name="_api_external_id"
-                            attrs="{'invisible': [('external_id_generated', '=', False)]}"
-                        />
-                        <field
-                            name="first_api_export_date"
-                            attrs="{'invisible': [('external_id_generated', '=', False)]}"
-                        />
-                        <field
-                            name="last_api_export_date"
-                            attrs="{'invisible': [('external_id_generated', '=', False)]}"
-                        />
-                        <button
-                            name="get_api_external_id"
-                            string="Generate external ID"
-                            type="object"
-                            class="oe_highlight"
-                            attrs="{'invisible': [('external_id_generated', '=', True)]}"
-                        />
-                    </group>
-                </page>
-            </xpath>
-        </field>
-    </record>
-
-    <record id="view_account_payment_form" model="ir.ui.view">
+    <!--record id="view_account_payment_form" model="ir.ui.view">
         <field name="name">view_account_payment_form</field>
         <field name="model">account.payment</field>
         <field name="inherit_id" ref="account.view_account_payment_form" />
@@ -176,7 +142,7 @@
                 </notebook>
             </xpath>
         </field>
-    </record>
+    </record-->
 
     <record id="product_template_form_view" model="ir.ui.view">
         <field name="name">product_template_form_view</field>

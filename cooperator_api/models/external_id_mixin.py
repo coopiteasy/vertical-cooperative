@@ -4,7 +4,7 @@
 
 from psycopg2 import IntegrityError
 
-from odoo import api, fields, models
+from odoo import fields, models
 from odoo.fields import Datetime
 
 
@@ -102,11 +102,6 @@ class AccountAccount(models.Model):
 class AccountJournal(models.Model):
     _name = "account.journal"
     _inherit = ["account.journal", "external.id.mixin"]
-
-
-class AccountInvoice(models.Model):
-    _name = "account.invoice"
-    _inherit = ["account.invoice", "external.id.mixin"]
 
 
 class AccountPayment(models.Model):
