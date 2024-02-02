@@ -42,7 +42,6 @@ class ExternalIdMixin(models.AbstractModel):
         copy=False,
     )
 
-    @api.multi
     def timestamp_export(self):
         sudo_self = self.sudo()
         sudo_self.write({"last_api_export_date": Datetime.now()})
@@ -50,7 +49,6 @@ class ExternalIdMixin(models.AbstractModel):
             {"first_api_export_date": Datetime.now()}
         )
 
-    @api.multi
     def set_external_sequence(self):
         self.ensure_one()
         code = "%s.external.id" % self._name
@@ -65,7 +63,6 @@ class ExternalIdMixin(models.AbstractModel):
         self.sudo().write({"external_id_sequence_id": sequence.id})
         return True
 
-    @api.multi
     def get_api_external_id(self):
         self.ensure_one()
         if not self.external_id_sequence_id:

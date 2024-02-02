@@ -54,7 +54,7 @@ class TestExternalIdMixin(TransactionCase):
         bank = self.env["res.partner.bank"].create(
             {
                 "acc_number": "test",
-                "partner_id": self.env.user.company_id.partner_id.id,
+                "partner_id": self.env.company_id.partner_id.id,
             }
         )
         journal = self.env["account.journal"].create(

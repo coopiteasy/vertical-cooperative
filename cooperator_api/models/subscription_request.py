@@ -12,7 +12,6 @@ class SubscriptionRequest(models.Model):
 
     source = fields.Selection(selection_add=[("cooperator_api", "Cooperators API")])
 
-    @api.multi
     def update_state(self, state):
         self.ensure_one()
         # sudo is needed yo write on api type requests

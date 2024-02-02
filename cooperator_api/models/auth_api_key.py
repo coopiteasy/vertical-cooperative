@@ -14,7 +14,6 @@ class AuthApiKey(models.Model):
     # it will always be set.
     name = fields.Char(required=False, compute="_compute_name", store=True)
 
-    @api.multi
     @api.depends("user_id")
     def _compute_name(self):
         for key in self:

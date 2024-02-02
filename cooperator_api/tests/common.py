@@ -114,7 +114,7 @@ class BaseCooperatorRestCase(BaseRestCase):
 
     @classmethod
     def _add_chart_of_accounts(cls):
-        cls.company = cls.env.user.company_id
+        cls.company = cls.env.company_id
         cls.chart.try_loading_for_current_company()
         cls.revenue = cls.env["account.account"].search(
             [
