@@ -1,0 +1,8 @@
+capital_release_request_date,migrated_cooperator_register_number,subscription_amount,date,state,name,lastname,firstname,vat,email,address,zip_code,city,country_id/id,phone,ordered_parts,share_product_id/id,skip_control_ng,lang
+2022-01-05,2,1.0,2022-01-01,Draft,Ramon,Garcia,Perez,89511021N,iuqjlrusj@msn.com,"BARRIO HORNO, 90",28167,NAVALCARNERO,base.es,688702843,1,__export__.product_template_4_3f03159e,True,en_US
+2022-01-06,3,1.0,2022-01-01,Draft,Andrea,Saez,Rodriguez,07860757R,lo15736fmt@lycos.it,"POLÍGONO NUEVA, 76",28167,NAVALCARNERO,base.es,632957319,1,__export__.product_template_4_3f03159e,True,en_US
+2022-01-07,4,1.0,2022-01-01,Draft,Alberto,Lopez,Sanchez,18396343T,01g9jf1j@gmail.com,"CARRETERA REAL, 38",34818,NAVALCARNERO,base.es,707715494,1,__export__.product_template_4_3f03159e,True,en_US
+2022-01-08,5,1.0,2022-01-01,Draft,Maria,Niubo,Perez,33951134Y,8ai9vmyj@techie.com,"ALAMEDA MAYOR, 53",25335,MONTOLIU DE LLEIDA,base.es,753371673,1,__export__.product_template_4_3f03159e,True,en_US
+2022-01-09,6,1.0,2022-01-01,Draft,Ines,Carrero,Correa,80134996Y,i8v0c8huy@earthling.net,"CAMÍ CATALUNYA, 76",9885,RUCANDIO,base.es,626992566,1,__export__.product_template_4_3f03159e,True,en_US
+2022-01-10,7,1.0,2022-01-01,Draft,Veronica,Xana,Perez,99218987T,xtwkblgdr@gmail.com,"VIA IGLESIA, 72",39384,LAMASÓN,base.es,605301968,1,__export__.product_template_4_3f03159e,True,en_US
+2021-01-01,1,1.0,2022-01-01,Draft,Pau,Garcia,Irarte,89206152P,44etzl8qw@talk21.com,"KALEA REAL, 37",6865,MONESTERIO,base.es,785973781,1,__export__.product_template_4_3f03159e,True,en_US
