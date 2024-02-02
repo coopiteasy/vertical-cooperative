@@ -15,13 +15,16 @@ class UserController(main.RestController):
     _collection_name = "cooperator.services"
     _default_auth = "api_key"
 
-    def _process_method(self, service_name, method_name, *args, params=None):
+    def _process_method(
+        self, service_name, method_name, *args, collection=None, params=None
+    ):
         response = super()._process_method(
-            service_name, method_name, *args, params=params
+            service_name, method_name, *args, collection=collection, params=params
         )
         # only admin can create cooperator.api.log
         # only log successful calls
-        self.collection.env["cooperator.api.log"].sudo().create(
+        collection = collection or self.default_collection
+        collection.env["cooperator.api.log"].sudo().create(
             {
                 "datetime": datetime.now(),
                 "method": request.httprequest.method,
