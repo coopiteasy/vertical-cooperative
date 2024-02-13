@@ -85,6 +85,8 @@ S_SUBSCRIPTION_REQUEST_CREATE = {
     "firstname": {"type": "string", "required": True, "empty": False},
     "lastname": {"type": "string", "required": True, "empty": False},
     "is_company": {"type": "boolean", "required": True},
+    "company_name": {"type": "string", "required": False},
+    "company_email": {"type": "string", "required": False},
     "email": {"type": "string", "required": True, "empty": False},
     "ordered_parts": {"type": "integer", "required": True},
     "share_product": {"type": "integer", "required": True},

@@ -148,6 +148,8 @@ class SubscriptionRequestService(Component):
             "firstname": params["firstname"],
             "lastname": params["lastname"],
             "is_company": params["is_company"],
+            "company_name": params.get("company_name"),
+            "company_email": params.get("company_email"),
             "email": params["email"],
             "ordered_parts": params["ordered_parts"],
             "share_product_id": share_product_id.id,
