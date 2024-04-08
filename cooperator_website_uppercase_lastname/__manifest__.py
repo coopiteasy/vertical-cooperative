@@ -5,11 +5,10 @@
     "name": "Cooperator Uppercase Last Name",
     "summary": """
         This module UPPERCASES the last names of submitted requests""",
-    "version": "14.0.1.0.0",
+    "version": "15.0.1.0.0",
     "category": "Cooperative management",
     "website": "https://coopiteasy.be",
     "author": "Coop IT Easy SC",
     "license": "AGPL-3",
-    "application": False,
     "depends": ["cooperator_website"],
 }
