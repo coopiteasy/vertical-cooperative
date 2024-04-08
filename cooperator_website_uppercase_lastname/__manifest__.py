@@ -3,12 +3,14 @@
 
 {
     "name": "Cooperator Uppercase Last Name",
-    "summary": """
-        This module UPPERCASES the last names of submitted requests""",
-    "version": "15.0.1.0.0",
+    "summary": "Emptied",
+    "version": "16.0.1.0.0",
     "category": "Cooperative management",
-    "website": "https://coopiteasy.be",
+    "website": "https://github.com/coopiteasy/vertical-cooperative",
     "author": "Coop IT Easy SC",
     "license": "AGPL-3",
-    "depends": ["cooperator_website"],
+    "depends": [
+        "cooperator_website",
+        "partner_lastname_uppercase",
+    ],
 }
