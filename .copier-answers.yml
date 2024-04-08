@@ -1,0 +1,26 @@
+# Do NOT update manually; changes here will be overwritten by Copier
+_commit: v2.2.1
+_src_path: https://github.com/coopiteasy/oca-addons-repo-template.git
+ci: GitHub
+convert_readme_fragments_to_markdown: false
+generate_requirements_txt: true
+github_check_license: true
+github_ci_extra_env: {}
+github_enable_codecov: true
+github_enable_makepot: true
+github_enable_stale_action: true
+github_enforce_dev_status_compatibility: true
+include_wkhtmltopdf: false
+odoo_test_flavor: OCB
+odoo_version: 16.0
+org_name: Coop IT Easy SC
+org_slug: coopiteasy
+rebel_module_groups: []
+repo_description: This project aims to deal with modules related to the management
+    of cooperatives.
+repo_name: Vertical Cooperative
+repo_slug: vertical-cooperative
+repo_website: https://github.com/coopiteasy/vertical-cooperative
+use_pyproject_toml: false
+use_ruff: false
+
