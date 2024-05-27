@@ -91,7 +91,21 @@ class WebsiteSubscription(http.Controller):
         # the subscriber is connected
         if request.env.user.login != 'public':
             values['logged'] = 'on'
-            partner = request.env.user.partner_id
+            partner = self._get_coop_partner_from_user(
+                request.env.user, is_company
+            )
+            if not partner:
+                if is_company:
+                    values["error_msg"] = _(
+                        "This account is not linked to a company. Please log "
+                        "out and try again."
+                    )
+                else:
+                    values["error_msg"] = _(
+                        "This account is linked to a company. Please log out "
+                        "and try again."
+                    )
+                return values
 
             if partner.member or partner.old_member:
                 values['already_cooperator'] = 'on'
@@ -211,6 +225,33 @@ class WebsiteSubscription(http.Controller):
             required_fields.remove(field)
         return required_fields
 
+    def _get_coop_partner_from_user(self, user, is_company):
+        """
+        Get the corresponding cooperator partner from the provided user.
+
+        is_company controls whether the cooperator should be a company or an
+        individual.
+        """
+        partner = user.partner_id
+        if is_company:
+            # the cooperator should be a company.
+            # there are several cases to handle:
+            # 1. the user is linked to a partner that is a company (normal
+            #    case).
+            # 2. the user is linked to a partner that is a representative of a
+            #    company (can happen if portal access was granted later).
+            # 3. the user is linked to a partner that is a person and not a
+            #    representative (not handled).
+            if partner.is_company:
+                return partner
+            if partner.representative:
+                return partner.parent_id
+            return partner.browse()
+        # the cooperator should be an individual.
+        if not partner.is_company:
+            return partner
+        return partner.get_representative()
+
     def validation(self, kwargs, logged, values, post_file):
         user_obj = request.env['res.users']
         sub_req_obj = request.env['subscription.request']
@@ -305,8 +346,10 @@ class WebsiteSubscription(http.Controller):
         # check the subscription's amount
         max_amount = company.subscription_maximum_amount
         if logged:
-            partner = request.env.user.partner_id
-            if partner.member:
+            partner = self._get_coop_partner_from_user(
+                request.env.user, is_company
+            )
+            if partner and partner.member:
                 max_amount = max_amount - partner.total_value
                 if company.unmix_share_type:
                     share = self.get_selected_share(kwargs)
@@ -372,9 +415,12 @@ class WebsiteSubscription(http.Controller):
 
         already_coop = False
         if logged:
-            partner = request.env.user.partner_id
-            values['partner_id'] = partner.id
-            already_coop = partner.member
+            partner = self._get_coop_partner_from_user(
+                request.env.user, is_company
+            )
+            if partner:
+                values['partner_id'] = partner.id
+                already_coop = partner.member
         elif kwargs.get("already_cooperator") == 'on':
             already_coop = True
 

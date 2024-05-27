@@ -2509,6 +2509,18 @@ msgid "There is two different persons with the same national register number. Pl
 msgstr "There is two different persons with the same national register number. Please proceed to a merge before to continue"
 
 #. module: easy_my_coop
+#: code:addons/easy_my_coop/controllers/main.py:104
+#, python-format
+msgid "This account is linked to a company. Please log out and try again."
+msgstr "Ce compte est lié à une société. Veuillez vous déconnecter et réessayer."
+
+#. module: easy_my_coop
+#: code:addons/easy_my_coop/controllers/main.py:99
+#, python-format
+msgid "This account is not linked to a company. Please log out and try again."
+msgstr "Ce compte n'est pas lié à une société. Veuillez vous déconnecter et réessayer."
+
+#. module: easy_my_coop
 #: model:ir.model.fields,help:easy_my_coop.field_res_company_property_cooperator_account
 msgid "This account will be the default one as the receivable account for the cooperators"
 msgstr "This account will be the default one as the receivable account for the cooperators"
