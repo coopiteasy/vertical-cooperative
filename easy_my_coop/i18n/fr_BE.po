@@ -2759,6 +2759,7 @@ msgid "You can't subscribe two different types of share"
 msgstr "You can't subscribe two different types of share"
 
 #. module: easy_my_coop
+#: model:ir.ui.view,arch_db:easy_my_coop.becomecompanycooperator
 #: model:ir.ui.view,arch_db:easy_my_coop.becomecooperator
 msgid "You have already an account?"
 msgstr "Vous avez déjà un compte ? Cliquez ici pour vous connecter."
