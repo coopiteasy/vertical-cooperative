@@ -25,7 +25,7 @@ class RecaptchaWebsiteSubscription(WebsiteSubscription):
                 values = self.fill_values(values, is_company, logged)
                 values.update(kwargs)
                 values["error_msg"] = _(
-                    "the captcha has not been validated," " please fill in the captcha"
+                    "the captcha has not been validated, please fill in the captcha"
                 )
 
                 return request.render(redirect, values)
@@ -35,7 +35,7 @@ class RecaptchaWebsiteSubscription(WebsiteSubscription):
                 values = self.fill_values(values, is_company, logged)
                 values.update(kwargs)
                 values["error_msg"] = _(
-                    "the captcha has not been validated," " please fill in the captcha"
+                    "the captcha has not been validated, please fill in the captcha"
                 )
 
                 return request.render(redirect, values)

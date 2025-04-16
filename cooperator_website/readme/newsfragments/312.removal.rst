@@ -1,2 +1,0 @@
-Removed reCAPTCHA logic out of this module. Install
-``cooperator_website_recaptcha`` to regain the functionality.

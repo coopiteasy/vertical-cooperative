@@ -6,7 +6,7 @@
     "summary": "extract of the theme zen",
     "license": "AGPL-3",
     "category": "Website",
-    "version": "12.0.1.0.0",
+    "version": "12.0.1.0.1",
     "author": "Benjamin Dugardin," "Houssine BAKKALI," "Coop IT Easy SC",
     "website": "https://coopiteasy.be",
     "depends": ["base", "web", "website_theme_install"],

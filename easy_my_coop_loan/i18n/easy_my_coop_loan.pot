@@ -143,9 +143,7 @@ msgstr ""
 
 #. module: easy_my_coop_loan
 #: model:mail.template,subject:easy_my_coop_loan.loan_subscription_confirmation
-msgid "${object.company_id.name} Loan subscription\n"
-"                confirmation (Ref ${object.loan_issue_id.name or 'n/a'})\n"
-"            "
+msgid "${object.company_id.name} Loan subscription confirmation (Ref ${object.loan_issue_id.name or 'n/a'})"
 msgstr ""
 
 #. module: easy_my_coop_loan

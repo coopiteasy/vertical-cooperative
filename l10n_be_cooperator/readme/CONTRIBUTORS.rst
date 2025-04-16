@@ -1,1 +1,0 @@
-* Coop IT Easy SC
