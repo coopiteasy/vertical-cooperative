@@ -1,8 +1,9 @@
 # Do NOT update manually; changes here will be overwritten by Copier
-_commit: v2.1.10
+_commit: v2.3.2
 _src_path: https://github.com/coopiteasy/oca-addons-repo-template.git
 ci: GitHub
-dependency_installation_mode: PIP
+convert_readme_fragments_to_markdown: false
+enable_checklog_odoo: false
 generate_requirements_txt: true
 github_check_license: true
 github_ci_extra_env: {}
@@ -20,6 +21,4 @@ repo_description: This project aims to deal with modules related to cooperative 
 repo_name: Vertical Cooperative
 repo_slug: vertical-cooperative
 repo_website: https://coopiteasy.be
-travis_apt_packages: []
-travis_apt_sources: []
 
