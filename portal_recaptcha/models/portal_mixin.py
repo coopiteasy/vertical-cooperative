@@ -25,8 +25,12 @@ class PortalMixin(models.AbstractModel):
         return mapping.get(errorcode, _("There was a problem with the captcha entry."))
 
     def is_captcha_valid(self, response):
+        if not response:
+            raise ValidationError(_("No response given."))
         recaptcha_key_secret = (
-            self.env["ir.config_parameter"].sudo().get_param("recaptcha_key_secret")
+            self.env["ir.config_parameter"]
+            .sudo()
+            .get_param("portal_recaptcha.recaptcha_key_secret")
         )
         get_res = {"secret": recaptcha_key_secret, "response": response}
 
