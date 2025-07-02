@@ -25,6 +25,12 @@ msgid "Config Settings"
 msgstr ""
 
 #. module: portal_recaptcha
+#: code:addons/portal_recaptcha/models/portal_mixin.py:29
+#, python-format
+msgid "No response given."
+msgstr ""
+
+#. module: portal_recaptcha
 #: model:ir.model,name:portal_recaptcha.model_portal_mixin
 msgid "Portal Mixin"
 msgstr ""
