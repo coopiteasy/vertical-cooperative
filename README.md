@@ -48,7 +48,7 @@ addon | version | maintainers | summary
 [l10n_ch_cooperator](l10n_ch_cooperator/) | 12.0.1.3.0 |  | Cooperators Switzerland localization
 [l10n_es_cooperator](l10n_es_cooperator/) | 12.0.0.1.0 |  | Cooperator localization for Spain
 [l10n_fr_cooperator](l10n_fr_cooperator/) | 12.0.1.2.0 |  | This is the French localization for the Cooperators module
-[portal_recaptcha](portal_recaptcha/) | 12.0.1.0.2 |  | Add google recaptcha to forms.
+[portal_recaptcha](portal_recaptcha/) | 12.0.1.1.0 |  | Add google recaptcha to forms.
 [theme_light](theme_light/) | 12.0.1.0.1 |  | extract of the theme zen
 
 
