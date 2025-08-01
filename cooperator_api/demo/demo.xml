@@ -30,11 +30,6 @@
         <field name="external_id_generated" eval="True" />
     </record>
 
-    <record id="cooperator.subscription_journal" model="account.journal">
-        <field name="_api_external_id">1</field>
-        <field name="external_id_generated" eval="True" />
-    </record>
-
     <record id="cooperator.account_equity_demo" model="account.account">
         <field name="_api_external_id">1</field>
         <field name="external_id_generated" eval="True" />
